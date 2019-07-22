@@ -1,0 +1,27 @@
+## About Laravel
+
+composer install
+php artisan passport:keys
+php artisan passport:client
+
+Once the client is generated, copy the keys to .env file
+PASSPORT_CLIENT_ID=1
+PASSPORT_CLIENT_SECRET=v5AVQSwl4GI3g0XAbQhzkeiw48OZtnJBwmK7OiRv
+
+Make a post request to http://localhost/lgprofile-app/public/oauth/token with following data
+client_id:1
+client_secret:v5AVQSwl4GI3g0XAbQhzkeiw48OZtnJBwmK7OiRv
+scope:*
+grant_type:client_credentials
+
+##FrontEnd
+npm run build
+
+##Conventions for React
+https://github.com/airbnb/javascript/tree/master/react#naming
+
+##Redux
+/actions
+/reducers
+/constants
+store.js
