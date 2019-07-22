@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {userActions} from './../../actions';
 import Header from '../generic/Header';
 import Footer from '../generic/Footer';
-import CanvasJSReact from '../../imports/canvasjs.react';
 let CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 

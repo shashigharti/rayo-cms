@@ -8,8 +8,6 @@ import {RegisterPage} from './containers/register/RegisterPage';
 import M from "materialize-css";
 import 'materialize-css/dist/css/materialize.min.css'
 import {PrivateRoute} from "./components";
-import ProfileReport from "./containers/profile-reports/ProfileReport";
-import Map from "./containers/map/Map";
 import * as serviceWorker from './serviceWorker';
 
 
