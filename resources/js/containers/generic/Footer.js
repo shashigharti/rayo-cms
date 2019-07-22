@@ -1,18 +1,18 @@
 import React, {Component} from 'react';
+import {PageFooter} from "../../components/Styled";
 
 class Footer extends Component {
     render() {
         return (
-            <footer
-                className="page-footer footer footer-static footer-dark gradient-45deg-light-blue-cyan gradient-shadow navbar-border navbar-shadow">
+            <PageFooter className="page-footer">
                 <div className="footer-copyright">
-                    <div className="container">
+                    <div className="container center-align">
                         <span>&copy; {new Date().getFullYear()}
-                            <a href="/" target="_blank"> ROBUST IT CONCEPTS</a> All rights reserved.
+                            <a href="/" className="white-text" target="_blank"> ROBUST IT CONCEPTS</a> All rights reserved.
                         </span>
                     </div>
                 </div>
-            </footer>
+            </PageFooter>
         );
     }
 }

@@ -28,7 +28,6 @@
     <div id="root"></div>
     {{-- Maps API --}}
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMGPU0xbiE-XtO-U61AltLGW05KKF0cY&libraries=places" async defer></script>
-    <script src="{{asset('js/dexie.js')}}"></script>
     <script src={{asset('js/app.js')}}></script>
   </body>
 </html>

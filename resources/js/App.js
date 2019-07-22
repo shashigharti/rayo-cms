@@ -36,7 +36,6 @@ class App extends React.Component {
                     <Route path="/login" component={LoginPage}/>
                     <Route path="/map" component={Map}/>
                     <Route path="/register" component={RegisterPage}/>
-                    <Route exact path="/profile-reports" component={ProfileReport}/>
                 </Router>
             </div>
         );
