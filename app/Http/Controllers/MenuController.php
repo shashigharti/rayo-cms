@@ -14,14 +14,20 @@ use App\Http\Resources\Menu as MenuResource;
 class MenuController extends Controller
 {
 
+    /**
+     * @param \App\Menu $menu
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getMenus(Menu $menu)
     {
         return MenuResource::collection($menu->where('type', 'main')->get());
     }
 
+
     /**
      * @param \Illuminate\Http\Request $request
-     * @param \App\Http\Resources\Menu $menu
+     * @param \App\Menu $menu
+     * @return \Illuminate\Http\JsonResponse
      * @throws \Illuminate\Validation\ValidationException
      */
     public function store(Request $request, Menu $menu)
@@ -34,6 +40,32 @@ class MenuController extends Controller
             $rules
         );
         $store = $menu->create($data);
-        dd($store);
+        return response()->json(['message' => 'Success']);
+    }
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $request, $id, Menu $menu)
+    {
+        $updated = $menu->find($id)->update($request->all());
+        if ($updated) {
+            return response()->json(['message' => 'success']);
+        };
+    }
+
+    /**
+     * @param $id
+     * @param \App\Menu $menu
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function delete($id, Menu $menu)
+    {
+        $deleted = $menu->find($id)->delete();
+        if ($deleted) {
+            return response()->json(['message' => 'success']);
+        };
     }
 }
