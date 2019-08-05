@@ -74,7 +74,7 @@ return [
             'prefix'    => '',
             'strict'    => false,
             'options'   => [
-                PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false
+//                PDO::MYSQL_ATTR_USE_BUFFERED_QUERY => false
             ],
         ],
 
