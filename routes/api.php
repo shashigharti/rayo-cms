@@ -13,14 +13,14 @@
 
 
 
-Route::group(['as' => 'newuser.', 'middleware'=>['cors']], function () {
+Route::group(['as' => 'newuser.'], function () {
     Route::post('login', 'API\UserController@login');
     Route::post('register', 'API\UserController@register');
 });
 
 
 // Auth restricted apis
-Route::group(['as' => 'admin.', 'middleware'=>['cors','auth']], function () {
+Route::group(['as' => 'admin.', 'middleware'=>['auth']], function () {
     Route::post('details', 'API\UserController@details');
 
     Route::get('menu/get', 'MenuController@getMenus');
