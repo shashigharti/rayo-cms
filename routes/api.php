@@ -12,7 +12,6 @@
 */
 
 
-
 Route::group(['as' => 'newuser.'], function () {
     Route::post('login', 'API\UserController@login');
     Route::post('register', 'API\UserController@register');
@@ -22,7 +21,11 @@ Route::group(['as' => 'newuser.'], function () {
 // Auth restricted apis
 Route::group(['as' => 'admin.', 'middleware'=>['auth']], function () {
     Route::post('details', 'API\UserController@details');
+});
 
+
+// Public APIs
+Route::group(['as' => 'admin.'], function () {
     Route::get('menu/get', 'MenuController@getMenus');
     Route::post('menu/store', 'MenuController@store');
     Route::put('menu/edit/{id}', 'MenuController@update');
@@ -39,6 +42,10 @@ Route::group(['as' => 'admin.', 'middleware'=>['auth']], function () {
     Route::put('page/edit/{id}', 'PageController@update');
     Route::delete('page/delete/{id}', 'PageController@delete');
 });
+
+
+
+
 
 
 
