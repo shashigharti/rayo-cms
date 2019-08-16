@@ -134,7 +134,7 @@ return [
     |
     */
 
-    'providers' => array_merge(array_merge([
+    'providers' => [
 
         /*
          * Laravel Framework Service Providers...
@@ -165,21 +165,6 @@ return [
         /*
          * Package Service Providers...
          */
-        Intervention\Image\ImageServiceProvider::class,
-        Collective\Html\HtmlServiceProvider::class,
-        Laravel\Socialite\SocialiteServiceProvider::class,
-        //Webwizo\Shortcodes\ShortcodesServiceProvider::class,
-        Laravolt\Avatar\ServiceProvider::class,
-        \Robust\Core\Providers\RobustMailServiceProvider::class,
-        //Maatwebsite\Excel\ExcelServiceProvider::class,
-
-    ], Robust\Core\Helpers\CoreHelper::service_providers()),
-        [
-            App\Providers\AppServiceProvider::class,
-            App\Providers\AuthServiceProvider::class,
-            App\Providers\EventServiceProvider::class,
-            App\Providers\RouteServiceProvider::class,
-        ]),
 
         /*
          * Application Service Providers...
