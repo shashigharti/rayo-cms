@@ -1,5 +1,11 @@
 <?php
 
+use Collective\Html\HtmlServiceProvider;
+use Intervention\Image\ImageServiceProvider;
+use Laravel\Passport\PassportServiceProvider;
+use Laravel\Socialite\SocialiteServiceProvider;
+use Laravolt\Avatar\ServiceProvider;
+
 return [
 
     /*
@@ -134,7 +140,7 @@ return [
     |
     */
 
-    'providers' => [
+    'providers' => array_merge(array_merge([
 
         /*
          * Laravel Framework Service Providers...
@@ -165,17 +171,22 @@ return [
         /*
          * Package Service Providers...
          */
+        Intervention\Image\ImageServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
+        Laravel\Socialite\SocialiteServiceProvider::class,
+        //Webwizo\Shortcodes\ShortcodesServiceProvider::class,
+        Laravolt\Avatar\ServiceProvider::class,
+        \Robust\Core\Providers\RobustMailServiceProvider::class,
+        //Maatwebsite\Excel\ExcelServiceProvider::class,
 
-        /*
-         * Application Service Providers...
-         */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
-        \Laravel\Passport\PassportServiceProvider::class
-    ],
+    ], Robust\Core\Helpers\CoreHelper::service_providers()),
+        [
+            \App\Providers\AppServiceProvider::class,
+            \App\Providers\AuthServiceProvider::class,
+            \App\Providers\EventServiceProvider::class,
+            \App\Providers\RouteServiceProvider::class,
+            PassportServiceProvider::class
+        ]),
 
     /*
     |--------------------------------------------------------------------------
@@ -224,7 +235,8 @@ return [
         'Str' => Illuminate\Support\Str::class,
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
-        'View' => Illuminate\Support\Facades\View::class
+        'View' => Illuminate\Support\Facades\View::class,
+
     ],
 
 ];
