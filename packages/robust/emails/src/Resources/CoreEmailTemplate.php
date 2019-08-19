@@ -24,8 +24,6 @@ class CoreEmailTemplate extends JsonResource
             'frequency' => $this->frequency,
             'starts_at' => $this->starts_at,
             'ends_at' => $this->ends_at,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at
         ];
     }
 }
