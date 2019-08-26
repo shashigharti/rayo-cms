@@ -10,7 +10,6 @@ use Robust\Core\Helpers\MenuHelper;
 use Robust\Page\Requests\PageStoreRequest;
 use Robust\Pages\Models\Page;
 use Robust\Pages\Resources\Page as PageResource;
-use Robust\Pages\Repositories\Admin\PageRepository;
 
 /**
  * Class PageController
@@ -20,22 +19,6 @@ class PageApiController extends Controller
 {
     use CrudTrait, ViewTrait;
 
-    /**
-     * PageController constructor.
-     * @param Request $request
-     * @param PageRepository $pages
-     */
-    public function __construct(
-        Request $request,
-        PageRepository $pages
-    ) {
-        $this->model = $pages;
-        $this->request = $request;
-        $this->ui = 'Robust\Pages\UI\Page';
-        $this->package_name = 'pages';
-        $this->view = 'admin.pages';
-        $this->title = 'Pages';
-    }
 
     /**
      * @param \Robust\Pages\Models\Page $page
