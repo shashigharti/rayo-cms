@@ -16,7 +16,6 @@ class PagesServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->register_includes();
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'pages');
         $this->registerModelEvents();
 //        $this->registerShortCodes();

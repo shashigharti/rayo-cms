@@ -1,7 +1,6 @@
 <?php
 namespace Robust\Pages\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Robust\Core\Models\BaseModel;
 
 /**

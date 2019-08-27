@@ -22,7 +22,7 @@ class MenuApiController extends Controller
      */
     public function getAll(Menu $menu)
     {
-        return MenuResource::collection($menu->where('type', 'main')->get());
+        return MenuResource::collection($menu->all());
     }
 
 

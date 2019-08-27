@@ -1,32 +1,49 @@
-/**
- * First we will load all of this project's JavaScript dependencies which
- * includes Vue and other libraries. It is a great starting point when
- * building robust, powerful web applications using Vue and Laravel.
- */
+import React from 'react';
+import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {connect} from 'react-redux';
+import {HomePage} from './containers/home/Dashboard';
+import {LoginPage} from './containers/login/LoginPage';
+import {RegisterPage} from './containers/register/RegisterPage';
+// import materialize
+import M from "materialize-css";
+import 'materialize-css/dist/css/materialize.min.css'
+import {PrivateRoute} from "./components";
+import * as serviceWorker from './serviceWorker';
 
-require('./bootstrap');
 
-window.Vue = require('vue');
+class App extends React.Component {
+    constructor(props) {
+        super(props);
+        const {dispatch} = this.props;
+    }
 
-/**
- * The following block of code may be used to automatically register your
- * Vue components. It will recursively scan this directory for the Vue
- * components and automatically register them with their "basename".
- *
- * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
- */
+    componentDidMount() {
+        M.AutoInit();
 
-// const files = require.context('./', true, /\.vue$/i);
-// files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
+        // Register service worker
+        serviceWorker.register();
+    }
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+    render() {
+        const {alert} = this.props;
+        return (
+            <div>
+                <Router>
+                    <PrivateRoute exact path="/" component={HomePage}/>
+                    <Route path="/login" component={LoginPage}/>
+                    <Route path="/register" component={RegisterPage}/>
+                </Router>
+            </div>
+        );
+    }
+}
 
-/**
- * Next, we will create a fresh Vue application instance and attach it to
- * the page. Then, you may begin adding components to this application
- * or customize the JavaScript scaffolding to fit your unique needs.
- */
+function mapStateToProps(state) {
+    const {alert} = state;
+    return {
+        alert
+    };
+}
 
-const app = new Vue({
-    el: '#app',
-});
+const connectedApp = connect(mapStateToProps)(App);
+export {connectedApp as App};
