@@ -16,6 +16,8 @@ class LeadMetadata extends BaseModel
     protected $hidden = ['city'];
 
     protected $table = 'lead_metadatas';
+
+    protected $primaryKey = 'lead_id';
     /**
      * @var array
      */
@@ -51,25 +53,4 @@ class LeadMetadata extends BaseModel
         'notes_count',
         'lead_type'
     ];
-
-
-//    /**
-//     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-//     */
-//    public function city()
-//    {
-//        return $this->belongsTo(\App\City::class);
-//    }
-
-//    /**
-//     * @return string
-//     */
-//    public function getCityNameAttribute()
-//    {
-//    	if($this->city != null)
-//    	{
-//    		return $this->city->name;
-//    	}
-//    	return '-';
-//    }
 }
