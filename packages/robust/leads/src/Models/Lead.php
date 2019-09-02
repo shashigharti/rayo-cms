@@ -1,6 +1,7 @@
 <?php
 namespace Robust\Leads\Models;
 
+use Robust\Admin\Models\User;
 use Robust\Core\Models\BaseModel;
 
 /**
@@ -51,8 +52,35 @@ class Lead extends BaseModel
         'updated_at'
     ];
 
+    /**
+     * @var array
+     */
     protected $hidden = [
         'password'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function metadata()
+    {
+        return $this->hasOne(LeadMetadata::class, 'lead_id')->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function agent()
+    {
+        return $this->belongsTo(User::class, 'agent_id', 'id')->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function status()
+    {
+        return $this->belongsTo(Status::class, 'status_id', 'id');
+    }
 
 }
