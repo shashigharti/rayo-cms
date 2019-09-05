@@ -42,9 +42,16 @@ class Lead extends JsonResource
             'deal_type' => $this->deal_type,
             'activation_status' => $this->activation_status,
             'default_alert_frequency' => $this->default_alert_frequency,
-            'metadata' => $this->find($this->id)->metadata,
-            'agent' => $this->find($this->id)->agent,
-            'status' => $this->find($this->id)->status
+            'status' => $this->find($this->id)->status,
+            'categories' => $this->whenLoaded('categories'),
+            'loginHistory' => $this->whenLoaded('loginHistory'),
+            'agent' => $this->whenLoaded('agent'),
+            'searches' => $this->whenLoaded('searches'),
+            'reports' => $this->whenLoaded('reports'),
+            'emails' => $this->whenLoaded('emails'),
+            'metadata' => $this->whenLoaded('metadata'),
+            'activityLog' => $this->whenLoaded('activityLog'),
+            'logins' => $this->logins
         ];
     }
 }

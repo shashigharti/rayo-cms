@@ -4,6 +4,7 @@ namespace Robust\Leads\Controllers\Admin;
 use App\Http\Controllers\Controller;
 
 
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Robust\Leads\Models\Lead;
@@ -107,9 +108,53 @@ class LeadsApiController extends Controller
      * @param \Robust\Leads\Models\Lead $lead
      * @return \Robust\Leads\Resources\Lead
      */
-    public function getLead($id, Lead $lead)
+    public function getLead(Lead $lead)
     {
-        return new LeadResource($lead->find($id));
+        $lead->load('loginHistory',
+            'agent',
+            'searches',
+            'reports',
+            'emails',
+            'metadata',
+            'activityLog');
+
+        // Calculate login status
+        $logins_this_month = [];
+        $logins_this_year = [];
+        $logins_past_month = [];
+        $logins_past_year = [];
+
+        $login_time = $lead->loginHistory->reverse()->first();
+        $last_login = null;
+        if ($login_time != null) {
+            $last_login = Carbon::parse($login_time->time_of_login)->diffForHumans();
+            foreach ($lead->loginHistory as $key => $value) {
+                if (Carbon::parse($value->time_of_login)->year == Carbon::now()->year && Carbon::parse($value->time_of_login)->month == Carbon::now()->month) {
+                    array_push($logins_this_month, $value->time_of_login);
+                }
+                if (Carbon::parse($value->time_of_login)->year == Carbon::now()->year && Carbon::parse($value->time_of_login)->month == (Carbon::now()->month - 1)) {
+                    array_push($logins_past_month, $value->time_of_login);
+                }
+                if (Carbon::parse($value->time_of_login)->year == Carbon::now()->year) {
+                    array_push($logins_this_year, $value->time_of_login);
+                }
+                if (Carbon::parse($value->time_of_login)->year == (Carbon::now()->year - 1)) {
+                    array_push($logins_past_year, $value->time_of_login);
+                }
+            }
+        }
+        if ($login_time == null) {
+            $last_login = '0';
+        }
+        $lead['logins'] = [
+            'last_login' => $last_login,
+            'this_month' => count($logins_this_month),
+            'this_year' => count($logins_this_year),
+            'last_month' => count($logins_past_month),
+            'last_year' => count($logins_past_year),
+        ];
+
+        return new LeadResource($lead);
     }
 
     /**

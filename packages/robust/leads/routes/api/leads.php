@@ -15,7 +15,7 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@getLeadsByAgent'
     ]);
 
-    Route::get('lead/{id}', [
+    Route::get('lead/{lead}', [
         'as' => 'api.leads.single',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@getLead'
     ]);
