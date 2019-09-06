@@ -29,14 +29,11 @@ class LeadsApiController extends Controller
         return LeadResource::collection($lead->paginate(10));
     }
 
-    /**
-     * @param $type
-     * @param \Robust\Leads\Models\Lead $lead
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
-    public function getLeadsByType($type, Lead $lead)
+
+    public function getLeadsByType($type, Lead $lead, Carbon $carbon)
     {
         $userArr = $lead->query();
+        $userArr->with('metadata', 'agent');
 
         if ($type == 'unassigned') {
             $userArr->whereNull('agent_id');
@@ -63,7 +60,7 @@ class LeadsApiController extends Controller
         }
         else if($type == 'all')
         {
-            // no condition, let it all flow.
+            // no condition, get all the leads.
         }
         else
         {
@@ -72,7 +69,37 @@ class LeadsApiController extends Controller
             $userArr->where('user_type', '!=', 'discarded');
             $userArr->where('user_type', '!=', 'hidden');
         }
-        return LeadResource::collection($userArr->paginate(10));
+        $userArr = $userArr->paginate(30);
+
+        foreach ($userArr as $userDetail) {
+            $last_active_user = $userDetail->last_active;
+            $userDetail['last_login'] = null;
+            $dates_followup = [];
+
+            // Check last_login parsed time
+            if ($last_active_user != null) {
+                $last_active = Carbon::parse($last_active_user);
+//                $last_active_user = strtotime($last_active_user);
+                $userDetail['last_login'] = $last_active->diffInMinutes($carbon->now()) < 5 ? 'Online' : $last_active;
+            }
+
+            // Get follow ups
+            if (isset($userDetail->latestFollowUps) and !empty($userDetail->latestFollowUps)) {
+                foreach ($userDetail->latestFollowUps as $single) {
+                    if (count($dates_followup) < 2) {
+                        $dates_followup[$single->id] = [
+                            'date' => $single->date,
+                            'note' => $single->note,
+                            'type' => $single->type,
+                            'agent_id' => $single->agent_id
+                        ];
+                    }
+                }
+            }
+            $userDetail['latest_followup_dates'] = $dates_followup;
+        }
+
+        return LeadResource::collection($userArr);
     }
 
     /**
@@ -116,7 +143,8 @@ class LeadsApiController extends Controller
             'reports',
             'emails',
             'metadata',
-            'activityLog');
+            'activityLog',
+            'notes');
 
         // Calculate login status
         $logins_this_month = [];

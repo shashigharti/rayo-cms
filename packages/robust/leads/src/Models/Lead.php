@@ -134,9 +134,20 @@ class Lead extends BaseModel
     }
 
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function categories()
     {
         return $this->hasMany(LeadCategory::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
     }
 
 }

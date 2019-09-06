@@ -51,7 +51,11 @@ class Lead extends JsonResource
             'emails' => $this->whenLoaded('emails'),
             'metadata' => $this->whenLoaded('metadata'),
             'activityLog' => $this->whenLoaded('activityLog'),
-            'logins' => $this->logins
+            'notes' => $this->whenLoaded('notes'),
+            'logins' => $this->logins,
+            'last_login' => $this->last_login,
+            'latest_followup_dates' => $this->latest_followup_dates,
+            'created_at' => $this->created_at
         ];
     }
 }
