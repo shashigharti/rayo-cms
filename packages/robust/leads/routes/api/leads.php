@@ -49,4 +49,19 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'as' => 'api.leadstatus.update',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@updateLeadStatus'
     ]);
+
+    Route::post('lead-note/store', [
+        'as' => 'api.leadNote.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@addNote'
+    ])->middleware('auth:api');
+
+    Route::put('lead-note/update', [
+        'as' => 'api.leadNote.update',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@updateNote'
+    ]);
+
+    Route::post('lead-note/delete', [
+        'as' => 'api.leadNote.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteNote'
+    ]);
 });

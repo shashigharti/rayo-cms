@@ -1,18 +1,20 @@
 <?php
+
 namespace Robust\Leads\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-
-
 use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Robust\Leads\Models\Lead;
 use Robust\Leads\Models\LeadMetadata;
+use Robust\Leads\Models\Note;
 use Robust\Leads\Models\Status;
 use Robust\Leads\Resources\Lead as LeadResource;
 use Robust\Leads\Resources\LeadMetadata as LeadMetadataResource;
 use Robust\Leads\Resources\Status as LeadStatusResource;
+
 
 /**
  * Class CategoryController
@@ -30,6 +32,12 @@ class LeadsApiController extends Controller
     }
 
 
+    /**
+     * @param $type
+     * @param \Robust\Leads\Models\Lead $lead
+     * @param \Carbon\Carbon $carbon
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getLeadsByType($type, Lead $lead, Carbon $carbon)
     {
         $userArr = $lead->query();
@@ -37,37 +45,35 @@ class LeadsApiController extends Controller
 
         if ($type == 'unassigned') {
             $userArr->whereNull('agent_id');
-        }
-        else if ($type == 'assigned')
-        {
-            $userArr->where('agent_id', '!=', null);
-        }
-        else if ($type == 'archived')
-        {
-            $userArr->where('user_type', '=', 'archived');
-        }
-        else if ($type == 'discarded')
-        {
-            $userArr->where('user_type', '=', 'discarded');
-        }
-        else if ($type == 'unregistered')
-        {
-            $userArr->where('user_type', '=', 'unregistered');
-        }
-        else if ($type == 'new')
-        {
-            $userArr->where('leads.created_at', '>', DB::raw('NOW() - INTERVAL 48 HOUR'));
-        }
-        else if($type == 'all')
-        {
-            // no condition, get all the leads.
-        }
-        else
-        {
-            $userArr->where('user_type', '!=', 'unregistered');
-            $userArr->where('user_type', '!=', 'archived');
-            $userArr->where('user_type', '!=', 'discarded');
-            $userArr->where('user_type', '!=', 'hidden');
+        } else {
+            if ($type == 'assigned') {
+                $userArr->where('agent_id', '!=', null);
+            } else {
+                if ($type == 'archived') {
+                    $userArr->where('user_type', '=', 'archived');
+                } else {
+                    if ($type == 'discarded') {
+                        $userArr->where('user_type', '=', 'discarded');
+                    } else {
+                        if ($type == 'unregistered') {
+                            $userArr->where('user_type', '=', 'unregistered');
+                        } else {
+                            if ($type == 'new') {
+                                $userArr->where('leads.created_at', '>', DB::raw('NOW() - INTERVAL 48 HOUR'));
+                            } else {
+                                if ($type == 'all') {
+                                    // no condition, get all the leads.
+                                } else {
+                                    $userArr->where('user_type', '!=', 'unregistered');
+                                    $userArr->where('user_type', '!=', 'archived');
+                                    $userArr->where('user_type', '!=', 'discarded');
+                                    $userArr->where('user_type', '!=', 'hidden');
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
         $userArr = $userArr->paginate(30);
 
@@ -207,7 +213,7 @@ class LeadsApiController extends Controller
             $newLead['password'] = bcrypt($request->get('password'));
             $lead->create($newLead);
             return response()->json(['message' => 'Success']);
-        } catch(\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => 'Failed to save!', 'error' => $e]);
         }
     }
@@ -222,13 +228,13 @@ class LeadsApiController extends Controller
     {
         try {
             $updatedLead = $request->all();
-            if($request->has('password')) {
+            if ($request->has('password')) {
                 $updatedLead['password'] = bcrypt($request->get('password'));
             }
 
             $lead->find($id)->update($updatedLead);
             return response()->json(['message' => 'Success']);
-        } catch(\Exception $e) {
+        } catch (Exception $e) {
             return response()->json(['message' => 'Failed to update!', 'error' => $e]);
         }
     }
@@ -256,5 +262,93 @@ class LeadsApiController extends Controller
             return response()->json(['message' => 'Successfully Updated.']);
         }
         return response()->json(['message' => 'Update Failed. Please try again later.']);
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\Note $note
+     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addNote(Request $request, Note $note, LeadMetadata $leadMetadata)
+    {
+        $user = auth()->user();
+        $data = $request->only(['lead_id', 'title', 'note']);
+        $data['agent_id'] = $user->id;
+        $result = $note->query()->create($data);
+        if ($result) {
+
+            // also update leads_metadata table
+            $meta_data = $leadMetadata->where('lead_id', $request->lead_id)->first();
+            if (!empty($meta_data) && count($meta_data)) {
+                $meta_data->notes_count = $note->where('lead_id', $request->lead_id)->count();
+                $meta_data->save();
+            }
+
+            return response()->json([
+                'message' => 'success'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Error occured while adding Note!'
+        ]);
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\Note $note
+     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteNote(Request $request, Note $note, LeadMetadata $leadMetadata)
+    {
+        $note_id = $request->note_id;
+        $lead_id = $request->lead_id;
+
+        if (!empty($note_id) && !empty($lead_id)) {
+            $note->where('id', $note_id)->delete();
+            // Also update leads_metadata table
+            $meta_data = $leadMetadata->where('lead_id', $request->lead_id)->first();
+            if (!empty($meta_data)) {
+                $meta_data->notes_count = $note->where('lead_id', $request->lead_id)->count();
+                $meta_data->save();
+            }
+
+            return response()->json([
+                'message' => 'Successfully Deleted!'
+            ]);
+        }
+
+        return response()->json([
+            'message' => 'Error occurred while deleting Note!'
+        ]);
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\Note $noteModel
+     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateNote(Request $request, Note $noteModel, LeadMetadata $leadMetadata)
+    {
+        $noteModel->where('id', $request->note_id)->update([
+            'title' => $request->note_title,
+            'note' => $request->note
+        ]);
+
+        // Update lead metadata for notes
+        $notesCount = $noteModel->where('lead_id', $request->lead_id)->count();
+        $leadMetadata->where('id', $request->lead_id)->update([
+           'notes_count' => $notesCount
+        ]);
+
+        return response()->json([
+            'message' => 'Success.'
+        ]);
     }
 }
