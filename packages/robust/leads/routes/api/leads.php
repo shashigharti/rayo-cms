@@ -64,4 +64,19 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'as' => 'api.leadNote.delete',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteNote'
     ]);
+
+    Route::delete('lead-search/delete/{id}', [
+        'as' => 'api.leadSearch.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteLeadSearch'
+    ]);
+
+    Route::delete('lead-category/delete/{id}', [
+        'as' => 'api.leadCategory.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteLeadCategory'
+    ]);
+
+    Route::put('lead-category/store', [
+        'as' => 'api.leadCategory.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@storeLeadCategory'
+    ]);
 });

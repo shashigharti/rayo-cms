@@ -8,9 +8,11 @@ use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Robust\Leads\Models\Lead;
+use Robust\Leads\Models\LeadCategory;
 use Robust\Leads\Models\LeadMetadata;
 use Robust\Leads\Models\Note;
 use Robust\Leads\Models\Status;
+use Robust\Leads\Models\UserSearch;
 use Robust\Leads\Resources\Lead as LeadResource;
 use Robust\Leads\Resources\LeadMetadata as LeadMetadataResource;
 use Robust\Leads\Resources\Status as LeadStatusResource;
@@ -144,6 +146,7 @@ class LeadsApiController extends Controller
     public function getLead(Lead $lead)
     {
         $lead->load('loginHistory',
+            'categories',
             'agent',
             'searches',
             'reports',
@@ -274,25 +277,27 @@ class LeadsApiController extends Controller
     public function addNote(Request $request, Note $note, LeadMetadata $leadMetadata)
     {
         $user = auth()->user();
-        $data = $request->only(['lead_id', 'title', 'note']);
+        $data = $request->only(['lead_id', 'note_title', 'note']);
+        $data['title'] = $data['note_title'];
+        unset($data['note_title']);
         $data['agent_id'] = $user->id;
+
         $result = $note->query()->create($data);
         if ($result) {
-
-            // also update leads_metadata table
+            // Also update leads_metadata table
             $meta_data = $leadMetadata->where('lead_id', $request->lead_id)->first();
-            if (!empty($meta_data) && count($meta_data)) {
+            if (!empty($meta_data)) {
                 $meta_data->notes_count = $note->where('lead_id', $request->lead_id)->count();
                 $meta_data->save();
             }
 
             return response()->json([
-                'message' => 'success'
+                'message' => 'Success'
             ]);
         }
 
         return response()->json([
-            'message' => 'Error occured while adding Note!'
+            'message' => 'Error occurred while adding Note!'
         ]);
     }
 
@@ -344,11 +349,66 @@ class LeadsApiController extends Controller
         // Update lead metadata for notes
         $notesCount = $noteModel->where('lead_id', $request->lead_id)->count();
         $leadMetadata->where('id', $request->lead_id)->update([
-           'notes_count' => $notesCount
+            'notes_count' => $notesCount
         ]);
 
         return response()->json([
             'message' => 'Success.'
         ]);
     }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteLeadSearch($id, UserSearch $userSearch)
+    {
+        $success = 'Failed to delete!';
+        $user_search = $userSearch->find($id);
+        if (isset($user_search) && !empty($user_search)) {
+            if ($user_search->delete()) {
+                $success = 'Success!';
+            }
+        }
+        return response()->json(['message' => $success]);
+    }
+
+
+    /**
+     * @param $id
+     * @param \Robust\Leads\Models\LeadCategory $leadCategory
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteLeadCategory($id, LeadCategory $leadCategory)
+    {
+        $success = 'Failed to delete!';
+        $lead_category = $leadCategory->find($id);
+        if (isset($lead_category) && !empty($lead_category)) {
+            if ($lead_category->delete()) {
+                $success = 'Success!';
+            }
+        }
+        return response()->json(['message' => $success]);
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\LeadCategory $leadCategory
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function storeLeadCategory(Request $request, LeadCategory $leadCategory)
+    {
+        try {
+            $updatedLeadCategory = $request->all();
+            $leadCategory->create($updatedLeadCategory);
+            return response()->json(['message' => 'Success']);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Failed to update!', 'error' => $e]);
+        }
+    }
+
+
 }
