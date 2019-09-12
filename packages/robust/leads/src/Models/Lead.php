@@ -36,6 +36,8 @@ class Lead extends BaseModel
         'open_password',
         'agent_id',
         'phone_number',
+        'phone_number_2',
+        'phone_number_3',
         'verified_phone_number',
         'address',
         'ip',
