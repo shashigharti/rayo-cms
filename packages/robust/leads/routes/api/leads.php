@@ -65,6 +65,11 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteNote'
     ]);
 
+    Route::post('lead-search/store', [
+        'as' => 'api.leadSearch.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@addLeadSearch'
+    ]);
+
     Route::delete('lead-search/delete/{id}', [
         'as' => 'api.leadSearch.delete',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteLeadSearch'

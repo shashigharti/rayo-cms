@@ -375,6 +375,22 @@ class LeadsApiController extends Controller
         return response()->json(['message' => $success]);
     }
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function addLeadSearch(Request $request, UserSearch $userSearch)
+    {
+        try {
+            $data = $request->all();
+            $userSearch->create($data);
+            return response()->json(['message' => 'Success']);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Failed to send', 'error' => $e]);
+        }
+    }
+
 
     /**
      * @param $id
