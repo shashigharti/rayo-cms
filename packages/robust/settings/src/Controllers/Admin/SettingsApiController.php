@@ -24,6 +24,16 @@ class SettingsApiController extends Controller
     }
 
     /**
+     * @param $type
+     * @param \Robust\Settings\Model\CoreSetting $coreSetting
+     * @return \Robust\Menus\Resources\CoreSetting
+     */
+    public function getByType($type, CoreSetting $coreSetting)
+    {
+        return new CoreSettingResource($coreSetting->where('type', $type)->first());
+    }
+
+    /**
      * @param \Illuminate\Http\Request $request
      * @param $type
      * @param \Robust\Settings\Model\CoreSetting $coreSetting

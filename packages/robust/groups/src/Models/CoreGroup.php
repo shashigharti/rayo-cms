@@ -3,6 +3,8 @@
 namespace Robust\Groups\Model;
 
 use Robust\Core\Models\BaseModel;
+use Robust\Leads\Models\Lead;
+use Robust\Leads\Models\LeadCategory;
 
 /**
  * Class CoreGroup
@@ -16,13 +18,24 @@ class CoreGroup extends BaseModel
     protected $table = 'core_groups';
 
     /**
+     * @var bool
+     */
+    public $timestamps = true;
+
+    /**
      * @var array
      */
     protected $fillable = [
         'name',
         'color',
         'status',
-        'created_at',
-        'updated_at'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function leads()
+    {
+        return $this->belongsToMany('Robust\Leads\Models\Lead', 'lead_categories');
+    }
 }

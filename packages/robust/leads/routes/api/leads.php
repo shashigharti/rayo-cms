@@ -15,7 +15,7 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@getLeadsByAgent'
     ]);
 
-    Route::get('lead/{id}', [
+    Route::get('lead/{lead}', [
         'as' => 'api.leads.single',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@getLead'
     ]);
@@ -48,5 +48,40 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
     Route::put('lead-status/update/{id}', [
         'as' => 'api.leadstatus.update',
         'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@updateLeadStatus'
+    ]);
+
+    Route::post('lead-note/store', [
+        'as' => 'api.leadNote.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@addNote'
+    ])->middleware('auth:api');
+
+    Route::put('lead-note/update', [
+        'as' => 'api.leadNote.update',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@updateNote'
+    ]);
+
+    Route::post('lead-note/delete', [
+        'as' => 'api.leadNote.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteNote'
+    ]);
+
+    Route::post('lead-search/store', [
+        'as' => 'api.leadSearch.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@addLeadSearch'
+    ]);
+
+    Route::delete('lead-search/delete/{id}', [
+        'as' => 'api.leadSearch.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteLeadSearch'
+    ]);
+
+    Route::delete('lead-category/delete/{id}', [
+        'as' => 'api.leadCategory.delete',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@deleteLeadCategory'
+    ]);
+
+    Route::put('lead-category/store', [
+        'as' => 'api.leadCategory.store',
+        'uses' => '\Robust\Leads\Controllers\Admin\LeadsApiController@storeLeadCategory'
     ]);
 });
