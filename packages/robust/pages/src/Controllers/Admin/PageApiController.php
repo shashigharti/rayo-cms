@@ -26,7 +26,7 @@ class PageApiController extends Controller
      */
     public function getAll(Page $page)
     {
-        return PageResource::collection($page->all());
+        return PageResource::collection($page->paginate(10));
     }
 
     /**
