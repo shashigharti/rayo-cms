@@ -28,9 +28,11 @@ class PageApiController extends Controller
     {
         return PageResource::collection($page->paginate(10));
     }
+    
     public function edit($id)
     {
         return new PageResource(Page::find($id));
+
     }
     /**
      * @param \Robust\Page\Requests\PageStoreRequest $request
