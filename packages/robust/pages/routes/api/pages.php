@@ -10,8 +10,13 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
         'uses' => '\Robust\Pages\Controllers\Admin\PageApiController@store'
     ]);
 
-    Route::put('page/edit/{id}', [
-        'as' => 'api.pages.update',
+    Route::get('page/edit/{id}', [
+        'as' => 'api.pages.edit',
+        'uses' => '\Robust\Pages\Controllers\Admin\PageApiController@edit'
+    ]);
+
+    Route::put('page/update/{id}', [
+        'as' => 'api.pages.edit',
         'uses' => '\Robust\Pages\Controllers\Admin\PageApiController@update'
     ]);
 

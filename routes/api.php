@@ -9,3 +9,7 @@ Route::group(['as' => 'newuser.'], function () {
 Route::group(['as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::post('details', 'API\UserController@details');
 });
+
+Route::get('/media/{id}','HomeController@getThumbnail');
+Route::get('/images/all','HomeController@getMedia');
+Route::post('/upload','HomeController@uploadMedia');

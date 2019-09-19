@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Robust\Core\Models\Media;
+use Robust\Core\Repositories\MediaRepository;
 
 class HomeController extends Controller
 {
@@ -13,7 +15,7 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     /**
@@ -24,5 +26,26 @@ class HomeController extends Controller
     public function index()
     {
         return view('home');
+    }
+
+    public function getMedia()
+    {
+        $medias = Media::get();
+        return response()->json($medias);
+    }
+
+    public function uploadMedia(Request $request,MediaRepository $model)
+    {
+        $uploads = [
+            $request->file('file')
+        ];
+        $collection = $model->store($uploads);
+        return response()->json($collection);
+    }
+
+    public function getThumbnail($id)
+    {
+        $thumbnail = Media::where('id',$id)->first();
+        return response()->json($thumbnail);
     }
 }
