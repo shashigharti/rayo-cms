@@ -3,6 +3,7 @@
 namespace Robust\Leads\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use Robust\Leads\Resources\UserSearch as UserSearchResource;
 
 /**
  * Class CoreEmailTemplate
@@ -12,8 +13,7 @@ class Lead extends JsonResource
 {
     /**
      * Transform the resource collection into an array.
-     *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
      * @return array
      */
     public function toArray($request)
@@ -48,7 +48,7 @@ class Lead extends JsonResource
             'categories' => $this->whenLoaded('categories'),
             'loginHistory' => $this->whenLoaded('loginHistory'),
             'agent' => $this->whenLoaded('agent'),
-            'searches' => $this->whenLoaded('searches'),
+            'searches' => UserSearchResource::collection($this->whenLoaded('searches')),
             'reports' => $this->whenLoaded('reports'),
             'emails' => $this->whenLoaded('emails'),
             'metadata' => $this->whenLoaded('metadata'),

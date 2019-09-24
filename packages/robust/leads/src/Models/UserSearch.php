@@ -20,28 +20,17 @@ class UserSearch extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'user_id', 'content', 'name', 'frequency', 'reference_time',
-    ];
-
-    /**
-     * @var array
-     */
-    protected $casts = [
-        'content' => 'json'
+        'user_id',
+        'content',
+        'name',
+        'frequency',
+        'reference_time',
     ];
 
     /**
      * @var
      */
     protected $builder;
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function user()
-    {
-        return $this->belongsTo(Lead::class, 'user_id', 'id');
-    }
 
     /**
      * @return array
@@ -60,5 +49,13 @@ class UserSearch extends BaseModel
             'Biweekly' => 'Twice Monthly',
             'Monthly' => 'Every Month',
         ];
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function user()
+    {
+        return $this->belongsTo(Lead::class, 'user_id', 'id');
     }
 }
