@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Leads\Models;
+namespace Robust\Emails\Models;
 
 
 use Robust\Admin\UI\User;
@@ -21,7 +21,17 @@ class SentEmails extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'agent_id', 'lead_id', 'email', 'click', 'open', 'unsubscribe','reply_to_id','message_id','subject', 'delivered', 'dropped',
+        'agent_id',
+        'lead_id',
+        'email',
+        'click',
+        'open',
+        'unsubscribe',
+        'reply_to_id',
+        'message_id',
+        'subject',
+        'delivered',
+        'dropped',
     ];
 
     /**

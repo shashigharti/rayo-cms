@@ -4,10 +4,13 @@ namespace App\Console\Commands;
 
 use App\Helpers\DateTimeHelper;
 use App\ListingFilters;
+use App\Mail\UserAlert as UserAlertEmailService;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 use Robust\Landmarks\Model\Listings;
 use Robust\Leads\Models\UserSearch;
 
@@ -73,7 +76,14 @@ class UserAlert extends Command
             foreach ($searches as $search) {
                 $searchFilterArray = json_decode($search->content, true);
                 $resultArr = $this->runSearch($searchFilterArray, $search);
-                dd($resultArr);
+                $listingsFromResults = $resultArr['results'];
+                if (empty($listingsFromResults)) {
+                    continue;
+                } else {
+                    if (count($listingsFromResults) > 0 && !empty($search->user) && empty($search->user->unsubscribe) && $this->isValidEmail($search)) {
+                        $this->sendEmail($search, $listingsFromResults, $resultArr['counts']);
+                    }
+                }
             }
 
         }
@@ -113,7 +123,6 @@ class UserAlert extends Command
         });
         return $userSearches->chunk(10);
     }
-
 
     /**
      * @param $search_filter_arr
@@ -163,7 +172,38 @@ class UserAlert extends Command
 
         } catch (Exception $e) {
             // Exception during search
-            return [];
+            return [
+                'results' => [],
+            ];
+        }
+    }
+
+    /**
+     * @param \Robust\Leads\Models\UserSearch $userSearch
+     * @return bool
+     */
+    private function isValidEmail(UserSearch $userSearch)
+    {
+        return (bool)(!empty($userSearch->user->email) && filter_var($userSearch->user->email,
+                FILTER_VALIDATE_EMAIL)) ? true : false;
+    }
+
+    /**
+     * @param \Robust\Leads\Models\UserSearch $userAlert
+     * @param \Illuminate\Database\Eloquent\Collection $sampleFromResult
+     * @param $counts
+     */
+    private function sendEmail(UserSearch $userAlert, Collection $sampleFromResult, $counts)
+    {
+        $leadObj = $userAlert->user;
+        try {
+            Mail::queue(new UserAlertEmailService($userAlert, $sampleFromResult, $leadObj, $counts));
+            $userAlert->update([
+                'reference_time' => date('Y-m-d H:i:s')
+            ]);
+        } catch (Exception $e) {
+            dd($e);
+//            throw new EmailException($e, "User Search Email Alert Error");
         }
     }
 }
