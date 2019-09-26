@@ -1,10 +1,9 @@
 <?php
+
 namespace Robust\Leads\Models;
 
 use Robust\Admin\Models\User;
 use Robust\Core\Models\BaseModel;
-use Robust\Groups\Model\CoreGroup;
-use Robust\Pages\Models\Category;
 
 /**
  * Class Page
@@ -13,16 +12,25 @@ use Robust\Pages\Models\Category;
 class Lead extends BaseModel
 {
     /**
-     * @var string
+     *
      */
-    protected $table = 'leads';
-
+    const DISCARDED = 'discarded';
+    /**
+     *
+     */
+    const ACTIVE = 'active';
+    /**
+     *
+     */
+    const ARCHIVED = 'archived';
     /**
      * @var boolean
      */
     public $timestamps = true;
-
-
+    /**
+     * @var string
+     */
+    protected $table = 'leads';
     /**
      * @var array
      */
@@ -150,6 +158,14 @@ class Lead extends BaseModel
     public function notes()
     {
         return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function unsubscribed()
+    {
+        return $this->hasOne(Unsubscribed::class);
     }
 
 }

@@ -383,8 +383,35 @@ class LeadsApiController extends Controller
     public function addLeadSearch(Request $request, UserSearch $userSearch)
     {
         try {
-            $data = $request->all();
-            $userSearch->create($data);
+            $search = new UserSearch();
+            $search->user_id = $request->get('user_id');
+            $search->name = $request->get('name');
+            $search->frequency = $request->get('frequency');
+            $search->content = json_encode($request->get('content'), true);
+            $search->reference_time = now();
+            $search->save();
+            return response()->json(['message' => 'Success']);
+        } catch (Exception $e) {
+            return response()->json(['message' => 'Failed to send', 'error' => $e]);
+        }
+    }
+
+
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @param \Robust\Leads\Models\UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateLeadSearch(Request $request, UserSearch $userSearch)
+    {
+        try {
+            $search = [
+                'user_id' => $request->get('user_id'),
+                'name' => $request->get('name'),
+                'frequency' => $request->get('frequency'),
+                'content' => json_encode($request->get('content'), true),
+            ];
+            $userSearch->where('id', $request->get('id'))->update($search);
             return response()->json(['message' => 'Success']);
         } catch (Exception $e) {
             return response()->json(['message' => 'Failed to send', 'error' => $e]);
