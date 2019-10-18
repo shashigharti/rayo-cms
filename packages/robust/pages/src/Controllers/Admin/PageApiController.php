@@ -28,7 +28,7 @@ class PageApiController extends Controller
     {
         return PageResource::collection($page->paginate(10));
     }
-    
+
     public function edit($id)
     {
         return new PageResource(Page::find($id));
@@ -55,7 +55,6 @@ class PageApiController extends Controller
     public function update($id, Request $request, Page $page)
     {
         $data = $request->all();
-        dd($data);
         $updated = $page->find($id)->update($data);
 
         if ($updated) {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App;
+namespace Robust\Reports\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Robust\Core\Models\BaseModel;
 
 /**
  * Class ProfileReport
  * @package App
  */
-class ProfileReport extends Model
+class ProfileReport extends BaseModel
 {
     /**
      * @var string
