@@ -168,4 +168,16 @@ class Lead extends BaseModel
         return $this->hasOne(Unsubscribed::class);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getAgent()
+    {
+        $agentObj = $this->agent;
+        if (!$agentObj) {
+            $agentObj = User::getDefaultAgent();
+        }
+        return $agentObj;
+    }
+
 }
