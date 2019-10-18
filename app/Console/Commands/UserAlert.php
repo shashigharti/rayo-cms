@@ -8,8 +8,8 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Http\Request;
-use Robust\Landmarks\Model\Listings;
 use Robust\Leads\Models\UserSearch;
+use Robust\Mls\Models\Listing;
 
 /**
  * Class UserAlert
@@ -52,7 +52,7 @@ class UserAlert extends Command
      * @param \App\Helpers\DateTimeHelper $dateTimeHelper
      * @param \Robust\Landmarks\Model\Listings $listings
      */
-    public function __construct(UserSearch $userSearch, DateTimeHelper $dateTimeHelper, Listings $listings)
+    public function __construct(UserSearch $userSearch, DateTimeHelper $dateTimeHelper, Listing $listings)
     {
         // Set current date and time
         $this->now = Carbon::now()->format('Y-m-d H:i:s');

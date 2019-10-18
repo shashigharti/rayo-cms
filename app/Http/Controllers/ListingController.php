@@ -3,8 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Listing;
-use App\ListingImage;
-use Illuminate\Http\Request;
 use Robust\Core\Helpage\Site;
 
 class ListingController extends Controller

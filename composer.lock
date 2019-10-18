@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a7ed6ffad881af47d9a82caf4496284a",
+    "content-hash": "38c36ecabbf86615a6de3c567232a0c7",
     "packages": [
         {
             "name": "danielstjules/stringy",
@@ -1400,6 +1400,75 @@
                 "laravolt"
             ],
             "time": "2017-06-02T16:39:53+00:00"
+        },
+        {
+            "name": "league/csv",
+            "version": "9.4.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/csv.git",
+                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/csv/zipball/bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
+                "reference": "bf83acc23a7d60978fce36a384f97bf9d7d2ea0c",
+                "shasum": ""
+            },
+            "require": {
+                "ext-dom": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "php": ">=7.0.10"
+            },
+            "require-dev": {
+                "ext-curl": "*",
+                "friendsofphp/php-cs-fixer": "^2.12",
+                "phpstan/phpstan": "^0.9.2",
+                "phpstan/phpstan-phpunit": "^0.9.4",
+                "phpstan/phpstan-strict-rules": "^0.9.0",
+                "phpunit/phpunit": "^6.0"
+            },
+            "suggest": {
+                "ext-iconv": "Needed to ease transcoding CSV using iconv stream filters"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "9.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "League\\Csv\\": "src"
+                },
+                "files": [
+                    "src/functions_include.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ignace Nyamagana Butera",
+                    "email": "nyamsprod@gmail.com",
+                    "homepage": "https://github.com/nyamsprod/",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Csv data manipulation made easy in PHP",
+            "homepage": "http://csv.thephpleague.com",
+            "keywords": [
+                "csv",
+                "export",
+                "filter",
+                "import",
+                "read",
+                "write"
+            ],
+            "time": "2019-10-17T06:05:32+00:00"
         },
         {
             "name": "league/flysystem",
@@ -3710,6 +3779,59 @@
             "time": "2017-11-27T11:13:29+00:00"
         },
         {
+            "name": "troydavisson/phrets",
+            "version": "2.6.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/troydavisson/PHRETS.git",
+                "reference": "ec2ce8c55fb1383f07879d6c5921a4dfd30b90aa"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/troydavisson/PHRETS/zipball/ec2ce8c55fb1383f07879d6c5921a4dfd30b90aa",
+                "reference": "ec2ce8c55fb1383f07879d6c5921a4dfd30b90aa",
+                "shasum": ""
+            },
+            "require": {
+                "guzzlehttp/guzzle": ">=6.0",
+                "illuminate/container": ">=4.2.0",
+                "illuminate/support": ">=4.2.0",
+                "league/csv": ">=6.0",
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "gsaulmon/guzzlerecorder": "2.*",
+                "monolog/monolog": "1.10.*",
+                "phpunit/phpunit": "5.*",
+                "psr/log": "1.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PHRETS\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Troy Davisson",
+                    "email": "troy.davisson@gmail.com",
+                    "homepage": "http://troda.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "RETS library in PHP",
+            "homepage": "http://github.com/troydavisson/PHRETS",
+            "keywords": [
+                "mls",
+                "rets"
+            ],
+            "time": "2018-03-23T02:25:23+00:00"
+        },
+        {
             "name": "vlucas/phpdotenv",
             "version": "v3.4.0",
             "source": {
@@ -5505,8 +5627,8 @@
             "authors": [
                 {
                     "name": "Sebastian Bergmann",
-                    "role": "lead",
-                    "email": "sebastian@phpunit.de"
+                    "email": "sebastian@phpunit.de",
+                    "role": "lead"
                 }
             ],
             "description": "The PHP Unit Testing framework.",
@@ -6364,7 +6486,8 @@
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
-        "php": "^7.1.3"
+        "php": "^7.1.3",
+        "ext-json": "*"
     },
     "platform-dev": []
 }
