@@ -4,6 +4,10 @@ namespace Robust\Menus\Models;
 use Robust\Core\Models\BaseModel;
 
 
+/**
+ * Class Menu
+ * @package Robust\Menus\Models
+ */
 class Menu extends BaseModel
 {
     /**

@@ -6,9 +6,10 @@ namespace Robust\Leads\Models;
 use Robust\Admin\UI\User;
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class UserLoginHistory
+ * @package Robust\Leads\Models
  */
 class UserLoginHistory extends BaseModel
 {

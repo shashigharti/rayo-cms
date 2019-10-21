@@ -5,8 +5,8 @@ namespace Robust\Landmarks\Models;
 use Robust\Core\Models\BaseModel;
 
 /**
- * Class CoreSetting
- * @package App
+ * Class ElemSchool
+ * @package Robust\Landmarks\Models
  */
 class ElemSchool extends BaseModel
 {

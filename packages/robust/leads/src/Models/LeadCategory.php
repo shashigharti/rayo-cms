@@ -6,9 +6,10 @@ namespace Robust\Leads\Models;
 use Robust\Core\Models\BaseModel;
 use Robust\Groups\Model\CoreGroup;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class LeadCategory
+ * @package Robust\Leads\Models
  */
 class LeadCategory extends BaseModel
 {

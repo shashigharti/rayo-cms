@@ -19,8 +19,8 @@ use Robust\Leads\Resources\Status as LeadStatusResource;
 
 
 /**
- * Class CategoryController
- * @package Robust\Pages\Controllers\Admin
+ * Class LeadsController
+ * @package Robust\Leads\Controllers\Api
  */
 class LeadsController extends Controller
 {

@@ -4,6 +4,7 @@ namespace Robust\LandMarks\Console\Commands;
 
 use Illuminate\Console\Command;
 use Robust\LandMarks\Repositories\Admin\SubdivisionRepository;
+use Illuminate\Support\Str;
 
 
 /**
@@ -78,7 +79,7 @@ class CleanLocationName extends Command
             }
             $data = [
               'alternate_name' => $cleanedUpName,
-              'alternate_slug' => str_slug($cleanedUpName,'-')
+              'alternate_slug' => Str::slug($cleanedUpName,'-')
             ];
             $subdivision->update($data);
             $bar->advance();

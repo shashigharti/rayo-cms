@@ -4,9 +4,10 @@ namespace Robust\Landmarks\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class CoreSetting
- * @package App
+ * Class City
+ * @package Robust\Landmarks\Models
  */
 class City extends BaseModel
 {

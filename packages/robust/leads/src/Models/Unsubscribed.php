@@ -4,9 +4,10 @@ namespace Robust\Leads\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class Unsubscribed
+ * @package Robust\Leads\Models
  */
 class Unsubscribed extends BaseModel
 {

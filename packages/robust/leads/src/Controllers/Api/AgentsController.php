@@ -9,9 +9,10 @@ use Illuminate\Support\Facades\DB;
 use App\User;
 use App\Http\Resources\User as UserResource;
 
+
 /**
- * Class CategoryController
- * @package Robust\Pages\Controllers\Admin
+ * Class AgentsController
+ * @package Robust\Leads\Controllers\Api
  */
 class AgentsController extends Controller
 {

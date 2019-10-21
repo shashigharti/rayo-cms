@@ -4,6 +4,10 @@ namespace Robust\Menus\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class Menu
+ * @package Robust\Menus\Resources
+ */
 class Menu extends JsonResource
 {
     /**

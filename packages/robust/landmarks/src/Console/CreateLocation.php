@@ -5,7 +5,7 @@ namespace Robust\LandMarks\Console\Commands;
 use Illuminate\Console\Command;
 use Robust\LandMarks\Helpers\LocationHelper;
 use Robust\Mls\Models\MlsUser;
-
+use Illuminate\Support\Str;
 
 /**
  * Class CreateLocation
@@ -55,7 +55,7 @@ class CreateLocation extends Command
            $collections = $locationHelper->getCollection($attr);
            foreach ($collections as $collection)
            {
-               $slug = str_slug($collection,'-');
+               $slug = Str::slug($collection,'-');
                $data = [
                    'active' => $locationHelper->getActiveCount($attr,$collection),
                    'sold' => $locationHelper->getSoldCount($attr,$collection),

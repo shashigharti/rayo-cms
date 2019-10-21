@@ -9,7 +9,7 @@ use Robust\Landmarks\Models\Subdivision;
 
 /**
  * Class SubdivisionRepository
- * @package Robust\Mls\Repositories\Admin
+ * @package Robust\LandMarks\Repositories\Admin
  */
 class SubdivisionRepository
 {
@@ -31,6 +31,9 @@ class SubdivisionRepository
         $this->model = $model;
     }
 
+    /**
+     * @return mixed
+     */
     public function getSubdivisionWithName()
     {
         return $this->model->select('id','name')->orderBy('name')->get();

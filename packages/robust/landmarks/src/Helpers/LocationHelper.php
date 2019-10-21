@@ -14,7 +14,7 @@ use Robust\LandMarks\Models\Area;
 use Robust\LandMarks\Models\County;
 use Robust\LandMarks\Models\SchoolDistrict;
 use Robust\Mls\Models\Listing;
-
+use Illuminate\Support\Str;
 
 class LocationHelper
 {
@@ -82,7 +82,7 @@ class LocationHelper
     public function getCityId($attr, $collection)
     {
         $result = $this->listing->select('city')->where('city','!=','')->where('city','!=',null)->where($attr,$collection)->first();
-        return $this->city->where('slug',str_slug($result->city,'-'))->first()->id;
+        return $this->city->where('slug',Str::slug($result->city,'-'))->first()->id;
     }
 
     /**
@@ -93,7 +93,7 @@ class LocationHelper
     public function getCountyId($attr, $collection)
     {
         $result = $this->listing->select('county')->where('county','!=','')->where('county','!=',null)->where($attr,$collection)->first();
-        return $this->county->where('slug',str_slug($result->county,'-'))->first()->id;
+        return $this->county->where('slug',Str::slug($result->county,'-'))->first()->id;
     }
 
     /**
@@ -104,7 +104,7 @@ class LocationHelper
     public function getZipId($attr, $collection)
     {
         $result = $this->listing->select('zip')->where('zip','!=','')->where('zip','!=',null)->where($attr,$collection)->first();
-        return $this->zip->where('slug',str_slug($result->zip,'-'))->first()->id;
+        return $this->zip->where('slug',Str::slug($result->zip,'-'))->first()->id;
     }
 
 

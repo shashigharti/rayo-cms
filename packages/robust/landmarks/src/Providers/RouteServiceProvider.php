@@ -4,9 +4,10 @@ namespace Robust\Landmarks\Providers;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
+
 /**
  * Class RouteServiceProvider
- * @package Robust\Pages\Providers
+ * @package Robust\Landmarks\Providers
  */
 class RouteServiceProvider extends ServiceProvider
 {

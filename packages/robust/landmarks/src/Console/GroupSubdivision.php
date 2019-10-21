@@ -41,6 +41,7 @@ class GroupSubdivision extends Command
                                         HAVING COUNT(listing_slug) > 1
                                         )'
         );
-        dd($result);
+        //to be done
+//        dd($result);
     }
 }

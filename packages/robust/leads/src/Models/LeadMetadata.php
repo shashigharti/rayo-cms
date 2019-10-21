@@ -4,9 +4,10 @@ namespace Robust\Leads\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
  * Class LeadMetadata
- * @package App
+ * @package Robust\Leads\Models
  */
 class LeadMetadata extends BaseModel
 {
@@ -15,8 +16,14 @@ class LeadMetadata extends BaseModel
      */
     protected $hidden = ['city'];
 
+    /**
+     * @var string
+     */
     protected $table = 'lead_metadatas';
 
+    /**
+     * @var string
+     */
     protected $primaryKey = 'lead_id';
     /**
      * @var array

@@ -5,9 +5,10 @@ namespace Robust\Leads\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Robust\Leads\Resources\UserSearch as UserSearchResource;
 
+
 /**
- * Class CoreEmailTemplate
- * @package Robust\Groups\Resources
+ * Class Lead
+ * @package Robust\Leads\Resources
  */
 class Lead extends JsonResource
 {

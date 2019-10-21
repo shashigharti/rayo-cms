@@ -32,8 +32,12 @@ class CreateGeoLocation extends Command
     protected $helper,$model;
 
 
-
-    public function __construct(GeoLocationHelper $helper,ListingRepository $model)
+    /**
+     * CreateGeoLocation constructor.
+     * @param GeoLocationHelper $helper
+     * @param ListingRepository $model
+     */
+    public function __construct(GeoLocationHelper $helper, ListingRepository $model)
     {
         parent::__construct();
         $this->helper = $helper;
