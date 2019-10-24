@@ -21,8 +21,8 @@ class CoreEmailTemplates extends Migration
             $table->integer('status')->default(0);
             $table->string('subject', 200);
             $table->integer('frequency');
-            $table->timestamp('starts_at');
-            $table->timestamp('ends_at');
+            $table->timestamp('starts_at')->nullable();
+            $table->timestamp('ends_at')->nullable();
             $table->timestamps();
         });
     }

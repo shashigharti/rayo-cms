@@ -2,9 +2,16 @@
 
 namespace App\Console;
 
-use App\Console\Commands\UserAlert;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Robust\LandMarks\Console\Commands\CleanLocationName;
+use Robust\LandMarks\Console\Commands\CreateLocation;
+use Robust\Mls\Console\Commands\CreateGeoLocation;
+use Robust\Mls\Console\Commands\GenerateMlsDataMap;
+use Robust\Mls\Console\Commands\GroupSubdivision;
+use Robust\Mls\Console\Commands\MlsNames;
+use Robust\Mls\Console\Commands\MlsPullData;
+use Robust\Mls\Console\Commands\MLsReport;
 
 class Kernel extends ConsoleKernel
 {
@@ -13,7 +20,14 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        UserAlert::class
+        GenerateMlsDataMap::class,
+        MlsPullData::class,
+        CreateLocation::class,
+        MlsNames::class,
+        MLsReport::class,
+        CleanLocationName::class,
+        GroupSubdivision::class,
+        CreateGeoLocation::class,
     ];
 
     /**

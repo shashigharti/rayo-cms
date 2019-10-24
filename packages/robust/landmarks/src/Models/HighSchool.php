@@ -1,13 +1,10 @@
 <?php
 
-namespace Robust\Landmarks\Model;
+namespace Robust\Landmarks\Models;
 
 use Robust\Core\Models\BaseModel;
 
-/**
- * Class CoreSetting
- * @package App
- */
+
 class HighSchool extends BaseModel
 {
     /**

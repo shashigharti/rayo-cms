@@ -19,6 +19,7 @@
         "laravelcollective/html": "^5.8",
         "laravolt/avatar": "^1.8",
         "spatie/laravel-medialibrary": "^7.12",
+        "troydavisson/phrets": "^2.6",
         "webwizo/laravel-shortcodes": "^1.0"
     },
     "require-dev": {

@@ -4,9 +4,10 @@ namespace Robust\Leads\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 /**
- * Class CoreEmailTemplate
- * @package Robust\Groups\Resources
+ * Class Status
+ * @package Robust\Leads\Resources
  */
 class Status extends JsonResource
 {

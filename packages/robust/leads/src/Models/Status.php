@@ -3,9 +3,10 @@ namespace Robust\Leads\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class Status
+ * @package Robust\Leads\Models
  */
 class Status extends BaseModel
 {
@@ -30,6 +31,9 @@ class Status extends BaseModel
         'updated_at'
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function leads()
     {
         return $this->hasMany(Lead::class);

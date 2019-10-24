@@ -5,9 +5,10 @@ namespace Robust\Leads\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class UserReport
+ * @package Robust\Leads\Models
  */
 class UserReport extends BaseModel
 {

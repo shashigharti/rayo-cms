@@ -6,9 +6,10 @@ namespace Robust\Emails\Models;
 use Robust\Admin\UI\User;
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class Page
- * @package Robust\Pages\Models
+ * Class SentEmails
+ * @package Robust\Leads\Models
  */
 class SentEmails extends BaseModel
 {
