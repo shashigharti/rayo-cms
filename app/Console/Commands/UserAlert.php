@@ -10,11 +10,6 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-<<<<<<< HEAD
-use Illuminate\Support\Facades\Mail;
-use Robust\Landmarks\Model\Listings;
-=======
->>>>>>> feature/mls
 use Robust\Leads\Models\UserSearch;
 use Robust\Mls\Models\Listing;
 
