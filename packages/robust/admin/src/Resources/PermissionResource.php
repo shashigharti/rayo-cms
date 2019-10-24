@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Resources;
+namespace Robust\Admin\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class User extends JsonResource
+class PermissionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,11 +16,8 @@ class User extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->first_name,
-            'last_name' => $this->last_name,
-            'username' => $this->username,
-            'email' => $this->email,
-            'password' => $this->password,
+            'name' => $this->name,
+            'display_name' => $this->display_name,
         ];
     }
 }

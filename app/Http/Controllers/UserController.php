@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Http\Requests\UserStoreRequest;
+use App\Http\Requests\UserUpdateRequest;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use Robust\Admin\Models\User;
 use Validator;
+use App\Http\Resources\UserResource as UserResource;
 
 /**
  * Class UserController

@@ -43,7 +43,6 @@ class SettingsApiController extends Controller
     {
         // Json encode the settings data
         $setting = json_encode($request->all(), true);
-
         // Creates new field if exists, else updates the existing one
         $coreSetting->updateOrCreate(
             ['type' => $type],
