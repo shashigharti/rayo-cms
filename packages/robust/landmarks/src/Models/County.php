@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\LandMarks\Models;
+namespace Robust\Landmarks\Models;
 
 use Robust\Core\Models\BaseModel;
 

@@ -55,4 +55,19 @@ class Zip extends BaseModel
         return $this->where($this->dropdown, '!=', 1);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function city()
+    {
+        return $this->hasOne(City::class, 'id', 'city_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function county()
+    {
+        return $this->hasOne(County::class, 'id', 'county_id');
+    }
 }

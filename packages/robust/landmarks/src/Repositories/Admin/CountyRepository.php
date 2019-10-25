@@ -4,21 +4,16 @@ namespace Robust\LandMarks\Repositories\Admin;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\Landmarks\Models\City;
+use Robust\Landmarks\Models\County;
 
-/**
- * Class PageRepository
- * @package Robust\Pages\Repositories\Admin
- */
-class CityRepository
+
+class CountyRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
-    /**
-     * PageRepository constructor.
-     * @param Page $model
-     */
-    public function __construct(City $model)
+
+
+    public function __construct(County $model)
     {
         $this->model = $model;
     }

@@ -30,7 +30,10 @@ class SettingsController extends Controller
      */
     public function getByType($type, CoreSetting $coreSetting)
     {
-        return new CoreSettingResource($coreSetting->where('type', $type)->first());
+        if($coreSetting->where('type',$type)->first()){
+            return new CoreSettingResource($coreSetting->where('type', $type)->first());
+        }
+        return  response()->json('null');
     }
 
     /**

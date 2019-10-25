@@ -2,8 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
-use App\Http\Requests\UserStoreRequest;
-use App\Http\Requests\UserUpdateRequest;
+
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;

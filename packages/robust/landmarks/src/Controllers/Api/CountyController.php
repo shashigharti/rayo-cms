@@ -4,35 +4,38 @@ namespace Robust\Landmarks\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Robust\LandMarks\Repositories\Admin\CityRepository;
-use Robust\Landmarks\Resources\City as CityResource;
+use Robust\LandMarks\Repositories\Admin\CountyRepository;
+use Robust\Landmarks\Resources\County as CountyResource;
 
 
-/**
- * Class SettingsApiController
- * @package Robust\Settings\Controllers\Admin
- */
-class CityController extends Controller
+
+class CountyController extends Controller
 {
-    protected $model;
+    /**
+     * @var CountyRepository
+     */
+    protected $model ;
 
-    public function __construct(CityRepository $model)
+    /**
+     * CountyController constructor.
+     * @param CountyRepository $model
+     */
+    public function __construct(CountyRepository $model)
     {
         $this->model = $model;
     }
 
     /**
-     * @param \Robust\Landmarks\Model\City $city
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index()
     {
-        return CityResource::collection($this->model->paginate(10));
+        return CountyResource::collection($this->model->paginate(10));
     }
 
     public function show($id)
     {
-        return new CityResource($this->model->find($id));
+        return new CountyResource($this->model->find($id));
     }
 
     public function store(Request $request)

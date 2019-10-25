@@ -4,21 +4,23 @@ namespace Robust\LandMarks\Repositories\Admin;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\Landmarks\Models\City;
+use Robust\Landmarks\Models\Zip;
+
 
 /**
- * Class PageRepository
- * @package Robust\Pages\Repositories\Admin
+ * Class ZipRepository
+ * @package Robust\LandMarks\Repositories\Admin
  */
-class CityRepository
+class ZipRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
+
     /**
-     * PageRepository constructor.
-     * @param Page $model
+     * ZipRepository constructor.
+     * @param Zip $model
      */
-    public function __construct(City $model)
+    public function __construct(Zip $model)
     {
         $this->model = $model;
     }

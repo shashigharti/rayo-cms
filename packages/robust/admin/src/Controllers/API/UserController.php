@@ -44,7 +44,7 @@ class UserController extends Controller
      * @param $id
      * @return UserResource
      */
-    public function edit($id)
+    public function show($id)
     {
         return new UserResource($this->model->find($id));
     }
@@ -57,7 +57,7 @@ class UserController extends Controller
     {
         $data = $request->all();
         $data['password'] = bcrypt($data['password']);
-        $this->model->create($data);
+        $this->model->store($data);
         return response()->json(['message' => 'Success']);
     }
 
