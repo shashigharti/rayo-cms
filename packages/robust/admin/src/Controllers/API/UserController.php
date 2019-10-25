@@ -87,4 +87,9 @@ class UserController extends Controller
         $user->delete();
         return response()->json(['message' => 'Success']);
     }
+
+    public function getAgents()
+    {
+        return $this->model->getUsersByRole('Agents');
+    }
 }

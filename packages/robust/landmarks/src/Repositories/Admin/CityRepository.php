@@ -22,4 +22,12 @@ class CityRepository
     {
         $this->model = $model;
     }
+
+    public function getActive()
+    {
+        return $this->model->where('navigation',0)
+            ->where('dropdown','!=',1)
+            ->orderBy('menu_order','asc')
+            ->get();
+    }
 }

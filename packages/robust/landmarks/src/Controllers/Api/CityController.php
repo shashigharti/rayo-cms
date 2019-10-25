@@ -32,6 +32,11 @@ class CityController extends Controller
         $this->model = $model;
         $this->resource = 'Robust\Landmarks\Resources\City';
     }
+
+    public function getActive()
+    {
+        return $this->model->getActive();
+    }
 }
 
 

@@ -86,4 +86,11 @@ class UserRepository
             $user->roles()->detach();
         }
     }
+
+    public function getUsersByRole($name)
+    {
+        return $this->model->whereHas('roles',function($query) use ($name){
+           $query->where('name',$name);
+        })->get();
+    }
 }
