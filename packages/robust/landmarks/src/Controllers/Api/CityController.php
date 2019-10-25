@@ -3,56 +3,34 @@
 namespace Robust\Landmarks\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 use Robust\LandMarks\Repositories\Admin\CityRepository;
-use Robust\Landmarks\Resources\City as CityResource;
 
 
 /**
- * Class SettingsApiController
- * @package Robust\Settings\Controllers\Admin
+ * Class CityController
+ * @package Robust\Landmarks\Controllers\Api
  */
 class CityController extends Controller
 {
+    use ApiTrait;
+    /**
+     * @var CityRepository
+     */
     protected $model;
+    /**
+     * @var string
+     */
+    protected $resource;
 
+    /**
+     * CityController constructor.
+     * @param CityRepository $model
+     */
     public function __construct(CityRepository $model)
     {
         $this->model = $model;
-    }
-
-    /**
-     * @param \Robust\Landmarks\Model\City $city
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
-    public function index()
-    {
-        return CityResource::collection($this->model->paginate(10));
-    }
-
-    public function show($id)
-    {
-        return new CityResource($this->model->find($id));
-    }
-
-    public function store(Request $request)
-    {
-        $data = $request->all();
-        $this->model->store($data);
-        return response()->json(['message' => 'success']);
-    }
-
-    public function update($id,Request $request)
-    {
-        $data = $request->all();
-        $this->model->update($id,$data);
-        return response()->json(['message' => 'success']);
-    }
-
-    public function destroy($id)
-    {
-        $this->model->delete($id);
-        return response()->json(['message' => 'success']);
+        $this->resource = 'Robust\Landmarks\Resources\City';
     }
 }
 

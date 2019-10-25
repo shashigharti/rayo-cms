@@ -4,26 +4,33 @@ namespace Robust\Landmarks\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Robust\Landmarks\Models\Grid;
+use Robust\LandMarks\Repositories\Admin\GridRepository;
 use Robust\Landmarks\Resources\Grid as GridResource;
 
 
 /**
- * Class SettingsApiController
- * @package Robust\Settings\Controllers\Admin
+ * Class GridController
+ * @package Robust\Landmarks\Controllers\Api
  */
 class GridController extends Controller
 {
-
+    /**
+     * @var GridRepository
+     */
+    protected $model;
+    /**
+     * @var string
+     */
+    protected $resource;
 
     /**
-     * @param \Robust\Landmarks\Model\Grid $grid
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * GridController constructor.
+     * @param GridRepository $model
      */
-    public function getAll(Grid $grid)
+    public function __construct(GridRepository $model)
     {
-        return GridResource::collection(
-            $grid->orderBy('name', 'asc')->get()
-        );
+        $this->model = $model;
+        $this->resource = 'Robust\Landmarks\Resources\Grid';
     }
 }
 

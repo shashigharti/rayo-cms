@@ -4,14 +4,15 @@ namespace Robust\Landmarks\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+
 /**
- * Class City
+ * Class MiddleSchool
  * @package Robust\Landmarks\Resources
  */
 class MiddleSchool extends JsonResource
 {
+
     /**
-     * Transform the resource collection into an array.
      * @param \Illuminate\Http\Request $request
      * @return array
      */

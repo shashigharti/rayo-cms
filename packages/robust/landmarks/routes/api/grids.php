@@ -4,4 +4,5 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'Gr
         'as' => 'api.grids.all',
         'uses' => '\Robust\Landmarks\Controllers\Api\GridController@getAll'
     ]);
+    Route::apiResource('grids','\Robust\Landmarks\Controllers\Api\GridController');
 });
