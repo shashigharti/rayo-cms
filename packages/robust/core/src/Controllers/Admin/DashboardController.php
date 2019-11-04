@@ -79,7 +79,6 @@ class DashboardController extends Controller
     public function show(UserRepository $user, $slug = null)
     {
         $dashboard = $user->find(\Auth::user()->id)->dashboards->where('is_default', true)->first();
-
         if ($slug !== null) {
             $dashboard = $this->model->where('slug', $slug)->get()->first();
         }

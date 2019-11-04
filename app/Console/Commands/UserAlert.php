@@ -10,8 +10,8 @@ use Exception;
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use Robust\Leads\Models\UserSearch;
-use Robust\Mls\Models\Listing;
+use Robust\RealEstate\Models\UserSearch;
+use Robust\RealEstate\Models\Listing;
 
 /**
  * Class UserAlert

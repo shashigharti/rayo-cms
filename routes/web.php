@@ -21,3 +21,8 @@ Route::get('/listings',[
    'as' => 'website.listings.index',
    'uses' => 'ListingController@index'
 ]);
+
+//Route::get('/login',[
+//   'as' =>'login',
+//   'uses' => '\Robust\Core\Controllers\Auth\LoginController@getLogin'
+//]);
