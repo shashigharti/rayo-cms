@@ -2,14 +2,8 @@
 namespace Robust\Pages\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Mockery\Exception;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
-use Illuminate\Http\Request;
-use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Helpers\MenuHelper;
-use Robust\Page\Requests\PageStoreRequest;
-use Robust\Pages\Models\Page;
-use Robust\Pages\Resources\Page as PageResource;
+use Robust\Core\Controllers\Admin\Traits\ApiTrait;
+use Robust\Pages\Repositories\Admin\PageRepository;
 
 /**
  * Class PageController
@@ -17,67 +11,22 @@ use Robust\Pages\Resources\Page as PageResource;
  */
 class PageController extends Controller
 {
-    use CrudTrait, ViewTrait;
-
+    use ApiTrait;
+    /**
+     * @var PageRepository
+     */
+    /**
+     * @var PageRepository|string
+     */
+    protected $model,$resource;
 
     /**
-     * @param \Robust\Pages\Models\Page $page
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * PageController constructor.
+     * @param PageRepository $model
      */
-    public function getAll(Page $page)
+    public function __construct(PageRepository $model)
     {
-        return PageResource::collection($page->paginate(10));
-    }
-
-    public function edit($id)
-    {
-        return new PageResource(Page::find($id));
-
-    }
-    /**
-     * @param \Robust\Page\Requests\PageStoreRequest $request
-     * @param \Robust\Pages\Models\Page $page
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function store(PageStoreRequest $request, Page $page)
-    {
-        $validated = $request->all();
-        $page->create($validated);
-        return response()->json(['message' => 'Success']);
-    }
-
-    /**
-     * @param $id
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Pages\Models\Page $page
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update($id, Request $request, Page $page)
-    {
-        $data = $request->all();
-        $updated = $page->find($id)->update($data);
-
-        if ($updated) {
-            return response()->json(['message' => 'Success']);
-        } else {
-            return response()->json(['message' => 'Failed']);
-        }
-    }
-
-    /**
-     * @param $id
-     * @param \Robust\Pages\Models\Page $page
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function destroy($id, Page $page)
-    {
-        $deleted = $page->find($id)->delete();
-
-        if ($deleted) {
-            return response()->json(['message' => 'Success']);
-        } else {
-            return response()->json(['message' => 'Failed']);
-        }
-
+        $this->model = $model;
+        $this->resource = 'Robust\Pages\Resources\Page';
     }
 }

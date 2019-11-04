@@ -18,7 +18,7 @@ class SettingsController extends Controller
      * @param \Robust\Settings\Model\CoreSetting $coreSetting
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function getAll(CoreSetting $coreSetting)
+    public function index(CoreSetting $coreSetting)
     {
         return CoreSettingResource::collection($coreSetting->all()->keyBy('type'));
     }
@@ -53,7 +53,6 @@ class SettingsController extends Controller
         );
         return response()->json(['message' => 'Success']);
     }
-
 }
 
 

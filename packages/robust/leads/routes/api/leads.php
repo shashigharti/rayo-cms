@@ -1,9 +1,6 @@
 <?php
 Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'API Leads'], function () {
-    Route::get('leads/all', [
-        'as' => 'api.leads.all',
-        'uses' => '\Robust\Leads\Controllers\Api\LeadsController@getAll'
-    ]);
+    Route::apiResource('leads', '\Robust\Leads\Controllers\Api\LeadsController');
 
     Route::get('leads/type/{type}', [
         'as' => 'api.leads.getbytype',
