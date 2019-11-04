@@ -1,8 +1,8 @@
 <?php
 Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'API Settings'], function () {
-    Route::get('settings/all', [
-        'as' => 'api.settings.all',
-        'uses' => '\Robust\Settings\Controllers\Api\SettingsController@getAll'
+    Route::get('settings', [
+        'as' => 'api.settings',
+        'uses' => '\Robust\Settings\Controllers\Api\SettingsController@index'
     ]);
 
     Route::get('settings/{type}', [
