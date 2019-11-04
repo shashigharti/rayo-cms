@@ -91,6 +91,5 @@ class User extends Authenticatable implements MustVerifyEmail
     public function carts()
     {
         return $this->hasMany('Robust\Cart\Models\AbandonedCart');
-
     }
 }

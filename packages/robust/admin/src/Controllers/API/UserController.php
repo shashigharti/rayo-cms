@@ -3,6 +3,8 @@ namespace Robust\Admin\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Robust\Admin\Models\Permission;
 use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Admin\UserRepository;
 use Robust\Admin\Requests\UserStoreRequest;
@@ -46,7 +48,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        return new UserResource($this->model->find($id));
+        return new UserResource($this->model->find($id)->with('roles')->first());
     }
 
     /**
@@ -91,5 +93,29 @@ class UserController extends Controller
     public function getAgents()
     {
         return $this->model->getUsersByRole('Agents');
+    }
+
+    public function getUserPermissions($id)
+    {
+        //need to refactor
+        $roles = DB::table('role_user')->where('user_id',$id)->get();
+        $permissions = [];
+        foreach ($roles as $role)
+        {
+            $results = DB::table('permission_role')
+                    ->select('permission_id')
+                    ->where('role_id',$role->role_id)
+                    ->get();
+            foreach ($results as $result){
+                array_push($permissions,$result->permission_id);
+            }
+        }
+        $permissions = Permission::findMany($permissions);
+        return response()->json($permissions);
+    }
+
+    public function getUserRoles($id)
+    {
+        return new UserResource(User::where('id',$id)->with('roles')->first()) ;
     }
 }

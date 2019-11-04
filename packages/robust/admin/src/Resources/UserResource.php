@@ -23,7 +23,8 @@ class UserResource extends JsonResource
             'email' => $this->email,
             'password' => '',
             'avatar' => $this->avatar,
-            'roles' => '',
+            'roles' => UserRolesResource::collection($this->whenLoaded('roles')),
+            'permissions' => RolePermissionResource::collection($this->whenLoaded('roles.permissions')),
             'password_confirmation'=>''
         ];
     }
