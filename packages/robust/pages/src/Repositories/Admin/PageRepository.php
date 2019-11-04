@@ -12,6 +12,10 @@ use Robust\Pages\Models\Page;
  */
 class PageRepository
 {
+    /**
+     * @var Page
+     */
+    protected $model;
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**

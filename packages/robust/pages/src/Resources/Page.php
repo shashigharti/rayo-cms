@@ -24,8 +24,6 @@ class Page extends JsonResource
             'content_ne' => $this->content_ne,
             'name_ne' => $this->name_ne,
             'thumbnail' => $this->thumbnail,
-            'created_at' => $this->created_at,
-            'updated_at' => $this->updated_at,
             'status' => $this->status,
             'meta_title' => $this->meta_title,
             'meta_description' => $this->meta_description,
