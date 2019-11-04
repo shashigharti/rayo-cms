@@ -17,11 +17,12 @@ use App\Http\Resources\User as UserResource;
 class AgentsController extends Controller
 {
 
+
     /**
-     * @param \App\User $user
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * @param User $user
+     * @return mixed
      */
-    public function getAll(User $user)
+    public function index(User $user)
     {
         // Until roles & permissions are fixed, for now getting agents as users except id = 1,
         return UserResource::collection($user->where('id', '!=', 1)->paginate(10));

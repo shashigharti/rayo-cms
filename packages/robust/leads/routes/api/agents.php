@@ -1,7 +1,7 @@
 <?php
 Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'API Agents'], function () {
-    Route::get('agents/all', [
-        'as' => 'api.agents.all',
-        'uses' => '\Robust\Leads\Controllers\Api\AgentsController@getAll'
+    Route::get('agents', [
+        'as' => 'api.agents',
+        'uses' => '\Robust\Leads\Controllers\Api\AgentsController@index'
     ]);
 });
