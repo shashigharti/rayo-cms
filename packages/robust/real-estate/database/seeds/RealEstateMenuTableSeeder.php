@@ -1,7 +1,8 @@
 <?php
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
-class MlsMenuTableSeeder extends Seeder
+class RealEstateMenuTableSeeder extends Seeder
 {
     public function run()
     {

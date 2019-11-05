@@ -237,6 +237,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Site' => \Robust\Core\Helpage\Site::class,
+        'Avatar' => Laravolt\Avatar\Facade::class,
 
     ],
 

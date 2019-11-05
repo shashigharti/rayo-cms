@@ -22,7 +22,7 @@ Route::get('/listings',[
    'uses' => 'ListingController@index'
 ]);
 
-//Route::get('/login',[
-//   'as' =>'login',
-//   'uses' => '\Robust\Core\Controllers\Auth\LoginController@getLogin'
-//]);
+Route::get('/login',[
+   'as' =>'login',
+   'uses' => '\Robust\Core\Controllers\Auth\LoginController@getLogin'
+]);

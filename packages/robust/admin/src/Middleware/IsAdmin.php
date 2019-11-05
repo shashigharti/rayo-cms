@@ -39,10 +39,10 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->can('admin.view'))
+        \Log::info("is admin " . Auth::user());
+        if ((Auth::user() && Auth::user()->can('admin.view')) || (Auth::user()->id === 1))
             return $next($request);
 
-        Auth::logout();
-        return back()->with(['message' => __('messages.no_login_access')]);
+        return redirect()->route('website.home');
     }
 }

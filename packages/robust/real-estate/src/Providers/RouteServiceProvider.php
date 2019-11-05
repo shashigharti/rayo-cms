@@ -46,5 +46,12 @@ class RouteServiceProvider extends ServiceProvider
                 require $file;
             }
         });
+        Route::group([
+            'middleware' => ['web', 'admin'],
+        ], function ($router) {
+            foreach (glob(base_path() . '/packages/robust/real-estate/routes/admin/*') as $file) {
+                require $file;
+            }
+        });
     }
 }
