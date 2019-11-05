@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Mls\Controllers\Admin;
+namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Artisan;
@@ -28,7 +28,7 @@ class MlsUserController extends Controller
     ) {
         $this->model = $mls_user;
         $this->request = $request;
-        $this->ui = 'Robust\Mls\UI\MlsUser';
+        $this->ui = 'Robust\RealEstate\UI\MlsUser';
         $this->package_name = 'mls';
         $this->view = 'admin.users';
         $this->title = 'Mls Users';

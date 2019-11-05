@@ -100,6 +100,7 @@ class GenerateMlsDataMap extends Command
                         'class' => $class_key,
                         'remap_key' => ''
                     ]);
+                    $this->info('Processing......'.PHP_EOL);
                 }
             }
             MlsQuery::updateOrCreate(['mls_user_id'=>$id],[

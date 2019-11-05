@@ -30,7 +30,7 @@ class MlsLogController extends Controller
         $this->package_name = 'mls';
         $this->view = 'admin.logs';
         $this->title = 'Mls Query Log';
-        $this->ui = 'Robust\Mls\UI\MlsLog';
+        $this->ui = 'Robust\RealEstate\UI\MlsLog';
         $this->redirect = 'admin.mlslog';
     }
 }
