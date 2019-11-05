@@ -42,7 +42,7 @@ class RouteServiceProvider extends ServiceProvider
         Route::group([
             'middleware' => ['api'],
         ], function ($router) {
-            foreach (glob(base_path() . '/packages/robust/leads/routes/api/*') as $file) {
+            foreach (glob(base_path() . '/packages/robust/real-estate/routes/api/*') as $file) {
                 require $file;
             }
         });
