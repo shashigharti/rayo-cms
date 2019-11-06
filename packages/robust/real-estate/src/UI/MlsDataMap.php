@@ -27,7 +27,7 @@ class MlsDataMap extends BaseUI
      */
     public function getModel()
     {
-        return 'Robust\Mls\Models\MlsDataMap';
+        return 'Robust\RealEstate\Models\MlsDataMap';
     }
 
     public function getMethod($model)

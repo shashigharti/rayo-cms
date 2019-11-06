@@ -31,7 +31,7 @@ class MlsDataMapController extends Controller
         $this->package_name = 'mls';
         $this->view = 'admin.users';
         $this->title = 'Mls Users Data Map';
-        $this->ui = 'Robust\Mls\UI\MlsDataMap';
+        $this->ui = 'Robust\RealEstate\UI\MlsDataMap';
         $this->redirect = 'admin.mlsuser';
     }
 
@@ -76,7 +76,7 @@ class MlsDataMapController extends Controller
         $mls_keys = [];
         foreach ($details as $detail)
         {
-            $mls_keys[$detail->standard_name] = $detail->long_name;
+            $mls_keys[$detail->system_name] = $detail->long_name;
         }
         $status = $mls_data->status;
         $fields = json_decode($mls_data->maps,true);

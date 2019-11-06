@@ -84,7 +84,7 @@ class MlsUser extends BaseUI
      */
     public function getModel()
     {
-        return 'Robust\Mls\Models\MlsUser';
+        return 'Robust\RealEstate\Models\MlsUser';
     }
 
     /**

@@ -28,7 +28,7 @@ class MlsDataRemapController extends Controller
         $this->package_name = 'mls';
         $this->view = 'admin.users';
         $this->title = 'Mls Users Data Map';
-        $this->ui = 'Robust\Mls\UI\MlsDataMap';
+        $this->ui = 'Robust\RealEstate\UI\MlsDataMap';
         $this->redirect = 'admin.mlsuser';
     }
 

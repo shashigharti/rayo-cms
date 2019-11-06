@@ -4,6 +4,9 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Robust\RealEstate\Console\Commands\GenerateMlsDataMap;
+use Robust\RealEstate\Console\Commands\MlsPullData;
+use Robust\RealEstate\Console\Commands\MlsPullImages;
 
 
 class Kernel extends ConsoleKernel
@@ -13,7 +16,9 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-
+        GenerateMlsDataMap::class,
+        MlsPullData::class,
+        MlsPullImages::class,
     ];
 
     /**

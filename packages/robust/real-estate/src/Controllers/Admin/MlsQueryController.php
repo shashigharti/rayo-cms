@@ -25,7 +25,7 @@ class MlsQueryController extends Controller
         $this->package_name = 'mls';
         $this->view = 'admin.users';
         $this->title = 'Mls Query';
-        $this->ui = 'Robust\Mls\UI\MlsDataMap';
+        $this->ui = 'Robust\RealEstate\UI\MlsDataMap';
         $this->redirect = 'admin.mlsuser';
     }
 
