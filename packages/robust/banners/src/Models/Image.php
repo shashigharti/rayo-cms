@@ -2,6 +2,7 @@
 namespace Robust\Banners\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Robust\Core\Models\Media;
 
 class Image extends Model
 {
@@ -33,4 +34,8 @@ class Image extends Model
         'end_date'
     ];
 
+    public function media()
+    {
+        return $this->hasOne(Media::class,'id','media_id');
+    }
 }

@@ -1,8 +1,20 @@
 $(window).load(function() {
+        $('.adv-slider').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
+        $('.adv-slider2').slick({
+            slidesToShow: 5,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+        });
 	    $('.slider').slider({
             fullWidth:true,
             indicators:false
-        });	
+        });
         autoplay();
 		function autoplay() {
 			$('.carousel').carousel('next');

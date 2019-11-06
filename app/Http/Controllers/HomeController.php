@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\UserResource as UserResource;
-use App\User;
 use Illuminate\Http\Request;
 use Robust\Core\Models\Media;
 use Robust\Core\Repositories\MediaRepository;
