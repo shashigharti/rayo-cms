@@ -2,6 +2,8 @@
 namespace Robust\Core\Models;
 
 
+use Robust\Banners\Models\Image;
+
 /**
  * Class Media
  * @package Robust\Core\Models
@@ -25,4 +27,8 @@ class Media extends BaseModel
         'extension'
     ];
 
+    public function image()
+    {
+        return $this->belongsTo(Image::class,'media_id','id');
+    }
 }

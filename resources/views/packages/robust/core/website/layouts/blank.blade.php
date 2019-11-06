@@ -55,5 +55,6 @@
 
 
 <script src="{{ url('assets/website/js/app.min.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
 </body>
 </html>

@@ -1,16 +1,13 @@
+@set('main_slider',$banner_helper->byType(1,true));
 <header>
     <div class="banner">
         <div class="slider">
             <ul class="slides">
-                <li>
-                    <img src="img/banner.jpg" alt="First slide">
-                </li>
-                <li>
-                    <img src="img/banner2.jpg" alt="Second slide">
-                </li>
-                <li>
-                    <img src="img/banner3.jpg" alt="Third slide">
-                </li>
+                @foreach($main_slider as $slider)
+                    <li>
+                        <img src="{{$slider->media->file}}" alt="{{$slider->slug}}">
+                    </li>
+                @endforeach
             </ul>
             <div>
                 <div class="banner-overlay">
