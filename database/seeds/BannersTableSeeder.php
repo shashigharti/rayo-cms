@@ -27,7 +27,7 @@ class BannersTableSeeder extends Seeder
             [
                 'name' => 'First Slider',
                 'slug' => 'first-slider',
-                'type' => 1,
+                'type' => 2,
                 'slider' => 1,
                 'block' => '',
                 'order' => 2,
@@ -36,7 +36,7 @@ class BannersTableSeeder extends Seeder
             [
                 'name' => 'Second Slider',
                 'slug' => 'second-slider',
-                'type' => 1,
+                'type' => 2,
                 'slider' => 1,
                 'block' => '',
                 'order' => 3,
@@ -45,7 +45,7 @@ class BannersTableSeeder extends Seeder
             [
                 'name' => 'First Single Row Slider',
                 'slug' => 'first-single-row-slider',
-                'type' => 1,
+                'type' => 3,
                 'slider' => 1,
                 'block' => '',
                 'order' => 4,
@@ -54,7 +54,7 @@ class BannersTableSeeder extends Seeder
             [
                 'name' => 'Second Single Row Slider',
                 'slug' => 'second-single-row-slider',
-                'type' => 1,
+                'type' => 3,
                 'slider' => 1,
                 'block' => '',
                 'order' => 5,
