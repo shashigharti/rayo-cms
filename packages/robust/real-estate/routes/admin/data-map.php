@@ -36,7 +36,7 @@ Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => '
     ]);
 
     Route::post('mlsuser/other-data/fields',[
-        'uses' =>  '\Robust\Mls\Controllers\Admin\MlsDataMapController@additionalFields',
+        'uses' =>  '\Robust\RealEstate\Controllers\Admin\MlsDataMapController@additionalFields',
         'as' => 'mlsuser.other-data.fields'
     ]);
 

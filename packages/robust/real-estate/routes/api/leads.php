@@ -49,41 +49,41 @@ Route::group(['prefix' => config('core.frw.api'), 'as' => 'api.', 'group' => 'AP
 
     Route::post('lead-note/store', [
         'as' => 'api.leadNote.store',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@addNote'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@addNote'
     ])->middleware('auth:api');
 
     Route::put('lead-note/update', [
         'as' => 'api.leadNote.update',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@updateNote'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@updateNote'
     ]);
 
     Route::post('lead-note/delete', [
         'as' => 'api.leadNote.delete',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@deleteNote'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@deleteNote'
     ]);
 
     Route::post('lead-search/store', [
         'as' => 'api.leadSearch.store',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@addLeadSearch'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@addLeadSearch'
     ]);
 
     Route::put('lead-search/update', [
         'as' => 'api.leadSearch.update',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@updateLeadSearch'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@updateLeadSearch'
     ]);
 
     Route::delete('lead-search/delete/{id}', [
         'as' => 'api.leadSearch.delete',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@deleteLeadSearch'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@deleteLeadSearch'
     ]);
 
     Route::delete('lead-category/delete/{id}', [
         'as' => 'api.leadCategory.delete',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@deleteLeadCategory'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@deleteLeadCategory'
     ]);
 
     Route::put('lead-category/store', [
         'as' => 'api.leadCategory.store',
-        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsApiController@storeLeadCategory'
+        'uses' => '\Robust\RealEstate\Controllers\Api\LeadsController@storeLeadCategory'
     ]);
 });
