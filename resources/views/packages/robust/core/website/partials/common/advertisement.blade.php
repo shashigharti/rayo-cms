@@ -1,6 +1,6 @@
-@set('city_one_sliders',$banner_helper->byType(3,true));
-@set('buy_now',$banner_helper->byType(2,false));
-@set('city_two_sliders',$banner_helper->byType(4,true));
+@set('city_one_sliders',$banner_helper->byType(3,true))
+@set('buy_now',$banner_helper->byType(2,false))
+@set('city_two_sliders',$banner_helper->byType(4,true))
 <section class="advertisement">
     <div class="container-fluid">
         <div class="row">

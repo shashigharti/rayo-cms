@@ -1,4 +1,4 @@
-@set('main_slider',$banner_helper->byType(1,true));
+@set('main_slider',$banner_helper->byType(1,true))
 <header>
     <div class="banner">
         <div class="slider">
