@@ -34,7 +34,7 @@ $(window).load(function() {
 	    step: 1,
 	    scale: [0,100],
 	    format: '%s',
-	    width:200,
+	    width:150,
 	    showLabels: true,
 	    isRange : true
 	});
@@ -44,7 +44,7 @@ $(window).load(function() {
 	    step:1,
 	    scale: [0,100],
 	    format: '%s',
-	    width:200,
+	    width:150,
 	    showLabels: true,
 	    isRange : true
 	});
@@ -54,7 +54,7 @@ $(window).load(function() {
 	    step: 1,
 	    scale: [0,100],
 	    format: '%s',
-	    width:200,
+	    width:150,
 	    showLabels: true,
 	    isRange : true
 	});
