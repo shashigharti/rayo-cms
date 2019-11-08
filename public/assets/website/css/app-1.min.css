@@ -1601,3 +1601,6 @@ a.buy-now-btn{color:#fff;display:inline-block;background:#012466;padding:10px 43
 .slick-prev:before{content:"\f104" !important;font-family:'FontAwesome' !important}
 .slick-prev{left:0 !important;z-index:9}.slick-next{right:0}.slick-next:before{content:"\f105" !important;font-family:'FontAwesome' !important}
 .adv--block{margin-bottom:80px}.adv--block img{width:100%}.adv--block h4{font-size:20px !important;font-weight:500 !important}
+.figcaption{position:absolute;left:0;right:0;bottom:0;width:100%;color:#fff;background:-webkit-gradient(linear,left top,left bottom,from(rgba(0,0,0,0)),color-stop(rgba(0,0,0,.6)),to(rgba(0,0,0,.8)));background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,.6),rgba(0,0,0,.8));padding:50px 10px 0}
+.single-block .figcaption h2{font-size:18px}.figcaption .available-prices{width:100%;padding-bottom:14px;max-height:0;opacity:0;margin-top:0;overflow:hidden;-webkit-transition:max-height 1.4s,opacity .9s;transition:max-height 1.4s,opacity .9s}
+.single-block:hover .available-prices{max-height:1000px;opacity:1}.search-section input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;width:90%}

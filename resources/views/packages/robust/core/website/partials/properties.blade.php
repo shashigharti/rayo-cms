@@ -4,7 +4,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HONOLULU</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -20,7 +20,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block2.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HAWAII KAI</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -36,7 +36,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block3.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>DIAMOND HEAD</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -52,7 +52,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HONOLULU</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -68,7 +68,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block2.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HAWAII KAI</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -84,7 +84,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block3.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>DIAMOND HEAD</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -100,7 +100,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HONOLULU</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -116,7 +116,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block2.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>HAWAII KAI</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
@@ -132,7 +132,7 @@
             <div class="col s4">
                 <div class="single-block">
                     <img src="assets/website/images/block3.jpg">
-                    <div class="block-overlay center-align">
+                    <div class="figcaption center-align">
                         <h2>DIAMOND HEAD</h2>
                         <div class="available-prices">
                             <a href="#">$20,000-$40,000 (10)</a>
