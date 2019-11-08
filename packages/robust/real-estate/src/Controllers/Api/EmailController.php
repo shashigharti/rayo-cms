@@ -19,7 +19,7 @@ class EmailController extends Controller
      * @param \Robust\Emails\Models\CoreEmailTemplate $coreEmailTemplate
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
-    public function getAll(CoreEmailTemplate $coreEmailTemplate)
+    public function index(CoreEmailTemplate $coreEmailTemplate)
     {
         return CoreEmailTemplateResource::collection($coreEmailTemplate->all());
     }
