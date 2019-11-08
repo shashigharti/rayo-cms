@@ -2846,3 +2846,6 @@ a.buy-now-btn {
 .slick-prev, .slick-next{
     top:42%;
 }
+.search-section .range-bar p {
+    margin-bottom: 2rem;
+}
