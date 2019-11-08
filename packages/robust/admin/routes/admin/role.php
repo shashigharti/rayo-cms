@@ -5,8 +5,5 @@ Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => '
 });
 
 Route::group(['prefix' => 'api', 'as' => 'api.', 'group' => 'Roles API'], function () {
-    Route::get('/roles', [
-        'as' => 'roles',
-        'uses' => 'Robust\Admin\Controllers\Admin\API\RoleController@getAllRoles',
-    ]);
+
 });
