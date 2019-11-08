@@ -2849,3 +2849,12 @@ a.buy-now-btn {
 .search-section .range-bar p {
     margin-bottom: 2rem;
 }
+.row {
+    margin-right: -15px !important;
+    margin-left: -15px !important;
+}
+.banner .row {
+    margin-bottom: 0;
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

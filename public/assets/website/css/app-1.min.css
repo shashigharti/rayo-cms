@@ -1606,3 +1606,4 @@ a.buy-now-btn{color:#fff;display:inline-block;background:#012466;padding:10px 43
 .single-block .figcaption h2{font-size:18px}.figcaption .available-prices{width:100%;padding-bottom:14px;max-height:0;opacity:0;margin-top:0;overflow:hidden;-webkit-transition:max-height 1.4s,opacity .9s;transition:max-height 1.4s,opacity .9s}
 .single-block:hover .available-prices{max-height:1000px;opacity:1}.search-section input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;width:90%;font-size:17px;height:38px}
 .search-section a.theme-btn{width:127px}.slick-prev,.slick-next{top:42%}.search-section .range-bar p{margin-bottom:2rem}
+.row{margin-right:-15px !important;margin-left:-15px !important}.banner .row{margin-bottom:0;margin-left:auto !important;margin-right:auto !important}
