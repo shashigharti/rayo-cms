@@ -56,7 +56,7 @@ class Lead extends JsonResource
             'activityLog' => $this->whenLoaded('activityLog'),
             'notes' => $this->whenLoaded('notes'),
             'logins' => $this->logins,
-            'last_login' => $this->last_login,
+            'last_active' => $this->last_active,
             'latest_followup_dates' => $this->latest_followup_dates,
             'created_at' => $this->created_at
         ];
