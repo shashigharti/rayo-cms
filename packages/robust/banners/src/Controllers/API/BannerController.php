@@ -3,7 +3,9 @@
 namespace Robust\Banners\Controllers\API;
 
 use Robust\Banners\Helpers\BannerHelper;
+use Robust\Banners\Repositories\BannerRepository;
 use Robust\Core\Controllers\Admin\Controller;
+use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 
 /**
  * Class BannerController
@@ -11,6 +13,15 @@ use Robust\Core\Controllers\Admin\Controller;
  */
 class BannerController extends Controller
 {
+    use ApiTrait;
+    protected $model,$resource;
+
+    public function __construct(BannerRepository $model)
+    {
+        $this->model = $model;
+        $this->resource = 'Robust\Banners\Resources\Banner';
+    }
+
     /**
      * @param $slug
      * @return \Illuminate\Http\JsonResponse
