@@ -42,7 +42,7 @@
                                 <div class="search-section">
                                     <div class="row">
                                         <div class="col s3">
-                                            <p>Location</p>
+                                            <p>LOCATION</p>
                                             <input type="text" placeholder="Type a city, zip, address or MLS#">
                                         </div>                                        
                                         <div class="col s6">
