@@ -45,7 +45,7 @@
                                             <p>Location</p>
                                             <input type="text" placeholder="Type a city,zip,address or MLS#">
                                         </div>                                        
-                                        <div class="col s5">
+                                        <div class="col s6">
                                             <div class="row">
                                                 <div class="col s4 range-bar">
                                                     <p>PRICE</p>
@@ -61,13 +61,15 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="col s2 center-align">
-                                            <p>FEATURES</p>
-                                            <a href="#" class="theme-btn">Advanced search</a>
-                                        </div>
-                                        <div class="col s2 center-align">
-                                            <p>19723 ACTIVE LIstings</p>
-                                            <a href="#" class="theme-btn">search</a>
+                                        <div class="col right">
+                                            <div class="left center-align">
+                                                <p>FEATURES</p>
+                                                <a href="#" class="theme-btn">Advanced search</a>
+                                            </div>
+                                            <div class="left center-align">
+                                                <p>19723 ACTIVE LIstings</p>
+                                                <a href="#" class="theme-btn">search</a>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
