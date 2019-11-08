@@ -1,6 +1,20 @@
 @set('city_one_sliders',$banner_helper->byType(3,true))
 @set('buy_now',$banner_helper->byType(2,false))
 @set('city_two_sliders',$banner_helper->byType(4,true))
+<section class="adv--block">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col s7">
+                <img src="images/banners/block13.jpg">
+            </div>
+            <div class="col s5">
+                <h4>Homes Available in Alaska</h4>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
+                <a href="#" class="buy-now-btn">Buy Now</a>
+            </div>
+        </div>
+    </div>
+</section>
 <section class="advertisement">
     <div class="container-fluid">
         <div class="row">
