@@ -2695,15 +2695,22 @@ button.get-distance {
 
 /* slider */
 .advertisement .single-block{
-    margin:10px;
     height:232px;
-    padding: 10px;
 }
-
+.slick-slider{
+    overflow: hidden;
+}
+.slick-slide {
+    margin: 0 10px;
+}
+/* the parent */
+.slick-list {
+    margin: 0 -10px;
+}
 .slider--text{
     position: absolute;
     bottom: 0;
-    width: 92%;
+    width:100%;
     background: rgba(0,0,0,0.7);
     padding: 10px;
 }
@@ -2778,7 +2785,7 @@ a.buy-now-btn {
     font-family: 'FontAwesome' !important;
 }
 .slick-prev {
-    left:0px !important;
+    left:10px !important;
     z-index: 9;
 }
 .slick-next {
@@ -2830,4 +2837,12 @@ a.buy-now-btn {
     border: 1px solid #ccc !important;
     padding: 0px 10px !important;
     width: 90%;
+    font-size: 17px;
+    height: 38px;
+}
+.search-section a.theme-btn {
+    width: 127px;
+}
+.slick-prev, .slick-next{
+    top:42%;
 }
