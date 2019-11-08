@@ -28,12 +28,10 @@
     </div>
     <div class="footer-bottom container-fluid">
         <div class="row">
-            <div class="col s6">
+            <div class="col s12 center-align">
                 <p>Copyright © 2018. ALL Rights Preserved.</p>
             </div>
-            <div class="right-align col s6">
-                <p>Designed By : Robust IT Concepts</p>
-            </div>
+            
         </div>
     </div>
 </footer>

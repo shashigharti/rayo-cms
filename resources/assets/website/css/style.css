@@ -7,6 +7,9 @@ body,h1,h2,h3,h4,h5{
 a{
     text-decoration: none;
 }
+footer h3{
+    color:#FFF;
+}
 .container-fluid {
     width: 100%;
     margin-right: auto;
@@ -2694,12 +2697,13 @@ button.get-distance {
 .advertisement .single-block{
     margin:10px;
     height:232px;
+    padding: 10px;
 }
 
 .slider--text{
     position: absolute;
     bottom: 0;
-    width: 100%;
+    width: 92%;
     background: rgba(0,0,0,0.7);
     padding: 10px;
 }

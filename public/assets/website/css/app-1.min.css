@@ -1279,7 +1279,7 @@ to{opacity:0}}.slider{position:relative;height:400px;width:100%}.slider.fullscre
 .slick-dots li button:hover,.slick-dots li button:focus{outline:0}.slick-dots li button:hover:before,.slick-dots li button:focus:before{opacity:1}
 .slick-dots li button:before{font-family:'slick';font-size:6px;line-height:20px;position:absolute;top:0;left:0;width:20px;height:20px;content:'•';text-align:center;opacity:.25;color:black;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
 .slick-dots li.slick-active button:before{opacity:.75;color:black}body{margin:0}body,h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif}
-a{text-decoration:none}.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:45px;padding-left:45px}
+a{text-decoration:none}footer h3{color:#FFF}.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:45px;padding-left:45px}
 .theme-btn{color:#fff;font-size:12px;background:#012466;margin:0 auto;padding:8px;border-radius:3px;-webkit-box-shadow:1px 1px 2px 1px #111;box-shadow:1px 1px 2px 1px #111;width:140px;display:inline-block;text-align:center}
 .row{margin-bottom:0}header{background:#002349}.site-menu{width:100%;padding:10px 0}
 .site-menu .nav-link{color:rgba(255,255,255,1);font-size:15px;text-transform:uppercase;font-weight:400;margin-right:35px}
@@ -1590,7 +1590,7 @@ button.get-distance{border-radius:0;background-color:#002349}.well{min-height:20
 .txt-descript-bold{color:#111;font-weight:500;font-size:12px}.table-striped.table>tbody>tr>td,.table-striped.table>tbody>tr>th,.table-striped.table>tfoot>tr>td,.table-striped.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{padding:8px;line-height:1.42857;vertical-align:top;border-top:1px solid #ddd}
 .detail-block{margin:30px 0}.btn-social-detail .btn{margin:10px 0 0;width:100%;background-color:#002349}
 .btn-social-detail{margin:20px 0}.title-more-detail{background-color:#00527d;padding:14px;text-align:center;color:#fff;font-size:14px;margin:20px 0 20px}
-.advertisement .single-block{margin:10px;height:232px}.slider--text{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,0.7);padding:10px}
+.advertisement .single-block{margin:10px;height:232px;padding:10px}.slider--text{position:absolute;bottom:0;width:92%;background:rgba(0,0,0,0.7);padding:10px}
 a.view-all{font-weight:600;margin-top:28px;display:inline-block;color:#1414bd !important}
 .slider--text h4{font-size:15px;margin-top:5px;margin-bottom:5px;color:#fff;font-weight:600}
 .slider--text p{color:#fff;font-size:12px;margin-top:0;margin-bottom:0}h4.sub-title{font-size:22px;font-weight:500}
