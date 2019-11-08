@@ -44,7 +44,26 @@ class LeadsController extends Controller
         $this->resource = 'Robust\RealEstate\Resources\Lead';
     }
 
+    public function index()
+    {
+        return $this->resource::collection($this->model->paginate(10));
+    }
 
+    public function details($id)
+    {
+        $model = $this->model ->with('metadata')
+            ->with('agent')
+            ->with('searches')
+            ->with('categories')
+            ->with('reports')
+            ->with('emails')
+            ->with('activityLog')
+            ->with('notes');
+        if($id === 'all'){
+            return $this->resource::collection($model->paginate(10));
+        }
+        return new $this->resource($this->model->find($id));
+    }
     /**
      * @param $type
      * @param \Robust\Leads\Models\Lead $lead
