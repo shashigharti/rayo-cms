@@ -41,7 +41,7 @@ class LeadsController extends Controller
     public function __construct(LeadRepositories $model)
     {
         $this->model = $model;
-        $this->resource = 'Robust\Leads\Resources\Lead';
+        $this->resource = 'Robust\RealEstate\Resources\Lead';
     }
 
 
