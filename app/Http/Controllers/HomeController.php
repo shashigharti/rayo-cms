@@ -54,4 +54,9 @@ class HomeController extends Controller
     {
         return view(Site::templateResolver('core::website.user.profile'));
     }
+
+    public function marketSurvey()
+    {
+        return view(Site::templateResolver('core::website.market.survey'));
+    }
 }
