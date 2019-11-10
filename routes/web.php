@@ -27,6 +27,11 @@ Route::get('/profile',[
     'uses' => 'HomeController@profile'
 ]);
 
+Route::get('/market-survey',[
+    'as' => 'website.market-survey.index',
+    'uses' => 'HomeController@marketSurvey'
+]);
+
 Route::get('/login',[
    'as' =>'login',
    'uses' => '\Robust\Core\Controllers\Auth\LoginController@getLogin'
