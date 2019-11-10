@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Robust\Core\Helpage\Site;
 use Robust\Core\Models\Media;
 use Robust\Core\Repositories\MediaRepository;
 
@@ -47,5 +48,10 @@ class HomeController extends Controller
     {
         $thumbnail = Media::where('id',$id)->first();
         return response()->json($thumbnail);
+    }
+
+    public function profile()
+    {
+        return view(Site::templateResolver('core::website.user.profile'));
     }
 }
