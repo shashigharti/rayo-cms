@@ -11,7 +11,7 @@ trait ApiTrait
         return $this->resource::collection($this->model->paginate(10));
     }
 
-    public function show($id)
+    public function edit($id)
     {
         return new $this->resource($this->model->find($id));
     }

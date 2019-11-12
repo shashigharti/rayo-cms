@@ -45,7 +45,7 @@ class MlsPullImages extends Command
                 ->select(['listings.id', 'listings.uid', 'listings.status'])
                 ->orderBy('input_date', 'DESC')
                 ->get()
-                ->chunk(5);
+                ->chunk(1000);
             $bar = $this->output->createProgressBar(count($listingArrChunked));
             foreach ($listingArrChunked as $listingArr) {
                 $ui_id_arr = $listingArr->pluck('uid')->toArray();
