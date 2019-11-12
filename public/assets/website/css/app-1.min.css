@@ -1315,9 +1315,9 @@ section.main-content{padding-top:100px}.sub-header .site-menu{margin:14px 0;padd
 .top--breadcrumb a.active{color:#06f}.listing--search{background:#fff;margin:30px 0 16px;padding:0}
 .listing--search.search-section p{color:#555;margin-bottom:0}.listing--search a.theme-btn{width:155px;margin-left:0}
 .listing--search .range-bar .slider-container .back-bar .pointer-label{color:#555}
-.listing--search .range-bar .slider-container{margin:22px auto}.listing--search .range-bar .theme-green .scale ins{color:#555}
-.listing--btn--block label{font-weight:bold;color:#555}.listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}
-.listing--btn--block a.btn{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0;width:100px;font-weight:600}
+.listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
+.listing--search .range-bar .theme-green .scale ins{color:#555}.listing--btn--block label{font-weight:bold;color:#555}
+.listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0;width:100px;font-weight:600}
 .total--records{font-size:12px;display:inline-block;font-weight:500;color:#555}.total--records span{color:#09407b}
 .listing--pagination{display:inline-block;margin-left:10px}.listing--pagination span{height:30px;width:30px;border:1px solid #555;border-radius:3px;display:inline-block;text-align:center;line-height:30px;color:#555;font-size:14px;font-weight:600}
 .listing--pagination span.active{color:#fff;background:#002349;border-color:#002349}
