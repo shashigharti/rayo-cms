@@ -13,7 +13,11 @@ trait ApiTrait
 
     public function edit($id)
     {
-        return new $this->resource($this->model->find($id));
+        $model = $this->model->find($id);
+        if($model){
+            return new $this->resource($this->model->find($id));
+        }
+        return response()->json(['message'=>'Data not found']);
     }
 
     public function store(Request $request)
