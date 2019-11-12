@@ -22,6 +22,12 @@ Route::get('/listings',[
    'uses' => 'ListingController@index'
 ]);
 
+Route::get('/listings/detail',[
+    'as' => 'website.listings.detail',
+    'uses' => 'ListingController@detail'
+]);
+
+
 Route::get('/profile',[
     'as' => 'website.profile.index',
     'uses' => 'HomeController@profile'
@@ -30,6 +36,10 @@ Route::get('/profile',[
 Route::get('/market-survey',[
     'as' => 'website.market-survey.index',
     'uses' => 'HomeController@marketSurvey'
+]);
+Route::get('/market-report',[
+    'as' => 'website.market-report.index',
+    'uses' => 'HomeController@marketReport'
 ]);
 
 Route::get('/login',[
