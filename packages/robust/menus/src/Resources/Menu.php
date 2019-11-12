@@ -20,6 +20,7 @@ class Menu extends JsonResource
     {
         return [
             'id' => $this->id,
+            'name' => $this->name,
             'items' => json_decode($this->items, true),
             'menu_limit' => $this->menu_limit,
             'type' => $this->type

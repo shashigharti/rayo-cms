@@ -5,7 +5,7 @@ namespace Robust\Menus\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Robust\Core\Controllers\Admin\Traits\ApiTrait;
-use Robust\Leads\Repositories\Admin\MenuRepository;
+use Robust\Menus\Repositories\Admin\MenuRepository;
 
 
 /**

@@ -1,8 +1,8 @@
 <?php
-namespace Robust\Leads\Repositories\Admin;
+namespace Robust\Menus\Repositories\Admin;
 
 
-use Robust\Core\Models\Menu;
+use Robust\Menus\Models\Menu;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
