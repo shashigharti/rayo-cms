@@ -62,7 +62,7 @@ class RoleController extends Controller
      * @param $id
      * @return RoleResource
      */
-    public function show($id)
+    public function edit($id)
     {
         return new  RoleResource(Role::where('id',$id)->with('permissions')->first());
     }

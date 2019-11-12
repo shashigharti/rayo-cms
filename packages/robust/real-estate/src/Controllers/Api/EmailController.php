@@ -3,9 +3,8 @@
 namespace Robust\RealEstate\Controllers\Api;
 
 use App\Http\Controllers\Controller;
-use Robust\RealEstate\Models\CoreEmailTemplate;
-use Robust\RealEstate\Resources\CoreEmailTemplate as CoreEmailTemplateResource;
-use Illuminate\Http\Request;
+use Robust\Core\Controllers\Admin\Traits\ApiTrait;
+use Robust\RealEstate\Repositories\Api\CoreEmailRepository;
 
 
 /**
@@ -14,49 +13,22 @@ use Illuminate\Http\Request;
  */
 class EmailController extends Controller
 {
+    use ApiTrait;
+    /**
+     * @var CoreEmailRepository
+     */
+    /**
+     * @var CoreEmailRepository|string
+     */
+    protected $model,$resource;
 
     /**
-     * @param \Robust\Emails\Models\CoreEmailTemplate $coreEmailTemplate
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     * EmailController constructor.
+     * @param CoreEmailRepository $model
      */
-    public function index(CoreEmailTemplate $coreEmailTemplate)
+    public function __construct(CoreEmailRepository $model)
     {
-        return CoreEmailTemplateResource::collection($coreEmailTemplate->all());
-    }
-
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Emails\Models\CoreEmailTemplate $coreEmailTemplate
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function store(Request $request, CoreEmailTemplate $coreEmailTemplate)
-    {
-        $coreEmailTemplate->create($request->all());
-        return response()->json(['message' => 'Success']);
-    }
-
-
-    /**
-     * @param $id
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Emails\Models\CoreEmailTemplate $coreEmailTemplate
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update($id, Request $request, CoreEmailTemplate $coreEmailTemplate)
-    {
-        $coreEmailTemplate->find($id)->update($request->all());
-        return response()->json(['message' => 'Success']);
-    }
-
-    /**
-     * @param $id
-     * @param \Robust\Emails\Models\CoreEmailTemplate $coreEmailTemplate
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function destroy($id, CoreEmailTemplate $coreEmailTemplate)
-    {
-        $coreEmailTemplate->find($id)->delete();
-        return response()->json(["message" => "Success"]);
+        $this->model = $model;
+        $this->resource= 'Robust\RealEstate\Resources\CoreEmailTemplate';
     }
 }
