@@ -56,5 +56,24 @@
 
 <script src="{{ url('assets/website/js/app.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('.slider-for').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slider-nav'
+        });
+        $('.slider-nav').slick({
+            slidesToShow:5,
+            slidesToScroll: 1,
+            asNavFor: '.slider-for',
+            arrows: true,
+            centerMode: true,
+            focusOnSelect: true
+        });
+    });
+</script>
 </body>
 </html>

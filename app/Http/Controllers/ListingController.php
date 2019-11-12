@@ -24,4 +24,9 @@ class ListingController extends Controller
         $total = $this->model->where('status','Active')->count();
         return view(Site::templateResolver('core::website.listings.index'),['results'=>$results,'total'=>$total]);
     }
+
+    public function detail()
+    {
+        return view(Site::templateResolver('core::website.listings.details'));
+    }
 }

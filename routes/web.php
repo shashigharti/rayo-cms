@@ -22,6 +22,12 @@ Route::get('/listings',[
    'uses' => 'ListingController@index'
 ]);
 
+Route::get('/listings/detail',[
+    'as' => 'website.listings.detail',
+    'uses' => 'ListingController@detail'
+]);
+
+
 Route::get('/profile',[
     'as' => 'website.profile.index',
     'uses' => 'HomeController@profile'
