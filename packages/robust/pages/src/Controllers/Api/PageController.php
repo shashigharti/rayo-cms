@@ -33,13 +33,11 @@ class PageController extends Controller
             "slug" => "unique:pages",
             "category_id" => "required",
             "excerpt" => "max:250",
-            "content" => "required"
         ];
         $this->updateRequest= [
             "name" => "required",
             "category_id" => "required",
             "excerpt" => "max:250",
-            "content" => "required"
         ];
     }
 }
