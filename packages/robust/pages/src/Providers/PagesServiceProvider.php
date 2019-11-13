@@ -11,6 +11,9 @@ use Webwizo\Shortcodes\Facades\Shortcode;
  */
 class PagesServiceProvider extends ServiceProvider
 {
+    protected $commands = [
+       'Robust\Pages\Console\Commands\CreatePages'
+    ];
     /**
      *
      */
@@ -18,7 +21,7 @@ class PagesServiceProvider extends ServiceProvider
     {
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'pages');
         $this->registerModelEvents();
-//        $this->registerShortCodes();
+        $this->register_includes();
     }
 
     /**
@@ -27,6 +30,7 @@ class PagesServiceProvider extends ServiceProvider
     public function register_includes()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'pages.permissions');
+        $this->commands($this->commands);
     }
 
     /**
