@@ -37,15 +37,15 @@
                                     </ul>
                                 </nav>
                             </div>
-                            <div class="banner-caption">
+                           <div class="banner-caption">
                                 <h1>Find Your Dream House With Us</h1>
                                 <div class="search-section">
                                     <div class="row">
                                         <div class="col s3">
-                                            <p>LOCATION</p>
-                                            <input type="text" placeholder="Type a city, zip, address or MLS#">
-                                        </div>                                        
-                                        <div class="col s6">
+                                            <p>Location</p>
+                                            <input type="text" placeholder="Type a city,zip,address or MLS#">
+                                        </div>                              
+                                        <div class="col s5">
                                             <div class="row">
                                                 <div class="col s4 range-bar">
                                                     <p>PRICE</p>
@@ -58,18 +58,16 @@
                                                 <div class="col s4 range-bar">
                                                     <p>BATHROOMS</p>
                                                     <input class="bathroom-range-slider" type="hidden" value="25,75"/>
-                                                </div>
+                                                </div>  
                                             </div>
                                         </div>
-                                        <div class="col right">
-                                            <div class="left center-align">
-                                                <p>FEATURES</p>
-                                                <a href="#" class="theme-btn">Advanced search</a>
-                                            </div>
-                                            <div class="left center-align">
-                                                <p>19723 ACTIVE LIstings</p>
-                                                <a href="#" class="theme-btn">search</a>
-                                            </div>
+                                        <div class="col s2 center-align">
+                                            <p>FEATURES</p>
+                                            <a href="#" class="theme-btn">Advanced search</a>
+                                        </div>
+                                        <div class="col s2 center-align">
+                                            <p>19723 ACTIVE LIstings</p>
+                                            <a href="#" class="theme-btn">search</a>
                                         </div>
                                     </div>
                                 </div>

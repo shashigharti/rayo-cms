@@ -4,3 +4,9 @@
 @import "slick.css";
 @import "slick-theme.css";
 @import "style.css";
+@import "common/header.css";
+@import "common/footer.css";
+@import "common/banner.css";
+@import "listing/single.css";
+@import "market/report.css";
+@import "market/survey.css";
