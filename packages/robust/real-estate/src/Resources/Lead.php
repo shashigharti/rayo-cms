@@ -28,7 +28,7 @@ class Lead extends JsonResource
 //            'password' => $this->password,
 //            'open_password' => $this->open_password,
             'agent_id' => $this->agent_id,
-            'phone_number' => $this->phone_number,
+            'phone_number' => $this->phone_number != null ? $this->phone_number : '',
             'phone_number_2' => $this->phone_number_2,
             'phone_number_3' => $this->phone_number_3,
             'verified_phone_number' => $this->verified_phone_number,

@@ -20,8 +20,8 @@
                                     <ul id="mobile-demo" class="dropdown-content">
                                         <li><a class="nav-link" href="#">Home</a></li>
                                         <li><a class="nav-link" href="#">Areas</a></li>
-                                        <li><a class="nav-link" href="#">Homes For Sale</a></li>
-                                        <li><a class="nav-link" href="#">Sold Homes</a></li>
+                                        <li><a class="nav-link" href="{{route('website.listings.active')}}">Homes For Sale</a></li>
+                                        <li><a class="nav-link" href="{{route('website.listings.sold')}}">Sold Homes</a></li>
                                         <li><a class="nav-link" href="#">Market Stats</a></li>
                                         <li><a class="nav-link" href="#">Login</a></li>
                                         <li><a class="nav-link" href="#">Register</a></li>
@@ -45,7 +45,8 @@
                                             <p>Location</p>
                                             <input type="text" placeholder="Type a city,zip,address or MLS#">
                                         </div>                              
-                                        <div class="col s5">
+                                        
+                                        <div class="col s6">
                                             <div class="row">
                                                 <div class="col s4 range-bar">
                                                     <p>PRICE</p>

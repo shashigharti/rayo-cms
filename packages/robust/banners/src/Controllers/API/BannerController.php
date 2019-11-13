@@ -14,12 +14,20 @@ use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 class BannerController extends Controller
 {
     use ApiTrait;
-    protected $model,$resource;
+    protected $model,$resource,$storeRequest,$updateRequest;
 
     public function __construct(BannerRepository $model)
     {
         $this->model = $model;
         $this->resource = 'Robust\Banners\Resources\Banner';
+        $this->storeRequest = [
+          'name' => 'required|max:255',
+           'slug' => 'required|max:255'
+        ];
+        $this->updateRequest = [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255'
+        ];
     }
 
     /**

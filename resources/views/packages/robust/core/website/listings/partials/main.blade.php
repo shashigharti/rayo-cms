@@ -19,70 +19,72 @@
         <div class="listing--houses">
             <div class="row">
                 @forelse($results as $result)
-                    <div class="col s3">
-                        <div class="single--list--block">
-                            <img src={{$result->image->listing_url}}>
-                            <div class="list--overlay">
+                    <a href="{{route('website.listings.single',['id' => $result->id])}}">
+                        <div class="col s3">
+                            <div class="single--list--block">
+                                <img src={{$result->image->listing_url}}>
+                                <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
                                             {{$result->status}}
                                         @endif
 									</span>
-                                <span class="fav">
+                                    <span class="fav">
 										<i class="fa fa-heart"></i>
 									</span>
-                                <div class="bottom--detail">
-                                    <h3 class="price">
-                                        @if(isset($result->system_price) && !in_array($result->system_price,['none','None']))
-                                            {{$result->status}}
-                                        @endif
-                                    </h3>
-                                    <p class="info">
-                                        @if(isset($result->address_street) && !in_array($result->address_street,['none','None','0']))
-                                            {{$result->address_street}}
-                                        @endif
-                                        @if(isset($result->city) && !in_array($result->city,['none','None','0']))
-                                            {{$result->city}}
-                                        @endif
-                                        @if(isset($result->state) && !in_array($result->state,['none','None','0']))
-                                            {{ ' | '.$result->state}}
-                                        @endif
-                                        @if(isset($result->county) && !in_array($result->county,['none','None','0']))
-                                            {{ ' | '.$result->county}}
-                                        @endif
-                                    </p>
-                                    <span>
+                                    <div class="bottom--detail">
+                                        <h3 class="price">
+                                            @if(isset($result->system_price) && !in_array($result->system_price,['none','None']))
+                                                {{$result->status}}
+                                            @endif
+                                        </h3>
+                                        <p class="info">
+                                            @if(isset($result->address_street) && !in_array($result->address_street,['none','None','0']))
+                                                {{$result->address_street}}
+                                            @endif
+                                            @if(isset($result->city) && !in_array($result->city,['none','None','0']))
+                                                {{$result->city}}
+                                            @endif
+                                            @if(isset($result->state) && !in_array($result->state,['none','None','0']))
+                                                {{ ' | '.$result->state}}
+                                            @endif
+                                            @if(isset($result->county) && !in_array($result->county,['none','None','0']))
+                                                {{ ' | '.$result->county}}
+                                            @endif
+                                        </p>
+                                        <span>
                                         @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
-                                            {{ 'Built in '.$result->year_built}}
-                                        @endif
+                                                {{ 'Built in '.$result->year_built}}
+                                            @endif
                                     </span>
 
-                                    <span>
+                                        <span>
                                         @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
-                                            {{' | '. $result->total_finished_area .' sq.ft'}}
-                                        @endif
+                                                {{' | '. $result->total_finished_area .' sq.ft'}}
+                                            @endif
                                     </span>
-                                    <div class="details">
+                                        <div class="details">
                                         <span>
                                             @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
                                                 <img src="img/tub.png">{{ $result->bedrooms}}
                                             @endif
                                         </span>
-                                        <span>
+                                            <span>
                                             @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
-                                                <i class="fa fa-bath" aria-hidden="true"></i>{{ $result->baths_full}}
-                                            @endif
+                                                    <i class="fa fa-bath" aria-hidden="true"></i>{{ $result->baths_full}}
+                                                @endif
                                         </span>
-                                        <span>
+                                            <span>
                                             @if(isset($result->picture_count) && !in_array($result->picture_count,['none','None','0']))
-                                                <img src="img/eye.png">{{ $result->picture_count}}
-                                            @endif
+                                                    <img src="img/eye.png">{{ $result->picture_count}}
+                                                @endif
                                         </span>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </a>
                 @empty
                 @endforelse
 
