@@ -3,35 +3,47 @@
         <div class="row">
             <div class="col s7">
                 <div class="list--inner--title">
-                    <h4>OAHU HI SOLD REAL ESTATE</h4>
-                    <p>Bitmore Beach 1st Add Subdivision</p>
+                    <h4>{{strtoupper($result->city)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
+                    <p>{{$result->subdivision}} Subdivision</p>
                 </div>
                 <div class="head-list-info">
                     <ul>
-                        <li>
-                            <span class="txt-num">2</span><br>
-                            <span class="txt-property">Bedrooms</span>
-                        </li>
-                        <li>
-                            <span class="txt-num">2</span><br>
-                            <span class="txt-property">Bathrooms</span>
-                        </li>
-                        <li>
-                            <span class="txt-num">1,165</span><br>
-                            <span class="txt-property">Square Feet</span>
-                        </li>
-                        <li>
-                            <span class="txt-num">0.14</span><br>
-                            <span class="txt-property">Acres</span>
-                        </li>
-                        <li>
-                            <span class="txt-num upper-listings-stories">1.0</span> <br>
-                            <span class="txt-property">Stories</span>
-                        </li>
-                        <li>
-                            <span class="txt-num">1992</span><br>
-                            <span class="txt-property">Year Built</span>
-                        </li>
+                        @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->bedrooms}}</span><br>
+                                <span class="txt-property">Bedrooms</span>
+                            </li>
+                        @endif
+                        @if(isset($result->bathrooms) && !in_array($result->bathrooms,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->bathrooms}}</span><br>
+                                <span class="txt-property">Bathrooms</span>
+                            </li>
+                        @endif
+                        @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->total_finished_area}}</span><br>
+                                <span class="txt-property">Square Feet</span>
+                            </li>
+                        @endif
+                        @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->acres}}</span><br>
+                                <span class="txt-property">Acres</span>
+                            </li>
+                        @endif
+                        @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->year_built}}</span><br>
+                                <span class="txt-property">Year Built</span>
+                            </li>
+                        @endif
+                        @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                            <li>
+                                <span class="txt-num">{{$result->stories}}</span><br>
+                                <span class="txt-property">Stories</span>
+                            </li>
+                        @endif
                     </ul>
                 </div>
                 <div class="inner-list-tab">
@@ -45,20 +57,16 @@
                         </div>
                         <div id="overview" class="col s12 overview-slider ">
                             <div class="slider-for">
-                                <div><img src="/images/banners/banner.jpg" alt="First slide"></div>
-                                <div><img src="/images/banners/banner2.jpg" alt="Second slide"></div>
-                                <div><img src="/images/banners/banner3.jpg" alt="Third slide"></div>
-                                <div><img src="/images/banners/banner.jpg" alt="First slide"></div>
-                                <div><img src="/images/banners/banner2.jpg" alt="Second slide"></div>
-                                <div><img src="/images/banners/banner3.jpg" alt="Third slide"></div>
+                                @forelse($result->images as $image)
+                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>
+                                @empty
+                                @endforelse
                             </div>
                             <div class="slider-nav">
-                                <div><img src="/images/banners/banner.jpg" alt="First slide"></div>
-                                <div><img src="/images/banners/banner2.jpg" alt="Second slide"></div>
-                                <div><img src="/images/banners/banner3.jpg" alt="Third slide"></div>
-                                <div><img src="/images/banners/banner.jpg" alt="First slide"></div>
-                                <div><img src="/images/banners/banner2.jpg" alt="Second slide"></div>
-                                <div><img src="/images/banners/banner3.jpg" alt="Third slide"></div>
+                                @forelse($result->images as $image)
+                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>
+                                @empty
+                                @endforelse
                                 <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
                                 <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
                             </div>
@@ -168,62 +176,84 @@
                         <div class="clearfix txt-descript">
                             <table class="table table-striped">
                                 <tbody>
-                                <tr class="txt-descript-bold">
-                                    <td> Asking Price </td>
-                                    <td > $249,000 </td>
-                                </tr>
-                                <tr>
-                                    <td> Property Type </td>
-                                    <td> Residential </td>
-                                </tr>
-                                <tr>
-                                    <td> Type </td>
-                                    <td > Residential </td>
-                                </tr>
-                                <tr>
-                                    <td> Bedrooms </td>
-                                    <td> 2 </td>
-                                </tr>
-                                <tr>
-                                    <td> Full Baths </td>
-                                    <td > 2 </td>
-                                </tr>
-                                <tr>
-                                    <td> Square Footage </td>
-                                    <td> 1,165 </td>
-                                </tr>
-                                <tr>
-                                    <td> Year Built </td>
-                                    <td> 1992 </td>
-                                </tr>
-                                <tr>
-                                    <td> Lot Size </td>
-                                    <td> 5968 </td>
-                                </tr>
-                                <tr>
-                                    <td> Style </td>
-                                    <td> Contemporary </td>
-                                </tr>
-                                <tr>
-                                    <td> Stories </td>
-                                    <td> 1.0 </td>
-                                </tr>
-                                <tr>
-                                    <td> Garage </td>
-                                    <td> Driveway Cars </td>
-                                </tr>
-                                <tr>
-                                    <td> Garage Description </td>
-                                    <td> 0 </td>
-                                </tr>
-                                <tr>
-                                    <td> Acres </td>
-                                    <td> 0.14 </td>
-                                </tr>
-                                <tr>
-                                    <td> MLS Number </td>
-                                    <td> #689251 </td>
-                                </tr>
+                                @if(isset($result->system_price) && !in_array($result->system_price,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Asking Price </td>
+                                        <td >$ {{$result->system_price}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->class) && !in_array($result->class,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Property Type </td>
+                                        <td >{{$result->class}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Bedrooms </td>
+                                        <td >{{$result->bedrooms}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Full Baths </td>
+                                        <td >{{$result->bedrooms}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Square Footage </td>
+                                        <td >{{$result->total_finished_area}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Year Built  </td>
+                                        <td >{{$result->year_built}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->lot_size) && !in_array($result->lot_size,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Lot Size  </td>
+                                        <td >{{$result->lot_size}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->style) && !in_array($result->style,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Style  </td>
+                                        <td >{{$result->style}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Stories  </td>
+                                        <td >{{$result->stories}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->garage_desc) && !in_array($result->garage_desc,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Garage  </td>
+                                        <td >{{$result->garage_desc}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->parking) && !in_array($result->parking,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Parking  </td>
+                                        <td >{{$result->parking}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Acres  </td>
+                                        <td >{{$result->acres}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($result->uid) && !in_array($result->uid,['none','None','0']))
+                                    <tr class="txt-descript-bold">
+                                        <td> MLS Number  </td>
+                                        <td >#{{$result->uid}} </td>
+                                    </tr>
+                                @endif
                                 </tbody>
                             </table>
                         </div>
