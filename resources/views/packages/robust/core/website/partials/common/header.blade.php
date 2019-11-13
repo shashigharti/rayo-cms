@@ -46,7 +46,7 @@
                                             <input type="text" placeholder="Type a city,zip,address or MLS#">
                                         </div>                              
                                         
-                                        <div class="col s6">
+                                        <div class="col s5">
                                             <div class="row">
                                                 <div class="col s4 range-bar">
                                                     <p>PRICE</p>
