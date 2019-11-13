@@ -14,6 +14,6 @@ class ListingImage extends Model
 
     public function listing()
     {
-        return $this->belongsTo(\App\Listings::class, 'uid', 'listing_id');
+        return $this->belongsTo(Listing::class, 'uid', 'listing_id');
     }
 }
