@@ -2,6 +2,7 @@
 namespace Robust\Core\Controllers\Admin\Traits;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 trait ApiTrait
@@ -23,6 +24,12 @@ trait ApiTrait
     public function store(Request $request)
     {
         $data = $request->all();
+        if(isset($this->storeRequest)){
+            $validator = Validator::make($data,$this->storeRequest);
+            if($validator->fails()){
+                return response()->json(['errors' => $validator->errors()],422);
+            }
+        }
         $this->model->store($data);
         return response()->json(['message' => 'success']);
     }
@@ -30,6 +37,12 @@ trait ApiTrait
     public function update($id, Request $request)
     {
         $data = $request->all();
+        if(isset($this->updateRequest)){
+            $validator = Validator::make($data,$this->updateRequest);
+            if($validator->fails()){
+                return response()->json(['errors' => $validator->errors()],422);
+            }
+        }
         $this->model->update($id,$data);
         return response()->json(['message' => 'success']);
     }

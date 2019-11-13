@@ -18,7 +18,7 @@ class PageController extends Controller
     /**
      * @var PageRepository|string
      */
-    protected $model,$resource;
+    protected $model,$resource,$storeRequest,$updateRequest;
 
     /**
      * PageController constructor.
@@ -28,5 +28,18 @@ class PageController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\Pages\Resources\Page';
+        $this->storeRequest= [
+            "name" => "required",
+            "slug" => "unique:pages",
+            "category_id" => "required",
+            "excerpt" => "max:250",
+            "content" => "required"
+        ];
+        $this->updateRequest= [
+            "name" => "required",
+            "category_id" => "required",
+            "excerpt" => "max:250",
+            "content" => "required"
+        ];
     }
 }

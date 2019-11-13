@@ -25,6 +25,7 @@ class GroupsController extends Controller
      */
     protected $resource;
 
+    protected $storeRequest,$updateRequest;
 
     /**
      * GroupsController constructor.
@@ -34,5 +35,16 @@ class GroupsController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\RealEstate\Resources\CoreGroup';
+        $this->storeRequest = [
+          'name' => 'required|max:255',
+          'color' => 'required|max:255',
+          'status' => 'required',
+        ];
+        $this->updateRequest = [
+            'name' => 'required|max:255',
+            'color' => 'required|max:255',
+            'status' => 'required',
+        ];
+
     }
 }

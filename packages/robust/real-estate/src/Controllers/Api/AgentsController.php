@@ -17,11 +17,27 @@ class AgentsController extends Controller
 {
     use ApiTrait;
     protected $model,$resource;
+    protected $storeRequest,$updateRequest;
 
     public function __construct(AgentRepository $model)
     {
         $this->model=$model;
         $this->resource = 'Robust\RealEstate\Resources\Agent';
+        $this->storeRequest = [
+            'first_name' => 'required| min:1',
+            'last_name' => 'required| min:1',
+            'user_name' => 'required| min:1',
+            'email' => 'required| min:1 |unique:users',
+            'role' => 'required',
+            'password'=>['required','confirmed'],
+            'password_confirmation'=>'required'
+        ];
+        $this->updateRequest = [
+            "first_name" => "required",
+            "last_name" => "required",
+            "user_name" => "required",
+            "email" => "required|max:250"
+        ];
     }
     //must overwrite agents
 }
