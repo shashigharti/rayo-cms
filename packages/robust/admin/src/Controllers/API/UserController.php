@@ -46,7 +46,7 @@ class UserController extends Controller
      * @param $id
      * @return UserResource
      */
-    public function show($id)
+    public function edit($id)
     {
         return new UserResource($this->model->find($id)->with('roles')->first());
     }

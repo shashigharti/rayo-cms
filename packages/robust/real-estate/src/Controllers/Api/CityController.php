@@ -22,7 +22,7 @@ class CityController extends Controller
      * @var string
      */
     protected $resource;
-
+    protected $storeRequest,$updateRequest;
     /**
      * CityController constructor.
      * @param CityRepository $model
@@ -31,6 +31,14 @@ class CityController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\RealEstate\Resources\City';
+        $this->storeRequest = [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+        ];
+        $this->updateRequest = [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+        ];
     }
 
     /**

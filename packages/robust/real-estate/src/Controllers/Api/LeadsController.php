@@ -33,7 +33,7 @@ class LeadsController extends Controller
      * @var LeadRepositories|string
      */
     protected $model,$resource;
-
+    protected $storeRequest,$updateRequest;
     /**
      * LeadsController constructor.
      * @param LeadRepositories $model
@@ -42,6 +42,16 @@ class LeadsController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\RealEstate\Resources\Lead';
+        $this->storeRequest = [
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|max:255',
+        ];
+        $this->updateRequest = [
+            'firstname' => 'required|max:255',
+            'lastname' => 'required|max:255',
+            'email' => 'required|max:255',
+        ];
     }
 
     public function index()
@@ -115,44 +125,6 @@ class LeadsController extends Controller
     public function getLeadMetadata($id, LeadMetadata $leadMetadata)
     {
         return LeadMetadataResource::collection($leadMetadata->where('lead_id', $id)->get());
-    }
-
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Lead $lead
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function store(Request $request, Lead $lead)
-    {
-        try {
-            $newLead = $request->all();
-            $newLead['password'] = bcrypt($request->get('password'));
-            $lead->create($newLead);
-            return response()->json(['message' => 'Success']);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to save!', 'error' => $e]);
-        }
-    }
-
-    /**
-     * @param $id
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Lead $lead
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function update($id, Request $request, Lead $lead)
-    {
-        try {
-            $updatedLead = $request->all();
-            if ($request->has('password')) {
-                $updatedLead['password'] = bcrypt($request->get('password'));
-            }
-
-            $lead->find($id)->update($updatedLead);
-            return response()->json(['message' => 'Success']);
-        } catch (Exception $e) {
-            return response()->json(['message' => 'Failed to update!', 'error' => $e]);
-        }
     }
 
     /**

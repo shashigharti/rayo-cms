@@ -21,7 +21,7 @@ class MenuController extends Controller
     /**
      * @var MenuRepository|string
      */
-    protected $model,$resource;
+    protected $model,$resource,$storeRequest,$updateRequest;
 
     /**
      * MenuController constructor.
@@ -31,6 +31,18 @@ class MenuController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\Menus\Resources\Menu';
+        $this->storeRequest = [
+            'name' => 'required|max:255',
+            'items' => 'required',
+            'menu_limit' => 'required',
+            'type' => 'required',
+        ];
+        $this->updateRequest = [
+            'name' => 'required|max:255',
+            'items' => 'required',
+            'menu_limit' => 'required',
+            'type' => 'required',
+        ];
     }
 
 }

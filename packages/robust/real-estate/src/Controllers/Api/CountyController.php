@@ -22,6 +22,7 @@ class CountyController extends Controller
      * @var string
      */
     protected $resource;
+    protected $storeRequest,$updateRequest;
 
     /**
      * CountyController constructor.
@@ -31,6 +32,14 @@ class CountyController extends Controller
     {
         $this->model = $model;
         $this->resource = 'Robust\RealEstate\Resources\County';
+        $this->storeRequest = [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+        ];
+        $this->updateRequest = [
+            'name' => 'required|max:255',
+            'slug' => 'required|max:255',
+        ];
     }
 }
 
