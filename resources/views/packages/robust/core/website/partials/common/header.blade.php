@@ -77,4 +77,7 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 </header>
+@include(Site::templateResolver('core::website.partials.common.advance-search'))
