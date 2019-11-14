@@ -59,5 +59,8 @@ $(window).load(function() {
 	    isRange : true
 	});
 	$('.inner-list-tabs').tabs();
-
+	$('select').formSelect();
+	$('.advance-search').click(function(){
+		$('#adv-search-dropdown').toggleClass('show');
+	});
 });

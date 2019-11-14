@@ -64,7 +64,7 @@
                                         </div>
                                         <div class="col s2 center-align">
                                             <p>FEATURES</p>
-                                            <a href="#" class="theme-btn">Advanced search</a>
+                                            <a href="#" class="theme-btn advance-search" >Advanced search</a>
                                         </div>
                                         <div class="col s2 center-align">
                                             <p>19723 ACTIVE LIstings</p>
