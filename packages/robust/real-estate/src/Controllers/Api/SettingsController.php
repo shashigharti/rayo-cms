@@ -53,6 +53,13 @@ class SettingsController extends Controller
         );
         return response()->json(['message' => 'Success']);
     }
+
+    public function searchFields($type,CoreSetting $coreSetting)
+    {
+        $setting = $coreSetting->where('type',$type)->first();
+        $values = json_decode($setting->values);
+        return response()->json($values);
+    }
 }
 
 
