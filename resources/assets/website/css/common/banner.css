@@ -107,6 +107,7 @@
 }
 #adv-search-dropdown label,#adv-search-dropdown [type="checkbox"]+span:not(.lever) {
     font-size: 10px;
+    display: block;
 }
 #adv-search-dropdown input[type="text"]{
     height:1rem;
@@ -123,7 +124,9 @@
     margin-bottom: 2px;
 }
 #adv-search-dropdown .select-wrapper {
-    margin-top: 21px;
+    margin-top: 0px;
+    width: 45%;
+    display: inline-block;
 }
 #adv-search-dropdown .select-wrapper+label{
     top:0px;

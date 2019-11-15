@@ -34,15 +34,15 @@ return [
     ],
     "picture" => [
         "block" => "block1",
-        "display" => "Pictures",
+        "display" => "Picture Only",
         "name" => "status",
         "options" => [
             [
                 "name" => "status",
                 "choices" => [
-                    ["title" => "Only Show properties with photos","value" =>"yes"]
+                    ["title" => "Yes","value" =>"yes"]
                 ],
-                "placeholder" => "Select Picture only"
+                "placeholder" => "Select"
             ]
         ]
     ],
@@ -62,7 +62,7 @@ return [
                     ["title" => "5","value" =>"5"],
                     ["title" => "6","value" =>"6"],
                 ],
-                "placeholder" => "Select acres min"
+                "placeholder" => "Min"
             ],
             [
                 "name" => "acres_max",
@@ -75,7 +75,7 @@ return [
                     ["title" => "5","value" =>"5"],
                     ["title" => "6","value" =>"6"],
                 ],
-                "placeholder" => "Select acres max"
+                "placeholder" => "Max"
             ]
         ]
     ],
@@ -95,7 +95,7 @@ return [
                     ["title" => "$200000","value" =>"200000"],
                     ["title" => "$500000","value" =>"300000"],
                 ],
-                "placeholder" => "Select price min"
+                "placeholder" => "Min"
             ],
             [
                 "name" => "acres_max",
@@ -108,7 +108,7 @@ return [
                     ["title" => "$200000","value" =>"200000"],
                     ["title" => "$500000","value" =>"300000"],
                 ],
-                "placeholder" => "Select price max"
+                "placeholder" => "Max"
             ]
         ]
     ],
@@ -128,7 +128,7 @@ return [
                     ["title" => "20000","value" =>"20000"],
                     ["title" => "50000","value" =>"30000"],
                 ],
-                "placeholder" => "Select lot min"
+                "placeholder" => "Min"
             ],
             [
                 "name" => "lot_max",
@@ -141,7 +141,7 @@ return [
                     ["title" => "20000","value" =>"20000"],
                     ["title" => "50000","value" =>"30000"],
                 ],
-                "placeholder" => "Select lot max"
+                "placeholder" => "Max"
             ]
         ]
     ],
@@ -158,7 +158,7 @@ return [
                     ["title" => "Deer point","value" =>"Deer point"],
 
                 ],
-                "placeholder" => "Select elementary school"
+                "placeholder" => "Select"
             ],
         ]
     ],

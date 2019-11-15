@@ -1,4 +1,4 @@
-<div id='adv-search-dropdown'>
+<div id=''>
 	<div class="inner">
 		<div class="row">
 			<div class="col s3">
@@ -6,12 +6,12 @@
 				  	<div class="mb-20">
 				  		<p>
 					  		<label>Open Search</label>
-					  		<input type="text">					    
+					  		<input type="text">
 						</p>
 					</div>
 					<div class="mb-20">
 						<p>
-							<label>Type of property</label>						
+							<label>Type of property</label>
 						</p>
 						<p>
 					      <label>
@@ -46,7 +46,7 @@
 					</div>
 					<div class="mb-20">
 						<p>
-							<label>Property Status</label>						
+							<label>Property Status</label>
 						</p>
 						<p>
 					      <label>
@@ -71,18 +71,18 @@
 					        <input type="checkbox" />
 					        <span>Pending</span>
 					      </label>
-					    </p>					   
+					    </p>
 					</div>
 					<div class="mb-20">
 						<p>
-							<label>Pictures</label>						
+							<label>Pictures</label>
 						</p>
 						<p>
 					      <label>
 					        <input type="checkbox" />
 					        <span>Only show properties with photos</span>
 					      </label>
-					    </p>					   					   
+					    </p>
 					</div>
 				</div>
 			</div>
@@ -120,7 +120,7 @@
 					    <label>Zip</label>
 					</div>
 				</div>
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -140,7 +140,7 @@
 						<label></label>
 					</div>
 				</div>
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -160,7 +160,7 @@
 						<label></label>
 					</div>
 				</div>
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -184,13 +184,13 @@
 				  	<div class="col s12">
 				  		<p>
 						  	<label>Subdivision</label>
-						  	<input type="text">					    
+						  	<input type="text">
 						</p>
 					</div>
 				</div>
 			</div>
 			<div class="col s3">
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -210,7 +210,7 @@
 						<label></label>
 					</div>
 				</div>
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -230,7 +230,7 @@
 						<label></label>
 					</div>
 				</div>
-				<div class="mb-20">					
+				<div class="mb-20">
 					<div class="input-field col s6">
 					    <select>
 					      <option value="" disabled selected>Min</option>
@@ -367,7 +367,7 @@
 						<a href="#" class="theme-btn">search</a>
 					</div>
 				</div>
-			</div>			
+			</div>
 		</div>
-	</div>    
+	</div>
 </div>
