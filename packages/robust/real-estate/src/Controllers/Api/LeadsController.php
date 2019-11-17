@@ -45,12 +45,19 @@ class LeadsController extends Controller
         $this->storeRequest = [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => 'required|max:255',
+            'email' => 'required|max:255|unique:leads',
+            'deal_type' => 'required|unique:leads',
+            'username' => 'required',
+            'password' => 'required',
+            'activation_status' => 'required'
         ];
         $this->updateRequest = [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
             'email' => 'required|max:255',
+            'deal_type' => 'required',
+            'username' => 'required',
+            'activation_status' => 'required'
         ];
     }
 
