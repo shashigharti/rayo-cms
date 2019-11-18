@@ -23,6 +23,7 @@ class County extends BaseModel
         'name',
         'slug',
         'frontpage',
+        'dropdown',
         'active',
         'sold',
         'frontpage_order',

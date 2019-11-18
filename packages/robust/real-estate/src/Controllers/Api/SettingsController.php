@@ -33,7 +33,7 @@ class SettingsController extends Controller
         if($coreSetting->where('type',$type)->first()){
             return new CoreSettingResource($coreSetting->where('type', $type)->first());
         }
-        return  response()->json('null');
+        return  response()->json(['data' => []]);
     }
 
     /**
