@@ -14,7 +14,7 @@ class UserTableSeeder extends Seeder
         $all_permissions = (new PermissionHelper)->get_all_permissions();
 
         //Create a new role
-        $role = Role::create([
+        $role = Role::updateOrCreate(['name'=>'Administrator'],[
             'name' => 'Administrator'
         ]);
 
@@ -25,13 +25,15 @@ class UserTableSeeder extends Seeder
             }
 
             foreach ($permissions as $action => $display_name) {
-                $permission = Permission::create([
+                $permission = Permission::updateOrCreate(['name' => $action],[
                     "name" => $action,
                     "display_name" => $display_name,
                     "package_name" => $package_name
                 ]);
+                if($permission->wasRecentlyCreated){
+                    $role->permissions()->attach($permission->id);
+                }
 
-                $role->permissions()->attach($permission->id);
             }
         }
 
@@ -48,10 +50,13 @@ class UserTableSeeder extends Seeder
         ];
 
         foreach ($users as $user) {
-            $user = User::create($user);
-            $user->roles()->attach($role->id);
+            $user = User::updateOrCreate(['id'=>1],$user);
+            if($user->wasRecentlyCreated){
+                $user->roles()->attach($role->id);
+            }
+
         }
 
-        Role::create(['name' => 'User']);
+        Role::updateOrCreate(['name'=>'User'],['name' => 'User']);
     }
 }
