@@ -35,7 +35,8 @@ class UserController extends Controller
     public function login(User $userModel)
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-            $user = Auth::user();
+
+            $user = Auth::user()->with('roles.permissions')->first();
             $user['token'] = $user->createToken('MyApp')->accessToken;
 
             // Update last active at field
