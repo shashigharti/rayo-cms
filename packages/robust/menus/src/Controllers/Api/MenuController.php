@@ -44,5 +44,4 @@ class MenuController extends Controller
             'type' => 'required',
         ];
     }
-
 }
