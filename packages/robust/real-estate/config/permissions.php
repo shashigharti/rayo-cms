@@ -13,27 +13,23 @@ return [
     */
     /* {package-name}.{model or object}.{action}*/
     'actions' => [
-        'pages.manage' => 'Pages',
-        'pages.add' => 'Add Pages',
-        'pages.edit' => 'Edit Pages',
-        'pages.delete' => 'Delete Pages',
-        'pages.import' => 'Import Pages',
-        'pages.export' => 'Export Pages',
 
-        'pages.categories.manage' => 'Categories',
-        'pages.categories.add' => 'Add Categories',
-        'pages.categories.edit' => 'Edit Categories',
-        'pages.categories.delete' => 'Delete Categories',
-        'pages.categories.import' => 'Import Categories',
-        'pages.categories.export' => 'Export Categories',
-
-        'pages.downloads.manage' => "Downloads",
-        'pages.downloads.add' => "Add Downloads",
-        'pages.downloads.edit' => "Edit Downloads",
-        'pages.downloads.delete' => "Delete Downloads",
-        'pages.downloads.import' => "Import Downloads",
-        'pages.downloads.export' => "Export Downloads",
-
+        'react.dashboard.view' => 'View Dashboard',
+        'react.leads.view' => 'View Leads',
+        'react.pages' => 'Pages',
+        'react.pages.view' => 'View Pages',
+        'react.locations.view' => 'View Locations',
+        'react.cities.view' => 'View Cities',
+        'react.zips.view' => 'View Zips',
+        'react.counties.view' => 'View Counties',
+        'react.email.view' => 'View Email Templates',
+        'react.banner.view' => 'View Banner',
+        'react.agent.view' => 'View Agent',
+        'react.admin.view' => 'Admin',
+        'react.users.view' => 'View Users',
+        'react.groups.view' => 'View Groups',
+        'react.menus.view' => 'View Groups',
+        'react.settings.view' => 'View Settings',
         'mls.manage' => 'MLS',
     ]
 ];
