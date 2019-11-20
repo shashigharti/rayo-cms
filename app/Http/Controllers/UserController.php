@@ -48,7 +48,7 @@ class UserController extends Controller
             ]);
             return response()->json(['success' => true, 'user' => $user], $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['success'=>false,'error' => 'Unauthorised'], 401);
         }
     }
 
@@ -91,32 +91,5 @@ class UserController extends Controller
     {
         $user = Auth::user();
         return response()->json(['success' => $user], $this->successStatus);
-    }
-
-    public function resetPassword(Request $request)
-    {
-        $data = $request->all();
-
-        $response = Password::sendResetLink($data , function (Message $message) {
-            $message->subject('Password Reset');
-        });
-        switch ($response){
-            case Password::RESET_LINK_SENT:
-                return response()->json(['status' => true]);
-            case Password::INVALID_USER:
-                return response()->json(['status' => false]);
-        }
-        return response()->json(['error' => 'Email Address Doesnot Exist!!'], 401);
-    }
-
-    public function showResetForm(Request $request, $token = null)
-    {
-        $url = 'localhost:8080/reset-password/';
-        $params = $token . '/' .$request->email;
-        $url = filter_var($url,FILTER_SANITIZE_URL);
-        $params  = urlencode($params);
-        dd($params);
-//        $url = 'https://mailtrap.io/' . $token . '/' .$request->email;
-        return Redirect::away($url);
     }
 }
