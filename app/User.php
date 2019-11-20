@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Notifications\CustomResetPasswordNotification;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
@@ -42,5 +43,10 @@ class User extends Authenticatable
     public function roles()
     {
         return $this->belongsToMany('Robust\Admin\Models\Role');
+    }
+
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new CustomResetPasswordNotification($token));
     }
 }
