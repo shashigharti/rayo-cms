@@ -30,8 +30,7 @@ class Banner extends Model
     protected $fillable = [
         'name',
         'slug',
-        'type',
-        'slider',
+        'properties',
         'block',
         'order',
         'status'

@@ -44,8 +44,7 @@ class BannerController extends Controller
             }
         }
         $properties = $this->properties($data);
-        $data['type'] = $data['banner_template'];
-        $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
+        $data['template'] = $data['banner_template'];
         $data['properties'] = json_encode($properties);
         $this->model->store($data);
         return response()->json(['message' => 'success']);
@@ -55,15 +54,14 @@ class BannerController extends Controller
     public function update($id,Request $request)
     {
         $data = $request->all();
-        if(isset($this->storeRequest)){
-            $validator = Validator::make($data,$this->storeRequest);
+        if(isset($this->updateRequest)){
+            $validator = Validator::make($data,$this->updateRequest);
             if($validator->fails()){
                 return response()->json(['errors' => $validator->errors()],422);
             }
         }
         $properties = $this->properties($data);
-        $data['type'] = $data['banner_template'];
-        $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
+        $data['template'] = $data['banner_template'];
         $data['properties'] = json_encode($properties);
         $this->model->update($id,$data);
         return response()->json(['message' => 'success']);

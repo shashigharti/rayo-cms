@@ -14,9 +14,8 @@ class AddFieldsToBannersTable extends Migration
     public function up()
     {
         Schema::table('banners', function (Blueprint $table) {
-            $table->string('type')->nullable();
-            $table->boolean('slider')->default(0);
-            $table->string('block')->nullable();
+            $table->string('template',20)->nullable();
+            $table->text('properties')->nullable();
             $table->integer('order')->nullable();
             $table->boolean('status')->nullable();
         });
