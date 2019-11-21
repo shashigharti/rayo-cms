@@ -1,5 +1,5 @@
 @set('mainBannerSliders', $banners->getBannersInType(
-    ['banner-slider'])
+    ['main-banner'])
 
 <ul class="slides">
     @foreach($mainBannerSliders as $mainBannerSlider)
