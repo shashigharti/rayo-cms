@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddFieldsToBannersTable extends Migration
+class AddPropertiesFieldToBannerTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,11 +14,7 @@ class AddFieldsToBannersTable extends Migration
     public function up()
     {
         Schema::table('banners', function (Blueprint $table) {
-            $table->string('type')->nullable();
-            $table->boolean('slider')->default(0);
-            $table->string('block')->nullable();
-            $table->integer('order')->nullable();
-            $table->boolean('status')->nullable();
+            $table->longText('properties')->nullable();
         });
     }
 
@@ -30,7 +26,7 @@ class AddFieldsToBannersTable extends Migration
     public function down()
     {
         Schema::table('banners', function (Blueprint $table) {
-            $table->dropColumn(['type','slider','block','order','status']);
+            $table->dropColumn('properties');
         });
     }
 }

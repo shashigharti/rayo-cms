@@ -43,17 +43,19 @@ class BannerController extends Controller
                 return response()->json(['errors' => $validator->errors()],422);
             }
         }
-        $block = [
+        $properties = [
             'header' => $data['header'] != null ? $data['header'] : '',
             'area_types' => $data['area_types'] != null ? $data['area_types'] : '',
             'sub_areas' => $data['sub_areas'] != null ? $data['sub_areas'] : '',
             'property_ids' => $data['property_ids'] != null ? $data['property_ids'] : '',
             'button_text' => $data['button_text'] != null ? $data['button_text'] : '',
             'button_url' => $data['button_url'] != null ? $data['button_url'] : '',
+            'prices' => $data['prices'] != null ? $data['prices'] : '',
+            'locations' => $data['locations'] != null ? $data['locations'] : '',
         ];
         $data['type'] = $data['banner_template'];
         $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
-        $data['block'] = json_encode($block);
+        $data['properties'] = json_encode($properties);
         $this->model->store($data);
         return response()->json(['message' => 'success']);
 

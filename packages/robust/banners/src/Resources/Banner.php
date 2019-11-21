@@ -26,7 +26,9 @@ class Banner extends JsonResource
             'button_url' => $blocks['button_url'],
             'banner_template' => $this->type,
             'status' => $this->status,
-            'order' => $this->order
+            'order' => $this->order,
+            'prices' => $blocks['prices'],
+            'locations' => $blocks['locations']
         ];
     }
 }
