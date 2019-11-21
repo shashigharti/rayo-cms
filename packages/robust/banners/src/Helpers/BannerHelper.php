@@ -34,13 +34,19 @@ class BannerHelper
      * @return collection
      */
     public function getBannersByType($types){
-        return $this->banners->whereIn('template', $types)->all();
+        return $this->banners->whereIn('template', $types)
+        ->sortBy('order')
+        ->values()
+        ->all();
     }
 
     /**
      * @return collection
      */
     public function getBannersNotInType($types){
-        return $this->banners->whereNotIn('template', $types)->all();
+        return $this->banners->whereNotIn('template', $types)
+        ->sortBy('order')
+        ->values()
+        ->all();
     }
 }
