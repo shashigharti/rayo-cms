@@ -9,7 +9,7 @@
             </div>
         </div>
         <div class="adv-slider2">
-            @foreach($city_one_sliders as $slider)
+            {{-- @foreach($city_one_sliders as $slider)
                 <div class="single-block">
                     <img src={{$slider->media->file}}>
                     <div class="slider--text">
@@ -17,7 +17,7 @@
                         <p>{{$slider->media->name}}</p>
                     </div>
                 </div>
-            @endforeach
+            @endforeach --}}
         </div>
     </div>
 </section>
