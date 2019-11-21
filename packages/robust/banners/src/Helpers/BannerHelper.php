@@ -10,19 +10,33 @@ use Robust\Banners\Models\Banner;
  */
 class BannerHelper
 {
+    private $banners = [];
 
     /**
-     * @param null $slug
-     * @return mixed
+     * @return collection
      */
-    public function getBanners($slug = null)
+    public function getBanners(BannerRepository $banner)
     {
-        $banner = Banner::join('banners_images', 'banners.id', '=', 'banners_images.banner_id')
-            ->join('medias', 'banners_images.media_id', '=', 'medias.id')
-            ->where('banners.slug', $slug)
-            ->select('banners.*', 'banners_images.*', 'medias.file as file')
-            ->get();
+        $this->banners = collect();
+        $banners = $banner->get();
+        
+        foreach($banners as $banner){
+            $this->banners[$banner->template][] = $banner;
+        }
+        return $this->banners ;
+    }
 
-        return $banner;
+    /**
+     * @return collection
+     */
+    public function getBannerByType($types){
+        return $this->banners->whereIn('template', $types);
+    }
+
+    /**
+     * @return collection
+     */
+    public function getBannersNotInType($types){
+        return $this->banners->whereNotIn('template', $types);
     }
 }

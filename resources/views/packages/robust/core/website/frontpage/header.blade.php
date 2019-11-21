@@ -1,14 +1,7 @@
-@set('main_slider',$banner_helper->byType(1,true))
 <header>
     <div class="banner">
         <div class="slider">
-            <ul class="slides">
-                @foreach($main_slider as $slider)
-                    <li>
-                        <img src="{{$slider->media->file}}" alt="{{$slider->slug}}">
-                    </li>
-                @endforeach
-            </ul>
+           @include('core::website.banners.partials.banner-slider', ['banner_slider' => banners['banner-slider']])
             <div>
                 <div class="banner-overlay">
                     <div class="container-fluid">
@@ -81,4 +74,3 @@
     </div>
     <advance-search  id="adv-search-dropdown"></advance-search>
 </header>
-{{--@include(Site::templateResolver('core::website.partials.common.advance-search'))--}}
