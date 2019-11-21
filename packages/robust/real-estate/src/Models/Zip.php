@@ -23,6 +23,7 @@ class Zip extends BaseModel
         'name',
         'city_id',
         'county_id',
+        'dropdown',
         'slug',
         'frontpage',
         'active',

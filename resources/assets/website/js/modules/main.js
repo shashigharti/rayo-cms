@@ -14,7 +14,7 @@ $(window).load(function() {
 	    $('.slider').slider({
             fullWidth:true,
             indicators:false
-        });	
+        });
         autoplay();
 		function autoplay() {
 			$('.carousel').carousel('next');
@@ -60,7 +60,8 @@ $(window).load(function() {
 	});
 	$('.inner-list-tabs').tabs();
 	$('select').formSelect();
-	$('.advance-search').click(function(){
+	$('.advance-search').click(function(e){
+	    e.preventDefault();
 		$('#adv-search-dropdown').toggleClass('show');
 	});
 });

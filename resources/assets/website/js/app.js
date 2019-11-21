@@ -2,4 +2,4 @@
 //import("modules/materialize.js")
 //import("modules/slick.min.js")
 //import("modules/main.js")
-//import("modules/advance-search.js")
+//import("modules/advance-search.min.js")

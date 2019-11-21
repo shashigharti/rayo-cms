@@ -2,6 +2,8 @@
 Route::group(['as' => 'newuser.'], function () {
     Route::post('login', 'API\UserController@login');
     Route::post('register', 'API\UserController@register');
+    Route::post('password/reset', 'Auth\ForgotPasswordController@sendResetLinkEmail');
+    Route::post('password/update', 'Auth\ResetPasswordController@reset');
 });
 
 

@@ -7,9 +7,12 @@ use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Password;
+use Illuminate\Support\Facades\Redirect;
 use Robust\Admin\Models\User;
-use Validator;
+use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\UserResource as UserResource;
 
 /**
@@ -35,7 +38,8 @@ class UserController extends Controller
     public function login(User $userModel)
     {
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')])) {
-            $user = Auth::user();
+
+            $user = Auth::user()->with('roles.permissions')->first();
             $user['token'] = $user->createToken('MyApp')->accessToken;
 
             // Update last active at field
@@ -44,7 +48,7 @@ class UserController extends Controller
             ]);
             return response()->json(['success' => true, 'user' => $user], $this->successStatus);
         } else {
-            return response()->json(['error' => 'Unauthorised'], 401);
+            return response()->json(['success'=>false,'error' => 'Unauthorised'], 401);
         }
     }
 
@@ -57,24 +61,26 @@ class UserController extends Controller
         $validator = Validator::make($request->all(), [
             'first_name' => 'required',
             'last_name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users',
             'password' => 'required',
             'c_password' => 'required|same:password',
         ]);
         if ($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], 401);
+            return response()->json(['success'=>false,'errors' => $validator->errors()],422);
         }
-        $input = $request->all();
-        $input['password'] = bcrypt($input['password']);
+        $data = $request->all();
+        $data['password'] = bcrypt($data['password']);
         try {
-            $user = User::create($input);
+            User::create($data);
+            $user = Auth::attempt(['email' =>$data['email'],'password' => $data['c_password']]);
+            $user = Auth::user()->with('roles.permissions')->first();
+
         } catch (Exception $e) {
-            return response()->json(['code' => $e->getCode()], $this->failedStatus);
+            return response()->json(['success'=>'false','code' => $e->getCode()], $this->failedStatus);
         }
 
-        $success['token'] = $user->createToken('MyApp')->accessToken;
-        $success['name'] = $user->first_name . ' ' . $user->last_name;
-        return response()->json(['success' => $success], $this->successStatus);
+        $user['token'] = $user->createToken('MyApp')->accessToken;
+        return response()->json(['success' => true, 'user' => $user], $this->successStatus);
     }
 
     /**
