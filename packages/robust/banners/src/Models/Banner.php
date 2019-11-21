@@ -31,7 +31,7 @@ class Banner extends Model
         'name',
         'slug',
         'properties',
-        'block',
+        'template',
         'order',
         'status'
     ];
