@@ -12,7 +12,6 @@ use Robust\Banners\Repositories\BannerRepository;
 class BannerHelper
 {
     private $banners;
-    private $model;
 
     /**
      * BannerHelper constructor.
@@ -20,30 +19,28 @@ class BannerHelper
      */
     public function __construct(BannerRepository $banner)
     {
-        $this->banners = collect();
-        $this->model = $banner;
+        $this->banners = $banner->get();
     }
 
     /**
      * @return collection
      */
-    public function getBanners()
+    public function all()
     {
-        $this->banners = $this->model->get();
         return $this->banners;
     }
 
     /**
      * @return collection
      */
-    public function getBannerByType($types){
-        return $this->banners->whereIn('template', $types);
+    public function getBannersByType($types){
+        return $this->banners->whereIn('template', $types)->all();
     }
 
     /**
      * @return collection
      */
     public function getBannersNotInType($types){
-        return $this->banners->whereNotIn('template', $types);
+        return $this->banners->whereNotIn('template', $types)->all();
     }
 }

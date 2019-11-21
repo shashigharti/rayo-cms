@@ -1,7 +1,7 @@
 <header>
     <div class="banner">
         <div class="slider">
-           @include('core::website.banners.partials.banner-slider', ['banner_slider' => banners['banner-slider']])
+           @include(Site::templateResolver('core::website.banners.partials.main-banner'))
             <div>
                 <div class="banner-overlay">
                     <div class="container-fluid">
