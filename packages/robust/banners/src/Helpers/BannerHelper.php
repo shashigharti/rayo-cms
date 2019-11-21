@@ -3,6 +3,7 @@
 namespace Robust\Banners\Helpers;
 
 use Robust\Banners\Models\Banner;
+use Robust\Banners\Repositories\BannerRepository;
 
 /**
  * Class BannerHelper
@@ -10,20 +11,26 @@ use Robust\Banners\Models\Banner;
  */
 class BannerHelper
 {
-    private $banners = [];
+    private $banners;
+    private $model;
+
+    /**
+     * BannerHelper constructor.
+     * @param Banner $model
+     */
+    public function __construct(BannerRepository $banner)
+    {
+        $this->banners = collect();
+        $this->model = $banner;
+    }
 
     /**
      * @return collection
      */
-    public function getBanners(BannerRepository $banner)
+    public function getBanners()
     {
-        $this->banners = collect();
-        $banners = $banner->get();
-        
-        foreach($banners as $banner){
-            $this->banners[$banner->template][] = $banner;
-        }
-        return $this->banners ;
+        $this->banners = $this->model->get();
+        return $this->banners;
     }
 
     /**
