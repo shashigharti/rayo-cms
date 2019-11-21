@@ -30,11 +30,29 @@ class BannerController extends Controller
         $this->updateRequest = [
             'name' => 'required|max:255',
             'slug' => 'required|max:255',
-            'type' => 'required'
+            'banner_template' => 'required'
         ];
     }
 
     public function store(Request $request)
+    {
+        $data = $request->all();
+        if(isset($this->updateRequest)){
+            $validator = Validator::make($data,$this->storeRequest);
+            if($validator->fails()){
+                return response()->json(['errors' => $validator->errors()],422);
+            }
+        }
+        $properties = $this->properties($data);
+        $data['type'] = $data['banner_template'];
+        $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
+        $data['properties'] = json_encode($properties);
+        $this->model->store($data);
+        return response()->json(['message' => 'success']);
+
+    }
+
+    public function update($id,Request $request)
     {
         $data = $request->all();
         if(isset($this->storeRequest)){
@@ -43,7 +61,18 @@ class BannerController extends Controller
                 return response()->json(['errors' => $validator->errors()],422);
             }
         }
-        $properties = [
+        $properties = $this->properties($data);
+        $data['type'] = $data['banner_template'];
+        $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
+        $data['properties'] = json_encode($properties);
+        $this->model->update($id,$data);
+        return response()->json(['message' => 'success']);
+
+    }
+
+    public function properties($data)
+    {
+        return [
             'header' => $data['header'] != null ? $data['header'] : '',
             'area_types' => $data['area_types'] != null ? $data['area_types'] : '',
             'sub_areas' => $data['sub_areas'] != null ? $data['sub_areas'] : '',
@@ -53,12 +82,6 @@ class BannerController extends Controller
             'prices' => $data['prices'] != null ? $data['prices'] : '',
             'locations' => $data['locations'] != null ? $data['locations'] : '',
         ];
-        $data['type'] = $data['banner_template'];
-        $data['slider'] = $data['type'] == 'Slider' ? 1 : 0;
-        $data['properties'] = json_encode($properties);
-        $this->model->store($data);
-        return response()->json(['message' => 'success']);
-
     }
     /**
      * @param $slug
