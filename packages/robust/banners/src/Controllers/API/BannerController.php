@@ -72,14 +72,15 @@ class BannerController extends Controller
     {
         return [
             'header' => $data['header'] != null ? $data['header'] : '',
-            'area_types' => $data['area_types'] != null ? $data['area_types'] : '',
+            'area_types' => $data['area_types'] != null ? $data['area_types'] : [],
             'sub_areas' => $data['sub_areas'] != null ? $data['sub_areas'] : '',
-            'property_ids' => $data['property_ids'] != null ? $data['property_ids'] : '',
+            'property_ids' => $data['property_ids'] != null ? $data['property_ids'] : [],
             'button_text' => $data['button_text'] != null ? $data['button_text'] : '',
             'button_url' => $data['button_url'] != null ? $data['button_url'] : '',
-            'prices' => $data['prices'] != null ? $data['prices'] : '',
-            'locations' => $data['locations'] != null ? $data['locations'] : '',
+            'prices' => $data['prices'] != null ? $data['prices'] : [],
+            'locations' => $data['locations'] != null ? $data['locations'] : [],
             'content' => $data['content'] != null ? $data['content'] : '',
+            'images' => $data['images'] != null ? $data['images'] : []
         ];
     }
     /**

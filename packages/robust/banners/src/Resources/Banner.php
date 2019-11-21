@@ -29,7 +29,8 @@ class Banner extends JsonResource
             'order' => $this->order,
             'prices' => $blocks['prices'],
             'locations' => $blocks['locations'],
-            'content' => $blocks['content']
+            'content' => $blocks['content'],
+            'images' => $blocks['images']
         ];
     }
 }
