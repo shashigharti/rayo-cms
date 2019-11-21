@@ -13,7 +13,7 @@ class Banner extends JsonResource
      */
     public function toArray($request)
     {
-        $blocks = json_decode($this->block,true);
+        $blocks = json_decode($this->properties,true);
         return [
            'id' => $this->id,
            'name' => $this->name,
