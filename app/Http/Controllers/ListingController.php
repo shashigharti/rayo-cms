@@ -22,7 +22,6 @@ class ListingController extends Controller
         $total = $model->count();
         $results = $this->model->with('image')
                 ->paginate(40);
-
         return view(Site::templateResolver('core::website.listings.index'),['results'=>$results,'total'=>$total]);
     }
 
