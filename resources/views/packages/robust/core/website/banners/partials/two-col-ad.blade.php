@@ -1,14 +1,18 @@
+@set('TwoColAds', $banner_helper->getBannersByType(['two-col-ad']))
 <section class="adv--block">
     <div class="container-fluid">
-        <div class="row">
-            <div class="col s7">
-                <img src="images/banners/block13.jpg">
+        @foreach($TwoColAds as $TwoColAd)
+            @set('properties', json_decode($TwoColAd->properties))
+            <div class="row">
+                <div class="col s7">
+                    <img src="{{$properties->image ?? getMedia($properties->image)}}">
+                </div>
+                <div class="col s5">
+                    <h4>{{$properties->header}}</h4>
+                    <p>{{$properties->content}}</p>
+                    <a href="{{$properties->button_url ?? '#'}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
+                </div>
             </div>
-            <div class="col s5">
-                <h4>Homes Available in Alaska</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                <a href="#" class="buy-now-btn">Buy Now</a>
-            </div>
-        </div>
+        @endforeach
     </div>
 </section>

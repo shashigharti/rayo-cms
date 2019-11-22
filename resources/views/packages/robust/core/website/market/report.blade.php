@@ -1,5 +1,5 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
-@inject('banner_helper','App\Helpers\BannerHelper')
+@inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @section('content')
     @include(Site::templateResolver('core::website.listings.partials..header'))
     <section class="main-content">
@@ -13,12 +13,12 @@
                             <b>Sellers-</b>
                             Research your neighborhood to list your home for the right price.&nbsp;
                             <b>Buyers-</b>
-                            Research all neighborhoods in your price range 
+                            Research all neighborhoods in your price range
                         </p>
                     </div>
                 </div>
             </div>
-          
+
             <div class="row">
                 <div class="market--left__search col s6">
                     <p><b>Sort By:</b><select><option>Cities</option></select></p>

@@ -1,3 +1,4 @@
+@set('sliders', $banner_helper->getBannersByType(['slider']))
 <section class="advertisement">
     <div class="container-fluid">
         <div class="row">
@@ -9,15 +10,18 @@
             </div>
         </div>
         <div class="adv-slider2">
-            {{-- @foreach($city_one_sliders as $slider)
+            @foreach($sliders as $slider)
                 <div class="single-block">
-                    <img src={{$slider->media->file}}>
+                    @set('properties', json_decode($slider->properties))
+                    <img src={{$properties->image ?? getMedia($properties->image)}}>
                     <div class="slider--text">
                         <h4>$149,000</h4>
-                        <p>{{$slider->media->name}}</p>
+                        <p>{{$slider->header}}</p>
                     </div>
                 </div>
-            @endforeach --}}
+            @endforeach
         </div>
     </div>
 </section>
+
+
