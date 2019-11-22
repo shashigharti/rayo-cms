@@ -1,16 +1,12 @@
-@extends(Site::templateResolver('core::website.layouts.blank'))
+@extends('core::website.layouts.blank')
+@section('body_content')
+    <header>
+        @yield('header')
+    </header>
+    
+    @yield('body_section') 
 
-
-@section('content')
-    @section('before-header')
-    
-    @stop
-    @section('header')
-    
-    @stop
-    @section('main-content')
-    
-    @stop
-    @section('footer')
-    @show    
-@stop
+    <footer>
+    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
+    </footer>   
+@endsection

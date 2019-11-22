@@ -48,7 +48,7 @@
     </head>
     <body>
         {!! settings('ga-analytics','code') !!}
-        @yield('content')
+        @yield('body_content')
 
         <script src="{{ url('assets/website/js/app.min.js') }}"></script>
     </body>
