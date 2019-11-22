@@ -14,10 +14,9 @@
 @section('banner')
     <div class="banner--default">
         <div class="container ">
-                    <span class="banner__caption">
-                        Lorem Ipsum is simply dummy text <br>
-                        <span>of the printing and typesetting industry</span>
-                    </span>
+            <span class="banner__caption">
+                Lorem Ipsum is simply dummy text 
+            </span>
         </div>
     </div>
 @show

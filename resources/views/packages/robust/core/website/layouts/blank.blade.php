@@ -26,7 +26,7 @@
     <link rel="icon" type="image/png" href="{{ asset('/favicon-32x32.png') }}" sizes="32x32">
     {{--END FAVICONS--}}
 
-<!-- Fonts -->
+    <!-- Fonts -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
           integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
 
@@ -55,25 +55,5 @@
 
 
 <script src="{{ url('assets/website/js/app.min.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
-<script>
-    $(document).ready(function(){
-        $('.slider-for').slick({
-            slidesToShow: 1,
-            slidesToScroll: 1,
-            arrows: false,
-            fade: true,
-            asNavFor: '.slider-nav'
-        });
-        $('.slider-nav').slick({
-            slidesToShow:5,
-            slidesToScroll: 1,
-            asNavFor: '.slider-for',
-            arrows: true,
-            centerMode: true,
-            focusOnSelect: true
-        });
-    });
-</script>
 </body>
 </html>
