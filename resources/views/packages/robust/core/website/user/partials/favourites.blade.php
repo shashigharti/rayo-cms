@@ -1,6 +1,6 @@
 <div id="favourites">
     <div class="">
-        <h3 class="favourite-title">My Favourites Properties (0)</h3>
+        <h3 class="title-more-detail favourite-title">My Favourites Properties (0)</h3>
         <div class="sort-filter">
             <span class="btn compare-favourite">
                 Compare Checkmarked Properties
