@@ -4,7 +4,7 @@
     @include(Site::templateResolver('core::website.frontpage.partials.menu'))   
 @endsection
 @section('body_section')    
-    <section class="row">
+    <div class="row clearfix">
         <div class="col m3">
             @include(Site::templateResolver('core::website.user.partials.side-nav'))
         </div>

@@ -1,4 +1,4 @@
-<ul id="slide-out" class="tabs">
+<ul class="tabs">
     <li class="tab col m12">
         <a href="#profile">Profile</a>
     </li>
