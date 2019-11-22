@@ -1,4 +1,4 @@
-@extends('core::website.layouts.default')
+@extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @section('content')
     @include(Site::templateResolver('core::website.frontpage.header'))
