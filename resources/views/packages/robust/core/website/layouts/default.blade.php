@@ -3,10 +3,11 @@
     <header>
         @yield('header')
     </header>
-    
-    @yield('body_section') 
+
+    @yield('body_section')
+
     <footer>
-    	@include(Site::templateResolver('core::website.frontpage.partials.footer'))
+        @yield('footer')
 	</footer>
-      
+
 @endsection

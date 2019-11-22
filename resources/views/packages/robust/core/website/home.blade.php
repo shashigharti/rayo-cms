@@ -18,10 +18,14 @@
             </div>
         </div>
     </div>
-    <advance-search id="adv-search-dropdown"></advance-search>        
+    <advance-search id="adv-search-dropdown"></advance-search>
 @endsection
 @section('body_section')
     {{-- @include(Site::templateResolver('core::website.frontpage.single-col-properties')) --}}
     @include(Site::templateResolver('core::website.frontpage.partials.ad-banners'))
-    {{-- @include(Site::templateResolver('core::website.frontpage.cta')) --}}    
+    {{-- @include(Site::templateResolver('core::website.frontpage.cta')) --}}
+@endsection
+
+@section('footer')
+    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
 @endsection
