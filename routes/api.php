@@ -13,8 +13,8 @@ Route::group(['as' => 'admin.', 'middleware' => ['auth']], function () {
 });
 
 Route::get('/media/{id}','HomeController@getThumbnail');
-Route::get('/images/all','HomeController@getMedia');
-Route::post('/upload','HomeController@uploadMedia');
+Route::get('/images','HomeController@getMedia');
+Route::post('/media/','HomeController@uploadMedia');
 Route::get('/user/all','API\UserController@index');
 Route::get('/user/edit/{id}','API\UserController@edit');
 Route::put('/user/update/{id}','API\UserController@update');

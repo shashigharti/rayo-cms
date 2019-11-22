@@ -3,9 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 use Robust\Core\Helpage\Site;
 use Robust\Core\Models\Media;
-use Robust\Core\Repositories\MediaRepository;
+use Robust\Core\Repositories\Api\MediaRepository;
 
 class HomeController extends Controller
 {
@@ -37,11 +38,17 @@ class HomeController extends Controller
 
     public function uploadMedia(Request $request,MediaRepository $model)
     {
-        $uploads = [
-            $request->file('file')
-        ];
-        $collection = $model->store($uploads);
-        return response()->json($collection);
+        $validator = Validator::make($request->all(),[
+            'file' => 'required',
+            'name' => 'required',
+            'slug' => 'required'
+        ]);
+        if($validator->fails()){
+            return response()->json(['errors' => $validator->errors()],422);
+        }
+        $data = $request->all();
+        $model->store($data);
+        return response()->json(['success' =>true]);
     }
 
     public function getThumbnail($id)
