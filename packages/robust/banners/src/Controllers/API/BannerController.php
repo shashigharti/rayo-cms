@@ -16,7 +16,7 @@ use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 class BannerController extends Controller
 {
     use ApiTrait;
-    protected $model,$resource,$storeRequest,$updateRequest;
+    protected $model,$resource,$storeRequest,$updateRequest,$templates;
 
     public function __construct(BannerRepository $model)
     {
@@ -32,19 +32,26 @@ class BannerController extends Controller
             'slug' => 'required|max:255',
             'banner_template' => 'required'
         ];
+        $this->templates = [
+            'TwoColumnAd' => 'two-col-ad',
+            'Slider' => 'slider',
+            'FullScreenAd' => 'full-screen-ad',
+            'SingleColumnBlock' => 'single-col-block',
+            'BannerSlider' => 'banner-slider'
+        ];
     }
 
     public function store(Request $request)
     {
         $data = $request->all();
-        if(isset($this->updateRequest)){
+        if(isset($this->storeRequest)){
             $validator = Validator::make($data,$this->storeRequest);
             if($validator->fails()){
                 return response()->json(['errors' => $validator->errors()],422);
             }
         }
         $properties = $this->properties($data);
-        $data['template'] = $data['banner_template'];
+        $data['template'] = $this->templates[$data['banner_template']];
         $data['properties'] = json_encode($properties);
         $this->model->store($data);
         return response()->json(['message' => 'success']);
@@ -61,7 +68,7 @@ class BannerController extends Controller
             }
         }
         $properties = $this->properties($data);
-        $data['template'] = $data['banner_template'];
+        $data['template'] = $this->templates[$data['banner_template']];
         $data['properties'] = json_encode($properties);
         $this->model->update($id,$data);
         return response()->json(['message' => 'success']);
@@ -80,7 +87,7 @@ class BannerController extends Controller
             'prices' => $data['prices'] != null ? $data['prices'] : [],
             'locations' => $data['locations'] != null ? $data['locations'] : [],
             'content' => $data['content'] != null ? $data['content'] : '',
-            'images' => $data['images'] != null ? $data['images'] : []
+            'image' => $data['image'] != null ? $data['image'] : ''
         ];
     }
     /**

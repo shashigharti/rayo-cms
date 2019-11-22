@@ -1,156 +1,27 @@
-@set('singleColBanners', $banner_helper->getBannersByType(['single-col-block'])
+@set('singleColBanners', $banner_helper->getBannersByType(['single-col-block']))
+<section class="search-lists">
+    <div class="container-fluid">
+        <div class="row">
+            @foreach($singleColBanners as $singleColBanner)
+                @set('properties', json_decode($singleColBanner->properties))
+                <div class="col s4">
+                    <div class="single-block">
+                        <img src="{{$properties->image ?? getMedia($properties->image)}}" alt="">
+                        <div class="figcaption center-align">
+                            <h2>{{$singleColBanner->name}}</h2>
+                            <div class="available-prices">
+                                @if(isset($properties->prices))
+                                    @foreach($properties->prices as $price)
+                                        <a href="#">{{$price}}</a>
+                                    @endforeach
+                                @endif
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
 
-@foreach($singleColBanners as $singleColBanner)
 
-@endforeach
-
-// <section class="search-lists">
-//     <div class="container-fluid">
-//         <div class="row">
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HONOLULU</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block2.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HAWAII KAI</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block3.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>DIAMOND HEAD</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HONOLULU</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block2.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HAWAII KAI</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block3.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>DIAMOND HEAD</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HONOLULU</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block2.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>HAWAII KAI</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//             <div class="col s4">
-//                 <div class="single-block">
-//                     <img src="assets/website/images/block3.jpg">
-//                     <div class="figcaption center-align">
-//                         <h2>DIAMOND HEAD</h2>
-//                         <div class="available-prices">
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                             <a href="#">$20,000-$40,000 (10)</a>
-//                         </div>
-//                     </div>
-//                 </div>
-//             </div>
-//         </div>
-//     </div>
-// </section>
