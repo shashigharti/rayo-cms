@@ -1,7 +1,7 @@
 /* Map Css */
 #left-container {
     position: fixed;
-    top: 69px;
+    top:85px;
     bottom: 0;
     max-height: 2000px;
     background: #e1dfda;
@@ -9,7 +9,7 @@
 }
 #right-container {
     position: absolute;
-    top: 69px;
+    top:85px;
     width: 671px;
     right:0px;
     box-shadow: -1px,0,3px,rgba(0,0,0,.2);

@@ -1,7 +1,9 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
-@section('content')
+@section('header')
     @include(Site::templateResolver('core::website.listings.partials..header'))
+@endsection
+@section('body_section')
     <section class="main-content">
         <div class="container-fluid">
             <div class="row">
@@ -130,6 +132,8 @@
             </div>
         </div>
     </section>
-    @include(Site::templateResolver('core::website.listings.partials.footer'))
+@endsection
+@section('footer')
+    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
 @endsection
 

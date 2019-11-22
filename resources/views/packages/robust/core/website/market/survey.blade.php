@@ -1,28 +1,9 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
-@inject('banner_helper','App\Helpers\BannerHelper')
-@section('content')
-    <header class="sub-header">
-        <div class="container-fluid">
-            <div class="row">
-                <div class="col s2">
-                    <img src="images/banners/Logo.jpg" alt="site-logo">
-                </div>
-                <div class="col s7">
-                    <ul class="site-menu list-inline">
-                        <li>Home</li>
-                        <li>Areas</li>
-                        <li>Home for sale</li>
-                        <li>sold home</li>
-                        <li>Market stats</li>
-                    </ul>
-                </div>
-                <div class="col s3">
-                    <a href="#" class="theme-btn">my review</a>
-                    <a href="#" class="theme-btn">logout</a>
-                </div>
-            </div>
-        </div>
-    </header>
+@inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
+@section('header')
+    @include(Site::templateResolver('core::website.listings.partials..header'))
+@endsection
+@section('body_section')
     <section class="main-content map-section">
         <div class="row">
             <div class="map" id="left-container">
@@ -632,5 +613,7 @@
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMGPU0xbiE-XtO-U61AltLGW05KKF0cY&libraries=drawing&callback=initMap"
             async defer></script>
+@endsection
+@section('footer')
 @endsection
 

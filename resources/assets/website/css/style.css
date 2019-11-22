@@ -102,9 +102,6 @@ a{
 }
 
 @media(max-width: 1150px){
-    .site-menu  .nav-link {
-        margin-right: 20px;
-    }
     .large-btn {
         width: 230px;
     }
@@ -758,4 +755,7 @@ a.buy-now-btn {
 }
 p.sub--inner{
     font-size: 12px;
+}
+nav{
+   background-color: #002349;
 }

@@ -5,8 +5,8 @@
     </header>
     
     @yield('body_section') 
-
     <footer>
-    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
-    </footer>   
+    	@include(Site::templateResolver('core::website.frontpage.partials.footer'))
+	</footer>
+      
 @endsection

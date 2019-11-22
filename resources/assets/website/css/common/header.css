@@ -8,10 +8,9 @@ header {
 }
 .site-menu  .nav-link {
     color: rgba(255,255,255,1);
-    font-size: 15px;
+    font-size: 14px;
     text-transform: uppercase;
     font-weight: 400;
-    margin-right: 35px;
 }
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu  .nav-link.show,.site-menu li.show>.nav-link {
     color: rgba(255,255,255,0.8);
@@ -39,7 +38,7 @@ header {
 }
 /*sub-header*/
 .sub-header .site-menu{
-    margin: 14px 0px;
+    margin:0px;
     padding: 0px;
 }
 .sub-header {
@@ -55,7 +54,7 @@ header {
     display: inline-block;
     color: #fff;
     text-transform: uppercase;
-    padding-left: 38px;
+    padding-left:8px;
     font-size: 14px;
     padding-top:0px;
     font-weight: 600;
