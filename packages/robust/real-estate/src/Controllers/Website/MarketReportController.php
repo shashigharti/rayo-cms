@@ -31,6 +31,6 @@ class MarketReportController extends Controller
      * @param String $type
      */
     public function index($type){
-
+        return view('real-estate::website.market-report.index', []);        
     }
 }
