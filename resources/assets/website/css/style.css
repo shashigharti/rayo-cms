@@ -761,7 +761,7 @@ nav{
 }
 /*profile*/
 
-.form-group label {
+.side-tab-content .form-group label {
     vertical-align: middle;
     float: left;
     margin-top: 7px;
@@ -771,13 +771,14 @@ nav{
     font-size: 12px !important;
     text-align: left !important;
 }
-.form-group input{
+.side-tab-content .form-group input{
     width: 63% !important;
     float: left !important;
     height: 21px !important;
     border: 1px solid #ccc !important;
     font-size: 12px !important;
     padding: 5px 15px !important;
+    margin-bottom: 10px !important;
 }
 .btn-xs {
     font-size: 12px;

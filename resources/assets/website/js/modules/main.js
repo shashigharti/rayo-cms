@@ -61,6 +61,7 @@ $(window).load(function () {
 	$('.inner-list-tabs').tabs();
 	$('select').formSelect();
 	$('.tabs').tabs();
+	$('.modal').modal();
 	$('.advance-search').click(function (e) {
 		e.preventDefault();
 		$('#adv-search-dropdown').toggleClass('show');
