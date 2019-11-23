@@ -809,3 +809,24 @@ nav{
 .side-tab-content{
     margin-bottom: 50px;
 }
+.listing--btn--block .select-wrapper{
+    display: inline-block;
+    border: 1px solid #ccc;
+    height: 30px;
+    vertical-align: middle;
+    margin: 0px 4px;
+    padding: 2px 0px;
+}
+.listing--btn--block .select-wrapper input.select-dropdown {
+     border: 0;
+    border-bottom: 0;
+    height: 25px;
+    line-height: 1rem;
+    width: 100%;
+    font-size: 11px;
+    padding: 0px 6px;    
+}
+.listing--btn--block .select-wrapper .caret {
+    position: absolute;
+    right: 6px;
+}

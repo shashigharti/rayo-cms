@@ -26,7 +26,7 @@
         </div>
     </div>
 </div>
-<div class="listing--btn--block">
+<div class="listing--btn--block col s12">
     <div class="row">
         <div class="col s7">
             <label>Sort By :</label>
