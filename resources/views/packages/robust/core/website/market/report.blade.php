@@ -1,7 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @section('header')
-    @include(Site::templateResolver('core::website.listings.partials..header'))
+    @include(Site::templateResolver('core::website.listings.partials.header'))
 @endsection
 @section('body_section')
     <section class="main-content">

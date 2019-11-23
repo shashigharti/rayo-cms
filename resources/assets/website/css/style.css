@@ -759,3 +759,28 @@ p.sub--inner{
 nav{
    background-color: #002349;
 }
+/*profile*/
+
+.form-group label {
+    vertical-align: middle;
+    float: left;
+    margin-top: 7px;
+    margin-right: 10px;
+    width: 20%;
+    padding: 0px;
+    font-size: 12px !important;
+    text-align: left !important;
+}
+.form-group input{
+    width: 63% !important;
+    float: left !important;
+    height: 21px !important;
+    border: 1px solid #ccc !important;
+    font-size: 12px !important;
+    padding: 5px 15px !important;
+}
+.btn-xs {
+    font-size: 12px;
+    height: 25px;
+    line-height: 25px;
+}
