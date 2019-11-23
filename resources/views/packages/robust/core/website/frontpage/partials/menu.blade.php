@@ -6,7 +6,7 @@
         <li><a class="nav-link" href="#">Areas</a></li>
         <li><a class="nav-link" href="{{route('website.listings.active')}}">Homes For Sale</a></li>
         <li><a class="nav-link" href="{{route('website.listings.sold')}}">Sold Homes</a></li>
-        <li><a class="nav-link" href="#">Market Stats</a></li>
+        <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market Stats</a></li>
         <li><a class="nav-link" href="#">Login</a></li>
         <li><a class="nav-link" href="#">Register</a></li>
     </ul>
@@ -15,7 +15,7 @@
         <li><a class="nav-link" href="#">Areas</a></li>
         <li><a class="nav-link" href="#">Homes For Sale</a></li>
         <li><a class="nav-link" href="#">Sold Homes</a></li>
-        <li><a class="nav-link" href="#">Market Stats</a></li>
+        <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market Stats</a></li>
         <li class="nav-btn"><a class="nav-link" href="#">Login</a></li>
         <li class="nav-btn"><a class="nav-link" href="#">Register</a></li>
     </ul>
