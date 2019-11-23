@@ -36,11 +36,11 @@
                 <div class="market--left__search col s6">
                     <div class="sort__display">
                         <p><b>Display :</b></p>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Average $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Median $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Homes Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Average $ Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Median $ Sold</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average"></span>Average $</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median"></span>Median $</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="homes-sold"></span>Homes Sold</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average-sold"></span>Average $ Sold</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median-sold"></span>Median $ Sold</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">
