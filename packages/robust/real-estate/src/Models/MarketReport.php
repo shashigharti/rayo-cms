@@ -1,5 +1,4 @@
 <?php
-
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
@@ -7,7 +6,7 @@ use Robust\Core\Models\BaseModel;
 
 class MarketReport extends BaseModel
 {
-    protected $table = 'market_reports';
+    protected $table = 'real_estate_market_reports';
 
     protected $fillable = [
         'model_id', 'slug', 'name', 'model_type', 'total_listings', 'total_listings_active',

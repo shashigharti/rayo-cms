@@ -14,7 +14,7 @@ class City extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'cities';
+    protected $table = 'real_estate_cities';
 
     /**
      * @var array
