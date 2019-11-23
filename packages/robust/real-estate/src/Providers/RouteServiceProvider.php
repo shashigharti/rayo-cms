@@ -40,16 +40,16 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapWebRoutes()
     {
         Route::group([
-            'middleware' => ['api'],
+            'middleware' => 'web',
         ], function ($router) {
-            foreach (glob(base_path() . '/packages/robust/real-estate/routes/api/*') as $file) {
+            foreach (glob(base_path() . '/packages/robust/real-estate/routes/website/*') as $file) {
                 require $file;
             }
         });
         Route::group([
-            'middleware' => ['web', 'admin'],
+            'middleware' => ['web', 'api'],
         ], function ($router) {
-            foreach (glob(base_path() . '/packages/robust/real-estate/routes/admin/*') as $file) {
+            foreach (glob(base_path() . '/packages/robust/real-estate/routes/api/*') as $file) {
                 require $file;
             }
         });

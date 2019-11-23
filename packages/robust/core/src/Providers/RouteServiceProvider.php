@@ -72,13 +72,6 @@ class RouteServiceProvider extends ServiceProvider
                 }
             }
         });
-       /* Route::group([
-            'middleware' => ['web', 'auth'],
-        ], function ($router) {
-            foreach (glob(base_path() . '/packages/robust/core/routes/admin/users/*') as $file) {
-                require $file;
-            }
-        });*/
 
         Route::group([
             'middleware' => 'web',
