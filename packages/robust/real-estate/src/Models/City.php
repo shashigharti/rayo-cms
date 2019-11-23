@@ -35,4 +35,12 @@ class City extends BaseModel
         'latitude',
         'longitude'
     ];
+
+    /**
+     * Get the city's report.
+     */
+    public function report()
+    {
+        return $this->morphOne('Robust\RealEstate\Models\MarketReport', 'reportable');
+    }
 }
