@@ -8,7 +8,7 @@ function () {
     Route::get('reports/{type}', [
         'name' =>'Market Report',
         'as' => 'reports',
-        'uses' => '\Robust\RealEstate\Controllers\Admin\MarketReportController@index'
+        'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@index'
     ]);
 
 

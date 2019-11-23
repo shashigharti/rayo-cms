@@ -1,16 +1,14 @@
 <?php
-namespace Robust\RealEstate\Controllers\Admin;
+namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
-use Robust\RealEstate\Repositories\Admin\MarketReportRepository;
+use Robust\RealEstate\Repositories\Website\MarketReportRepository;
 
 /**
  * Class MarketReportController
- * @package Robust\Mls\Controllers\Admin
+ * @package Robust\RealEstate\Controllers\Website
  */
 class MarketReportController extends Controller
 {
@@ -21,14 +19,17 @@ class MarketReportController extends Controller
 
     /**
      * MarketReportController constructor.
-     * @param Request $request
      * @param MarketReport $model
      */
-    public function __construct(MarketReport $model)
+    public function __construct(MarketReportRepository $model)
     {
         $this->model = $model;
     }
 
+    /**
+     * MarketReportController constructor.
+     * @param String $type
+     */
     public function index($type){
 
     }
