@@ -12,9 +12,16 @@ class MarketReportRepository
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
-     * @var MarketReport
+     * @var MarketReport model
      */
     protected $model;
+    
+    /**
+     * @var const REPORTABLE_MAP
+     */
+    protected const REPORTABLE_MAP = [
+        'cities' => 'Robust\RealEstate\Models\City'
+    ];
 
     /**
      * MarketReportRepository constructor.
@@ -23,5 +30,14 @@ class MarketReportRepository
     public function __construct(MarketReport $model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * @param $model
+     */
+    public function getLocations($type){
+        $reports = $this->model
+        ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP['cities'])->get();
+        return $reports;
     }
 }

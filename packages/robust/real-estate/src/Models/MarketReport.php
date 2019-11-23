@@ -16,4 +16,14 @@ class MarketReport extends BaseModel
         'average_dos', 'average_dos_past_year', 'average_dos_this_year', 'median_dos',
     ];
 
+    /**
+     * Get the owning reportable model.
+     * 
+     * @return model
+     */
+    public function reportable()
+    {
+        return $this->morphTo();
+    }
+
 }

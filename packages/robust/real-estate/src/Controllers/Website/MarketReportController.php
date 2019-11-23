@@ -19,7 +19,6 @@ class MarketReportController extends Controller
 
     /**
      * MarketReportController constructor.
-     * @param MarketReport $model
      */
     public function __construct(MarketReportRepository $model)
     {
@@ -31,6 +30,7 @@ class MarketReportController extends Controller
      * @param String $type
      */
     public function index($type){
-        return view('real-estate::website.market-report.index', []);        
+        $records = $this->model->getLocations($type);
+        return view('real-estate::website.market-report.index', ['records' => $records]);        
     }
 }
