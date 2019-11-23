@@ -1,5 +1,5 @@
 <?php
-namespace Robust\RealEstate\Repositories\Admin;
+namespace Robust\RealEstate\Repositories\Website;
 
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
