@@ -23,7 +23,7 @@
 
             <div class="row">
                 <div class="market--left__search col s6">
-                    <p><b>Sort By:</b><select><option>Cities</option></select></p>
+                    <p><b>Sort By:</b></p>
                     <div class="sort__listings--btns">
                         <a href="#">Average Sale Price</a>
                         <a href="#">Median Sale Price</a>
@@ -63,69 +63,27 @@
                         <span>Hawaii <i class="fa fa-times" aria-hidden="true"></i></span>
                         <span>Active<i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
-                    <div class="market__search--lists">
+                    <div id="market__search--lists" class="market__search--lists">
                         <div class="single--list__block">
-                            <p class="single--list__block-item"><input type="checkbox"><label>Hawaii</label></p>
-                            <p class="single--list__block-item"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p class="single--list__block-item"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p class="single--list__block-item"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p class="single--list__block-item"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
+                            <p class="single--list__block-item" data-type="title" data-value="Hawaii"><input type="checkbox"><label>Hawaii</label></p>
+                            <p class="single--list__block-item" data-type="Active" data-value="40"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 40</span></p>
+                            <p class="single--list__block-item" data-type="Sold" data-value="390"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 390</span></p>
+                            <p class="single--list__block-item" data-type="Average" data-value="9876,567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
+                            <p class="single--list__block-item" data-type="Median" data-value="9876,567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
                         </div>
                         <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
+                            <p class="single--list__block-item" data-type="title" data-value="Hawaii"><input type="checkbox"><label>Hawaii</label></p>
+                            <p class="single--list__block-item" data-type="Active" data-value="40"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 50</span></p>
+                            <p class="single--list__block-item" data-type="Sold" data-value="390"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 590</span></p>
+                            <p class="single--list__block-item" data-type="Average" data-value="9876,567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$5876,567</p>
+                            <p class="single--list__block-item" data-type="Median" data-value="9876,567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$576,567</p>
                         </div>
                         <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
+                            <p class="single--list__block-item" data-type="title" data-value="Hawaii"><input type="checkbox"><label>Hawaii</label></p>
+                            <p class="single--list__block-item" data-type="Active" data-value="40"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 60</span></p>
+                            <p class="single--list__block-item" data-type="Sold" data-value="390"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 690</span></p>
+                            <p class="single--list__block-item" data-type="Average" data-value="9876,567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$6876,567</p>
+                            <p class="single--list__block-item" data-type="Median" data-value="9876,567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$6876,567</p>
                         </div>
                     </div>
                 </div>
