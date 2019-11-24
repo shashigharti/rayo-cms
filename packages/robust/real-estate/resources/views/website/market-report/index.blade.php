@@ -36,11 +36,11 @@
                 <div class="market--left__search col s6">
                     <div class="sort__display">
                         <p><b>Display :</b></p>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average"></span>Average $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median"></span>Median $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="homes-sold"></span>Homes Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average-sold"></span>Average $ Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median-sold"></span>Median $ Sold</div>
+                        <div class="sort__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average"></span>Average $</div>
+                        <div class="sort__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median"></span>Median $</div>
+                        <div class="sort__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-value="homes-sold"></span>Homes Sold</div>
+                        <div class="sort__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-value="average-sold"></span>Average $ Sold</div>
+                        <div class="sort__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-value="median-sold"></span>Median $ Sold</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">
@@ -65,11 +65,11 @@
                     </div>
                     <div class="market__search--lists">
                         <div class="single--list__block">
-                            <p><input type="checkbox"><label>Hawaii</label></p>
-                            <p><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
-                            <p><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
-                            <p><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
+                            <p class="single--list__block-item"><input type="checkbox"><label>Hawaii</label></p>
+                            <p class="single--list__block-item"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : </span>40</p>
+                            <p class="single--list__block-item"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : </span>390</p>
+                            <p class="single--list__block-item"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
+                            <p class="single--list__block-item"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
                         </div>
                         <div class="single--list__block">
                             <p><input type="checkbox"><label>Hawaii</label></p>
