@@ -77,23 +77,7 @@
                                     <span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>${{$report->median_price_sold}}
                                 </p>
                             </div>
-                        @endforeach  
-                        {{-- remove it once the real data is entered --}}                      
-                        <div class="single--list__block">
-                            <p class="single--list__block-item" data-type="Title" data-value="Panama City Beach"><input type="checkbox"><label>Panama City Beach</label></p>
-                            <p class="single--list__block-item" data-type="Active" data-value="50"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 50</span></p>
-                            <p class="single--list__block-item" data-type="Sold" data-value="590"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 590</span></p>
-                            <p class="single--list__block-item" data-type="Average" data-value="9876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$5876,567</p>
-                            <p class="single--list__block-item" data-type="Median" data-value="7876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$576,567</p>
-                        </div>
-                        <div class="single--list__block">
-                            <p class="single--list__block-item" data-type="Title" data-value="Chipley"><input type="checkbox"><label>Chipley</label></p>
-                            <p class="single--list__block-item" data-type="Active" data-value="60"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 60</span></p>
-                            <p class="single--list__block-item" data-type="Sold" data-value="190"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 690</span></p>
-                            <p class="single--list__block-item" data-type="Average" data-value="8876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$6876,567</p>
-                            <p class="single--list__block-item" data-type="Median" data-value="8876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$6876,567</p>
-                        </div>
-                        {{-- remove it once the data is entered --}} 
+                        @endforeach
                     </div>
                 </div>
             </div>
