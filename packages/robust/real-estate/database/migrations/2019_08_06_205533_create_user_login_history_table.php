@@ -16,7 +16,7 @@ class CreateUserLoginHistoryTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_login_history', function(Blueprint $table)
+		Schema::create('real_estate_user_login_history', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('user_id');
@@ -34,7 +34,7 @@ class CreateUserLoginHistoryTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_login_history');
+		Schema::drop('real_estate_user_login_history');
 	}
 
 }

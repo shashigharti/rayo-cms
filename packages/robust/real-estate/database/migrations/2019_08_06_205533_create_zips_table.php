@@ -16,7 +16,7 @@ class CreateZipsTable extends Migration
      */
     public function up()
     {
-        Schema::create('zips', function (Blueprint $table) {
+        Schema::create('real_estate_zips', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
@@ -40,7 +40,7 @@ class CreateZipsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('zips');
+        Schema::drop('real_estate_zips');
     }
 
 }

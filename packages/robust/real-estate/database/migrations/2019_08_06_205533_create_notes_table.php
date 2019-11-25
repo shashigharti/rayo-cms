@@ -16,7 +16,7 @@ class CreateNotesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('notes', function(Blueprint $table)
+		Schema::create('real_estate_notes', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('agent_id');
@@ -35,7 +35,7 @@ class CreateNotesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('notes');
+		Schema::drop('real_estate_notes');
 	}
 
 }

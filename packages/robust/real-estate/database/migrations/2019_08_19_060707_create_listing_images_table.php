@@ -13,7 +13,7 @@ class CreateListingImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('listing_images', function(Blueprint $table)
+        Schema::create('real_estate_listing_images', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('listing_id')->index('index_listing_id');
@@ -32,6 +32,6 @@ class CreateListingImagesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listing_images');
+        Schema::drop('real_estate_listing_images');
     }
 }

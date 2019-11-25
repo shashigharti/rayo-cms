@@ -12,7 +12,7 @@ class CreateLeadMetadatasTable extends Migration {
      */
     public function up()
     {
-        Schema::create('lead_metadatas', function(Blueprint $table)
+        Schema::create('real_estate_lead_metadatas', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('lead_id')->unsigned()->index('lead_metadatas_lead_id_foreign_1');
@@ -32,7 +32,6 @@ class CreateLeadMetadatasTable extends Migration {
             $table->string('opted_in_email', 191)->nullable();
             $table->string('opted_in_text', 191)->nullable();
             $table->string('source_keyword', 191)->nullable();
-            $table->timestamps();
             $table->integer('followup_assigned_to')->nullable()->comment('The agent that followup is assigned to.');
             $table->string('followup_notes', 1024)->nullable();
             $table->integer('search_count')->default(0);
@@ -46,6 +45,7 @@ class CreateLeadMetadatasTable extends Migration {
             $table->integer('email_replies_count')->default(0);
             $table->text('market_stats');
             $table->string('lead_type', 191)->default('N/A');
+            $table->timestamps();
         });
     }
 
@@ -57,7 +57,7 @@ class CreateLeadMetadatasTable extends Migration {
      */
     public function down()
     {
-        Schema::drop('lead_metadatas');
+        Schema::drop('real_estate_lead_metadatas');
     }
 
 }

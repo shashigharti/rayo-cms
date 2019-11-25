@@ -16,13 +16,13 @@ class CreateGridsTable extends Migration
      */
     public function up()
     {
-        Schema::create('grids', function (Blueprint $table) {
+        Schema::create('real_estate_grids', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 191);
             $table->string('slug', 191);
-            $table->timestamps();
             $table->integer('active')->nullable();
             $table->integer('sold')->nullable();
+            $table->timestamps();
         });
     }
 
@@ -33,7 +33,7 @@ class CreateGridsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('grids');
+        Schema::drop('real_estate_grids');
     }
 
 }

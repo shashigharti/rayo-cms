@@ -13,7 +13,7 @@ class CreateMlsUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('mls_users', function (Blueprint $table) {
+        Schema::create('real_estate_clients', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',150);
             $table->string('slug',150);
@@ -37,6 +37,6 @@ class CreateMlsUsersTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mls_users');
+        Schema::drop('real_estate_clients');
     }
 }

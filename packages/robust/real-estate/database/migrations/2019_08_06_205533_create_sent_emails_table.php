@@ -16,7 +16,7 @@ class CreateSentEmailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('sent_emails', function (Blueprint $table) {
+        Schema::create('real_estate_sent_emails', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('agent_id');
             $table->string('lead_id', 191)->nullable();
@@ -42,7 +42,7 @@ class CreateSentEmailsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('sent_emails');
+        Schema::drop('real_estate_sent_emails');
     }
 
 }

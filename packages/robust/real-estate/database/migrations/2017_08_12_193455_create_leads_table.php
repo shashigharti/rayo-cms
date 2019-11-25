@@ -14,7 +14,7 @@ class CreateLeadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('leads', function (Blueprint $table) {
+        Schema::create('real_estate_leads', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
             $table->string('firstname');
@@ -66,6 +66,6 @@ class CreateLeadsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('leads');
+        Schema::drop('real_estate_leads');
     }
 }

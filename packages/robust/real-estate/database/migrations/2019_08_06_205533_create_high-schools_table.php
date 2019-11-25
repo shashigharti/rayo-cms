@@ -16,7 +16,7 @@ class CreateHighSchoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('high-schools', function (Blueprint $table) {
+        Schema::create('real_estate_high_schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 191);
             $table->string('slug', 191);
@@ -34,7 +34,7 @@ class CreateHighSchoolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('high-schools');
+        Schema::drop('real_estate_high_schools');
     }
 
 }

@@ -16,7 +16,7 @@ class CreateCoreGroupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('core_groups', function (Blueprint $table) {
+        Schema::create('real_estate_core_groups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('name', 50)->unique();
             $table->string('color')->unique();
@@ -32,6 +32,6 @@ class CreateCoreGroupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('core_groups');
+        Schema::dropIfExists('real_estate_core_groups');
     }
 }

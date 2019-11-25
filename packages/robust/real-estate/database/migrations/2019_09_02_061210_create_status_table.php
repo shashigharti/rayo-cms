@@ -13,7 +13,7 @@ class CreateStatusTable extends Migration
      */
     public function up()
     {
-        Schema::create('statuses', function (Blueprint $table) {
+        Schema::create('real_estate_statuses', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('status');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateStatusTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('statuses');
+        Schema::dropIfExists('real_estate_statuses');
     }
 }

@@ -13,7 +13,7 @@ class CreateMlsQueryTable extends Migration
      */
     public function up()
     {
-        Schema::create('mls_query', function (Blueprint $table) {
+        Schema::create('real_estate_query', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mls_user_id');
             $table->longText('query_filter')->nullable();
@@ -31,6 +31,6 @@ class CreateMlsQueryTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mls_query');
+        Schema::drop('real_estate_query');
     }
 }

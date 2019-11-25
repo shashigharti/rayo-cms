@@ -13,7 +13,7 @@ class CreateMlsDataRemapTable extends Migration
      */
     public function up()
     {
-        Schema::create('mls_data_remap', function (Blueprint $table) {
+        Schema::create('real_estate_data_remap', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mls_user_id');
             $table->string('resource',150);
@@ -31,6 +31,6 @@ class CreateMlsDataRemapTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mls_data_remap');
+        Schema::drop('real_estate_data_remap');
     }
 }

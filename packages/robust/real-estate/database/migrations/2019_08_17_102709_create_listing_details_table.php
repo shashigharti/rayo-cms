@@ -13,7 +13,7 @@ class CreateListingDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listing_details', function(Blueprint $table)
+        Schema::create('real_estate_listing_details', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('listing_id')->unsigned()->index('listing_details_listing_id_foreign');
@@ -141,6 +141,6 @@ class CreateListingDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listing_details');
+        Schema::drop('real_estate_listing_details');
     }
 }

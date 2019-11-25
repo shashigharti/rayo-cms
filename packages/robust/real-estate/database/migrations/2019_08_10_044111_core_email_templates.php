@@ -13,7 +13,7 @@ class CoreEmailTemplates extends Migration
      */
     public function up()
     {
-        Schema::create('core_email_templates', function(Blueprint $table) {
+        Schema::create('real_estate_core_email_templates', function(Blueprint $table) {
             $table->increments('id');
             $table->string('title', 255);
             $table->integer('group');
@@ -34,6 +34,6 @@ class CoreEmailTemplates extends Migration
      */
     public function down()
     {
-        Schema::drop('core_email_templates');
+        Schema::drop('real_estate_core_email_templates');
     }
 }

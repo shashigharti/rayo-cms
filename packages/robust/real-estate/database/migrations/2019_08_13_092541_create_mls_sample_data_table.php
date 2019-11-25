@@ -13,7 +13,7 @@ class CreateMlsSampleDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('mls_sample_data', function (Blueprint $table) {
+        Schema::create('real_estate_sample_data', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mls_user_id');
             $table->string('resource',150);
@@ -30,6 +30,6 @@ class CreateMlsSampleDataTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mls_sample_data');
+        Schema::drop('real_estate_sample_data');
     }
 }

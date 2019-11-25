@@ -13,7 +13,7 @@ class CreateListingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('listings', function(Blueprint $table)
+        Schema::create('real_estate_listings', function(Blueprint $table)
         {
             $table->increments('id');
             $table->string('listing_name')->nullable();
@@ -109,6 +109,6 @@ class CreateListingsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('listings');
+        Schema::drop('real_estate_listings');
     }
 }

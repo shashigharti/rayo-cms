@@ -16,7 +16,7 @@ class CreateActivityLogTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('activity_log', function(Blueprint $table)
+		Schema::create('real_estate_activity_log', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->string('log_name')->nullable();
@@ -35,7 +35,7 @@ class CreateActivityLogTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('activity_log');
+		Schema::drop('real_estate_activity_log');
 	}
 
 }

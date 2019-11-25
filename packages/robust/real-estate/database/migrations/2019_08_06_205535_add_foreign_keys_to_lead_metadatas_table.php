@@ -12,7 +12,7 @@ class AddForeignKeysToLeadMetadatasTable extends Migration {
      */
     public function up()
     {
-        Schema::table('lead_metadatas', function(Blueprint $table)
+        Schema::table('real_estate_lead_metadatas', function(Blueprint $table)
         {
             $table->foreign('lead_id', 'lead_metadatas_lead_id_foreign_1')->references('id')->on('leads')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
@@ -26,7 +26,7 @@ class AddForeignKeysToLeadMetadatasTable extends Migration {
      */
     public function down()
     {
-        Schema::table('lead_metadatas', function(Blueprint $table)
+        Schema::table('real_estate_lead_metadatas', function(Blueprint $table)
         {
             $table->dropForeign('lead_metadatas_lead_id_foreign_1');
         });

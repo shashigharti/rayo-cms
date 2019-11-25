@@ -16,7 +16,7 @@ class CreateUnsubscribeLeadsTable extends Migration
      */
     public function up()
     {
-        Schema::create('unsubscribe_leads', function (Blueprint $table) {
+        Schema::create('real_estate_unsubscribe_leads', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('lead_id');
             $table->boolean('is_unsubscribe')->default(1);
@@ -31,7 +31,7 @@ class CreateUnsubscribeLeadsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('unsubscribe_leads');
+        Schema::drop('real_estate_unsubscribe_leads');
     }
 
 }

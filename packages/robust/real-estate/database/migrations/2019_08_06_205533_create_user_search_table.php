@@ -16,7 +16,7 @@ class CreateUserSearchTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_search', function(Blueprint $table)
+		Schema::create('real_estate_user_search', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('user_id');
@@ -36,7 +36,7 @@ class CreateUserSearchTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_search');
+		Schema::drop('real_estate_user_search');
 	}
 
 }

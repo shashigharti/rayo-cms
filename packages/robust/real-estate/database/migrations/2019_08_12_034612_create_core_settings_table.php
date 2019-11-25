@@ -16,7 +16,7 @@ class CreateCoreSettingsTable extends Migration
      */
     public function up()
     {
-        Schema::create('core_settings', function (Blueprint $table) {
+        Schema::create('real_estate_core_settings', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('package_name', 255)->nullable();
             $table->string('type', 50);
@@ -32,6 +32,6 @@ class CreateCoreSettingsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('core_settings');
+        Schema::dropIfExists('real_estate_core_settings');
     }
 }

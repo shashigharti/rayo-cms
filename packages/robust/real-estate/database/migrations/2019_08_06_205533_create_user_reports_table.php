@@ -16,7 +16,7 @@ class CreateUserReportsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('user_reports', function(Blueprint $table)
+		Schema::create('real_estate_user_reports', function(Blueprint $table)
 		{
 			$table->increments('id');
 			$table->integer('user_id');
@@ -37,7 +37,7 @@ class CreateUserReportsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('user_reports');
+		Schema::drop('real_estate_user_reports');
 	}
 
 }

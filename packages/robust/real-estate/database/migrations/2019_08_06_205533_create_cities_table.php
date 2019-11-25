@@ -16,7 +16,7 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('cities', function (Blueprint $table) {
+        Schema::create('real_estate_cities', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('slug');
@@ -27,7 +27,6 @@ class CreateCitiesTable extends Migration
             $table->integer('navigation')->nullable()->default(0);
             $table->integer('marketreport')->nullable()->default(0);
             $table->integer('delete')->nullable()->default(0);
-            $table->timestamps();
             $table->integer('active')->nullable();
             $table->integer('sold')->nullable();
             $table->integer('frontpage_order')->nullable();
@@ -37,6 +36,7 @@ class CreateCitiesTable extends Migration
             $table->integer('hide_subdivs')->nullable();
             $table->string('latitude', 25)->nullable();
             $table->string('longitude', 25)->nullable();
+            $table->timestamps();
         });
     }
 
@@ -47,7 +47,7 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('cities');
+        Schema::drop('real_estate_cities');
     }
 
 }

@@ -16,7 +16,7 @@ class CreateElemSchoolsTable extends Migration
      */
     public function up()
     {
-        Schema::create('elem_schools', function (Blueprint $table) {
+        Schema::create('real_estate_elem_schools', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 191);
             $table->string('slug', 191);
@@ -33,7 +33,7 @@ class CreateElemSchoolsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('elem_schools');
+        Schema::drop('real_estate_elem_schools');
     }
 
 }

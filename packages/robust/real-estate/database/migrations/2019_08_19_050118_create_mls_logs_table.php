@@ -13,7 +13,7 @@ class CreateMlsLogsTable extends Migration
      */
     public function up()
     {
-        Schema::create('mls_logs', function (Blueprint $table) {
+        Schema::create('real_estate_logs', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('mls_user_id');
             $table->string('resource',150);
@@ -33,6 +33,6 @@ class CreateMlsLogsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('mls_logs');
+        Schema::drop('real_estate_logs');
     }
 }

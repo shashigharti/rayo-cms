@@ -16,7 +16,7 @@ class CreateLeadCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('lead_categories', function (Blueprint $table) {
+        Schema::create('real_estate_lead_categories', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->integer('category_id')->unsigned();
@@ -32,7 +32,7 @@ class CreateLeadCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('lead_categories');
+        Schema::drop('real_estate_lead_categories');
     }
 
 }
