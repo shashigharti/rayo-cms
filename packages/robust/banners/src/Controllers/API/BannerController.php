@@ -87,7 +87,7 @@ class BannerController extends Controller
             'prices' => $data['prices'] != null ? $data['prices'] : [],
             'locations' => $data['locations'] != null ? $data['locations'] : [],
             'content' => $data['content'] != null ? $data['content'] : '',
-            'image' => $data['image'] != null ? $data['image'] : ''
+            'image' => $data['image'] != null ? $data['image'] : '  '
         ];
     }
     /**

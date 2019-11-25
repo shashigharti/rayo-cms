@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Robust\Core\Helpage\Site;
 use Robust\Core\Models\Media;
-use Robust\Core\Repositories\Api\MediaRepository;
+use Robust\Core\Repositories\MediaRepository;
 
 class HomeController extends Controller
 {
@@ -28,6 +28,7 @@ class HomeController extends Controller
 
     public function uploadMedia(Request $request,MediaRepository $model)
     {
+
         $validator = Validator::make($request->all(),[
             'file' => 'required',
             'name' => 'required',
@@ -36,7 +37,7 @@ class HomeController extends Controller
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()],422);
         }
-        $data = $request->all();
+        $data = $request->files;
         $model->store($data);
         return response()->json(['success' =>true]);
     }
