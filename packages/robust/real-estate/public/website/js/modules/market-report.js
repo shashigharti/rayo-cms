@@ -20,9 +20,10 @@
     }
 
     class LocationItem {
-        constructor(type, value, active) {
+        constructor(type, value, icon) {
             this._type = type;
             this._value = value;
+            this._icon = icon;
         }
 
         isActive(selected_options, type) {
@@ -32,9 +33,9 @@
         render(selected_options) {
             let template = (() => {
                 if (this._type == 'Title') {
-                    return `<p data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
+                    return `<p data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox"><label>${this._value}</label></p>`
                 } else {
-                    return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
+                    return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><span><i class="${this._icon}" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
             })();
             return `
@@ -105,17 +106,17 @@
         mrLocations = mr_locations.map((location) => {
             let location_items = [...location.querySelectorAll('p')];
             mr_locations = location_items.map((location_item) => {
-                let [type, value] = [
+                let [type, value, icon] = [
                     location_item.getAttribute('data-type'),
-                    location_item.getAttribute('data-value')
+                    location_item.getAttribute('data-value'),
+                    location_item.getAttribute('data-class')
                 ];
 
-                return new LocationItem(type, value, true);
+                return new LocationItem(type, value, icon);
             });
 
             return new MRLocation(mr_locations, selectedDisplayOptions);
         });
-        console.log(mr_locations);
     }
 
     function renderLocations() {
@@ -133,7 +134,6 @@
     }
 
     $(function () {
-
         let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
@@ -143,6 +143,7 @@
         getSelectedDisplayOptions(display_buttons);
         display_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
+                this.classList.toggle('active');
                 this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
                 getSelectedDisplayOptions(display_buttons);
                 renderLocations();
