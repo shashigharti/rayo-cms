@@ -13,7 +13,7 @@ class ElemSchool extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'elem_schools';
+    protected $table = 'real_estate_elem_schools';
 
     /**
      * @var array

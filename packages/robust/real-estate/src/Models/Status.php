@@ -13,7 +13,7 @@ class Status extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'statuses';
+    protected $table = 'real_estate_statuses';
 
     /**
      * @var boolean

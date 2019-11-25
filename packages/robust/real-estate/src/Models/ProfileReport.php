@@ -13,5 +13,5 @@ class ProfileReport extends BaseModel
     /**
      * @var string
      */
-    protected $table = "profile_reports";
+    protected $table = "real_estate_profile_reports";
 }

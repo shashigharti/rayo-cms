@@ -14,7 +14,7 @@ class MiddleSchool extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'middle_schools';
+    protected $table = 'real_estate_middle_schools';
 
     /**
      * @var array

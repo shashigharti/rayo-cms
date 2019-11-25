@@ -10,7 +10,7 @@ class HighSchool extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'high-schools';
+    protected $table = 'real_estate_high_schools';
 
     /**
      * @var array

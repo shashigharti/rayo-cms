@@ -13,7 +13,7 @@ class Activity extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'activity_log';
+    protected $table = 'real_estate_activity_log';
 
     /**
      * @var boolean

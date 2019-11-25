@@ -14,7 +14,7 @@ class Area extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'areas';
+    protected $table = 'real_estate_areas';
 
     /**
      * @var array

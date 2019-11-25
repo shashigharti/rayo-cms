@@ -15,7 +15,7 @@ class UserSearch extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'user_search';
+    protected $table = 'real_estate_user_search';
 
     /**
      * @var array

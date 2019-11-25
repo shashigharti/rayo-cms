@@ -13,7 +13,7 @@ class MlsUser extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_users';
+    protected $table = 'real_estate_users';
     /**
      * @var string
      */

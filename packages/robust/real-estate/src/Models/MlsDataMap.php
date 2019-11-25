@@ -13,7 +13,7 @@ class MlsDataMap extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_data_maps';
+    protected $table = 'real_estate_data_maps';
     /**
      * @var string
      */

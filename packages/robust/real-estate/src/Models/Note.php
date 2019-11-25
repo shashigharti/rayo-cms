@@ -14,7 +14,7 @@ class Note extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'notes';
+    protected $table = 'real_estate_notes';
 
     /**
      * @var array

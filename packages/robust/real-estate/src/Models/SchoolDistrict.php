@@ -14,7 +14,7 @@ class SchoolDistrict extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'school_districts';
+    protected $table = 'real_estate_school_districts';
 
     /**
      * @var array

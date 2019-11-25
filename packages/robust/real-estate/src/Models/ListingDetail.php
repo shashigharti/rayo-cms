@@ -13,7 +13,7 @@ class ListingDetail extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'listing_details';
+    protected $table = 'real_estate_listing_details';
     /**
      * @var string
      */

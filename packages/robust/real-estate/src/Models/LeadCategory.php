@@ -20,7 +20,7 @@ class LeadCategory extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'lead_categories';
+    protected $table = 'real_estate_lead_categories';
     /**
      * @var array
      */

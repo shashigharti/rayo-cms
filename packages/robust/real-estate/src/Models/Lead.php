@@ -31,7 +31,7 @@ class Lead extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'leads';
+    protected $table = 'real_estate_leads';
     /**
      * @var array
      */

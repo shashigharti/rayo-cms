@@ -15,7 +15,7 @@ class UserReport extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'user_reports';
+    protected $table = 'real_estate_user_reports';
 
     /**
      * @var array

@@ -13,7 +13,7 @@ class MlsFieldDetail extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_field_details';
+    protected $table = 'real_estate_field_details';
     /**
      * @var string
      */

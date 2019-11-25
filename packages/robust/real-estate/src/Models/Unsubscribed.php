@@ -14,7 +14,7 @@ class Unsubscribed extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'unsubscribe_leads';
+    protected $table = 'real_estate_unsubscribe_leads';
 
     /**
      * @var array

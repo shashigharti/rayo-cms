@@ -13,7 +13,7 @@ class CoreSetting extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'core_settings';
+    protected $table = 'real_estate_core_settings';
 
     /**
      * @var array

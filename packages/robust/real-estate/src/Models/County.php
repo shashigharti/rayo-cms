@@ -14,7 +14,7 @@ class County extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'counties';
+    protected $table = 'real_estate_counties';
 
     /**
      * @var array

@@ -16,7 +16,7 @@ class SentEmails extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'sent_emails';
+    protected $table = 'real_estate_sent_emails';
 
     /**
      * @var array

@@ -13,7 +13,7 @@ class MlsLog extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_logs';
+    protected $table = 'real_estate_logs';
     /**
      * @var string
      */

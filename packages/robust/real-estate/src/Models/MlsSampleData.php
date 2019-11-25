@@ -13,7 +13,7 @@ class MlsSampleData extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_sample_data';
+    protected $table = 'real_estate_sample_data';
     /**
      * @var string
      */

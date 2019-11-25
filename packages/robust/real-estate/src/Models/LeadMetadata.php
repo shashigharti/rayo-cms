@@ -19,7 +19,7 @@ class LeadMetadata extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'lead_metadatas';
+    protected $table = 'real_estate_lead_metadatas';
 
     /**
      * @var string

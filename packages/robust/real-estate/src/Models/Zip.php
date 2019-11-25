@@ -14,7 +14,7 @@ class Zip extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'zips';
+    protected $table = 'real_estate_zips';
 
     /**
      * @var array

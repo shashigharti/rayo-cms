@@ -16,7 +16,7 @@ class UserLoginHistory extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'user_login_history';
+    protected $table = 'real_estate_user_login_history';
 
     /**
      * @var array

@@ -13,7 +13,7 @@ class Subdivision
     /**
      * @var string
      */
-    protected $table = 'subdivisions';
+    protected $table = 'real_estate_subdivisions';
 
     /**
      * @var array

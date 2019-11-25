@@ -13,7 +13,7 @@ class ListingImages extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'listing_images';
+    protected $table = 'real_estate_listing_images';
     /**
      * @var string
      */

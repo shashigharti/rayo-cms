@@ -14,7 +14,7 @@ class Grid extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'grids';
+    protected $table = 'real_estate_grids';
 
     /**
      * @var array

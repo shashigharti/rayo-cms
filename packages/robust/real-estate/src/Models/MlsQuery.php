@@ -13,7 +13,7 @@ class MlsQuery extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'mls_query';
+    protected $table = 'real_estate_query';
     /**
      * @var string
      */
