@@ -7,6 +7,10 @@ use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
 
 
+/**
+ * Class MarketReportRepository
+ * @package Robust\RealEstate\Repositories\Website
+ */
 class MarketReportRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
@@ -15,7 +19,7 @@ class MarketReportRepository
      * @var MarketReport model
      */
     protected $model;
-    
+
     /**
      * @var const REPORTABLE_MAP
      */
@@ -32,8 +36,10 @@ class MarketReportRepository
         $this->model = $model;
     }
 
+
     /**
-     * @param $model
+     * @param $type
+     * @return mixed
      */
     public function getLocations($type){
         $reports = $this->model

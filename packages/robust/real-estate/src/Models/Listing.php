@@ -30,4 +30,29 @@ class Listing extends BaseModel
         'association_fee','association_fee_2','association_fee_2_includes','association_fee_includes','association_total', 'days_on_mls',
         'attached', 'original_price', 'address', 'created_at', 'updated_at', 'off_market', 'building_name', 'listings_office_name'];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function details()
+    {
+        return $this->hasOne(ListingDetail::class,'listing_id','id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function images()
+    {
+        return $this->hasMany(ListingImages::class,'listing_id','uid');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function image()
+    {
+        return $this->hasOne(ListingImages::class,'listing_id','uid')
+            ->withDefault(function($image){  $image->listing_url = 'default/image/link'; });
+    }
+
 }

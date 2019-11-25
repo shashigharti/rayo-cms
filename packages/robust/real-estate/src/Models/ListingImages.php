@@ -22,4 +22,12 @@ class ListingImages extends BaseModel
      * @var array
      */
     protected $fillable = [ 'listing_id', 'image_id', 'listing_url', 'type', 'modified', 'image_id' ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function listing()
+    {
+        return $this->belongsTo(Listing::class, 'uid', 'listing_id');
+    }
 }

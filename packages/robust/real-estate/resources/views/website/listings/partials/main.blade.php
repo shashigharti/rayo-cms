@@ -13,13 +13,13 @@
                     <span><a href="#" class="active">486 Subdivisions</a></span>
                 </div>
 
-            @include(Site::templateResolver('core::website.listings.partials.search'))
+                @include(Site::templateResolver('real-estate::website.listings.partials.search'))
             </div>
         </div>
         <div class="listing--houses">
             <div class="row">
                 @forelse($results as $result)
-                    <a href="{{route('website.listings.single',['id' => $result->id])}}">
+                    <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->listing_slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
                                 <img src={{$result->image->listing_url}}>

@@ -4,8 +4,8 @@
     <ul id="mobile-demo" class="dropdown-content">
         <li><a class="nav-link" href="#">Home</a></li>
         <li><a class="nav-link" href="#">Areas</a></li>
-        <li><a class="nav-link" href="{{route('website.listings.active')}}">Homes For Sale</a></li>
-        <li><a class="nav-link" href="{{route('website.listings.sold')}}">Sold Homes</a></li>
+        <li><a class="nav-link" href="{{route('website.realestate.homes-for-sale')}}">Homes For Sale</a></li>
+        <li><a class="nav-link" href="{{route('website.realestate.sold-homes')}}">Sold Homes</a></li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market Stats</a></li>
         <li><a class="nav-link" href="#">Login</a></li>
         <li><a class="nav-link" href="#">Register</a></li>
@@ -62,7 +62,7 @@
                         </p>
                     </div>
                     <div class="modal-footer">
-                        <a href="" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>   
+                        <a href="" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>
 
                         <button type="submit" class="btn btn-primary"> <div class="loader-01"></div> Register </button>
                     </div>

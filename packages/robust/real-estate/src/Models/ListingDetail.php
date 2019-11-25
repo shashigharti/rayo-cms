@@ -18,10 +18,10 @@ class ListingDetail extends BaseModel
      * @var string
      */
     protected $namespace = 'Robust\Mls\Models\ListingDetail';
+
     /**
      * @var array
      */
-
     protected $fillable = ['listing_id','lakewaterfront', 'off_market_date',
         'external_amenities', 'amenities', 'basement', 'property_condition', 'property_frontpage', 'topography',
         'construction', 'cooling_type', 'equipment', 'exterior', 'owner_occupancy', 'maintenance', 'interior', 'kitchen_equipment', 'lot_description',
@@ -36,4 +36,12 @@ class ListingDetail extends BaseModel
         'lot_dimensions', 'owner_phone', 'fireplaces', 'return_to_market_date', 'location', 'garage_sqft', 'total_heat_sqft', 'showing_instructions', 'special_conditions',
         'idx_include', 'easements', 'block', 'landscaping', 'private_remarks', 'bath_type', 'main_bedrooms', 'oven_source', 'oven_type', 'patio_deck', 'basement_sqft',
         'well', 'window', 'other_buildings', 'zoning', 'community_features', 'parking_features', 'property_description', 'architecture', 'seperate_den_office', 'other_rooms','additional_fields'];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function listing()
+    {
+        return $this->belongsTo(Listing::class, 'id', 'listing_id');
+    }
 }
