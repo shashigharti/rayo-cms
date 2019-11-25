@@ -4,6 +4,11 @@
     let selectedDisplayOptions = [];
     let selectedSortBy = 'Active';
     let mrLocations = {};
+    let selectedProperties = [];
+
+    class Tags {
+
+    }
 
     class LocationItem {
         constructor(type, value, active) {

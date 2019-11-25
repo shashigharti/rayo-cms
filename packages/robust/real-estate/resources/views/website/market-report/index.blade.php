@@ -59,13 +59,26 @@
                         <span>Active<i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
                     <div id="market__search--lists" class="market__search--lists">
-                        <div class="single--list__block">
-                            <p class="single--list__block-item" data-type="Title" data-value="Hawaii"><input type="checkbox"><label>Hawaii</label></p>
-                            <p class="single--list__block-item" data-type="Active" data-value="70"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 70</span></p>
-                            <p class="single--list__block-item" data-type="Sold" data-value="390"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 390</span></p>
-                            <p class="single--list__block-item" data-type="Average" data-value="3876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$9876,567</p>
-                            <p class="single--list__block-item" data-type="Median" data-value="6876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$9876,567</p>
-                        </div>
+                        @foreach($records as $report)
+                            <div class="single--list__block">
+                                <p class="single--list__block-item" data-type="Title" data-value="{{$report->reportable->name}}">
+                                    <input type="checkbox"><label>{{$report->reportable->name}}</label>
+                                </p>
+                                <p class="single--list__block-item" data-type="Active" data-value="{{$report->total_listings_active}}"><span>
+                                    <i class="fa fa-bookmark" aria-hidden="true"></i>Active : {{$report->total_listings_active}}</span>
+                                </p>
+                                <p class="single--list__block-item" data-type="Sold" data-value="{{$report->total_listings_sold}}"><span>
+                                    <i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : {{$report->total_listings_sold}}</span>
+                                </p>
+                                <p class="single--list__block-item" data-type="Average" data-value="{{$report->average_price_sold}}">
+                                    <span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>${{$report->average_price_sold}}
+                                </p>
+                                <p class="single--list__block-item" data-type="Median" data-value="{{$report->median_price_sold}}">
+                                    <span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>${{$report->median_price_sold}}
+                                </p>
+                            </div>
+                        @endforeach  
+                        {{-- remove it once the real data is entered --}}                      
                         <div class="single--list__block">
                             <p class="single--list__block-item" data-type="Title" data-value="Panama City Beach"><input type="checkbox"><label>Panama City Beach</label></p>
                             <p class="single--list__block-item" data-type="Active" data-value="50"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 50</span></p>
@@ -80,6 +93,7 @@
                             <p class="single--list__block-item" data-type="Average" data-value="8876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$6876,567</p>
                             <p class="single--list__block-item" data-type="Median" data-value="8876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$6876,567</p>
                         </div>
+                        {{-- remove it once the data is entered --}} 
                     </div>
                 </div>
             </div>
