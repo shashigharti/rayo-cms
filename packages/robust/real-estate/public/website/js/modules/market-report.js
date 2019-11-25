@@ -74,9 +74,11 @@
         let status = (elem.getAttribute('data-status') == 'active') ? 'inactive' : 'active';
         sort_buttons.forEach((btn) => {
             btn.setAttribute('data-status', (status == 'active') ? 'inactive' : 'active');
+            btn.classList.remove('active');
         });
 
         elem.setAttribute('data-status', status);
+        elem.classList.add('active');
         selectedSortBy = elem.getAttribute('data-type');
     }
 
