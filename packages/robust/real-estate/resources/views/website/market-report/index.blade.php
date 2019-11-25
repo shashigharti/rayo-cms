@@ -58,17 +58,20 @@
                         <span>Hawaii <i class="fa fa-times" aria-hidden="true"></i></span>
                         <span>Active<i class="fa fa-times" aria-hidden="true"></i></span>
                     </div>
-                    <div id="market__search--lists" class="market__search--lists">
+                    <div id="market__search--lists" class="market__search--lists row">
                         @foreach($records as $report)
-                            <div class="market__search--lists-item">
+                        <div class="col m2">
+                            <div class="market__search--lists-item card">
+                                <div class="card-content">
                                     <p data-type="Title" data-value="{{$report->reportable->name}}" data-class="">
-                                        <input type="checkbox"><label>{{$report->reportable->name}}</label>
+                                        <input type="checkbox">
+                                        <label>{{$report->reportable->name}}</label>
                                     </p>
                                     <p data-type="Active" data-value="{{$report->total_listings_active}}" data-class="fa fa-bookmark"><span>
-                                        <i class="fa fa-bookmark" aria-hidden="true"></i>Active : {{$report->total_listings_active}}</span>
+                                                                                                <i class="fa fa-bookmark" aria-hidden="true"></i>Active : {{$report->total_listings_active}}</span>
                                     </p>
                                     <p data-type="Sold" data-value="{{$report->total_listings_sold}}" data-class="fa fa-shopping-cart"><span>
-                                        <i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : {{$report->total_listings_sold}}</span>
+                                                                                                <i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : {{$report->total_listings_sold}}</span>
                                     </p>
                                     <p data-type="Average" data-value="{{$report->average_price_sold}}" data-class="fa fa-percent">
                                         <span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>${{$report->average_price_sold}}
@@ -76,7 +79,9 @@
                                     <p data-type="Median" data-value="{{$report->median_price_sold}}" data-class="fa fa-crosshairs">
                                         <span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>${{$report->median_price_sold}}
                                     </p>
+                                </div>
                             </div>
+                        </div>
                         @endforeach
                     </div>
                 </div>

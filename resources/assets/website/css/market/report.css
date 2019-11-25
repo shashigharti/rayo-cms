@@ -127,15 +127,6 @@ a.btn-blue {
     padding-left: 40px;
     margin-bottom: 40px;
 }
-.market__search--lists-item {
-    display: inline-block;
-    width: 15%;
-    padding: 15px;
-    background: #ececec;
-    box-shadow: 1px 1px 2px #888;
-    margin-right: 14px;
-    margin-bottom: 16px;
-}
 .market__search--lists-item p{
     margin-bottom: 2px;
     font-size: 12px;

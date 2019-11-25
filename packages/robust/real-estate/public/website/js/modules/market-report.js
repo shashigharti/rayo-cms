@@ -97,7 +97,7 @@
 
     function initializeLocations(mr_locations) {
         mrLocations = mr_locations.map((location) => {
-            let location_items = [...location.querySelectorAll('p.single--list__block-item')];
+            let location_items = [...location.querySelectorAll('p')];
             mr_locations = location_items.map((location_item) => {
                 let [type, value] = [
                     location_item.getAttribute('data-type'),
@@ -162,7 +162,7 @@
         initializeLocations(mr_locations);
 
         // Render Locations
-        renderLocations();
+        //renderLocations();
 
     });
 }(jQuery, FRW, window, document));
