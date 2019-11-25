@@ -9,7 +9,6 @@
         constructor(type, value, active) {
             this._type = type;
             this._value = value;
-            this._active = active;
         }
 
         isActive(selected_options, type) {
@@ -18,7 +17,7 @@
 
         render(selected_options) {
             let template = (() => {
-                if (this._type == 'title') {
+                if (this._type == 'Title') {
                     return `<p class="single--list__block-item" data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
                 } else {
                     return `<p class="single--list__block-item ${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
@@ -51,7 +50,6 @@
     }
 
     function getSelectedSortOption(elem, sort_buttons) {
-        console.log(elem);
         let status = (elem.getAttribute('data-status') == 'active') ? 'inactive' : 'active';
         sort_buttons.forEach((btn) => {
             btn.setAttribute('data-status', (status == 'active') ? 'inactive' : 'active');
@@ -59,7 +57,6 @@
 
         elem.setAttribute('data-status', status);
         selectedSortBy = elem.getAttribute('data-type');
-        console.log(selectedSortBy);
     }
 
     function getSelectedDisplayOptions(display_buttons) {
@@ -70,15 +67,18 @@
             }
         });
     }
+    function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
     function sortLocations() {
-        selectedDisplayOptions = [];
-        display_buttons.forEach((btn) => {
-            if (btn.getAttribute('data-status') == 'active') {
-                selectedDisplayOptions.push(btn.getAttribute('data-type'));
+        mrLocations = mrLocations.sort(function (a, b) {
+            let [location_item_a, location_item_b] = [a.locationItems.filter((item) => item._type == selectedSortBy),
+            b.locationItems.filter((item) => item._type == selectedSortBy)];
+            if (isNumber(location_item_a[0]._value)) {
+                return parseFloat(location_item_a[0]._value) - parseFloat(location_item_b[0]._value);
             }
-        });
 
+            return (location_item_a[0]._value < location_item_b[0]._value) ? -1 : 1;
+        });
     }
 
     function initializeLocations(mr_locations) {
@@ -98,6 +98,7 @@
     }
 
     function renderLocations() {
+        sortLocations();
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
             location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
