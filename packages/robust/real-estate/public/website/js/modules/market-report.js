@@ -2,7 +2,7 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
     let selectedDisplayOptions = [];
-    let selectedSortOptions = [];
+    let selectedSortBy = 'Active';
     let mrLocations = {};
 
     class LocationItem {
@@ -29,9 +29,10 @@
     }
 
     class MRLocation {
-        constructor(location_items, selected_display_options) {
+        constructor(location_items, selected_display_options, sort_by = 'Active') {
             this.locationItems = location_items;
             this._selectedDisplayOptions = selected_display_options;
+            this._sortBy = sort_by;
         }
 
         set selectedDisplayOptions(selectedDisplayOptions) {
@@ -49,13 +50,16 @@
         }
     }
 
-    function getSelectedOptions(sort_buttons) {
-        selectedSortOptions = [];
+    function getSelectedSortOption(elem, sort_buttons) {
+        console.log(elem);
+        let status = (elem.getAttribute('data-status') == 'active') ? 'inactive' : 'active';
         sort_buttons.forEach((btn) => {
-            if (btn.getAttribute('data-status') == 'active') {
-                selectedSortOptions.push(btn.getAttribute('data-type'));
-            }
+            btn.setAttribute('data-status', (status == 'active') ? 'inactive' : 'active');
         });
+
+        elem.setAttribute('data-status', status);
+        selectedSortBy = elem.getAttribute('data-type');
+        console.log(selectedSortBy);
     }
 
     function getSelectedDisplayOptions(display_buttons) {
@@ -65,6 +69,16 @@
                 selectedDisplayOptions.push(btn.getAttribute('data-type'));
             }
         });
+    }
+
+    function sortLocations() {
+        selectedDisplayOptions = [];
+        display_buttons.forEach((btn) => {
+            if (btn.getAttribute('data-status') == 'active') {
+                selectedDisplayOptions.push(btn.getAttribute('data-type'));
+            }
+        });
+
     }
 
     function initializeLocations(mr_locations) {
@@ -94,7 +108,7 @@
 
         let mr_locations = [...document.getElementsByClassName("single--list__block")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
-        let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('.market--left__sort--btns > a');
+        let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -107,11 +121,9 @@
         });
 
         // Add event listeners for sort buttons
-        getSelectedOptions(sort_buttons);
         sort_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
-                getSelectedOptions(sort_buttons);
+                getSelectedSortOption(this, sort_buttons);
                 renderLocations();
             });
         });
