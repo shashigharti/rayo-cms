@@ -127,7 +127,7 @@ a.btn-blue {
     padding-left: 40px;
     margin-bottom: 40px;
 }
-.single--list__block {
+.single--list__block-item {
     display: inline-block;
     width: 15%;
     padding: 15px;
@@ -136,19 +136,19 @@ a.btn-blue {
     margin-right: 14px;
     margin-bottom: 16px;
 }
-.single--list__block p{
+.single--list__block-item p{
     margin-bottom: 2px;
     font-size: 12px;
     color: #7e7e7e;
 }
-.single--list__block label {
+.single--list__block-item label {
     vertical-align: middle;
     font-weight: bold;
     margin-left: 7px;
     font-size: 14px;
     margin-bottom: 5px;
 }
-.single--list__block i{
+.single--list__block-item i{
     margin-right: 5px;
 }
 .market__search--lists {
@@ -202,9 +202,10 @@ a.btn-blue {
     border: 1px solid #333 !important;
     background: #fff;
 }
-.single--list__block [type="checkbox"]:not(:checked),.single--list__block [type="checkbox"]:checked {
+.single--list__block-item [type="checkbox"]:not(:checked),.single--list__block-item [type="checkbox"]:checked {
     position: relative;
     opacity: 1;
+    pointer-events: initial;
 }
 .market--report__btns .active{
     border: 1px solid #0091ff !important;
