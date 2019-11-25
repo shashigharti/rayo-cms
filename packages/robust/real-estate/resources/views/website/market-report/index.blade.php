@@ -25,11 +25,11 @@
                     <p><b>Sort By:</b></p>
                     <div class="market--left__sort--btns sort__listings--btns">
                         <a href="#" data-type="average" data-status="active">Average Price Sold</a>
-                        <a href="#" data-type="median" data-status="active">Median Price Sold</a>
-                        <a href="#" data-type="active" data-status="active">#Active Listings</a>
-                        <a href="#" data-type="sold" data-status="active">#Sold Listings</a>
-                        <a href="#" data-type="alphabetically" data-status="active">Alphabetically</a>
-                        <a href="#" data-type="priority" data-status="active">Priority Location</a>
+                        <a href="#" data-type="median" data-status="inactive">Median Price Sold</a>
+                        <a href="#" data-type="active" data-status="inactive">#Active Listings</a>
+                        <a href="#" data-type="sold" data-status="inactive">#Sold Listings</a>
+                        <a href="#" data-type="alphabetically" data-status="inactive">Alphabetically</a>
+                        <a href="#" data-type="priority" data-status="inactive">Priority Location</a>
                     </div>
                 </div>
                 <div id="market--right__display" class="market--right__display market--left__search col s6">
@@ -44,9 +44,6 @@
                 <div class="market--right__search col s12 mt-40">
                     <span class="btn--label">Checkmark areas to</span>
                     <div class="market--compare--btns">
-                        <a href="#" class="btn-simple">
-                            Compare Selections
-                        </a>
                         <a href="#" class="btn-orange">
                             Show Subdivisions
                         </a>
