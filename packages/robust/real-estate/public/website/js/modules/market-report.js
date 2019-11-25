@@ -1,6 +1,7 @@
 ;
 (function ($, FRW, window, document, undefined) {
     "use strict"
+    let options = {};
 
     class LocationItem {
         constructor(type, value, active) {
@@ -58,5 +59,20 @@
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
             return location.render();
         }).join('');
+
+        // Sort buttons
+        let sort_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
+
+        // Add Event Listener for Sort buttons
+        sort_buttons.forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                console.log('clicked');
+            });
+        });
+
+        // let sort_by_options = (() => {
+        // })();
+
+
     });
 }(jQuery, FRW, window, document));
