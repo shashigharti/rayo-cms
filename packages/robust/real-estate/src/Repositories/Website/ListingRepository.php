@@ -58,6 +58,10 @@ class ListingRepository
         return $result;
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function getSingle($id)
     {
         return $this->model->where('id',$id)->with('details')->with('images')->first();
