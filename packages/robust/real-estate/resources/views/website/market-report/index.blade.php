@@ -35,10 +35,10 @@
                 <div id="market--right__display" class="market--right__display market--left__search col s6">
                     <div class="market--right__display--options sort__display">
                         <p><b>Display :</b></p>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="average" data-status="active"></span>Average $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="median" data-status="active"></span>Median $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="active" data-status="active"></span>Active</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="sold" data-status="active"></span>Sold</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Average" data-status="active"></span>Average $</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Median" data-status="active"></span>Median $</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Active" data-status="active"></span>Active</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Sold" data-status="active"></span>Sold</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">
