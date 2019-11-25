@@ -60,38 +60,38 @@
                     </div>
                     <div id="market__search--lists" class="market__search--lists">
                         @foreach($records as $report)
-                            <div class="single--list__block">
-                                <p class="single--list__block-item" data-type="Title" data-value="{{$report->reportable->name}}">
+                            <div class="market__search--lists-item">
+                                <p data-type="Title" data-value="{{$report->reportable->name}}">
                                     <input type="checkbox"><label>{{$report->reportable->name}}</label>
                                 </p>
-                                <p class="single--list__block-item" data-type="Active" data-value="{{$report->total_listings_active}}"><span>
+                                <p data-type="Active" data-value="{{$report->total_listings_active}}"><span>
                                     <i class="fa fa-bookmark" aria-hidden="true"></i>Active : {{$report->total_listings_active}}</span>
                                 </p>
-                                <p class="single--list__block-item" data-type="Sold" data-value="{{$report->total_listings_sold}}"><span>
+                                <p data-type="Sold" data-value="{{$report->total_listings_sold}}"><span>
                                     <i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : {{$report->total_listings_sold}}</span>
                                 </p>
-                                <p class="single--list__block-item" data-type="Average" data-value="{{$report->average_price_sold}}">
+                                <p data-type="Average" data-value="{{$report->average_price_sold}}">
                                     <span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>${{$report->average_price_sold}}
                                 </p>
-                                <p class="single--list__block-item" data-type="Median" data-value="{{$report->median_price_sold}}">
+                                <p data-type="Median" data-value="{{$report->median_price_sold}}">
                                     <span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>${{$report->median_price_sold}}
                                 </p>
                             </div>
                         @endforeach  
                         {{-- remove it once the real data is entered --}}                      
-                        <div class="single--list__block">
-                            <p class="single--list__block-item" data-type="Title" data-value="Panama City Beach"><input type="checkbox"><label>Panama City Beach</label></p>
-                            <p class="single--list__block-item" data-type="Active" data-value="50"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 50</span></p>
-                            <p class="single--list__block-item" data-type="Sold" data-value="590"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 590</span></p>
-                            <p class="single--list__block-item" data-type="Average" data-value="9876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$5876,567</p>
-                            <p class="single--list__block-item" data-type="Median" data-value="7876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$576,567</p>
+                        <div class="market__search--lists-item">
+                            <p  data-type="Title" data-value="Panama City Beach"><input type="checkbox"><label>Panama City Beach</label></p>
+                            <p  data-type="Active" data-value="50"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 50</span></p>
+                            <p  data-type="Sold" data-value="590"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 590</span></p>
+                            <p  data-type="Average" data-value="9876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$5876,567</p>
+                            <p  data-type="Median" data-value="7876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$576,567</p>
                         </div>
-                        <div class="single--list__block">
-                            <p class="single--list__block-item" data-type="Title" data-value="Chipley"><input type="checkbox"><label>Chipley</label></p>
-                            <p class="single--list__block-item" data-type="Active" data-value="60"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 60</span></p>
-                            <p class="single--list__block-item" data-type="Sold" data-value="190"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 690</span></p>
-                            <p class="single--list__block-item" data-type="Average" data-value="8876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$6876,567</p>
-                            <p class="single--list__block-item" data-type="Median" data-value="8876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$6876,567</p>
+                        <div class="market__search--lists-item">
+                            <p  data-type="Title" data-value="Chipley"><input type="checkbox"><label>Chipley</label></p>
+                            <p  data-type="Active" data-value="60"><span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : 60</span></p>
+                            <p  data-type="Sold" data-value="190"><span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : 690</span></p>
+                            <p  data-type="Average" data-value="8876567"><span><i class="fa fa-percent" aria-hidden="true"></i>Average : </span>$6876,567</p>
+                            <p data-type="Median" data-value="8876567"><span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : </span>$6876,567</p>
                         </div>
                         {{-- remove it once the data is entered --}} 
                     </div>
