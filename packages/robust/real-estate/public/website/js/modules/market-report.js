@@ -6,22 +6,22 @@
     let mrLocations = {};
 
     class LocationItem {
-        constructor(type, value, active, selected_display_options) {
-            this.type = type;
-            this.value = value;
-            this.active = active;
+        constructor(type, value, active) {
+            this._type = type;
+            this._value = value;
+            this._active = active;
         }
 
-        isActive(type) {
-            return selectedDisplayOptions.includes(type);
+        isActive(selected_options, type) {
+            return selected_options.includes(type);
         }
 
-        render() {
+        render(selected_options) {
             let template = (() => {
-                if (this.type == 'title') {
-                    return `<p class="single--list__block-item" data-type="${this.type}" data-value="${this.value}"><input type="checkbox"><label>${this.value}</label></p>`
+                if (this._type == 'title') {
+                    return `<p class="single--list__block-item" data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
                 } else {
-                    return `<p class="single--list__block-item ${this.isActive(this.type) ? '' : 'hide'}" data-type="${this.type}" data-value="${this.value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this.type} : </span>${this.value}</p>`
+                    return `<p class="single--list__block-item ${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
             })();
             return template;
@@ -29,14 +29,20 @@
     }
 
     class MRLocation {
-        constructor(location_items) {
+        constructor(location_items, selected_display_options) {
             this.locationItems = location_items;
+            this._selectedDisplayOptions = selected_display_options;
         }
+
+        set selectedDisplayOptions(selectedDisplayOptions) {
+            this._selectedDisplayOptions = selectedDisplayOptions;
+        }
+
         render() {
             return `
             <div class="single--list__block">
             ${this.locationItems.map((locationItem) => {
-                return locationItem.render();
+                return locationItem.render(this._selectedDisplayOptions);
             }).join('')}
             </div>
         `;
@@ -73,12 +79,13 @@
                 return new LocationItem(type, value, true);
             });
 
-            return new MRLocation(mr_locations);
+            return new MRLocation(mr_locations, selectedDisplayOptions);
         });
     }
 
     function renderLocations() {
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
+            location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
         }).join('');
     }
