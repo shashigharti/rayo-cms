@@ -14,7 +14,7 @@ class AddForeignKeysToLeadMetadatasTable extends Migration {
     {
         Schema::table('real_estate_lead_metadatas', function(Blueprint $table)
         {
-            $table->foreign('lead_id', 'lead_metadatas_lead_id_foreign_1')->references('id')->on('leads')->onUpdate('NO ACTION')->onDelete('NO ACTION');
+            $table->foreign('lead_id', 'lead_metadatas_lead_id_foreign_1')->references('id')->on('real_estate_leads')->onUpdate('NO ACTION')->onDelete('NO ACTION');
         });
     }
 
