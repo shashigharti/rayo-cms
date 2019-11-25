@@ -200,8 +200,14 @@ a.btn-blue {
 .sort__display .show-average-data-btn.active, .sort__display .show-active-data-btn.active, .show-sold-data-btn.active {
     color: #333 !important;
     border: 1px solid #333 !important;
+    background: #fff;
 }
 .single--list__block [type="checkbox"]:not(:checked),.single--list__block [type="checkbox"]:checked {
     position: relative;
     opacity: 1;
+}
+.sort__listings--btns .active{
+    border: 1px solid #0091ff !important;
+    background: #0091ff;
+    color: #fff !important;
 }

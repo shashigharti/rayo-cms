@@ -831,3 +831,14 @@ nav{
     position: absolute;
     right: 6px;
 }
+.search--bar input[type="text"] {
+    padding: 6px;
+}
+.search--bar input.site--theme-btn {
+    margin-left: 22px;
+    margin-top: 0px;
+    display: inline-block;
+    padding: 10px 30px 8px;
+}
+
+

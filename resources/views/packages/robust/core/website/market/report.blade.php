@@ -25,7 +25,7 @@
                 <div class="market--left__search col s6">
                     <p><b>Sort By:</b><select><option>Cities</option></select></p>
                     <div class="sort__listings--btns">
-                        <a href="#">Average Sale Price</a>
+                        <a href="#" class="active">Average Sale Price</a>
                         <a href="#">Median Sale Price</a>
                         <a href="#">Average Price Sold</a>
                         <a href="#">Median Price Sold</a>
@@ -36,11 +36,11 @@
                 <div class="market--left__search col s6">
                     <div class="sort__display">
                         <p><b>Display :</b></p>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Average $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Median $</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Homes Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Average $ Sold</div>
-                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Median $ Sold</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox active" data-add="average"></span>Show Average $</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Show Median $</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Show Active #</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Show Sold #</div>
+                        <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Only Areas with Activity</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">
