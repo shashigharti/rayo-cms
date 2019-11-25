@@ -121,7 +121,7 @@
 
     function renderTags() {
         selectedProperties.map((tag) => {
-            console.log(tag);
+
         });
     }
 
@@ -131,7 +131,7 @@
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
         let locations = [...document.querySelectorAll(".single--list__block > p")];
-        console.log(locations);
+
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -148,6 +148,13 @@
             elem.addEventListener("click", function (event) {
                 getSelectedSortOption(this, sort_buttons);
                 renderLocations();
+            });
+        });
+
+        // Add event listeners for locations
+        locations.forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                //selectedProperties = selectedProperties.push({ name: this.getAttribute('data-value') });
             });
         });
 
