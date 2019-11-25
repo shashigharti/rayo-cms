@@ -14,10 +14,12 @@
                 <div class="single-block">
                     @set('properties', json_decode($slider->properties))
                     <img src={{$properties->image ?? getMedia($properties->image)}}>
-                    <div class="slider--text">
-                        <h4>$149,000</h4>
-                        <p>{{$slider->header}}</p>
-                    </div>
+                    @if($properties)
+                        <div class="slider--text">
+                            <h4>$149,000</h4>
+                            <p>{{$slider->header}}</p>
+                        </div>
+                    @endif
                 </div>
             @endforeach
         </div>
