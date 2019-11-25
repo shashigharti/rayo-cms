@@ -1,7 +1,7 @@
 ;
 (function ($, FRW, window, document, undefined) {
     "use strict"
-    let options = {};
+    let options = [];
 
     class LocationItem {
         constructor(type, value, active) {
@@ -63,10 +63,17 @@
         // Sort buttons
         let sort_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
 
+        sort_buttons.forEach((btn) => {
+            options.push(btn.getAttribute('data-type'));
+        });
+
+        console.log(options);
+
         // Add Event Listener for Sort buttons
         sort_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                console.log('clicked');
+                let seletected_option = 'active';
+                const exists = options.filter(option => option == seletected_option);
             });
         });
 
