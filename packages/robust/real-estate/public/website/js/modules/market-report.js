@@ -6,8 +6,17 @@
     let mrLocations = {};
     let selectedProperties = [];
 
-    class Tags {
+    class Tag {
+        constructor(title) {
+            this._title = title;
+        }
 
+        render() {
+            let template = (() => {
+                return `<span>${this._title}<i class="fa fa-times" aria-hidden="true"></i></span>`;
+            })();
+            return template;
+        }
     }
 
     class LocationItem {
@@ -108,6 +117,12 @@
             location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
         }).join('');
+    }
+
+    function renderTags() {
+        selectedProperties.map((tag) => {
+            console.log(tag);
+        });
     }
 
     $(function () {
