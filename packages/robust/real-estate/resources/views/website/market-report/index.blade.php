@@ -24,21 +24,21 @@
                 <div id="market--left__sort" class="market--left__sort market--left__search col s6">
                     <p><b>Sort By:</b></p>
                     <div class="market--left__sort--btns sort__listings--btns">
-                        <a href="#" data-average="average">Average Price Sold</a>
-                        <a href="#" data-sold="median">Median Price Sold</a>
-                        <a href="#" data-sold="active">#Active Listings</a>
-                        <a href="#" data-sold="sold">#Sold Listings</a>
-                        <a href="#" data-sold="alphabetically">Alphabetically</a>
-                        <a href="#" data-sold="priority">Priority Location</a>
+                        <a href="#" data-type="average" data-status="active">Average Price Sold</a>
+                        <a href="#" data-type="median" data-status="active">Median Price Sold</a>
+                        <a href="#" data-type="active" data-status="active">#Active Listings</a>
+                        <a href="#" data-type="sold" data-status="active">#Sold Listings</a>
+                        <a href="#" data-type="alphabetically" data-status="active">Alphabetically</a>
+                        <a href="#" data-type="priority" data-status="active">Priority Location</a>
                     </div>
                 </div>
                 <div id="market--right__display" class="market--right__display market--left__search col s6">
                     <div class="market--right__display--options sort__display">
                         <p><b>Display :</b></p>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="average"></span>Average $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="median"></span>Median $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="active"></span>Active</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="sold"></span>Sold</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="average" data-status="active"></span>Average $</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="median" data-status="active"></span>Median $</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="active" data-status="active"></span>Active</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="sold" data-status="active"></span>Sold</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">

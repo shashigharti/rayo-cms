@@ -1,7 +1,8 @@
 ;
 (function ($, FRW, window, document, undefined) {
     "use strict"
-    let options = [];
+    let selectedDisplayOptions = [];
+    let selectedSortOptions = [];
 
     class LocationItem {
         constructor(type, value, active) {
@@ -60,25 +61,46 @@
             return location.render();
         }).join('');
 
-        // Sort buttons
-        let sort_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
+        // Display buttons 
+        let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
 
-        sort_buttons.forEach((btn) => {
-            options.push(btn.getAttribute('data-type'));
-        });
 
-        console.log(options);
-
-        // Add Event Listener for Sort buttons
+        // Add event listener for display buttons
         sort_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                let seletected_option = 'active';
-                const exists = options.filter(option => option == seletected_option);
+                selectedDisplayOptions = [];
+                this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
+
+
+                sort_buttons.forEach((btn) => {
+                    if (btn.getAttribute('data-status') == 'active') {
+                        selectedDisplayOptions.push(btn.getAttribute('data-type'));
+                    }
+                });
+
+                console.log(selectedDisplayOptions);
             });
         });
 
-        // let sort_by_options = (() => {
-        // })();
+        // Sort buttons
+        let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('.market--left__sort--btns > a');
+
+        // Add event listener for sort buttons
+        sort_buttons.forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                selectedDisplayOptions = [];
+                this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
+
+
+                sort_buttons.forEach((btn) => {
+                    if (btn.getAttribute('data-status') == 'active') {
+                        selectedSortOptions.push(btn.getAttribute('data-type'));
+                    }
+                });
+
+                console.log(selectedSortOptions);
+            });
+        });
 
 
     });
