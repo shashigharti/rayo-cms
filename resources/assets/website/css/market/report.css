@@ -52,7 +52,7 @@ a.orange-line {
     font-size: 12px;
     padding: 3px;
 }
-.market--report__btns a {
+.market--left__sort--btns a {
     font-size: 13px;
     display: inline-block;
     margin-right: 7px;
@@ -65,21 +65,21 @@ a.orange-line {
     margin-top: 10px;
     text-decoration: none;
 }
-.market--report__btns a:hover{
+.market--left__sort--btns a:hover{
     background:#0091ff;
     color:#fff;
 }
-.market--report__checkboxes{
+.market--right__display--options{
     margin-top: 40px;
 }
-.market--report__checkboxes div {
+.market--right__display--options div {
     font-size: 13px;
     color: #555;
     display: inline-block;
     width: 48%;
     margin-bottom:6px;
 }
-.market--report__checkboxes input{
+.market--right__display--options input{
     vertical-align: middle;
     margin-right: 8px;
 }
@@ -197,7 +197,7 @@ a.btn-blue {
 .btn-checkbox.active:after {
     content: "\2713";
 }
-.market--report__checkboxes .show-average-data-btn.active, .market--report__checkboxes .show-active-data-btn.active, .show-sold-data-btn.active {
+.market--right__display--options .show-average-data-btn.active, .market--right__display--options .show-active-data-btn.active, .show-sold-data-btn.active {
     color: #333 !important;
     border: 1px solid #333 !important;
     background: #fff;
@@ -207,7 +207,7 @@ a.btn-blue {
     opacity: 1;
     pointer-events: initial;
 }
-.market--report__btns .active{
+.market--left__sort--btns .active{
     border: 1px solid #0091ff !important;
     background: #0091ff;
     color: #fff !important;
