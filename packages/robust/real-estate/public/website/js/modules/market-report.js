@@ -2,21 +2,26 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
     let selectedDisplayOptions = [];
-    let selectedSortOptions = [];
+    let selectedSortBy = 'Active';
+    let mrLocations = {};
 
     class LocationItem {
         constructor(type, value, active) {
-            this.type = type;
-            this.value = value;
-            this.active = active;
+            this._type = type;
+            this._value = value;
+            this._active = active;
         }
 
-        render() {
+        isActive(selected_options, type) {
+            return selected_options.includes(type);
+        }
+
+        render(selected_options) {
             let template = (() => {
-                if (this.type == 'title') {
-                    return `<p><input type="checkbox"><label>${this.value}</label></p>`
+                if (this._type == 'title') {
+                    return `<p class="single--list__block-item" data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
                 } else {
-                    return `<p><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this.type} : </span>${this.value}</p>`
+                    return `<p class="single--list__block-item ${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
             })();
             return template;
@@ -24,26 +29,59 @@
     }
 
     class MRLocation {
-        constructor(location_items) {
+        constructor(location_items, selected_display_options, sort_by = 'Active') {
             this.locationItems = location_items;
+            this._selectedDisplayOptions = selected_display_options;
+            this._sortBy = sort_by;
         }
+
+        set selectedDisplayOptions(selectedDisplayOptions) {
+            this._selectedDisplayOptions = selectedDisplayOptions;
+        }
+
         render() {
             return `
             <div class="single--list__block">
             ${this.locationItems.map((locationItem) => {
-                return locationItem.render();
+                return locationItem.render(this._selectedDisplayOptions);
             }).join('')}
             </div>
         `;
         }
     }
 
-    $(function () {
-        let mrLocations = {};
+    function getSelectedSortOption(elem, sort_buttons) {
+        console.log(elem);
+        let status = (elem.getAttribute('data-status') == 'active') ? 'inactive' : 'active';
+        sort_buttons.forEach((btn) => {
+            btn.setAttribute('data-status', (status == 'active') ? 'inactive' : 'active');
+        });
 
-        // Read Initial Locations
-        let mr_locations = [...document.getElementsByClassName("single--list__block")];
+        elem.setAttribute('data-status', status);
+        selectedSortBy = elem.getAttribute('data-type');
+        console.log(selectedSortBy);
+    }
 
+    function getSelectedDisplayOptions(display_buttons) {
+        selectedDisplayOptions = [];
+        display_buttons.forEach((btn) => {
+            if (btn.getAttribute('data-status') == 'active') {
+                selectedDisplayOptions.push(btn.getAttribute('data-type'));
+            }
+        });
+    }
+
+    function sortLocations() {
+        selectedDisplayOptions = [];
+        display_buttons.forEach((btn) => {
+            if (btn.getAttribute('data-status') == 'active') {
+                selectedDisplayOptions.push(btn.getAttribute('data-type'));
+            }
+        });
+
+    }
+
+    function initializeLocations(mr_locations) {
         mrLocations = mr_locations.map((location) => {
             let location_items = [...location.querySelectorAll('p.single--list__block-item')];
             mr_locations = location_items.map((location_item) => {
@@ -55,53 +93,46 @@
                 return new LocationItem(type, value, true);
             });
 
-            return new MRLocation(mr_locations);
+            return new MRLocation(mr_locations, selectedDisplayOptions);
         });
+    }
+
+    function renderLocations() {
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
+            location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
         }).join('');
+    }
 
-        // Display buttons 
+    $(function () {
+
+        let mr_locations = [...document.getElementsByClassName("single--list__block")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
+        let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
 
-
-        // Add event listener for display buttons
-        sort_buttons.forEach((elem) => {
+        // Add event listeners for display buttons
+        getSelectedDisplayOptions(display_buttons);
+        display_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                selectedDisplayOptions = [];
                 this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
-
-
-                sort_buttons.forEach((btn) => {
-                    if (btn.getAttribute('data-status') == 'active') {
-                        selectedDisplayOptions.push(btn.getAttribute('data-type'));
-                    }
-                });
-
-                console.log(selectedDisplayOptions);
+                getSelectedDisplayOptions(display_buttons);
+                renderLocations();
             });
         });
 
-        // Sort buttons
-        let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('.market--left__sort--btns > a');
-
-        // Add event listener for sort buttons
+        // Add event listeners for sort buttons
         sort_buttons.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                selectedDisplayOptions = [];
-                this.setAttribute('data-status', (this.getAttribute('data-status') == 'active') ? 'inactive' : 'active');
-
-
-                sort_buttons.forEach((btn) => {
-                    if (btn.getAttribute('data-status') == 'active') {
-                        selectedSortOptions.push(btn.getAttribute('data-type'));
-                    }
-                });
-
-                console.log(selectedSortOptions);
+                getSelectedSortOption(this, sort_buttons);
+                renderLocations();
             });
         });
 
+        // Read all the initial locations from page and initialize locations array list
+        initializeLocations(mr_locations);
+
+        // Render Locations
+        renderLocations();
 
     });
 }(jQuery, FRW, window, document));
