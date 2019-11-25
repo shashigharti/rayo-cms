@@ -52,7 +52,7 @@ a.orange-line {
     font-size: 12px;
     padding: 3px;
 }
-.sort__listings--btns a {
+.market--report__btns a {
     font-size: 13px;
     display: inline-block;
     margin-right: 7px;
@@ -65,21 +65,21 @@ a.orange-line {
     margin-top: 10px;
     text-decoration: none;
 }
-.sort__listings--btns a:hover{
+.market--report__btns a:hover{
     background:#0091ff;
     color:#fff;
 }
-.sort__display {
+.market--report__checkboxes{
     margin-top: 40px;
 }
-.sort__display div {
+.market--report__checkboxes div {
     font-size: 13px;
     color: #555;
     display: inline-block;
     width: 48%;
     margin-bottom:6px;
 }
-.sort__display input{
+.market--report__checkboxes input{
     vertical-align: middle;
     margin-right: 8px;
 }
@@ -197,7 +197,7 @@ a.btn-blue {
 .btn-checkbox.active:after {
     content: "\2713";
 }
-.sort__display .show-average-data-btn.active, .sort__display .show-active-data-btn.active, .show-sold-data-btn.active {
+.market--report__checkboxes .show-average-data-btn.active, .market--report__checkboxes .show-active-data-btn.active, .show-sold-data-btn.active {
     color: #333 !important;
     border: 1px solid #333 !important;
     background: #fff;
@@ -206,7 +206,7 @@ a.btn-blue {
     position: relative;
     opacity: 1;
 }
-.sort__listings--btns .active{
+.market--report__btns .active{
     border: 1px solid #0091ff !important;
     background: #0091ff;
     color: #fff !important;

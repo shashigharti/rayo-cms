@@ -24,7 +24,7 @@
             <div class="row">
                 <div class="market--left__search col s6">
                     <p><b>Sort By:</b><select><option>Cities</option></select></p>
-                    <div class="sort__listings--btns">
+                    <div class="market--report__btns">
                         <a href="#" class="active">Average Sale Price</a>
                         <a href="#">Median Sale Price</a>
                         <a href="#">Average Price Sold</a>
@@ -34,7 +34,7 @@
                     </div>
                 </div>
                 <div class="market--left__search col s6">
-                    <div class="sort__display">
+                    <div class="market--report__checkboxes">
                         <p><b>Display :</b></p>
                         <div><span class=" btn-default show-average-data-btn btn-checkbox active" data-add="average"></span>Show Average $</div>
                         <div><span class=" btn-default show-average-data-btn btn-checkbox" data-add="average"></span>Show Median $</div>
