@@ -127,7 +127,7 @@
 
     $(function () {
 
-        let mr_locations = [...document.getElementsByClassName("single--list__block")];
+        let mr_locations = [...document.querySelectorAll("#market__search--lists > .market__search--lists-item")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
         let locations = [...document.querySelectorAll(".single--list__block > p")];
