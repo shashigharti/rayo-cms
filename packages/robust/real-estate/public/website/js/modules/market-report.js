@@ -32,12 +32,14 @@
         render(selected_options) {
             let template = (() => {
                 if (this._type == 'Title') {
-                    return `<p class="single--list__block-item" data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
+                    return `<p data-type="${this._type}" data-value="${this._value}"><input type="checkbox"><label>${this._value}</label></p>`
                 } else {
-                    return `<p class="single--list__block-item ${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
+                    return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}"><span><i class="fa fa-bookmark" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
             })();
-            return template;
+            return `
+                ${template}
+            `;
         }
     }
 
@@ -54,10 +56,14 @@
 
         render() {
             return `
-            <div class="single--list__block">
+            <div class="col m2">
+            <div class="market__search--lists-item card">
+                <div class="card-content">
             ${this.locationItems.map((locationItem) => {
                 return locationItem.render(this._selectedDisplayOptions);
             }).join('')}
+                </div>
+            </div>
             </div>
         `;
         }
@@ -109,6 +115,7 @@
 
             return new MRLocation(mr_locations, selectedDisplayOptions);
         });
+        console.log(mr_locations);
     }
 
     function renderLocations() {
@@ -127,11 +134,10 @@
 
     $(function () {
 
-        let mr_locations = [...document.querySelectorAll("#market__search--lists > .market__search--lists-item")];
+        let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
         let locations = [...document.querySelectorAll(".single--list__block > p")];
-
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -162,7 +168,7 @@
         initializeLocations(mr_locations);
 
         // Render Locations
-        //renderLocations();
+        renderLocations();
 
     });
 }(jQuery, FRW, window, document));

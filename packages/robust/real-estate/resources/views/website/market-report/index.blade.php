@@ -36,9 +36,9 @@
                     <div class="market--right__display--options">
                         <p><b>Display :</b></p>
                         <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Average" data-status="active"></span>Average $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Median" data-status="active"></span>Median $</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Active" data-status="active"></span>Active</div>
-                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox" data-type="Sold" data-status="active"></span>Sold</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Median" data-status="active"></span>Median $</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Active" data-status="active"></span>Active</div>
+                        <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Sold" data-status="active"></span>Sold</div>
                     </div>
                 </div>
                 <div class="market--right__search col s12 mt-40">
