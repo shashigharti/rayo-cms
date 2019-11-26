@@ -5,6 +5,7 @@
     let selectedSortBy = 'Active';
     let mrLocations = {};
     let selectedProperties = [];
+    let tags = [];
 
     class Tag {
         constructor(title) {
@@ -13,7 +14,7 @@
 
         render() {
             let template = (() => {
-                return `<span>${this._title}<i class="fa fa-times" aria-hidden="true"></i></span>`;
+                return `<span>${this._title}</span>`;
             })();
             return template;
         }
@@ -132,17 +133,23 @@
         let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
         locations.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                selectedProperties.push(this.getAttribute('value'));
+                let value = this.getAttribute('value');
+                if (this.checked) {
+                    tags.push(new Tag(this.getAttribute('value')));
+                } else {
+                    // Remove tag
+                    tags = tags.map((tag) => tag.title != value);
+                }
+                renderTags();
             });
+
         });
-
-
     }
 
     function renderTags() {
-        selectedProperties.map((tag) => {
-
-        });
+        document.getElementById('market__report--tags').innerHTML = tags.map(tag => {
+            return tag.render();
+        }).join('');
     }
 
     $(function () {

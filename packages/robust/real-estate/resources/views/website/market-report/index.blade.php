@@ -54,9 +54,7 @@
                             Show On Map
                         </a>
                     </div>
-                    <div class="tags">
-                        <span>Hawaii <i class="fa fa-times" aria-hidden="true"></i></span>
-                        <span>Active<i class="fa fa-times" aria-hidden="true"></i></span>
+                    <div id="market__report--tags" class="tags">
                     </div>
                     <div id="market__search--lists" class="market__search--lists row">
                         @foreach($records as $report)
