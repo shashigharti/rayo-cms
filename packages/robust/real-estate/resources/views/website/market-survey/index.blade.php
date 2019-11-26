@@ -1,7 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @section('header')
-    @include(Site::templateResolver('core::website.listings.partials..header'))
+    @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
 @section('body_section')
     <section class="main-content map-section">
@@ -614,6 +614,5 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMGPU0xbiE-XtO-U61AltLGW05KKF0cY&libraries=drawing&callback=initMap"
             async defer></script>
 @endsection
-@section('footer')
-@endsection
+
 

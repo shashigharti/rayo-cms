@@ -23,14 +23,6 @@ Route::get('/profile',[
     'uses' => 'HomeController@profile'
 ]);
 
-Route::get('/market-survey',[
-    'as' => 'website.market-survey.index',
-    'uses' => 'HomeController@marketSurvey'
-]);
-Route::get('/market-report',[
-    'as' => 'website.market-report.index',
-    'uses' => 'HomeController@marketReport'
-]);
 
 Route::get('/login',[
    'as' =>'login',
