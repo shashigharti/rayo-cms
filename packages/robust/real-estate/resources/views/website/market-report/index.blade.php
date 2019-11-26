@@ -64,7 +64,7 @@
                             <div class="market__search--lists-item card">
                                 <div class="card-content">
                                    <p data-type="Title" data-value="{{$report->reportable->name}}" data-class="">
-                                        <input type="checkbox">
+                                        <input type="checkbox" value="{{$report->reportable->name}}">
                                         <label>{{$report->reportable->name}}</label>
                                     </p>
                                     <p data-type="Active" data-value="{{$report->total_listings_active}}" data-class="fa fa-bookmark">

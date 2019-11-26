@@ -33,7 +33,7 @@
         render(selected_options) {
             let template = (() => {
                 if (this._type == 'Title') {
-                    return `<p data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox"><label>${this._value}</label></p>`
+                    return `<p data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox" value="${this._value}"><label>${this._value}</label></p>`
                 } else {
                     return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><span><i class="${this._icon}" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
@@ -127,7 +127,20 @@
             location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
         }).join('');
+
+        // Add event listeners for locations
+        let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
+        locations.forEach((elem) => {
+            elem.addEventListener("click", function (event) {
+                //selectedProperties.push(this.value);
+                console.log(selectedProperties);
+            });
+        });
+
+
     }
+
+
 
     function renderTags() {
         selectedProperties.map((tag) => {
@@ -139,7 +152,7 @@
         let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
-        let locations = [...document.querySelectorAll(".single--list__block > p")];
+
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -160,18 +173,12 @@
             });
         });
 
-        // Add event listeners for locations
-        locations.forEach((elem) => {
-            elem.addEventListener("click", function (event) {
-                //selectedProperties = selectedProperties.push({ name: this.getAttribute('data-value') });
-            });
-        });
-
         // Read all the initial locations from page and initialize locations array list
         initializeLocations(mr_locations);
 
         // Render Locations
         renderLocations();
+
 
     });
 }(jQuery, FRW, window, document));
