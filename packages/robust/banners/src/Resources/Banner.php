@@ -37,7 +37,7 @@ class Banner extends JsonResource
             'status' => $this->status,
             'order' => $this->order,
             'prices' => isset($blocks['prices']) ? $blocks['prices'] : [],
-            'locations' => isset($blocks['locations']) ? $blocks['locations'] : [],
+            'location' => isset($blocks['location']) ? $blocks['location'] : '',
             'content' => isset($blocks['content']) ? $blocks['content'] : '',
             'image' => isset($blocks['image'])  ? $blocks['image'] : ''
         ];
