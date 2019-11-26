@@ -31,8 +31,6 @@ class HomeController extends Controller
 
         $validator = Validator::make($request->all(),[
             'file' => 'required',
-            'name' => 'required',
-            'slug' => 'required'
         ]);
         if($validator->fails()){
             return response()->json(['errors' => $validator->errors()],422);
