@@ -1,4 +1,5 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
+@inject('image_helper,'Robust\RealEstate\Helpers\ListingImageHelper')
 @section('header')
     @include(Site::templateResolver('real-estate::website.listings.partials.header'))
 @endsection
