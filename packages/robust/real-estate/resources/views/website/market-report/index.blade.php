@@ -4,7 +4,7 @@
     @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
 @section('body_section')
-    <section class="main-content">
+    <section class="market-report main-content" data-page='{{$page_type}}'>
         <div class="container-fluid">
             <div class="row">
                 <div class="col s12">
@@ -43,14 +43,14 @@
                 </div>
                 <div class="market--right__search col s12 mt-40">
                     <span class="btn--label">Checkmark areas to</span>
-                    <div class="market--compare--btns">
-                        <a href="#" class="btn-orange">
+                    <div class="market__compare-btns">
+                        <a class="market__compare-btns__subdivision" href="#" class="btn-orange">
                             Show Subdivisions
                         </a>
-                        <a href="#" class="btn-green">
+                        <a class="market__compare-btns__areas" href="" data-url="market/reports/compare?type=cities&values=21,22,23" class="btn-green">
                             Compare Selected Areas
                         </a>
-                        <a href="#" class="btn-blue">
+                        <a class="market__compare-btns__map" href="#" class="btn-blue">
                             Show On Map
                         </a>
                     </div>
