@@ -2,8 +2,6 @@
 namespace Robust\Banners\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Robust\Banners\Repositories\BannerRepository;
-use Robust\Banners\Models\Banner;
 use Robust\Banners\Helpers\BannerHelper;
 
 /**
@@ -26,7 +24,7 @@ class BannersServiceProvider extends ServiceProvider
             return new BannerHelper($app->make('Robust\Banners\Repositories\BannerRepository'));
         });
     }
-   
+
     public function register_includes()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'banners.permissions');
