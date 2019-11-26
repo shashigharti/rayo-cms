@@ -154,7 +154,7 @@ return [
     "elementary" => [
         "block" => "block4",
         "display" => "Elementary School (min-max)",
-        "name" => "lot",
+        "name" => "elementary",
         "type" => "select",
         "options" => [
             [
