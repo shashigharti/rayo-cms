@@ -83,7 +83,7 @@ a.orange-line {
     vertical-align: middle;
     margin-right: 8px;
 }
-.market--compare--btns a{
+.market__compare-btns a{
     text-decoration: none;
     color: #666;
     font-size: 14px;

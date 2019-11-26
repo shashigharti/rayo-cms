@@ -44,13 +44,13 @@
                 <div class="market--right__search col s12 mt-40">
                     <span class="btn--label">Checkmark areas to</span>
                     <div class="market__compare-btns">
-                        <a class="market__compare-btns__subdivision" href="#" class="btn-orange">
+                        <a class="market__compare-btns__subdivision btn-orange" href="#" >
                             Show Subdivisions
                         </a>
-                        <a class="market__compare-btns__areas" href="" data-url="market/reports/compare?type=cities&values=21,22,23" class="btn-green">
+                        <a class="market__compare-btns__areas btn-green" href="" data-url="market/reports/compare?type=cities&values=21,22,23">
                             Compare Selected Areas
                         </a>
-                        <a class="market__compare-btns__map" href="#" class="btn-blue">
+                        <a class="market__compare-btns__map btn-blue" href="#">
                             Show On Map
                         </a>
                     </div>
