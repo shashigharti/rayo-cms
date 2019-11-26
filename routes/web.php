@@ -16,25 +16,6 @@ Route::get('email/verify', 'Auth\VerificationController@show')->name('verificati
 Route::get('email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
 Route::get('email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-Route::get('/listings',[
-    'as' => 'website.listings.index',
-    'uses' => 'ListingController@index'
-]);
-
-Route::get('/listings/homes-for-sale',[
-   'as' => 'website.listings.active',
-   'uses' => 'ListingController@active'
-]);
-
-Route::get('/listings/sold-homes',[
-    'as' => 'website.listings.sold',
-    'uses' => 'ListingController@sold'
-]);
-
-Route::get('/listing/{id}',[
-    'as' => 'website.listings.single',
-    'uses' => 'ListingController@single'
-]);
 
 
 Route::get('/profile',[
