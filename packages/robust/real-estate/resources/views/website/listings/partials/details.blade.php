@@ -56,20 +56,22 @@
                             </ul>
                         </div>
                         <div id="overview" class="col s12 overview-slider ">
-                            <div class="slider-for">
+                            <div class="slider-for owl-carousel owl-theme">
                                 @forelse($result->images as $image)
-                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>
+                                   <div class="item">
+                                       <img src="{{$image->listing_url}}" alt="{{$image->listing_id}}">
+                                   </div>
                                 @empty
                                 @endforelse
                             </div>
-                            <div class="slider-nav">
-                                @forelse($result->images as $image)
-                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>
-                                @empty
-                                @endforelse
-                                <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>
-                                <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>
-                            </div>
+{{--                            <div class="slider-nav">--}}
+{{--                                @forelse($result->images as $image)--}}
+{{--                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>--}}
+{{--                                @empty--}}
+{{--                                @endforelse--}}
+{{--                                <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>--}}
+{{--                                <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>--}}
+{{--                            </div>--}}
                         </div>
                         <div id="distance" class="col s12">
                             <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
