@@ -1,6 +1,6 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @section('header')
-    @include(Site::templateResolver('core::website.listings.partials..header'))
+    @include(Site::templateResolver('real-estate::website.listings.partials.header'))
 @endsection
 
 @section('body_section')
