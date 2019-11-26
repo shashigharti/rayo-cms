@@ -40,14 +40,12 @@
         </div>
         <div class="col s5 right-align">
             <div class="total--records">
-                <span>0-40</span> of <span>9,876</span> Total Properties
+                <span>{{$results->perPage()}}</span> of <span>{{$results->total()}}</span> Total Properties
             </div>
             <div class="listing--pagination">
-                <span><<</span>
-                <span>1</span>
-                <span>2</span>
-                <span class="active">3</span>
-                <span>>></span>
+                <span><a href="{{$results->previousPageUrl()}}"><<</a></span>
+                <span class="active">{{$results->currentPage()}}</span>
+                <span><a href="{{$results->nextPageUrl()}}">>></a></span>
             </div>
         </div>
         <div class="col s12 listing--tags">

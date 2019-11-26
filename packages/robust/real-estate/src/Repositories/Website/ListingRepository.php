@@ -19,7 +19,7 @@ class ListingRepository
      */
     protected const LISTING_FIELDS = [
         'index' => [
-            'id','listing_slug','system_price','picture_count',
+            'id','uid','listing_slug','system_price','picture_count',
             'status','address_street','state','city',
             'county','year_built','total_finished_area',
             'baths_full','bedrooms'

@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\RealEstate\Model;
+namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
 

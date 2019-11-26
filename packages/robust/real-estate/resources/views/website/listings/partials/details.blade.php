@@ -160,7 +160,7 @@
                 <div class="top more-inner">
                     <a href="#" class="single-listing-button btn btn-theme pull-left btn-list-back" role="button">
                         <span class="glyphicon glyphicon-arrow-left"></span>Return To All Listings </a>
-                    <div class="pull-right txt-price"> $ <span class="single-listing-price"> 249,000 </span> </div>
+                    <div class="pull-right txt-price"> $ <span class="single-listing-price"> {{$result->system_price}}</span> </div>
                 </div>
                 <div class="more-inner">
                     <div class="detail-block">
@@ -299,131 +299,39 @@
                     <h3 class="title-more-detail">More Property Details </h3>
                 </div>
                 <div class="more-property-detail-content">
-                    <div class="col s4">
-                        <div class="more-inner">
-                            <div class="detail-block">
-                                <p class="title-detail"> Interior </p>
+                    @foreach($details as $title => $detail)
+                        <div class="col s4">
+                            <div class="more-inner">
+                                <div class="detail-block">
+                                <p class="title-detail">{{$title}} </p>
                                 <div class="clearfix txt-descript">
                                     <table class="table table-striped">
                                         <tbody>
-                                        <tr>
-                                            <td>Rooms</td>
-                                            <td>Bedroom,Bunk Room,Dining Room,Full Bathroom,Kitchen,Master Bedroom</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kitchen Equipments</td>
-                                            <td>First</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Furnished</td>
-                                            <td>Furnished - All</td>
-                                        </tr>
+                                            @foreach($detail as $field)
+                                                @set('name',$field['name'])
+                                                @if(in_array($title,['School Information']))
+                                                    @if(isset($result->$name) && !in_array($result->$name,['none','0','Undefined','None']))
+                                                        <tr>
+                                                            <td>{{$field['display']}}</td>
+                                                            <td>{{$result->$name}}</td>
+                                                        </tr>
+                                                    @endif
+                                                @else
+                                                    @if(isset($result->details->$name) && !in_array($result->details->$name,['none','0','Undefined','None']))
+                                                        <tr>
+                                                            <td>{{$field['display']}}</td>
+                                                            <td>{{$result->details->$name}}</td>
+                                                        </tr>
+                                                    @endif
+                                                @endif
+                                            @endforeach
                                         </tbody>
                                     </table>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col s4">
-                        <div class="more-inner">
-                            <div class="detail-block">
-                                <p class="title-detail"> Interior </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td>Rooms</td>
-                                            <td>Bedroom,Bunk Room,Dining Room,Full Bathroom,Kitchen,Master Bedroom</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kitchen Equipments</td>
-                                            <td>First</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Furnished</td>
-                                            <td>Furnished - All</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="more-inner">
-                            <div class="detail-block">
-                                <p class="title-detail"> Interior </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td>Rooms</td>
-                                            <td>Bedroom,Bunk Room,Dining Room,Full Bathroom,Kitchen,Master Bedroom</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kitchen Equipments</td>
-                                            <td>First</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Furnished</td>
-                                            <td>Furnished - All</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="more-inner">
-                            <div class="detail-block">
-                                <p class="title-detail"> Interior </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td>Rooms</td>
-                                            <td>Bedroom,Bunk Room,Dining Room,Full Bathroom,Kitchen,Master Bedroom</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kitchen Equipments</td>
-                                            <td>First</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Furnished</td>
-                                            <td>Furnished - All</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col s4">
-                        <div class="more-inner">
-                            <div class="detail-block">
-                                <p class="title-detail"> Interior </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                        <tr>
-                                            <td>Rooms</td>
-                                            <td>Bedroom,Bunk Room,Dining Room,Full Bathroom,Kitchen,Master Bedroom</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Kitchen Equipments</td>
-                                            <td>First</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Furnished</td>
-                                            <td>Furnished - All</td>
-                                        </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>

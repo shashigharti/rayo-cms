@@ -61,4 +61,9 @@ trait CrudRepositoryTrait
         return $this->model->get();
     }
 
+    public function updateOrCreate($conditions,$data)
+    {
+        $this->model = $this->model->updateOrCreate($conditions,$data);
+        return $this;
+    }
 }

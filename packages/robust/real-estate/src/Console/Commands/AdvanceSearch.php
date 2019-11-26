@@ -11,7 +11,7 @@ class AdvanceSearch extends Command
     /**
      * @var string
      */
-    protected $signature = 'mls:advance-search';
+    protected $signature = 'real-estate:advance-search';
 
     /**
      * @var string
@@ -27,7 +27,7 @@ class AdvanceSearch extends Command
         //types of property
         foreach ($blocks as $block)
         {
-            $field = config('mls.search.'.$block);
+            $field = config('real-estate.search.'.$block);
             array_push($default,json_encode($field));
         }
         CoreSetting::updateOrCreate(['type'=>'advance-search'],[
