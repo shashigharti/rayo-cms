@@ -132,15 +132,12 @@
         let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
         locations.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                //selectedProperties.push(this.value);
-                console.log(selectedProperties);
+                selectedProperties.push(this.getAttribute('value'));
             });
         });
 
 
     }
-
-
 
     function renderTags() {
         selectedProperties.map((tag) => {
