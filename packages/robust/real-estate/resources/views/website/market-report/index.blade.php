@@ -1,7 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @section('header')
-    @include(Site::templateResolver('core::website.listings.partials..header'))
+    @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
 @section('body_section')
     <section class="main-content">
@@ -26,7 +26,7 @@
                     <div class="market--left__sort--btns">
                         <a href="#" data-type="Active" class="active" data-status="active">#Active Listings</a>
                         <a href="#" data-type="Average" data-status="inactive">Average Price Sold</a>
-                        <a href="#" data-type="Median" data-status="inactive">Median Price Sold</a>                        
+                        <a href="#" data-type="Median" data-status="inactive">Median Price Sold</a>
                         <a href="#" data-type="Sold" data-status="inactive">#Sold Listings</a>
                         <a href="#" data-type="Title" data-status="inactive">Alphabetically</a>
                         <a href="#" data-type="Priority" data-locations="" data-status="inactive">Priority Location</a>
