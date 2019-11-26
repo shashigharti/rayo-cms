@@ -91,5 +91,25 @@ trait SearchRepositoryTrait
     {
         return $this->model->all();
     }
-    
+
+    /**
+     * @param $field
+     * @param $values
+     * @return $this
+     */
+    public function whereBetween($field, $values)
+    {
+        $this->model = $this->model->whereBetween($field,$values);
+        return $this;
+    }
+
+    /**
+     * @param $relation
+     * @return $this
+     */
+    public function has($relation)
+    {
+        $this->model = $this->model->has($relation);
+        return $this;
+    }
 }

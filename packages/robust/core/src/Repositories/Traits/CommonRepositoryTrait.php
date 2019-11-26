@@ -135,4 +135,21 @@ trait CommonRepositoryTrait
         return $query->select(\DB::raw($fields));
 
     }
+
+    /**
+     * @return mixed
+     */
+    public function count()
+    {
+        return $this->model->count();
+    }
+
+    /**
+     * @return $this
+     */
+    public function toSql()
+    {
+        $this->model = $this->model->toSql();
+        return $this;
+    }
 }

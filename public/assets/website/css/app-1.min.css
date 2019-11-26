@@ -1402,8 +1402,7 @@ nav{background-color:#002349}.side-tab-content .form-group label{vertical-align:
 .select-wrapper input.select-dropdown{border:0;border-bottom:0;height:25px;line-height:1rem;width:100%;font-size:11px;padding:0 6px}
 .select-wrapper .caret{position:absolute;right:6px}.search--bar input[type="text"]{padding:6px}
 .search--bar input.site--theme-btn{margin-left:22px;margin-top:0;display:inline-block;padding:10px 30px 8px}
-.main--banner_slider img{width:100%}header{background:#002349}.site-menu{width:100%;padding:10px 0}
-.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400}
+header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400}
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu .nav-link.show,.site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}
 .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
 .mobile-menu-btn{display:none}.site-menu nav{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
