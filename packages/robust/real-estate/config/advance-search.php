@@ -5,6 +5,7 @@ return [
         "block" => "block1",
         "display" => "Types of Property",
         "name" => "type",
+        "type" => "checkbox",
         "options" => [
             [
                 "name" => "type",
@@ -20,6 +21,7 @@ return [
         "block" => "block1",
         "display" => "Property Status",
         "name" => "status",
+        "type" => "select",
         "options" => [
             [
                 "name" => "status",
@@ -36,6 +38,7 @@ return [
         "block" => "block1",
         "display" => "Picture Only",
         "name" => "status",
+        "type" => "select",
         "options" => [
             [
                 "name" => "status",
@@ -50,6 +53,7 @@ return [
         "block" => "block2",
         "display" => "Acreage (min-max)",
         "name" => "acres",
+        "type" => "select",
         "options" => [
             [
                 "name" => "acres_min",
@@ -83,6 +87,7 @@ return [
         "block" => "block2",
         "display" => "Price (min-max)",
         "name" => "price",
+        "type" => "select",
         "options" => [
             [
                 "name" => "price_min",
@@ -116,6 +121,7 @@ return [
         "block" => "block3",
         "display" => "Lot Square Feet (min-max)",
         "name" => "lot",
+        "type" => "select",
         "options" => [
             [
                 "name" => "lot_min",
@@ -149,6 +155,7 @@ return [
         "block" => "block4",
         "display" => "Elementary School (min-max)",
         "name" => "lot",
+        "type" => "select",
         "options" => [
             [
                 "name" => "elem_school",
