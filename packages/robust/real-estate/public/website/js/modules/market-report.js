@@ -124,7 +124,11 @@
     }
 
     function renderLocations() {
+
+        // Sort Location 
         sortLocations();
+
+        // Render Locations
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
             location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
@@ -134,19 +138,27 @@
         let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
         locations.forEach((elem) => {
             elem.addEventListener("click", function (event) {
+
+                // Initialize Variables
                 let [parent, value, type, ids, compare_btn_url] = [this.parentNode,
                 this.getAttribute('value'),
                 document.querySelectorAll("[data-page]")[0].getAttribute('data-page'),
                     '',
                 document.getElementById("market__btns--compare").getAttribute('data-base-url')
                 ];
+
+                // Add/Remove Tag
                 if (this.checked) {
                     tags.push(new Tag(parent.getAttribute('data-id'), this.getAttribute('value')));
                 } else {
                     // Remove tag
-                    tags = tags.map((tag) => tag.title != value);
+                    tags = tags.filter((tag) => tag._title != value);
                 }
+
+                // Re - render Tags
                 renderTags();
+
+                // Generate URL
                 ids = tags.map((tag) => tag._id);
                 compare_btn_url = compare_btn_url + `?type=${type}&ids=${ids}`;
                 document.getElementById("market__btns--compare").setAttribute('href', compare_btn_url);
