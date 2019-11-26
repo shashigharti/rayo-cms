@@ -1,2 +1,4 @@
 @import 'modules/typeahead.css';
 @import '../../../../../node_modules/daterangepicker/daterangepicker.css';
+@import '../../../../../node_modules/owl.carousel/dist/assets/owl.carousel.css';
+@import '../../../../../node_modules/owl.carousel/dist/assets/owl.theme.default.min.css';

@@ -37,7 +37,8 @@ class BannerController extends Controller
             'Slider' => 'slider',
             'FullScreenAd' => 'full-screen-ad',
             'SingleColumnBlock' => 'single-col-block',
-            'BannerSlider' => 'banner-slider'
+            'BannerSlider' => 'banner-slider',
+            'MainBanner' => 'main-banner'
         ];
     }
 

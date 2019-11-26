@@ -1,12 +1,11 @@
 @set('mainBannerSliders', $banner_helper->getBannersByType(['main-banner']))
-
-<ul class="slides">
+<div class="slides main--banner_slider owl-theme">
     @foreach($mainBannerSliders as $mainBannerSlider)
         @set('properties', json_decode($mainBannerSlider->properties))
         @if($properties)
-            <li>
-                <img src="{{$properties->image ?? getMedia($properties->image)}}" alt="">
-            </li>
+            <div class="item">
+                <img src="{{$properties->image ? getMedia($properties->image) : "/images/banners/banner.jpg"}}" alt="">
+            </div>
         @endif
     @endforeach
-</ul>
+</div>

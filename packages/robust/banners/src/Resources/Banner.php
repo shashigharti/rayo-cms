@@ -17,7 +17,8 @@ class Banner extends JsonResource
         'Slider' => 'slider',
         'FullScreenAd' => 'full-screen-ad',
         'SingleColumnBlock' => 'single-col-block',
-        'BannerSlider' => 'banner-slider'
+        'BannerSlider' => 'banner-slider',
+        'MainBanner' => 'main-banner',
     ];
     public function toArray($request)
     {

@@ -696,6 +696,8 @@ a.buy-now-btn {
 }
 .adv--block {
     margin-bottom: 80px;
+    height:324px;
+    overflow:hidden;
 }
 .adv--block img{
     width: 100%;
@@ -825,7 +827,7 @@ nav{
     line-height: 1rem;
     width: 100%;
     font-size: 11px;
-    padding: 0px 6px;    
+    padding: 0px 6px;
 }
 .select-wrapper .caret {
     position: absolute;
@@ -841,4 +843,6 @@ nav{
     padding: 10px 30px 8px;
 }
 
-
+.main--banner_slider img{
+    width: 100%;
+}
