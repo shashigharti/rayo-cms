@@ -4,7 +4,7 @@
     @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
 @section('body_section')
-    <section class="market-report main-content" data-page='{{$page_type}}'>
+    <section class="market main-content" data-page='{{$page_type}}'>
         <div class="container-fluid">
             <div class="row">
                 <div class="col s12">
@@ -41,27 +41,27 @@
                         <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Sold" data-status="active"></span>Sold</div>
                     </div>
                 </div>
-                <div class="market--right__search col s12 mt-40">
+                <div class="market__btns col s12 mt-40">
                     <span class="btn--label">Checkmark areas to</span>
-                    <div class="market__compare-btns">
-                        <a class="market__compare-btns__subdivision btn-orange" href="#" >
+                    <div class="market__btns--container">
+                        <a href="#" class="btn-orange">
                             Show Subdivisions
                         </a>
-                        <a class="market__compare-btns__areas btn-green" href="" data-url="market/reports/compare?type=cities&values=21,22,23">
+                        <a id="market__btns--compare" href="" data-base-url="market/reports/compare" class="btn-green">
                             Compare Selected Areas
                         </a>
-                        <a class="market__compare-btns__map btn-blue" href="#">
+                        <a href="#" class="btn-blue">
                             Show On Map
                         </a>
                     </div>
-                    <div id="market__report--tags" class="tags">
+                    <div id="market__tags" class="tags">
                     </div>
                     <div id="market__search--lists" class="market__search--lists row">
                         @foreach($records as $report)
                         <div class="col m2">
                             <div class="market__search--lists-item card">
                                 <div class="card-content">
-                                   <p data-type="Title" data-value="{{$report->reportable->name}}" data-class="">
+                                   <p data-id="{{$report->reportable->id}}" data-type="Title" data-value="{{$report->reportable->name}}" data-class="">
                                         <input type="checkbox" value="{{$report->reportable->name}}">
                                         <label>{{$report->reportable->name}}</label>
                                     </p>
