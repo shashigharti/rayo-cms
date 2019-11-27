@@ -1,7 +1,7 @@
 <?php
 namespace Robust\RealEstate\Helpers;
 
-use Robust\RealEstate\Repositories\ListingRepository;
+use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
  * Class ListingHelper
@@ -9,11 +9,15 @@ use Robust\RealEstate\Repositories\ListingRepository;
  */
 class ListingHelper
 {
+    /**
+     * @var ListingRepository
+     */
     private $model;
+
 
     /**
      * ListingHelper constructor.
-     * @param Listing $model
+     * @param ListingRepository $listing
      */
     public function __construct(ListingRepository $listing)
     {

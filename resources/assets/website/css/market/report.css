@@ -83,7 +83,7 @@ a.orange-line {
     vertical-align: middle;
     margin-right: 8px;
 }
-.market__compare-btns a{
+.market__btns--container a{
     text-decoration: none;
     color: #666;
     font-size: 14px;
@@ -91,6 +91,9 @@ a.orange-line {
     border: 1px solid #777;
     padding: 4px 10px;
     margin-right: 10px;
+}
+.market__search--lists-item.card .card-content{
+    padding: 15px;
 }
 a.btn-orange {
     background: #f7941d;
