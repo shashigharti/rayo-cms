@@ -4,26 +4,28 @@
     let selectedDisplayOptions = [];
     let selectedSortBy = 'Active';
     let mrLocations = {};
-    let selectedProperties = [];
+    let tags = [];
 
     class Tag {
-        constructor(title) {
+        constructor(id, title) {
+            this._id = id;
             this._title = title;
         }
 
         render() {
             let template = (() => {
-                return `<span>${this._title}<i class="fa fa-times" aria-hidden="true"></i></span>`;
+                return `<span data-id=${this._id}>${this._title}</span>`;
             })();
             return template;
         }
     }
 
     class LocationItem {
-        constructor(type, value, icon) {
+        constructor(type, value, icon, id = null) {
             this._type = type;
             this._value = value;
             this._icon = icon;
+            this._id = id;
         }
 
         isActive(selected_options, type) {
@@ -33,7 +35,7 @@
         render(selected_options) {
             let template = (() => {
                 if (this._type == 'Title') {
-                    return `<p data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox" value="${this._value}"><label>${this._value}</label></p>`
+                    return `<p data-id="${this._id}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox" value="${this._value}"><label>${this._value}</label></p>`
                 } else {
                     return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><span><i class="${this._icon}" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
@@ -114,7 +116,7 @@
                     location_item.getAttribute('data-class')
                 ];
 
-                return new LocationItem(type, value, icon);
+                return new LocationItem(type, value, icon, location_item.getAttribute('data-id'));
             });
 
             return new MRLocation(mr_locations, selectedDisplayOptions);
@@ -122,7 +124,11 @@
     }
 
     function renderLocations() {
+
+        // Sort Location 
         sortLocations();
+
+        // Render Locations
         document.getElementById('market__search--lists').innerHTML = mrLocations.map(location => {
             location._selectedDisplayOptions = selectedDisplayOptions;
             return location.render();
@@ -132,17 +138,39 @@
         let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
         locations.forEach((elem) => {
             elem.addEventListener("click", function (event) {
-                selectedProperties.push(this.getAttribute('value'));
+
+                // Initialize Variables
+                let [parent, value, type, ids, compare_btn_url] = [this.parentNode,
+                this.getAttribute('value'),
+                document.querySelectorAll("[data-page]")[0].getAttribute('data-page'),
+                    '',
+                document.getElementById("market__btns--compare").getAttribute('data-base-url')
+                ];
+
+                // Add/Remove Tag
+                if (this.checked) {
+                    tags.push(new Tag(parent.getAttribute('data-id'), this.getAttribute('value')));
+                } else {
+                    // Remove tag
+                    tags = tags.filter((tag) => tag._title != value);
+                }
+
+                // Re - render Tags
+                renderTags();
+
+                // Generate URL
+                ids = tags.map((tag) => tag._id);
+                compare_btn_url = compare_btn_url + `?type=${type}&ids=${ids}`;
+                document.getElementById("market__btns--compare").setAttribute('href', compare_btn_url);
             });
+
         });
-
-
     }
 
     function renderTags() {
-        selectedProperties.map((tag) => {
-
-        });
+        document.getElementById('market__tags').innerHTML = tags.map(tag => {
+            return tag.render();
+        }).join('');
     }
 
     $(function () {

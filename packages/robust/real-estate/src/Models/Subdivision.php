@@ -1,14 +1,14 @@
 <?php
-
-
 namespace Robust\RealEstate\Models;
+
+use Robust\Core\Models\BaseModel;
 
 
 /**
  * Class Subdivision
  * @package Robust\Landmarks\Models
  */
-class Subdivision
+class Subdivision extends BaseModel
 {
     /**
      * @var string
@@ -25,10 +25,10 @@ class Subdivision
     ];
 
     /**
-     * @return mixed
+     * Get the city's report.
      */
-    public function listings()
+    public function report()
     {
-        return $this->hasMany('Robust\Mls\Models\Listing','subdivision','name');
+        return $this->morphOne('Robust\RealEstate\Models\MarketReport', 'reportable');
     }
 }

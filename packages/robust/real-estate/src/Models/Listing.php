@@ -5,8 +5,8 @@ namespace Robust\RealEstate\Models;
 use Robust\Core\Models\BaseModel;
 
 /**
- * Class MlsUser
- * @package Robust\Mls\Models
+ * Class Listing
+ * @package Robust\RealEstate\Models
  */
 class Listing extends BaseModel
 {
@@ -17,7 +17,7 @@ class Listing extends BaseModel
     /**
      * @var string
      */
-    protected $namespace = 'Robust\Mls\Models\Listing';
+    protected $namespace = 'Robust\RealEstate\Models\Listing';
     /**
      * @var array
      */
