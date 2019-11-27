@@ -18,10 +18,10 @@
                             <li class="tab col s3"><a class="active" href="#insights">Market Insights</a></li>
                         </ul>
                     </div>
-                    <div id="listings" class="col s12">
+                    <div id="market-survey__listings" class="col s12">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.listings'))
                     </div>
-                    <div id="insights" class="col s12">
+                    <div id="market-survey__insights" class="col s12">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.insights'))
                     </div>
                 </div>

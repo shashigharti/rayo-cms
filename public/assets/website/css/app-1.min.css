@@ -1402,7 +1402,10 @@ nav{background-color:#002349}.side-tab-content .form-group label{vertical-align:
 .select-wrapper input.select-dropdown{border:0;border-bottom:0;height:25px;line-height:1rem;width:100%;font-size:11px;padding:0 6px}
 .select-wrapper .caret{position:absolute;right:6px}.search--bar input[type="text"]{padding:6px}
 .search--bar input.site--theme-btn{margin-left:22px;margin-top:0;display:inline-block;padding:10px 30px 8px}
+<<<<<<< HEAD
 i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;margin-right:2px}
+=======
+>>>>>>> Added check in js for market report page
 header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400}
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu .nav-link.show,.site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}
 .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
@@ -1472,10 +1475,17 @@ a.purple-line{border-bottom:1px solid #2e3192}a.orange-line{border-bottom:1px so
 .market--left__sort--btns a{font-size:13px;display:inline-block;margin-right:7px;text-align:center;width:44%;border:1px solid #ccc;border-radius:3px;padding:4px;color:#555;margin-top:10px;text-decoration:none}
 .market--left__sort--btns a:hover{background:#0091ff;color:#fff}.market--right__display--options{margin-top:40px}
 .market--right__display--options div{font-size:13px;color:#555;display:inline-block;width:48%;margin-bottom:6px}
+<<<<<<< HEAD
 .market--right__display--options input{vertical-align:middle;margin-right:8px}.market__btns--container a{text-decoration:none;color:#666;font-size:14px;display:inline-block;border:1px solid #777;padding:4px 10px;margin-right:10px}
 .market__search--lists-item.card .card-content{padding:15px}a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}
 a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
+=======
+.market--right__display--options input{vertical-align:middle;margin-right:8px}.market__compare-btns a{text-decoration:none;color:#666;font-size:14px;display:inline-block;border:1px solid #777;padding:4px 10px;margin-right:10px}
+a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}a.btn-green{background:#009700;color:#fff;border:1px solid #009700}
+a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}.tags{margin:20px 0;font-size:11px;font-style:italic}
+.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
+>>>>>>> Added check in js for market report page
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
 .market__search--lists-item p{margin-bottom:2px;font-size:12px;color:#7e7e7e}.market__search--lists-item label{vertical-align:middle;font-weight:bold;margin-left:7px;font-size:14px;margin-bottom:5px}
 .market__search--lists-item i{margin-right:5px}.market__search--lists{height:320px;overflow-y:auto}
