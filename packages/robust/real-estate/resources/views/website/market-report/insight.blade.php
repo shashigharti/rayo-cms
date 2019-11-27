@@ -10,9 +10,8 @@
             <div class="container-fluid">
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
                 @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-                {{-- @include(Site::templateResolver('real-estate::website.market-report.partials.locations', [
-                    'records' => ($data['records'])?($data['records'])[]
-                ]))  --}}
+                @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
+                ['records' => $data['records']??[]]) 
             </div>
         @endif
 

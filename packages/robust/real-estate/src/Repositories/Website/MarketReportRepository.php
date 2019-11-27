@@ -115,24 +115,21 @@ class MarketReportRepository
             ->groupBy('year')
             ->get();
 
-        // // Get sub locations within this domain if any : example subdivisions for cities
-        // if(array_key_exists($location_type,MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS)){            
-        //     $field = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
-        //     $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];             
-        //     //$response['records'] = $reports;
-        // }
-
-        // $reports = $this->model
-        //     ->where('reportable_type', $reportable_type)
-        //     ->whereHasMorph(
-        //     'reportable', 
-        //     [$reportable_type], 
-        //     function (Builder $query) use($field, $report) {
-        //         $query->where($field, $report->reportable->id);
-        //     })->get();
-
-        
-
+        // Get sub locations within this domain if any : example subdivisions for cities
+        if(array_key_exists($location_type, MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS)){            
+            $field = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
+            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];             
+           
+            $sub_location_reports = $this->model
+            ->where('reportable_type', $reportable_type)
+            ->whereHasMorph(
+            'reportable', 
+            [$reportable_type], 
+            function (Builder $query) use($field, $report) {
+                $query->where($field, $report->reportable->id);
+            })->get();
+            $response['records'] = $sub_location_reports;
+        }
             
         return $response;
         
