@@ -10,16 +10,18 @@
                 <th>#</th>
                 <th>Search Name</th>
                 <th>Search Selections</th>
-                <th width=100># of results</th>
-                <th width=100>Frequency</th>
-                <th width=100>Date</th>
-                <th>Action</th>
-                <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
-
+            @if(isset($lead->searches) && !empty($lead->searches))
+                @foreach($lead->searches as $search)
+                    <tr>
+                        <td>{{$search->id}}</td>
+                        <td>{{$search->name}}</td>
+                        <td>{{$search->frequency}}</td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>

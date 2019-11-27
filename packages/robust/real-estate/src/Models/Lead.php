@@ -4,13 +4,13 @@ namespace Robust\RealEstate\Models;
 
 use Robust\Admin\Models\User;
 use Robust\Core\Models\BaseModel;
-
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Lead
  * @package Robust\Leads\Models
  */
-class Lead extends BaseModel
+class Lead extends Authenticatable
 {
     /**
      *
@@ -32,6 +32,11 @@ class Lead extends BaseModel
      * @var string
      */
     protected $table = 'real_estate_leads';
+
+    /**
+     * @var string
+     */
+    protected $guard = 'lead';
     /**
      * @var array
      */
@@ -72,113 +77,24 @@ class Lead extends BaseModel
         'password'
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function metadata()
+    public function favourites()
     {
-        return $this->hasOne(LeadMetadata::class, 'lead_id')->latest();
+        return $this->belongsToMany(Listing::class,'real_estate_user_favourites','lead_id','listings_id')
+            ->withoutGlobalScopes()->withPivot(['created_at','updated_at']);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function agent()
+    public function bookmarks()
     {
-        return $this->belongsTo(User::class, 'agent_id', 'id')->latest();
+        return $this->hasMany(BookMark::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function status()
-    {
-        return $this->belongsTo(Status::class, 'status_id', 'id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function loginHistory()
-    {
-        return $this->hasMany(UserLoginHistory::class, 'user_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function activityLog()
-    {
-        return $this->hasMany(Activity::class, 'causer_id', 'id')->latest();
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function lead_category()
-    {
-        return $this->hasOne(LeadCategory::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function emails()
-    {
-        return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function reports()
     {
-        return $this->hasMany(UserReport::class, 'user_id')->latest();
+        return $this->hasMany(LeadReport::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
     public function searches()
     {
-        return $this->hasMany(UserSearch::class, 'user_id')->latest();
+        return $this->hasMany(LeadSearch::class);
     }
-
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function categories()
-    {
-        return $this->hasMany(LeadCategory::class);
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function notes()
-    {
-        return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function unsubscribed()
-    {
-        return $this->hasOne(Unsubscribed::class);
-    }
-
-    /**
-     * @return mixed
-     */
-    public function getAgent()
-    {
-        $agentObj = $this->agent;
-        if (!$agentObj) {
-            $agentObj = User::getDefaultAgent();
-        }
-        return $agentObj;
-    }
-
 }

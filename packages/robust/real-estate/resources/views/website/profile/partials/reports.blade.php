@@ -7,12 +7,18 @@
                 <th>#</th>
                 <th>Report name</th>
                 <th>Frequency</th>
-                <th width="100"></th>
-                <th width="100"></th>
             </tr>
             </thead>
             <tbody>
-
+            @if(isset($lead->reports) && !empty($lead->reports))
+                @foreach($lead->reports as $reports)
+                    <tr>
+                        <td>{{$reports->id}}</td>
+                        <td>{{$reports->name}}</td>
+                        <td>{{$reports->frequency}}</td>
+                    </tr>
+                @endforeach
+            @endif
             </tbody>
         </table>
     </div>

@@ -13,7 +13,18 @@
             </tr>
             </thead>
             <tbody>
-
+                @if(isset($lead->bookmarks) && !empty($lead->bookmarks))
+                    @foreach($lead->bookmarks as $bookmark)
+                        <tr>
+                            <td>{{$bookmark->id}}</td>
+                            <td>{{$bookmark->title}}</td>
+                            <td>{{$bookmark->active_count}}</td>
+                            <td>{{$bookmark->sold_count}}</td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    @endforeach
+                @endif
             </tbody>
         </table>
     </div>

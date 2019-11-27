@@ -45,9 +45,4 @@ class HomeController extends Controller
         $thumbnail = Media::where('id',$id)->first();
         return response()->json($thumbnail);
     }
-
-    public function profile()
-    {
-        return view(Site::templateResolver('core::website.user.profile'));
-    }
 }
