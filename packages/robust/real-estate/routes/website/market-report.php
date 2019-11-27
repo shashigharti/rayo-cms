@@ -10,7 +10,7 @@ function () {
         'as' => 'reports',
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@index'
     ]);
-    Route::get('reports/in/{type}/{slug}', [
+    Route::get('reports/in/{location_type}/{slug}', [
         'name' =>'Market Report Insight',
         'as' => 'reports.in',
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsight'

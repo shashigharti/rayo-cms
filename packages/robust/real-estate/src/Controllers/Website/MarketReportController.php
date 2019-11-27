@@ -1,8 +1,8 @@
 <?php
 namespace Robust\RealEstate\Controllers\Website;
 
-
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Robust\RealEstate\Repositories\Website\MarketReportRepository;
 
@@ -26,7 +26,7 @@ class MarketReportController extends Controller
     }
 
     /**
-     * MarketReportController constructor.
+     * MarketReportController index.
      * @param String $location_type
      */
     public function index(Request $request, $location_type){
@@ -35,9 +35,16 @@ class MarketReportController extends Controller
         return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);        
     }
 
+    /**
+     * MarketReportController getInsight.
+     * @param String $location_type
+     * @param String $slug
+     */
     public function getInsight(Request $request, $location_type, $slug){
-        $data = $request->all();
-        $records = $this->model->getLocations($location_type, $data);
-        return view('real-estate::website.market-report.insight', ['records' => $records, 'page_type' => $location_type]);        
+        $response = $this->model->getInsight($location_type, $slug);
+        return view('real-estate::website.market-report.insight', [
+            'data' => $response, 
+            'page_type' => $location_type
+        ]);        
     }
 }

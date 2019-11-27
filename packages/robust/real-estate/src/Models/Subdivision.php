@@ -31,4 +31,12 @@ class Subdivision extends BaseModel
     {
         return $this->morphOne('Robust\RealEstate\Models\MarketReport', 'reportable');
     }
+
+    /**
+     * Get the city
+     */
+    public function city()
+    {
+        return $this->hasOne('Robust\RealEstate\Models\City');
+    }
 }
