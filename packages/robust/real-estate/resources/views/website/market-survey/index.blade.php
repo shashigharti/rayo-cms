@@ -17,14 +17,15 @@
                     <div class="market-survey__right-container--header">
                         <h1>Alaska Real State</h1>
                         <ul class="tabs">
-                            <li class="tab"><a href="#listings">Listings</a></li>
-                            <li class="tab"><a class="active" href="#insights">Market Insights</a></li>
+                            <li class="tab"><a class="active" href="#market-survey__listings">Listings</a></li>
+                            <li class="tab"><a  href="#market-survey__insights">Market Insights</a></li>
                         </ul>
                     </div>
-                    <div id="listings" class="market-survey__listings">
+
+                    <div id="market-survey__listings" class="market-survey__listings">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.listings'))
                     </div>
-                    <div id="insights" class="col s12">
+                    <div id="market-survey__insights" class="market-survey__insights">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.insights'))
                     </div>
                 </div>

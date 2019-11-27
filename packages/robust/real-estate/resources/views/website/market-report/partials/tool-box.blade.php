@@ -25,7 +25,7 @@
             <a href="#" class="btn-orange">
                             Show Subdivisions
                         </a>
-            <a id="market__btns--compare" href="" data-base-url="{{route('website.realestate.market.reports.compare')}}" class="btn-green">
+            <a id="market__btns--compare" href="" data-base-url="http://localhost:8000/market/reports/in/cities/" class="btn-green">
                             Compare Selected Areas
                         </a>
             <a href="#" class="btn-blue">
