@@ -1384,7 +1384,7 @@ button.reset-button {
 .CompeteScore .background-bar .very {
     background-color: #94cfc5;
 }
-.CompeteScore .primary-heading ,.market-survey__insights--trends .primary-heading , .StrategySessionCTA .primary-heading{
+.CompeteScore .primary-heading ,.market-survey__insights--trends .primary-heading , .market-survey__insights--CTA .primary-heading{
     margin-bottom: 20px;
     text-align: left;
     font-size: 22px;
@@ -1450,44 +1450,44 @@ button.reset-button {
     margin: 0 12px;
     height: 35px;
 }
-.market-survey__insights--trends,.StrategySessionCTA{
+.market-survey__insights--trends,.market-survey__insights--CTA{
     width: 100%;
 }
 .market-survey__insights--trends .primary-heading{
     padding: 20px 0px;
 }
 @media (min-width: 1200px){
-    .StrategySessionCTA .cta-container {
+    .market-survey__insights--CTA .cta-container {
         display: block;
     }
 }
 
 @media (min-width: 1200px){
-    .StrategySessionCTA .cta-container .agents-image-container {
+    .market-survey__insights--CTA .cta-container .agents-image-container {
         float: right;
         margin-left: 40px;
     }
-    .StrategySessionCTA .cta-container .agents-image {
+    .market-survey__insights--CTA .cta-container .agents-image {
         height: 91px;
     }
 }
-.StrategySessionCTA .cta-container .agents-image-container {
+.market-survey__insights--CTA .cta-container .agents-image-container {
     margin-right: 20px;
 }
-.StrategySessionCTA .cta-container .agents-image {
+.market-survey__insights--CTA .cta-container .agents-image {
     height: 74px;
 }
-.StrategySessionCTA .cta-container .cta-description {
+.market-survey__insights--CTA .cta-container .cta-description {
     flex: 1;
     font-size: 16px;
     line-height: 24px;
 }
-.StrategySessionCTA .cta-container .cta-button {
+.market-survey__insights--CTA .cta-container .cta-button {
     flex: 2;
     margin-top: 15px;
     min-width: 328px;
 }
-.StrategySessionCTA .button {
+.market-survey__insights--CTA .button {
     box-shadow: none;
     display: inline-block;
     background-color: #f5f5f5;
