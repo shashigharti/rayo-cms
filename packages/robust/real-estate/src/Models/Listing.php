@@ -21,7 +21,7 @@ class Listing extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = [  'listing_id', 'uid', 'mls_number', 'class', 'sub_class','subclass', 'sub_property', 'listing_name', 'listing_slug', 'address_street','grid',
+    protected $fillable = [  'city_id', 'listing_id', 'uid', 'mls_number', 'class', 'sub_class','subclass', 'sub_property', 'listing_name', 'listing_slug', 'address_street','grid',
         'zip', 'county', 'city', 'input_date', 'update_date', 'property_setting', 'latitude', 'longitude',
         'total_finished_area', 'acres', 'status', 'year_built', 'county', 'subdivision', 'contract_date', 'closing_date',
         'system_price', 'sold_price', 'days_on_market', 'construction_status', 'school_district',
@@ -53,6 +53,14 @@ class Listing extends BaseModel
     {
         return $this->hasOne(ListingImages::class,'listing_id','uid')
             ->withDefault(function($image){  $image->listing_url = 'default/image/link'; });
+    }
+
+    /**
+     * City  associated with this listing
+     */
+    public function city()
+    {
+        return $this->hasOne('Robust\RealEstate\Models\City');
     }
 
 }

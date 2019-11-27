@@ -1,8 +1,8 @@
 <?php
 namespace Robust\RealEstate\Controllers\Website;
 
-
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Robust\RealEstate\Repositories\Website\MarketReportRepository;
 
@@ -26,23 +26,29 @@ class MarketReportController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @param $location_type
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function index(Request $request, $location_type){
         $data = $request->all();
         $records = $this->model->getLocations($location_type, $data);
         return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);
     }
 
-    public function getInsight(Request $request, $location_type, $slug){
-        $data = $request->all();
-        $records = $this->model->getLocations($location_type, $data);
-        return view('real-estate::website.market-report.insight', ['records' => $records, 'page_type' => $location_type]);
-    }
 
-    public function compare(Request $request)
-    {
-        $data = $request->all();
-        $records = $this->model->getLocations($data['type'],$data['ids']);
-        $results = $this->model->getComparedData($data['type'],$data['ids']);
-        return view('real-estate::website.market-report.compare', ['records' => $records, 'page_type' => $data['type']]);
+    /**
+     * @param Request $request
+     * @param $location_type
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getInsight(Request $request, $location_type, $slug){
+        $response = $this->model->getInsight($location_type, $slug);
+        return view('real-estate::website.market-report.insight', [
+            'data' => $response,
+            'page_type' => $location_type
+        ]);
     }
 }

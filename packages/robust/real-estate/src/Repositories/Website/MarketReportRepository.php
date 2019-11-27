@@ -7,8 +7,6 @@ use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
 
-
-
 /**
  * Class MarketReportRepository
  * @package Robust\RealEstate\Repositories\Website
@@ -38,6 +36,25 @@ class MarketReportRepository
     ];
 
     /**
+     * @var const LOCATION_TYPES_WITH_SUBLOCATIONS
+     */
+    protected const LOCATION_TYPES_WITH_SUBLOCATIONS = [
+        'cities' => ['field' => 'city_id','reportable_type' => 'Robust\RealEstate\Models\Subdivision']
+    ];
+
+    /**
+     * @var const INSIGHTS
+     */
+    protected const INSIGHTS = [
+        "SUM( IF(status = 'Active', 1, 0)) AS active_count",
+        "AVG(system_price) system_price_avg",
+        "AVG(days_on_mls) days_on_mls_avg",
+        "AVG(sold_price) sold_price_avg",
+        "YEAR(input_date) year",
+        "MONTH(input_date) month"
+    ];
+
+    /**
      * MarketReportRepository constructor.
      * @param MarketReport $model
      */
@@ -54,50 +71,67 @@ class MarketReportRepository
      * @param string|array $data
      * @return mixed
      */
-    public function getLocations($location_type, $data){
+    public function getLocations($location_type, $data = []){
         $query = $this->model
-        ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
+            ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
 
         if(isset($data['type'])){
             $query = $query->whereHasMorph(
-            'reportable',
-            [MarketReportRepository::REPORTABLE_MAP[$location_type]],
-            function (Builder $query) use($data) {
-                $query->whereIn(MarketReportRepository::PARAM_MAP[$data['type']], explode(',', $data['ids']));
-            });
+                'reportable',
+                [MarketReportRepository::REPORTABLE_MAP[$location_type]],
+                function (Builder $query) use($data) {
+                    $query->whereIn(MarketReportRepository::PARAM_MAP[$data['type']], explode(',', $data['ids']));
+                });
         }
         $reports = $query->get();
         return ($reports)?$reports:[];
     }
 
-    public function getComparedData($location_type,$data)
-    {
-        $listings  = 'listings';
-        $name = 'real_estate_'.$location_type;
-        $ClosedStatus = 'Sold';
-        $ActiveStatus = 'Active';
-        $columnName = 'input_date';
-        $type =  MarketReportRepository::REPORTABLE_MAP[$location_type];
-        $locations = $type::leftJoin($listings,$listings.'.city','=',$name.'.name')
-            ->groupBy($name.'.id')
-            ->whereIn($name.'.id',explode(',',$data))
-            ->select($name.'.*');
-        $collections = $locations->groupBy(\DB::raw('YEAR(listings.'.$columnName.')'))
-            ->groupBy(\DB::raw('MONTH(listings.'.$columnName.')'))
-            ->addSelect([
+    /**
+     * Queries report table and listings
+     *
+     * @param string $location_type
+     * @param string $slug
+     * @return mixed
+     */
+    public function getInsight($location_type, $slug){
+        $response = [];
+        $reportable_type = MarketReportRepository::REPORTABLE_MAP[$location_type];
 
-                \DB::raw("SUM( IF(status='Active', 1, 0) ) as count_active"),
-                \DB::raw("SUM( IF(status='" . $ClosedStatus . "', 1, 0) ) as count_sold"),
-                \DB::raw("AVG( IF(status='" . $ClosedStatus . "', system_price, NULL) ) as avg_system_price"),
-                \DB::raw("ROUND(AVG( IF(status='" . $ClosedStatus . "', IF(days_on_mls IS NULL OR days_on_mls = 0,DATEDIFF('".date('Y-m-d')."',IF(input_date = '0000-00-00 00:00:00', update_date,input_date)),days_on_mls), NULL) )) as avg_days_on_mls"),
-                \DB::raw("ROUND((SUM( IF(status='" . $ClosedStatus . "', sold_price, 0) )/SUM( IF(status='" . $ClosedStatus . "', system_price, 0) ))*100, 2) as percent"),
-                \DB::raw('YEAR(listings.'.$columnName.') as year'),
-                \DB::raw('MONTHNAME(listings.'.$columnName.') as month'),
-            ])
-            ->orderBy(\DB::raw('MONTH(listings.'.$columnName.')'), 'ASC')
-            ->whereYear('listings.'.$columnName, '>=', 2016)
-            ->get()
-            ->groupBy('name');
-        return $collections;
+        $report = $this->model
+            ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type])
+            ->whereHasMorph(
+                'reportable',
+                [MarketReportRepository::REPORTABLE_MAP[$location_type]],
+                function (Builder $query) use($slug) {
+                    $query->where('slug', $slug);
+                })->first();
+
+        // Get insights of listing for this domain
+        $response['insights'] = $report->reportable->listings()
+            ->select(\DB::raw(implode(',', MarketReportRepository::INSIGHTS)))
+            ->groupBy('year')
+            ->groupBy('month')
+            ->groupBy('year')
+            ->get();
+
+        // Get sub locations within this domain if any : example subdivisions for cities
+        if(array_key_exists($location_type, MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS)){
+            $field = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
+            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];
+
+            $sub_location_reports = $this->model
+                ->where('reportable_type', $reportable_type)
+                ->whereHasMorph(
+                    'reportable',
+                    [$reportable_type],
+                    function (Builder $query) use($field, $report) {
+                        $query->where($field, $report->reportable->id);
+                    })->get();
+            $response['records'] = $sub_location_reports;
+        }
+
+        return $response;
+
     }
 }
