@@ -25,19 +25,24 @@ class MarketReportController extends Controller
         $this->model = $model;
     }
 
-    /**
-     * MarketReportController constructor.
-     * @param String $location_type
-     */
+
     public function index(Request $request, $location_type){
         $data = $request->all();
         $records = $this->model->getLocations($location_type, $data);
-        return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);        
+        return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);
     }
 
     public function getInsight(Request $request, $location_type, $slug){
         $data = $request->all();
         $records = $this->model->getLocations($location_type, $data);
-        return view('real-estate::website.market-report.insight', ['records' => $records, 'page_type' => $location_type]);        
+        return view('real-estate::website.market-report.insight', ['records' => $records, 'page_type' => $location_type]);
+    }
+
+    public function compare(Request $request)
+    {
+        $data = $request->all();
+        $records = $this->model->getLocations($data['type'],$data['ids']);
+        $results = $this->model->getComparedData($data['type'],$data['ids']);
+        return view('real-estate::website.market-report.compare', ['records' => $records, 'page_type' => $data['type']]);
     }
 }

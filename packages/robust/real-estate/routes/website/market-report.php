@@ -1,7 +1,7 @@
 <?php
-Route::group(['prefix' => 'market', 
-'as' => 'website.realestate.market.', 
-'group' => 'Market Report'], 
+Route::group(['prefix' => 'market',
+'as' => 'website.realestate.market.',
+'group' => 'Market Report'],
 function () {
 
 
@@ -16,6 +16,10 @@ function () {
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsight'
     ]);
 
-
+    Route::get('report/compare',[
+       'name' => 'Market Report Compare',
+       'as' => 'reports.compare',
+       'uses' =>  '\Robust\RealEstate\Controllers\Website\MarketReportController@compare'
+    ]);
 
 });

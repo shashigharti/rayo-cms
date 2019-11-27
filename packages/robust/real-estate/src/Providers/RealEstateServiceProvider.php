@@ -14,6 +14,7 @@ class RealEstateServiceProvider extends ServiceProvider
     protected $commands = [
         'Robust\RealEstate\Console\Commands\AdvanceSearch',
         'Robust\RealEstate\Console\Commands\ListingDetail',
+        'Robust\RealEstate\Console\Commands\CreateLocation',
     ];
     public function register()
     {
