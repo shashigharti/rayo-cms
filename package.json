@@ -47,6 +47,7 @@
         "gulp-util": "^3.0.8"
     },
     "dependencies": {
+        "owl.carousel": "^2.3.4",
         "require-dir": "^1.2.0",
         "tinymce": "^5.0.3"
     }
