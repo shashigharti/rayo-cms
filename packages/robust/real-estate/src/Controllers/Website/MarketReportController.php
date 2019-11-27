@@ -34,4 +34,10 @@ class MarketReportController extends Controller
         $records = $this->model->getLocations($location_type, $data);
         return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);        
     }
+
+    public function getInsight(Request $request, $location_type, $slug){
+        $data = $request->all();
+        $records = $this->model->getLocations($location_type, $data);
+        return view('real-estate::website.market-report.insight', ['records' => $records, 'page_type' => $location_type]);        
+    }
 }
