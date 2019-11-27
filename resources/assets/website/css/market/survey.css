@@ -1,19 +1,5 @@
-/* Map Css */
-#left-container {
-    position: fixed;
-    top:85px;
-    bottom: 0;
-    max-height: 2000px;
-    background: #e1dfda;
-    width: calc(100% - 671px);
-}
-#right-container {
-    position: absolute;
-    top:85px;
-    width: 671px;
-    right:0px;
-    box-shadow: -1px,0,3px,rgba(0,0,0,.2);
-}
+
+
 .map-section .row{
     margin-right: 0px;
     margin-left: 0px;
@@ -25,7 +11,7 @@
     height:100vh;
     width: 100%;
 }
-.map-search__section h1 {
+.market-survey__right-container h1 {
     font-weight: 500;
     font-size: 24px;
     color: #333;
@@ -34,21 +20,24 @@
     text-overflow: ellipsis;
     line-height: 26px;
     padding: 15px;
-    margin-top: 10px;
+    margin-top:0px;
     margin-bottom: 0px;
 }
-.SearchNavBar {
+.market-survey__right-container--tabs .tabs {
     display: flex;
     background-color: #fff;
     text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
     font-size: 16px;
     border-bottom: 1px solid #e2e2e2;
 }
-.SearchNavBar .tab-heading{
+.market-survey__right-container--tabs .tabs li{
     width: 50%;
-    padding: 10px 0;
+    line-height: 53px;
+    height: 53px;
 }
-.SearchNavBar .tab-heading a{
+.market-survey__right-container--tabs .tabs li a{
     color: #333;
     display: inline;
     text-decoration: none;
@@ -57,12 +46,114 @@
     font-weight: 600;
     border-bottom: 2px solid #333;
 }
-.SearchSidePaneHeader{
-    box-shadow: 1px 0 4px 0 rgba(0,0,0,.2);
+.market-survey__right-container--tabs .tabs .indicator {  
+    display: none;
+}
+.market-survey__right-container--tabs .tabs li a.active,.market-survey__right-container--tabs .tabs li a:hover,.market-survey__right-container--tabs .tabs li a:focus{
+    color: #002349;
+    font-weight: 600;
+    background: transparent;
+    background-color:transparent;
+}
+
+.market-survey__right-container--header{
     z-index: 15;
-    position: fixed;
     background-color: #fff;
-    width: 670px;
+}
+.market-survey__listings{
+    padding: 20px;
+}
+.market-survey__listings .filter--bar {
+    margin: 15px 0px;
+    background: #f5f5f5;
+    padding: 20px;
+}
+.market-survey__listings .search--bar {
+    width: 100%;
+}
+.market-survey__listings .select-wrapper{
+    width: 100px;
+    background: #fff;
+}
+.market-survey__listings .select-wrapper input.select-dropdown{
+    width: 85px;
+}
+.market-survey__listings--reset-btn {
+    border: 0;
+    width: 100px;
+}
+.market-survey__listings--details {
+    margin: 30px 0px;
+}
+.market-survey__listings--details label{
+    color:#777;
+}
+.market-survey__listings--details button{
+    border:0;
+    width: 100px;
+    margin-left: 5px;
+}
+.market-survey__listings .search--bar input {
+    width: 84% !important;
+    display: inline-block;
+    border: 2px solid #8a8989 !important;
+    padding: 5px !important;
+    height: 19px !important;
+    vertical-align: middle;
+    margin-bottom: 0 !important;
+}
+.market-survey__listings .search--bar button {
+    width: 8%;
+    display: inline-block;
+    border: 0;
+    vertical-align: middle;
+}
+.market-survey__listings--details-block {
+    margin: 20px 0px;
+    height: calc(100vh -266px);
+    overflow-y: scroll;
+}
+.market-survey__listings--details-card .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0px;
+    background: rgba(0,0,0,0.2);
+    padding: 10px 10px;
+    height: 100%;
+}
+.market-survey__listings--details-card img{
+    width: 100%;
+}
+.market-survey__listings--details-card .card--details{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    pointer-events: none;
+    font-size: 10px;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding: 20px 10px;
+    left: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+.market-survey__listings--details-card .card--details p{
+    color:#FFF;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.market-survey__listings--details-card input[type="checkbox"]:not(:checked),.market-survey__listings--details-card input[type="checkbox"]:checked {
+    position: absolute;
+    opacity: 1;
+    pointer-events: inherit;
+}
+.market-survey__listings--details-card {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    border: 5px solid #ccc;
+    margin-bottom: 15px;
 }
 .SearchSidePaneHeader .MapFilter{
     display: flex;
