@@ -1222,14 +1222,14 @@ button.reset-button {
     text-overflow: ellipsis;
     font-size: 13px;
 }
-.MoreResources {
+.market-survey__insights--MoreResources {
     font-size: 16px;
     text-align: center;
 }
-.MoreResources .columns {
+.market-survey__insights--MoreResources .columns {
     display: block;
 }
-#region-content .MoreResources .resources-section {
+#region-content .market-survey__insights--MoreResources .resources-section {
     padding-left: 15px;
     padding-right: 15px;
     display: block;
@@ -1237,7 +1237,7 @@ button.reset-button {
     width: 90%;
     text-align: center;
 }
-.MoreResources h3 {
+.market-survey__insights--MoreResources h3 {
     color: #333;
     font-size: 16px;
     font-weight: 350;
@@ -1245,14 +1245,14 @@ button.reset-button {
     margin-top: 0;
     margin-bottom: .75rem;
 }
-.MoreResources ul, .MoreResources ul li {
+.market-survey__insights--MoreResources ul, .market-survey__insights--MoreResources ul li {
     margin: 0;
     padding: 0;
 }
-.MoreResources ul {
+.market-survey__insights--MoreResources ul {
     list-style-type: none;
 }
-.MoreResources .link-text {
+.market-survey__insights--MoreResources .link-text {
     line-height: 28px;
     text-decoration: none;
     color: #0c82a5;

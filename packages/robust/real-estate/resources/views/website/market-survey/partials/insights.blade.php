@@ -101,5 +101,27 @@
 				</div>
 			</div>
 		</div>
+		<div class="market-survey__insights--MoreResources region-content-section" id="more-resources-section">
+			<h2 class="primary-heading">More Real Estate Resources for San Diego</h2>
+			<div class="columns">
+				<div class="resources-section">
+					<h3 role="heading">Nearby Cities</h3>
+					<ul>
+						<li><a class="link-text" href="#">Santee Homes For Sale</a></li>
+						<li><a class="link-text" href="#">Coronado Homes For Sale</a></li>
+						<li><a class="link-text" href="#">La Mesa Homes For Sale</a></li>
+						<li><a class="link-text" href="#">Descanso Homes For Sale</a></li>
+						<li><a class="link-text" href="#">El Cajon Homes For Sale</a></li>
+						<li><a class="link-text" href="#">Lemon Grove Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">National City Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">Rancho San Diego Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">Bonita Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">Imperial Beach Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">Casa de Oro-Mount Helix Homes For Sale</a></li>
+						<li><a class="link-text hidden" href="#">Jamul Homes For Sale</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
 	</div>
 </div>   
