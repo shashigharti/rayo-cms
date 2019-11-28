@@ -1485,14 +1485,26 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active,.show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists-item [type="checkbox"]:not(:checked),.market__search--lists-item [type="checkbox"]:checked{position:relative;opacity:1;pointer-events:initial}
 .market--left__sort--btns .active{border:1px solid #0091ff !important;background:#0091ff;color:#fff !important}
-#left-container{position:fixed;top:85px;bottom:0;max-height:2000px;background:#e1dfda;width:calc(100% - 671px)}
-#right-container{position:absolute;top:85px;width:671px;right:0;-webkit-box-shadow:-1px,0,3px,rgba(0,0,0,.2);box-shadow:-1px,0,3px,rgba(0,0,0,.2)}
 .map-section .row{margin-right:0;margin-left:0}.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}
-.map-search__section h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:10px;margin-bottom:0}
-.SearchNavBar{display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#fff;text-align:center;font-size:16px;border-bottom:1px solid #e2e2e2}
-.SearchNavBar .tab-heading{width:50%;padding:10px 0}.SearchNavBar .tab-heading a{color:#333;display:inline;text-decoration:none}
+.market-survey__right-container h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:0;margin-bottom:0}
+.market-survey__right-container--tabs .tabs{display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#fff;text-align:center;overflow-x:hidden;overflow-y:hidden;font-size:16px;border-bottom:1px solid #e2e2e2}
+.market-survey__right-container--tabs .tabs li{width:50%;line-height:53px;height:53px}
+.market-survey__right-container--tabs .tabs li a{color:#333;display:inline;text-decoration:none}
 .SearchNavBar .tab-heading.selected{font-weight:600;border-bottom:2px solid #333}
-.SearchSidePaneHeader{-webkit-box-shadow:1px 0 4px 0 rgba(0,0,0,.2);box-shadow:1px 0 4px 0 rgba(0,0,0,.2);z-index:15;position:fixed;background-color:#fff;width:670px}
+.market-survey__right-container--tabs .tabs .indicator{display:none}.market-survey__right-container--tabs .tabs li a.active,.market-survey__right-container--tabs .tabs li a:hover,.market-survey__right-container--tabs .tabs li a:focus{color:#002349;font-weight:600;background:transparent;background-color:transparent}
+.market-survey__right-container--header{z-index:15;background-color:#fff}.market-survey__listings{padding:20px}
+.market-survey__listings .filter--bar{margin:15px 0;background:#f5f5f5;padding:20px}
+.market-survey__listings .search--bar{width:100%}.market-survey__listings .select-wrapper{width:100px;background:#fff}
+.market-survey__listings .select-wrapper input.select-dropdown{width:85px}.market-survey__listings--reset-btn{border:0;width:100px}
+.market-survey__listings--details{margin:30px 0}.market-survey__listings--details label{color:#777}
+.market-survey__listings--details button{border:0;width:100px;margin-left:5px}.market-survey__listings .search--bar input{width:84% !important;display:inline-block;border:2px solid #8a8989 !important;padding:5px !important;height:19px !important;vertical-align:middle;margin-bottom:0 !important}
+.market-survey__listings .search--bar button{width:8%;display:inline-block;border:0;vertical-align:middle}
+.market-survey__listings--details-block{margin:20px 0;height:calc(100vh -266px);overflow-y:scroll}
+.market-survey__listings--details-card .card-overlay{position:absolute;top:0;left:0;width:100%;margin:0;background:rgba(0,0,0,0.2);padding:10px 10px;height:100%}
+.market-survey__listings--details-card img{width:100%}.market-survey__listings--details-card .card--details{position:absolute;width:100%;bottom:0;pointer-events:none;font-size:10px;white-space:nowrap;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;padding:20px 10px;left:0;background:-webkit-gradient(linear,left top,left bottom,from(transparent),to(rgba(0,0,0,0.8)));background:linear-gradient(transparent,rgba(0,0,0,0.8))}
+.market-survey__listings--details-card .card--details p{color:#FFF;font-size:12px;margin-bottom:3px}
+.market-survey__listings--details-card input[type="checkbox"]:not(:checked),.market-survey__listings--details-card input[type="checkbox"]:checked{position:absolute;opacity:1;pointer-events:inherit}
+.market-survey__listings--details-card{position:relative;height:150px;overflow:hidden;border:5px solid #ccc;margin-bottom:15px}
 .SearchSidePaneHeader .MapFilter{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;background-color:#f5f5f5;position:relative}
 div#accordion{display:block;width:682px}.FilterTitle{display:inline-block;font-size:16px;color:#333;padding-bottom:0;padding:20px}
 .RangeSelect{display:inline-block;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin:10px}
@@ -1595,11 +1607,11 @@ button.reset-button{background:#fff;border:0;color:#0576a9;font-size:16px;font-w
 .OfferInsightsCard .offer-value{font-size:20px}.OfferInsightsCard .sale-date{position:absolute;top:24px;right:24px;color:#999}
 .OfferInsightsCard .offer-result-line{margin-bottom:22px;font-weight:600}.OfferInsightsCard .offer-result.won:before{background:#38b118}
 .OfferInsightsCard .offer-result:before{width:8px;height:8px;background:#999;content:"";display:inline-block;margin-bottom:1px;margin-right:6px;border-radius:50%}
-.DetailsComponent.horizontal{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-top:22px}
-.DetailsComponent.horizontal .detail{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
-.DetailsComponent .detail{display:-webkit-box;display:-ms-flexbox;display:flex}.DetailsComponent.horizontal .label{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
-.DetailsComponent .label{color:#999;font-size:12px}.DetailsComponent.horizontal .value{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
-.DetailsComponent .value{font-size:16px}.DetailsComponent .divider{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px;max-width:1px;background:#e2e2e2;margin:0 22px;height:35px}
+.detail--component.horizontal{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-top:22px}
+.detail--componentdetail--component.horizontal .detail{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.detail--component .detail{display:-webkit-box;display:-ms-flexbox;display:flex}.detail--component.horizontal .label{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
+.detail--component .label{color:#999;font-size:12px}.detail--component.horizontal .value{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
+.detail--component .value{font-size:16px}.detail--component .divider{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px;max-width:1px;background:#e2e2e2;margin:0 22px;height:35px}
 .OfferInsightsCard .offer-insight{font-size:16px;margin-top:19px;padding:15px;background-color:#f5f5f5;border-radius:2px;position:relative}
 .OfferInsightsCard .ExpandableText.truncated .expansion{display:none}.OfferInsightsCard .offer-insight .more-link{color:#0c82a5}
 .OfferInsightsCard .agent-info{margin-top:14px;display:-webkit-box;display:-ms-flexbox;display:flex}
@@ -1622,12 +1634,12 @@ button.reset-button{background:#fff;border:0;color:#0576a9;font-size:16px;font-w
 .neighborhood-photos-container div.place>div{overflow:hidden}.neighborhood-photos-section .neighborhood-photos-container div.photo-container img{position:absolute;top:0;left:0;width:100%;height:100%}
 .neighborhood-photos-container img{width:100%;border:1px solid #d7d8d7;-webkit-box-sizing:border-box;box-sizing:border-box;position:relative}
 .neighborhood-photos-container div.place p.place-name{margin:0;color:#999;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;font-size:13px}
-.MoreResources{font-size:16px;text-align:center}.MoreResources .columns{display:block}
-#region-content .MoreResources .resources-section{padding-left:15px;padding-right:15px;display:block;margin:0 auto 15px;width:90%;text-align:center}
-.MoreResources h3{color:#333;font-size:16px;font-weight:350;line-height:1.375;margin-top:0;margin-bottom:.75rem}
-.MoreResources ul,.MoreResources ul li{margin:0;padding:0}.MoreResources ul{list-style-type:none}
-.MoreResources .link-text{line-height:28px;text-decoration:none;color:#0c82a5}#table .mini-slider{width:43%}
-#table .OfferInsightsSection{padding:50px 15px}#table .school-section{padding:50px 15px}
+.market-survey__insights--MoreResources{font-size:16px;text-align:center}.market-survey__insights--MoreResources .columns{display:block}
+#region-content .market-survey__insights--MoreResources .resources-section{padding-left:15px;padding-right:15px;display:block;margin:0 auto 15px;width:90%;text-align:center}
+.market-survey__insights--MoreResources h3{color:#333;font-size:16px;font-weight:350;line-height:1.375;margin-top:0;margin-bottom:.75rem}
+.market-survey__insights--MoreResources ul,.market-survey__insights--MoreResources ul li{margin:0;padding:0}
+.market-survey__insights--MoreResources ul{list-style-type:none}.market-survey__insights--MoreResources .link-text{line-height:28px;text-decoration:none;color:#0c82a5}
+#table .mini-slider{width:43%}#table .OfferInsightsSection{padding:50px 15px}#table .school-section{padding:50px 15px}
 #table #neighborhood-photos-section{padding:50px 15px}#marketInsights{margin-top:75px}
 .region-content-section .secondary-heading{margin-top:-17px;margin-bottom:24px;text-align:left;font-size:14px;font-weight:400;color:#999}
 .CompeteScore .scoreTM{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-align:center;-ms-flex-align:center;align-items:center;margin-top:-10px}
@@ -1646,23 +1658,24 @@ button.reset-button{background:#fff;border:0;color:#0576a9;font-size:16px;font-w
 @media(min-width:1199px){.CompeteScore .details-row{max-width:250px}}.CompeteScore .details-row{font-size:16px;line-height:22px;vertical-align:text-top;margin-top:10px}
 .CompeteScore li{color:#ccc;list-style-position:outside}.CompeteScore li:before{content:"\2022 ";font-size:30px;vertical-align:middle;margin-left:-15px}
 .CompeteScore li span{color:#333}.CompeteScore .background-bar .very{background-color:#94cfc5}
-.CompeteScore .primary-heading,.RealEstateTrends .primary-heading,.StrategySessionCTA .primary-heading{margin-bottom:20px;text-align:left;font-size:22px;color:#333;padding-left:0}
-.border-bottom{border-bottom:1px solid #e2e2e2}.RealEstateTrends .DetailsComponent.primary{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
-.DetailsComponent.horizontal{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-top:22px}
-@media(min-width:1200px){.RealEstateTrends .DetailsComponent.primary .detail{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
-}.RealEstateTrends .DetailsComponent.primary .detail{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex}
-.DetailsComponent.horizontal .detail{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
-.DetailsComponent .detail{display:-webkit-box;display:-ms-flexbox;display:flex}.RealEstateTrends .DetailsComponent.primary .value{font-size:32px}
-.DetailsComponent.horizontal .value{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
-.DetailsComponent .value{font-size:16px}.DetailsComponent.horizontal .label{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
-.DetailsComponent .label{color:#999}@media(min-width:1200px){.RealEstateTrends .DetailsComponent.primary .detail .sub-label{margin-left:16px}
-}.DetailsComponent .sub-label{color:#75b945;font-size:12px}.DetailsComponent .divider{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px;max-width:1px;background:#e2e2e2;margin:0 22px;height:35px}
-.RealEstateTrends,.StrategySessionCTA{width:100%}.RealEstateTrends .primary-heading{padding:20px 0}
-@media(min-width:1200px){.StrategySessionCTA .cta-container{display:block}}@media(min-width:1200px){.StrategySessionCTA .cta-container .agents-image-container{float:right;margin-left:40px}
-.StrategySessionCTA .cta-container .agents-image{height:91px}}.StrategySessionCTA .cta-container .agents-image-container{margin-right:20px}
-.StrategySessionCTA .cta-container .agents-image{height:74px}.StrategySessionCTA .cta-container .cta-description{-webkit-box-flex:1;-ms-flex:1;flex:1;font-size:16px;line-height:24px}
-.StrategySessionCTA .cta-container .cta-button{-webkit-box-flex:2;-ms-flex:2;flex:2;margin-top:15px;min-width:328px}
-.StrategySessionCTA .button{-webkit-box-shadow:none;box-shadow:none;display:inline-block;background-color:#f5f5f5;border:1px solid #ccc;text-align:center;vertical-align:middle;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:-.1px;line-height:1;height:40px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border-radius:2px 2px 2px 2px;-webkit-transition:all .1s ease-out 0s;transition:all .1s ease-out 0s;padding:12px 1.5rem;color:#585858}
+.CompeteScore .primary-heading,.market-survey__insights--trends .primary-heading,.market-survey__insights--CTA .primary-heading{margin-bottom:20px;text-align:left;font-size:22px;color:#333;padding-left:0}
+.border-bottom{border-bottom:1px solid #e2e2e2}.market-survey__insights--trends .detail--component.primary{-webkit-box-pack:start;-ms-flex-pack:start;justify-content:flex-start}
+.detail--component.horizontal{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;margin-top:22px}
+@media(min-width:1200px){.market-survey__insights--trends .detail--component.primary .detail{-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row;-webkit-box-align:end;-ms-flex-align:end;align-items:flex-end}
+}.market-survey__insights--trends .detail--component.primary .detail{-webkit-box-flex:1;-ms-flex:1;flex:1;display:-webkit-box;display:-ms-flexbox;display:flex}
+.detail--component.horizontal .detail{-webkit-box-orient:vertical;-webkit-box-direction:normal;-ms-flex-direction:column;flex-direction:column}
+.detail--component .detail{display:-webkit-box;display:-ms-flexbox;display:flex}.market-survey__insights--trends .detail--component.primary .value{font-size:32px}
+.detail--component.horizontal .value{-webkit-box-ordinal-group:2;-ms-flex-order:1;order:1}
+.detail--component .value{font-size:16px}.detail--component.horizontal .label{-webkit-box-ordinal-group:3;-ms-flex-order:2;order:2}
+.detail--component .label{color:#999}@media(min-width:1200px){.market-survey__insights--trends .detail--component.primary .detail .sub-label{margin-left:16px}
+}.detail--component .sub-label{color:#75b945;font-size:12px}.detail--component .divider{-webkit-box-flex:1;-ms-flex:1;flex:1;min-width:1px;max-width:1px;background:#e2e2e2;margin:0 12px;height:35px}
+.market-survey__insights--trends,.market-survey__insights--CTA{width:100%}.market-survey__insights--trends .primary-heading{padding:20px 0}
+@media(min-width:1200px){.market-survey__insights--CTA .cta-container{display:block}
+}@media(min-width:1200px){.market-survey__insights--CTA .cta-container .agents-image-container{float:right;margin-left:40px}
+.market-survey__insights--CTA .cta-container .agents-image{height:91px}}.market-survey__insights--CTA .cta-container .agents-image-container{margin-right:20px}
+.market-survey__insights--CTA .cta-container .agents-image{height:74px}.market-survey__insights--CTA .cta-container .cta-description{-webkit-box-flex:1;-ms-flex:1;flex:1;font-size:16px;line-height:24px}
+.market-survey__insights--CTA .cta-container .cta-button{-webkit-box-flex:2;-ms-flex:2;flex:2;margin-top:15px;min-width:328px}
+.market-survey__insights--CTA .button{-webkit-box-shadow:none;box-shadow:none;display:inline-block;background-color:#f5f5f5;border:1px solid #ccc;text-align:center;vertical-align:middle;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:-.1px;line-height:1;height:40px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border-radius:2px 2px 2px 2px;-webkit-transition:all .1s ease-out 0s;transition:all .1s ease-out 0s;padding:12px 1.5rem;color:#585858}
 .profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
 .sort-favourite .btn{-webkit-box-shadow:none;box-shadow:none}.nav-btn .nav-link{margin-top:-5px}
 .modal{border-radius:7px}h4.modal-title{color:#111;font-size:18px;font-weight:500;float:left;margin:10px 0;line-height:20px}

@@ -9,6 +9,7 @@
 .banner{
     height:100%;
     position:relative;
+    overflow: hidden;
 }
 .banner-overlay{
     width: 100%;

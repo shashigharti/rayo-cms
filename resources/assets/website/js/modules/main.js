@@ -1,6 +1,6 @@
 $(window).load(function () {
     console.log('Hello');
-    $('.owl-carousel').owlCarousel({
+    $('#adv--slider').owlCarousel({
         loop:true,
         margin:10,
         nav:true,
@@ -17,10 +17,14 @@ $(window).load(function () {
         }
     });
 
-    $('.main--banner_slider').owlCarousel({
+    $('#banner--slider').owlCarousel({
         loop:true,
-        nav:true,
-        items:1
+        nav:false,
+        slideSpeed : 300,
+        items:1,
+        animateOut: 'fadeOut',
+        autoplay:true,
+        dots:false
     });
 
 

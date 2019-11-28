@@ -1,19 +1,3 @@
-/* Map Css */
-#left-container {
-    position: fixed;
-    top:85px;
-    bottom: 0;
-    max-height: 2000px;
-    background: #e1dfda;
-    width: calc(100% - 671px);
-}
-#right-container {
-    position: absolute;
-    top:85px;
-    width: 671px;
-    right:0px;
-    box-shadow: -1px,0,3px,rgba(0,0,0,.2);
-}
 .map-section .row{
     margin-right: 0px;
     margin-left: 0px;
@@ -25,7 +9,7 @@
     height:100vh;
     width: 100%;
 }
-.map-search__section h1 {
+.market-survey__right-container h1 {
     font-weight: 500;
     font-size: 24px;
     color: #333;
@@ -34,21 +18,24 @@
     text-overflow: ellipsis;
     line-height: 26px;
     padding: 15px;
-    margin-top: 10px;
+    margin-top:0px;
     margin-bottom: 0px;
 }
-.SearchNavBar {
+.market-survey__right-container--tabs .tabs {
     display: flex;
     background-color: #fff;
     text-align: center;
+    overflow-x: hidden;
+    overflow-y: hidden;
     font-size: 16px;
     border-bottom: 1px solid #e2e2e2;
 }
-.SearchNavBar .tab-heading{
+.market-survey__right-container--tabs .tabs li{
     width: 50%;
-    padding: 10px 0;
+    line-height: 53px;
+    height: 53px;
 }
-.SearchNavBar .tab-heading a{
+.market-survey__right-container--tabs .tabs li a{
     color: #333;
     display: inline;
     text-decoration: none;
@@ -57,12 +44,114 @@
     font-weight: 600;
     border-bottom: 2px solid #333;
 }
-.SearchSidePaneHeader{
-    box-shadow: 1px 0 4px 0 rgba(0,0,0,.2);
+.market-survey__right-container--tabs .tabs .indicator {  
+    display: none;
+}
+.market-survey__right-container--tabs .tabs li a.active,.market-survey__right-container--tabs .tabs li a:hover,.market-survey__right-container--tabs .tabs li a:focus{
+    color: #002349;
+    font-weight: 600;
+    background: transparent;
+    background-color:transparent;
+}
+
+.market-survey__right-container--header{
     z-index: 15;
-    position: fixed;
     background-color: #fff;
-    width: 670px;
+}
+.market-survey__listings{
+    padding: 20px;
+}
+.market-survey__listings .filter--bar {
+    margin: 15px 0px;
+    background: #f5f5f5;
+    padding: 20px;
+}
+.market-survey__listings .search--bar {
+    width: 100%;
+}
+.market-survey__listings .select-wrapper{
+    width: 100px;
+    background: #fff;
+}
+.market-survey__listings .select-wrapper input.select-dropdown{
+    width: 85px;
+}
+.market-survey__listings--reset-btn {
+    border: 0;
+    width: 100px;
+}
+.market-survey__listings--details {
+    margin: 30px 0px;
+}
+.market-survey__listings--details label{
+    color:#777;
+}
+.market-survey__listings--details button{
+    border:0;
+    width: 100px;
+    margin-left: 5px;
+}
+.market-survey__listings .search--bar input {
+    width: 84% !important;
+    display: inline-block;
+    border: 2px solid #8a8989 !important;
+    padding: 5px !important;
+    height: 19px !important;
+    vertical-align: middle;
+    margin-bottom: 0 !important;
+}
+.market-survey__listings .search--bar button {
+    width: 8%;
+    display: inline-block;
+    border: 0;
+    vertical-align: middle;
+}
+.market-survey__listings--details-block {
+    margin: 20px 0px;
+    height: calc(100vh -266px);
+    overflow-y: scroll;
+}
+.market-survey__listings--details-card .card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    margin: 0px;
+    background: rgba(0,0,0,0.2);
+    padding: 10px 10px;
+    height: 100%;
+}
+.market-survey__listings--details-card img{
+    width: 100%;
+}
+.market-survey__listings--details-card .card--details{
+    position: absolute;
+    width: 100%;
+    bottom: 0px;
+    pointer-events: none;
+    font-size: 10px;
+    white-space: nowrap;
+    justify-content: space-between;
+    padding: 20px 10px;
+    left: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+}
+.market-survey__listings--details-card .card--details p{
+    color:#FFF;
+    font-size: 12px;
+    margin-bottom: 3px;
+}
+.market-survey__listings--details-card input[type="checkbox"]:not(:checked),.market-survey__listings--details-card input[type="checkbox"]:checked {
+    position: absolute;
+    opacity: 1;
+    pointer-events: inherit;
+}
+.market-survey__listings--details-card {
+    position: relative;
+    height: 150px;
+    overflow: hidden;
+    border: 5px solid #ccc;
+    margin-bottom: 15px;
 }
 .SearchSidePaneHeader .MapFilter{
     display: flex;
@@ -958,31 +1047,31 @@ button.reset-button {
     margin-right: 6px;
     border-radius: 50%;
 }
-.DetailsComponent.horizontal {
+.detail--component.horizontal {
     display: flex;
     justify-content: space-between;
     margin-top: 22px;
 }
-.DetailsComponent.horizontal .detail {
+.detail--componentdetail--component.horizontal .detail {
     flex-direction: column;
 }
-.DetailsComponent .detail {
+.detail--component .detail {
     display: flex;
 }
-.DetailsComponent.horizontal .label {
+.detail--component.horizontal .label {
     order: 2;
 }
-.DetailsComponent .label {
+.detail--component .label {
     color: #999;
     font-size: 12px;
 }
-.DetailsComponent.horizontal .value {
+.detail--component.horizontal .value {
     order: 1;
 }
-.DetailsComponent .value {
+.detail--component .value {
     font-size: 16px;
 }
-.DetailsComponent .divider {
+.detail--component .divider {
     flex: 1;
     min-width: 1px;
     max-width: 1px;
@@ -1133,14 +1222,14 @@ button.reset-button {
     text-overflow: ellipsis;
     font-size: 13px;
 }
-.MoreResources {
+.market-survey__insights--MoreResources {
     font-size: 16px;
     text-align: center;
 }
-.MoreResources .columns {
+.market-survey__insights--MoreResources .columns {
     display: block;
 }
-#region-content .MoreResources .resources-section {
+#region-content .market-survey__insights--MoreResources .resources-section {
     padding-left: 15px;
     padding-right: 15px;
     display: block;
@@ -1148,7 +1237,7 @@ button.reset-button {
     width: 90%;
     text-align: center;
 }
-.MoreResources h3 {
+.market-survey__insights--MoreResources h3 {
     color: #333;
     font-size: 16px;
     font-weight: 350;
@@ -1156,14 +1245,14 @@ button.reset-button {
     margin-top: 0;
     margin-bottom: .75rem;
 }
-.MoreResources ul, .MoreResources ul li {
+.market-survey__insights--MoreResources ul, .market-survey__insights--MoreResources ul li {
     margin: 0;
     padding: 0;
 }
-.MoreResources ul {
+.market-survey__insights--MoreResources ul {
     list-style-type: none;
 }
-.MoreResources .link-text {
+.market-survey__insights--MoreResources .link-text {
     line-height: 28px;
     text-decoration: none;
     color: #0c82a5;
@@ -1295,7 +1384,7 @@ button.reset-button {
 .CompeteScore .background-bar .very {
     background-color: #94cfc5;
 }
-.CompeteScore .primary-heading ,.RealEstateTrends .primary-heading , .StrategySessionCTA .primary-heading{
+.CompeteScore .primary-heading ,.market-survey__insights--trends .primary-heading , .market-survey__insights--CTA .primary-heading{
     margin-bottom: 20px;
     text-align: left;
     font-size: 22px;
@@ -1305,100 +1394,100 @@ button.reset-button {
 .border-bottom {
     border-bottom: 1px solid #e2e2e2;
 }
-.RealEstateTrends .DetailsComponent.primary {
+.market-survey__insights--trends .detail--component.primary {
     justify-content: flex-start;
 }
-.DetailsComponent.horizontal {
+.detail--component.horizontal {
     display: flex;
     justify-content: space-between;
     margin-top: 22px;
 }
 @media (min-width: 1200px){
-    .RealEstateTrends .DetailsComponent.primary .detail {
+    .market-survey__insights--trends .detail--component.primary .detail {
         flex-direction: row;
         align-items: flex-end;
     }
 }
-.RealEstateTrends .DetailsComponent.primary .detail {
+.market-survey__insights--trends .detail--component.primary .detail {
     flex: 1;
     display: flex;
 }
-.DetailsComponent.horizontal .detail {
+.detail--component.horizontal .detail {
     flex-direction: column;
 }
-.DetailsComponent .detail {
+.detail--component .detail {
     display: flex;
 }
-.RealEstateTrends .DetailsComponent.primary .value {
+.market-survey__insights--trends .detail--component.primary .value {
     font-size: 32px;
 }
-.DetailsComponent.horizontal .value {
+.detail--component.horizontal .value {
     order: 1;
 }
-.DetailsComponent .value {
+.detail--component .value {
     font-size: 16px;
 }
-.DetailsComponent.horizontal .label {
+.detail--component.horizontal .label {
     order: 2;
 }
-.DetailsComponent .label {
+.detail--component .label {
     color: #999;
 }
 @media (min-width: 1200px){
-    .RealEstateTrends .DetailsComponent.primary .detail .sub-label {
+    .market-survey__insights--trends .detail--component.primary .detail .sub-label {
         margin-left: 16px;
     }
 }
-.DetailsComponent .sub-label {
+.detail--component .sub-label {
     color: #75b945;
     font-size: 12px;
 }
-.DetailsComponent .divider {
+.detail--component .divider {
     flex: 1;
     min-width: 1px;
     max-width: 1px;
     background: #e2e2e2;
-    margin: 0 22px;
+    margin: 0 12px;
     height: 35px;
 }
-.RealEstateTrends,.StrategySessionCTA{
+.market-survey__insights--trends,.market-survey__insights--CTA{
     width: 100%;
 }
-.RealEstateTrends .primary-heading{
+.market-survey__insights--trends .primary-heading{
     padding: 20px 0px;
 }
 @media (min-width: 1200px){
-    .StrategySessionCTA .cta-container {
+    .market-survey__insights--CTA .cta-container {
         display: block;
     }
 }
 
 @media (min-width: 1200px){
-    .StrategySessionCTA .cta-container .agents-image-container {
+    .market-survey__insights--CTA .cta-container .agents-image-container {
         float: right;
         margin-left: 40px;
     }
-    .StrategySessionCTA .cta-container .agents-image {
+    .market-survey__insights--CTA .cta-container .agents-image {
         height: 91px;
     }
 }
-.StrategySessionCTA .cta-container .agents-image-container {
+.market-survey__insights--CTA .cta-container .agents-image-container {
     margin-right: 20px;
 }
-.StrategySessionCTA .cta-container .agents-image {
+.market-survey__insights--CTA .cta-container .agents-image {
     height: 74px;
 }
-.StrategySessionCTA .cta-container .cta-description {
+.market-survey__insights--CTA .cta-container .cta-description {
     flex: 1;
     font-size: 16px;
     line-height: 24px;
 }
-.StrategySessionCTA .cta-container .cta-button {
+.market-survey__insights--CTA .cta-container .cta-button {
     flex: 2;
     margin-top: 15px;
     min-width: 328px;
 }
-.StrategySessionCTA .button {
+.market-survey__insights--CTA .button {
     box-shadow: none;
     display: inline-block;
     background-color: #f5f5f5;
