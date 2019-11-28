@@ -4,8 +4,8 @@
     let properties = [];
 
     class Property {
-        constructor(title, asking, location, sold) {
-            this._ = id;
+        constructor(id, title, asking, location, sold) {
+            this._id = id;
             this._title = title;
             this._asking = asking;
             this._location = location;
@@ -16,12 +16,12 @@
             return `
                 <div class="col s12 m7">
                     <div class="card">
-                        <input type="checkbox" value=${this._id}>
                         <div class="card-image">
-                            <img src="${this._img}">
+                            <input type="checkbox" value=${this._id}>                            
                             <span class="card-title">${this._asking}</span>
                             <p>${this._sold}</p>
                             <a href="#">${this._location}</a>
+                            <img src="${this._img}">
                         </div>
                     </div>
                 </div>`;
@@ -35,7 +35,12 @@
     }
 
     $(function () {
-        for (var i = 1; i < 5; i++) {
+        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false;
+
+        if (!isMarketSurvey) {
+            return;
+        }
+        for (let i = 1; i < 5; i++) {
             properties.push(new Property(i, "Test" + i, "Test" + i, "Test" + i, "Test" + i));
         }
 

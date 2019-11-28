@@ -3,6 +3,7 @@ namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 
 /**
