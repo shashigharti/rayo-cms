@@ -10,7 +10,7 @@
                     <a href="#" class="view-all">View All</a>
                 </div>
             </div>
-            <div class="adv-slider2 owl-carousel owl-theme">
+            <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
                 @foreach($sliders as $slider)
                     <div class="single-block item">
                         @set('properties', json_decode($slider->properties))
