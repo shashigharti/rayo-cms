@@ -2,6 +2,7 @@
 
 namespace Robust\Admin\Models;
 
+use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -21,19 +22,13 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'user_name',
+        'member_id',
+        'member_type',
         'email',
+        'user_name',
         'password',
-        'avatar',
-        'first_name',
-        'last_name',
-        'organization',
-        'department',
-        'contact',
-        'gender',
-        'address',
-        'region',
-        'tole'
+        'open_password',
+        'remember_token'
     ];
 
     /**
@@ -85,11 +80,13 @@ class User extends Authenticatable implements MustVerifyEmail
         event(new PasswordResetEvent($this, $token));
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function carts()
+    public function sendEmailVerificationNotification()
     {
-        return $this->hasMany('Robust\Cart\Models\AbandonedCart');
+        $this->notify(new VerifyEmail());
+    }
+
+    public function member()
+    {
+        return $this->morphTo();
     }
 }

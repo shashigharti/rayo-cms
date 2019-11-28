@@ -5,7 +5,8 @@
         @set('properties', json_decode($mainBannerSlider->properties))
         @if($properties)
             <div class="item">
-{{--                <img src="{{$properties->image ? getMedia($properties->image) : "/images/banners/banner.jpg"}}" alt="">--
+{{--                <img src="{{$properties->image ? getMedia($properties->image) : "/images/banners/banner.jpg"}}" alt="">--}}
+            </div>
         @endif
     @endforeach
 </div>

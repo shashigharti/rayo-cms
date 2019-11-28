@@ -97,4 +97,10 @@ class Lead extends Authenticatable
     {
         return $this->hasMany(LeadSearch::class);
     }
+
+    public function member()
+    {
+        return $this->morphOne('App\User', 'member');
+    }
+
 }

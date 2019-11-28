@@ -1,6 +1,7 @@
 <?php
 use Robust\Admin\Models\Role;
 use Robust\Admin\Models\User;
+use Robust\Admin\Models\Admin;
 use Robust\Admin\Models\Permission;
 use Robust\Core\Helpers\PermissionHelper;
 
@@ -37,7 +38,7 @@ class UserTableSeeder extends Seeder
             }
         }
 
-        $users = [
+        $admins = [
             [
                 'id' => 1,
                 'email' => 'info@robustitconcepts.com',
@@ -49,8 +50,18 @@ class UserTableSeeder extends Seeder
             ]
         ];
 
-        foreach ($users as $user) {
-            $user = User::updateOrCreate(['id'=>1],$user);
+
+        foreach ($admins as $admin){
+            $created = Admin::updateOrCreate(['id' => 1],[
+                'first_name' => $admin['first_name'],
+                'last_name' => $admin['last_name'],
+            ]);
+            $user = User::updateOrCreate(['id' =>1],[
+                'member_id' => $created->id,
+                'member_type' => 'Robust\Admin\Models\Admin',
+                'email' => $admin['email'],
+                'password' => $admin['password'],
+            ]);
             if($user->wasRecentlyCreated){
                 $user->roles()->attach($role->id);
             }

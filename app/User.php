@@ -3,10 +3,15 @@
 namespace App;
 
 use App\Notifications\CustomResetPasswordNotification;
+use App\Notifications\VerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Passport\HasApiTokens;
 
+/**
+ * Class User
+ * @package App
+ */
 class User extends Authenticatable
 {
     use HasApiTokens, Notifiable;
@@ -40,13 +45,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function roles()
     {
         return $this->belongsToMany('Robust\Admin\Models\Role');
     }
 
+    /**
+     * @param string $token
+     */
     public function sendPasswordResetNotification($token)
     {
         $this->notify(new CustomResetPasswordNotification($token));
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function member()
+    {
+        return $this->morphTo();
+    }
+
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new VerifyEmail());
     }
 }

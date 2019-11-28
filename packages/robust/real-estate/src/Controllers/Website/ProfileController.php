@@ -33,12 +33,12 @@ class ProfileController
      */
     public function index()
     {
-        $dummy = $this->lead->where('id',1)->first();
-        $status = Auth::guard('lead')->attempt(['email' => $dummy->email,'password' => '12345678']);
-        if(Auth::guard('lead')->check()){
-            $lead = Auth::guard('lead')->user()->load('favourites','bookmarks','reports','searches');
+        if(Auth::check()){
+            $user = Auth::user()->load('member');
+            $lead = $user->member->load('favourites','bookmarks','reports','searches');
             return view('real-estate::website.profile.index',['lead' => $lead]);
         }
+        return  redirect()->back();
     }
 
     /**
@@ -48,7 +48,7 @@ class ProfileController
     public function update(Request $request)
     {
         $data = $request->all();
-        $lead = Auth::guard('lead')->user();
+        $lead = Auth::user()->load('member')->member;
         if($lead){
             $this->lead->update($lead->id,$data);
         }

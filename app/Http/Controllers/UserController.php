@@ -43,9 +43,9 @@ class UserController extends Controller
             $user['token'] = $user->createToken('MyApp')->accessToken;
 
             // Update last active at field
-            $userModel->where('email', request('email'))->update([
-                'last_active_at' => Carbon::now()->format('Y-m-d h:i:s')
-            ]);
+//            $userModel->where('email', request('email'))->update([
+//                'last_active_at' => Carbon::now()->format('Y-m-d h:i:s')
+//            ]);
             return response()->json(['success' => true, 'user' => $user], $this->successStatus);
         } else {
             return response()->json(['success'=>false,'error' => 'Unauthorised'], 401);
