@@ -66,4 +66,22 @@ class ListingRepository
     {
         return $this->model->where('id',$id)->with('details')->with('images')->first();
     }
+
+    /**
+     * @param $type
+     * @param $name
+     * @param $count
+     * @return mixed
+     */
+    public function getListingByType($type, $name, $count)
+    {
+        return  $this->model->where($type,$name)
+                  ->where('status','Active')
+                  ->select('id','listing_name','system_price','listing_slug')
+                  ->orderBy('input_date','asc')
+                  ->has('image','>',0)
+                  ->with('image')
+                  ->limit($count);
+
+    }
 }

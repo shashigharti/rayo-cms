@@ -52,7 +52,7 @@ class Listing extends BaseModel
     public function image()
     {
         return $this->hasOne(ListingImages::class,'listing_id','uid')
-            ->withDefault(function($image){  $image->listing_url = 'default/image/link'; });
+            ->withDefault(function($image){  $image->listing_url = '/images/banners/block10.jpeg'; });
     }
 
     /**

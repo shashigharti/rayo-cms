@@ -30,7 +30,7 @@ class Banner extends JsonResource
             'header' => isset($blocks['header']) ?  $blocks['header'] : '',
             'area_types' =>isset($blocks['area_types']) ? $blocks['area_types'] : [],
             'sub_areas' =>isset($blocks['sub_areas']) ? $blocks['sub_areas'] : [],
-            'property_ids' =>isset($blocks['property_ids']) ? $blocks['property_ids'] : [],
+            'property_count' =>isset($blocks['property_count']) ? $blocks['property_count'] : [],
             'button_text' => isset($blocks['button_text']) ? $blocks['button_text'] : '',
             'button_url' =>isset($blocks['button_url']) ? $blocks['button_url'] : '',
             'banner_template' => array_search($this->template,$this->templates),

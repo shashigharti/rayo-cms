@@ -1,6 +1,6 @@
 $(window).load(function () {
     console.log('Hello');
-    $('#adv--slider').owlCarousel({
+    $('.adv-slider2').owlCarousel({
         loop:true,
         margin:10,
         nav:true,

@@ -23,4 +23,15 @@ class ListingHelper
     {
         $this->model = $listing;
     }
+
+    /**
+     * @param $type
+     * @param $name
+     * @param $count
+     * @return mixed
+     */
+    public function getListingsByType($type, $name, $count)
+    {
+        return $this->model->getListingByType($type,$name,$count)->get();
+    }
 }
