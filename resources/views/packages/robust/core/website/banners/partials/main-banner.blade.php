@@ -1,5 +1,5 @@
 @set('mainBannerSliders', $banner_helper->getBannersByType(['main-banner']))
-<div class="slides owl-carousel owl-theme" id="banner--slider">
+<div class="slides owl-theme" id="banner--slider">
     @foreach($mainBannerSliders as $mainBannerSlider)
         @set('properties', json_decode($mainBannerSlider->properties))
         @if($properties)
