@@ -63,13 +63,20 @@ class LeadsController extends Controller
 
     public function index()
     {
-        return $this->resource::collection($this->model->paginate(10));
+        return $this->resource::collection($this->model
+            ->with('metadata')
+            ->with('search')
+            ->with('category')
+            ->with('reports')
+            ->with('email')
+            ->with('activityLog')
+            ->with('note')
+            ->paginate(10));
     }
 
     public function details($id)
     {
-        $model = $this->model ->with('metadata')
-            ->with('agent')
+        $model = $this->model->with('metadata')
             ->with('searches')
             ->with('categories')
             ->with('reports')
