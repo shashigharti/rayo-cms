@@ -11,7 +11,7 @@
                     @include(Site::templateResolver('real-estate::website.profile.partials.side-nav'))
                 </div>
                 <div class="col s10">
-                    <div class="side-tab-content col s12">
+                    <div class="side-tab-content profile--tab col s12">
                         <div id="profile" class="col s12">
                             @include(Site::templateResolver('real-estate::website.profile.partials.info'))
                         </div>

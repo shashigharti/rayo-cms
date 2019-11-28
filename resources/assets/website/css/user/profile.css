@@ -6,3 +6,6 @@
 .sort-favourite .btn{
 	box-shadow: none;
 }
+.profile--tab{
+    min-height: 400px;
+}

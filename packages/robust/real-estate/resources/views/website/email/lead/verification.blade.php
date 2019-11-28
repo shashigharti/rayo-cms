@@ -50,7 +50,7 @@
     <tr>
         <td style="text-align: center; background-color: #315C85; padding: 10px 15px;">
             <p>
-                <a style="text-decoration: none; font-family: verdana; color: white; font-weight: bold; font-size: 18px;" href="#">https://4alaskarealestate.com</a> <br> <br>
+                <a style="text-align:center;text-decoration: none; font-family: verdana; color: white; font-weight: bold; font-size: 18px;" href="#">https://4alaskarealestate.com</a> <br> <br>
                 <i style="color: white; font-family: verdana; font-size: 12px;background-color: #315C85">This message is intended for Vega Norma who registered on <a style="color:#1ba71b" href="{{env('APP_URL')}}">{{env('APP_NAME')}}</a> To stop these emails, <a style="color:#1ba71b" href="#">Click here</a>.</i>
             </p>
         </td>

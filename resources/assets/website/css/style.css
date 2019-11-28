@@ -791,16 +791,17 @@ nav{
     margin:20px 0px;
     box-shadow: 1px 1px 1px 1px #777;
     color: #111;
-    height: auto;
+    min-height: 400px;
+
 }
 .side-tab li.tab{
     text-align: left;
     color: #111;
-    border-bottom: 1px solid #eee;
 }
 .side-tab .tabs .tab a {
     color: #111;
     font-weight:500;
+    text-decoration: none;
 }
 .side-tab .tabs .tab a:hover,.side-tab .tabs .tab a.active {
     background-color: #002349;

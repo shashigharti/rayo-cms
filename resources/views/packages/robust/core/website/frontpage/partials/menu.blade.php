@@ -1,5 +1,5 @@
  <nav class="navbar navbar-expand-lg navbar-light">
-    <a href="#"><img src="assets/website/images/Logo.jpg" alt="logo"></a>
+    <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
     <a href="#" data-target="mobile-demo" class="mobile-menu-btn"><i class="fa fa-bars"></i></a>
     <ul id="mobile-demo" class="dropdown-content">
         <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>

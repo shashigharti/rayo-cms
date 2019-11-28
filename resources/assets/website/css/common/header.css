@@ -11,6 +11,7 @@ header {
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 400;
+    text-decoration: none;
 }
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu  .nav-link.show,.site-menu li.show>.nav-link {
     color: rgba(255,255,255,0.8);
