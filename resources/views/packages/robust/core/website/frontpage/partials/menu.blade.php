@@ -23,7 +23,7 @@
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#loginmodal">Login</a>
             @endif
             <div id="loginmodal" class="modal">
-                <form action="{{route('website.realestate.leads.login')}}" method="post">
+                <form  method="post" id="login--form" data-url="{{route('website.realestate.leads.login')}}">
                     @csrf
                     <div class="row modal-header">
                         <button type="button" class="modal-close"> <span>×</span> </button>
@@ -43,7 +43,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <a href="" type="text" class="btn btn-default pull-left load-register-form"> Not yet registered ? Register here </a>
+                        <a href="" id="register--link" type="text" class="btn btn-default pull-left load-register-form"> Not yet registered ? Register here </a>
                         <a href="https://scottingraham.com/user/password/reset" class="pull-left btn btn-default"> Password recovery </a>
                         <button type="submit" class="btn btn-primary"> <div class="loader-01"></div> Login </button>
                     </div>
@@ -57,7 +57,7 @@
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#registermodal">Register</a>
             @endif
                 <div id="registermodal" class="modal">
-                    <form method="post" action="{{route('website.realestate.leads.register')}}">
+                    <form method="post" id="register--form" action="" data-url="{{route('website.realestate.leads.register')}}">
                         @csrf
                         <div class="row modal-header">
                             <button type="button" class="modal-close"> <span>×</span> </button>
@@ -81,7 +81,7 @@
                             </p>
                         </div>
                         <div class="modal-footer">
-                            <a href="" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>
+                            <a href="" id="login--link" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>
 
                             <button type="submit" class="btn btn-primary"> <div class="loader-01"></div> Register </button>
                         </div>
