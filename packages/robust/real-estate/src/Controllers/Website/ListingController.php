@@ -70,4 +70,10 @@ class ListingController extends Controller
         $result = $this->model->getSingle($id);
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
+
+    public function search($slug, $type){
+
+        dd($slug, $type);
+
+    }
 }
