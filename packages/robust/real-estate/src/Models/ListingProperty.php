@@ -22,7 +22,7 @@ class ListingProperty extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = ['type','value','listing_id'];
+    protected $fillable = ['id', 'status','type','value','listing_id'];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
