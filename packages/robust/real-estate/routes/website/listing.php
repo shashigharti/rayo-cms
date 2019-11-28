@@ -14,7 +14,7 @@ Route::group([
         Route::get('/sold-homes', [
             'name' =>'Sold Homes',
             'as' => 'sold-homes',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@index'
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
 
         Route::get('/{id}/{slug}', [
