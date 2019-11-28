@@ -1395,15 +1395,15 @@ a.buy-now-btn{color:#fff;display:inline-block;background:#012466;padding:10px 43
 .inner--title h1{margin-top:0}.inner--title{margin-top:0}p.sub--inner{font-size:12px}
 nav{background-color:#002349}.side-tab-content .form-group label{vertical-align:middle;float:left;margin-top:7px;margin-right:10px;width:20%;padding:0;font-size:12px !important;text-align:left !important}
 .side-tab-content .form-group input{width:63% !important;float:left !important;height:21px !important;border:1px solid #ccc !important;font-size:12px !important;padding:5px 15px !important;margin-bottom:10px !important}
-.btn-xs{font-size:12px;height:25px;line-height:25px}.side-tab .tabs{margin:20px 0;-webkit-box-shadow:1px 1px 1px 1px #777;box-shadow:1px 1px 1px 1px #777;color:#111;height:auto}
-.side-tab li.tab{text-align:left;color:#111;border-bottom:1px solid #eee}.side-tab .tabs .tab a{color:#111;font-weight:500}
+.btn-xs{font-size:12px;height:25px;line-height:25px}.side-tab .tabs{margin:20px 0;-webkit-box-shadow:1px 1px 1px 1px #777;box-shadow:1px 1px 1px 1px #777;color:#111;min-height:400px}
+.side-tab li.tab{text-align:left;color:#111}.side-tab .tabs .tab a{color:#111;font-weight:500;text-decoration:none}
 .side-tab .tabs .tab a:hover,.side-tab .tabs .tab a.active{background-color:#002349;color:#fff}
 .side-tab .tabs .indicator{display:none}.side-tab-content{margin-bottom:50px}.select-wrapper{display:inline-block;border:1px solid #ccc;height:30px;vertical-align:middle;margin:0 4px;padding:2px 0}
 .select-wrapper input.select-dropdown{border:0;border-bottom:0;height:25px;line-height:1rem;width:100%;font-size:11px;padding:0 6px}
 .select-wrapper .caret{position:absolute;right:6px}.search--bar input[type="text"]{padding:6px}
 .search--bar input.site--theme-btn{margin-left:22px;margin-top:0;display:inline-block;padding:10px 30px 8px}
 i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;margin-right:2px}
-header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400}
+header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu .nav-link.show,.site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}
 .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
 .mobile-menu-btn{display:none}.site-menu nav{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
@@ -1677,8 +1677,8 @@ button.reset-button{background:#fff;border:0;color:#0576a9;font-size:16px;font-w
 .market-survey__insights--CTA .cta-container .cta-button{-webkit-box-flex:2;-ms-flex:2;flex:2;margin-top:15px;min-width:328px}
 .market-survey__insights--CTA .button{-webkit-box-shadow:none;box-shadow:none;display:inline-block;background-color:#f5f5f5;border:1px solid #ccc;text-align:center;vertical-align:middle;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;font-family:inherit;font-size:1rem;font-weight:700;letter-spacing:-.1px;line-height:1;height:40px;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;border-radius:2px 2px 2px 2px;-webkit-transition:all .1s ease-out 0s;transition:all .1s ease-out 0s;padding:12px 1.5rem;color:#585858}
 .profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
-.sort-favourite .btn{-webkit-box-shadow:none;box-shadow:none}.nav-btn .nav-link{margin-top:-5px}
-.modal{border-radius:7px}h4.modal-title{color:#111;font-size:18px;font-weight:500;float:left;margin:10px 0;line-height:20px}
+.sort-favourite .btn{-webkit-box-shadow:none;box-shadow:none}.profile--tab{min-height:400px}
+.nav-btn .nav-link{margin-top:-5px}.modal{border-radius:7px}h4.modal-title{color:#111;font-size:18px;font-weight:500;float:left;margin:10px 0;line-height:20px}
 button.modal-close{background:transparent;border:0;float:right;font-weight:500;color:#111}
 .modal-header{padding:10px;border-bottom:1px solid #e9ecef}.modal-header,.modal-footer{background-color:#fff !important}
 .site-menu .modal{max-height:-webkit-fit-content;max-height:-moz-fit-content;max-height:fit-content}
