@@ -18,7 +18,7 @@
             </div>
         </div>
     </div>
-    <advance-search id="adv-search-dropdown"></advance-search>
+    @include(Site::templateResolver('core::website.advance-search.index'))
 @endsection
 @section('body_section')
     {{-- @include(Site::templateResolver('core::website.frontpage.single-col-properties')) --}}
