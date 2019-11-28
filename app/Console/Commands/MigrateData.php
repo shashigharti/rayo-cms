@@ -4,6 +4,7 @@ namespace App\Console\Commands;
 use Robust\RealEstate\Models\Listing;
 use Illuminate\Console\Command;
 use Robust\RealEstate\Models\ListingProperty;
+use Robust\RealEstate\Models\ListingDetail;
 
 /**
  * Class UserAlert
@@ -77,7 +78,7 @@ class MigrateData extends Command
 
         foreach($listing_details as $key => $listing_detail){
             $listing_detail = json_decode(json_encode($listing_detail), true);
-
+            ListingDetail::create($listing);
             foreach ($listing_details_fields as $field){
                 ListingProperty::updateOrCreate([
                     'listing_id' => $listing_detail['listing_id'],

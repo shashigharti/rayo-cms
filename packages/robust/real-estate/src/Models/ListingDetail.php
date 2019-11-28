@@ -22,7 +22,7 @@ class ListingDetail extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = ['listing_id','lakewaterfront', 'off_market_date',
+    protected $fillable = ['id','listing_id','lakewaterfront', 'off_market_date',
         'external_amenities', 'amenities', 'basement', 'property_condition', 'property_frontpage', 'topography',
         'construction', 'cooling_type', 'equipment', 'exterior', 'owner_occupancy', 'maintenance', 'interior', 'kitchen_equipment', 'lot_description',
         'parking', 'rooms', 'stories', 'public_remarks', 'age_desc', 'tax_year', 'room_dr',
