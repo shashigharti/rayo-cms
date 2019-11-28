@@ -63,4 +63,13 @@ class Listing extends BaseModel
         return $this->hasOne('Robust\RealEstate\Models\City');
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function property()
+    {
+        return $this->hasOne('Robust\RealEstate\Models\ListingProperty');
+    }
+
 }
