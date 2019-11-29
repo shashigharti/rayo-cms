@@ -24,7 +24,10 @@ Route::get('/login',[
 ]);
 
 
-Route::get('/backend',[
+Route::get('/backend/{path?}',[
    'as' =>'backend',
    'uses' => '\App\Http\Controllers\HomeController@backend'
 ]);
+
+// Route::get('/backend/{path?}', function($path = null){ 
+//    return View::make('app'); })->where('path', '.*'); 
