@@ -75,13 +75,18 @@ class ListingRepository
      */
     public function getListingByType($type, $name, $count)
     {
-        return  $this->model->where($type,$name)
-                  ->where('status','Active')
-                  ->select('id','listing_name','system_price','listing_slug')
-                  ->orderBy('input_date','asc')
-                  ->has('image','>',0)
-                  ->with('image')
-                  ->limit($count);
+//        return  $this->model->where($type,$name)
+//                  ->where('status','Active')
+//                  ->withCount('images')
+//                  ->select('id','listing_name','system_price','listing_slug')
+//                  ->orderBy('input_date','asc')
+//                  ->limit($count);
+        //need to fix this not working with $this->model
+        return Listing::where($type,$name)
+                ->has('image')
+                ->with('image')
+                ->orderBy('input_date','desc')
+                ->limit($count);
 
     }
 }
