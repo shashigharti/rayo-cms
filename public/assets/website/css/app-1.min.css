@@ -1376,7 +1376,7 @@ button.get-distance{border-radius:0;background-color:#002349}.well{min-height:20
 .txt-descript-bold{color:#111;font-weight:500;font-size:12px}.table-striped.table>tbody>tr>td,.table-striped.table>tbody>tr>th,.table-striped.table>tfoot>tr>td,.table-striped.table>tfoot>tr>th,.table>thead>tr>td,.table>thead>tr>th{padding:8px;line-height:1.42857;vertical-align:top;border-top:1px solid #ddd}
 .detail-block{margin:30px 0}.btn-social-detail .btn{margin:10px 0 0;width:100%;background-color:#002349}
 .btn-social-detail{margin:20px 0}.title-more-detail{background-color:#00527d;padding:14px;text-align:center;color:#fff;font-size:14px;margin:20px 0 20px}
-.advertisement .single-block{margin:10px;height:232px}.slider--text{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,0.7);padding:10px}
+.advertisement .single-block{margin:10px;height:166px}.slider--text{position:absolute;bottom:0;width:100%;background:rgba(0,0,0,0.7);padding:10px}
 a.view-all{font-weight:600;margin-top:28px;display:inline-block;color:#1414bd !important}
 .slider--text h4{font-size:15px;margin-top:5px;margin-bottom:5px;color:#fff;font-weight:600}
 .slider--text p{color:#fff;font-size:12px;margin-top:0;margin-bottom:0}h4.sub-title{font-size:22px;font-weight:500}
@@ -1403,7 +1403,8 @@ nav{background-color:#002349}.side-tab-content .form-group label{vertical-align:
 .select-wrapper .caret{position:absolute;right:6px}.search--bar input[type="text"]{padding:6px}
 .search--bar input.site--theme-btn{margin-left:22px;margin-top:0;display:inline-block;padding:10px 30px 8px}
 i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;margin-right:2px}
-header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
+.adv-slider2 .single-block img{width:auto}header{background:#002349}.site-menu{width:100%;padding:10px 0}
+.site-menu .nav-link{color:rgba(255,255,255,1);font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
 .site-menu li.active>.nav-link,.site-menu .nav-link.active,.site-menu .nav-link.show,.site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}
 .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
 .mobile-menu-btn{display:none}.site-menu nav{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
