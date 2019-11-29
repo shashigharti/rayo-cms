@@ -1423,7 +1423,7 @@ footer p{font-size:12px;color:#d1d1d1}footer i{margin-right:10px}.footer-bottom{
 .theme-green .back-bar .pointer{width:12px;height:12px;top:-5px;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:0;border:1px solid #012466;background:#012466;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .range-bar .theme-green .back-bar{height:2px}.range-bar .theme-green .back-bar .selected-bar{border-radius:2px;background-color:#012466;background-image:-webkit-gradient(linear,left top,left bottom,from(#012466),to(#012466));background-image:linear-gradient(to bottom,#012466,#012466)}
 .banner-caption a.theme-btn{width:145px;padding:10px 0}.search-section a.theme-btn{width:138px;padding:10px 0}
-#adv-search-dropdown{position:absolute;top:550px;z-index:9;left:76px;background:#04122d;width:87.4%;opacity:0;-webkit-transition:ease-in-out .2s;transition:ease-in-out .2s;padding:4px;font-size:10px}
+#adv-search-dropdown{position:absolute;top:550px;z-index:9;left:76px;background:#04122d;width:87.4%;opacity:0;-webkit-transition:ease-in-out .2s;transition:ease-in-out .2s;padding:4px;font-size:10px;display:none}
 #adv-search-dropdown.show{opacity:1}#adv-search-dropdown .inner{border:2px solid #FFF}
 #adv-search-dropdown .input-field>label:not(.label-icon).active,#adv-search-dropdown .input-field>label{-webkit-transform:none;transform:none}
 #adv-search-dropdown label,#adv-search-dropdown [type="checkbox"]+span:not(.lever){font-size:10px}

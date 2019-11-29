@@ -603,7 +603,7 @@ button.get-distance {
 /* slider */
 .advertisement .single-block{
     margin:10px;
-    height:232px;
+    height:166px;
 }
 
 .slider--text{
@@ -849,4 +849,8 @@ i.material-icons {
     font-size: 17px;
     vertical-align: text-bottom;
     margin-right: 2px;
+}
+
+.adv-slider2 .single-block img {
+    width: auto;
 }
