@@ -56,20 +56,20 @@ class Listing extends BaseModel
     }
 
     /**
-     * City  associated with this listing
+     * City associated with this listing
      */
     public function city()
     {
-        return $this->hasOne('Robust\RealEstate\Models\City');
+        return $this->belongsTo('Robust\RealEstate\Models\City');
     }
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function property()
     {
-        return $this->hasOne('Robust\RealEstate\Models\ListingProperty');
+        return $this->hasMany('Robust\RealEstate\Models\ListingProperty');
     }
 
 }

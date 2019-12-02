@@ -7,7 +7,7 @@ use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Models\ListingDetail;
 
 /**
- * Class UserAlert
+ * Class FixImages
  * @package App\Console\Commands
  */
 class FixImages extends Command
