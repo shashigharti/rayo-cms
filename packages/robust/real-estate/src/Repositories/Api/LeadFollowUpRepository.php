@@ -4,28 +4,29 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\Agent;
+use Robust\RealEstate\Models\LeadFollowup;
 
 
 /**
- * Class AgentRepository
+ * Class LeadFollowUpRepository
  * @package Robust\RealEstate\Repositories\Api
  */
-class AgentRepository
+class LeadFollowUpRepository
 {
 
+
     /**
-     * @var Agent
+     * @var LeadFollowup
      */
     protected $model;
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
 
     /**
-     * AgentRepository constructor.
-     * @param Agent $model
+     * LeadFollowUpRepository constructor.
+     * @param LeadFollowup $model
      */
-    public function __construct(Agent $model)
+    public function __construct(LeadFollowup $model)
     {
         $this->model = $model;
     }

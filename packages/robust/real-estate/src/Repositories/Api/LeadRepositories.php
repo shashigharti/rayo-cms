@@ -38,71 +38,25 @@ class LeadRepositories
      */
     public function byType($type)
     {
-        $userArr = $this->model->query();
-        $userArr->with('metadata', 'agent');
-
+        $userType = ['archived','discarded','unregistered'];
+        $leads = $this->model->query();
         if ($type == 'unassigned') {
-            $userArr->whereNull('agent_id');
+            $leads->whereNull('agent_id');
+        }
+        if ($type == 'new') {
+            $leads->where('real_estate_leads.created_at', '>', DB::raw('NOW() - INTERVAL 48 HOUR'));
+        }
+        if ($type == 'assigned') {
+            $leads->where('agent_id', '!=', null);
+        }
+        if(in_array($type,$userType))
+        {
+            $leads->where('user_type',$type);
         } else {
-            if ($type == 'assigned') {
-                $userArr->where('agent_id', '!=', null);
-            } else {
-                if ($type == 'archived') {
-                    $userArr->where('user_type', '=', 'archived');
-                } else {
-                    if ($type == 'discarded') {
-                        $userArr->where('user_type', '=', 'discarded');
-                    } else {
-                        if ($type == 'unregistered') {
-                            $userArr->where('user_type', '=', 'unregistered');
-                        } else {
-                            if ($type == 'new') {
-                                $userArr->where('leads.created_at', '>', DB::raw('NOW() - INTERVAL 48 HOUR'));
-                            } else {
-                                if ($type == 'all') {
-                                    // no condition, get all the leads.
-                                } else {
-                                    $userArr->where('user_type', '!=', 'unregistered');
-                                    $userArr->where('user_type', '!=', 'archived');
-                                    $userArr->where('user_type', '!=', 'discarded');
-                                    $userArr->where('user_type', '!=', 'hidden');
-                                }
-                            }
-                        }
-                    }
-                }
-            }
+            $leads->whereNotIn('user_type',$userType);
         }
-        $userArr = $userArr->paginate(30);
 
-        foreach ($userArr as $userDetail) {
-            $last_active_user = $userDetail->last_active;
-            $userDetail['last_login'] = null;
-            $dates_followup = [];
-
-            // Check last_login parsed time
-            if ($last_active_user != null) {
-                $last_active = Carbon::parse($last_active_user);
-//                $last_active_user = strtotime($last_active_user);
-                $userDetail['last_login'] = $last_active->diffInMinutes(Carbon::now()) < 5 ? 'Online' : $last_active;
-            }
-
-            // Get follow ups
-            if (isset($userDetail->latestFollowUps) and !empty($userDetail->latestFollowUps)) {
-                foreach ($userDetail->latestFollowUps as $single) {
-                    if (count($dates_followup) < 2) {
-                        $dates_followup[$single->id] = [
-                            'date' => $single->date,
-                            'note' => $single->note,
-                            'type' => $single->type,
-                            'agent_id' => $single->agent_id
-                        ];
-                    }
-                }
-            }
-            $userDetail['latest_followup_dates'] = $dates_followup;
-        }
-        return $userArr;
+        return $leads;
     }
 
     /**
@@ -111,14 +65,14 @@ class LeadRepositories
      */
     public function byAgent($id)
     {
-        $leadArr = $this->model->query();
+        $leads = $this->model->query();
 
         if ($id == 0) {
-            $leadArr->where('agent_id', '!=', null);
+            $leads->where('agent_id', '!=', null);
         } else {
-            $leadArr->where('agent_id', $id);
+            $leads->where('agent_id', $id);
         }
-        return $leadArr;
+        return $leads;
     }
 
     /**

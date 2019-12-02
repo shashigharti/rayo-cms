@@ -4,28 +4,27 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\Agent;
+use Robust\RealEstate\Models\Note;
 
 
 /**
- * Class AgentRepository
+ * Class LeadNoteRepository
  * @package Robust\RealEstate\Repositories\Api
  */
-class AgentRepository
+class LeadNoteRepository
 {
-
     /**
-     * @var Agent
+     * @var Note
      */
     protected $model;
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
 
     /**
-     * AgentRepository constructor.
-     * @param Agent $model
+     * LeadNoteRepository constructor.
+     * @param Note $model
      */
-    public function __construct(Agent $model)
+    public function __construct(Note $model)
     {
         $this->model = $model;
     }

@@ -178,19 +178,19 @@ class ReactMenuTableSeeder extends Seeder
                 'order' => '9'
             ],
         ]);
-        DB::table('menus')->insert([
-            [
-                'display_name' => 'Menus',
-                'name' => 'react.menus.view',
-                'url' => '/menus',
-                'permission' => 'react.menus.view',
-                'package_name' => 'react',
-                'parent_id' => 0,
-                'type' => 'primary',
-                'icon' => 'crop_original',
-                'order' => '10'
-            ],
-        ]);
+//        DB::table('menus')->insert([
+//            [
+//                'display_name' => 'Menus',
+//                'name' => 'react.menus.view',
+//                'url' => '/menus',
+//                'permission' => 'react.menus.view',
+//                'package_name' => 'react',
+//                'parent_id' => 0,
+//                'type' => 'primary',
+//                'icon' => 'crop_original',
+//                'order' => '10'
+//            ],
+//        ]);
         DB::table('menus')->insert([
             [
                 'display_name' => 'Settings',

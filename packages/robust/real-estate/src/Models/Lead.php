@@ -150,6 +150,10 @@ class Lead extends Authenticatable
         return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
     }
 
+    public function emails()
+    {
+        return $this->hasMany(SentEmails::class, 'lead_id', 'id');
+    }
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
@@ -158,11 +162,45 @@ class Lead extends Authenticatable
         return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
     }
 
+    public function notes()
+    {
+        return $this->hasMany(Note::class, 'lead_id', 'id');
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function activityLog()
     {
         return $this->hasMany(Activity::class, 'causer_id', 'id')->latest();
+    }
+
+    public function views()
+    {
+        return $this->belongsToMany(Listing::class, 'real_estate_listing_views', 'lead_id',
+            'listing_id')->withoutGlobalScopes()->withPivot(['id', 'count', 'created_at', 'updated_at']);
+    }
+
+    public function distances()
+    {
+        return $this->hasMany(LeadDistance::class, 'lead_id');
+    }
+
+    public function calls()
+    {
+        return $this->hasMany(Call::class,'lead_id');
+    }
+
+    public function rating()
+    {
+        return $this->hasOne(Rating::class,'lead_id');
+    }
+    public function replies()
+    {
+        return $this->hasMany(Replies::class,'lead_id');
+    }
+    public function alerts()
+    {
+        return $this->hasMany(Alert::class,'lead_id');
     }
 }

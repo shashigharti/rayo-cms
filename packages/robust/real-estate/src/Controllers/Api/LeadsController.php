@@ -38,6 +38,23 @@ class LeadsController extends Controller
      * LeadsController constructor.
      * @param LeadRepositories $model
      */
+
+    protected const LEADS_REALTIONS = [
+        'views',
+        'favourites',
+        'metadata',
+        'searches',
+        'category',
+        'reports',
+        'emails',
+        'activityLog',
+        'notes',
+        'distances',
+        'calls',
+        'rating',
+        'replies',
+        'alerts'
+    ];
     public function __construct(LeadRepositories $model)
     {
         $this->model = $model;
@@ -64,13 +81,7 @@ class LeadsController extends Controller
     public function index()
     {
         return $this->resource::collection($this->model
-            ->with('metadata')
-            ->with('search')
-            ->with('category')
-            ->with('reports')
-            ->with('email')
-            ->with('activityLog')
-            ->with('note')
+            ->with(LeadsController::LEADS_REALTIONS)
             ->paginate(10));
     }
 
@@ -88,74 +99,47 @@ class LeadsController extends Controller
         }
         return new $this->resource($this->model->find($id));
     }
-    /**
-     * @param $type
-     * @param \Robust\Leads\Models\Lead $lead
-     * @param \Carbon\Carbon $carbon
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
+
     public function getLeadsByType($type)
     {
-        $userArr = $this->model->byType($type);
-        return LeadResource::collection($userArr);
+        $leads = $this->model->byType($type)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
+        return LeadResource::collection($leads);
     }
 
-    /**
-     * @param $id
-     * @param \Robust\Leads\Models\Lead $lead
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
     public function getLeadsByAgent($id)
     {
-        $leadArr = $this->model->byAgent($id);
-        return LeadResource::collection($leadArr->paginate(10));
+        $leads = $this->model->byAgent($id)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
+        return LeadResource::collection($leads);
     }
 
-    /**
-     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
     public function getAllMetadata(LeadMetadata $leadMetadata)
     {
         return LeadMetadataResource::collection($leadMetadata->paginate(10));
     }
 
-    /**
-     * @param $id
-     * @param \Robust\Leads\Models\Lead $lead
-     * @return \Robust\Leads\Resources\Lead
-     */
+
     public function getLead()
     {
         $lead = $this->model->getLead();
         return new LeadResource($lead);
     }
 
-    /**
-     * @param $id
-     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
     public function getLeadMetadata($id, LeadMetadata $leadMetadata)
     {
         return LeadMetadataResource::collection($leadMetadata->where('lead_id', $id)->get());
     }
 
-    /**
-     * @param \Robust\Leads\Models\Status $status
-     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
-     */
+
     public function getAllStatus(Status $status)
     {
         return LeadStatusResource::collection($status->all());
     }
 
-    /**
-     * @param $id
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Lead $leadModel
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function updateLeadStatus($id, Request $request, Lead $leadModel)
     {
         $lead = $leadModel->find($id);
@@ -167,12 +151,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Note $note
-     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function addNote(Request $request, Note $note, LeadMetadata $leadMetadata)
     {
         $user = auth()->user();
@@ -201,12 +180,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Note $note
-     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function deleteNote(Request $request, Note $note, LeadMetadata $leadMetadata)
     {
         $note_id = $request->note_id;
@@ -232,12 +206,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\Note $noteModel
-     * @param \Robust\Leads\Models\LeadMetadata $leadMetadata
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function updateNote(Request $request, Note $noteModel, LeadMetadata $leadMetadata)
     {
         $noteModel->where('id', $request->note_id)->update([
@@ -257,11 +226,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\UserSearch $userSearch
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function deleteLeadSearch($id, UserSearch $userSearch)
     {
         $success = 'Failed to delete!';
@@ -274,11 +239,7 @@ class LeadsController extends Controller
         return response()->json(['message' => $success]);
     }
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\UserSearch $userSearch
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function addLeadSearch(Request $request, UserSearch $userSearch)
     {
         try {
@@ -296,11 +257,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\UserSearch $userSearch
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function updateLeadSearch(Request $request, UserSearch $userSearch)
     {
         try {
@@ -318,11 +275,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param $id
-     * @param \Robust\Leads\Models\LeadCategory $leadCategory
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function deleteLeadCategory($id, LeadCategory $leadCategory)
     {
         $success = 'Failed to delete!';
@@ -336,11 +289,7 @@ class LeadsController extends Controller
     }
 
 
-    /**
-     * @param \Illuminate\Http\Request $request
-     * @param \Robust\Leads\Models\LeadCategory $leadCategory
-     * @return \Illuminate\Http\JsonResponse
-     */
+
     public function storeLeadCategory(Request $request, LeadCategory $leadCategory)
     {
         try {

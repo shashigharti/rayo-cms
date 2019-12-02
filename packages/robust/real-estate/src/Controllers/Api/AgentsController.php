@@ -19,6 +19,7 @@ class AgentsController extends Controller
     protected $model,$resource;
     protected $storeRequest,$updateRequest;
 
+
     public function __construct(AgentRepository $model)
     {
         $this->model=$model;
@@ -38,6 +39,11 @@ class AgentsController extends Controller
             "user_name" => "required",
             "email" => "required|max:250"
         ];
+    }
+
+    public function index()
+    {
+        return $this->resource::collection($this->model->with('member')->get());
     }
     //must overwrite agents
 }
