@@ -7,18 +7,20 @@
                 <div class="row">
                     @if($key%2)
                         <div class="col s7">
-                            <img src="{{$properties->image ? getMedia($properties->image) : ''}}">
+                            <img src="{{$properties->image ? getMedia($properties->image) : $frontpage_helper->getImageByCity($properties->location)}}">
                         </div>
                         <div class="col s5">
                             <h4>{{$properties->header ?? ''}}</h4>
                             <p>{{$properties->content ?? ''}}</p>
-                            <a href="{{$properties->button_url ?? '#'}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
+                            <p><i>City : {{$properties->location ?? ''}}</i></p>
+                            <a href="{{ !in_array($properties->button_url,['','#']) ? $properties->button_url : route('website.realestate.city',['city'=>$properties->location])}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
                         </div>
                      @else
                         <div class="col s5">
                             <h4>{{$properties->header ?? ''}}</h4>
                             <p>{{$properties->content ?? ''}}</p>
-                            <a href="{{$properties->button_url ?? '#'}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
+                            <p><i>City : {{$properties->location ?? ''}}</i></p>
+                            <a href="{{ !in_array($properties->button_url,['','#']) ? $properties->button_url : route('website.realestate.city',['city'=>$properties->location])}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
                         </div>
                         <div class="col s7">
                             <img src="{{$properties->image ? getMedia($properties->image) : ''}}">

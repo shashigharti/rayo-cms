@@ -4,6 +4,7 @@
 namespace Robust\RealEstate\Helpers;
 
 
+use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
@@ -27,6 +28,10 @@ class FrontPageHelper
             ->where('status','Active')
             ->where('picture_count','>',0)
             ->count();
+    }
 
+    public function getImageByCity($city)
+    {
+       return Listing::where('city',$city)->has('image')->with('image')->first()->image->listing_url;
     }
 }

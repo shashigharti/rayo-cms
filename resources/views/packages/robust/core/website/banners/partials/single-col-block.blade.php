@@ -1,4 +1,3 @@
-@inject('frontpage_helper','Robust\RealEstate\Helpers\FrontPageHelper')
 @set('singleColBanners', $banner_helper->getBannersByType(['single-col-block']))
 <section class="search-lists">
     <div class="container-fluid">

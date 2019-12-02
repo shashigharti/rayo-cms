@@ -22,4 +22,10 @@ Route::group([
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
+
+        Route::get('/homes-for-sale/city/{city}',[
+            'name' =>'Homes for sale in',
+            'as' => 'city',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCity'
+        ]);
 });

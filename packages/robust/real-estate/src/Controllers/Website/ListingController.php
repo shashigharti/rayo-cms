@@ -76,4 +76,11 @@ class ListingController extends Controller
         dd($slug, $type);
 
     }
+
+    public function byCity($city)
+    {
+        $results =  $this->model->getListingByType('city',$city,null)->paginate(40);
+        $total = $this->model->getListingByType('city',$city,null)->count();
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+    }
 }

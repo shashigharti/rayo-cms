@@ -5,14 +5,25 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 
 
+/**
+ * Trait UserTrait
+ * @package Robust\Core\Controllers\Admin\Traits
+ */
 trait UserTrait
 {
+    /**
+     * @return mixed
+     */
     public function index()
     {
         return $this->resource::collection($this->model->with('member')->get());
     }
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function edit($id)
     {
         $model = $this->model->find($id);
@@ -22,6 +33,10 @@ trait UserTrait
         return response()->json(['message'=>'Data not found']);
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -37,7 +52,13 @@ trait UserTrait
         $this->user->store($data);
         return response()->json(['message' => 'Success']);
     }
-    public function update($id,Request $request)
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update($id, Request $request)
     {
         $data = $request->all();
         if(isset($this->updateRequest)){
@@ -52,6 +73,10 @@ trait UserTrait
         return response()->json(['message' => 'Success']);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function destroy($id)
     {
         $this->model->delete($id);
