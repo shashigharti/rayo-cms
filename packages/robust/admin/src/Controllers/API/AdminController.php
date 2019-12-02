@@ -1,30 +1,28 @@
 <?php
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\Admin\Controllers\API;
 
 use App\Http\Controllers\Controller;
 
+use Robust\Admin\Repositories\Admin\AdminRepository;
 use Robust\Admin\Repositories\Admin\UserRepository;
 use Robust\Core\Controllers\Admin\Traits\UserTrait;
-use Robust\RealEstate\Repositories\Api\AgentRepository;
 
 
 /**
- * Class AgentsController
- * @package Robust\RealEstate\Controllers\Api
+ * Class AdminController
+ * @package Robust\Admin\Controllers\API
  */
-class AgentsController extends Controller
+class AdminController extends Controller
 {
     use UserTrait;
     /**
-     * @var AgentRepository
+     * @var AdminRepository
      */
+    protected $model;
     /**
-     * @var AgentRepository|string
+     * @var UserRepository
      */
-    /**
-     * @var UserRepository|AgentRepository|string
-     */
-    protected $model,$resource,$user;
+    protected $user;
     /**
      * @var array
      */
@@ -35,19 +33,21 @@ class AgentsController extends Controller
     /**
      * @var string
      */
+    protected $resource = 'Robust\Admin\Resources\AdminResource';
+    /**
+     * @var string
+     */
     protected $namespace;
 
-
     /**
-     * AgentsController constructor.
-     * @param AgentRepository $model
+     * AdminController constructor.
+     * @param AdminRepository $model
      * @param UserRepository $user
      */
-    public function __construct(AgentRepository $model, UserRepository $user)
+    public function __construct(AdminRepository $model, UserRepository $user)
     {
-        $this->model=$model;
-        $this->user=$user;
-        $this->resource = 'Robust\RealEstate\Resources\Agent';
+        $this->model = $model;
+        $this->user = $user;
         $this->storeRequest = [
             'first_name' => 'required| min:1',
             'last_name' => 'required| min:1',
@@ -63,6 +63,7 @@ class AgentsController extends Controller
             "user_name" => "required",
             "email" => "required|max:250"
         ];
-        $this->namespace = 'Robust\RealEstate\Models\Agent';
+        $this->namespace = 'Robust\Admin\Models\Admin';
     }
+
 }

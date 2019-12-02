@@ -30,7 +30,7 @@ class CreateLeadsTable extends Migration
             $table->string('user_type')->nullable();
             $table->string('contact_status')->nullable();
             $table->string('email')->unique();
-            $table->string('deal_type')->unique();
+            $table->string('deal_type');
             $table->string('verified_email')->nullable();
             $table->string('additional_email')->nullable();
             $table->string('password');

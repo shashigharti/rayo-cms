@@ -1,19 +1,15 @@
 <?php
 
-namespace Robust\RealEstate\Resources;
+namespace Robust\Admin\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-
-/**
- * Class Agent
- * @package Robust\RealEstate\Resources
- */
-class Agent extends JsonResource
+class AdminResource extends JsonResource
 {
-
     /**
-     * @param \Illuminate\Http\Request $request
+     * Transform the resource into an array.
+     *
+     * @param  \Illuminate\Http\Request  $request
      * @return array
      */
     public function toArray($request)
@@ -22,12 +18,12 @@ class Agent extends JsonResource
             'id' => $this->id,
             'first_name' => $this->first_name,
             'last_name' => $this->last_name,
-            'user_name' => $this->user_name,
+            'address' => $this->address,
+            'contact' => $this->contact,
             'email' => $this->member->email ?? '',
             'user_name' => $this->member->user_name ?? '',
             'roles' =>$this->member ? $this->member->roles()->get()->pluck('id')->toArray() : [],
-            'contact' => $this->contact,
-            'address' => $this->address
+            'password' => '',
         ];
     }
 }

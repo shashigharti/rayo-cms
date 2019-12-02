@@ -5,7 +5,8 @@ namespace Robust\RealEstate\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
-use Robust\Core\Controllers\Admin\Traits\ApiTrait;
+use Robust\Admin\Repositories\Admin\UserRepository;
+use Robust\Core\Controllers\Admin\Traits\UserTrait;
 use Robust\RealEstate\Models\Lead;
 use Robust\RealEstate\Models\LeadCategory;
 use Robust\RealEstate\Models\LeadMetadata;
@@ -24,7 +25,7 @@ use Robust\RealEstate\Resources\Status as LeadStatusResource;
  */
 class LeadsController extends Controller
 {
-    use ApiTrait;
+    use UserTrait;
 
     /**
      * @var LeadRepositories
@@ -33,7 +34,21 @@ class LeadsController extends Controller
      * @var LeadRepositories|string
      */
     protected $model,$resource;
+    /**
+     * @var array
+     */
+    /**
+     * @var array
+     */
     protected $storeRequest,$updateRequest;
+    /**
+     * @var string
+     */
+    protected $namespace;
+    /**
+     * @var UserRepository
+     */
+    protected $user;
     /**
      * LeadsController constructor.
      * @param LeadRepositories $model
@@ -55,15 +70,22 @@ class LeadsController extends Controller
         'replies',
         'alerts'
     ];
-    public function __construct(LeadRepositories $model)
+
+    /**
+     * LeadsController constructor.
+     * @param LeadRepositories $model
+     * @param UserRepository $user
+     */
+    public function __construct(LeadRepositories $model, UserRepository $user)
     {
         $this->model = $model;
+        $this->user = $user;
         $this->resource = 'Robust\RealEstate\Resources\Lead';
         $this->storeRequest = [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => 'required|max:255|unique:leads',
-            'deal_type' => 'required|unique:leads',
+            'email' => 'required|max:255|unique:real_estate_leads',
+            'deal_type' => 'required',
             'username' => 'required',
             'password' => 'required',
             'activation_status' => 'required'
@@ -76,8 +98,12 @@ class LeadsController extends Controller
             'username' => 'required',
             'activation_status' => 'required'
         ];
+        $this->namespace = 'Robust\RealEstate\Models\Lead';
     }
 
+    /**
+     * @return mixed
+     */
     public function index()
     {
         return $this->resource::collection($this->model
@@ -85,6 +111,10 @@ class LeadsController extends Controller
             ->paginate(10));
     }
 
+    /**
+     * @param $id
+     * @return mixed
+     */
     public function details($id)
     {
         $model = $this->model->with('metadata')
@@ -101,6 +131,10 @@ class LeadsController extends Controller
     }
 
 
+    /**
+     * @param $type
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getLeadsByType($type)
     {
         $leads = $this->model->byType($type)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
@@ -108,6 +142,10 @@ class LeadsController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getLeadsByAgent($id)
     {
         $leads = $this->model->byAgent($id)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
@@ -115,12 +153,19 @@ class LeadsController extends Controller
     }
 
 
+    /**
+     * @param LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getAllMetadata(LeadMetadata $leadMetadata)
     {
         return LeadMetadataResource::collection($leadMetadata->paginate(10));
     }
 
 
+    /**
+     * @return LeadResource
+     */
     public function getLead()
     {
         $lead = $this->model->getLead();
@@ -128,18 +173,33 @@ class LeadsController extends Controller
     }
 
 
+    /**
+     * @param $id
+     * @param LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getLeadMetadata($id, LeadMetadata $leadMetadata)
     {
         return LeadMetadataResource::collection($leadMetadata->where('lead_id', $id)->get());
     }
 
 
+    /**
+     * @param Status $status
+     * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
+     */
     public function getAllStatus(Status $status)
     {
         return LeadStatusResource::collection($status->all());
     }
 
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @param Lead $leadModel
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateLeadStatus($id, Request $request, Lead $leadModel)
     {
         $lead = $leadModel->find($id);
@@ -151,7 +211,12 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @param Note $note
+     * @param LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addNote(Request $request, Note $note, LeadMetadata $leadMetadata)
     {
         $user = auth()->user();
@@ -180,7 +245,12 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @param Note $note
+     * @param LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteNote(Request $request, Note $note, LeadMetadata $leadMetadata)
     {
         $note_id = $request->note_id;
@@ -206,7 +276,12 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @param Note $noteModel
+     * @param LeadMetadata $leadMetadata
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateNote(Request $request, Note $noteModel, LeadMetadata $leadMetadata)
     {
         $noteModel->where('id', $request->note_id)->update([
@@ -226,7 +301,11 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param $id
+     * @param UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteLeadSearch($id, UserSearch $userSearch)
     {
         $success = 'Failed to delete!';
@@ -240,6 +319,11 @@ class LeadsController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @param UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function addLeadSearch(Request $request, UserSearch $userSearch)
     {
         try {
@@ -257,7 +341,11 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @param UserSearch $userSearch
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function updateLeadSearch(Request $request, UserSearch $userSearch)
     {
         try {
@@ -275,7 +363,11 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param $id
+     * @param LeadCategory $leadCategory
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function deleteLeadCategory($id, LeadCategory $leadCategory)
     {
         $success = 'Failed to delete!';
@@ -289,7 +381,11 @@ class LeadsController extends Controller
     }
 
 
-
+    /**
+     * @param Request $request
+     * @param LeadCategory $leadCategory
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function storeLeadCategory(Request $request, LeadCategory $leadCategory)
     {
         try {

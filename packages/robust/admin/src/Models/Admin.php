@@ -19,29 +19,19 @@ class Admin extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'user_name',
-        'email',
-        'password',
-        'avatar',
+
         'first_name',
         'last_name',
-        'organization',
-        'department',
+        'avatar',
         'contact',
-        'gender',
         'address',
-        'region',
-        'tole'
+
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     * @var array
-     */
-    protected $hidden = [
-        'password',
-        'remember_token',
-    ];
+    public function member()
+    {
+        return $this->morphOne('App\User', 'member');
+    }
 
 
 
