@@ -16,7 +16,7 @@ class CreateRealEstateLeadsFollowups extends Migration
         Schema::create('real_estate_leads_followups', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('lead_id');
-            $table->tinyInteger('lead_id');
+            $table->tinyInteger('type');
             $table->date('date');
             $table->integer('agent_id');
             $table->integer('assigned_by')->nullable();
