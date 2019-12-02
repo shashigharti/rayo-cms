@@ -28,4 +28,11 @@ Route::group([
             'as' => 'city',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCity'
         ]);
+
+        Route::get('/homes-for-sale/city/{city}/price/{price}',[
+            'name' =>'Homes for sale in',
+            'as' => 'city.price',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCityPrice'
+        ]);
+
 });

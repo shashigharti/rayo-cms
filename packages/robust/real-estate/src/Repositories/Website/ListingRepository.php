@@ -89,4 +89,14 @@ class ListingRepository
                 ->limit($count);
 
     }
+
+    public function getListingByPrice($type,$location,$price)
+    {
+        $prices = $prices = explode('-',$price);
+        return Listing::where($type,$location)
+            ->whereBetween('system_price',$prices)
+            ->has('image')
+            ->with('image')
+            ->orderBy('input_date','desc');
+    }
 }

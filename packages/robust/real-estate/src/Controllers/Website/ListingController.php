@@ -83,4 +83,11 @@ class ListingController extends Controller
         $total = $this->model->getListingByType('city',$city,null)->count();
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
     }
+
+    public function byCityPrice($city,$price)
+    {
+        $results =  $this->model->getListingByPrice('city',$city,$price)->paginate(40);
+        $total = $this->model->getListingByType('city',$city,null)->count();
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+    }
 }
