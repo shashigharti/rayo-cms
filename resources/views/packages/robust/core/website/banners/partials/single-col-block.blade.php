@@ -7,7 +7,7 @@
                 @if($properties)
                     <div class="col s4">
                         <div class="single-block">
-                            <img src="{{$properties->image ? getMedia($properties->image) : ''}}" alt="">
+                            <img src="{{$properties->image && $properties->image != '' ? getMedia($properties->image) : ''}}" alt="">
                             <div class="figcaption center-align">
                                 <h2>{{$properties->location ?? ''}}</h2>
                                 <div class="available-prices">
