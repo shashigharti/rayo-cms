@@ -1,6 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @inject('frontpage_helper','Robust\RealEstate\Helpers\FrontPageHelper')
+@inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
 @section('header')
     <div class="banner">
         <div class="slider">

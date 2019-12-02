@@ -1,4 +1,3 @@
-@set('blocks',['search','type','status','pictures'])
 <div class="col s3">
     <div class="input-field col s12">
         @foreach($blocks as $block)
