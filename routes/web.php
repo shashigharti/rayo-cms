@@ -22,3 +22,9 @@ Route::get('/login',[
    'as' =>'login',
    'uses' => '\Robust\Core\Controllers\Auth\LoginController@getLogin'
 ]);
+
+
+Route::get('/backend/{path?}',[
+   'as' =>'backend',
+   'uses' => '\App\Http\Controllers\HomeController@backend'
+]);

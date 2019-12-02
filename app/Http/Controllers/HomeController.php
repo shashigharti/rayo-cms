@@ -45,4 +45,8 @@ class HomeController extends Controller
         $thumbnail = Media::where('id',$id)->first();
         return response()->json($thumbnail);
     }
+
+    public function backend(){
+        return view('backend');
+    }
 }

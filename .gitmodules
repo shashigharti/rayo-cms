@@ -1,0 +1,3 @@
+[submodule "resources/assets/js/modules"]
+	path = resources/assets/js/modules
+	url = git@github.com:shashigharti/react-core.git
