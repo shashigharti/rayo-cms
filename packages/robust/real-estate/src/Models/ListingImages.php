@@ -28,6 +28,6 @@ class ListingImages extends BaseModel
      */
     public function listing()
     {
-        return $this->belongsTo(Listing::class, 'uid', 'listing_id');
+        return $this->belongsTo(Listing::class);
     }
 }

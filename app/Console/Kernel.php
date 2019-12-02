@@ -16,7 +16,8 @@ class Kernel extends ConsoleKernel
      * @var array
      */
     protected $commands = [
-        'App\Console\Commands\MigrateData'       
+        'App\Console\Commands\MigrateData',
+        'App\Console\Commands\FixImages'       
     ];
 
     /**

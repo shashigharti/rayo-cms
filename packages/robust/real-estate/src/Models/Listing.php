@@ -43,7 +43,7 @@ class Listing extends BaseModel
      */
     public function images()
     {
-        return $this->hasMany(ListingImages::class,'listing_id','uid');
+        return $this->hasMany(ListingImages::class);
     }
 
     /**

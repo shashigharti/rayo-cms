@@ -14,22 +14,27 @@
                     </div>
                 </div>
                 <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
-                    @if(isset($properties->property_count) && isset($properties->area_types) && isset($properties->property_count))
-                        @set('listings',$listing_helper->getListingsByType($properties->area_types,$properties->sub_areas,$properties->property_count))
-                        @foreach($listings as $listing)
-                            <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->listing_slug])}}">
-                                <div class="single-block item">
-                                    <img src={{$listing->image->listing_url ?? ''}}>
-                                    <div class="slider--text">
-                                        <h4>${{$listing->system_price}}</h4>
-                                        <p>{{$listing->listing_name ?? ''}}</p>
-                                    </div>
+                    @set('properties_count', ($properties->property_count > 5)?$properties->property_count: 5)
+                    @set('properties_type', (isset($properties->area_types) && $properties->area_types != '')?$properties->area_types: 'city')
+                    @set('properties_name', $properties->sub_areas)
+                    @set('listings',$listing_helper->getListingsByType($properties_type, $properties_name, $properties_count))
+                    
+                    @foreach($listings as $listing)
+                        @set('first_image', $listing->images()->first())
+                        <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->listing_slug])}}">
+                            <div class="single-block item">                               
+                                <img src={{$first_image->listing_url ?? ''}}>
+                                <div class="slider--text">
+                                    <h4>${{$listing->system_price}}</h4>
+                                    <p>{{$listing->listing_name ?? ''}}</p>
                                 </div>
-                            </a>
-                        @endforeach
-                    @endif
+                            </div>
+                        </a>
+                    @endforeach
+
                 </div>
             </div>
         </section>
     @endforeach
 @endif
+
