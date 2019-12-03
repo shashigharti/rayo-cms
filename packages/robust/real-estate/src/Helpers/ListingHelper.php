@@ -43,11 +43,10 @@ class ListingHelper
     public function getCountByCity($city, $price)
     {
         //we will make it in cron job
-//        $prices = explode('-',$price);
-//        return $this->model->getCountByType('city',$city)
-//            ->whereBetween('system_price',$prices)
-//            ->count();
-        return 0;
+        $prices = explode('-',$price);
+        return $this->model->getCountByType('city',$city)
+            ->whereBetween('system_price',$prices)
+            ->count();
     }
 
 
@@ -62,10 +61,11 @@ class ListingHelper
         if($image){
             $image =  getMedia($image);
         }
-//        $listing = $this->model->getImageByType('city',$city)->first();
-//        if($listing){
-//            $image =  $listing->images()->first()->listing_url;
-//        }
+        $listing = $this->model->getImageByType('city',$city)->first();
+        $first_image = $listing->images()->first();
+        if($first_image){
+            $image =  $first_image->listing_url;
+        }
         return $image;
     }
 }

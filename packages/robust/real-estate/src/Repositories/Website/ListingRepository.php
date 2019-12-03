@@ -93,6 +93,7 @@ class ListingRepository
         $prices = $prices = explode('-',$price);
         return $this->model
             ->where($type,$location)
+            ->where('status','Active')
             ->whereBetween('system_price',$prices)
             ->where('picture_count','>',0)
             ->orderBy('input_date','desc');
