@@ -32,14 +32,15 @@ class FixImages extends Command
     {
 
        \DB::table('real_estate_listings')
-        ->chunk(1000,function ($listings){
-            foreach($listings as $key => $listing){
-                $this->info($key);
-                \DB::table('real_estate_listing_images')
-                    ->where('listing_id', $listing->server_listing_id)
-                    ->update(['listing_id' => $listing->id]);
-            }
-        });
+           ->orderBy('input_date')
+            ->chunk(1000,function ($listings){
+                foreach($listings as $key => $listing){
+                    $this->info($key);
+                    \DB::table('real_estate_listing_images')
+                        ->where('listing_id', $listing->server_listing_id)
+                        ->update(['listing_id' => $listing->id]);
+                }
+            });
 
 
     }
