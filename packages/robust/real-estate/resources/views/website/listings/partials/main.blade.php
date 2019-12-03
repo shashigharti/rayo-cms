@@ -23,7 +23,7 @@
                         <div class="col s3">
                             <div class="single--list--block">
                                 @set('first_image',$result->images()->first())
-                                <img src={{$first_image ?? ''}}>
+                                <img src={{$first_image ? $first_image->listing_url :  ''}}>
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
