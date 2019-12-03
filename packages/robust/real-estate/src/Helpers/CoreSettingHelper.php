@@ -37,7 +37,7 @@ class CoreSettingHelper
         $values=[];
         $setting = $this->settings->where('type', $type)->first();
         if($setting){
-            $values = json_decode($setting->value,true);
+            $values = json_decode($setting->values,true);
         }
         return $values;
     }
