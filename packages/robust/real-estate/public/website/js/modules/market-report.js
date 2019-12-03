@@ -21,10 +21,11 @@
     }
 
     class LocationItem {
-        constructor(type, value, icon, id = null) {
+        constructor(type, value, icon, url = null, id = null) {
             this._type = type;
             this._value = value;
             this._icon = icon;
+            this._url = url;
             this._id = id;
         }
 
@@ -35,7 +36,16 @@
         render(selected_options) {
             let template = (() => {
                 if (this._type == 'Title') {
-                    return `<p data-id="${this._id}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><input type="checkbox" value="${this._value}"><label>${this._value}</label></p>`
+                    return `
+                    <p data-id="${this._id}" 
+                    data-type="${this._type}" 
+                    data-value="${this._value}" 
+                    data-class="${this._icon}">
+                        <input type="checkbox" value="${this._value}">
+                        <label>
+                            <a href="${this._url}">${this._value}</a>
+                        </label>
+                    </p>`
                 } else {
                     return `<p class="${this.isActive(selected_options, this._type) ? '' : 'hide'}" data-type="${this._type}" data-value="${this._value}" data-class="${this._icon}"><span><i class="${this._icon}" aria-hidden="true"></i>${this._type} : </span>${this._value}</p>`
                 }
@@ -110,13 +120,15 @@
         mrLocations = mr_locations.map((location) => {
             let location_items = [...location.querySelectorAll('p')];
             mr_locations = location_items.map((location_item) => {
-                let [type, value, icon] = [
+                let [type, value, icon, url, id] = [
                     location_item.getAttribute('data-type'),
                     location_item.getAttribute('data-value'),
-                    location_item.getAttribute('data-class')
+                    location_item.getAttribute('data-class'),
+                    location_item.getAttribute('data-url'),
+                    location_item.getAttribute('data-id')
                 ];
 
-                return new LocationItem(type, value, icon, location_item.getAttribute('data-id'));
+                return new LocationItem(type, value, icon, url, id);
             });
 
             return new MRLocation(mr_locations, selectedDisplayOptions);
