@@ -22,6 +22,13 @@ class ZipController extends Controller
      * @var string
      */
     protected $resource;
+
+    /**
+     * @var array
+     */
+    /**
+     * @var array
+     */
     protected $storeRequest,$updateRequest;
     /**
      * ZipController constructor.

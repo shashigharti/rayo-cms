@@ -80,11 +80,17 @@ class User extends Authenticatable implements MustVerifyEmail
         event(new PasswordResetEvent($this, $token));
     }
 
+    /**
+     *
+     */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail());
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
     public function member()
     {
         return $this->morphTo();

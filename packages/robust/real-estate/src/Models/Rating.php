@@ -6,7 +6,7 @@ use Robust\Core\Models\BaseModel;
 
 
 /**
- * Class Call
+ * Class Rating
  * @package Robust\RealEstate\Models
  */
 class Rating extends BaseModel

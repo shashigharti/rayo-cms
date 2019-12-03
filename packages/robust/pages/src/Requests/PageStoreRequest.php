@@ -31,18 +31,4 @@ class PageStoreRequest extends FormRequest
             "content" => "required"
         ];
     }
-
-//    /**
-//     * Custom message for validation
-//     *
-//     * @return array
-//     */
-//    public function messages()
-//    {
-//        return [
-//            'name.required' => 'Name is required!',
-//            'slug.required' => 'Slug is required!',
-//            'slug.unique' => 'Slug should be unique!',
-//        ];
-//    }
 }

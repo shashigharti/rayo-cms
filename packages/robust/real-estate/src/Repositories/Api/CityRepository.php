@@ -23,6 +23,9 @@ class CityRepository
         $this->model = $model;
     }
 
+    /**
+     * @return mixed
+     */
     public function getActive()
     {
         return $this->model->where('navigation',0)

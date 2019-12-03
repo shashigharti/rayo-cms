@@ -4,9 +4,17 @@ namespace Robust\RealEstate\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 
+/**
+ * Class LeadNote
+ * @package Robust\RealEstate\Resources
+ */
 class LeadNote extends JsonResource
 {
 
+    /**
+     * @param \Illuminate\Http\Request $request
+     * @return array
+     */
     public function toArray($request)
     {
         return [

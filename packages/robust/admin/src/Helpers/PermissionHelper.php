@@ -10,6 +10,11 @@ use Robust\Admin\UI\Role;
  */
 class PermissionHelper
 {
+    /**
+     * @param $user
+     * @param $action
+     * @return bool
+     */
     public function check_permission($user, $action)
     {
         $user = User::find($user->id);

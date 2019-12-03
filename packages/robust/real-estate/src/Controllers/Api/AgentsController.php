@@ -15,23 +15,28 @@ use Robust\RealEstate\Repositories\Api\AgentRepository;
 class AgentsController extends Controller
 {
     use UserTrait;
+
     /**
      * @var AgentRepository
      */
+    protected $model;
     /**
-     * @var AgentRepository|string
+     * @var string
      */
+    protected $resource;
     /**
-     * @var UserRepository|AgentRepository|string
+     * @var UserRepository
      */
-    protected $model,$resource,$user;
+    protected $user;
+
     /**
      * @var array
      */
+    protected $storeRequest;
     /**
      * @var array
      */
-    protected $storeRequest,$updateRequest;
+    protected  $updateRequest;
     /**
      * @var string
      */

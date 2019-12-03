@@ -4,7 +4,7 @@ namespace Robust\RealEstate\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Robust\RealEstate\Model\CoreSetting;
+use Robust\RealEstate\Models\CoreSetting;
 use Robust\RealEstate\Resources\CoreSetting as CoreSettingResource;
 
 
@@ -15,7 +15,7 @@ use Robust\RealEstate\Resources\CoreSetting as CoreSettingResource;
 class SettingsController extends Controller
 {
     /**
-     * @param \Robust\Settings\Model\CoreSetting $coreSetting
+     * @param \Robust\Settings\Models\CoreSetting $coreSetting
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function index(CoreSetting $coreSetting)
@@ -25,7 +25,7 @@ class SettingsController extends Controller
 
     /**
      * @param $type
-     * @param \Robust\Settings\Model\CoreSetting $coreSetting
+     * @param \Robust\Settings\Models\CoreSetting $coreSetting
      * @return \Robust\Menus\Resources\CoreSetting
      */
     public function getByType($type, CoreSetting $coreSetting)
@@ -39,7 +39,7 @@ class SettingsController extends Controller
     /**
      * @param \Illuminate\Http\Request $request
      * @param $type
-     * @param \Robust\Settings\Model\CoreSetting $coreSetting
+     * @param \Robust\Settings\Models\CoreSetting $coreSetting
      * @return \Illuminate\Http\JsonResponse
      */
     public function update(Request $request, $type, CoreSetting $coreSetting)

@@ -4,6 +4,10 @@ namespace Robust\RealEstate\Models;
 use Robust\Core\Models\BaseModel;
 
 
+/**
+ * Class LeadFollowup
+ * @package Robust\RealEstate\Models
+ */
 class LeadFollowup extends BaseModel
 {
     /**

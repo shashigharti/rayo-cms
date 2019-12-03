@@ -25,15 +25,4 @@ class UserLoginHistory extends BaseModel
         'user_id', 'type_of_event', 'time_of_login',
     ];
 
-    /**
-     * @param $user_id
-     */
-    public static function lastLogin($user_id){
-//        \App\UserLoginHistory::create([
-//            'user_id' => $user_id,
-//            'type_of_event' => 'login',
-//            'time_of_login' => new Carbon(),
-//        ]);
-//        event(new CountUpdate($user_id, 'logins_count'));
-    }
 }

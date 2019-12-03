@@ -58,6 +58,9 @@ class Page extends BaseModel
         return $this->hasMany('Robust\Pages\Models\PageDownload', 'page_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function category()
     {
         return $this->belongsTo('Robust\Pages\Models\Category', 'category_id');

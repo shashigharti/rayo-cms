@@ -2,6 +2,7 @@
 
 namespace Robust\RealEstate\Resources;
 
+use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Robust\RealEstate\Resources\UserSearch as UserSearchResource;
 
@@ -19,14 +20,14 @@ class Lead extends JsonResource
      */
     public function toArray($request)
     {
+
         return [
             'id' => $this->id,
             'username' => $this->username,
             'firstname' => $this->firstname,
             'lastname' => $this->lastname,
+            'timezone' => $this->timezone,
             'email' => $this->email,
-//            'password' => $this->password,
-//            'open_password' => $this->open_password,
             'agent_id' => $this->agent_id,
             'phone_number' => $this->phone_number != null ? $this->phone_number : '',
             'phone_number_2' => $this->phone_number_2,
@@ -63,9 +64,11 @@ class Lead extends JsonResource
             'replies' => $this->whenLoaded('replies'),
             'alerts' => $this->whenLoaded('alerts'),
             'logins' => $this->logins,
-            'last_active' => $this->last_active,
+            'last_active' => $this->last_active ? Carbon::parse($this->last_active)->diffForHumans() : 'N/A',
+            'age' => $this->created_at ? Carbon::parse($this->created_at)->diffForHumans() : 'N/A',
             'latest_followup_dates' => $this->latest_followup_dates,
-            'created_at' => $this->created_at
+            'created_at' => $this->created_at,
+            'online' => $this->last_active && Carbon::parse($this->last_active)->diffInMinutes(Carbon::now()) < 5 ?  'Online'  : 'Offline'
         ];
     }
 }

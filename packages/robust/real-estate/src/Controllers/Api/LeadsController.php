@@ -55,6 +55,7 @@ class LeadsController extends Controller
      */
 
     protected const LEADS_REALTIONS = [
+        'agent',
         'views',
         'favourites',
         'metadata',
@@ -108,6 +109,7 @@ class LeadsController extends Controller
     {
         return $this->resource::collection($this->model
             ->with(LeadsController::LEADS_REALTIONS)
+            ->orderBy('last_active','desc')
             ->paginate(10));
     }
 
@@ -137,7 +139,10 @@ class LeadsController extends Controller
      */
     public function getLeadsByType($type)
     {
-        $leads = $this->model->byType($type)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
+        $leads = $this->model->byType($type)
+            ->with(LeadsController::LEADS_REALTIONS)
+            ->orderBy('last_active','desc')
+            ->paginate(10);
         return LeadResource::collection($leads);
     }
 
@@ -148,7 +153,10 @@ class LeadsController extends Controller
      */
     public function getLeadsByAgent($id)
     {
-        $leads = $this->model->byAgent($id)->with(LeadsController::LEADS_REALTIONS)->paginate(10);
+        $leads = $this->model->byAgent($id)
+            ->with(LeadsController::LEADS_REALTIONS)
+            ->orderBy('last_active','desc')
+            ->paginate(10);
         return LeadResource::collection($leads);
     }
 

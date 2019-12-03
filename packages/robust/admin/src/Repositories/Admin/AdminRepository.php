@@ -8,8 +8,9 @@ use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 
+
 /**
- * Class UserRepository
+ * Class AdminRepository
  * @package Robust\Admin\Repositories\Admin
  */
 class AdminRepository

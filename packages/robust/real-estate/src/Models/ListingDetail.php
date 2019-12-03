@@ -4,9 +4,10 @@ namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
 
+
 /**
- * Class MlsUser
- * @package Robust\Mls\Models
+ * Class ListingDetail
+ * @package Robust\RealEstate\Models
  */
 class ListingDetail extends BaseModel
 {

@@ -25,7 +25,14 @@ class GroupsController extends Controller
      */
     protected $resource;
 
-    protected $storeRequest,$updateRequest;
+    /**
+     * @var array
+     */
+    protected $storeRequest;
+    /**
+     * @var array
+     */
+    protected $updateRequest;
 
     /**
      * GroupsController constructor.

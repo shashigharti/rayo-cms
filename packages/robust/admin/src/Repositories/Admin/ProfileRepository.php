@@ -28,6 +28,10 @@ class ProfileRepository
     private $roles;
 
 
+    /**
+     * ProfileRepository constructor.
+     * @param User $profile
+     */
     public function __construct(User $profile)
     {
         $this->model = $profile;

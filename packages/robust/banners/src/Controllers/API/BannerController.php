@@ -16,8 +16,27 @@ use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 class BannerController extends Controller
 {
     use ApiTrait;
+    /**
+     * @var BannerRepository
+     */
+    /**
+     * @var BannerRepository|string
+     */
+    /**
+     * @var array|BannerRepository|string
+     */
+    /**
+     * @var array|BannerRepository|string
+     */
+    /**
+     * @var array|BannerRepository|string
+     */
     protected $model,$resource,$storeRequest,$updateRequest,$templates;
 
+    /**
+     * BannerController constructor.
+     * @param BannerRepository $model
+     */
     public function __construct(BannerRepository $model)
     {
         $this->model = $model;
@@ -42,6 +61,10 @@ class BannerController extends Controller
         ];
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();
@@ -59,7 +82,12 @@ class BannerController extends Controller
 
     }
 
-    public function update($id,Request $request)
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function update($id, Request $request)
     {
         $data = $request->all();
         if(isset($this->updateRequest)){
@@ -76,6 +104,10 @@ class BannerController extends Controller
 
     }
 
+    /**
+     * @param $data
+     * @return array
+     */
     public function properties($data)
     {
         return [

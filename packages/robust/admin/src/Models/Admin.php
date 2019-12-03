@@ -28,11 +28,11 @@ class Admin extends BaseModel
 
     ];
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
     public function member()
     {
         return $this->morphOne('App\User', 'member');
     }
-
-
-
 }

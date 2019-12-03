@@ -87,6 +87,10 @@ class UserRepository
         }
     }
 
+    /**
+     * @param $name
+     * @return mixed
+     */
     public function getUsersByRole($name)
     {
         return $this->model->whereHas('roles',function($query) use ($name){

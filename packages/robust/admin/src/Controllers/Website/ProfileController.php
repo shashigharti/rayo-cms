@@ -28,12 +28,18 @@ class ProfileController extends Controller
 
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function getProfile()
     {
         $user = Auth::user();
         return view(Site::templateResolver('core::website.member.profile'), compact('user'));
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateProfile()
     {
         $user = User::find(Auth::user()->id);
@@ -43,6 +49,9 @@ class ProfileController extends Controller
         return redirect()->back()->with('message', 'Profile Updated');
     }
 
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function updateAvatar()
     {
         $avatar = $this->request->file('avatar');

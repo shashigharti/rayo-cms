@@ -36,6 +36,9 @@ class UserController extends Controller
 
     }
 
+    /**
+     * @return UserController
+     */
     public function index()
     {
         $records = $this->model->paginate();

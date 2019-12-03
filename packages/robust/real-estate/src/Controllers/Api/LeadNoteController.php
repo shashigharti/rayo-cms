@@ -10,13 +10,33 @@ use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 use Robust\RealEstate\Repositories\Api\LeadNoteRepository;
 
 
+/**
+ * Class LeadNoteController
+ * @package Robust\RealEstate\Controllers\Api
+ */
 class LeadNoteController extends Controller
 {
     use ApiTrait;
+    /**
+     * @var LeadNoteRepository
+     */
+    /**
+     * @var LeadNoteRepository|string
+     */
     protected $model,$resource;
+    /**
+     * @var array
+     */
+    /**
+     * @var array
+     */
     protected $storeRequest,$updateRequest;
 
 
+    /**
+     * LeadNoteController constructor.
+     * @param LeadNoteRepository $model
+     */
     public function __construct(LeadNoteRepository $model)
     {
         $this->model=$model;
@@ -33,6 +53,10 @@ class LeadNoteController extends Controller
         ];
     }
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();

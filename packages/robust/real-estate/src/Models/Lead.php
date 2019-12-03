@@ -139,7 +139,7 @@ class Lead extends Authenticatable
      */
     public function category()
     {
-        return $this->hasOne(LeadCategory::class);
+        return $this->belongsTo(LeadCategory::class);
     }
 
     /**
@@ -150,6 +150,9 @@ class Lead extends Authenticatable
         return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function emails()
     {
         return $this->hasMany(SentEmails::class, 'lead_id', 'id');
@@ -162,6 +165,9 @@ class Lead extends Authenticatable
         return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function notes()
     {
         return $this->hasMany(Note::class, 'lead_id', 'id');
@@ -175,32 +181,60 @@ class Lead extends Authenticatable
         return $this->hasMany(Activity::class, 'causer_id', 'id')->latest();
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function views()
     {
         return $this->belongsToMany(Listing::class, 'real_estate_listing_views', 'lead_id',
             'listing_id')->withoutGlobalScopes()->withPivot(['id', 'count', 'created_at', 'updated_at']);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function distances()
     {
         return $this->hasMany(LeadDistance::class, 'lead_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function calls()
     {
         return $this->hasMany(Call::class,'lead_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
     public function rating()
     {
         return $this->hasOne(Rating::class,'lead_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function replies()
     {
         return $this->hasMany(Replies::class,'lead_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function alerts()
     {
         return $this->hasMany(Alert::class,'lead_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function agent()
+    {
+        return $this->belongsTo(Agent::class,'agent_id');
     }
 }

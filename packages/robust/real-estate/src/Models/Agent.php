@@ -6,7 +6,7 @@ use Robust\Core\Models\BaseModel;
 
 
 /**
- * Class Call
+ * Class Agent
  * @package Robust\RealEstate\Models
  */
 class Agent extends BaseModel

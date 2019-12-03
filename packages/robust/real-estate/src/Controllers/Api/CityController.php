@@ -22,7 +22,14 @@ class CityController extends Controller
      * @var string
      */
     protected $resource;
-    protected $storeRequest,$updateRequest;
+    /**
+     * @var array
+     */
+    protected $storeRequest;
+    /**
+     * @var array
+     */
+    protected  $updateRequest;
     /**
      * CityController constructor.
      * @param CityRepository $model

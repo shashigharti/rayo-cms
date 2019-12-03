@@ -21,6 +21,10 @@ class PageController extends Controller
         $this->page = $page;
     }
 
+    /**
+     * @param $slug
+     * @return mixed
+     */
     public function getPage($slug)
     {
         $page = $this->page->where('slug', $slug)->first();

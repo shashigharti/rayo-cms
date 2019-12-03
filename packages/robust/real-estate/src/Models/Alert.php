@@ -5,7 +5,10 @@ namespace Robust\RealEstate\Models;
 use Robust\Core\Models\BaseModel;
 
 
-
+/**
+ * Class Alert
+ * @package Robust\RealEstate\Models
+ */
 class Alert extends BaseModel
 {
 

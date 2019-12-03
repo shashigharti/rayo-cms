@@ -7,13 +7,33 @@ use Robust\Core\Controllers\Admin\Traits\ApiTrait;
 use Robust\RealEstate\Repositories\Api\LeadFollowUpRepository;
 
 
+/**
+ * Class LeadFollowUpController
+ * @package Robust\RealEstate\Controllers\Api
+ */
 class LeadFollowUpController extends Controller
 {
     use ApiTrait;
+    /**
+     * @var LeadFollowUpRepository
+     */
+    /**
+     * @var LeadFollowUpRepository|string
+     */
     protected $model,$resource;
+    /**
+     * @var array
+     */
+    /**
+     * @var array
+     */
     protected $storeRequest,$updateRequest;
 
 
+    /**
+     * LeadFollowUpController constructor.
+     * @param LeadFollowUpRepository $model
+     */
     public function __construct(LeadFollowUpRepository $model)
     {
         $this->model=$model;

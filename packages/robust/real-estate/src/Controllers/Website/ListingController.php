@@ -71,12 +71,20 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
+    /**
+     * @param $slug
+     * @param $type
+     */
     public function search($slug, $type){
 
         dd($slug, $type);
 
     }
 
+    /**
+     * @param $city
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function byCity($city)
     {
         $results =  $this->model->getListingByType('city',$city,null)->paginate(40);
@@ -84,7 +92,12 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
     }
 
-    public function byCityPrice($city,$price)
+    /**
+     * @param $city
+     * @param $price
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function byCityPrice($city, $price)
     {
         $results =  $this->model->getListingByPrice('city',$city,$price)->paginate(40);
         $total = $this->model->getListingByType('city',$city,null)->count();

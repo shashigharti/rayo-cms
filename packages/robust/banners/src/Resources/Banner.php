@@ -4,14 +4,17 @@ namespace Robust\Banners\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
+/**
+ * Class Banner
+ * @package Robust\Banners\Resources
+ */
 class Banner extends JsonResource
 {
-    /**
-     * Transform the resource collection into an array.
-     * @param \Illuminate\Http\Request $request
-     * @return array
-     */
 
+
+    /**
+     * @var array
+     */
     protected $templates = [
         'TwoColumnAd' => 'two-col-ad',
         'Slider' => 'slider',
@@ -20,6 +23,12 @@ class Banner extends JsonResource
         'BannerSlider' => 'banner-slider',
         'MainBanner' => 'main-banner',
     ];
+
+    /**
+     * Transform the resource collection into an array.
+     * @param \Illuminate\Http\Request $request
+     * @return array
+     */
     public function toArray($request)
     {
         $blocks = json_decode($this->properties,true);

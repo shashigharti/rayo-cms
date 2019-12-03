@@ -13,14 +13,26 @@ use Robust\RealEstate\Repositories\Website\ListingRepository;
  */
 class FrontPageHelper
 {
+    /**
+     * @var ListingRepository
+     */
     protected $listings;
 
+    /**
+     * FrontPageHelper constructor.
+     * @param ListingRepository $listings
+     */
     public function __construct(ListingRepository $listings)
     {
         $this->listings = $listings;
     }
 
-    public function getCountByCity($city,$price)
+    /**
+     * @param $city
+     * @param $price
+     * @return mixed
+     */
+    public function getCountByCity($city, $price)
     {
         $prices = explode('-',$price);
         return $this->listings->where('city',$city)
@@ -30,6 +42,10 @@ class FrontPageHelper
             ->count();
     }
 
+    /**
+     * @param $city
+     * @return mixed
+     */
     public function getImageByCity($city)
     {
        return Listing::where('city',$city)->has('image')->with('image')->first()->image->listing_url;

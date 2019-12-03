@@ -29,6 +29,11 @@ class RegisterController extends Controller
         ];
     }
 
+    /**
+     * @param User $user
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function postRegister(User $user)
     {
         $this->validate($this->request, [

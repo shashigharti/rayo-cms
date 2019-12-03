@@ -78,12 +78,18 @@ class ListingRepository
        return  $this->model->where($type,$name)
                 ->select('id','listing_name','system_price','listing_slug')
                 ->where('status','Active')
-                ->withCount('images')                 
+                ->withCount('images')
                 ->orderBy('input_date','asc')
                 ->having('images_count', '>', 0)
                 ->limit($count);
     }
 
+    /**
+     * @param $type
+     * @param $location
+     * @param $price
+     * @return mixed
+     */
     public function getListingByPrice($type, $location, $price)
     {
         $prices = $prices = explode('-',$price);

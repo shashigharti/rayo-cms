@@ -4,10 +4,20 @@ namespace Robust\RealEstate\Models;
 use Robust\Core\Models\BaseModel;
 
 
+/**
+ * Class MarketReport
+ * @package Robust\RealEstate\Models
+ */
 class MarketReport extends BaseModel
 {
+    /**
+     * @var string
+     */
     protected $table = 'real_estate_market_reports';
 
+    /**
+     * @var array
+     */
     protected $fillable = [
         'model_id', 'slug', 'name', 'model_type', 'total_listings', 'total_listings_active',
         'total_listings_sold', 'total_listings_sold_past_year', 'total_listings_sold_this_year',
@@ -18,7 +28,7 @@ class MarketReport extends BaseModel
 
     /**
      * Get the owning reportable model.
-     * 
+     *
      * @return model
      */
     public function reportable()

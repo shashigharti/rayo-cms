@@ -2,7 +2,6 @@
 namespace Robust\RealEstate\Controllers\Website;
 
 use App\Http\Controllers\Controller;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Robust\RealEstate\Repositories\Website\MarketReportRepository;
 
@@ -12,13 +11,16 @@ use Robust\RealEstate\Repositories\Website\MarketReportRepository;
  */
 class MarketReportController extends Controller
 {
+
     /**
-     * @var MarketReport
+     * @var MarketReportRepository
      */
     protected $model;
 
+
     /**
      * MarketReportController constructor.
+     * @param MarketReportRepository $model
      */
     public function __construct(MarketReportRepository $model)
     {

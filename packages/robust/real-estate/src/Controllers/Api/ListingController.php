@@ -16,8 +16,10 @@ class ListingController extends Controller
      */
     protected $model;
 
+
     /**
-     * ListingRepository constructor.
+     * ListingController constructor.
+     * @param ListingRepository $model
      */
     public function __construct(ListingRepository $model)
     {
@@ -32,6 +34,6 @@ class ListingController extends Controller
      * @return JSON
      */
     public function getListings(Request $request, $type, $slug){
-       
+
     }
 }
