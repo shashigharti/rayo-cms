@@ -24,11 +24,12 @@ use Illuminate\Database\Eloquent\Model;
 class CreateMarketReport extends Command
 {
     /**
-     * The name and signature of the console command.
+     * Create market report for different locations
+     * Example: rws:create-market-report --type=city --type=high_school
      *
      * @var string
      */
-    protected $signature = 'rws:create-market-report {--type=*}';//Example: rws:create-market-report --type=city --type=high_school
+    protected $signature = 'rws:create-market-report {--type=*}';
 
     /**
      * The console command description.
