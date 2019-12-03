@@ -140,11 +140,12 @@
             elem.addEventListener("click", function (event) {
 
                 // Initialize Variables
-                let [parent, value, type, ids, compare_btn_url] = [this.parentNode,
+                let [parent, value, type, ids, compare_btn_url, subdivision_btn_url] = [this.parentNode,
                 this.getAttribute('value'),
                 document.querySelectorAll("[data-page]")[0].getAttribute('data-page'),
                     '',
-                document.getElementById("market__btns--compare").getAttribute('data-base-url')
+                document.getElementById("market__btns--compare").getAttribute('data-base-url'),
+                document.getElementById("market__btns--subdivisions").getAttribute('data-base-url')
                 ];
 
                 // Add/Remove Tag
@@ -161,7 +162,9 @@
                 // Generate URL
                 ids = tags.map((tag) => tag._id);
                 compare_btn_url = compare_btn_url + `?type=${type}&ids=${ids}`;
+                subdivision_btn_url = subdivision_btn_url + `?type=${type}&ids=${ids}`;
                 document.getElementById("market__btns--compare").setAttribute('href', compare_btn_url);
+                document.getElementById("market__btns--subdivisions").setAttribute('href', subdivision_btn_url);
             });
 
         });
