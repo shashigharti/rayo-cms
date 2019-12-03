@@ -41,6 +41,7 @@ class FixImagesCount extends Command
                     \DB::table('real_estate_listings')
                             ->where('id',$listing->id)
                             ->update(['picture_count' => $count]);
+                    $this->info($count,$listing->id);
                 }
             });
 
