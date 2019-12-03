@@ -34,7 +34,11 @@ class CoreSettingHelper
      */
     public function getSettingByType($type)
     {
+        $values=[];
         $setting = $this->settings->where('type', $type)->first();
-        return json_decode($setting->values,true);
+        if($setting){
+            $values = json_decode($setting->value,true);
+        }
+        return $values;
     }
 }

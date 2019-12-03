@@ -1,5 +1,5 @@
 @set('search',$setting_helper->getSettingByType('search'))
-@if($search && !empty($search))
+@if(!empty($search))
     <div id='adv-search-dropdown'>
         <div class="inner">
             <div class="row">
