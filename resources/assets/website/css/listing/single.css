@@ -1,6 +1,6 @@
 /* search-list section*/
 .search-lists{
-    margin: 50px 0px;
+    margin: 50px 0px 30px;
 }
 .single-block img{
     width: 100%;
@@ -314,4 +314,7 @@ section.main-content {
     font-size: 13px;
     font-weight: 500;
     line-height: 23px;
+}
+.adverstisement h4.sub-title{
+    margin-top: 0px;
 }
