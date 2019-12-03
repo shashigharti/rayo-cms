@@ -29,15 +29,16 @@ class FixImages extends Command
      * @return mixed
      */
     public function handle()
-    {        
+    {
 
         $listings = \DB::table('real_estate_listings')
         ->get();
 
-        foreach($listings as $key => $listing){   
+        foreach($listings as $key => $listing){
+            $this->info($key);
             \DB::table('real_estate_listing_images')
             ->where('listing_id', $listing->server_listing_id)
-            ->update(['listing_id' => $listing->id]);           
-        }   
+            ->update(['listing_id' => $listing->id]);
+        }
     }
 }

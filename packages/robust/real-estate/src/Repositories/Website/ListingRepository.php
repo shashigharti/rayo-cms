@@ -50,8 +50,9 @@ class ListingRepository
         $result = $this->model->where('picture_count','>',0)
             ->select(ListingRepository::LISTING_FIELDS['index'])
             ->orderBy('input_date','desc')
-            ->has('image','>',0)
-            ->with('image');
+            ->withCount('images')
+            ->having('images_count', '>', 0)
+            ->with('images');
         if($status) {
             $result = $result->where('status',$status);
         }
@@ -93,10 +94,37 @@ class ListingRepository
     public function getListingByPrice($type, $location, $price)
     {
         $prices = $prices = explode('-',$price);
-        return Listing::where($type,$location)
+        return $this->model
+            ->where($type,$location)
             ->whereBetween('system_price',$prices)
-            ->has('image')
-            ->with('image')
+            ->withCount('images')
+            ->having('images_count', '>', 0)
             ->orderBy('input_date','desc');
+    }
+
+
+    /**
+     * @param $type
+     * @param $value
+     * @return mixed
+     */
+    public function getCountByType($type, $value)
+    {
+        return $this->model->where($type,$value)
+            ->where('status','Active')
+            ->where('picture_count','>',0);
+    }
+
+    /**
+     * @param $type
+     * @param $value
+     * @return mixed
+     */
+    public function getImageByType($type, $value)
+    {
+        return $this->model
+            ->where($type,$value)
+            ->withCount('images')
+            ->having('images_count', '>', 0);
     }
 }

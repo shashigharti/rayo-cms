@@ -1,5 +1,4 @@
 @set('sliders', $banner_helper->getBannersByType(['slider']))
-@inject('listing_helper','Robust\RealEstate\Helpers\ListingHelper')
 @if(!empty($sliders))
     @foreach($sliders as $slider)
         @set('properties', json_decode($slider->properties))
@@ -18,11 +17,10 @@
                     @set('properties_type', (isset($properties->area_types) && $properties->area_types != '')?$properties->area_types: 'city')
                     @set('properties_name', $properties->sub_areas)
                     @set('listings',$listing_helper->getListingsByType($properties_type, $properties_name, $properties_count))
-                    
                     @foreach($listings as $listing)
                         @set('first_image', $listing->images()->first())
                         <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->listing_slug])}}">
-                            <div class="single-block item">                               
+                            <div class="single-block item">
                                 <img src={{$first_image->listing_url ?? ''}}>
                                 <div class="slider--text">
                                     <h4>${{$listing->system_price}}</h4>

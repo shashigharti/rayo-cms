@@ -34,4 +34,36 @@ class ListingHelper
     {
         return $this->model->getListingByType($type,$name,$count)->get();
     }
+
+    /**
+     * @param $city
+     * @param $price
+     * @return mixed
+     */
+    public function getCountByCity($city, $price)
+    {
+        $prices = explode('-',$price);
+        return $this->model->getCountByType('city',$city)
+            ->whereBetween('system_price',$prices)
+            ->count();
+    }
+
+
+    /**
+     * @param $city
+     * @param $image
+     * @return mixed
+     */
+    public function getImageByCity($city, $image)
+    {
+        $image = '';
+        if($image){
+            $image =  getMedia($image);
+        }
+        $listing = $this->model->getImageByType('city',$city)->first();
+        if($listing){
+            $image =  $listing->images()->first()->listing_url;
+        }
+        return $image;
+    }
 }

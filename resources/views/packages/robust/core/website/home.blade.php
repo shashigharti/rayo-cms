@@ -1,6 +1,6 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
-@inject('frontpage_helper','Robust\RealEstate\Helpers\FrontPageHelper')
+@inject('listing_helper','Robust\RealEstate\Helpers\ListingHelper')
 @inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
 @section('header')
     <div class="banner">
