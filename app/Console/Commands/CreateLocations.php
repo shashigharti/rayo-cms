@@ -22,10 +22,11 @@ use Illuminate\Console\Command;
 class CreateLocations extends Command
 {
     /**
-     * The name and signature of the console command.
+     * Create locations
+     * Example: rws:create-locations --type=city --type=high_school
      * @var string
      */
-    protected $signature = 'rws:create-locations';
+    protected $signature = 'rws:create-locations {--type=*}';
     /**
      * The console command description.
      * @var string
@@ -39,19 +40,29 @@ class CreateLocations extends Command
      */
     public function handle()
     {        
+       // Read params
+        $location_types = $this->option('type', []);
+
         // Read from config : settings
-        $locations = [
-            //'city' => ['table_name'=>'real_estate_cities'],
-            // 'district' => ['table_name'=>'real_estate_school_districts'],
-            // 'county' => ['table_name'=>'real_estate_counties'],
-            // 'zip' => ['table_name'=>'real_estate_zips'],
-            // 'area' => ['table_name'=>'real_estate_areas'],
-            // 'high_school' => ['table_name'=>'real_estate_high_schools'],
-            // 'elem_school' => ['table_name'=>'real_estate_elem_schools'],
-            // 'middle_school' => ['table_name'=>'real_estate_middle_schools'],
-            // 'grid' => ['table_name'=>'real_estate_grids'] ,
+        $all_locations = [
+            'city' => ['table_name'=>'real_estate_cities'],
+            'district' => ['table_name'=>'real_estate_school_districts'],
+            'county' => ['table_name'=>'real_estate_counties'],
+            'zip' => ['table_name'=>'real_estate_zips'],
+            'area' => ['table_name'=>'real_estate_areas'],
+            'high_school' => ['table_name'=>'real_estate_high_schools'],
+            'elem_school' => ['table_name'=>'real_estate_elem_schools'],
+            'middle_school' => ['table_name'=>'real_estate_middle_schools'],
+            'grid' => ['table_name'=>'real_estate_grids'] ,
             'subdivision' => ['table_name'=>'real_estate_subdivisions']
         ];
+
+        $locations = [];
+        foreach ($all_locations as $type => $location) {
+            if (in_array($type, $location_types)) {
+                $locations[$type] = $location;
+            }
+        }
 
 
         // For each location add/remove location
