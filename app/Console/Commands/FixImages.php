@@ -16,7 +16,7 @@ class FixImages extends Command
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'migrate:fix-images';
+    protected $signature = 'rws:fix-images';
     /**
      * The console command description.
      * @var string
