@@ -144,3 +144,8 @@
     line-height: 13px;
     padding: 6px 16px;
 }
+
+.banner-caption a.theme-btn:hover,.banner-caption a.theme-btn:focus{
+    color:#fff;
+    text-decoration: none;
+}

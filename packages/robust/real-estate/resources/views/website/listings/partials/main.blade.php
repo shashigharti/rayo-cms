@@ -22,7 +22,7 @@
                     <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->listing_slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
-                                <img src={{$result->image->listing_url}}>
+                                <img src={{$result->images() ? $result->images()->first()->listing_url : ''}}>
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))

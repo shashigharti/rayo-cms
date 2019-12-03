@@ -2,7 +2,8 @@ $(window).load(function () {
     $('.adv-slider2').owlCarousel({
         loop:true,
         margin:10,
-        nav:false,
+        nav:true,
+        dots:false,
         responsive:{
             0:{
                 items:1

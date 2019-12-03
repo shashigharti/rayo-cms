@@ -637,7 +637,7 @@ h4.sub-title {
     font-weight: 500;
 }
 .advertisement {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
 }
 .advertisement .slick-prev:before, .advertisement .slick-next:before {
     opacity: 1;
@@ -695,7 +695,7 @@ a.buy-now-btn {
     font-family: 'FontAwesome' !important;
 }
 .adv--block {
-    margin-bottom: 80px;
+    margin-bottom: 50px;
     height:324px;
     overflow:hidden;
 }
@@ -931,4 +931,23 @@ i.material-icons {
     line-height: 20px !important;
     height: 20px !important;
     font-size: 18px !important;
+}
+.advertisement .owl-nav span {
+    display: block;
+    position: absolute;
+    top: 24%;
+    background:#4c4c4c;
+    width: 22px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0px;
+    color: #fff;
+    font-size: 24px;
+}
+.advertisement .owl-nav .owl-prev span{
+    left: 0;
+}
+.advertisement .owl-nav .owl-next span{
+    right: 0;
 }

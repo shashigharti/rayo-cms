@@ -8,6 +8,11 @@
                 @include(Site::templateResolver('core::website.advance-search.third-block'),['blocks' => $search['third_block']])
                 @include(Site::templateResolver('core::website.advance-search.fourth-block'),['blocks' => $search['fourth_block']])
             </div>
+            <div class="row">
+                <div class="col s12 mb-20 right-align">
+                    <a href="#" class="theme-btn">search</a>
+                </div>
+            </div>
         </div>
     </div>
 @endif
