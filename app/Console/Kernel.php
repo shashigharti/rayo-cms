@@ -18,8 +18,9 @@ class Kernel extends ConsoleKernel
     protected $commands = [
         'App\Console\Commands\MigrateData',
         'App\Console\Commands\FixImages',
+        'App\Console\Commands\FixImagesCount',
         'App\Console\Commands\CreateLocations',
-        'App\Console\Commands\CreateMarketReport'     
+        'App\Console\Commands\CreateMarketReport',
     ];
 
     /**

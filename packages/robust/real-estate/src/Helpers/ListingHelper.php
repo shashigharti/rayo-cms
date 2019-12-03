@@ -42,10 +42,12 @@ class ListingHelper
      */
     public function getCountByCity($city, $price)
     {
-        $prices = explode('-',$price);
-        return $this->model->getCountByType('city',$city)
-            ->whereBetween('system_price',$prices)
-            ->count();
+        //we will make it in cron job
+//        $prices = explode('-',$price);
+//        return $this->model->getCountByType('city',$city)
+//            ->whereBetween('system_price',$prices)
+//            ->count();
+        return 0;
     }
 
 

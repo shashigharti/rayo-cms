@@ -36,8 +36,7 @@ class ListingController extends Controller
     public function index()
     {
         $results = $this->model->getListing()->paginate(40);
-        $total = $this->model->getListing()->count();
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 
     /**

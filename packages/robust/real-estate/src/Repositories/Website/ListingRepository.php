@@ -50,9 +50,7 @@ class ListingRepository
         $result = $this->model->where('picture_count','>',0)
             ->select(ListingRepository::LISTING_FIELDS['index'])
             ->orderBy('input_date','desc')
-            ->withCount('images')
-            ->having('images_count', '>', 0)
-            ->with('images');
+            ->where('picture_count','>',0);
         if($status) {
             $result = $result->where('status',$status);
         }
@@ -79,9 +77,8 @@ class ListingRepository
        return  $this->model->where($type,$name)
                 ->select('id','listing_name','system_price','listing_slug')
                 ->where('status','Active')
-                ->withCount('images')
+                ->where('picture_count','>',0)
                 ->orderBy('input_date','asc')
-                ->having('images_count', '>', 0)
                 ->limit($count);
     }
 
@@ -97,8 +94,7 @@ class ListingRepository
         return $this->model
             ->where($type,$location)
             ->whereBetween('system_price',$prices)
-            ->withCount('images')
-            ->having('images_count', '>', 0)
+            ->where('picture_count','>',0)
             ->orderBy('input_date','desc');
     }
 
@@ -124,7 +120,6 @@ class ListingRepository
     {
         return $this->model
             ->where($type,$value)
-            ->withCount('images')
-            ->having('images_count', '>', 0);
+            ->where('picture_count','>',0);
     }
 }
