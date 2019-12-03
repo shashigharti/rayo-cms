@@ -13,9 +13,9 @@
     <ul class="right hide-on-med-and-down">
         <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>
         <li class="nav-item mega--dropdown">
-            <a class="nav-link mega--dropdown__parent" href="#">Areas</a>
-            <div class="mega--dropdown__child">
-                <span class="close--filters--dropdown right">
+            <a id="mega-dropdown" class="nav-link mega--dropdown__parent" href="#">Areas</a>
+            <div id="mega-dropdown_content" class="mega--dropdown__child hidden">
+                <span id="mega-dropdown_close" class="close--filters--dropdown right">
                     <i class="material-icons">clear</i>
                 </span>
                 <div class="row">
@@ -32,16 +32,6 @@
                     </div>
                     <div id="cities" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li> 
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
@@ -52,11 +42,6 @@
                     </div>
                     <div id="school" class="tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li> 
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
@@ -72,19 +57,6 @@
                     </div>
                     <div id="countries" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li> 
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
@@ -92,14 +64,6 @@
                     </div>
                     <div id="zipcodes" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li> 
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
                           <li><a href="#">Panama City (1055)</a></li>
@@ -111,7 +75,7 @@
                         </ul>
                     </div>
                 </div>
-            </div>                                        
+            </div>
         </li>
         <li><a class="nav-link" href="{{route('website.realestate.homes-for-sale')}}">Homes For Sale</a></li>
         <li><a class="nav-link" href="{{route('website.realestate.sold-homes')}}">Sold Homes</a></li>

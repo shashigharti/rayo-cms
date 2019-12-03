@@ -35,4 +35,34 @@ $(window).load(function () {
 		e.preventDefault();
 		$('#adv-search-dropdown').toggleClass('show');
 	});
+    $('.price-range-slider').jRange({
+        from:0,
+        to:100,
+        step: 1,
+        scale: [0,100],
+        format: '%s',
+        width:150,
+        showLabels: true,
+        isRange : true
+    });
+    $('.bedroom-range-slider').jRange({
+        from:0,
+        to:100,
+        step:1,
+        scale: [0,100],
+        format: '%s',
+        width:150,
+        showLabels: true,
+        isRange : true
+    });
+    $('.bathroom-range-slider').jRange({
+        from:0,
+        to:100,
+        step: 1,
+        scale: [0,100],
+        format: '%s',
+        width:150,
+        showLabels: true,
+        isRange : true
+    });
 });
