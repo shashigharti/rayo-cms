@@ -31,14 +31,16 @@ class FixImages extends Command
     public function handle()
     {
 
-        $listings = \DB::table('real_estate_listings')
-        ->get();
+       \DB::table('real_estate_listings')
+        ->chunk(1000,function ($listings){
+            foreach($listings as $key => $listing){
+                $this->info($key);
+                \DB::table('real_estate_listing_images')
+                    ->where('listing_id', $listing->server_listing_id)
+                    ->update(['listing_id' => $listing->id]);
+            }
+        });
 
-        foreach($listings as $key => $listing){
-            $this->info($key);
-            \DB::table('real_estate_listing_images')
-            ->where('listing_id', $listing->server_listing_id)
-            ->update(['listing_id' => $listing->id]);
-        }
+
     }
 }
