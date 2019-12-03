@@ -32,7 +32,7 @@ class FixImagesCount extends Command
     {
 
        \DB::table('real_estate_listings')
-           ->orderBy('input_date')
+           ->orderBy('id')
             ->chunk(1000,function ($listings){
                 foreach($listings as $key => $listing){
                     $count = \DB::table('real_estate_listing_images')
@@ -41,7 +41,7 @@ class FixImagesCount extends Command
                     \DB::table('real_estate_listings')
                             ->where('id',$listing->id)
                             ->update(['picture_count' => $count]);
-                    $this->info($count,$listing->id);
+                    $this->info('Count  :' . $count . ' || id : ' .$listing->id);
                 }
             });
 
