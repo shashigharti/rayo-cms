@@ -76,6 +76,7 @@ class MarketReportRepository
             ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
 
         if(isset($data['type'])){
+            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];            
             $query = $query->whereHasMorph(
                 'reportable',
                 [MarketReportRepository::REPORTABLE_MAP[$location_type]],

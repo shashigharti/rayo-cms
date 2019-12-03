@@ -22,10 +22,10 @@
     <div class="market__btns col s12 mt-40">
         <span class="btn--label">Checkmark areas to</span>
         <div class="market__btns--container">
-            <a href="#" class="btn-orange">
+            <a class="btn-orange" href="" data-base-url="{{route('website.realestate.market.reports', $page_type)}}">
                             Show Subdivisions
                         </a>
-            <a id="market__btns--compare" href="" data-base-url="http://localhost:8000/market/reports/in/cities/" class="btn-green">
+            <a id="market__btns--compare" data-base-url="{{route('website.realestate.market.reports', $page_type)}}" class="btn-green">
                             Compare Selected Areas
                         </a>
             <a href="#" class="btn-blue">
