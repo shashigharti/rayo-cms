@@ -602,7 +602,7 @@ button.get-distance {
 
 /* slider */
 .advertisement .single-block{
-    margin:10px;
+    margin:5px;
     height:166px;
 }
 
@@ -615,7 +615,7 @@ button.get-distance {
 }
 a.view-all {
     font-weight: 600;
-    margin-top: 28px;
+    margin-top: 2px;
     display: inline-block;
     color: #1414bd !important;
 }
