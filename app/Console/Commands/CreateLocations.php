@@ -25,7 +25,7 @@ class CreateLocations extends Command
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'migrate:create-locations';
+    protected $signature = 'rws:create-locations';
     /**
      * The console command description.
      * @var string
