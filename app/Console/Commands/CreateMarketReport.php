@@ -15,6 +15,7 @@ use Robust\RealEstate\Models\MiddleSchool;
 use Robust\RealEstate\Models\Grid;
 use Robust\RealEstate\Models\Subdivision;
 use Robust\RealEstate\Models\MarketReport;
+use Robust\RealEstate\Helpers\MarketReportHelper;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;
@@ -178,8 +179,6 @@ class CreateMarketReport extends Command
         
 
         foreach ($collection as $model) {
-            
-
             $totalListings = isset($listingArr[$model->name]) ? $listingArr[$model->name]->count : null;
             $totalListingsActive = isset($listingArr[$model->name]) ? $listingArr[$model->name]->active_count : null;
             $totalListingsSold = isset($listingArr[$model->name]) ? $listingArr[$model->name]->sold_count : null;
@@ -232,6 +231,9 @@ class CreateMarketReport extends Command
         $part_count = floor(count($collection) / 25); 
         $chunked = $collection->chunk($part_count);
 
+        // It will be remove and refactored; Temporary fix
+        $marketHelper = new MarketReportHelper();
+
         foreach ($chunked as $key => $chunked_collection) {  
                
             if(!$this->byGroupName ){
@@ -254,17 +256,20 @@ class CreateMarketReport extends Command
                                 ->select(['status', 'system_price', 'days_on_mls', 'city', 'county', 'zip', 'subdivision', 'district', 'input_date'])
                                 ->get();
                 }
+                $totalListingsActive = $marketHelper->countActive($listingArr, 'Active');
+                $averagePriceActive = $marketHelper->countAvgActive($listingArr, 'Active', 'system_price');
+                
                 $report = \DB::table('real_estate_market_reports')->insert([
                     'reportable_id' => $model->id,
                     'slug' => $model->slug,
                     'name' => $model->name,
                     'reportable_type' => get_class($model),
                     'total_listings' => 0,
-                    'total_listings_active' => 0,
+                    'total_listings_active' => $totalListingsActive,
                     'total_listings_sold' => 0,
                     'total_listings_sold_this_year' => 0,
                     'total_listings_sold_past_year' => 0,
-                    'average_price_active' => 0,
+                    'average_price_active' => $averagePriceActive,
                     'average_price_sold' => 0,
                     'average_price_sold_past_year' => 0,
                     'average_price_sold_this_year' => 0,
@@ -281,36 +286,5 @@ class CreateMarketReport extends Command
                 ]);
             }
         }
-    }
-
-    private function getMedian($type, $value, $attr, $active = true, $year = null)
-    {
-        if ($year) {
-            $year_condition = "YEAR(input_date)='" . addslashes((string)$year) . "'";
-        } else {
-            $year_condition = "TRUE";
-        }
-
-        $fetched = \DB::select("SELECT AVG(t1.$attr) AS median_val FROM (
-                                                        SELECT @rownum:=@rownum+1 AS `row_number`, $attr
-                                                          FROM listings,  (SELECT @rownum:=0) r
-                                                          WHERE $type='" . addslashes($value) . "' 
-                                                          AND `status`" . (($active) ? "='Active'" : "!='Active'") . "
-                                                          AND $year_condition
-                                                          ORDER BY $attr
-                                                        ) AS t1,
-                                                        (
-                                                          SELECT COUNT(*) AS total_rows
-                                                          FROM listings
-                                                          WHERE $type='" . addslashes($value) . "' 
-                                                          AND status" . (($active) ? "='Active'" : "!='Active'") . "
-                                                          AND $year_condition
-                                                        ) AS t2
-                                                        WHERE 1
-                                                        AND t1.row_number IN ( FLOOR((total_rows+1)/2), FLOOR((total_rows+2)/2) );");
-        if (isset($fetched[0]->median_val)) {
-            return $fetched[0]->median_val;
-        }
-        return null;
     }
 }
