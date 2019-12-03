@@ -4,10 +4,11 @@
         <div class="row">
             @foreach($singleColBanners as $singleColBanner)
                 @set('properties', json_decode($singleColBanner->properties))
+                @set('image',$listing_helper->getImageByCity($properties->location,$properties->image))
                 @if($properties)
                     <div class="col s4">
                         <div class="single-block">
-                            <img src="{{$properties->image && $properties->image != '' ? getMedia($properties->image) : $frontpage_helper->getImageByCity($properties->location)}}" alt="">
+                            <img src="{{$image}}" alt="">
                             <div class="figcaption center-align">
                                 <h2>{{$properties->location ?? ''}}</h2>
                                 <div class="available-prices">
