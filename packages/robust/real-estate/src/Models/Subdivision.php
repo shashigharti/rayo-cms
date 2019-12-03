@@ -2,6 +2,7 @@
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
+use Robust\RealEstate\Models\Listing;
 
 
 /**
@@ -38,5 +39,13 @@ class Subdivision extends BaseModel
     public function city()
     {
         return $this->hasOne('Robust\RealEstate\Models\City');
+    }
+
+    /**
+     * Get the listings
+     */
+    public function listings()
+    {
+        return $this->hasMany(Listing::class, 'subdivision', 'name');
     }
 }

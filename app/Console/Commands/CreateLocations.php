@@ -25,7 +25,7 @@ class CreateLocations extends Command
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'migrate:create-locations';
+    protected $signature = 'rws:create-locations';
     /**
      * The console command description.
      * @var string
@@ -41,7 +41,7 @@ class CreateLocations extends Command
     {        
         // Read from config : settings
         $locations = [
-            'city' => ['table_name'=>'real_estate_cities'],
+            //'city' => ['table_name'=>'real_estate_cities'],
             // 'district' => ['table_name'=>'real_estate_school_districts'],
             // 'county' => ['table_name'=>'real_estate_counties'],
             // 'zip' => ['table_name'=>'real_estate_zips'],
@@ -50,7 +50,7 @@ class CreateLocations extends Command
             // 'elem_school' => ['table_name'=>'real_estate_elem_schools'],
             // 'middle_school' => ['table_name'=>'real_estate_middle_schools'],
             // 'grid' => ['table_name'=>'real_estate_grids'] ,
-            // 'subdivision' => ['table_name'=>'real_estate_subdivisions']
+            'subdivision' => ['table_name'=>'real_estate_subdivisions']
         ];
 
 

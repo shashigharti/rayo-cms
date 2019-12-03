@@ -112,4 +112,26 @@ trait SearchRepositoryTrait
         $this->model = $this->model->has($relation);
         return $this;
     }
+
+    /**
+     * @param $field
+     * @return $this
+     */
+    public function withCount($field)
+    {
+        $this->model = $this->model->withCount($field);
+        return $this;
+    }
+
+    /**
+     * @param $field
+     * @param $operator
+     * @param $value
+     * @return $this
+     */
+    public function having($field, $operator, $value)
+    {
+        $this->model = $this->model->having($field,$operator,$value);
+        return $this;
+    }
 }

@@ -16,7 +16,7 @@ class FixImages extends Command
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'migrate:fix-images';
+    protected $signature = 'rws:fix-images';
     /**
      * The console command description.
      * @var string
@@ -29,15 +29,19 @@ class FixImages extends Command
      * @return mixed
      */
     public function handle()
-    {        
+    {
 
-        $listings = \DB::table('real_estate_listings')
-        ->get();
+       \DB::table('real_estate_listings')
+           ->orderBy('input_date')
+            ->chunk(1000,function ($listings){
+                foreach($listings as $key => $listing){
+                    $this->info($key);
+                    \DB::table('real_estate_listing_images')
+                        ->where('listing_id', $listing->server_listing_id)
+                        ->update(['listing_id' => $listing->id]);
+                }
+            });
 
-        foreach($listings as $key => $listing){   
-            \DB::table('real_estate_listing_images')
-            ->where('listing_id', $listing->server_listing_id)
-            ->update(['listing_id' => $listing->id]);           
-        }   
+
     }
 }

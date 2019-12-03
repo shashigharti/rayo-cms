@@ -47,15 +47,6 @@ class Listing extends BaseModel
     }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function image()
-    {
-        return $this->hasOne(ListingImages::class,'listing_id','uid')
-            ->withDefault(function($image){  $image->listing_url = '/images/banners/block10.jpeg'; });
-    }
-
-    /**
      * City associated with this listing
      */
     public function city()
