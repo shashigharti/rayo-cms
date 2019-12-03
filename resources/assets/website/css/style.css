@@ -854,3 +854,81 @@ i.material-icons {
 .adv-slider2 .single-block img {
     width: auto;
 }
+
+/*mega Dropdown*/
+
+.site-menu{
+    position: relative;
+}
+.mega--dropdown__child {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #012466;
+    padding: 10px;
+    z-index: 99;
+}
+.mega--dropdown__child .tabs{
+    border-bottom: 4px solid #fff !important;
+    background: transparent;
+}
+.close--filters--button i{
+    font-size: 16px !important;
+    height: auto !important;
+    line-height: 20px !important;
+}
+.mega--dropdown__child .tabs .tab a {
+    color: #fff;    
+    border: 1px solid #fff;
+    margin: 0px 8px 0px 0px;
+    display: inline;
+    padding: 10px 15px;
+    font-weight: 600;
+    text-decoration: none;
+}
+.mega--dropdown__child .tabs .tab a:hover,.mega--dropdown__child .tabs .tab a.active {
+    background-color: #fff;
+    color: #333;
+}
+.mega--dropdown__child .tabs .indicator{
+    display: none;
+}
+.mega--dropdown__child .tabs span {
+    margin-left: 30px;
+    display: inline-block;
+    vertical-align: text-bottom;
+    margin-top: -10px;
+}
+.mega--dropdown__child [type="radio"]:not(:checked),.mega--dropdown__child [type="radio"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events:initial;
+    display: inline-block;
+    margin-top: 0px;
+    margin-right: 8px;
+}
+.mega--dropdown__child .tab--content {
+    margin: 30px 0px;
+    height: 200px;
+    overflow-y: auto;
+}
+.mega--dropdown__child .tab--content ul li {
+    padding: 0;
+    width: 20%;
+    display: inline-block;
+    line-height: 20px;
+}
+.mega--dropdown__child .tab--content ul a {
+    font-size: 11px;
+    color: #fff;
+    display: inline;
+    padding: 0 !important;
+    cursor: pointer;
+    line-height: 20px;
+    text-decoration: none;
+}
+.close--filters--dropdown i.material-icons {
+    line-height: 20px !important;
+    height: 20px !important;
+    font-size: 18px !important;
+}
