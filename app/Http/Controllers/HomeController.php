@@ -8,6 +8,10 @@ use Robust\Core\Helpage\Site;
 use Robust\Core\Models\Media;
 use Robust\Core\Repositories\MediaRepository;
 
+/**
+ * Class HomeController
+ * @package App\Http\Controllers
+ */
 class HomeController extends Controller
 {
     /**
@@ -20,13 +24,21 @@ class HomeController extends Controller
         return view('home');
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getMedia()
     {
         $medias = Media::get();
         return response()->json($medias);
     }
 
-    public function uploadMedia(Request $request,MediaRepository $model)
+    /**
+     * @param Request $request
+     * @param MediaRepository $model
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function uploadMedia(Request $request, MediaRepository $model)
     {
 
         $validator = Validator::make($request->all(),[
@@ -40,12 +52,19 @@ class HomeController extends Controller
         return response()->json(['success' =>true]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function getThumbnail($id)
     {
         $thumbnail = Media::where('id',$id)->first();
         return response()->json($thumbnail);
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function backend(){
         return view('backend');
     }

@@ -69,6 +69,9 @@ class User extends Authenticatable
         return $this->morphTo();
     }
 
+    /**
+     *
+     */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail());

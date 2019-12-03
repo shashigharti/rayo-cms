@@ -7,11 +7,22 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
+/**
+ * Class CustomResetPasswordNotification
+ * @package App\Notifications
+ */
 class CustomResetPasswordNotification extends Notification
 {
     use Queueable;
+    /**
+     * @var
+     */
     protected $token;
 
+    /**
+     * CustomResetPasswordNotification constructor.
+     * @param $token
+     */
     public function __construct($token)
     {
         $this->token = $token;
