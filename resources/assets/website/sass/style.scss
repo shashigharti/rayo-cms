@@ -1013,13 +1013,21 @@ nav {
   padding: 2px 0px;
 
   input.select-dropdown {
-    border: 0;
-    border-bottom: 0;
-    height: 25px;
-    line-height: 1rem;
-    width: 100%;
-    font-size: 11px;
-    padding: 0px 6px;
+    border: 0 !important;
+    border-bottom: 0 !important;
+    height: 25px !important;
+    line-height: 1rem !important;
+    width: 100% !important;
+    font-size: 11px !important;
+    padding: 0px 6px !important;
+
+    li>a, li>span {
+        font-size: 12px;
+        color: #333333;
+        display: block;
+        line-height: 22px;
+        padding: 8px 16px;
+    }
   }
 
   .caret {
