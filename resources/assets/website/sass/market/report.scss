@@ -184,6 +184,10 @@ a {
 .market__search--lists {
   height: 320px;
   overflow-y: auto;
+  a{
+    color:#333333;
+    text-decoration:none;
+  }
 }
 
 .market--right__search .btn--label {
