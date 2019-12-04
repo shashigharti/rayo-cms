@@ -5,7 +5,7 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Model\CoreGroup;
+use Robust\RealEstate\Models\CoreGroup;
 
 /**
  * Class GroupRepository

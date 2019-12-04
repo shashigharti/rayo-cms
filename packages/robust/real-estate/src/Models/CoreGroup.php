@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\RealEstate\Model;
+namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
 
@@ -14,7 +14,7 @@ class CoreGroup extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'core_groups';
+    protected $table = 'real_estate_core_groups';
 
     /**
      * @var bool
