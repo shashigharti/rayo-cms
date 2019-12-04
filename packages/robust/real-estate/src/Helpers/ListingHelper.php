@@ -62,7 +62,7 @@ class ListingHelper
             $image =  getMedia($image);
         }
         $listing = $this->model->getImageByType('city',$city)->first();
-        if($listing && $listing->images()){
+        if($listing && $listing->images() && $listing->images()->first()){
             $image = $listing->images()->first()->listing_url;
         }
         return $image;

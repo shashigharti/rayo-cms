@@ -13,8 +13,8 @@
                                 <h2>{{$properties->location ?? ''}}</h2>
                                 <div class="available-prices">
                                     @if(isset($properties->prices) && is_array($properties->prices))
-                                        @foreach($properties->prices as $price)
-                                            @set('property_count',$listing_helper->getCountByCity($properties->location,$price))
+                                        @foreach($properties->prices as  $price)
+                                            @set('property_count',$properties->property_counts->$price ?? 0)
                                             <a href="{{route('website.realestate.city.price',['city' => $properties->location,'price' => $price])}}">{{$price}} ({{$property_count}})</a>
                                         @endforeach
                                     @endif
