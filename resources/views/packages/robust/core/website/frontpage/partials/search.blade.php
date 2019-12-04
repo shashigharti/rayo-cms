@@ -7,7 +7,7 @@
                 <input type="text" placeholder="Type a city,zip,address or MLS#">
             </div>
 
-            <div class="col s5">
+            <div class="col s6">
                 <div class="row">
                     <div class="col s4 range-bar">
                         <p>PRICE</p>
@@ -23,13 +23,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col s2 center-align">
-                <p>FEATURES</p>
-                <a href="#" class="theme-btn advance-search">Advanced search</a>
-            </div>
-            <div class="col s2 center-align">
-                <p>19723 ACTIVE LIstings</p>
-                <a href="#" class="theme-btn">search</a>
+            <div class="col s3 center-align">
+                <div class="left">
+                    <p>FEATURES</p>
+                    <a href="#" class="theme-btn advance-search">Advanced search</a>
+                </div>
+                <div class="right">
+                    <p>19723 HOMES FOR SALE</p>
+                    <a href="#" class="theme-btn">search</a>
+                </div>
             </div>
         </div>
     </div>

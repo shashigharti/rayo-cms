@@ -12,10 +12,8 @@
                         <div class="site-menu">
                             @include(Site::templateResolver('core::website.frontpage.partials.menu'))
                         </div>
-                    </div>
-                    <div class="site-menu">
-                        @include(Site::templateResolver('core::website.frontpage.partials.search'))
-                    </div>
+                    </div>                    
+                    @include(Site::templateResolver('core::website.frontpage.partials.search'))
                 </div>
             </div>
         </div>

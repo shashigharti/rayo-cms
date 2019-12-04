@@ -88,22 +88,16 @@
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffbdfade', endColorstr='#ff76fabc', GradientType=0);
 }
 .theme-green .back-bar .pointer {
-  width: 14px;
-  height: 14px;
-  top: -5px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid #AAA;
-  background-color: #e7e7e7;
-  background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
-  background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-  background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
-  background-repeat: repeat-x;
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
+    width: 12px;
+    height: 12px;
+    top: -5px;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    border-radius: 0;
+    border: 1px solid #012466;
+    background: #012466;
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
 }
 .theme-green .back-bar .pointer-label {
   color: #999;

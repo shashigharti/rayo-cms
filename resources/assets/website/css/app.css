@@ -2,15 +2,3 @@
 @import "../../../../node_modules/owl.carousel/dist/assets/owl.theme.default.css";
 @import "materialize.min.css";
 @import "font-awesome.css";
-@import "jquery.range.css";
-@import "slick.css";
-@import "slick-theme.css";
-@import "style.css";
-@import "common/header.css";
-@import "common/footer.css";
-@import "common/banner.css";
-@import "listing/single.css";
-@import "market/report.css";
-@import "market/survey.css";
-@import "user/profile.css";
-@import "user/login.css";

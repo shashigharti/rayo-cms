@@ -13,7 +13,7 @@
     <ul class="right hide-on-med-and-down">
         <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>
         <li class="nav-item mega--dropdown">
-            <a id="mega-dropdown" class="nav-link mega--dropdown__parent" href="#">Areas </a>
+            <a id="mega-dropdown" class="nav-link mega--dropdown__parent" href="#">Areas <i class="material-icons">arrow_drop_down</i></a>
             <div id="mega-dropdown_content" class="mega--dropdown__child hidden">
                 <span id="mega-dropdown_close" class="close--filters--dropdown right">
                     <i class="material-icons">clear</i>
