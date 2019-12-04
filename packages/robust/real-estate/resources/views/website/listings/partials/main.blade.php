@@ -67,17 +67,17 @@
                                         <div class="details">
                                         <span>
                                             @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
-                                                <i class="material-icons">hotel</i>{{ $result->bedrooms}}
+                                                <img src="/assets/website/images/bed.png" alt="Bed">{{ $result->bedrooms}}
                                             @endif
                                         </span>
                                             <span class="center-align">
                                             @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
-                                                    <i class="material-icons">hot_tub</i>{{ $result->baths_full}}
+                                                    <img src="/assets/website/images/bathtub.png" alt="Bathtub">{{ $result->baths_full}}
                                                 @endif
                                         </span>
                                             <span class="right-align">
                                             @if(isset($result->picture_count) && !in_array($result->picture_count,['none','None','0']))
-                                                    <i class="material-icons">image</i>{{ $result->picture_count}}
+                                                    <img src="/assets/website/images/camera.png" alt="Picture">{{ $result->picture_count}}
                                                 @endif
                                         </span>
                                         </div>
