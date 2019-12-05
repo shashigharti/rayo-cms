@@ -50,7 +50,8 @@ class MarketReportController extends Controller
         $response = $this->model->getInsight($location_type, $slug);
         return view('real-estate::website.market-report.insight', [
             'data' => $response,
-            'page_type' => $location_type
+            'page_type' => $location_type,
+            'sub_location_type' => $response['sub_location_type'] ?? null
         ]);
     }
 }

@@ -39,7 +39,7 @@ class MarketReportRepository
      * @var const LOCATION_TYPES_WITH_SUBLOCATIONS
      */
     protected const LOCATION_TYPES_WITH_SUBLOCATIONS = [
-        'cities' => ['field' => 'city_id','reportable_type' => 'Robust\RealEstate\Models\Subdivision']
+        'cities' => ['sub_location_type'=>'subdivisions','field' => 'city_id','reportable_type' => 'Robust\RealEstate\Models\Subdivision']
     ];
 
     /**
@@ -131,6 +131,7 @@ class MarketReportRepository
                         $query->where($field, $report->reportable->id);
                     })->get();
             $response['records'] = $sub_location_reports;
+            $response['sub_location_type'] = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['sub_location_type'];
         }
 
         return $response;

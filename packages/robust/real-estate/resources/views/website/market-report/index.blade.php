@@ -8,7 +8,8 @@
     <div class="container-fluid">
         @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
         @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-        <div id="market__search--lists" class="market__search--lists row">
+        @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))
+        {{-- <div id="market__search--lists" class="market__search--lists row">            
             @foreach($records as $report)
                 <div class="col m2">
                     <div class="market__search--lists-item card">
@@ -38,7 +39,7 @@
                     </div>
                 </div>
             @endforeach
-        </div>
+        </div> --}}
     </div>
 </section>
 @endsection

@@ -29,8 +29,16 @@
                     </tr>
                 </thead>            
                 <tbody>
-                    
+                    <tr class="text-center">
+                        <th scope="text-left">5</th>
+                        <td>10</td>
+                        <td>11</td>
+                        <td>12</td>
+                        <td>13</td>
+                        <td>14</td>
+                    </tr>
                     @foreach ($data['insights'] as $insight)
+                    
                         <tr class="text-center">
                             <th scope="text-left">{{ $insight->active_count}}</th>
                             <td>{{ $insight->system_price}}</td>
