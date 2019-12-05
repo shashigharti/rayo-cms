@@ -203,16 +203,6 @@ class ListingRepository
         {
             $model =$model->where('year_build','<',$data['year_max']);
         }
-        $model = $model->with(['details' => function($query) use ($data){
-            if(isset($data['stories']) && !empty($data['stories']))
-            {
-                $query->where('stories',$data['stories']);
-            }
-            if(isset($data['garage']) && !empty($data['garage']))
-            {
-                $query->where('garage_desc',$data['garage']);
-            }
-        }]);
 
         return $model;
     }

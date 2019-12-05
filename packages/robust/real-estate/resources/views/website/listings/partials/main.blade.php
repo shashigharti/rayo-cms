@@ -27,7 +27,7 @@
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
-                                            {{$result->status}}
+                                            {{$result->status}}  {{$result->system_price}}
                                         @endif
 									</span>
                                     <span class="fav">
