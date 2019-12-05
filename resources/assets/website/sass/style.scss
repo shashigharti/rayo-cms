@@ -516,6 +516,9 @@ a.right-icon {
 }
 
 .get-distance-container {
+  .input-group{
+    display:block;
+  }
   input.form-control {
     display: inline-block;
     width: 75% !important;
@@ -527,8 +530,8 @@ a.right-icon {
   .input-group-prepend {
     display: inline-block;
     vertical-align: middle;
-    margin-top: -6px;
-    margin-left: -4px;
+    margin-top: 0px;
+    margin-left: 0px;
   }
 }
 
@@ -566,6 +569,7 @@ button.get-distance {
     border-radius: .25rem;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     height: 20px;
+    float:none !important;
   }
 }
 
@@ -1158,4 +1162,13 @@ i.material-icons {
     background-color: #002349 !important;
     color: #fff !important;
   }
+}
+button{
+  &:focus{
+    outline: 0;
+    background-color: transparent !important;
+  }
+}
+#calculator{
+  .radio-inline:20px;
 }
