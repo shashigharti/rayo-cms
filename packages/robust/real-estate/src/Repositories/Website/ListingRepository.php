@@ -122,4 +122,98 @@ class ListingRepository
             ->where($type,$value)
             ->where('picture_count','>',0);
     }
+
+    public function getListingBySearch($data)
+    {
+        $model = $this->model;
+        if(isset($data['search']) && $data['search'] != '')
+        {
+            $model = $model->where('listing_name','LIKE',"%{$data['search']}%");
+        }
+        if(isset($data['type']) && !empty($data['type']))
+        {
+            $model =$model->whereIn('class',$data['type']);
+        }
+
+        if(isset($data['status']) && !empty($data['status']))
+        {
+            $model =$model->whereIn('status',$data['status']);
+        }
+        if(isset($data['pictures_only']) && !empty($data['pictures_only']))
+        {
+            $model =$model->where('picture_count','>',0);
+        }
+        if(isset($data['cities']) && !empty($data['cities']))
+        {
+            $model =$model->whereIn('city_id',$data['cities']);
+        }
+        if(isset($data['zip']) && !empty($data['zip']))
+        {
+            $model =$model->whereIn('zip_id',$data['zip']);
+        }
+        if(isset($data['price_min']) && !empty($data['price_min']))
+        {
+            $model =$model->where('system_price','>',$data['price_min']);
+        }
+        if(isset($data['price_max']) && !empty($data['price_max']))
+        {
+            $model =$model->where('system_price','<',$data['price_max']);
+        }
+        if(isset($data['beds_min']) && !empty($data['beds_min']))
+        {
+            $model =$model->where('bedrooms','>',$data['beds_min']);
+        }
+        if(isset($data['beds_max']) && !empty($data['beds_max']))
+        {
+            $model =$model->where('bedrooms','<',$data['beds_max']);
+        }
+        if(isset($data['bathrooms_min']) && !empty($data['bathrooms_min']))
+        {
+            $model =$model->where('baths_full','>',$data['bathrooms_min']);
+        }
+        if(isset($data['bathrooms_max']) && !empty($data['bathrooms_max']))
+        {
+            $model =$model->where('baths_full','<',$data['bathrooms_max']);
+        }
+        if(isset($data['subdivision']) && $data['subdivision'] != '')
+        {
+            $model = $model->where('subdivision_id','LIKE',"%{$data['subdivision']}%");
+        }
+        if(isset($data['acres_min']) && !empty($data['acres_min']))
+        {
+            $model =$model->where('acres','>',$data['acres_min']);
+        }
+        if(isset($data['acres_max']) && !empty($data['acres_max']))
+        {
+            $model =$model->where('acres','<',$data['acres_max']);
+        }
+        if(isset($data['square_min']) && !empty($data['square_min']))
+        {
+            $model =$model->where('total_finished_area','>',$data['square_min']);
+        }
+        if(isset($data['square_max']) && !empty($data['square_max']))
+        {
+            $model =$model->where('total_finished_area','<',$data['square_max']);
+        }
+        if(isset($data['year_min']) && !empty($data['year_min']))
+        {
+            $model =$model->where('year_build','>',$data['year_min']);
+        }
+        if(isset($data['year_max']) && !empty($data['year_max']))
+        {
+            $model =$model->where('year_build','<',$data['year_max']);
+        }
+        $model = $model->with(['details' => function($query) use ($data){
+            if(isset($data['stories']) && !empty($data['stories']))
+            {
+                $query->where('stories',$data['stories']);
+            }
+            if(isset($data['garage']) && !empty($data['garage']))
+            {
+                $query->where('garage_desc',$data['garage']);
+            }
+        }]);
+
+        return $model;
+    }
 }
