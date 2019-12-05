@@ -140,7 +140,18 @@ section.main-content {
     font-weight: 600;
   }
 }
-
+.single--listing--button_back{
+  font-size: 12px;
+  vertical-align: middle;
+  display: inline-block;
+  padding: 0px 10px;
+  background-color: #002349;
+  text-transform: initial;
+    i.material-icons {
+      vertical-align: middle;
+      margin-right: 5px;
+  }
+}
 .total--records {
   font-size: 12px;
   display: inline-block;

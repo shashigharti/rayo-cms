@@ -727,9 +727,13 @@ button.get-distance {
 
 .btn-social-detail {
   .btn {
-    margin: 10px 0px 0px;
-    width: 100%;
+    margin: 10px 0 0;
+    width: 78%;
     background-color: #002349;
+    font-size: 12px;
+    text-transform: none;
+    height: 30px;
+    line-height: 30px;
   }
 
   margin: 20px 0px;

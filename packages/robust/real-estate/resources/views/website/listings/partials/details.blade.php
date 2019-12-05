@@ -160,9 +160,10 @@
             </div>
             <div class="col s5">
                 <div class="top more-inner">
-                    <a href="#" class="single-listing-button btn btn-theme pull-left btn-list-back" role="button">
-                        <span class="glyphicon glyphicon-arrow-left"></span>Return To All Listings </a>
-                    <div class="pull-right txt-price"> $ <span class="single-listing-price"> {{$result->system_price}}</span> </div>
+                    <a href="#" class="single--listing--button_back left btn btn-list-back" role="button">
+                        <i class="material-icons">keyboard_backspace</i>
+                        </span>Return To All Listings </a>
+                    <div class="right txt-price"> $ <span class="single-listing-price"> {{$result->system_price}}</span> </div>
                 </div>
                 <div class="more-inner">
                     <div class="detail-block">
@@ -261,29 +262,29 @@
                         </div>
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col s6 right-align padding-left-0 padding-right-0">
                                     <a href="#" class="btn btn-success left-button not_authenticated">
-                                        <span class="glyphicon glyphicon-star"></span> Save to Favorites
+                                        <i class="material-icons">star</i></span> Save to Favorites
                                     </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
                                     <a href="#" class="btn btn-success right-button not_authenticated">
-                                        <span class="glyphicon glyphicon-envelope"></span> Email a friend
+                                        <i class="material-icons">email</i></span> Email a friend
                                     </a>
                                 </div>
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col s6 right-align padding-left-0 padding-right-0">
                                     <a href="#" class="btn btn-success not_authenticated"> Schedule a Viewing </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
                                     <a href="#" class="btn btn-success right-button not_authenticated"> Rate Property/My Notes </a>
                                 </div>
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col s6 right-align padding-left-0 padding-right-0">
                                     <button  class="btn btn-success right-button not_authenticated" > Get more Property Info </button>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
                                     <a href="#"	class="btn btn-success right-button not_authenticated"> Print this listing </a>
                                 </div>
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col s6 right-align padding-left-0 padding-right-0">
                                     <a  href="#" class="btn btn-success right-button not_authenticated"> Email if Property Sells </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
