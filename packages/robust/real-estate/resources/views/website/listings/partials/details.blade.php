@@ -1,3 +1,4 @@
+@set('properties',$result->property->pluck('value','type'))
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -313,17 +314,17 @@
                                             @foreach($detail as $field)
                                                 @set('name',$field['name'])
                                                 @if(in_array($title,['School Information']))
-                                                    @if(isset($result->$name) && !in_array($result->$name,['none','0','Undefined','None']))
+                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
                                                         <tr>
                                                             <td>{{$field['display']}}</td>
-                                                            <td>{{$result->$name}}</td>
+                                                            <td>{{$properties[$name]}}</td>
                                                         </tr>
                                                     @endif
                                                 @else
-                                                    @if(isset($result->details->$name) && !in_array($result->details->$name,['none','0','Undefined','None']))
+                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
                                                         <tr>
                                                             <td>{{$field['display']}}</td>
-                                                            <td>{{$result->details->$name}}</td>
+                                                            <td>{{$properties[$name]}}</td>
                                                         </tr>
                                                     @endif
                                                 @endif
