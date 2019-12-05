@@ -22,7 +22,7 @@
     <div class="market__btns col s12 mt-40">
         <span class="btn--label">Checkmark areas to</span>
         <div class="market__btns--container">
-            @if($page_type == 'subdivisions')
+            @if($page_type != 'subdivisions')
                 <a id="market__btns--subdivisions" class="btn-orange" href="" data-base-url="{{route('website.realestate.market.reports', 'subdivisions')}}">
                     Show Subdivisions
                 </a>
