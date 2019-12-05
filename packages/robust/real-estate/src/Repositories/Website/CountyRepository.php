@@ -4,27 +4,29 @@ namespace Robust\RealEstate\Repositories\Website;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\City;
+use Robust\RealEstate\Models\County;
 
 
 /**
- * Class CityRepository
+ * Class CountyRepository
  * @package Robust\RealEstate\Repositories\Website
  */
-class CityRepository
+class CountyRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
+
     /**
-     * @var CityRepository
+     * @var County
      */
     protected $model;
 
+
     /**
-     * CityRepository constructor.
-     * @param City $model
+     * CountyRepository constructor.
+     * @param County $model
      */
-    public function __construct(City $model)
+    public function __construct(County $model)
     {
         $this->model = $model;
     }

@@ -57,14 +57,15 @@ class ListingHelper
      */
     public function getImageByCity($city, $image)
     {
-        $image = '';
+        $src = '';
         if($image){
-            $image =  getMedia($image);
+            $src =  getMedia($image);
+        }else{
+            $listing = $this->model->getImageByType('city',$city)->first();
+            if($listing && $listing->images() && $listing->images()->first()){
+                $src = $listing->images()->first()->listing_url;
+            }
         }
-        $listing = $this->model->getImageByType('city',$city)->first();
-        if($listing && $listing->images() && $listing->images()->first()){
-            $image = $listing->images()->first()->listing_url;
-        }
-        return $image;
+        return $src;
     }
 }
