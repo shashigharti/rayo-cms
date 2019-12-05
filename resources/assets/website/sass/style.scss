@@ -725,7 +725,8 @@ button.get-distance {
   margin: 30px 0px;
 }
 
-.btn-social-detail {
+.btn-social-detail {  
+  margin: 20px 0px;
   .btn {
     margin: 10px 0 0;
     width: 78%;
@@ -733,10 +734,13 @@ button.get-distance {
     font-size: 12px;
     text-transform: none;
     height: 30px;
-    line-height: 30px;
+    line-height: 31px;
+    i{
+      font-size: 14px !important;
+      vertical-align: middle !important;
+    }
   }
 
-  margin: 20px 0px;
 }
 
 .title-more-detail {
@@ -1148,4 +1152,10 @@ i.material-icons {
     line-height:20px !important;
     vertical-align: text-bottom;
     margin-right: 2px;
+}
+.btn {
+  &:hover{
+    background-color: #002349 !important;
+    color: #fff !important;
+  }
 }

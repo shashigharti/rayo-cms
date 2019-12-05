@@ -141,7 +141,7 @@ section.main-content {
     font-weight: 600;
   }
 }
-.single--listing--button_back{
+a.single--listing--button_back{
   font-size: 12px;
   vertical-align: middle;
   display: inline-block;
@@ -151,6 +151,10 @@ section.main-content {
     i.material-icons {
       vertical-align: middle;
       margin-right: 5px;
+  }
+  &:hover{
+    background-color: #002349;
+    color: #fff;
   }
 }
 .total--records {
