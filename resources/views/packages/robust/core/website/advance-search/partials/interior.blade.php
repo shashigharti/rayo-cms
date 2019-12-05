@@ -1,11 +1,8 @@
-@set('interiors',['Bar','Built-in-shelves','Close Cabinets','Cook Island'])
+@set('interiors',$search_helper->getFeatures('interiors'))
 <div class="mb-20">
     <div class="input-field col s12">
-        <select name="interiors[]" multiple>
+        <select name="interiors[]" multiple class="advance-search_features" data-url="{{route('website.realestate.interiors')}}">
             <option value="" disabled selected>Select Options</option>
-            @foreach($interiors as $interior)
-                <option value="{{$interior}}">{{$interior}}</option>
-            @endforeach
         </select>
         <label>Interior</label>
     </div>

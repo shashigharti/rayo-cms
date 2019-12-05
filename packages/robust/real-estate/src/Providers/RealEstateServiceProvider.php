@@ -15,6 +15,7 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\AdvanceSearch',
         'Robust\RealEstate\Console\Commands\ListingDetail',
         'Robust\RealEstate\Console\Commands\ListingPriceCount',
+        'Robust\RealEstate\Console\Commands\ListingFeature',
     ];
     public function register()
     {

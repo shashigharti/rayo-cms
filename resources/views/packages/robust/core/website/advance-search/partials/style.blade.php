@@ -1,11 +1,8 @@
-@set('styles',['Colonial','Cape Cod','Contemporary','European','Ranch'])
+@set('styles',$search_helper->getFeatures('styles'))
 <div class="mb-20">
     <div class="input-field col s12">
-        <select name="style[]" multiple>
+        <select name="style[]" multiple class="advance-search_features" data-url="{{route('website.realestate.styles')}}">
             <option value="" disabled selected>Select Options</option>
-            @foreach($styles as $style)
-                <option value="{{$style}}">{{$style}}</option>
-            @endforeach
         </select>
         <label>Style</label>
     </div>

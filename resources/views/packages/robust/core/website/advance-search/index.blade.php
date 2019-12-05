@@ -1,4 +1,5 @@
 @set('search',$setting_helper->getSettingByType('search'))
+@inject('search_helper','Robust\RealEstate\Helpers\AdvanceSearchHelper')
 @if(!empty($search))
     <div id='adv-search-dropdown'>
         <form method="post" action="{{route('website.realestate.search')}}">
