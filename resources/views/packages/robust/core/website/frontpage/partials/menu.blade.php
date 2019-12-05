@@ -1,3 +1,4 @@
+@inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 <nav class="navbar navbar-expand-lg navbar-light">
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
