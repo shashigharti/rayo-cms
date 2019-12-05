@@ -2,6 +2,7 @@
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @inject('listing_helper','Robust\RealEstate\Helpers\ListingHelper')
 @inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
+@inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @section('header')
     <div class="banner">
         <div class="slider">
@@ -12,7 +13,7 @@
                         <div class="site-menu">
                             @include(Site::templateResolver('core::website.frontpage.partials.menu'))
                         </div>
-                    </div>                    
+                    </div>
                     @include(Site::templateResolver('core::website.frontpage.partials.search'))
                 </div>
             </div>

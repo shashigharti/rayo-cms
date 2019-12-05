@@ -4,27 +4,29 @@ namespace Robust\RealEstate\Repositories\Website;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\City;
+use Robust\RealEstate\Models\Zip;
 
 
 /**
- * Class CityRepository
+ * Class ZipRepository
  * @package Robust\RealEstate\Repositories\Website
  */
-class CityRepository
+class ZipRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
+
     /**
-     * @var CityRepository
+     * @var Zip
      */
     protected $model;
 
+
     /**
-     * CityRepository constructor.
-     * @param City $model
+     * ZipRepository constructor.
+     * @param Zip $model
      */
-    public function __construct(City $model)
+    public function __construct(Zip $model)
     {
         $this->model = $model;
     }

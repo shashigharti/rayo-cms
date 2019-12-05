@@ -1,4 +1,5 @@
- <nav class="navbar navbar-expand-lg navbar-light">
+@set('locations',$location_helper->getLocations(['cities','counties','zips']))
+<nav class="navbar navbar-expand-lg navbar-light">
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
     <a href="#" data-target="mobile-demo" class="mobile-menu-btn"><i class="fa fa-bars"></i></a>
     <ul id="mobile-demo" class="dropdown-content">
@@ -21,10 +22,9 @@
                 <div class="row">
                     <div class="col s12">
                         <ul class="tabs">
-                            <li class="tab"><a class="active" href="#cities">CITIES (8)</a></li>
-                            <li class="tab"><a href="#school">SCHOOLS (47)</a></li>
-                            <li class="tab"><a href="#countries">COUNTRIES (2)</a></li>
-                            <li class="tab"><a href="#zipcodes">Zip CODES (22)</a></li>
+                            <li class="tab"><a class="active" href="#cities">CITIES ({{$locations['cities'] ? count($locations['cities']): '0'}})</a></li>
+                            <li class="tab"><a href="#counties">COUNTIES ({{$locations['counties'] ? count($locations['counties']): '0'}})</a></li>
+                            <li class="tab"><a href="#zipcodes">Zip CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
                             <span><input type="radio">Homes for Sale</span>
                             <span><input type="radio">Sold Homes</span>
                             <span><input type="radio">All</span>
@@ -32,46 +32,29 @@
                     </div>
                     <div id="cities" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
+                            @if(isset($locations['cities']))
+                                @foreach($locations['cities'] as $city)
+                                  <li><a href="#">{{$city->name}} ({{$city->active ?? '0'}})</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
-                    <div id="school" class="tab--content col s12">
+                    <div id="counties" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                        </ul>
-                    </div>
-                    <div id="countries" class=" tab--content col s12">
-                        <ul>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
+                            @if(isset($locations['counties']))
+                                @foreach($locations['counties'] as $county)
+                                    <li><a href="#">{{$county->name}} ({{$county->active ?? '0'}})</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                     <div id="zipcodes" class=" tab--content col s12">
                         <ul>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
-                          <li><a href="#">Panama City (1055)</a></li>
+                            @if(isset($locations['zips']))
+                                @foreach($locations['zips'] as $zips)
+                                    <li><a href="#">{{$zips->name}} ({{$zips->active ?? '0'}})</a></li>
+                                @endforeach
+                            @endif
                         </ul>
                     </div>
                 </div>
