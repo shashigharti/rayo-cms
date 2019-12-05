@@ -44,7 +44,7 @@ class ListingHelper
     {
         //we will make it in cron job
         $prices = explode('-',$price);
-        return $this->model->getCountByType('city',$city)
+        return $this->model->getCountByType('city_id',$city)
             ->whereBetween('system_price',$prices)
             ->count();
     }
@@ -61,7 +61,7 @@ class ListingHelper
         if($image){
             $src =  getMedia($image);
         }else{
-            $listing = $this->model->getImageByType('city',$city)->first();
+            $listing = $this->model->getImageByType('city_id',$city)->first();
             if($listing && $listing->images() && $listing->images()->first()){
                 $src = $listing->images()->first()->listing_url;
             }

@@ -31,14 +31,6 @@ class Listing extends BaseModel
         'attached', 'original_price', 'address', 'created_at', 'updated_at', 'off_market', 'building_name', 'listings_office_name'];
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function details()
-    {
-        return $this->hasOne(ListingDetail::class,'listing_id','id');
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function images()

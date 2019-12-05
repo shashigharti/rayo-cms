@@ -20,8 +20,7 @@ class ListingRepository
     protected const LISTING_FIELDS = [
         'index' => [
             'id','uid','listing_slug','system_price','picture_count',
-            'status','address_street','state','city',
-            'county','year_built','total_finished_area',
+            'status','address_street','state','year_built','total_finished_area',
             'baths_full','bedrooms'
         ]
     ];
@@ -63,7 +62,7 @@ class ListingRepository
      */
     public function getSingle($id)
     {
-        return $this->model->where('id',$id)->with('details')->with('images')->first();
+        return $this->model->where('id',$id)->with('property')->with('images')->first();
     }
 
     /**
