@@ -788,26 +788,6 @@ h4.sub-title {
   font-weight: 500;
 }
 
-.advertisement {
-  margin-bottom: 50px;
-
-  .slick-prev:before, .slick-next:before {
-    opacity: 1;
-    color: #ffffff;
-    background: #111;
-    border: oldlace;
-    border-right: 0;
-    border-radius: 0px;
-    padding: 8px 8px 8px 8px;
-    cursor: pointer;
-    position: absolute;
-    right: 0;
-    top: -15px;
-    z-index: 1000;
-    width: 30px;
-  }
-}
-
 .adv-single-text {
   position: absolute;
   top: 0;
@@ -830,47 +810,17 @@ a.buy-now-btn {
   height: 300px;
   overflow: hidden;
   position: relative;
-  margin-bottom: 50px;
+  margin-bottom: 70px;
 
   img {
     width: 100%;
-  }
-}
-
-.slick-prev {
-  &:before {
-    content: "\f104" !important;
-    font-family: 'FontAwesome' !important;
-  }
-
-  left: 0px !important;
-  z-index: 9;
-}
-
-.slick-next {
-  right: 0px;
-
-  &:before {
-    content: "\f105" !important;
-    font-family: 'FontAwesome' !important;
   }
 }
 
 .adv--block {
-  margin-bottom: 50px;
+  margin-bottom: 70px;
   height: 324px;
   overflow: hidden;
-
-  img {
-    width: 100%;
-  }
-
-  h4 {
-    font-size: 20px !important;
-    font-weight: 500 !important;
-  }
-
-  margin-bottom: 80px;
 
   img {
     width: 100%;
@@ -896,7 +846,7 @@ a.buy-now-btn {
   color: #fff;
   font-size: 21px;
   margin-top: 20px;
-  font-weight: 400;
+  font-weight: 500;
   text-shadow: 0 0 5px #0a0a0a;
 }
 
@@ -1159,27 +1109,33 @@ i.material-icons {
   font-size: 18px !important;
 }
 
-.advertisement .owl-nav {
-  span {
-    display: block;
-    position: absolute;
-    top: 33%;
-    background: #4c4c4c;
-    width: 22px;
-    height: 30px;
-    line-height: 30px;
-    text-align: center;
-    margin: 0px;
-    color: #fff;
-    font-size: 24px;
-  }
+.advertisement {
+  margin-bottom:70px;
+  .owl-nav {
+      position: absolute;
+      top: 30%;
+      right: 0;
+      left: 0;
+    span {
+      display: block;
+      position: absolute;
+      background: #4c4c4c;
+      width: 22px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      margin: 0px;
+      color: #fff;
+      font-size: 24px;
+    }
 
-  .owl-prev span {
-    left: 0;
-  }
+    .owl-prev span {
+      left: 0;
+    }
 
-  .owl-next span {
-    right: 0;
+    .owl-next span {
+      right: 0;
+    }
   }
 }
 .mega--dropdown__parent i{

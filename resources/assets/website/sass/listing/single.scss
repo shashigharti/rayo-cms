@@ -1,7 +1,12 @@
 /* search-list section*/
 
 .search-lists {
-  margin: 50px 0px 0px;
+  margin: 70px 0px 20px;
+  .row{
+    .col{
+      padding:0px 15px;
+    }
+  }
 }
 
 .single-block {
