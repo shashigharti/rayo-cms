@@ -2,23 +2,26 @@
     <div class="row">
         <div class="col s2 center-align">
             <p>FEATURES</p>
-            <a href="#" class="theme-btn">Advanced search</a>
+            <a href="#" class="theme-btn advance-search">Advanced search</a>
         </div>
+
         <div class="col s8">
-            <div class="row">
-                <div class="col s4 range-bar">
-                    <p>PRICE</p>
-                    <input class="price-range-slider" type="hidden" value="25,75"/>
+            <form method="post" action="{{route('website.realestate.search')}}">
+                <div class="row">
+                    <div class="col s4 range-bar">
+                        <p>PRICE</p>
+                        <input class="price-range-slider" data-min="0" data-max="1000000" name="price"  data-scale-min="0"  data-scale-max="1m+" type="hidden" value="0,1000000" />
+                    </div>
+                    <div class="col s4 range-bar">
+                        <p>BEDROOMS</p>
+                        <input class="bedroom-range-slider" data-min="0" data-max="5" data-scale-min="0"  data-scale-max="5+" name="bedroom" type="hidden" value="1,5" />
+                    </div>
+                    <div class="col s4 range-bar">
+                        <p>BATHROOMS</p>
+                        <input class="bathroom-range-slider" data-min="0" data-max="5" data-scale-min="0"  data-scale-max="5+" name="bathrooms" type="hidden" value="1,5" />
+                    </div>
                 </div>
-                <div class="col s4 range-bar">
-                    <p>BEDROOMS</p>
-                    <input class="bedroom-range-slider" type="hidden" value="25,75"/>
-                </div>
-                <div class="col s4 range-bar">
-                    <p>BATHROOMS</p>
-                    <input class="bathroom-range-slider" type="hidden" value="25,75"/>
-                </div>
-            </div>
+            </form>
         </div>
         <div class="col s2 center-align">
             <p>19723 ACTIVE LIstings</p>
@@ -54,4 +57,8 @@
             <a href="#" class=" btn btn-sm theme-btn">CLEAR ALL</a>
         </div>
     </div>
+</div>
+
+<div class="listing--advance_search">
+    @include(Site::templateResolver('core::website.advance-search.index'))
 </div>

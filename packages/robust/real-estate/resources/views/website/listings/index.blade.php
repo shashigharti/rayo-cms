@@ -1,5 +1,6 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
+@inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')
     @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))

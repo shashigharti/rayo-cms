@@ -931,7 +931,8 @@ i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;
 .range-bar .slider-container .scale{top:-19px}.range-bar .slider-container .scale ins{top:-12px}
 .range-bar .slider-1-active,.range-bar .slider-2-active,.range-bar .slider-3-active{position:relative;display:block}
 .range-bar .range-slider-1-max,.range-bar .range-slider-1-min,.range-bar .range-slider-2-max,.range-bar .range-slider-2-min,.range-bar .range-slider-3-max,.range-bar .range-slider-3-min{font-size:11px;color:#fff;position:absolute;top:9px}
-.range-bar span.range-slider-1-max{right:0}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.range-bar span.range-slider-1-max{right:0}.listing--advance_search #adv-search-dropdown{top:315px}
+.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
