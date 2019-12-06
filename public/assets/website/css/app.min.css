@@ -812,9 +812,12 @@ tr.visible-lg{display:table-row !important}th.visible-lg,td.visible-lg{display:t
 table.visible-print{display:table !important}tr.visible-print{display:table-row !important}
 th.visible-print,td.visible-print{display:table-cell !important}}@media print{.visible-print-block{display:block !important}
 }@media print{.visible-print-inline{display:inline !important}}@media print{.visible-print-inline-block{display:inline-block !important}
-}@media print{.hidden-print{display:none !important}}body{margin:0;font-family:'Montserrat',sans-serif}
-h1,h2,h3,h4,h5{font-family:'Montserrat',sans-serif}a,a:hover{text-decoration:none !important}
-.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:45px;padding-left:45px}
+}@media print{.hidden-print{display:none !important}}@font-face{font-family:'Poppins';src:url("../fonts/Poppins-Medium.woff2") format("woff2"),url("../fonts/Poppins-Medium.woff") format("woff");font-weight:500;font-style:normal}
+@font-face{font-family:'Poppins';src:url("../fonts/Poppins-Regular.woff2") format("woff2"),url("../fonts/Poppins-Regular.woff") format("woff");font-weight:normal;font-style:normal}
+@font-face{font-family:'Poppins';src:url("../fonts/Poppins-Bold.woff2") format("woff2"),url("../fonts/Poppins-Bold.woff") format("woff");font-weight:bold;font-style:normal}
+@font-face{font-family:'Poppins';src:url("../fonts/Poppins-SemiBold.woff2") format("woff2"),url("../fonts/Poppins-SemiBold.woff") format("woff");font-weight:600;font-style:normal}
+body,h1,h2,h3,h4,h5{margin:0;font-family:'Poppins',sans-serif;font-weight:normal}
+a,a:hover{text-decoration:none !important}.container-fluid{width:100%;margin-right:auto;margin-left:auto;padding-right:45px;padding-left:45px}
 .theme-btn{color:#fff;font-size:12px;background:#012466;margin:0 auto;padding:8px;border-radius:3px;-webkit-box-shadow:1px 1px 2px 1px #111;box-shadow:1px 1px 2px 1px #111;width:140px;display:inline-block;text-align:center}
 .row{margin-bottom:0}.about-us{margin-bottom:50px}.about-us p{font-size:16px;color:#696969;line-height:30px}
 .about-us h2{font-size:24px;text-transform:uppercase;margin-bottom:40px;color:#373737}
