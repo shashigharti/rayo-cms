@@ -14,9 +14,9 @@
                 </div>
                 <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
                     @set('properties_count', ($properties->property_count > 5)?$properties->property_count: 5)
-                    @set('properties_type', (isset($properties->area_types) && $properties->area_types != '')?$properties->area_types: 'city')
-                    @set('properties_name', $properties->sub_areas)
-                    @set('listings',$listing_helper->getListingsByType($properties_type, $properties_name, $properties_count))
+                    @set('properties_type', (isset($properties->area_types) && $properties->area_types != '')?$properties->area_types: 'city_id')
+                    @set('location_name', $properties->location)
+                    @set('listings',$listing_helper->getListingsByType($properties_type, $location_name, $properties_count))
                     @foreach($listings as $listing)
                         @set('first_image', $listing->images()->first())
                         <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->listing_slug])}}">
