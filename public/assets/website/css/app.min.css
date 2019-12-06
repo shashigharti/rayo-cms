@@ -1034,8 +1034,8 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
 .market__search--lists-item{min-height:144px}.market__search--lists-item p{margin-bottom:2px;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
-.market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%}
-.market__search--lists-item i{margin-right:5px}.market__search--lists{height:320px;overflow-y:auto}
+.market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
+.market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:320px;overflow-y:auto}
 .market__search--lists a{color:#333;text-decoration:none}.market__search--lists a:hover{color:#0b96e5}
 .market--right__search .btn--label{font-size:14px;font-weight:bold;color:#555}.mt-40{margin-top:40px}
 .market--compare--btns{display:inline-block;margin-left:10px}.btn-checkbox{height:20px;width:20px;margin-right:10px}

@@ -26,16 +26,16 @@
                                 <label><a href="#">{{$report->reportable->name}}</a></label>
                             </p>
                             <p data-type="Active" data-value="{{$report->total_listings_active}}" data-class="fa fa-bookmark">
-                                <span><i class="fa fa-bookmark" aria-hidden="true"></i>Active : {{$report->total_listings_active}}</span>
+                                <span><i class="material-icons">bookmark</i>Active : {{$report->total_listings_active}}</span>
                             </p>
                             <p data-type="Sold" data-value="{{$report->total_listings_sold}}" data-class="fa fa-shopping-cart">
-                                <span><i class="fa fa-shopping-cart" aria-hidden="true"></i>Sold : {{$report->total_listings_sold}}</span>
+                                <span><i class="material-icons">shopping_cart</i>Sold : {{$report->total_listings_sold}}</span>
                             </p>
                             <p data-type="Average" data-value="{{$report->average_price_sold}}" data-class="fa fa-percent">
-                                <span><i class="fa fa-percent" aria-hidden="true"></i>Average : ${{$report->average_price_sold}}</span>
+                                <span><i>%</i>Average : ${{$report->average_price_sold}}</span>
                             </p>
                             <p data-type="Median" data-value="{{$report->median_price_sold}}" data-class="fa fa-crosshairs">
-                                <span><i class="fa fa-crosshairs" aria-hidden="true"></i>Median : ${{$report->median_price_sold}}</span>
+                                <span><i class="material-icons">adjust</i>Median : ${{$report->median_price_sold}}</span>
                             </p>
                         </div>
                     </div>
