@@ -3,6 +3,7 @@ namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Robust\Core\Helpage\Site;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 
@@ -70,14 +71,12 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
-    /**
-     * @param $slug
-     * @param $type
-     */
-    public function search($slug, $type){
 
-        dd($slug, $type);
-
+    public function search(Request $request)
+    {
+        $data = $request->all();
+        $results = $this->model->getListingBySearch($data)->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 
     /**

@@ -1,10 +1,13 @@
 <div class="mb-20">
     <div class="input-field col s12">
-        <select>
+        <select name="garage">
             <option value="" disabled selected>Select Options</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            <option value="1">1 Car</option>
+            <option value="2">2 Car</option>
+            <option value="3">3 Car</option>
+            <option value="4">4 Car</option>
+            <option value="5">5 Car</option>
+            <option value="6">6 or More</option>
         </select>
         <label>Garage</label>
     </div>

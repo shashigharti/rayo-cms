@@ -4,7 +4,7 @@
     </p>
     <p>
         <label>
-            <input type="checkbox" />
+            <input name="pictures_only" type="checkbox" />
             <span>Only show properties with photos</span>
         </label>
     </p>

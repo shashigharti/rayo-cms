@@ -44,7 +44,7 @@ class LocationHelper
         $locations = [];
         foreach ($types as $type)
         {
-            $results = $this->$type->select('name','slug','active','sold')->get();
+            $results = $this->$type->get();
             $locations[$type] = $results;
         }
         return $locations;

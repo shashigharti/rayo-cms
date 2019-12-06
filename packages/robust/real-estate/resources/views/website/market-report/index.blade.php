@@ -1,5 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
+@inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
+@set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')
     @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
@@ -9,13 +11,13 @@
         @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
         @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
         @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))
-        {{-- <div id="market__search--lists" class="market__search--lists row">            
+        {{-- <div id="market__search--lists" class="market__search--lists row">
             @foreach($records as $report)
                 <div class="col m2">
                     <div class="market__search--lists-item card">
                         <div class="card-content">
-                            <p data-id="{{$report->reportable->id}}" data-type="Title" 
-                                data-value="{{$report->reportable->name}}" 
+                            <p data-id="{{$report->reportable->id}}" data-type="Title"
+                                data-value="{{$report->reportable->name}}"
                                 data-url="{{route('website.realestate.market.reports.in', [
                                     $page_type, $report->reportable->slug
                                     ])}}"

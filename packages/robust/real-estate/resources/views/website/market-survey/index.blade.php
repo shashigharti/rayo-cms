@@ -1,5 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
+@inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
+@set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')
     @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
 @endsection
@@ -8,7 +10,7 @@
         <div class="row">
            <div class="col s7">
                 <div id="market-survey__left-container" class="market-survey__left-container map" >
-                    
+
                 </div>
             </div>
             <div class="col s5">

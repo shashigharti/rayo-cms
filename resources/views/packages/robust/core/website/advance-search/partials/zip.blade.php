@@ -1,10 +1,12 @@
 <div class="mb-20">
     <div class="input-field col s12">
-        <select>
+        <select name="zip[]" multiple class="advance-search_location" data-url="{{route('website.realestate.zips')}}">
             <option value="" disabled selected>Select Options</option>
-            <option value="1">Option 1</option>
-            <option value="2">Option 2</option>
-            <option value="3">Option 3</option>
+            @if(isset($locations['zips']))
+                @foreach($locations['zips'] as $zips)
+                    <option value="{{$zips->id}}">{{$zips->name}}</option>
+                @endforeach
+            @endif
         </select>
         <label>Zip</label>
     </div>

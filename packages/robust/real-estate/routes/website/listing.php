@@ -35,4 +35,10 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCityPrice'
         ]);
 
+        Route::post('search',[
+           'name' => 'Search',
+           'as' => 'search',
+           'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@search'
+        ]);
+
 });
