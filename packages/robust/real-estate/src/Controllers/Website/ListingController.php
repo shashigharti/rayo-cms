@@ -75,6 +75,18 @@ class ListingController extends Controller
     public function search(Request $request)
     {
         $data = $request->all();
+        if(isset($data['searchType']) && $data['searchType'] == 'search')
+        {
+            $prices = explode(',',$data['price']);
+            $bedrooms = explode(',',$data['bedroom']);
+            $bathrooms = explode(',',$data['bathrooms']);
+            $data['price_min'] = $prices[0] ?? '0';
+            $data['price_max'] = $prices[1] ?? '0';
+            $data['beds_min'] = $bedrooms[0] ?? '0';
+            $data['beds_max'] = $bedrooms[1] ?? '0';
+            $data['bathrooms_min'] = $bathrooms[0] ?? '0';
+            $data['bathrooms_max'] = $bathrooms[1] ?? '0';
+        }
         $results = $this->model->getListingBySearch($data)->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
