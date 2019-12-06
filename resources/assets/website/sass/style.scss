@@ -729,7 +729,7 @@ button.get-distance {
   margin: 30px 0px;
 }
 
-.btn-social-detail {  
+.btn-social-detail {
   margin: 20px 0px;
   .btn {
     margin: 10px 0 0;
@@ -1173,4 +1173,54 @@ button{
   .radio-inline{
     margin-bottom:20px;
   }
+}
+
+.subdivs--list__btn{
+    display: inline-block;
+    background: #fff;
+    padding: 5px 10px;
+    border-radius: 2px;
+    border: 1px solid #ddd;
+    margin: 0 auto;
+    cursor: pointer;
+    top: -2px;
+    z-index: 3;
+    color: #111;
+    font-size: 10px;
+    i{
+        font-size: 13px;
+    }
+}
+.subdivs--list{
+    position: absolute;
+    bottom: -1000px;
+    background:#54513f;
+    padding: 15px;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    transition: all .5s ease;
+    max-height: 475px;
+    overflow-y: scroll;
+    font-size: 11px;
+    z-index: 2;
+    left:0;
+}
+.subdivs--list ul{
+    padding-left: 0;
+    list-style-type: none;
+    text-align: left;
+    column-count: 2;
+}
+.subdivs--list ul li{
+    font-size: 10px;
+}
+.subdivs--list ul li a{
+    color:#fff;
+}
+.subdivs--list label{
+    color: #fff;
+    font-weight: 500;
+}
+.subdivs--list.show{
+    bottom: 45px;
 }

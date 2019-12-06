@@ -19,6 +19,35 @@
                                         @endforeach
                                     @endif
                                 </div>
+                                @if($properties->sub_areas && is_array($properties->sub_areas))
+                                    <div class="subdivs--list__block">
+                                        @foreach($properties->sub_areas as $sub_area)
+                                            <span class="subdivs--list__btn">
+                                                <i class="material-icons">redo</i>
+                                                Hide {{$sub_area}}
+
+                                                <div class="subdivs--list">
+                                                    <p><label>{{$sub_area}}:</label></p>
+                                                    <ul>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                    </ul>
+                                                </div>
+                                            </span>
+                                        @endforeach
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
