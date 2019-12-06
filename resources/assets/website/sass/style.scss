@@ -1224,3 +1224,35 @@ button{
 .subdivs--list.show{
     bottom: 45px;
 }
+.range-bar {
+    .slider-container {
+        .back-bar{
+            .pointer-label{
+                top:14px;
+                //display: none;
+            }
+        }
+
+        .scale {
+            top: -19px;
+
+            ins {
+                top: -12px;
+            }
+        }
+
+    }
+    .slider-1-active, .slider-2-active, .slider-3-active {
+        position: relative;
+        display: block;
+    }
+    .range-slider-1-max, .range-slider-1-min,  .range-slider-2-max, .range-slider-2-min, .range-slider-3-max, .range-slider-3-min {
+        font-size: 11px;
+        color: #fff;
+        position: absolute;
+        top: 9px;
+    }
+    span.range-slider-1-max {
+        right: 0;
+    }
+}

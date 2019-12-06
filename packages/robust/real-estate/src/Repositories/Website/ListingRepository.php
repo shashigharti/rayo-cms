@@ -153,27 +153,27 @@ class ListingRepository
         }
         if(isset($data['price_min']) && !empty($data['price_min']))
         {
-            $model =$model->where('system_price','>',$data['price_min']);
+            $model =$model->where('system_price','>=',$data['price_min']);
         }
         if(isset($data['price_max']) && !empty($data['price_max']))
         {
-            $model =$model->where('system_price','<',$data['price_max']);
+            $model =$model->where('system_price','<=',$data['price_max']);
         }
         if(isset($data['beds_min']) && !empty($data['beds_min']))
         {
-            $model =$model->where('bedrooms','>',$data['beds_min']);
+            $model =$model->where('bedrooms','>=',$data['beds_min']);
         }
         if(isset($data['beds_max']) && !empty($data['beds_max']))
         {
-            $model =$model->where('bedrooms','<',$data['beds_max']);
+            $model =$model->where('bedrooms','<=',$data['beds_max']);
         }
         if(isset($data['bathrooms_min']) && !empty($data['bathrooms_min']))
         {
-            $model =$model->where('baths_full','>',$data['bathrooms_min']);
+            $model =$model->where('baths_full','>=',$data['bathrooms_min']);
         }
         if(isset($data['bathrooms_max']) && !empty($data['bathrooms_max']))
         {
-            $model =$model->where('baths_full','<',$data['bathrooms_max']);
+            $model =$model->where('baths_full','<=',$data['bathrooms_max']);
         }
         if(isset($data['subdivision']) && $data['subdivision'] != '')
         {
@@ -181,27 +181,27 @@ class ListingRepository
         }
         if(isset($data['acres_min']) && !empty($data['acres_min']))
         {
-            $model =$model->where('acres','>',$data['acres_min']);
+            $model =$model->where('acres','>=',$data['acres_min']);
         }
         if(isset($data['acres_max']) && !empty($data['acres_max']))
         {
-            $model =$model->where('acres','<',$data['acres_max']);
+            $model =$model->where('acres','<=',$data['acres_max']);
         }
         if(isset($data['square_min']) && !empty($data['square_min']))
         {
-            $model =$model->where('total_finished_area','>',$data['square_min']);
+            $model =$model->where('total_finished_area','>=',$data['square_min']);
         }
         if(isset($data['square_max']) && !empty($data['square_max']))
         {
-            $model =$model->where('total_finished_area','<',$data['square_max']);
+            $model =$model->where('total_finished_area','<=',$data['square_max']);
         }
         if(isset($data['year_min']) && !empty($data['year_min']))
         {
-            $model =$model->where('year_build','>',$data['year_min']);
+            $model =$model->where('year_build','>=',$data['year_min']);
         }
         if(isset($data['year_max']) && !empty($data['year_max']))
         {
-            $model =$model->where('year_build','<',$data['year_max']);
+            $model =$model->where('year_build','<=',$data['year_max']);
         }
 
         return $model;

@@ -13,7 +13,7 @@
             li {
                 height: 100%;
               }
-        } 
+        }
     }
 }
 
@@ -103,9 +103,21 @@
   padding: 10px 0px;
 }
 
-.search-section a.theme-btn {
-  width: 120px;
-  padding: 10px 0px;
+.search-section  {
+    a.theme-btn{
+        width: 120px;
+        padding: 0px 0;
+        border: 0;
+        height: 35px;
+        line-height: 35px;
+    }
+    button.theme-btn{
+        width: 120px;
+        padding: 0px 0;
+        border: 0;
+        height: 35px;
+        line-height: 35px;
+    }
 }
 
 #adv-search-dropdown {
