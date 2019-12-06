@@ -22,9 +22,9 @@
                                 @if($properties->sub_areas && is_array($properties->sub_areas))
                                     <div class="subdivs--list__block">
                                         @foreach($properties->sub_areas as $sub_area)
-                                            <span class="subdivs--list__btn">
+                                            <div class="subdivs--list__btn">
                                                 <i class="material-icons">redo</i>
-                                                Hide {{$sub_area}}
+                                                <span class="subdivs--list__text">See</span> {{$sub_area}}
 
                                                 <div class="subdivs--list">
                                                     <p><label>{{$sub_area}}:</label></p>
@@ -44,7 +44,7 @@
                                                         <li><a href="#">Bay Point (20)</a></li>
                                                     </ul>
                                                 </div>
-                                            </span>
+                                            </div>
                                         @endforeach
                                     </div>
                                 @endif
