@@ -16,6 +16,7 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\ListingDetail',
         'Robust\RealEstate\Console\Commands\ListingPriceCount',
         'Robust\RealEstate\Console\Commands\ListingFeature',
+        'Robust\RealEstate\Console\Commands\DataPull',
     ];
     public function register()
     {
@@ -33,6 +34,7 @@ class RealEstateServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'real-estate.permissions');
         $this->mergeConfigFrom(__DIR__ . '/../../config/advance-search.php', 'real-estate.search');
         $this->mergeConfigFrom(__DIR__ . '/../../config/listing-detail.php', 'real-estate.detail');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/data-map.php', 'real-estate.data-map');
         $this->commands($this->commands);
     }
 }
