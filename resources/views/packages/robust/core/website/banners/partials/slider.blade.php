@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col s8">
-                        <h4 class="sub-title">Homes For Sale in {{$properties->sub_areas ?? ''}}</h4>
+                        <h4 class="sub-title">Homes For Sale in {{$properties->location ?? ''}}</h4>
                     </div>
                     <div class="col s4 right-align">
                         <a href="#" class="view-all">View All</a>

@@ -1,9 +1,12 @@
+@set('beds_min',$search_settings['beds_min'] ?? '1')
+@set('beds_max',$search_settings['beds_max'] ?? '5')
+@set('beds_increase',$search_settings['beds_increase'] ?? '1')
 <div class="mb-20">
     <div class="input-field col s6">
         <select name="beds_min">
             <option value="" disabled selected>Min</option>
-            @for($min = 1; $min < 6;$min++ )
-                <option value="{{$min}}">{{$min}}</option>
+            @for($beds = $beds_min; $beds <= $beds_max; $beds += $beds_increase)
+                <option value="{{$beds}}">{{$beds}}</option>
             @endfor
         </select>
         <label>Beds(min-max)</label>
@@ -11,8 +14,8 @@
     <div class="input-field col s6">
         <select name="beds_max">
             <option value="" disabled selected>Max</option>
-            @for($max = 1; $max < 6;$max++ )
-                <option value="{{$max}}">{{$max}}</option>
+            @for($beds = $beds_min; $beds <= $beds_max; $beds += $beds_increase)
+                <option value="{{$beds}}">{{$beds}}</option>
             @endfor
         </select>
         <label></label>

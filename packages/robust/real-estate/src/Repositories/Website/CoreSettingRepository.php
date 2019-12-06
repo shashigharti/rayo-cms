@@ -30,5 +30,10 @@ class CoreSettingRepository
     {
         $this->model = $model;
     }
+
+    public function byType($type)
+    {
+        return $this->model->where('type',$type);
+    }
 }
 
