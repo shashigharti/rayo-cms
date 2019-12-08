@@ -49,4 +49,9 @@ class LocationHelper
         }
         return $locations;
     }
+
+    public function getName($type,$id)
+    {
+        return $this->$type->where('id',$id)->first()->name;
+    }
 }

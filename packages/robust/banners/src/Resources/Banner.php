@@ -50,6 +50,7 @@ class Banner extends JsonResource
             'content' => isset($blocks['content']) ? $blocks['content'] : '',
             'image' => isset($blocks['image'])  ? $blocks['image'] : '',
             'property_counts' =>isset($blocks['property_counts']) ? $blocks['property_counts'] : [],
+            'location_type' => $blocks['location_type'] ?? ''
         ];
     }
 }

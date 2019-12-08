@@ -122,6 +122,7 @@ class BannerController extends Controller
             'content' => $data['content'] != null ? $data['content'] : '',
             'image' => $data['image'] != null ? $data['image'] : '',
             'property_counts' => $data['property_counts'] != null ? $data['property_counts'] : [],
+            'location_type' => $data['location_type'] ?? ''
         ];
     }
     /**
