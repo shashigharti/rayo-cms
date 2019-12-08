@@ -30,4 +30,13 @@ class ZipRepository
     {
         $this->model = $model;
     }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function getById($id)
+    {
+        return $this->model->where('id',$id);
+    }
 }
