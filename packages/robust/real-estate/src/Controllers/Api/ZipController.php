@@ -48,6 +48,14 @@ class ZipController extends Controller
         ];
     }
 
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function dropdown()
+    {
+        $data = $this->model->select(['id','name'])->get();
+        return response()->json(['data' => $data]);
+    }
 }
 
 

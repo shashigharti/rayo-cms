@@ -48,6 +48,15 @@ class CountyController extends Controller
             'slug' => 'required|max:255',
         ];
     }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function dropdown()
+    {
+        $data = $this->model->select(['id','name'])->get();
+        return response()->json(['data' => $data]);
+    }
 }
 
 
