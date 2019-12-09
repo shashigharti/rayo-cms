@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRealEstateGuests extends Migration
+class CreateRealListingImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,13 @@ class CreateRealEstateGuests extends Migration
      */
     public function up()
     {
-        //guest_users we can add it to users table as morph
-        Schema::create('real_estate_guests', function (Blueprint $table) {
+        Schema::create('real_listing_images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('ip_addr', 191)->unique();
-            $table->string('lead_type', 191);
+            $table->integer('listing_id');
+            $table->string('image_id',50)->nullable();
+            $table->text('url');
+            $table->string('type');
+            $table->string('modified',150)->nullable();
             $table->timestamps();
         });
     }
@@ -29,6 +31,6 @@ class CreateRealEstateGuests extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('real_estate_guests');
+        Schema::dropIfExists('real_listing_images');
     }
 }

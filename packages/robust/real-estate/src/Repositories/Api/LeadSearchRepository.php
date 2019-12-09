@@ -4,25 +4,25 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\UserSearch;
+use Robust\RealEstate\Models\LeadSearch;
 
 /**
- * Class UserSearchRepository
+ * Class LeadSearchRepository
  * @package Robust\RealEstate\Repositories\Admin
  */
-class UserSearchRepository
+class LeadSearchRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
     /**
-     * @var UserSearch
+     * @var LeadSearch
      */
     protected $model;
 
     /**
-     * UserSearchRepository constructor.
-     * @param UserSearch $model
+     * LeadSearchRepository constructor.
+     * @param LeadSearch $model
      */
-    public function __construct(UserSearch $model)
+    public function __construct(LeadSearch $model)
     {
         $this->model=$model;
     }

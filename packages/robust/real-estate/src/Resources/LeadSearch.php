@@ -6,10 +6,10 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 
 /**
- * Class UserSearch
+ * Class LeadSearch
  * @package Robust\Leads\Resources
  */
-class UserSearch extends JsonResource
+class LeadSearch extends JsonResource
 {
     /**
      * Transform the resource collection into an array.

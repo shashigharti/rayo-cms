@@ -356,7 +356,7 @@
 </section>
 
 @if(Auth::check())
-<div id="emailModal" class="modal">
+<div id="emailModal" class="modal listing--modal">
     <form method="post" id="email-form" action="" data-url="{{route('website.realestate.email.friend',['id' => $result->id])}}">
         @csrf
         <div class="row modal-header">
@@ -377,8 +377,11 @@
                 <p>I found a property at {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
                 @if($result->images() && $result->images()->first())
                     @set('first_image',$result->images()-first())
-                    <img src="{{$first_image->listing_url}}" alt="">
+
                 @endif
+                <div class="email-modal-image">
+                    <img src="http://cdn.photos.sparkplatform.com/bc/20191202010414020863000000-o.jpg" alt="">
+                </div>
             </div>
             <div class="form-group row">
                 <textarea  name="message" class="form-control" placeholder="Type your message here" required=""></textarea>
