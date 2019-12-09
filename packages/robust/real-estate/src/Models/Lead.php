@@ -42,32 +42,17 @@ class Lead extends Authenticatable
      */
     protected $fillable = [
         'id',
-        'username',
-        'firstname',
-        'lastname',
-        'email',
-        'password',
+        'first_name',
+        'last_name',
+        'phone_number',
         'open_password',
         'agent_id',
-        'phone_number',
-        'phone_number_2',
-        'phone_number_3',
-        'verified_phone_number',
-        'address',
-        'ip',
-        'verified_email',
-        'avatar',
-        'user_type',
-        'city',
-        'state',
-        'additional_email',
-        'contact_status',
-        'zip',
         'deal_type',
+        'last_active',
         'activation_status',
-        'default_alert_frequency',
-        'created_at',
-        'updated_at'
+        'status_id',
+        'ip',
+        'agent_partner_assigned',
     ];
 
     /**
@@ -91,7 +76,7 @@ class Lead extends Authenticatable
      */
     public function bookmarks()
     {
-        return $this->hasMany(BookMark::class);
+        return $this->hasMany(LeadBookMark::class);
     }
 
     /**
@@ -162,7 +147,7 @@ class Lead extends Authenticatable
      */
     public function note()
     {
-        return $this->hasMany(Note::class, 'lead_id', 'id')->latest();
+        return $this->hasMany(LeadNote::class, 'lead_id', 'id')->latest();
     }
 
     /**
@@ -170,7 +155,7 @@ class Lead extends Authenticatable
      */
     public function notes()
     {
-        return $this->hasMany(Note::class, 'lead_id', 'id');
+        return $this->hasMany(LeadNote::class, 'lead_id', 'id');
     }
 
     /**
@@ -203,7 +188,7 @@ class Lead extends Authenticatable
      */
     public function calls()
     {
-        return $this->hasMany(Call::class,'lead_id');
+        return $this->hasMany(LeadCall::class,'lead_id');
     }
 
     /**
@@ -211,7 +196,7 @@ class Lead extends Authenticatable
      */
     public function rating()
     {
-        return $this->hasOne(Rating::class,'lead_id');
+        return $this->hasOne(LeadRating::class,'lead_id');
     }
 
     /**
@@ -219,7 +204,7 @@ class Lead extends Authenticatable
      */
     public function replies()
     {
-        return $this->hasMany(Replies::class,'lead_id');
+        return $this->hasMany(LeadEmailReply::class,'lead_id');
     }
 
     /**

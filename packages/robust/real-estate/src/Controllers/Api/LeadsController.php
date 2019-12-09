@@ -10,7 +10,7 @@ use Robust\Core\Controllers\Admin\Traits\UserTrait;
 use Robust\RealEstate\Models\Lead;
 use Robust\RealEstate\Models\LeadCategory;
 use Robust\RealEstate\Models\LeadMetadata;
-use Robust\RealEstate\Models\Note;
+use Robust\RealEstate\Models\LeadNote;
 use Robust\RealEstate\Models\Status;
 use Robust\RealEstate\Models\UserSearch;
 use Robust\RealEstate\Repositories\Api\LeadRepositories;
@@ -221,11 +221,11 @@ class LeadsController extends Controller
 
     /**
      * @param Request $request
-     * @param Note $note
+     * @param LeadNote $note
      * @param LeadMetadata $leadMetadata
      * @return \Illuminate\Http\JsonResponse
      */
-    public function addNote(Request $request, Note $note, LeadMetadata $leadMetadata)
+    public function addNote(Request $request, LeadNote $note, LeadMetadata $leadMetadata)
     {
         $user = auth()->user();
         $data = $request->only(['lead_id', 'note_title', 'note']);
@@ -255,11 +255,11 @@ class LeadsController extends Controller
 
     /**
      * @param Request $request
-     * @param Note $note
+     * @param LeadNote $note
      * @param LeadMetadata $leadMetadata
      * @return \Illuminate\Http\JsonResponse
      */
-    public function deleteNote(Request $request, Note $note, LeadMetadata $leadMetadata)
+    public function deleteNote(Request $request, LeadNote $note, LeadMetadata $leadMetadata)
     {
         $note_id = $request->note_id;
         $lead_id = $request->lead_id;
@@ -286,11 +286,11 @@ class LeadsController extends Controller
 
     /**
      * @param Request $request
-     * @param Note $noteModel
+     * @param LeadNote $noteModel
      * @param LeadMetadata $leadMetadata
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateNote(Request $request, Note $noteModel, LeadMetadata $leadMetadata)
+    public function updateNote(Request $request, LeadNote $noteModel, LeadMetadata $leadMetadata)
     {
         $noteModel->where('id', $request->note_id)->update([
             'title' => $request->note_title,

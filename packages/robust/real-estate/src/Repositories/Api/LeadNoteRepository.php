@@ -4,7 +4,7 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\Note;
+use Robust\RealEstate\Models\LeadNote;
 
 
 /**
@@ -14,7 +14,7 @@ use Robust\RealEstate\Models\Note;
 class LeadNoteRepository
 {
     /**
-     * @var Note
+     * @var LeadNote
      */
     protected $model;
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
@@ -22,9 +22,9 @@ class LeadNoteRepository
 
     /**
      * LeadNoteRepository constructor.
-     * @param Note $model
+     * @param LeadNote $model
      */
-    public function __construct(Note $model)
+    public function __construct(LeadNote $model)
     {
         $this->model = $model;
     }

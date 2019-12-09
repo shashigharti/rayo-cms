@@ -22,11 +22,8 @@ class County extends BaseModel
     protected $fillable = [
         'name',
         'slug',
-        'frontpage',
-        'dropdown',
         'active',
         'sold',
-        'frontpage_order',
         'menu_order',
         'latitude',
         'longitude'

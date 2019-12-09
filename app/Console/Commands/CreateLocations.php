@@ -8,7 +8,7 @@ use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\Zip;
 use Robust\RealEstate\Models\Area;
 use Robust\RealEstate\Models\HighSchool;
-use Robust\RealEstate\Models\ElemSchool;
+use Robust\RealEstate\Models\ElementarySchool;
 use Robust\RealEstate\Models\MiddleSchool;
 use Robust\RealEstate\Models\Grid;
 use Robust\RealEstate\Models\Subdivision;
@@ -39,7 +39,7 @@ class CreateLocations extends Command
      * @return mixed
      */
     public function handle()
-    {        
+    {
        // Read params
         $location_types = $this->option('type', []);
 
@@ -73,12 +73,12 @@ class CreateLocations extends Command
 
     /**
      * Create new locations
-     * 
+     *
      * @param String $location_type_field
      * @param String $attr
      */
     private function AddRemoveLocations($location_type_field, $attr)
-    {       
+    {
         // Read from config : settings
         $excluded_locations = collect([
             'counties' => [],
@@ -97,7 +97,7 @@ class CreateLocations extends Command
         ->distinct()
         ->pluck($location_type_field)->toArray();
 
-        
+
         $new_locations = collect(array_udiff($locations, $existing_locations, 'strcasecmp'));
 
         // Filter excluded locations and get new array of locations
@@ -105,7 +105,7 @@ class CreateLocations extends Command
             $isExcluded = false;
             foreach($excluded_locations as $ex_locations){
                 $isExcluded = \Arr::has( $ex_locations, $location);
-            }            
+            }
             return !$isExcluded? [
                     'name' =>  $location,
                     'slug' => str_slug($location, '-')
@@ -118,6 +118,6 @@ class CreateLocations extends Command
         if($new_locations_arr->count() > 0){
             $locations_added = \DB::table($attr['table_name'])->insert($new_locations_arr->toArray());
             $this->info('Created Locations:' . ((bool) $locations_added));
-        }            
+        }
     }
 }

@@ -20,6 +20,6 @@ class Area extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'slug','frontpage', 'active', 'sold', 'frontpage_order', 'menu_order', 'hide_subdivs',
+        'name', 'slug', 'active', 'sold', 'menu_order', 'sub_divs',
     ];
 }

@@ -21,7 +21,7 @@ class LeadFavourites extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_user_favourites';
+    protected $table = 'real_estate_lead_favourites';
 
     /**
      * @var array

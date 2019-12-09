@@ -24,6 +24,7 @@ class MiddleSchool extends BaseModel
         'slug',
         'active',
         'sold',
+        'status'
     ];
 
 }

@@ -14,7 +14,7 @@ class CoreEmailTemplate extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_core_email_templates';
+    protected $table = 'real_estate_email_templates';
     /**
      * @var array
      */
