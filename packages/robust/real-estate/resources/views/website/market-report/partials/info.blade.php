@@ -2,12 +2,15 @@
     <div class="col s12">
         <div class="inner--title text-center">
             <h1>Market Reports</h1>
-            <p>Serious about real state? Size up the market like a retalor using up to date MLS data!</p>
+            <p>Serious about real Estate? Size up the market like a retalor using real MLS data! Research the properties that have recently sold</p>
             <p class="sub--inner">
                 <b>Sellers-</b>
-                Research your neighborhood to list your home for the right price.&nbsp;
+                this information can help you to list your home for the right price.&nbsp;
                 <b>Buyers-</b>
-                Research all neighborhoods in your price range
+                Find and Research neighborhoods in your price range.
+                &nbsp;
+                <b>Research by-</b>
+                City , Zip Code , School District.
             </p>
         </div>
     </div>
