@@ -167,6 +167,12 @@
 }
 
 #adv-search-dropdown {
+    a.advance-search_close {
+        position: absolute;
+        right: 7px;
+        top: 10px;
+        color: #fff;
+    }
   input.select-dropdown.dropdown-trigger {
     font-weight: bold;
     font-size: 10px;

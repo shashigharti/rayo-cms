@@ -5,6 +5,9 @@
         <form method="post" action="{{route('website.realestate.search')}}">
             @csrf
             <div class="inner">
+
+                <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
+
                 <div class="row">
                     @include(Site::templateResolver('core::website.advance-search.first-block'),['blocks' => $blocks['first_block']])
                     @include(Site::templateResolver('core::website.advance-search.second-block'),['blocks' => $blocks['second_block']])
