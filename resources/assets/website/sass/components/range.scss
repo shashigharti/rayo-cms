@@ -32,6 +32,13 @@
       background: white;
       white-space: nowrap;
       line-height: 1;
+      &.low{
+        left:0px !important;
+      }
+      &.high{
+        left:auto !important;
+        right:0 !important;
+      }
     }
 
     .focused {

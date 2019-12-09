@@ -26,7 +26,11 @@ $(window).load(function () {
         autoplay:true,
         dots:false
     });
-
+   $(".right-icon").click(function(){
+        $("#thebar").toggleClass("change fix");
+        $('.arrow').html($('.arrow').text()== 'keyboard_arrow_right' ? 'keyboard_arrow_left' : 'keyboard_arrow_right');
+        $(".search--main--content").toggleClass("page page-slide");
+    });
     $('.inner-list-tabs').tabs();
 	$('select').formSelect();
 	$('.tabs').tabs();

@@ -936,6 +936,7 @@ i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
+.slider-container .back-bar .pointer-label.low{left:0 !important}.slider-container .back-bar .pointer-label.high{left:auto !important;right:0 !important}
 .slider-container .back-bar .focused{z-index:10}.slider-container .clickable-dummy{cursor:pointer;position:absolute;width:100%;height:100%;z-index:1}
 .slider-container .scale{top:2px;position:relative}.slider-container .scale span{position:absolute;height:5px;border-left:1px solid #999;font-size:0}
 .slider-container .scale ins{font-size:9px;text-decoration:none;position:absolute;left:0;top:5px;color:#999;line-height:1}
@@ -1018,7 +1019,22 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .comment--section .theme-btn{width:130px;margin-left:0;-webkit-box-shadow:1px 1px 4px 1px #777;box-shadow:1px 1px 4px 1px #777;padding:0;margin-top:10px}
 .area--list--block a{font-size:12px;color:#232222;font-weight:500}.area--list--block a:hover{color:#007bff}
 .bottom-text{margin:20px 0;padding-top:20px;border-top:1px solid #777;color:#777;font-size:13px;font-weight:500;line-height:23px}
-.advertisement h4.sub-title{margin-top:0}.inner--title{margin:40px 0}.inner--title h1{font-size:30px;color:#555;margin-bottom:10px;font-weight:600}
+.advertisement h4.sub-title{margin-top:0}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
+.search--right--section{position:absolute;top:440px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:385px}
+.search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block .intro--section{margin:50px 0}
+.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
+.search--right--section .right--single--block .intro--section p{color:#777;font-size:14px}
+.search--right--section .right--single--block .data--section table{width:100%;color:#111}
+.search--right--section .right--single--block .data--section table td{padding:10px 0 10px 5px;border-bottom:0;border:1px solid #777}
+.search--right--section .right--single--block .data--section table label{font-weight:600;margin-bottom:0;font-size:13px}
+.search--right--section .right--single--block .comment--section{border:1px solid #ccc;padding:15px 15px 30px;margin:50px 0;background:#fff}
+.search--right--section .right--single--block .comment--section p{font-size:14px;color:#777;font-weight:500;line-height:25px}
+.search--right--section .right--single--block .comment--section textarea{width:100%;height:63px;padding:9px;font-size:14px;color:#777}
+.search--right--section .right--single--block .comment--section span{font-size:12px;vertical-align:text-top;display:inline-block;color:#777}
+.search--right--section .right--single--block .comment--section .theme-btn{width:130px;margin-left:0;-webkit-box-shadow:1px 1px 4px 1px #777;box-shadow:1px 1px 4px 1px #777}
+.inner--title{margin:40px 0}.inner--title h1{font-size:30px;color:#555;margin-bottom:10px;font-weight:600}
 .inner--title p{font-size:14px;color:#484646;font-weight:500;margin-bottom:6px;font-weight:500}
 .inner--title p.sub--inner{font-size:11px;font-weight:400}.page--info p{font-size:13px;color:#555;margin-bottom:8px}
 .page--info a{color:#555;text-decoration:none}.page--info h2{font-size:24px;color:#737171;font-weight:400;margin-bottom:20px}
