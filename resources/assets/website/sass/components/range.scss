@@ -55,13 +55,13 @@
   }
 
   .scale {
-    top: 2px;
+    top: -10px !important;
     position: relative;
 
     span {
       position: absolute;
       height: 5px;
-      border-left: 1px solid #999;
+      border-left:0;
       font-size: 0;
     }
 
@@ -132,9 +132,6 @@
   }
 
   .scale {
-    span {
-      border-left: 1px solid #e5e5e5;
-    }
 
     ins {
       color: #999;
