@@ -27,8 +27,8 @@
         {{--END FAVICONS--}}
 
         <!-- Fonts -->
-        
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">       
+
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">

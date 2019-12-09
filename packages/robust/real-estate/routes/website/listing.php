@@ -23,6 +23,12 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
 
+        Route::get('//homes-for-sale/{type}/{value}/{id}',[
+            'name' =>'Similar Listing',
+            'as' => 'listings.similar',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
+        ]);
+
         Route::get('/homes-for-sale/city/{city}',[
             'name' =>'Homes for sale in',
             'as' => 'city',

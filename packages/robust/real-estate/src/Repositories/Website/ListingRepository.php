@@ -39,7 +39,6 @@ class ListingRepository
         $this->model = $model;
     }
 
-
     /**
      * @param null $status
      * @return mixed

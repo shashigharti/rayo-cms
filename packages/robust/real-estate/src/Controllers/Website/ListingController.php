@@ -72,6 +72,10 @@ class ListingController extends Controller
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function search(Request $request)
     {
         $data = $request->all();
@@ -109,8 +113,24 @@ class ListingController extends Controller
      */
     public function byCityPrice($city, $price)
     {
-        $results =  $this->model->getListingByPrice('city',$city,$price)->paginate(40);
-        $total = $this->model->getListingByType('city',$city,null)->count();
+        $results =  $this->model->getListingByPrice('city_id',$city,$price)->paginate(40);
+        $total = $this->model->getListingByType('city_id',$city,null)->count();
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+    }
+
+    /**
+     * @param $type
+     * @param $value
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getSimilarProperty($type, $value, $id)
+    {
+        $price = $this->model->find($id)->system_price;
+        $results = $this->model->getCountByType($type,$value)
+                ->where('system_price', '>' ,$price - 50000)
+                ->where('system_price', '<', $price + 50000)
+                ->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 }

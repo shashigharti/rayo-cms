@@ -263,33 +263,46 @@
                         </div>
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
+                                @set('href',Auth::check() ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
-                                    <a href="#" class="btn btn-success left-button not_authenticated">
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">star</i></span> Save to Favorites
                                     </a>
                                 </div>
+                                @set('href',Auth::check() ? '#emailModal' : '#registermodal')
                                 <div class="col s6 padding-left-0 padding-right-0">
-                                    <a href="#" class="btn btn-success right-button not_authenticated">
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">email</i></span> Email a friend
                                     </a>
                                 </div>
+                                @set('href',Auth::check() ? route('website.realestate.leads.requests',['id' => $result->id]) : '#registermodal')
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
-                                    <a href="#" class="btn btn-success not_authenticated"> Schedule a Viewing </a>
+                                    <a href='{{$href}}' class="schedule--viewing btn btn-success left-button not_authenticated modal-trigger"> Schedule a Viewing </a>
+                                </div>
+                                @set('href',Auth::check() ? '#noteModal' : '#registermodal')
+                                <div class="col s6 padding-left-0 padding-right-0">
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Rate Property/My Notes </a>
+                                </div>
+                                @set('href',Auth::check() ? '#infoModal' : '#registermodal')
+                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Get more Property Info </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
-                                    <a href="#" class="btn btn-success right-button not_authenticated"> Rate Property/My Notes </a>
+                                    <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Print this listing </a>
                                 </div>
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
-                                    <button  class="btn btn-success right-button not_authenticated" > Get more Property Info </button>
+                                    <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email if Property Sells </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
-                                    <a href="#"	class="btn btn-success right-button not_authenticated"> Print this listing </a>
+                                    <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email Price Changes </a>
                                 </div>
+                                @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'zip_id','value' => $result->zip_id,'id'=>$result->id]) : '#registermodal')
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
-                                    <a  href="#" class="btn btn-success right-button not_authenticated"> Email if Property Sells </a>
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show Similar Priced Props in this zip </a>
                                 </div>
+                                @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'subdivision_id','value' => $result->subdivision_id,'id'=>$result->id]) : '#registermodal')
                                 <div class="col s6 padding-left-0 padding-right-0">
-                                    <a href="#" class="btn btn-success right-button not_authenticated"> Email Price Changes </a>
+                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show other props in subdivision</a>
                                 </div>
                             </div>
                         </div>
@@ -342,3 +355,86 @@
     </div>
 </section>
 
+@if(Auth::check())
+<div id="emailModal" class="modal">
+    <form method="post" id="email-form" action="" data-url="{{route('website.realestate.email.friend',['id' => $result->id])}}">
+        @csrf
+        <div class="row modal-header">
+            <button type="button" class="modal-close"> <span>×</span> </button>
+            <h4 class="modal-title">Show {{$result->listing_name}} To A Friend</h4>
+        </div>
+        <div class="modal-content">
+            <div class="form-group row">
+                <label>Send To Email:</label>
+                <input type="email" name="email_to" class="form-control" value="" placeholder="" required="">
+            </div>
+            <div class="form-group row">
+                <label>Subject:</label>
+                <p>Check out this interesting property</p>
+            </div>
+            <div class="form-group row">
+                <label>Message:</label>
+                <p>I found a property at {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
+                @if($result->images() && $result->images()->first())
+                    @set('first_image',$result->images()-first())
+                    <img src="{{$first_image->listing_url}}" alt="">
+                @endif
+            </div>
+            <div class="form-group row">
+                <textarea  name="message" class="form-control" placeholder="Type your message here" required=""></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"> <div class="loader-01"></div> Submit </button>
+        </div>
+    </form>
+</div>
+
+<div id="noteModal" class="modal">
+    <form method="post" action="" data-url="{{route('website.realestate.leads.notes')}}">
+        @csrf
+        <div class="row modal-header">
+            <button type="button" class="modal-close"> <span>×</span> </button>
+            <h4 class="modal-title">Add Note to Listing</h4>
+        </div>
+        <div class="modal-content">
+            <div class="form-group row">
+                <textarea type="text" name="note"></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary">Submit </button>
+        </div>
+    </form>
+</div>
+<div id="infoModal" class="modal">
+    <form method="post" id="info-form" action="" data-url="{{route('website.realestate.email.agent',['id'=>$result->id])}}">
+        @csrf
+        <div class="row modal-header">
+            <button type="button" class="modal-close"> <span>×</span> </button>
+            <h4 class="modal-title">Show {{$result->listing_name}} To A Agent</h4>
+        </div>
+        <input type="text" hidden value="{{$result->id}}" name="listing_id">
+        <div class="modal-content">
+            <div class="form-group row">
+                <label>Subject:</label>
+                <p>Send me more info about this listing</p>
+            </div>
+            <div class="form-group row">
+                <label>Message:</label>
+                <p>Please send me more info about {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
+                @if($result->images() && $result->images()->first())
+                    @set('first_image',$result->images()-first())
+                    <img src="{{$first_image->listing_url}}" alt="">
+                @endif
+            </div>
+            <div class="form-group row">
+                <textarea  name="message" class="form-control" placeholder="Comments or Questions" required=""></textarea>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="submit" class="btn btn-primary"> <div class="loader-01"></div> Submit </button>
+        </div>
+    </form>
+</div>
+@endif

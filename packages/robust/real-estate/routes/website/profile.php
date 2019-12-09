@@ -1,7 +1,7 @@
 <?php
 Route::group(['prefix' => 'profile',
     'as' => 'website.realestate.profile.',
-    'group' => 'Market Report'],
+    'group' => 'Lead Profile'],
     function () {
 
 
