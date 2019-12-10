@@ -1956,9 +1956,9 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .market--left__sort--btns .active{border:1px solid #0091ff !important;background:#0091ff;color:#fff !important}
 .market-insight__stat h4{font-size:18px;font-weight:600}.market-insight__stat .market-insight__stat-container{overflow-y:scroll;height:500px;margin-bottom:50px}
 .market-insight__stat td,.market-insight__stat th{display:table-cell;text-align:left !important;vertical-align:middle;border-radius:2px;width:auto;font-size:12px}
-.market--right__display--radio{font-weight:600;margin-top:20px}.market--right__display--radio .row{margin-bottom:5px}
-.market--right__display--radio [type="radio"]+span:before,.market--right__display--radio [type="radio"]+span:after{margin:4px 0}
-.market--right__display--radio [type="radio"]:not(:checked)+span,.market--right__display--radio [type="radio"]:checked+span{font-size:14px;color:#555;padding-left:25px}
+.market--right__display--radio{font-weight:600;margin-top:10px}.market--right__display--radio .single--block{display:inline-block;margin:0 12px}
+.market--right__display--radio .row{margin-bottom:5px}.market--right__display--radio [type="radio"]+span:before,.market--right__display--radio [type="radio"]+span:after{margin:4px 0}
+.market--right__display--radio [type="radio"]:not(:checked)+span,.market--right__display--radio [type="radio"]:checked+span{font-size:12px;color:#555;padding-left:25px}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:after{background-color:#002349}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:before,.market--right__display--radio [type="radio"].with-gap:checked+span:after{border:2px solid #002349}
 .map-section .row{margin-right:0;margin-left:0}.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}
