@@ -58,7 +58,7 @@ class ListingPriceCount extends Command
                 $properties['property_counts'] = [];
                 foreach ($prices as $key =>  $price)
                 {
-                    $properties['property_counts'][$price]  = $this->listing->getListingByPrice('city',$location,$price)->count();
+                    $properties['property_counts'][$price]  = $this->listing->getListingByPrice('city_id',$location,$price)->count();
                     $block->update(['properties' => json_encode($properties)]);
                 }
             }
