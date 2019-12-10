@@ -25,10 +25,8 @@ class Zip extends BaseModel
         'county_id',
         'dropdown',
         'slug',
-        'frontpage',
         'active',
         'sold',
-        'frontpage_order',
         'menu_order',
         'latitude',
         'longitude'

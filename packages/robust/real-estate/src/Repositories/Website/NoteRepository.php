@@ -4,7 +4,7 @@ namespace Robust\RealEstate\Repositories\Website;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\Note;
+use Robust\RealEstate\Models\LeadNote;
 
 
 /**
@@ -17,16 +17,16 @@ class NoteRepository
 
 
     /**
-     * @var Note
+     * @var LeadNote
      */
     protected $model;
 
 
     /**
      * NoteRepository constructor.
-     * @param Note $model
+     * @param LeadNote $model
      */
-    public function __construct(Note $model)
+    public function __construct(LeadNote $model)
     {
         $this->model = $model;
     }

@@ -15,9 +15,9 @@ class CreateRealEstateLeadRequestsTable extends Migration
     {
         Schema::create('real_estate_lead_requests', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('lead_id');
-            $table->integer('agent_id');
-            $table->integer('listing_id');
+            $table->integer('lead_id')->unsigned()->nullable()->index('lead_requests_lead_id_foreign');
+            $table->integer('agent_id')->unsigned()->nullable()->index('lead_requests_agent_id_foreign');
+            $table->integer('listing_id')->unsigned()->nullable()->index('lead_requests_listing_id_foreign');
             $table->string('type',50);
             $table->string('status',50);
             $table->string('subject')->nullable();

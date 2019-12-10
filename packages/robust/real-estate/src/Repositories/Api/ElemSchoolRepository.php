@@ -4,7 +4,7 @@ namespace Robust\RealEstate\Repositories\Api;
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\ElemSchool;
+use Robust\RealEstate\Models\ElementarySchool;
 
 
 /**
@@ -16,16 +16,16 @@ class ElemSchoolRepository
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
-     * @var ElemSchool
+     * @var ElementarySchool
      */
     protected $model;
 
 
     /**
      * ElemSchoolRepository constructor.
-     * @param ElemSchool $model
+     * @param ElementarySchool $model
      */
-    public function __construct(ElemSchool $model)
+    public function __construct(ElementarySchool $model)
     {
         $this->model = $model;
     }

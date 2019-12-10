@@ -15,7 +15,7 @@ class ListingDetail extends Command
     /**
      * @var string
      */
-    protected $signature = 'real-estate:listing-detail';
+    protected $signature = 'rws:listing-detail';
     /**
      * @var CoreSettingRepository
      */

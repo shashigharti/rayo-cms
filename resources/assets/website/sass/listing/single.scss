@@ -395,6 +395,7 @@ a.single--listing--button_back{
 .advertisement h4.sub-title {
   margin-top: 0px;
 }
+
 .distance--block{
     margin-bottom: 40px;
     .get-distance-container {
@@ -432,6 +433,11 @@ a.single--listing--button_back{
 
 }
 
+.more-property-detail {
+    .detail-block {
+        margin: 0px 0px;
+    }
+}
 
 button.get-distance {
     border-radius: 0px;

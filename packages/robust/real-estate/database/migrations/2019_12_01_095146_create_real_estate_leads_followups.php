@@ -20,7 +20,7 @@ class CreateRealEstateLeadsFollowups extends Migration
             $table->date('date');
             $table->integer('agent_id');
             $table->integer('assigned_by')->nullable();
-            $table->text('note', 65535);
+            $table->text('note');
             $table->timestamps();
         });
     }

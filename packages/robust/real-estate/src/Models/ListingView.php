@@ -23,6 +23,6 @@ class ListingView extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'lead_id', 'listing_id','count',
+        'lead_id', 'listing_id','count','agent_notified'
     ];
 }

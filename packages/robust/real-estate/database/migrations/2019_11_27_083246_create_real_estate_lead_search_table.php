@@ -18,7 +18,7 @@ class CreateRealEstateLeadSearchTable extends Migration
             $table->integer('lead_id');
             $table->string('name')->nullable();
             $table->string('frequency')->nullable();
-            $table->text('content', 65535);
+            $table->text('content');
             $table->dateTime('reference_time')->nullable();
             $table->timestamps();
         });

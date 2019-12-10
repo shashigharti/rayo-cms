@@ -27,7 +27,10 @@ class Activity extends BaseModel
         'log_name',
         'description',
         'causer_id',
-        'causer_type'
+        'causer_type',
+        'subject_id',
+        'subject_type',
+        'properties'
     ];
 
 }

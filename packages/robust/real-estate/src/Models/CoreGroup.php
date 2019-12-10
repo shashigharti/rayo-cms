@@ -14,7 +14,7 @@ class CoreGroup extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_core_groups';
+    protected $table = 'real_estate_lead_groups';
 
     /**
      * @var bool

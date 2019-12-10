@@ -1911,8 +1911,8 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .distance--block .get-distance-container .input-group-prepend{display:inline-block;vertical-align:middle;margin-top:0;margin-left:0}
 .distance--block .get-distance-container .input-group-prepend .btn,.distance--block .get-distance-container .input-group-prepend .btn-large,.distance--block .get-distance-container .input-group-prepend .btn-small{border:0;color:#fff}
 .distance--block .gmap_canvas{width:100%}.distance--block .gmap_canvas iframe{width:100%}
-.distance--block .mapouter{width:97%}button.get-distance{border-radius:0;background-color:#002349}
-.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.distance--block .mapouter{width:97%}.more-property-detail .detail-block{margin:0}
+button.get-distance{border-radius:0;background-color:#002349}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
 .search--right--section{position:absolute;top:468px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:406px}
