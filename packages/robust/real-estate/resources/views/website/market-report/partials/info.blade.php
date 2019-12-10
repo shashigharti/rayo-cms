@@ -13,20 +13,20 @@
                 City , Zip Code , School District.
             </p>
              <div class="market--right__display--radio">
-                <div class="center-align">
-                        <span class="single--block">
+                <div class="block--container">
+                        <span class="single--block right-align">
                           <label>
                             <input class="with-gap" name="group1" type="radio" checked />
                             <span>City</span>
                           </label>
                         </span>
-                        <span class="single--block">
+                        <span class="single--block center-align">
                           <label>
                             <input class="with-gap" name="group1" type="radio" />
                             <span>Zip Code</span>
                           </label>
                         </span>
-                        <span class="single--block">
+                        <span class="single--block left-align">
                           <label>
                             <input class="with-gap" name="group1" type="radio"  />
                             <span>School District</span>
