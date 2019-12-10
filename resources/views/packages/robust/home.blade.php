@@ -7,27 +7,25 @@
 @section('header')
     <div class="banner">
         <div class="slider">
-            @include(Site::templateResolver('core::website.banners.partials.main-banner'))
+            @include(Site::templateResolver('banners::website.main-banner'))
             <div class="banner-overlay">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="site-menu">
-                            @include(Site::templateResolver('core::website.frontpage.partials.menu'))
+                            @include(Site::templateResolver('real-estate::website.frontpage.partials.menu'))
                         </div>
                     </div>
-                    @include(Site::templateResolver('core::website.frontpage.partials.search'))
+                    @include(Site::templateResolver('real-estate::website.frontpage.partials.search'))
                 </div>
             </div>
         </div>
     </div>
-    @include(Site::templateResolver('core::website.advance-search.index'))
+    @include(Site::templateResolver('real-estate::website.advance-search.index'))
 @endsection
-@section('body_section')
-    {{-- @include(Site::templateResolver('core::website.frontpage.single-col-properties')) --}}
-    @include(Site::templateResolver('core::website.frontpage.partials.ad-banners'))
-    {{-- @include(Site::templateResolver('core::website.frontpage.cta')) --}}
+@section('body_section')    
+    @include(Site::templateResolver('real-estate::website.frontpage.partials.ad-banners'))
 @endsection
 
 @section('footer')
-    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
+    @include(Site::templateResolver('real-estate::website.frontpage.partials.footer'))
 @endsection

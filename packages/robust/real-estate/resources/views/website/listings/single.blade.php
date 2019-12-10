@@ -12,6 +12,6 @@
 @endsection
 
 @section('footer')
-    @include(Site::templateResolver('core::website.frontpage.partials.footer'))
+    @include(Site::templateResolver('real-estate::website.frontpage.partials.footer'))
 @endsection
 
