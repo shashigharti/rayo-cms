@@ -142,9 +142,11 @@
     border: 2px solid #FFF;
   }
   button.theme-btn {
-      border: 0;
-      margin-right: 5.3%;
-      width: 186px;
+    border: 0;
+    margin-right: 10px;
+    width: 93%;
+    margin-left: 10px;
+    margin-top: 16px;
   }
   .input-field > label {
     &:not(.label-icon).active {
@@ -189,6 +191,7 @@
 
   .select-wrapper {
     margin-top: 21px;
+    width:100%;
 
     + label {
       top: 0px;
