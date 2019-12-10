@@ -15,7 +15,7 @@
                     @include(Site::templateResolver('core::website.advance-search.fourth-block'),['blocks' => $blocks['fourth_block']])
                 </div>
                 <div class="row">
-                    <div class="col s12 mb-20 right-align">
+                    <div class="col s3 mb-20 right-align">
                         <button href="#" class="theme-btn" type="submit">search</button>
                     </div>
                 </div>
