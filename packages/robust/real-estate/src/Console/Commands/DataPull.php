@@ -136,7 +136,7 @@ class DataPull extends RetsCommands
             $total = $results->getTotalResultsCount();
             dump($total);
             do {
-                $results = $this->rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset]);
+                $results = $this->rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset * $this->limit]);
                 $offset+=1;
                 foreach ($results as $result){
                     $result = $result->toArray();
@@ -185,7 +185,7 @@ class DataPull extends RetsCommands
                     $info = 'Total count : ' .$total .' || ' .
                         'Updated Count : ' .$updated .' || ' .
                         'Created Count : ' .$created . '||
-                     Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count;
+                     Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count . ' || Offset : ' .$offset * $this->limit;
                     $this->info($info);
                 }
             } while($processed != $total);
