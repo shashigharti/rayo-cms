@@ -73,7 +73,7 @@ class ListingRepository
     public function getListingByType($type, $name, $count)
     {
        return  $this->model->where($type,$name)
-                ->select('id','listing_name','system_price','listing_slug')
+                ->select('id','name','system_price','slug')
                 ->where('status','Active')
                 ->where('picture_count','>',0)
                 ->orderBy('input_date','asc')

@@ -19,12 +19,12 @@
                     @set('listings',$listing_helper->getListingsByType($properties_type, $location_name, $properties_count))
                     @foreach($listings as $listing)
                         @set('first_image', $listing->images()->first())
-                        <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->listing_slug])}}">
+                        <a href="{{route('website.realestate.single',['id' => $listing->id,'name' => $listing->slug])}}">
                             <div class="single-block item">
-                                <img src={{$first_image->listing_url ?? ''}}>
+                                <img src={{$first_image->url ?? ''}}>
                                 <div class="slider--text">
                                     <h4>${{$listing->system_price}}</h4>
-                                    <p>{{$listing->listing_name ?? ''}}</p>
+                                    <p>{{$listing->name ?? ''}}</p>
                                 </div>
                             </div>
                         </a>
