@@ -76,4 +76,28 @@ class Listing extends BaseModel
         return $this->hasMany('Robust\RealEstate\Models\ListingProperty');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function elementary()
+    {
+        return $this->hasOne(ElementarySchool::class,'id','elementary_school_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function middle()
+    {
+        return $this->hasOne(MiddleSchool::class,'id','middle_school_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function high()
+    {
+        return $this->hasOne(HighSchool::class,'id','high_school_id');
+    }
+
 }

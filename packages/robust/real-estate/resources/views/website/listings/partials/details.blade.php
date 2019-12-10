@@ -15,33 +15,27 @@
                                 <span class="txt-property">Bedrooms</span>
                             </li>
                         @endif
-                        @if(isset($result->bathrooms) && !in_array($result->bathrooms,['none','None','0']))
+                        @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
                             <li>
-                                <span class="txt-num">{{$result->bathrooms}}</span><br>
+                                <span class="txt-num">{{$result->baths_full}}</span><br>
                                 <span class="txt-property">Bathrooms</span>
                             </li>
                         @endif
-                        @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                        @if(isset($properties['total_square_feet'])))
                             <li>
-                                <span class="txt-num">{{$result->total_finished_area}}</span><br>
+                                <span class="txt-num">{{$properties['total_square_feet']}}</span><br>
                                 <span class="txt-property">Square Feet</span>
                             </li>
                         @endif
-                        @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
+                        @if(isset($properties['year_built']))
                             <li>
-                                <span class="txt-num">{{$result->acres}}</span><br>
-                                <span class="txt-property">Acres</span>
-                            </li>
-                        @endif
-                        @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
-                            <li>
-                                <span class="txt-num">{{$result->year_built}}</span><br>
+                                <span class="txt-num">{{$properties['year_built']}}</span><br>
                                 <span class="txt-property">Year Built</span>
                             </li>
                         @endif
-                        @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                        @if(isset($properties['stories']))
                             <li>
-                                <span class="txt-num">{{$result->stories}}</span><br>
+                                <span class="txt-num">{{$properties['stories']}}</span><br>
                                 <span class="txt-property">Stories</span>
                             </li>
                         @endif
@@ -201,13 +195,13 @@
                                 @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
                                     <tr class="txt-descript-bold">
                                         <td> Full Baths </td>
-                                        <td >{{$result->bedrooms}} </td>
+                                        <td >{{$result->baths_full}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                                @if(isset($properties['total_square_feet']))
                                     <tr class="txt-descript-bold">
                                         <td> Square Footage </td>
-                                        <td >{{$result->total_finished_area}} </td>
+                                        <td >{{$properties['total_square_feet']}} </td>
                                     </tr>
                                 @endif
                                 @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
@@ -216,34 +210,28 @@
                                         <td >{{$result->year_built}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->lot_size) && !in_array($result->lot_size,['none','None','0']))
+                                @if(isset($properties['lot_size']))
                                     <tr class="txt-descript-bold">
                                         <td> Lot Size  </td>
-                                        <td >{{$result->lot_size}} </td>
+                                        <td >{{$properties['lot_size']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->style) && !in_array($result->style,['none','None','0']))
-                                    <tr class="txt-descript-bold">
-                                        <td> Style  </td>
-                                        <td >{{$result->style}} </td>
-                                    </tr>
-                                @endif
-                                @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                                @if(isset($properties['stories']))
                                     <tr class="txt-descript-bold">
                                         <td> Stories  </td>
-                                        <td >{{$result->stories}} </td>
+                                        <td >{{$properties['stories']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->garage_desc) && !in_array($result->garage_desc,['none','None','0']))
+                                @if(isset($properties['garage_spaces']))
                                     <tr class="txt-descript-bold">
                                         <td> Garage  </td>
-                                        <td >{{$result->garage_desc}} </td>
+                                        <td >{{$properties['garage_spaces']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->parking) && !in_array($result->parking,['none','None','0']))
+                                @if(isset($properties['parking']))
                                     <tr class="txt-descript-bold">
                                         <td> Parking  </td>
-                                        <td >{{$result->parking}} </td>
+                                        <td >{{$properties['parking']}} </td>
                                     </tr>
                                 @endif
                                 @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
@@ -320,35 +308,57 @@
                         <div class="col s4">
                             <div class="more-inner">
                                 <div class="detail-block">
-                                <p class="title-detail">{{$title}} </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                            @foreach($detail as $field)
-                                                @set('name',$field['name'])
-                                                @if(in_array($title,['School Information']))
-                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
+                                    <p class="title-detail">{{$title}} </p>
+                                    <div class="clearfix txt-descript">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                @foreach($detail as $field)
+                                                    @set('name',$field['name'])
+                                                    @if(isset($properties[$name]))
                                                         <tr>
                                                             <td>{{$field['display']}}</td>
                                                             <td>{{$properties[$name]}}</td>
                                                         </tr>
                                                     @endif
-                                                @else
-                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
-                                                        <tr>
-                                                            <td>{{$field['display']}}</td>
-                                                            <td>{{$properties[$name]}}</td>
-                                                        </tr>
-                                                    @endif
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
+                        <div class="col s4">
+                            <div class="more-inner">
+                                <div class="detail-block">
+                                    <p class="title-detail">School Info</p>
+                                    <div class="clearfix txt-descript">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            @if(isset($result->elementary_school_id))
+                                                <tr>
+                                                    <td>Elementary</td>
+                                                    <td>{{$result->elementary->name}}</td>
+                                                </tr>
+                                            @endif
+                                            @if(isset($result->middle_school_id))
+                                                <tr>
+                                                    <td>Middle</td>
+                                                    <td>{{$result->middle->name}}</td>
+                                                </tr>
+                                            @endif
+                                            @if(isset($result->high_school_id))
+                                                <tr>
+                                                    <td>High</td>
+                                                    <td>{{$result->high->name}}</td>
+                                                </tr>
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>

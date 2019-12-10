@@ -28,58 +28,61 @@ class PropertiesPull extends RetsCommands
         parent::__construct();
     }
 
-    protected $limit = 1000;
+    protected $property_class = [
+        'A' => 'Residential Property',
+        'B' => 'MultiFamily',
+        'C' => 'LotsAndLand',
+        'D' => 'CommonInterest',
+        'E' => 'Industry',
+        'F' => 'Rental',
+    ];
+
+    protected $limit = 50;
 
     public function handle()
     {
-        // cant pull 100 data at a time the server will response as bad request
-        $listings_chunked = Listing::select('id','uid')->doesnthave('property')->get()->chunk(50);
-        foreach ($listings_chunked as $listings){
-            $listing_ids = [];
-            $query = '(LIST_1=';
-            foreach ($listings as $listing){
-               $listing_ids[$listing->uid] = $listing->id;
-               if($query !== '(LIST_1='){
-                   $query .= ',';
-               }
-                $query .=  $listing->uid;
-            }
-            $query .= ')';
-            $resource = config('real-estate.data-map.property.properties.A');
-            $fields = implode(',',array_values($resource));
-            $results = $this->rets->Search('Property','A',$query,['Select'=>$fields,'Limit' =>50]);
-            foreach ($results as $result){
-                $result = $result->toArray();
-                $data = [];
-                $properties = [];
-                foreach ($resource as $key => $field)
-                {
-                    if(isset($result[$field])){
-                        $data[$key] = $result[$field];
+        $resources = config('real-estate.data-map.property.properties');
+        foreach ($resources as $class => $resource){
+            $listings_chunked = Listing::select('id','uid')
+                ->where('class',$this->property_class[$class])
+                ->doesnthave('property')
+                ->get()
+                ->chunk($this->limit);
+            foreach ($listings_chunked as $listings){
+                $listing_ids = $listings->pluck('id','uid')->toArray();
+                $query = '(LIST_1=';
+                $query .= implode(',',array_flip($listing_ids));
+                $query .= ')';
+                $fields = implode(',',array_values($resource));
+                $results = $this->rets->Search('Property',$class,$query,['Select'=>$fields,'Limit' =>$this->limit]);
+                foreach ($results as $result){
+                    $result = $result->toArray();
+                    $data = [];
+                    $properties = [];
+                    foreach ($resource as $key => $field)
+                    {
+                        if(isset($result[$field])){
+                            $data[$key] = $result[$field];
+                        }
                     }
-                }
-                foreach ($data as $key => $property)
-                {
-                    if(!in_array($property,['','none','None','Undefined'])){
-                        $properties[$key] = $property;
+                    foreach ($data as $key => $property)
+                    {
+                        if(!in_array($property,['','none','None','Undefined'])){
+                            $properties[$key] = $property;
+                        }
                     }
-                }
-                foreach ($properties as $key => $property){
-                    ListingProperty::updateOrCreate(
-                        ['listing_id' =>$listing_ids[$data['uid']],'type' => $key],
-                        [
+                    $properties_array = [];
+                    foreach ($properties as $key => $property){
+                        array_push($properties_array,[
                             'listing_id' => $listing_ids[$data['uid']],'type' => $key,'value' => $property
-                        ]
-                    );
-                    $this->info('ID : ' . $listing_ids[$data['uid']] . ' || Type : '.$key . ' || Value : ' . $property);
+                        ]);
+                    }
+                    ListingProperty::insert($properties_array);
+                    $this->info('ID : ' . $listing_ids[$data['uid']]);
                 }
             }
         }
-
-
-
-
-
+        // cant pull 100 data at a time the server will response as bad request
 
     }
 }

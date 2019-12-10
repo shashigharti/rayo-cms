@@ -142,7 +142,6 @@ class DataPull extends RetsCommands
                     $result = $result->toArray();
                     $data = [];
                     $listing_data = [];
-                    $properties = [];
 
                     //result to data with keys
                     foreach ($resource as $key => $field)
@@ -157,8 +156,6 @@ class DataPull extends RetsCommands
                             $listing_data[$field] = $data[$field];
                         }
                     }
-
-
                     // add id
                     foreach ($listing_data as $key => $data)
                     {
@@ -184,25 +181,6 @@ class DataPull extends RetsCommands
                     if($listing->wasRecentlyCreated){
                         $created+=1;
                     }
-                    //we can pull images in another command accesing uid
-//                    $images = $this->rets->GetObject('Property','HiRes',$listing->uid,"*",1 );
-//                    if(!$images->isEmpty()){
-//                        foreach ($images as $image){
-//                            $data = [];
-//                            $data = [
-//                                'listing_id' => $listing->id,
-//                                'image_id' => $image->getObjectId(),
-//                                'url' => $image->getLocation(),
-//                                'type' => $image->getContentType()
-//                            ];
-//                            ListingImages::updateOrCreate([
-//                                'listing_id' => $image->getContentId(),
-//                                'image_id' => $image->getObjectId()
-//                            ],$data);
-//                        }
-//                        $listing->update(['picture_status' => 1]);
-//                    }
-
                     $processed+=1;
                     $info = 'Total count : ' .$total .' || ' .
                         'Updated Count : ' .$updated .' || ' .
