@@ -109,7 +109,7 @@ class DataPull extends RetsCommands
     /**
      * @var int
      */
-    protected $limit = 2000; //how much data we get in single call
+    protected $limit = 50; //how much data we get in single call
 
     /**
      * @throws \PHRETS\Exceptions\CapabilityUnavailable
@@ -183,13 +183,13 @@ class DataPull extends RetsCommands
                         $created+=1;
                     }
                     $processed+=1;
-                    $info = 'Total count : ' .$total .' || ' .
+                    $info ='Processed : ' . $processed . ' || Total count : ' .$total .' || ' .
                         'Updated Count : ' .$updated .' || ' .
                         'Created Count : ' .$created . '||
                      Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count . ' || Offset : ' .$offset * $this->limit;
                     $this->info($info);
                 }
-            } while($processed != $total);
+            } while($processed < $total);
         }
 
 
