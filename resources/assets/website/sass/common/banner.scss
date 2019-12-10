@@ -141,7 +141,11 @@
   .inner {
     border: 2px solid #FFF;
   }
-
+  button.theme-btn {
+    border: 0;
+    margin-right: 97px;
+    width: 161px;
+  }
   .input-field > label {
     &:not(.label-icon).active {
       transform: none;
