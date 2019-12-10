@@ -109,7 +109,7 @@ class DataPull extends RetsCommands
     /**
      * @var int
      */
-    protected $limit = 50; //how much data we get in single call
+    protected $limit = 2000; //how much data we get in single call
 
     /**
      * @throws \PHRETS\Exceptions\CapabilityUnavailable
