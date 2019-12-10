@@ -12,6 +12,28 @@
                 <b>Research by-</b>
                 City , Zip Code , School District.
             </p>
+             <div class="market--right__display--radio">
+                <div class="center-align">
+                        <span class="single--block">
+                          <label>
+                            <input class="with-gap" name="group1" type="radio" checked />
+                            <span>City</span>
+                          </label>
+                        </span>
+                        <span class="single--block">
+                          <label>
+                            <input class="with-gap" name="group1" type="radio" />
+                            <span>Zip Code</span>
+                          </label>
+                        </span>
+                        <span class="single--block">
+                          <label>
+                            <input class="with-gap" name="group1" type="radio"  />
+                            <span>School District</span>
+                          </label>
+                        </span>               
+                </div>
+            </div>
         </div>
     </div>
 </div>

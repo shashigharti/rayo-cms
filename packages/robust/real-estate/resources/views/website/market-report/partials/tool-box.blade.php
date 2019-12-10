@@ -17,29 +17,7 @@
             <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Median" data-status="active"></span>Median $</div>
             <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Active" data-status="active"></span>Active</div>
             <div class="market--right__display-content"><span class=" btn-default show-average-data-btn btn-checkbox active" data-type="Sold" data-status="active"></span>Sold</div>
-        </div>
-        <div class="market--right__display--radio">
-            <div class="row">
-                    <span class="col s3">
-                      <label>
-                        <input class="with-gap" name="group1" type="radio" checked />
-                        <span>City</span>
-                      </label>
-                    </span>
-                    <span class="col s4">
-                      <label>
-                        <input class="with-gap" name="group1" type="radio" />
-                        <span>Zip Code</span>
-                      </label>
-                    </span>
-                    <span>
-                      <label class="col s4">
-                        <input class="with-gap" name="group1" type="radio"  />
-                        <span>School District</span>
-                      </label>
-                    </span>               
-            </div>
-        </div>
+        </div>       
     </div>
     <div class="market__btns col s12 mt-40">
         <span class="btn--label">Checkmark areas to</span>
