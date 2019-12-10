@@ -17,14 +17,7 @@ class CreateRealEstateZipsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->integer('dropdown')->nullable()->default(1);
-            $table->integer('city_id')->nullable();
-            $table->integer('county_id')->nullable();
-            $table->integer('active')->nullable();
-            $table->integer('sold')->nullable();
-            $table->integer('menu_order')->nullable();
-            $table->string('latitude', 25)->nullable();
-            $table->string('longitude', 25)->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

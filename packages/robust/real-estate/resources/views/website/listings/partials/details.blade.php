@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col s7">
                 <div class="list--inner--title">
-                    <h4>{{strtoupper($result->city)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
+                    <h4>{{strtoupper($result->city->name)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
                     <p>{{$result->subdivision}} Subdivision</p>
                 </div>
                 <div class="head-list-info">

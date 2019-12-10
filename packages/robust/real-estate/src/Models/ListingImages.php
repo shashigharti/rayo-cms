@@ -21,7 +21,7 @@ class ListingImages extends BaseModel
     /**
      * @var array
      */
-    protected $fillable = [ 'listing_id', 'image_id', 'listing_url', 'type', 'modified', 'image_id' ];
+    protected $fillable = [ 'listing_id', 'image_id', 'url', 'type', 'modified' ];
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo

@@ -18,8 +18,7 @@ class CreateRealEstateGridsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 191);
             $table->string('slug', 191);
-            $table->integer('active')->nullable();
-            $table->integer('sold')->nullable();
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

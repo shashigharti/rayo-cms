@@ -29,6 +29,7 @@ class CreateRealEstateListingsTable extends Migration
             $table->string('address_number', 15)->nullable();
             $table->string('address_street', 50)->nullable();
             $table->integer('city_id')->nullable();
+            $table->integer('zip_id')->nullable();
             $table->string('state',20)->nullable();
             $table->integer('subdivision_id')->nullable();
             $table->integer('county_id')->nullable();

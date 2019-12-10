@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRealListingImagesTable extends Migration
+class CreateRealEstateListingImages extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateRealListingImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('real_listing_images', function (Blueprint $table) {
+        Schema::create('real_estate_listing_images', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('listing_id');
             $table->string('image_id',50)->nullable();
@@ -31,6 +31,6 @@ class CreateRealListingImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('real_listing_images');
+        Schema::dropIfExists('real_estate_listing_images');
     }
 }

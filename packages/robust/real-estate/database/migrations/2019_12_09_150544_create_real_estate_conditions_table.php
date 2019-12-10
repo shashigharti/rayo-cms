@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRealEstateElementarySchoolsTable extends Migration
+class CreateRealEstateConditionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,10 @@ class CreateRealEstateElementarySchoolsTable extends Migration
      */
     public function up()
     {
-        //elem_schools
-        Schema::create('real_estate_elementary_schools', function (Blueprint $table) {
+        Schema::create('real_estate_conditions', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 191);
-            $table->string('slug', 191);
+            $table->string('name');
+            $table->string('slug');
             $table->boolean('status')->default(1);
             $table->timestamps();
         });
@@ -30,6 +29,6 @@ class CreateRealEstateElementarySchoolsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('real_estate_elementary_schools');
+        Schema::dropIfExists('real_estate_conditions');
     }
 }

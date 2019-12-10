@@ -18,9 +18,7 @@ class CreateRealEstateHighSchoolsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name', 191);
             $table->string('slug', 191);
-            $table->integer('dropdown')->default(1);
-            $table->integer('active')->nullable();
-            $table->integer('sold')->nullable();
+            $table->boolean('status')->default(1);
             $table->timestamps();
         });
     }

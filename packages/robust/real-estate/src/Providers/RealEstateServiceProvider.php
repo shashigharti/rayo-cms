@@ -19,6 +19,8 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\ListingPriceCount',
         'Robust\RealEstate\Console\Commands\ListingFeature',
         'Robust\RealEstate\Console\Commands\DataPull',
+        'Robust\RealEstate\Console\Commands\FieldsPull',
+        'Robust\RealEstate\Console\Commands\PropertiesPull',
     ];
 
 

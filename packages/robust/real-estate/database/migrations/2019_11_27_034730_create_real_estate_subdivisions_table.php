@@ -17,21 +17,7 @@ class CreateRealEstateSubdivisionsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('slug');
-            $table->integer('city_id')->nullable();
-            $table->integer('county_id')->nullable();
-            $table->integer('zip_id')->nullable();
-            $table->integer('school_district_id')->nullable();
-//            $table->integer('front_page')->nullable();
-            $table->integer('active')->nullable();
-            $table->integer('sold')->nullable();
-//            $table->integer('front_page_order')->nullable();
-            $table->integer('menu_order')->nullable();
-            $table->integer('latitude')->nullable();
-            $table->integer('longitude')->nullable();
-            $table->integer('area_id')->nullable();
-            $table->string('group_name')->nullable();
-            $table->string('group_slug')->nullable();
-            $table->boolean('visible')->default(0); //1
+            $table->boolean('status')->default(0);
             $table->timestamps();
         });
     }

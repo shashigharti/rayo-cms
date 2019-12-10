@@ -22,8 +22,6 @@ class MiddleSchool extends BaseModel
     protected $fillable = [
         'name',
         'slug',
-        'active',
-        'sold',
         'status'
     ];
 

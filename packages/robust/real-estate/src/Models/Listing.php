@@ -36,6 +36,7 @@ class Listing extends BaseModel
         'address_number',
         'address_street',
         'city_id',
+        'zip_id',
         'state',
         'subdivision_id',
         'county_id',

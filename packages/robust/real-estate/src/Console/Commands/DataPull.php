@@ -4,14 +4,16 @@
 namespace Robust\RealEstate\Console\Commands;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
+use Illuminate\Support\Str;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingImages;
+use Robust\RealEstate\Models\ListingProperty;
 
 /**
  * Class DataPull
  * @package Robust\RealEstate\Console\Commands
  */
-class DataPull extends Command
+class DataPull extends RetsCommands
 {
     /**
      * @var string
@@ -31,6 +33,9 @@ class DataPull extends Command
         parent::__construct();
     }
 
+    protected $properties = [
+
+    ];
     /**
      * @var array
      */
@@ -52,12 +57,59 @@ class DataPull extends Command
         'year_built',
         'bedrooms',
         'baths_full',
-        'days_on_mls'
+        'days_on_mls',
+        'asking_price'
+    ];
+    protected $listing_fillable = [
+        'name',
+        'slug',
+        'uid',
+        'mls_number',
+        'class',
+        'area',
+        'sub_area',
+        'borough_id',
+        'system_price',
+        'asking_price',
+        'address_number',
+        'address_street',
+        'city',
+        'zip',
+        'state',
+        'subdivision',
+        'county',
+        'elementary_school',
+        'high_school',
+        'middle_school',
+        'picture_count',
+        'picture_status',
+        'input_date',
+        'baths_full',
+        'bedrooms',
+        'status',
+     ];
+    protected $maps = [
+        'area' => 'area_id',
+        'city' => 'city_id',
+        'county' => 'county_id',
+        'zip' => 'zip_id',
+        'elementary_school' =>'elementary_school_id',
+        'high_school' => 'high_school_id',
+        'middle_school' => 'middle_school_id'
+    ];
+    protected $mapping = [
+        'city' => 'Robust\RealEstate\Models\City',
+        'county' => 'Robust\RealEstate\Models\County',
+        'area' => 'Robust\RealEstate\Models\Area',
+        'elementary_school' => 'Robust\RealEstate\Models\ElementarySchool',
+        'middle_school' => 'Robust\RealEstate\Models\MiddleSchool',
+        'high_school' => 'Robust\RealEstate\Models\HighSchool',
+        'zip' =>  'Robust\RealEstate\Models\Zip',
     ];
     /**
      * @var int
      */
-    protected $limit = 1; //how much data we get in single call
+    protected $limit = 2000; //how much data we get in single call
 
     /**
      * @throws \PHRETS\Exceptions\CapabilityUnavailable
@@ -65,19 +117,7 @@ class DataPull extends Command
      */
     public function handle()
     {
-        //using package troydavisson/phrets https://github.com/troydavisson/PHRETS
-        $url = 'http://retsgw.flexmls.com:80/rets2_3/Login';
-        $username = 'fl.rets.802025';
-        $password = 'scopa-tropy71';
-        $config = new \PHRETS\Configuration;
-        $config->setLoginUrl($url)
-            ->setUsername($username)
-            ->setPassword($password)
-            ->setRetsVersion('1.7.2');
-
-        $rets = new \PHRETS\Session($config);
-        $connect = $rets->Login();
-        $resources = config('real-estate.data-map.property');
+        $resources = config('real-estate.data-map.property.listing');
         foreach ($resources as $class => $resource)
         {
             $processed = 0;
@@ -91,29 +131,53 @@ class DataPull extends Command
             $query = '*'; //this is for accepting all data with out any condition
 
             $query = '(LIST_132='.$date .'+)'; // this is according to input date
-            $results = $rets->Search('Property',$class,$query,['Limit' =>1,'Select' => $fields]);
+            $results = $this->rets->Search('Property',$class,$query,['Select'=>'LIST_1','Limit' =>1]);
 
             $total = $results->getTotalResultsCount();
+            dump($total);
             do {
-                $results = $rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset]);
+                $results = $this->rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset]);
                 $offset+=1;
                 foreach ($results as $result){
+                    $result = $result->toArray();
                     $data = [];
-                    $result = $result->toArray(); //change to array format
+                    $listing_data = [];
+                    $properties = [];
+
+                    //result to data with keys
                     foreach ($resource as $key => $field)
                     {
                         if(isset($result[$field])){
                             $data[$key] = $result[$field];
                         }
                     }
-                    //now we have raw data needs to change some format like to integer or class names
-                    $data['class'] = $this->changePropertyClass($data['class']);
-                    foreach ($this->integer_fields as $field){
+                    //listing data
+                    foreach ($this->listing_fillable as $field){
                         if(isset($data[$field])){
-                            $data[$field] = $this->changeToInt($data[$field]);
+                            $listing_data[$field] = $data[$field];
                         }
                     }
-                    $listing = Listing::updateOrCreate(['server_listing_id' => $data['server_listing_id']],$data);
+
+
+                    // add id
+                    foreach ($listing_data as $key => $data)
+                    {
+                        if(isset($this->mapping[$key])){
+                            if(!in_array($data,['','none','None','Undefined'])){
+                                $listing_data[$this->maps[$key]] = $this->mapping[$key]::where('slug',Str::slug($data))->first()->id;
+                            }
+                        }
+                    }
+                    //check for integer fields and convert
+                    foreach ($this->integer_fields as $field){
+                        if(isset($listing_data[$field])){
+                            $listing_data[$field] = $this->changeToInt($listing_data[$field]);
+                        }
+                    }
+                    //convert values like class A
+                    $listing_data['class'] = $this->changePropertyClass($listing_data['class']);
+                    $listing = Listing::updateOrCreate(['uid' => $listing_data['uid']],$listing_data);
+
                     if($listing->wasChanged()){
                         $updated+=1;
                     }
@@ -121,28 +185,29 @@ class DataPull extends Command
                         $created+=1;
                     }
                     //we can pull images in another command accesing uid
-                    $images = $rets->GetObject('Property','HiRes',$listing->uid,"*",1 );
-                    if(!$images->isEmpty()){
-                        foreach ($images as $image){
-                            $data = [];
-                            $data = [
-                                'listing_id' => $image->getContentId(),
-                                'image_id' => $image->getObjectId(),
-                                'listing_url' => $image->getLocation(),
-                                'type' => $image->getContentType()
-                            ];
-                            ListingImages::updateOrCreate([
-                                'listing_id' => $image->getContentId(),
-                                'image_id' => $image->getObjectId()
-                            ],$data);
-                        }
-                    }
+//                    $images = $this->rets->GetObject('Property','HiRes',$listing->uid,"*",1 );
+//                    if(!$images->isEmpty()){
+//                        foreach ($images as $image){
+//                            $data = [];
+//                            $data = [
+//                                'listing_id' => $listing->id,
+//                                'image_id' => $image->getObjectId(),
+//                                'url' => $image->getLocation(),
+//                                'type' => $image->getContentType()
+//                            ];
+//                            ListingImages::updateOrCreate([
+//                                'listing_id' => $image->getContentId(),
+//                                'image_id' => $image->getObjectId()
+//                            ],$data);
+//                        }
+//                        $listing->update(['picture_status' => 1]);
+//                    }
 
                     $processed+=1;
                     $info = 'Total count : ' .$total .' || ' .
                         'Updated Count : ' .$updated .' || ' .
                         'Created Count : ' .$created . '||
-                     Resource : Property || Class : '.$class . ' || Total Images : ' . count($images);
+                     Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count;
                     $this->info($info);
                 }
             } while($processed != $total);

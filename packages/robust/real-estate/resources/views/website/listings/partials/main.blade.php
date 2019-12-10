@@ -19,11 +19,11 @@
         <div class="listing--houses">
             <div class="row">
                 @forelse($results as $result)
-                    <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->listing_slug])}}">
+                    <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
                                 @set('first_image',$result->images()->first())
-                                <img src={{$first_image ? $first_image->listing_url :  ''}}>
+                                <img src={{$first_image ? $first_image->url :  ''}}>
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
