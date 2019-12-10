@@ -47,6 +47,8 @@
         "gulp-util": "^3.0.8"
     },
     "dependencies": {
+        "material-icons": "^0.3.1",
+        "materialize-css": "^1.0.0",
         "owl.carousel": "^2.3.4",
         "require-dir": "^1.2.0",
         "tinymce": "^5.0.3"
