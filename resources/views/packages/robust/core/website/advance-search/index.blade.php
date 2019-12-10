@@ -2,8 +2,7 @@
 @set('search_settings',$setting_helper->getSettingByType('search'))
 @if(!empty($blocks))
     <div id='adv-search-dropdown'>
-        <form method="post" action="{{route('website.realestate.search')}}">
-            @csrf
+        <form method="get">
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
