@@ -18,7 +18,7 @@ class DataPull extends RetsCommands
     /**
      * @var string
      */
-    protected $signature = 'rws:data-pull';
+    protected $signature = 'rws:data-pull {days}';
 
     /**
      * @var string
@@ -117,6 +117,7 @@ class DataPull extends RetsCommands
      */
     public function handle()
     {
+        $days = $this->argument('days');
         $resources = config('real-estate.data-map.property.listing');
         foreach ($resources as $class => $resource)
         {
@@ -126,7 +127,7 @@ class DataPull extends RetsCommands
             $total = 0;
             $offset = 0;
             $fields = implode(',',array_values($resource));
-            $date = Carbon::now()->subDay(100)->toAtomString(); //only accepts atom format
+            $date = Carbon::now()->subDay($days)->toAtomString(); //only accepts atom format
             dump($date);
             $query = '*'; //this is for accepting all data with out any condition
 
