@@ -1749,9 +1749,7 @@ a,a:hover{text-decoration:none !important}.container-fluid{width:100%;margin-rig
 .overview-slider .slick-prev{left:27px;z-index:9}.overview-slider .slick-next{right:0}
 .overview-slider .slider-nav.slick-initialized .slick-slide{padding:10px;overflow:hidden;height:123px}
 .overview-slider .slider-nav .slick-slide.slick-current.slick-active img{border:4px solid #002349;opacity:1}
-.get-distance-container .input-group{display:block}.get-distance-container input.form-control{display:inline-block;width:75% !important;border:1px solid #ccc !important;padding:10px !important;height:15px !important}
-.get-distance-container .input-group-prepend{display:inline-block;vertical-align:middle;margin-top:0;margin-left:0}
-button.get-distance{border-radius:0;background-color:#002349}.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);box-shadow:inset 0 1px 1px rgba(0,0,0,0.05)}
+.well{min-height:20px;padding:19px;margin-bottom:20px;background-color:#f5f5f5;border:1px solid #e3e3e3;border-radius:4px;-webkit-box-shadow:inset 0 1px 1px rgba(0,0,0,0.05);box-shadow:inset 0 1px 1px rgba(0,0,0,0.05)}
 .well .form-group label{font-size:.8rem;color:#000;font-weight:bold}.well input.form-control{display:block;width:96%;padding:.375rem .75rem;font-size:12px;line-height:1.5;color:#495057;background-color:#fff;background-clip:padding-box;border:1px solid #ced4da;border-radius:.25rem;-webkit-transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out;transition:border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;height:20px;float:none !important}
 .radio-inline{margin-right:8px}.well [type="radio"]:not(:checked),.well [type="radio"]:checked{position:relative;opacity:1;pointer-events:none;vertical-align:middle;margin-right:2px}
 .well .btn,.well .btn-large,.well .btn-small{background-color:#002349;margin-top:10px}
@@ -1908,7 +1906,13 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .comment--section .theme-btn{width:130px;margin-left:0;-webkit-box-shadow:1px 1px 4px 1px #777;box-shadow:1px 1px 4px 1px #777;padding:0;margin-top:10px}
 .area--list--block a{font-size:12px;color:#232222;font-weight:500}.area--list--block a:hover{color:#007bff}
 .bottom-text{margin:20px 0;padding-top:20px;border-top:1px solid #777;color:#777;font-size:13px;font-weight:500;line-height:23px}
-.advertisement h4.sub-title{margin-top:0}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.advertisement h4.sub-title{margin-top:0}.distance--block{margin-bottom:40px}.distance--block .get-distance-container .input-group{display:block}
+.distance--block .get-distance-container input.form-control{display:inline-block;width:75% !important;border:1px solid #ccc !important;padding:10px !important;height:15px !important}
+.distance--block .get-distance-container .input-group-prepend{display:inline-block;vertical-align:middle;margin-top:0;margin-left:0}
+.distance--block .get-distance-container .input-group-prepend .btn,.distance--block .get-distance-container .input-group-prepend .btn-large,.distance--block .get-distance-container .input-group-prepend .btn-small{border:0;color:#fff}
+.distance--block .gmap_canvas{width:100%}.distance--block .gmap_canvas iframe{width:100%}
+.distance--block .mapouter{width:97%}button.get-distance{border-radius:0;background-color:#002349}
+.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
 .search--right--section{position:absolute;top:468px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:406px}

@@ -47,47 +47,41 @@
                         @endif
                     </ul>
                 </div>
+                <div class="distance--block">
+                    <p class="tab">Distance/Drive Time</p>
+                    <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
+                    <div class="get-distance-container">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"  placeholder="destination address ... ">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-default get-distance" type="button">Get distance</button>
+                            </div>
+                        </div>
+                        <div class="map--block">
+                            <div class="mapouter"><div class="gmap_canvas"><iframe height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.org">embedgooglemap.org</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+                        </div>
+                    </div>
+                </div>
                 <div class="inner-list-tab">
                     <div class="row">
                         <div class="col s12">
                             <ul class="inner-list-tabs">
                                 <li class="tab active"><a  href="#overview">Overview</a></li>
-                                <li class="tab"><a  href="#distance">Distance/Drive Time</a></li>
+
                                 <li class="tab"><a href="#calculator">Mortage Calculator</a></li>
                             </ul>
                         </div>
                         <div id="overview" class="col s12 overview-slider ">
                             <div class="slider-for owl-carousel owl-theme">
-                                @forelse($result->images as $image)
-                                   <div class="item">
-                                       <img src="{{$image->listing_url}}" alt="{{$image->listing_id}}">
-                                   </div>
-                                @empty
-                                @endforelse
-                            </div>
-{{--                            <div class="slider-nav">--}}
 {{--                                @forelse($result->images as $image)--}}
-{{--                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>--}}
+                                   <div class="item">
+                                       <img src="http://cdn.photos.sparkplatform.com/fl/20191108213025969877000000.jpg" alt="">
+                                   </div>
 {{--                                @empty--}}
 {{--                                @endforelse--}}
-{{--                                <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>--}}
-{{--                                <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>--}}
-{{--                            </div>--}}
-                        </div>
-                        <div id="distance" class="col s12">
-                            <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
-                            <div class="get-distance-container">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control"  placeholder="destination address ... ">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-default get-distance" type="button">Get distance</button>
-                                    </div>
-                                </div>
-                                <div class="map--block">
-                                    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.org">embedgooglemap.org</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
-                                </div>
                             </div>
                         </div>
+
                         <div id="calculator" class="col s12">
                             <div id="m-calculator">
                                 <form id="homenote" role="form" class="well">

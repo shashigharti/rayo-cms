@@ -395,3 +395,45 @@ a.single--listing--button_back{
 .advertisement h4.sub-title {
   margin-top: 0px;
 }
+.distance--block{
+    margin-bottom: 40px;
+    .get-distance-container {
+        .input-group{
+            display:block;
+        }
+        input.form-control {
+            display: inline-block;
+            width: 75% !important;
+            border: 1px solid #ccc !important;
+            padding: 10px !important;
+            height: 15px !important;
+        }
+
+        .input-group-prepend {
+            display: inline-block;
+            vertical-align: middle;
+            margin-top: 0px;
+            margin-left: 0px;
+            .btn{
+                border:0;
+                color:#fff;
+            }
+        }
+    }
+    .gmap_canvas{
+        width: 100%;
+        iframe{
+            width: 100%;
+        }
+    }
+    .mapouter{
+        width: 97%;
+    }
+
+}
+
+
+button.get-distance {
+    border-radius: 0px;
+    background-color: #002349;
+}
