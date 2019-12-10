@@ -15,7 +15,7 @@
             </div>
         </div>
     </div>
-    <div id="market__search--lists" class="market__search--lists col 10">
+    <div id="market__search--lists" class="market__search--lists col s10">
         <div class="row">
             @foreach($records as $report)
             <div class="col m2">

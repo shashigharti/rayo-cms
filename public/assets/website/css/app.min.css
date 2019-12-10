@@ -1050,14 +1050,14 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
 .market__search--lists-item{min-height:144px}.market__search--lists-item p{margin-bottom:2px;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
 .market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
-.market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:320px;overflow-y:auto}
+.market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:655px;overflow-y:auto}
 .market__search--lists a{color:#333;text-decoration:none}.market__search--lists a:hover{color:#0b96e5}
 .market--right__search .btn--label{font-size:14px;font-weight:bold;color:#555}.mt-40{margin-top:40px}
 .market--compare--btns{display:inline-block;margin-left:10px}.btn-checkbox{height:20px;width:20px;margin-right:10px}
 .btn-default{color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;font-size:14px;line-height:1.42857;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options p{margin-bottom:18px}
 .market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__search--lists--side-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:320px}
+.market__search--lists--side-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:8px;margin-bottom:50px}
 .market__search--lists--side-nav .market--search__lists--filter{margin-bottom:15px}
 .market__search--lists--side-nav .market--search__lists--filter .btn-checkbox,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default:active:hover,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default.active:hover{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists--side-nav .market--search__lists--filter label{font-size:12px;color:#585757;width:78%;vertical-align:middle;margin-bottom:0}
