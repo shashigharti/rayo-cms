@@ -46,4 +46,18 @@ class SettingsHelper
     {
         return Setting::where('slug', $slug)->first();;
     }
+
+    /**
+     * @param $slug
+     * @return array|mixed
+     */
+    public function getValuesBySlug($slug)
+    {
+        $values = [];
+        $setting = Setting::where('slug',$slug)->first();
+        if($setting){
+            $values = json_decode($setting->values,true);
+        }
+        return $values;
+    }
 }

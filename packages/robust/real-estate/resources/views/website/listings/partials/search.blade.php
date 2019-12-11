@@ -60,5 +60,5 @@
 </div>
 
 <div class="listing--advance_search">
-    @include(Site::templateResolver('core::website.advance-search.index'))
+    @include(Site::templateResolver('real-estate::website.advance-search.index'))
 </div>

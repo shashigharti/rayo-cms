@@ -1,5 +1,5 @@
-@set('blocks',$setting_helper->getSettingByType('search-block'))
-@set('search_settings',$setting_helper->getSettingByType('search'))
+@set('blocks',$setting_helper->getValuesBySlug('search-block'))
+@set('search_settings',$setting_helper->getValuesBySlug('search'))
 @if(!empty($blocks))
     <div id='adv-search-dropdown'>
         <form method="get">

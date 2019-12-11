@@ -1,9 +1,15 @@
-@extends(Site::templateResolver('core::website.layouts.default'))
+@extends(Site::templateResolver('real-estate::website.layouts.default'))
 @inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')
-    @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
+    <header class="sub-header">
+        <div class="container-fluid">
+            <div class="site-menu">
+                @include(Site::templateResolver('real-estate::website.frontpage.partials.menu'))
+            </div>
+        </div>
+    </header>
 @endsection
 @section('body_section')
     <section class="market market-insight main-content" data-page='{{$page_type}}'>
