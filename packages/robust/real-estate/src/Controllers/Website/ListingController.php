@@ -79,6 +79,7 @@ class ListingController extends Controller
     public function search(Request $request)
     {
         $data = $request->all();
+        dd($data);
         // if(isset($data['searchType']) && $data['searchType'] == 'search')
         // {
         //     $prices = explode(',',$data['price']);

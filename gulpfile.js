@@ -3,11 +3,9 @@ process.env.DISABLE_NOTIFIER = true;
 var gulp = require('gulp'),
     notify = require('gulp-notify'),
     del = require('del'),
-    requireDir = require('require-dir'),
-    htmlmin = require('gulp-htmlmin');
+    requireDir = require('require-dir');
 
 var tasks = requireDir('./gulp-tasks');
-//gulp.task('admin', tasks.admin);
 gulp.task('website', tasks.website);
 //gulp.task('imagemin', tasks.imagemin);
 // gulp.task('watch', function () {

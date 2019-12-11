@@ -1,3 +1,4 @@
+@set('action', request()->route()->getName() === 'website.home'?route('website.realestate.homes-for-sale'):'')
 <div class="listing--search  search-section">
     <div class="row">
         <div class="col s2 center-align">
@@ -6,7 +7,7 @@
         </div>
 
         <div class="col s8">
-            <form method="post" action="{{route('website.realestate.search')}}">
+            <form method="post" action="{{$action}}">
                 <div class="row">
                     <div class="col s4 range-bar">
                         <p>PRICE</p>
