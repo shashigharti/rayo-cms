@@ -13,7 +13,10 @@ class ComposerServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        View::composer(['real-estate::website.*'], 'Robust\RealEstate\Composers\FrontendHelperComposer');
+        View::composer([
+            'real-estate::website.listings.*',
+            'real-estate::website.home'
+        ], 'Robust\RealEstate\Composers\FrontendHelperComposer');
     }
 
     /**
