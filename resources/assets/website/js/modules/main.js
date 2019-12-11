@@ -35,10 +35,7 @@ $(window).load(function () {
     $('select').formSelect();
     $('.tabs').tabs();
     $('.modal').modal();
-    $('.advance-search').click(function (e) {
-        e.preventDefault();
-        $('#adv-search-dropdown').toggleClass('show');
-    });
+
 
     const priceSlider = $('.price-range-slider');
     let min = priceSlider.data('min');
