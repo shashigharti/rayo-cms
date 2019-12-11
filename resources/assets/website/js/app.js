@@ -5,7 +5,6 @@
 //import("modules/login.js")
 //import("modules/register.js")
 //import("modules/dropdown.js")
-//import("modules/locations.js")
 //import("modules/features.js")
 //import("modules/subarea.js")
 //import("modules/note.js")
