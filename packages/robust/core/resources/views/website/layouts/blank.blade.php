@@ -40,6 +40,7 @@
 
         <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
 
         <!--[if lt IE 9]>
         <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
