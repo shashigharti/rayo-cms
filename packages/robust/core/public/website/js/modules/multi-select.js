@@ -1,8 +1,9 @@
 ;
 (function ($, FRW, window, document, undefined) {
     'use strict';
+
     $(document).ready(function ($) {
-        
-        $(".chosenSelect").chosen({no_results_text: "Oops, nothing found!"});
+        $(".multi-select").select2();
     });
+
 }(jQuery, FRW, window, document));
