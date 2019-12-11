@@ -4,7 +4,13 @@
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @set('details',$setting_helper->getSettingByType('listing-details'))
 @section('header')
-    @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
+    <header class="sub-header">
+        <div class="container-fluid">
+            <div class="site-menu">
+                @include(Site::templateResolver('real-estate::website.frontpage.partials.menu'))
+            </div>
+        </div>
+    </header>
 @endsection
 
 @section('body_section')

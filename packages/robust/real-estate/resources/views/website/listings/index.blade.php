@@ -1,9 +1,15 @@
-@extends(Site::templateResolver('core::website.layouts.default'))
+@extends(Site::templateResolver('real-estate::website.layouts.default'))
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
-@inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
+@inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')
-    @include(Site::templateResolver('real-estate::website.frontpage.partials.header'))
+    <header class="sub-header">
+        <div class="container-fluid">
+            <div class="site-menu">
+                @include(Site::templateResolver('real-estate::website.frontpage.partials.menu'))
+            </div>
+        </div>
+    </header>
 @endsection
 
 @section('body_section')

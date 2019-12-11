@@ -85,7 +85,7 @@ class LeadsController extends Controller
         $this->storeRequest = [
             'firstname' => 'required|max:255',
             'lastname' => 'required|max:255',
-            'email' => 'required|max:255|unique:real_estate_leads',
+            'email' => 'required|max:255|unique:users',
             'deal_type' => 'required',
             'username' => 'required',
             'password' => 'required',

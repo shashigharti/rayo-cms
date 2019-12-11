@@ -10,17 +10,12 @@
             <div class="form-group row">
                <label for="txtuser" class=" control-label">Firstname</label>
                <input type="text" class="form-control" placeholder="firstname"
-                     name="firstname" value="{{$lead->firstname ?? ''}}">
+                     name="firstname" value="{{$lead->first_name ?? ''}}">
             </div>
             <div class="form-group row">
                <label for="txtuser" class="control-label">Lastname</label>
                 <input type="text" class="form-control" placeholder="lastname"
-                     name="lastname" value="{{$lead->lastname}}">
-            </div>
-            <div class="form-group row">
-               <label for="inputEmail" class="control-label">Email</label>
-               <input type="email" class="form-control" name="email"
-                     placeholder="email" value="{{$lead->email}}">
+                     name="lastname" value="{{$lead->last_name}}">
             </div>
             <div class="form-group row">
                <label for="inputEmail" class="control-label">Phone</label>

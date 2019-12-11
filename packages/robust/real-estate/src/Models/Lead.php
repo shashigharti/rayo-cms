@@ -67,7 +67,7 @@ class Lead extends Authenticatable
      */
     public function favourites()
     {
-        return $this->belongsToMany(Listing::class,'real_estate_user_favourites','lead_id','listings_id')
+        return $this->belongsToMany(Listing::class,'real_estate_lead_favourites','lead_id','listings_id')
             ->withoutGlobalScopes()->withPivot(['created_at','updated_at']);
     }
 
