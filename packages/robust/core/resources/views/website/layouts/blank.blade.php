@@ -46,5 +46,6 @@
         @yield('body_content')
 
         <script src="{{ url('assets/website/js/app.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
     </body>
 </html>
