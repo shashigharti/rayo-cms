@@ -2,7 +2,7 @@
 @set('search_settings',$setting_helper->getValuesBySlug('search'))
 @if(!empty($blocks))
     <div id='adv-search-dropdown'>
-        <form method="get">
+        <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
