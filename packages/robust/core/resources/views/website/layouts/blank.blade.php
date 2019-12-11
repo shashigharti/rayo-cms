@@ -25,7 +25,18 @@
         <link rel="icon" type="image/png" href="{{ asset('/favicon-16x16.png') }}" sizes="16x16">
         <link rel="icon" type="image/png" href="{{ asset('/favicon-32x32.png') }}" sizes="32x32">
         {{--END FAVICONS--}}
+        
+        <script type='application/ld+json'>
+            {
+              "@context": "http://www.schema.org",
+              "@type": "Website",
+              "name": "RealWebSystem",
+              "url": "http://167.71.244.240/",
+              "image":"http://167.71.244.240/assets/website/images/Logo.jpg",
+              "description":"Real estate websites with advanced IDX handling. Search engine optimized pages for homebuyer and home seller leads." 
 
+            }
+        </script>
 
         <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
