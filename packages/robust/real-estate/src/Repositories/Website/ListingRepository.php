@@ -19,8 +19,8 @@ class ListingRepository
      */
     protected const LISTING_FIELDS = [
         'index' => [
-            'id','uid','listing_slug','system_price','picture_count',
-            'status','address_street','state','year_built','total_finished_area',
+            'id','uid','slug','system_price','picture_count',
+            'status','address_street','state',
             'baths_full','bedrooms'
         ]
     ];
@@ -45,10 +45,10 @@ class ListingRepository
      */
     public function getListing($status = null)
     {
-        $result = $this->model->where('picture_count','>',0)
+        $result = $this->model
             ->select(ListingRepository::LISTING_FIELDS['index'])
             ->orderBy('input_date','desc')
-            ->where('picture_count','>',0);
+            ->where('picture_status',1);
         if($status) {
             $result = $result->where('status',$status);
         }
@@ -73,7 +73,7 @@ class ListingRepository
     public function getListingByType($type, $name, $count)
     {
        return  $this->model->where($type,$name)
-                ->select('id','listing_name','system_price','listing_slug')
+                ->select('id','name','system_price','slug')
                 ->where('status','Active')
                 ->where('picture_count','>',0)
                 ->orderBy('input_date','asc')

@@ -22,15 +22,13 @@ class City extends BaseModel
     protected $fillable = [
         'name',
         'slug',
-        'frontpage',
         'active',
         'sold',
-        'frontpage_order',
         'menu_order',
-        'hide_subdivs',
+        'sub_divs',
         'dropdown',
         'navigation',
-        'marketreport',
+        'market_report',
         'delete',
         'latitude',
         'longitude'

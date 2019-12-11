@@ -553,30 +553,6 @@ a.right-icon {
   }
 }
 
-.get-distance-container {
-  .input-group{
-    display:block;
-  }
-  input.form-control {
-    display: inline-block;
-    width: 75% !important;
-    border: 1px solid #ccc !important;
-    padding: 10px !important;
-    height: 15px !important;
-  }
-
-  .input-group-prepend {
-    display: inline-block;
-    vertical-align: middle;
-    margin-top: 0px;
-    margin-left: 0px;
-  }
-}
-
-button.get-distance {
-  border-radius: 0px;
-  background-color: #002349;
-}
 
 .well {
   min-height: 20px;

@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col s7">
                 <div class="list--inner--title">
-                    <h4>{{strtoupper($result->city)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
+                    <h4>{{strtoupper($result->city->name)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
                     <p>{{$result->subdivision}} Subdivision</p>
                 </div>
                 <div class="head-list-info">
@@ -15,79 +15,67 @@
                                 <span class="txt-property">Bedrooms</span>
                             </li>
                         @endif
-                        @if(isset($result->bathrooms) && !in_array($result->bathrooms,['none','None','0']))
+                        @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
                             <li>
-                                <span class="txt-num">{{$result->bathrooms}}</span><br>
+                                <span class="txt-num">{{$result->baths_full}}</span><br>
                                 <span class="txt-property">Bathrooms</span>
                             </li>
                         @endif
-                        @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                        @if(isset($properties['total_square_feet'])))
                             <li>
-                                <span class="txt-num">{{$result->total_finished_area}}</span><br>
+                                <span class="txt-num">{{$properties['total_square_feet']}}</span><br>
                                 <span class="txt-property">Square Feet</span>
                             </li>
                         @endif
-                        @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
+                        @if(isset($properties['year_built']))
                             <li>
-                                <span class="txt-num">{{$result->acres}}</span><br>
-                                <span class="txt-property">Acres</span>
-                            </li>
-                        @endif
-                        @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
-                            <li>
-                                <span class="txt-num">{{$result->year_built}}</span><br>
+                                <span class="txt-num">{{$properties['year_built']}}</span><br>
                                 <span class="txt-property">Year Built</span>
                             </li>
                         @endif
-                        @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                        @if(isset($properties['stories']))
                             <li>
-                                <span class="txt-num">{{$result->stories}}</span><br>
+                                <span class="txt-num">{{$properties['stories']}}</span><br>
                                 <span class="txt-property">Stories</span>
                             </li>
                         @endif
                     </ul>
+                </div>
+                <div class="distance--block">
+                    <p class="tab">Distance/Drive Time</p>
+                    <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
+                    <div class="get-distance-container">
+                        <div class="input-group mb-3">
+                            <input type="text" class="form-control"  placeholder="destination address ... ">
+                            <div class="input-group-prepend">
+                                <button class="btn btn-default get-distance" type="button">Get distance</button>
+                            </div>
+                        </div>
+                        <div class="map--block">
+                            <div class="mapouter"><div class="gmap_canvas"><iframe height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.org">embedgooglemap.org</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+                        </div>
+                    </div>
                 </div>
                 <div class="inner-list-tab">
                     <div class="row">
                         <div class="col s12">
                             <ul class="inner-list-tabs">
                                 <li class="tab active"><a  href="#overview">Overview</a></li>
-                                <li class="tab"><a  href="#distance">Distance/Drive Time</a></li>
+
                                 <li class="tab"><a href="#calculator">Mortage Calculator</a></li>
                             </ul>
                         </div>
                         <div id="overview" class="col s12 overview-slider ">
                             <div class="slider-for owl-carousel owl-theme">
-                                @forelse($result->images as $image)
-                                   <div class="item">
-                                       <img src="{{$image->listing_url}}" alt="{{$image->listing_id}}">
-                                   </div>
-                                @empty
-                                @endforelse
-                            </div>
-{{--                            <div class="slider-nav">--}}
 {{--                                @forelse($result->images as $image)--}}
-{{--                                    <div><img src="{{$image->listing_url}}" alt="{{$image->listing_id}}"></div>--}}
+                                   <div class="item">
+                                       <img src="http://cdn.photos.sparkplatform.com/fl/20191108213025969877000000.jpg" alt="">
+                                   </div>
 {{--                                @empty--}}
 {{--                                @endforelse--}}
-{{--                                <button type="button" data-role="none" class="slick-prev slick-arrow" aria-label="Previous" role="button" style="display: block;">Previous</button>--}}
-{{--                                <button type="button" data-role="none" class="slick-next slick-arrow" aria-label="Next" role="button" style="display: block;">Next</button>--}}
-{{--                            </div>--}}
-                        </div>
-                        <div id="distance" class="col s12">
-                            <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
-                            <div class="get-distance-container">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control"  placeholder="destination address ... ">
-                                    <div class="input-group-prepend">
-                                        <button class="btn btn-default get-distance" type="button">Get distance</button>
-                                    </div>
-                                </div>
-                                <div class="map--block">
-                                    <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.org">embedgooglemap.org</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
-                                </div>
                             </div>
                         </div>
+
                         <div id="calculator" class="col s12">
                             <div id="m-calculator">
                                 <form id="homenote" role="form" class="well">
@@ -201,13 +189,13 @@
                                 @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
                                     <tr class="txt-descript-bold">
                                         <td> Full Baths </td>
-                                        <td >{{$result->bedrooms}} </td>
+                                        <td >{{$result->baths_full}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
+                                @if(isset($properties['total_square_feet']))
                                     <tr class="txt-descript-bold">
                                         <td> Square Footage </td>
-                                        <td >{{$result->total_finished_area}} </td>
+                                        <td >{{$properties['total_square_feet']}} </td>
                                     </tr>
                                 @endif
                                 @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
@@ -216,34 +204,28 @@
                                         <td >{{$result->year_built}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->lot_size) && !in_array($result->lot_size,['none','None','0']))
+                                @if(isset($properties['lot_size']))
                                     <tr class="txt-descript-bold">
                                         <td> Lot Size  </td>
-                                        <td >{{$result->lot_size}} </td>
+                                        <td >{{$properties['lot_size']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->style) && !in_array($result->style,['none','None','0']))
-                                    <tr class="txt-descript-bold">
-                                        <td> Style  </td>
-                                        <td >{{$result->style}} </td>
-                                    </tr>
-                                @endif
-                                @if(isset($result->stories) && !in_array($result->stories,['none','None','0']))
+                                @if(isset($properties['stories']))
                                     <tr class="txt-descript-bold">
                                         <td> Stories  </td>
-                                        <td >{{$result->stories}} </td>
+                                        <td >{{$properties['stories']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->garage_desc) && !in_array($result->garage_desc,['none','None','0']))
+                                @if(isset($properties['garage_spaces']))
                                     <tr class="txt-descript-bold">
                                         <td> Garage  </td>
-                                        <td >{{$result->garage_desc}} </td>
+                                        <td >{{$properties['garage_spaces']}} </td>
                                     </tr>
                                 @endif
-                                @if(isset($result->parking) && !in_array($result->parking,['none','None','0']))
+                                @if(isset($properties['parking']))
                                     <tr class="txt-descript-bold">
                                         <td> Parking  </td>
-                                        <td >{{$result->parking}} </td>
+                                        <td >{{$properties['parking']}} </td>
                                     </tr>
                                 @endif
                                 @if(isset($result->acres) && !in_array($result->acres,['none','None','0']))
@@ -320,35 +302,57 @@
                         <div class="col s4">
                             <div class="more-inner">
                                 <div class="detail-block">
-                                <p class="title-detail">{{$title}} </p>
-                                <div class="clearfix txt-descript">
-                                    <table class="table table-striped">
-                                        <tbody>
-                                            @foreach($detail as $field)
-                                                @set('name',$field['name'])
-                                                @if(in_array($title,['School Information']))
-                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
+                                    <p class="title-detail">{{$title}} </p>
+                                    <div class="clearfix txt-descript">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                                @foreach($detail as $field)
+                                                    @set('name',$field['name'])
+                                                    @if(isset($properties[$name]))
                                                         <tr>
                                                             <td>{{$field['display']}}</td>
                                                             <td>{{$properties[$name]}}</td>
                                                         </tr>
                                                     @endif
-                                                @else
-                                                    @if(isset($properties[$name]) && !in_array($properties[$name],['none','0','Undefined','None']))
-                                                        <tr>
-                                                            <td>{{$field['display']}}</td>
-                                                            <td>{{$properties[$name]}}</td>
-                                                        </tr>
-                                                    @endif
-                                                @endif
-                                            @endforeach
-                                        </tbody>
-                                    </table>
+                                                @endforeach
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
                     @endforeach
+                        <div class="col s4">
+                            <div class="more-inner">
+                                <div class="detail-block">
+                                    <p class="title-detail">School Info</p>
+                                    <div class="clearfix txt-descript">
+                                        <table class="table table-striped">
+                                            <tbody>
+                                            @if(isset($result->elementary_school_id))
+                                                <tr>
+                                                    <td>Elementary</td>
+                                                    <td>{{$result->elementary->name}}</td>
+                                                </tr>
+                                            @endif
+                                            @if(isset($result->middle_school_id))
+                                                <tr>
+                                                    <td>Middle</td>
+                                                    <td>{{$result->middle->name}}</td>
+                                                </tr>
+                                            @endif
+                                            @if(isset($result->high_school_id))
+                                                <tr>
+                                                    <td>High</td>
+                                                    <td>{{$result->high->name}}</td>
+                                                </tr>
+                                            @endif
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                 </div>
             </div>
         </div>
@@ -356,7 +360,7 @@
 </section>
 
 @if(Auth::check())
-<div id="emailModal" class="modal">
+<div id="emailModal" class="modal listing--modal">
     <form method="post" id="email-form" action="" data-url="{{route('website.realestate.email.friend',['id' => $result->id])}}">
         @csrf
         <div class="row modal-header">
@@ -377,8 +381,11 @@
                 <p>I found a property at {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
                 @if($result->images() && $result->images()->first())
                     @set('first_image',$result->images()-first())
-                    <img src="{{$first_image->listing_url}}" alt="">
+
                 @endif
+                <div class="email-modal-image">
+                    <img src="http://cdn.photos.sparkplatform.com/bc/20191202010414020863000000-o.jpg" alt="">
+                </div>
             </div>
             <div class="form-group row">
                 <textarea  name="message" class="form-control" placeholder="Type your message here" required=""></textarea>

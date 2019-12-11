@@ -13,7 +13,7 @@ class LeadDistance extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_lead_distances';
+    protected $table = 'real_estate_lead_drive_distances';
 
 
     /**

@@ -10,7 +10,7 @@ use Robust\RealEstate\Models\Listing as Listings;
 use Robust\RealEstate\Models\Zip;
 use Robust\RealEstate\Models\Area;
 use Robust\RealEstate\Models\HighSchool;
-use Robust\RealEstate\Models\ElemSchool;
+use Robust\RealEstate\Models\ElementarySchool;
 use Robust\RealEstate\Models\MiddleSchool;
 use Robust\RealEstate\Models\Grid;
 use Robust\RealEstate\Models\Subdivision;
@@ -82,7 +82,7 @@ class CreateMarketReport extends Command
                     $report_types[$type] = $model;
                 }
             }
-            
+
             $this->populateReports($report_types);
             \DB::commit();
         } catch (\Exception $e) {
@@ -95,8 +95,8 @@ class CreateMarketReport extends Command
      * @param array $report_types
      */
     private function populateReports(array $report_types)
-    {    
-        foreach ($report_types as $attr => $model) {                        
+    {
+        foreach ($report_types as $attr => $model) {
             $selectArr = ['id', 'name', 'slug'];
             if( $model->getTable() == 'subdivisions'){
                 if($this->byGroupName ){
@@ -148,10 +148,10 @@ class CreateMarketReport extends Command
         return $model->query()
             ->select($selectArr)
             ->get();
-        
+
     }
 
-    private function locationReport($collection, $attr){ 
+    private function locationReport($collection, $attr){
         $active = $this->status['active'];
         $closed = $this->status['closed'];
 
@@ -168,7 +168,7 @@ class CreateMarketReport extends Command
             "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y')) . "', system_price, NULL)) as avg_price_sold_this_year",
             "AVG( IF(status = '{$closed}', days_on_mls, NULL)) as avg_days_on_mls",
             "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', days_on_mls, NULL)) as avg_days_on_mls_past_year",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y')) . "', days_on_mls, NULL)) as avg_days_on_mls_this_year"            
+            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y')) . "', days_on_mls, NULL)) as avg_days_on_mls_this_year"
         ];
 
         $listingArr = DB::table('real_estate_listings')
@@ -177,7 +177,7 @@ class CreateMarketReport extends Command
             ->groupBy($attr)
             ->get()
             ->keyBy($attr);
-        
+
 
         foreach ($collection as $model) {
             $totalListings = isset($listingArr[$model->name]) ? $listingArr[$model->name]->count : null;
@@ -197,7 +197,7 @@ class CreateMarketReport extends Command
             $median_price_sold_past_year = 0;//$this->getMedian($attr, $model->name, 'system_price', false, date('Y') - 1);
             $median_price_sold_this_year = 0;//$this->getMedian($attr, $model->name, 'system_price', false, date('Y'));
             $median_dos_sold = 0;//$this->getMedian($attr, $model->name, 'days_on_mls', false);
-            
+
             \DB::table('real_estate_market_reports')->insert([
                 'reportable_id' => $model->id,
                 'slug' => $model->slug,
@@ -225,25 +225,25 @@ class CreateMarketReport extends Command
             ]);
 
         }
-       
+
     }
 
     private function subdivisionReport($collection, $attr){
-        $part_count = floor(count($collection) / 25); 
+        $part_count = floor(count($collection) / 25);
         $chunked = $collection->chunk($part_count);
 
         // It will be remove and refactored; Temporary fix
         $marketHelper = new MarketReportHelper();
 
-        foreach ($chunked as $key => $chunked_collection) {  
-               
+        foreach ($chunked as $key => $chunked_collection) {
+
             if(!$this->byGroupName ){
                 $chunked_collection->load(['listings' => function ($relation) {
                     $relation->select(['status', 'system_price', 'days_on_mls', 'city', 'county', 'zip', 'subdivision', 'district', 'input_date']);
                 }]);
-            }            
-                    
-            foreach ($chunked_collection as $model) { 
+            }
+
+            foreach ($chunked_collection as $model) {
                 $listingArr = $model->listings;
                 if($this->byGroupName){
                     $subdivisionList = [];
@@ -251,7 +251,7 @@ class CreateMarketReport extends Command
                     foreach($subDivNames as $subdivision){
                         $subdivisionList[] = $subdivision->name;
                     }
-                      
+
                     $listingArr = Listings::query()
                                 ->whereIn('subdivision', $subdivisionList)
                                 ->select(['status', 'system_price', 'days_on_mls', 'city', 'county', 'zip', 'subdivision', 'district', 'input_date'])
@@ -259,7 +259,7 @@ class CreateMarketReport extends Command
                 }
                 $totalListingsActive = $marketHelper->countActive($listingArr, 'Active');
                 $averagePriceActive = $marketHelper->countAvgActive($listingArr, 'Active', 'system_price');
-                
+
                 $report = \DB::table('real_estate_market_reports')->insert([
                     'reportable_id' => $model->id,
                     'slug' => $model->slug,

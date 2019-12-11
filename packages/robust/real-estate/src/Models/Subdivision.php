@@ -20,8 +20,8 @@ class Subdivision extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'city_id', 'county_id', 'zip_id', 'schooldistrict_id',
-        'frontpage', 'active', 'sold', 'frontpage_order', 'menu_order', 'latitude',
+        'name', 'slug', 'city_id', 'county_id', 'zip_id', 'school_district_id',
+        'active', 'sold', 'menu_order', 'latitude',
         'longitude', 'area_id','group_name','group_slug'
     ];
 

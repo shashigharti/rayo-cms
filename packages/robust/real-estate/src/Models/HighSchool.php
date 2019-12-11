@@ -24,6 +24,7 @@ class HighSchool extends BaseModel
         'slug',
         'active',
         'sold',
+        'dropdown',
     ];
 
 }
