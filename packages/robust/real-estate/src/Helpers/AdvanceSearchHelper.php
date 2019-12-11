@@ -62,4 +62,9 @@ class AdvanceSearchHelper
     {
         return $this->$type->get()->pluck('name');
     }
+
+    public function getSearchURL(){
+        $route_name  = request()->route()->getName();
+        return $route_name === 'website.home'?route('website.realestate.homes-for-sale'):route($route_name);
+    }
 }

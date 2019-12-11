@@ -4,7 +4,9 @@
 @inject('listing_helper','Robust\RealEstate\Helpers\ListingHelper')
 @inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
+@inject('advancesearch_helper','Robust\RealEstate\Helpers\AdvanceSearchHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
+
 @section('header')
     <div class="banner">
         <div class="slider">

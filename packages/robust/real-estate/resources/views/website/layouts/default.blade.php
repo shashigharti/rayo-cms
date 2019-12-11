@@ -1,4 +1,5 @@
 @extends('core::website.layouts.blank')
+
 @section('body_content')
     <header>
         @yield('header')

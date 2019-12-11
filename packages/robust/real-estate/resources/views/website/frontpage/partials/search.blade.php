@@ -1,8 +1,7 @@
-@set('action', request()->route()->getName() === 'website.home'?route('website.realestate.homes-for-sale'):'')
 <div class="banner-caption">
    <h1>Find Your Dream House With Us</h1>
    <div class="search-section">
-      <form method="get" action="{{$action}}">
+      <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
          @csrf
          <div class="row">
             <div class="col s3">
