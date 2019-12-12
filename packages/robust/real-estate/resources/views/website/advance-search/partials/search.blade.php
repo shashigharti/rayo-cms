@@ -1,6 +1,4 @@
 <div class="mb-20">
-    <p>
-        <label>Open Search</label>
-        <input type="text" name="search">
-    </p>
+    <label>Open Search</label>
+    <input type="text" value="{{ $query_params['search_text'] ?? '' }}" name="search_text">
 </div>
