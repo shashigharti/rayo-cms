@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
+use Robust\RealEstate\Models\Scopes\QueryScope;
 
 /**
  * Class Listing
@@ -50,6 +51,18 @@ class Listing extends BaseModel
         'bedrooms',
         'status',
     ];
+
+    /**
+     * The "booting" method of the model.
+     *
+     * @return void
+     */
+    public static function boot()
+    {
+        parent::boot();
+
+        static::addGlobalScope(new QueryScope);
+    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
