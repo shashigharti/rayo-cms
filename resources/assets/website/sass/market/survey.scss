@@ -29,7 +29,7 @@
 
 .market-survey__right-container--tabs .tabs {
   display: flex;
-  background-color: #fff;
+  background-color: $white;
   text-align: center;
   overflow-x: hidden;
   overflow-y: hidden;
@@ -61,7 +61,7 @@
 
   li a {
     &.active, &:hover, &:focus {
-      color: #002349;
+      color: $theme_color;
       font-weight: 600;
       background: transparent;
       background-color: transparent;
@@ -71,7 +71,7 @@
 
 .market-survey__right-container--header {
   z-index: 15;
-  background-color: #fff;
+  background-color: $white;
 }
 
 .market-survey__listings {
@@ -89,7 +89,7 @@
 
   .select-wrapper {
     width: 100px;
-    background: #fff;
+    background: $white;
 
     input.select-dropdown {
       width: 85px;
@@ -170,7 +170,7 @@
     background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
 
     p {
-      color: #FFF;
+      color: $white;
       font-size: 12px;
       margin-bottom: 3px;
     }
@@ -220,7 +220,7 @@ div#accordion {
   select {
     display: inline-block;
     padding: 6px 2px 6px;
-    background-color: #fff;
+    background-color: $white;
     border-color: #ccc;
     width: 108px;
     margin: 0px 8px;
@@ -265,7 +265,7 @@ div#accordion {
 
 .filter-submenu {
   display: none;
-  background: #ffffff;
+  background: $white;
   font-size: 14px;
   padding: 20px;
   height: 400px;
@@ -382,7 +382,7 @@ span.Stepper {
 
     &[type=checkbox] {
       &:after {
-        background-color: #fff;
+        background-color: $white;
         border: 1px solid #ccc;
         padding: 9px;
         border-radius: 0px;
@@ -399,7 +399,7 @@ span.Stepper {
         position: absolute;
         top: 0px;
         left: -4px;
-        color: #fff;
+        color: $white;
         padding: 0px;
         width: 20px;
         height: 20px;
@@ -434,12 +434,12 @@ span.Stepper {
   padding: 20px 20px;
   font-size: 14px;
   width: 637px;
-  background: #fff;
+  background: $white;
   border-top: 1px solid #ccc;
 }
 
 button.reset-button {
-  background: #fff;
+  background: $white;
   border: 0;
   color: #0576a9;
   font-size: 16px;
@@ -506,7 +506,7 @@ button.reset-button {
 
   .nav-pills .nav-link {
     color: #111;
-    background-color: #ffffff;
+    background-color: $white;
     border-radius: 0px;
     font-size: 16px;
     padding-top: 0px;
@@ -561,7 +561,7 @@ button.reset-button {
 
 .soldDate {
   display: inline-block;
-  color: #fff;
+  color: $white;
   font-size: 10px;
   background: #2686d2;
   padding: 0px 6px;
@@ -647,7 +647,7 @@ button.reset-button {
   display: flex;
   text-align: center;
   text-transform: capitalize;
-  color: #fff;
+  color: $white;
 
   .value {
     font-size: 15px;
@@ -678,7 +678,7 @@ button.reset-button {
 
 .homeCardPrice {
   font-size: 15px;
-  color: #fff;
+  color: $white;
   font-weight: 600;
 }
 
@@ -689,7 +689,7 @@ button.reset-button {
 
 .street {
   font-size: 12px;
-  color: #fff;
+  color: $white;
 }
 
 .FilterPagination {
@@ -789,7 +789,7 @@ button.reset-button {
   margin: 0.5em !important;
   padding: 1em;
   box-shadow: 0 1px 2px 0 #aaa;
-  background-color: #fff;
+  background-color: $white;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   border-collapse: separate;
   min-height: 160px;
@@ -949,7 +949,7 @@ button.reset-button {
   .nav-pills {
     .nav-link {
       color: #111;
-      background-color: #ffffff;
+      background-color: $white;
       border-radius: 0px;
       font-size: 16px;
 
@@ -1087,7 +1087,7 @@ td {
   cursor: pointer;
   box-shadow: 1px 0 2px 0 rgba(0, 0, 0, 0.4);
   height: 40px;
-  background-color: #fff;
+  background-color: $white;
   width: 100%;
   z-index: 9;
 }
@@ -1121,7 +1121,7 @@ td {
 }
 
 .numActiveAgents {
-  color: #fff;
+  color: $white;
 }
 
 .overlay {
@@ -1134,7 +1134,7 @@ td {
 
 .button.tertiary-alt {
   color: #585858;
-  background-color: #fff;
+  background-color: $white;
   border-color: #ccc;
   height: 40px;
   font-size: 1rem;
@@ -1154,7 +1154,7 @@ td {
     margin: 0;
     font-size: 1.75rem;
     font-weight: 200;
-    color: #fff;
+    color: $white;
     padding-top: 30px;
   }
 
@@ -1168,7 +1168,7 @@ td {
 }
 
 .stat {
-  color: #fff;
+  color: $white;
   width: 100%;
   padding: 2%;
   display: block;
@@ -1238,7 +1238,7 @@ td {
 }
 
 .OfferInsightsCard {
-  background-color: #fff;
+  background-color: $white;
   box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
   padding: 20px;
   box-sizing: border-box;
