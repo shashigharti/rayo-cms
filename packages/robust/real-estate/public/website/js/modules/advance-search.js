@@ -7,21 +7,16 @@
 
         // Check if it has advance search
         if (advSearchElem.length > 0) {
+            let inputElements = [];
             advSearchElem.click(function (e) {
                 e.preventDefault();
                 $('#adv-search-dropdown').toggleClass('show');
             });
 
-            $('#adv-search-dropdown select').each((index, elem) => {
-                let selectedElements = [];
-                //elem = $(elem);
-
-                // if (elem.data('selected')) {
-                //     selectedElements = elem.data('selected').split(",");
-                //     console.log(selectedElements);
-                // }
-                // // console.log($(elem).data('selected'));
-                // console.log($(elem).data('selected'));
+            inputElements = document.querySelectorAll('[data-selected]:not(.multi-select)');
+            inputElements.forEach(elem => {
+                // Set the selected value for all those elements who are not of class multi-select
+                elem.value = elem.getAttribute('data-selected');
             });
         }
     });

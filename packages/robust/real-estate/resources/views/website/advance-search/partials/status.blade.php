@@ -4,25 +4,41 @@
     </p>
     <p>
         <label>
-            <input name="status[]" type="checkbox" />
+            <input name="status[]" type="checkbox" value="Select All"
+            {{ (isset($query_params['status']) && in_array('Select All', $query_params['status'])) ? 'checked':'' }}
+            />
             <span>Select All</span>
         </label>
     </p>
     <p>
         <label>
-            <input name="status[]" value="Active" type="checkbox" />
+            <input name="status[]" value="Properties for sale" type="checkbox" 
+            {{ (isset($query_params['status']) && in_array('Properties for sale', $query_params['status'])) ? 'checked':'' }}
+            />
             <span>Properties for sale</span>
         </label>
     </p>
     <p>
         <label>
-            <input name="status[]" value="Sold" type="checkbox" />
+            <input name="status[]" value="Active" type="checkbox" 
+            {{ (isset($query_params['status']) && in_array('Active', $query_params['status'])) ? 'checked':'' }}
+            />
+            <span>Active</span>
+        </label>
+    </p>
+    <p>
+        <label>
+            <input name="status[]" value="Sold" type="checkbox" 
+            {{ (isset($query_params['status']) && in_array('Sold', $query_params['status'])) ? 'checked':'' }}
+            />
             <span>Sold</span>
         </label>
     </p>
     <p>
         <label>
-            <input name="status[]" value="Pending" type="checkbox" />
+            <input name="status[]" value="Pending" type="checkbox" 
+            {{ (isset($query_params['status']) && in_array('Pending', $query_params['status'])) ? 'checked':'' }}
+            />
             <span>Pending</span>
         </label>
     </p>
