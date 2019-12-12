@@ -194,7 +194,7 @@ class ListingRepository
     }
 
     public function getListings(){
-        return $this->model
+        return $this->model->search()
             ->select(ListingRepository::LISTING_FIELDS['index'])
             ->leftJoin('real_estate_listing_properties', 'real_estate_listings.id', '=', 'real_estate_listing_properties.listing_id')
             ->paginate(40);
