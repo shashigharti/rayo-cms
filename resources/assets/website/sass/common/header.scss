@@ -12,7 +12,22 @@ header {
     font-size: 14px;
     text-transform: uppercase;
     font-weight: 400;
-    text-decoration: none;
+    text-decoration: none;    
+  }
+  .nav-btn{
+    .nav-link {
+      font-size: 12px !important;
+      vertical-align: middle;
+      border: 1px solid $white;
+      width: 110px;
+      text-align: center;
+      border-radius: 4px;
+      margin-left: 10px;
+      margin-right: 0px !important;
+      height: 41px;
+      line-height: 41px;
+      margin-top: 10px;
+    }
   }
 
   li.active > .nav-link {
@@ -28,20 +43,6 @@ header {
   li.show > .nav-link {
     color: rgba(255, 255, 255, 0.8);
   }
-}
-
-.nav-btn .nav-link {
-  font-size: 12px !important;
-  vertical-align: middle;
-  border: 1px solid $white;
-  width: 110px;
-  text-align: center;
-  border-radius: 4px;
-  margin-left: 10px;
-  margin-right: 0px !important;
-  height: 41px;
-  line-height: 41px;
-  margin-top: 10px;
 }
 
 .mobile-menu-btn {
