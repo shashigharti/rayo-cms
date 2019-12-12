@@ -7,7 +7,8 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>{{settings('general-setting','company_name')}}</title>
+        <title>RealWebSystem.Real estate websites with advanced IDX handling.</title>
+        <meta name="description" content="Real estate websites with advanced IDX handling.">
 
         {{--FAVICONS--}}
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/apple-touch-icon-57x57.png') }}">
@@ -25,19 +26,7 @@
         <link rel="icon" type="image/png" href="{{ asset('/favicon-16x16.png') }}" sizes="16x16">
         <link rel="icon" type="image/png" href="{{ asset('/favicon-32x32.png') }}" sizes="32x32">
         {{--END FAVICONS--}}
-        
-        <script type='application/ld+json'>
-            {
-              "@context": "http://www.schema.org",
-              "@type": "Website",
-              "name": "RealWebSystem",
-              "url": "http://167.71.244.240/",
-              "image":"http://167.71.244.240/assets/website/images/Logo.jpg",
-              "description":"Real estate websites with advanced IDX handling. Search engine optimized pages for homebuyer and home seller leads." 
-
-            }
-        </script>
-        <style>
+        <style style type="text/css">
             body {
                 margin: 0;
                 font-family: 'Poppins',sans-serif;
@@ -497,8 +486,43 @@
             .adv--block img {
                 width: 100%;
             }
+            .advertisement {
+                margin-bottom: 70px;
+            }
+            .adv--single {
+                height: 300px;
+                overflow: hidden;
+                position: relative;
+                margin-bottom: 70px;
+            }
+            .adv--single img {
+                width: 100%;
+            }
+            .adv-single-text {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 45%;
+                margin: 41px;
+                color: #fff;
+                background: rgba(0,0,0,0.7);
+                padding: 40px;
+            }
 
         </style>
+        
+        <script type='application/ld+json'>
+            {
+              "@context": "http://www.schema.org",
+              "@type": "Website",
+              "name": "RealWebSystem",
+              "url": "http://167.71.244.240/",
+              "image":"http://167.71.244.240/assets/website/images/Logo.jpg",
+              "description":"Real estate websites with advanced IDX handling. Search engine optimized pages for homebuyer and home seller leads." 
+
+            }
+        </script>
+        
 
         <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
