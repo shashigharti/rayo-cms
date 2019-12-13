@@ -9,6 +9,12 @@ use Robust\RealEstate\Repositories\Website\ListingRepository;
  */
 class ListingHelper
 {
+    protected $mapping = [
+      'cities' => 'city_id',
+      'zips' => 'zip_id',
+      'counties' => 'county_id',
+      'subdivisions' => 'subdivision_id'
+    ];
     /**
      * @var ListingRepository
      */
@@ -32,7 +38,7 @@ class ListingHelper
      */
     public function getListingsByType($type, $name, $count)
     {
-        return $this->model->getListingByType($type,$name,$count)->get();
+        return $this->model->getListingByType($this->mapping[$type],$name,$count)->get();
     }
 
     /**

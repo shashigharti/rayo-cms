@@ -40,7 +40,7 @@ class ListingRepository
         $this->model = $model;
     }
 
-   
+
 
     /**
      * @param $id
@@ -62,7 +62,7 @@ class ListingRepository
        return  $this->model->where($type,$name)
                 ->select('id','name','system_price','slug')
                 ->where('status','Active')
-                ->where('picture_count','>',0)
+                ->where('picture_status',1)
                 ->orderBy('input_date','asc')
                 ->limit($count);
     }
@@ -80,7 +80,7 @@ class ListingRepository
             ->where($type,$location)
             ->where('status','Active')
             ->whereBetween('system_price',$prices)
-            ->where('picture_count','>',0)
+            ->where('picture_status',1)
             ->orderBy('input_date','desc');
     }
 
@@ -94,7 +94,7 @@ class ListingRepository
     {
         return $this->model->where($type,$value)
             ->where('status','Active')
-            ->where('picture_count','>',0);
+            ->where('picture_status',1);
     }
 
     /**
@@ -106,7 +106,7 @@ class ListingRepository
     {
         return $this->model
             ->where($type,$value)
-            ->where('picture_count','>',0);
+            ->where('picture_status',1);
     }
 
     public function getListingBySearch($data)
