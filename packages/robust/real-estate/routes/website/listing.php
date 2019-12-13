@@ -1,6 +1,6 @@
 <?php
 Route::group([
-    'prefix' => 'real-estate',
+    //'prefix' => 'real-estate',
     'as' => 'website.realestate.',
     'group' => 'Listing'],
     function () {
