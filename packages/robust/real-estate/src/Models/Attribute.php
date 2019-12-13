@@ -6,23 +6,22 @@ use Robust\Core\Models\BaseModel;
 
 
 /**
- * Class Amenity
+ * Class Attribute
  * @package Robust\RealEstate\Models
  */
-class Amenity extends BaseModel
+class Attribute extends BaseModel
 {
-
 
     /**
      * @var string
      */
-    protected $table = 'real_estate_amenities';
+    protected $table = 'real_estate_attributes';
 
 
     /**
      * @var array
      */
     protected $fillable = [
-        'name','slug','status'
+        'name', 'display_name','values','status'
     ];
 }
