@@ -34,7 +34,7 @@ class ImagesPull extends RetsCommands
     public function handle()
     {
         Listing::select('id','uid')
-            ->doesnthave('images')
+            ->where('picture_status',0)
             ->orderBy('id')
             ->chunk($this->limit,function ($listings){
                 $images_array = [];
