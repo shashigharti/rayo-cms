@@ -1,6 +1,6 @@
 <div class="mb-20">
     <div class="input-field col s12">
-        <select name="garage">
+        <select name="garage_spaces" data-selected="{{ $query_params['garage_spaces'] ?? '' }} ">
             <option value="" disabled selected>Select Options</option>
             <option value="1">1 Car</option>
             <option value="2">2 Car</option>

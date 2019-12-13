@@ -1,6 +1,6 @@
 <div class="mb-20">
     <div class="input-field col s12">
-        <select name="construction_status">
+        <select name="construction_status" data-selected="{{ $query_params['construction_status'] ?? '' }}">
             <option value="" disabled selected>Select Options</option>
             <option value="1">Finished</option>
             <option value="2">Ongoing</option>
