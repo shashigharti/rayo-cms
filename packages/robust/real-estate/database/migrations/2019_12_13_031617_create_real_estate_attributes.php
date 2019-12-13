@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateOauthPersonalAccessClientsTable extends Migration
+class CreateRealEstateAttributes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,11 @@ class CreateOauthPersonalAccessClientsTable extends Migration
      */
     public function up()
     {
-        Schema::create('oauth_personal_access_clients', function (Blueprint $table) {
-            $table->increments('id');
-            $table->unsignedInteger('client_id')->index();
+        Schema::create('real_estate_attributes', function (Blueprint $table) {
+            $table->bigIncrements('id')->primary();
+            $table->string('name', 30);
+            $table->text('values');
+            $table->boolean('status'); //1 - Enabled, 0 - Disabled
             $table->timestamps();
         });
     }
@@ -27,6 +29,6 @@ class CreateOauthPersonalAccessClientsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('oauth_personal_access_clients');
+        Schema::dropIfExists('real_estate_attributes');
     }
 }
