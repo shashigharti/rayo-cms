@@ -10,6 +10,10 @@ use Robust\RealEstate\Repositories\Website\ExteriorRepository;
 use Robust\RealEstate\Repositories\Website\InteriorRepository;
 use Robust\RealEstate\Repositories\Website\StyleRepository;
 
+/**
+ * Class AdvanceSearchHelper
+ * @package Robust\RealEstate\Helpers
+ */
 class AdvanceSearchHelper
 {
 
@@ -58,13 +62,22 @@ class AdvanceSearchHelper
         $this->exteriors = $exteriors;
     }
 
+    /**
+     * @param $type
+     * @return mixed
+     */
     public function getFeatures($type)
     {
         return $this->$type->get()->pluck('name');
     }
 
+    /**
+     * @return string
+     */
     public function getSearchURL(){
+        //for route with params
+        $params = request()->route()->parameters();
         $route_name  = request()->route()->getName();
-        return $route_name === 'website.home'?route('website.realestate.homes-for-sale'):route($route_name);
+        return $route_name === 'website.home'?route('website.realestate.homes-for-sale'):route($route_name,$params);
     }
 }

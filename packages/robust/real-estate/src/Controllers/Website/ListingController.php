@@ -39,7 +39,7 @@ class ListingController extends Controller
         $query_params = request()->all();
         if(count($query_params) > 0) {
             $results  = $this->model->getListings();
-        }  
+        }
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 
@@ -105,9 +105,8 @@ class ListingController extends Controller
      */
     public function byCity($city)
     {
-        $results =  $this->model->getListingByType('city',$city,null)->paginate(40);
-        $total = $this->model->getListingByType('city',$city,null)->count();
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+        $results =  $this->model->getListingByType('city_id',$city,null)->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 
     /**
