@@ -106,6 +106,22 @@ class DataPull extends RetsCommands
         'high_school' => 'Robust\RealEstate\Models\HighSchool',
         'zip' =>  'Robust\RealEstate\Models\Zip',
     ];
+
+    //Palm Beach, Broward, Martin, St Lucie
+    protected $conditions = [
+      'counties' => [
+        'Palm Beach' => '1552FDYRQZIB',
+        'Broward' => '1552FDYRIW50',
+        'Martin' => '1552FDYRQ3SA',
+        'St. Lucie' => '1552FDYRSN94',
+      ]
+    ];
+    //we cannot send the default names while querying in the server. Above are lookup values
+
+    //just to be fast for now
+    protected $conditions_map = [
+      'counties' => 'LIST_41'
+    ];
     /**
      * @var int
      */
@@ -132,8 +148,15 @@ class DataPull extends RetsCommands
             $query = '*'; //this is for accepting all data with out any condition
 
             $query = '(LIST_132='.$date .'+)'; // this is according to input date
+            foreach ($this->conditions as $key => $condition)
+            {
+                if(is_array($condition)){
+                    $query .= ',(' . $this->conditions_map[$key] . '=';
+                }
+                $query .= implode(',',$condition);
+                $query .= ')' ;
+            }
             $results = $this->rets->Search('Property',$class,$query,['Select'=>'LIST_1','Limit' =>1]);
-
             $total = $results->getTotalResultsCount();
             dump($total);
             do {

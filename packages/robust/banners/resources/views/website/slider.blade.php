@@ -6,7 +6,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col s8">
-                        <h4 class="sub-title">Homes For Sale in {{$properties->location ?? ''}}</h4>
+                        <h4 class="sub-title">Homes For Sale in {{$properties->location ? $location_helper->getName($properties->location_type,$properties->location) :  ''}}</h4>
                     </div>
                     <div class="col s4 right-align">
                         <a href="#" class="view-all">View All</a>
@@ -14,7 +14,7 @@
                 </div>
                 <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
                     @set('properties_count', ($properties->property_count > 5)?$properties->property_count: 5)
-                    @set('properties_type', (isset($properties->area_types) && $properties->area_types != '')?$properties->area_types: 'city_id')
+                    @set('properties_type', (isset($properties->location_type) && $properties->location_type != '')?$properties->area_types: 'city_id')
                     @set('location_name', $properties->location)
                     @set('listings',$listing_helper->getListingsByType($properties_type, $location_name, $properties_count))
                     @foreach($listings as $listing)
