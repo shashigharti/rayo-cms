@@ -16,7 +16,8 @@ class CreateRealEstateAttributes extends Migration
         Schema::create('real_estate_attributes', function (Blueprint $table) {
             $table->bigIncrements('id')->primary();
             $table->string('name', 30);
-            $table->text('values');
+            $table->string('display_name', 100);
+            $table->longText('values');
             $table->boolean('status'); //1 - Enabled, 0 - Disabled
             $table->timestamps();
         });
