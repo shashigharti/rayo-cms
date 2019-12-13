@@ -1,6 +1,5 @@
 <?php
 Route::group([
-    'prefix' => 'real-estate',
     'as' => 'website.realestate.',
     'group' => 'Zips'],
     function () {
