@@ -13,14 +13,14 @@ class CreateRealEstateAttributes extends Migration
      */
     public function up()
     {
-//        Schema::create('real_estate_attributes', function (Blueprint $table) {
-//            $table->bigIncrements('id');
-//            $table->string('name', 30);
-//            $table->string('display_name', 100);
-//            $table->longText('values');
-//            $table->boolean('status'); //1 - Enabled, 0 - Disabled
-//            $table->timestamps();
-//        });
+        Schema::create('real_estate_attributes', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->string('name', 30);
+            $table->string('display_name', 100);
+            $table->longText('values');
+            $table->boolean('status'); //1 - Enabled, 0 - Disabled
+            $table->timestamps();
+        });
     }
 
     /**
