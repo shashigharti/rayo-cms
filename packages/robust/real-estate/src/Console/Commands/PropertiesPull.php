@@ -2,6 +2,7 @@
 
 
 namespace Robust\RealEstate\Console\Commands;
+use Carbon\Carbon;
 use Illuminate\Support\Str;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingProperty;
@@ -45,7 +46,7 @@ class PropertiesPull extends RetsCommands
         foreach ($resources as $class => $resource){
             Listing::select('id','uid')
                 ->where('class',$this->property_class[$class])
-                ->doesnthave('property')
+                ->whereNull('properties_status')
                 ->chunk($this->limit,function ($listings) use ($resource,$class){
                     $listing_ids = $listings->pluck('id','uid')->toArray();
                     $query = '(LIST_1=';
@@ -76,8 +77,11 @@ class PropertiesPull extends RetsCommands
                                 ]);
                             }
                             ListingProperty::insert($properties_array);
-                            $this->info('ID : ' . $listing_ids[$data['uid']]);
+                            Listing::whereIn('id',array_values($listing_ids))
+                                ->update(['properties_status' => Carbon::now()]);
+                            $this->info('Done....');
                         }
+
                 });
         }
         // cant pull 100 data at a time the server will response as bad request

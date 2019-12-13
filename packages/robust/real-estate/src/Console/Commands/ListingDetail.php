@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
+use Robust\Core\Models\Setting;
 use Robust\RealEstate\Repositories\Website\CoreSettingRepository;
 
 
@@ -42,8 +43,10 @@ class ListingDetail extends Command
     public function handle()
     {
         $details = config('real-estate.detail');
-        $this->model->updateOrCreate(['type'=>'listing-details'],[
-            'type' => 'listing-details',
+        Setting::updateOrCreate(['slug'=>'listing-details'],[
+            'display_name' => 'Listing Details',
+            'package_name' => 'real-estate',
+            'slug' => 'listing-details',
             'values' => json_encode($details)
         ]);
     }

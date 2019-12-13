@@ -21,6 +21,7 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\FieldsPull',
         'Robust\RealEstate\Console\Commands\PropertiesPull',
         'Robust\RealEstate\Console\Commands\ImagesPull',
+        'Robust\RealEstate\Console\Commands\RetsPullAll',
     ];
 
 

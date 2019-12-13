@@ -148,14 +148,15 @@ class DataPull extends RetsCommands
             $query = '*'; //this is for accepting all data with out any condition
 
             $query = '(LIST_132='.$date .'+)'; // this is according to input date
-            foreach ($this->conditions as $key => $condition)
-            {
-                if(is_array($condition)){
-                    $query .= ',(' . $this->conditions_map[$key] . '=';
-                }
-                $query .= implode(',',$condition);
-                $query .= ')' ;
-            }
+//             zero property count for B (mutilfamily)
+//            foreach ($this->conditions as $key => $condition)
+//            {
+//                if(is_array($condition)){
+//                    $query .= ',(' . $this->conditions_map[$key] . '=';
+//                }
+//                $query .= implode(',',$condition);
+//                $query .= ')' ;
+//            }
             $results = $this->rets->Search('Property',$class,$query,['Select'=>'LIST_1','Limit' =>1]);
             $total = $results->getTotalResultsCount();
             dump($total);
@@ -185,7 +186,8 @@ class DataPull extends RetsCommands
                     {
                         if(isset($this->mapping[$key])){
                             if(!in_array($data,['','none','None','Undefined'])){
-                                $listing_data[$this->maps[$key]] = $this->mapping[$key]::where('slug',Str::slug($data))->first()->id;
+                                $map =  $this->mapping[$key]::where('slug',Str::slug($data))->first();
+                                $listing_data[$this->maps[$key]] = $map ? $map->id : null;
                             }
                         }
                     }

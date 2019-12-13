@@ -69,6 +69,10 @@ return [
             'display' => 'Lot Description'
         ],
         [
+            'name'=> 'lot_depth',
+            'display' => 'Lot Depth'
+        ],
+        [
             'name'=> 'parking',
             'display' => 'Parking'
         ],
@@ -119,6 +123,18 @@ return [
         [
             'name'=> 'guest_house',
             'display' => 'Guest House'
+        ],
+        [
+            'name'=> 'avail_docs',
+            'display' => 'Avail Docs'
+        ],
+        [
+            'name'=> 'buildings_include',
+            'display' => 'Buildings Include'
+        ],
+        [
+            'name'=> 'boat_service',
+            'display' => 'Boat Service'
         ],
 
     ],
@@ -234,6 +250,96 @@ return [
         [
             'name'=> 'lot_dimensions',
             'display' => 'Lot Dimensions'
+        ],
+        [
+            'name'=> 'min_level_square_restricted',
+            'display' => 'Min Lv SqFt Restrict'
+        ],
+        [
+            'name'=> 'leasable_square_feet',
+            'display' => 'Leasable SqFt'
+        ],
+    ],
+    'Terms & Fees' => [
+        [
+            'name'=> 'membership',
+            'display' => 'Membership'
+        ],
+        [
+            'name'=> 'membership_fee',
+            'display' => 'Membership Fee'
+        ],
+        [
+            'name'=> 'front_exp',
+            'display' => 'Front Exp'
+        ],
+        [
+            'name'=> 'selling_info',
+            'display' => 'Selling Info'
+        ],
+        [
+            'name'=> 'multiple_offer',
+            'display' => 'Multiple Offer'
+        ],
+        [
+            'name'=> 'dual_rate',
+            'display' => 'Dual Rate'
+        ],
+        [
+            'name'=> 'application_fee',
+            'display' => 'Application fee'
+        ],
+        [
+            'name'=> 'cleaning_fee',
+            'display' => 'Cleaning fee'
+        ],
+        [
+            'name'=> 'list_price_per_square_feet',
+            'display' => 'List Price/SqFt'
+        ],
+        [
+            'name'=> 'sold_price_per_square_feet',
+            'display' => 'Sold Price/SqFt'
+        ],
+        [
+            'name'=> 'rental_price_per_square_feet',
+            'display' => 'Rental Price/SqFt'
+        ],
+        [
+            'name'=> 'rented_price_per_square_feet',
+            'display' => 'Rented Price/SqFt'
+        ],
+        [
+            'name'=> 'hopa',
+            'display' => 'Hopa'
+        ],
+        [
+            'name'=> 'total_tax',
+            'display' => 'Total Tax'
+        ],
+        [
+            'name'=> 'total_tax',
+            'display' => 'Total Tax'
+        ],
+        [
+            'name'=> 'tax_year',
+            'display' => 'Tax Year'
+        ],
+        [
+            'name'=> 'legal_description',
+            'display' => 'Legal Description'
+        ],
+        [
+            'name'=> 'maintenance_fee_inclusive',
+            'display' => 'Maintenance Fee Inclusive'
+        ],
+        [
+            'name'=> 'document_count',
+            'display' => 'Document Count'
+        ],
+        [
+            'name'=> 'terms_of_sale',
+            'display' => 'Terms of Sale'
         ],
     ],
     'Extra Information' => [
