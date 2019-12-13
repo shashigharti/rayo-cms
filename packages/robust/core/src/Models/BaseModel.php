@@ -31,15 +31,4 @@ class BaseModel extends Model
     {
         return $query->where('status', self::STATUS_ENABLED);
     }
-
-
-    public static function boot()
-    {
-        parent::boot();
-        static::saving(function ($model) {
-            foreach ($model->attributes as $key => $value) {
-                $model->{$key} = ((is_string($value) || is_int($value)) && $value == -1) ? null : $value;
-            }
-        });
-    }
 }

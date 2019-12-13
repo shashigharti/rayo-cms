@@ -1,8 +1,8 @@
-@extends(Site::templateResolver('core::website.layouts.default'))
-@inject('setting_helper','Robust\RealEstate\Helpers\CoreSettingHelper')
+@extends(Site::templateResolver('real-estate::website.layouts.default'))
+@inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
-@set('details',$setting_helper->getSettingByType('listing-details'))
+@set('details',$setting_helper->getValuesBySlug('listing-details'))
 @section('header')
     <header class="sub-header">
         <div class="container-fluid">

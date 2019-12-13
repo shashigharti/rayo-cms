@@ -1,6 +1,4 @@
 <?php
-
-
 namespace Robust\RealEstate\Controllers\Website;
 
 use App\Http\Controllers\Controller;

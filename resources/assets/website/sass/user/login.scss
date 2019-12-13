@@ -7,7 +7,7 @@
 }
 
 h4.modal-title {
-  color: #111;
+  color: $light_black;
   font-size: 18px;
   font-weight: 500;
   float: left;
@@ -20,18 +20,18 @@ button.modal-close {
   border: 0;
   float: right;
   font-weight: 500;
-  color: #111;
+  color: $light_black;
 }
 
 .modal-header {
   padding: 10px;
   border-bottom: 1px solid #e9ecef;
-  background-color: #fff !important;
+  background-color: $white !important;
   margin-bottom:0px !important;
 }
 
 .modal-footer {
-  background-color: #fff !important;
+  background-color: $white !important;
 }
 
 .site-menu .modal {
@@ -48,7 +48,7 @@ button.modal-close {
 
   p {
     font-size: 12px;
-    color: #111;
+    color: $light_black;
     padding: 0px !important;
     margin: 0px 0px 10px !important;
     font-weight: 500;
@@ -76,7 +76,7 @@ button.modal-close {
   line-height: 30px;
   margin-bottom: 10px;
   font-size: 12px;
-  color: #111;
+  color: $light_black;
 }
 
 .form-group [type="checkbox"] {
@@ -93,7 +93,7 @@ button.modal-close {
 .modal-footer .btn-default {
   font-size: 13px;
   color: #333;
-  background-color: #fff;
+  background-color: $white;
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -114,12 +114,12 @@ button.modal-close {
 }
 
 .modal .modal-footer .btn-primary {
-  color: #fff;
+  color: $white;
   font-size: 12px;
   background: #012466;
   padding: 6px 8px;
   border-radius: 3px;
-  box-shadow: 1px 1px 2px 1px #111;
+  box-shadow: 1px 1px 2px 1px $light_black;
   width: 82px !important;
   display: inline-block;
   text-align: center;
@@ -144,7 +144,7 @@ button.modal-close {
     width: auto;
     font-size: 12px !important;
     text-decoration: underline;
-    color: #111;
+    color: $light_black;
     padding: 0px !important;
   }
 }

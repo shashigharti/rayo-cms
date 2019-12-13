@@ -1,5 +1,25 @@
-@import "../../../../node_modules/materialize-css/sass/materialize";
+@import "../../../../node_modules/materialize-css/sass/components/color-variables.scss";
+@import "../../../../node_modules/materialize-css/sass/components/color-classes.scss";
+@import "../../../../node_modules/materialize-css/sass/components/variables.scss";
+@import "../../../../node_modules/materialize-css/sass/components/normalize.scss";
+@import "../../../../node_modules/materialize-css/sass/components/global.scss";
+@import "../../../../node_modules/materialize-css/sass/components/grid.scss";
+@import "../../../../node_modules/materialize-css/sass/components/navbar.scss";
+@import "../../../../node_modules/materialize-css/sass/components/typography.scss";
+@import "../../../../node_modules/materialize-css/sass/components/collapsible.scss";
+@import "../../../../node_modules/materialize-css/sass/components/buttons.scss";
+@import "../../../../node_modules/materialize-css/sass/components/dropdown.scss";
+@import "../../../../node_modules/materialize-css/sass/components/modal.scss";
+@import "../../../../node_modules/materialize-css/sass/components/tabs.scss";
+@import "../../../../node_modules/materialize-css/sass/components/forms/checkboxes.scss";
+@import "../../../../node_modules/materialize-css/sass/components/forms/file-input.scss";
+@import "../../../../node_modules/materialize-css/sass/components/forms/forms.scss";
+@import "../../../../node_modules/materialize-css/sass/components/forms/radio-buttons.scss";
+@import "../../../../node_modules/materialize-css/sass/components/forms/select.scss";
+
 @import "../../../../node_modules/material-icons/iconfont/material-icons.scss";
+
+@import "components/color.scss";
 @import "style.scss";
 @import "components/range.scss";
 @import "common/header.scss";

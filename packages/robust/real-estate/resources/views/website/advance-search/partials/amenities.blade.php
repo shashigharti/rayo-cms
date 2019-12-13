@@ -1,8 +1,8 @@
-<div class="mb-20">
-    <div class="input-field col s12">
-        <select name="amenities[]" multiple class="advance-search_features" data-url="{{route('website.realestate.amenities')}}">
-            <option value="" disabled selected>Select Options</option>
-        </select>
-        <label>Amenities</label>
+<div class="mb-20 clearfix multi-select-container">
+    <div class="col s12">
+    	<label>Amenities</label>
+        <select name="amenities[]" multiple data-placeholder="Select Options" class="browser-default advance-search_location multi-select" data-url="{{route('website.realestate.amenities')}}">
+            <option value="" disabled>Select Options</option>
+        </select>      
     </div>
 </div>

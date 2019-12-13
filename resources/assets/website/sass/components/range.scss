@@ -89,11 +89,11 @@
     border-radius: 2px;
     background-color: #eeeeee;
     background-color: #e7e7e7;
-    background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
-    background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+    background-image: -moz-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to($lighter_grey));
+    background-image: -webkit-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: -o-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: linear-gradient(to bottom, #eeeeee, $lighter_grey);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
 
@@ -145,11 +145,11 @@
     border-radius: 2px;
     background-color: #eeeeee;
     background-color: #e7e7e7;
-    background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
-    background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-    background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+    background-image: -moz-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to($lighter_grey));
+    background-image: -webkit-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: -o-linear-gradient(top, #eeeeee, $lighter_grey);
+    background-image: linear-gradient(to bottom, #eeeeee, $lighter_grey);
     background-repeat: repeat-x;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
 
@@ -175,11 +175,11 @@
       border-radius: 10px;
       border: 1px solid #AAA;
       background-color: #e7e7e7;
-      background-image: -moz-linear-gradient(top, #eeeeee, #dddddd);
-      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to(#dddddd));
-      background-image: -webkit-linear-gradient(top, #eeeeee, #dddddd);
-      background-image: -o-linear-gradient(top, #eeeeee, #dddddd);
-      background-image: linear-gradient(to bottom, #eeeeee, #dddddd);
+      background-image: -moz-linear-gradient(top, #eeeeee, $lighter_grey);
+      background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#eeeeee), to($lighter_grey));
+      background-image: -webkit-linear-gradient(top, #eeeeee, $lighter_grey);
+      background-image: -o-linear-gradient(top, #eeeeee, $lighter_grey);
+      background-image: linear-gradient(to bottom, #eeeeee, $lighter_grey);
       background-repeat: repeat-x;
       filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee', endColorstr='#ffdddddd', GradientType=0);
     }

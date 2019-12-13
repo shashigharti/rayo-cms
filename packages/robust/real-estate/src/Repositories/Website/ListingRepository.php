@@ -19,9 +19,10 @@ class ListingRepository
      */
     protected const LISTING_FIELDS = [
         'index' => [
-            'id','uid','slug','system_price','picture_count',
-            'status','address_street','state',
-            'baths_full','bedrooms'
+            'real_estate_listings.id','real_estate_listings.uid','real_estate_listings.slug',
+            'real_estate_listings.system_price','real_estate_listings.picture_count',
+            'real_estate_listings.status','real_estate_listings.address_street','state',
+            'real_estate_listings.baths_full','real_estate_listings.bedrooms'
         ]
     ];
 
@@ -39,21 +40,7 @@ class ListingRepository
         $this->model = $model;
     }
 
-    /**
-     * @param null $status
-     * @return mixed
-     */
-    public function getListing($status = null)
-    {
-        $result = $this->model
-            ->select(ListingRepository::LISTING_FIELDS['index'])
-            ->orderBy('input_date','desc')
-            ->where('picture_status',1);
-        if($status) {
-            $result = $result->where('status',$status);
-        }
-        return $result;
-    }
+   
 
     /**
      * @param $id
@@ -204,5 +191,12 @@ class ListingRepository
         }
 
         return $model;
+    }
+
+    public function getListings(){
+        return $this->model->search()
+            ->select(ListingRepository::LISTING_FIELDS['index'])
+            ->leftJoin('real_estate_listing_properties', 'real_estate_listings.id', '=', 'real_estate_listing_properties.listing_id')
+            ->paginate(40);
     }
 }

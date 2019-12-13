@@ -23,7 +23,7 @@
     right: 0;
     display: block;
     z-index: 1400;
-    color: #fff;
+    color: $white;
     font-family: Roboto,sans-serif;
     height: 100%;
     width: 0px;
@@ -39,8 +39,8 @@
 	    padding-left: 15px;
     }
     a.right-icon {
-	    color: #fff;
-	    background: #002349;
+	    color: $white;
+	    background:$theme_color;
 	    padding: 10px;
 	    position: fixed;
 	    right: 0;
@@ -51,23 +51,23 @@
     	.intro--section {
 		    margin: 50px 0px;
 		    h3 {
-			    color: #002349;
+			    color:$theme_color;
 			    font-size: 16px;
 			    font-weight: 600;
 			}
 			p {
-			    color: #777;
+			    color:$dark_grey;
 			    font-size: 14px;
 			}
 		}
 		.data--section{
 			table {
 			    width: 100%;
-			    color: #111;
+			    color: $light_black;
 			     td {
 				    padding: 10px 0px 10px 5px;
 				    border-bottom: 0;
-				    border: 1px solid #777;
+				    border: 1px solid$dark_grey;
 				}
 				label {
 				    font-weight: 600;
@@ -77,13 +77,13 @@
 			}
 		}
 		.comment--section {
-		    border: 1px solid #ccc;
+		    border: 1px solid $light_grey;
 		    padding: 15px 15px 30px;
 		    margin: 50px 0px;
-		    background: #fff;
+		    background: $white;
 		    p {
 			    font-size: 14px;
-			    color: #777;
+			    color:$dark_grey;
 			    font-weight: 500;
 			    line-height: 25px;
 			}
@@ -92,18 +92,18 @@
 			    height: 63px;
 			    padding: 9px;
 			    font-size: 14px;
-			    color: #777;
+			    color:$dark_grey;
 			}
 			span {
 			    font-size: 12px;
 			    vertical-align: text-top;
 			    display: inline-block;
-			    color: #777;
+			    color:$dark_grey;
 			}
 			.theme-btn {
 			    width: 130px;
 			    margin-left: 0px;
-			    box-shadow: 1px 1px 4px 1px #777;
+			    box-shadow: 1px 1px 4px 1px$dark_grey;
 			}
 		}
 	}

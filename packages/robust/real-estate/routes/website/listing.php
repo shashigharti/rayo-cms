@@ -1,6 +1,6 @@
 <?php
 Route::group([
-    'prefix' => 'real-estate',
+    //'prefix' => 'real-estate',
     'as' => 'website.realestate.',
     'group' => 'Listing'],
     function () {
@@ -23,7 +23,7 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
 
-        Route::get('//homes-for-sale/{type}/{value}/{id}',[
+        Route::get('/homes-for-sale/{type}/{value}/{id}',[
             'name' =>'Similar Listing',
             'as' => 'listings.similar',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'

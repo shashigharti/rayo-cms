@@ -1,8 +1,8 @@
-<div class="mb-20">
+<div class="mb-20 clearfix multi-select-container">
     <div class="col s12">
-        <select name="counties[]" multiple class="advance-search_location" data-url="{{route('website.realestate.counties')}}">
-            <option value="" disabled selected>Select Options</option>
-        </select>
-        <label>Country</label>
+    	<label>Country</label>
+        <select name="counties[]" multiple data-placeholder="Select Options" class="browser-default advance-search_location multi-select" data-url="{{route('website.realestate.counties')}}">
+            <option value="" disabled>Select Options</option>
+        </select>        
     </div>
 </div>

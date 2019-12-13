@@ -91,7 +91,7 @@ a {
 
   &:hover {
     background: #0091ff;
-    color: #fff;
+    color: $white;
   }
 }
 
@@ -127,19 +127,19 @@ a {
 a {
   &.btn-orange {
     background: #f7941d;
-    color: #fff;
+    color: $white;
     border: 1px solid #f7941d;
   }
 
   &.btn-green {
     background: #009700;
-    color: #fff;
+    color: $white;
     border: 1px solid #009700;
   }
 
   &.btn-blue {
     background: #123059;
-    color: #fff;
+    color: $white;
     border: 1px solid #123059;
   }
 }
@@ -151,7 +151,7 @@ a {
 
   span {
     background: #a1a1a1;
-    color: #fff;
+    color: $white;
     padding: 2px 9px;
     margin-right: 4px;
     border-radius: 5px;
@@ -230,7 +230,7 @@ a {
 
 .btn-default {
   color: #333;
-  background-color: #fff;
+  background-color: $white;
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -262,7 +262,7 @@ a {
   .show-average-data-btn.active, .show-active-data-btn.active{
     color: #333 !important;
     border: 1px solid #333 !important;
-    background: #fff;
+    background: $white;
   }
 }
 .market__search--lists--side-nav{
@@ -276,7 +276,7 @@ a {
     .btn-checkbox,.market--search__lists--filter .btn-default:active:hover,.market--search__lists--filter .btn-default.active:hover{
       color: #333 !important;
       border: 1px solid #333 !important;
-      background: #fff;
+      background: $white;
     }
     label {
       font-size: 12px;
@@ -290,7 +290,7 @@ a {
 .show-sold-data-btn.active {
   color: #333 !important;
   border: 1px solid #333 !important;
-  background: #fff;
+  background: $white;
 }
 
 .market__search--lists-item [type="checkbox"] {
@@ -305,7 +305,7 @@ a {
 .market--left__sort--btns .active {
   border: 1px solid #0091ff !important;
   background: #0091ff;
-  color: #fff !important;
+  color: $white !important;
 }
 .market-insight__stat{
     h4{
@@ -345,9 +345,9 @@ a {
     padding-left:25px;
   }
   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:after {
-    background-color: #002349;
+    background-color: $theme_color;
   }
   [type="radio"]:checked+span:after, [type="radio"].with-gap:checked+span:before, [type="radio"].with-gap:checked+span:after {
-    border: 2px solid #002349;
+    border: 2px solid $theme_color;
   }
 }
