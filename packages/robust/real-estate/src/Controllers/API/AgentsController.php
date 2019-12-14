@@ -2,9 +2,8 @@
 namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
-
 use Robust\Admin\Repositories\Admin\UserRepository;
-use Robust\Core\Controllers\Admin\Traits\UserTrait;
+use Robust\Core\Controllers\API\Traits\CrudTrait;
 use Robust\RealEstate\Repositories\API\AgentRepository;
 
 
@@ -14,7 +13,7 @@ use Robust\RealEstate\Repositories\API\AgentRepository;
  */
 class AgentsController extends Controller
 {
-    use UserTrait;
+    use CrudTrait;
 
     /**
      * @var AgentRepository

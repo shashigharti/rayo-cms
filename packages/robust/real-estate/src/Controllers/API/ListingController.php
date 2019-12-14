@@ -1,13 +1,12 @@
 <?php
-
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Robust\RealEstate\Repositories\Api\ListingRepository;
+use Robust\RealEstate\Repositories\API\ListingRepository;
 
 /**
  * Class ListingController
- * @package Robust\RealEstate\Controllers\Api
+ * @package Robust\RealEstate\Controllers\API
  */
 class ListingController extends Controller
 {
@@ -26,14 +25,4 @@ class ListingController extends Controller
         $this->model = $model;
     }
 
-
-    /**
-     * @param Request $request
-     * @param $type
-     * @param $slug
-     * @return JSON
-     */
-    public function getListings(Request $request, $type, $slug){
-
-    }
 }

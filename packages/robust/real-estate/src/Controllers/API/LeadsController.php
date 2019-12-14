@@ -1,19 +1,18 @@
 <?php
-
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Exception;
 use Illuminate\Http\Request;
 use Robust\Admin\Repositories\Admin\UserRepository;
-use Robust\Core\Controllers\Admin\Traits\UserTrait;
+use Robust\Core\Controllers\API\Traits\CrudTrait;
 use Robust\RealEstate\Models\Lead;
 use Robust\RealEstate\Models\LeadCategory;
 use Robust\RealEstate\Models\LeadMetadata;
 use Robust\RealEstate\Models\LeadNote;
 use Robust\RealEstate\Models\Status;
 use Robust\RealEstate\Models\UserSearch;
-use Robust\RealEstate\Repositories\Api\LeadRepositories;
+use Robust\RealEstate\Repositories\API\LeadRepositories;
 use Robust\RealEstate\Resources\Lead as LeadResource;
 use Robust\RealEstate\Resources\LeadMetadata as LeadMetadataResource;
 use Robust\RealEstate\Resources\Status as LeadStatusResource;
@@ -21,11 +20,11 @@ use Robust\RealEstate\Resources\Status as LeadStatusResource;
 
 /**
  * Class LeadsController
- * @package Robust\RealEstate\Controllers\Api
+ * @package Robust\RealEstate\Controllers\API
  */
 class LeadsController extends Controller
 {
-    use UserTrait;
+    use CrudTrait;
 
     /**
      * @var LeadRepositories

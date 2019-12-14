@@ -1,22 +1,21 @@
 <?php
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\RealEstate\Controllers\API;
 
-use App\Http\Controllers\Controller;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Validator;
-use Robust\Core\Controllers\Admin\Traits\ApiTrait;
+use App\Http\Controllers\Controller;
+use Robust\Core\Controllers\API\Traits\CrudTrait;
 use Robust\RealEstate\Repositories\Api\LeadNoteRepository;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 
 /**
  * Class LeadNoteController
- * @package Robust\RealEstate\Controllers\Api
+ * @package Robust\RealEstate\Controllers\API
  */
 class LeadNoteController extends Controller
 {
-    use ApiTrait;
+    use CrudTrait;
     /**
      * @var LeadNoteRepository
      */

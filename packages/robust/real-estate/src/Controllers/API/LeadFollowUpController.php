@@ -1,19 +1,18 @@
 <?php
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
-
-use Robust\Core\Controllers\Admin\Traits\ApiTrait;
-use Robust\RealEstate\Repositories\Api\LeadFollowUpRepository;
+use Robust\Core\Controllers\API\Traits\CrudTrait;
+use Robust\RealEstate\Repositories\API\LeadFollowUpRepository;
 
 
 /**
  * Class LeadFollowUpController
- * @package Robust\RealEstate\Controllers\Api
+ * @package Robust\RealEstate\Controllers\API
  */
 class LeadFollowUpController extends Controller
 {
-    use ApiTrait;
+    use CrudTrait;
     /**
      * @var LeadFollowUpRepository
      */
