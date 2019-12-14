@@ -5,15 +5,15 @@ use Robust\Core\Models\BaseModel;
 
 
 /**
- * Class County
+ * Class Location
  * @package Robust\RealEstate\Models
  */
-class County extends BaseModel
+class Location extends BaseModel
 {
     /**
      * @var string
      */
-    protected $table = 'real_estate_counties';
+    protected $table = 'real_estate_locations';
 
     /**
      * @var array
@@ -21,10 +21,10 @@ class County extends BaseModel
     protected $fillable = [
         'name',
         'slug',
-        'active',
-        'sold',
-        'menu_order',
-        'latitude',
-        'longitude'
+        'status',
+        'active_count',
+        'sold_count',
+        'location_id',
+        'locationable_type'
     ];
 }

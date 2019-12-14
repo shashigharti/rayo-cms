@@ -7,7 +7,7 @@ use Robust\Core\Models\BaseModel;
 
 /**
  * Class City
- * @package Robust\Landmarks\Models
+ * @package Robust\RealEstate\Models
  */
 class City extends BaseModel
 {

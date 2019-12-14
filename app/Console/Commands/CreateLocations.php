@@ -107,6 +107,17 @@ class CreateLocations extends Command
                 'locationable_type' => '\Robust\RealEstate\Models\MiddleSchool'
             ]);
         }
+
+        $this->info('Adding School District');
+        $real_estate_school_districts = \DB::table('real_estate_school_districts')->get();
+        foreach($real_estate_school_districts as $school_district){
+            \DB::table('real_estate_locations')->insert([
+                'name' => $school_district->name,
+                'slug' => $school_district->slug,
+                'location_id' => $middschool_districtle_school->id,
+                'locationable_type' => '\Robust\RealEstate\Models\SchoolDistrict'
+            ]);
+        }
        
     }
 }

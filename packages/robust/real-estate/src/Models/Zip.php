@@ -1,5 +1,4 @@
 <?php
-
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
@@ -7,7 +6,7 @@ use Robust\Core\Models\BaseModel;
 
 /**
  * Class Zip
- * @package Robust\Landmarks\Models
+ * @package Robust\RealEstate\Models
  */
 class Zip extends BaseModel
 {

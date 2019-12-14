@@ -9,7 +9,7 @@ use Robust\RealEstate\Models\Subdivision;
 
 /**
  * Class SubdivisionRepository
- * @package Robust\LandMarks\Repositories\Admin
+ * @package Robust\RealEstate\Repositories\Admin
  */
 class SubdivisionRepository
 {

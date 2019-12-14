@@ -9,7 +9,7 @@ use Robust\RealEstate\Models\Grid;
 
 /**
  * Class GridRepository
- * @package Robust\LandMarks\Repositories\Admin
+ * @package Robust\RealEstate\Repositories\Admin
  */
 class GridRepository
 {

@@ -9,7 +9,7 @@ use Robust\RealEstate\Models\ElementarySchool;
 
 /**
  * Class ElemSchoolRepository
- * @package Robust\LandMarks\Repositories\Admin
+ * @package Robust\RealEstate\Repositories\Admin
  */
 class ElemSchoolRepository
 {

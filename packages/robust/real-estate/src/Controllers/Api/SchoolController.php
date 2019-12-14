@@ -37,7 +37,7 @@ class SchoolController extends Controller
     }
 
     /**
-     * @param \Robust\Landmarks\Model\ElemSchool $elemSchool
+     * @param \Robust\RealEstate\Model\ElemSchool $elemSchool
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getElemSchools(ElementarySchool $elemSchool)
@@ -48,7 +48,7 @@ class SchoolController extends Controller
     }
 
     /**
-     * @param \Robust\Landmarks\Model\MiddleSchool $middleSchool
+     * @param \Robust\RealEstate\Model\MiddleSchool $middleSchool
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getMiddleSchools(MiddleSchool $middleSchool)
@@ -59,7 +59,7 @@ class SchoolController extends Controller
     }
 
     /**
-     * @param \Robust\Landmarks\Model\HighSchool $highSchool
+     * @param \Robust\RealEstate\Model\HighSchool $highSchool
      * @return \Illuminate\Http\Resources\Json\AnonymousResourceCollection
      */
     public function getHighSchools(HighSchool $highSchool)

@@ -9,7 +9,7 @@ use Robust\RealEstate\Models\Zip;
 
 /**
  * Class ZipRepository
- * @package Robust\LandMarks\Repositories\Admin
+ * @package Robust\RealEstate\Repositories\Admin
  */
 class ZipRepository
 {

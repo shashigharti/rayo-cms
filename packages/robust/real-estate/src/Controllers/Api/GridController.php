@@ -28,7 +28,7 @@ class GridController extends Controller
     public function __construct(GridRepository $model)
     {
         $this->model = $model;
-        $this->resource = 'Robust\Landmarks\Resources\Grid';
+        $this->resource = 'Robust\RealEstate\Resources\Grid';
     }
 }
 

@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Robust\Emails\Models\SentEmails;
-use Robust\Landmarks\Model\Listings;
+use Robust\RealEstate\Model\Listings;
 use Robust\Leads\Models\Lead;
 use Robust\Leads\Models\UserSearch;
 use Robust\Pages\Models\Logo;

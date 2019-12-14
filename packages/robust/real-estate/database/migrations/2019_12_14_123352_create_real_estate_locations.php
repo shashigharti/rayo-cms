@@ -15,8 +15,8 @@ class CreateRealEstateLocations extends Migration
     {
         Schema::create('real_estate_locations', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name', 50);
-            $table->string('slug', 50);
+            $table->string('name', 200);
+            $table->string('slug', 200);
             $table->boolean('status')->default(1);
             $table->integer('active_count')->default(0);
             $table->integer('sold_count')->default(0);
