@@ -1,5 +1,5 @@
 <?php
-namespace Robust\RealEstate\Repositories\Api;
+namespace Robust\RealEstate\Repositories\API;
 
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
@@ -9,7 +9,7 @@ use Robust\RealEstate\Models\CoreEmailTemplate;
 
 /**
  * Class CoreEmailRepository
- * @package Robust\RealEstate\Repositories\Api
+ * @package Robust\RealEstate\Repositories\API
  */
 class CoreEmailRepository
 {

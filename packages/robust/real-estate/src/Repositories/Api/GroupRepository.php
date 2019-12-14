@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\RealEstate\Repositories\Api;
+namespace Robust\RealEstate\Repositories\API;
 
 use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;

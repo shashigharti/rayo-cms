@@ -1,16 +1,16 @@
 <?php
-namespace Robust\RealEstate\Controllers\Api;
+namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
 
 use Robust\Admin\Repositories\Admin\UserRepository;
 use Robust\Core\Controllers\Admin\Traits\UserTrait;
-use Robust\RealEstate\Repositories\Api\AgentRepository;
+use Robust\RealEstate\Repositories\API\AgentRepository;
 
 
 /**
  * Class AgentsController
- * @package Robust\RealEstate\Controllers\Api
+ * @package Robust\RealEstate\Controllers
  */
 class AgentsController extends Controller
 {

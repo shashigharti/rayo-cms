@@ -1,5 +1,5 @@
 <?php
-namespace Robust\RealEstate\Repositories\Api;
+namespace Robust\RealEstate\Repositories\API;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
