@@ -14,15 +14,9 @@ class LeadFollowUpController extends Controller
 {
     use CrudTrait;
     /**
-     * @var LeadFollowUpRepository
-     */
-    /**
      * @var LeadFollowUpRepository|string
      */
     protected $model,$resource;
-    /**
-     * @var array
-     */
     /**
      * @var array
      */

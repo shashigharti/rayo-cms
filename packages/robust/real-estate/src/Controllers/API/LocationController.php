@@ -9,6 +9,6 @@ use Robust\Core\Controllers\API\Traits\CrudTrait;
  */
 class LocationController extends Controller
 {
-    use CrudTrait;
+    
     
 }
