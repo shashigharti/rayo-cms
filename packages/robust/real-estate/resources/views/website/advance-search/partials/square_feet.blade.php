@@ -4,7 +4,7 @@
 <div class="mb-20">
     <div class="input-field col s6">
         <select name="square_min">
-            <option value="">Min</option>
+            <option value="" selected disabled>Min</option>
             @for($square = $square_min; $square <= $square_max; $square += $square_increase)
                 <option value="{{$square}}">{{$square}}</option>
             @endfor
@@ -12,8 +12,8 @@
         <label>SquareFeet(min-max)</label>
     </div>
     <div class="input-field col s6">
-        <select name="square_min">
-            <option value="">Max</option>
+        <select name="square_max">
+            <option value="" selected disabled>Max</option>
             @for($square = $square_min; $square <= $square_max; $square += $square_increase)
                 <option value="{{$square}}">{{$square}}</option>
             @endfor

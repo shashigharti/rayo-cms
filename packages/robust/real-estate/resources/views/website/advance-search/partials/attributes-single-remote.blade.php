@@ -6,7 +6,7 @@
         data-placeholder="Select Options" multiple 
         class="browser-default multi-select" 
         data-url="{{route('api.realestate.attributes.property_name', [$attribute])}}">
-            <option value="">Select Options</option>
+            <option value="" disabled>Select Options</option>
         </select>
     </div>
 </div>

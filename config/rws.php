@@ -7,7 +7,7 @@ return [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Lot Description'
         ],
-        'architectural_style' => [
+        'design' => [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Architectural Style'
         ],
