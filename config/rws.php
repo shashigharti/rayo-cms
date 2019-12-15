@@ -11,7 +11,7 @@ return [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Architectural Style'
         ],
-        'lot_water_features' => [
+        'waterfront_details' => [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Lot Water Features'
         ],
