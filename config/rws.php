@@ -15,6 +15,10 @@ return [
             'blade' => 'attributes-single',
             'display_name' => 'Lot Water Features'
         ],
+        'exterior' => [
+            'blade' => 'attributes-single',
+            'display_name' => 'Exterior'
+        ],
         'pool' => [
             'blade' => 'attributes-single',
             'display_name' => 'Pool'
