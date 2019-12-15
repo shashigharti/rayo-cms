@@ -5,7 +5,7 @@
         data-selected="{{ implode( ',', $query_params['high_school_id'] ?? [] ) }}" multiple 
         data-placeholder="Select Options" 
         class="browser-default advance-search_location multi-select" 
-        data-url="{{route('website.realestate.counties')}}"
+        data-url="{{route('api.real-estate.locations.type', ['high-schools'])}}"
         >
             <option value="" disabled>Select Options</option>
         </select>

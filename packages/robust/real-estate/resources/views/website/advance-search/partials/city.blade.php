@@ -5,7 +5,7 @@
         data-selected="{{ implode( ',', $query_params['city_id'] ?? [] ) }}" 
         data-placeholder="Select Options" multiple 
         class="browser-default multi-select" 
-        data-url="{{route('website.realestate.cities')}}">
+        data-url="{{route('api.real-estate.locations.type', ['cities'])}}">
             <option value="" disabled>Select Options</option>
         </select>
     </div>
