@@ -21,6 +21,5 @@
             @endfor
             <option value="2019">2019</option>
         </select>
-        <label></label>
     </div>
 </div>

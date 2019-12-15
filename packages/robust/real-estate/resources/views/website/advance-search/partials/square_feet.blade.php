@@ -18,6 +18,5 @@
                 <option value="{{$square}}">{{$square}}</option>
             @endfor
         </select>
-        <label></label>
     </div>
 </div>

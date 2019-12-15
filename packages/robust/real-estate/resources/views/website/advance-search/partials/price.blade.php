@@ -18,6 +18,5 @@
                 <option value="{{$price}}">${{$price}}</option>
             @endfor
         </select>
-        <label></label>
     </div>
 </div>
