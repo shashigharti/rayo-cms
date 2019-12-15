@@ -20,26 +20,10 @@
     </p>
     <p>
         <label>
-            <input name="status[]" value="Active" type="checkbox" 
-            {{ (isset($query_params['status']) && in_array('Active', $query_params['status'])) ? 'checked':'' }}
-            />
-            <span>Active</span>
-        </label>
-    </p>
-    <p>
-        <label>
             <input name="status[]" value="Sold" type="checkbox" 
             {{ (isset($query_params['status']) && in_array('Sold', $query_params['status'])) ? 'checked':'' }}
             />
             <span>Sold</span>
-        </label>
-    </p>
-    <p>
-        <label>
-            <input name="status[]" value="Pending" type="checkbox" 
-            {{ (isset($query_params['status']) && in_array('Pending', $query_params['status'])) ? 'checked':'' }}
-            />
-            <span>Pending</span>
         </label>
     </p>
 </div>

@@ -15,6 +15,10 @@ return [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Lot Water Features'
         ],
+        'interior' => [
+            'blade' => 'attributes-single-remote',
+            'display_name' => 'Interior'
+        ],
         'exterior' => [
             'blade' => 'attributes-single-remote',
             'display_name' => 'Exterior'
