@@ -3,7 +3,7 @@
         <select name="stories">
             <option value="">Select Options</option>
             @for($min = 1; $min <= 10;$min++ )
-                <option value="{{$min}}">{{$min}}</option>
+                <option value="{{$min}}">{{$min}} Story</option>
             @endfor
         </select>
         <label>Stories</label>
