@@ -1,6 +1,7 @@
 <?php
 namespace Robust\RealEstate\Controllers\API;
 
+use App\Http\Controllers\Controller;
 use Robust\Core\Controllers\API\Traits\CrudTrait;
 use Robust\RealEstate\Repositories\API\LocationRepository;
 
@@ -24,6 +25,23 @@ class LocationController extends Controller
     {
         $this->model = $model;
     }
-    
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function index()
+    {
+        $records = $this->model->getLocations([], ['id','name','slug', 'status', 'active_count', 'sold_count']);
+        return response()->json(['data' => $records]);
+    }
+
+    /**
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function getLocationByType($type)
+    {
+        $records = $this->model->getLocations(['type' => $type], ['id','name','slug', 'status', 'active_count', 'sold_count']);
+        return response()->json(['data' => $records]);
+    }    
     
 }
