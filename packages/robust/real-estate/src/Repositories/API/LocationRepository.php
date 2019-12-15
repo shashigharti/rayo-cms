@@ -26,9 +26,9 @@ class LocationRepository
         'cities' => ['class' => '\Robust\RealEstate\Models\City'],
         'zips' => ['class' => '\Robust\RealEstate\Models\Zip'],
         'counties' => ['class' => '\Robust\RealEstate\Models\County'],
-        'high-schools' => ['class' => '\Robust\RealEstate\Models\HighSchool'],
-        'elementary-schools' => ['class' => '\Robust\RealEstate\Models\ElementarySchool'],
-        'middle-schools' => ['class' => '\Robust\RealEstate\Models\MiddleSchool']
+        'high_schools' => ['class' => '\Robust\RealEstate\Models\HighSchool'],
+        'elementary_schools' => ['class' => '\Robust\RealEstate\Models\ElementarySchool'],
+        'middle_schools' => ['class' => '\Robust\RealEstate\Models\MiddleSchool']
     ];
 
     /**

@@ -19,6 +19,31 @@ return [
             'blade' => 'attributes-single',
             'display_name' => 'Pool'
         ],
+        'counties' => [
+            'blade' => 'locations',
+            'display_name' => 'Counties'
+        ],
+        'cities' => [
+            'blade' => 'locations',
+            'display_name' => 'City'
+        ],
+        'zips' => [
+            'blade' => 'locations',
+            'display_name' => 'Zip'
+        ],
+        'elementary_schools' => [
+            'blade' => 'locations',
+            'display_name' => 'Elementary School'
+        ],
+        'middle_schools' => [
+            'blade' => 'locations',
+            'display_name' => 'Middle School'
+        ],
+        'high_schools' => [
+            'blade' => 'locations',
+            'display_name' => 'High School'
+        ]
+        
     ]
 
 ];
