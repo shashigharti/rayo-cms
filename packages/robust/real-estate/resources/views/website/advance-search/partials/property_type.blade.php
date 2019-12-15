@@ -1,3 +1,6 @@
+@inject('advance_helper', 'Robust\RealEstate\Helpers\AdvanceSearchHelper')
+@set('property_types', $advance_helper->getAttributesListByPropertyName('property_type'))
+
 <div class="mb-20">
     <p>
         <label>Type of property</label>
@@ -10,36 +13,14 @@
             <span>Select All</span>
         </label>
     </p>
-    {{-- <p>
-        <label>
-            <input name="property_type[]" value="Single Family Residence" type="checkbox" 
-            {{ (isset($query_params['property_type']) && in_array('Single Family Residence', $query_params['property_type'])) ? 'checked':'' }}
-            />
-            <span>Single Family Residence</span>
-        </label>
-    </p>
-    <p>
-        <label>
-            <input name="property_type[]" value="Condominium" type="checkbox" 
-            {{ (isset($query_params['property_type']) && in_array('Condominium', $query_params['property_type'])) ? 'checked':'' }}
-            />
-            <span>Condominium</span>
-        </label>
-    </p>
-    <p>
-        <label>
-            <input name="property_type[]" value="Villa" type="checkbox" 
-            {{ (isset($query_params['property_type']) && in_array('Villa', $query_params['property_type'])) ? 'checked':'' }}
-            />
-            <span>Villa</span>
-        </label>
-    </p>
-    <p>
-        <label>
-            <input name="property_type[]" value="Lots/Land" type="checkbox" 
-            {{ (isset($query_params['property_type']) && in_array('Townhome', $query_params['property_type'])) ? 'checked':'' }}
-            />
-            <span>Lots/Land</span>
-        </label>
-    </p> --}}
+    @foreach($property_types as $property)
+        <p>
+            <label>
+                <input name="property_type[]" value="{{$property['name']}}" type="checkbox" 
+                {{ (isset($query_params['property_type']) && in_array($property['name'], $query_params['property_type'])) ? 'checked':'' }}
+                />
+                <span>{{$property['name']}}</span>
+            </label>
+        </p>
+    @endforeach
 </div>

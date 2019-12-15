@@ -52,6 +52,7 @@ class FrontendHelperComposer {
         $view->with('location_helper', $this->location_helper);
         $view->with('advancesearch_helper', $this->advancesearch_helper);
         $view->with('query_params', $query_params);
+
     }
 
 }
