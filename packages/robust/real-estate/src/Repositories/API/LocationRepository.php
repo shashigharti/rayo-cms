@@ -15,8 +15,8 @@ class LocationRepository
     protected $model;
 
     protected const FIELDS_QUERY_MAP = [
-        'name' => ['name' => 'name', 'condition' => '%LIKE%'],
-        'type' => ['name' => 'type', 'condition' => '%LIKE%'],
+        'name' => ['name' => 'name', 'condition' => 'LIKE'],
+        'type' => ['name' => 'type', 'condition' => 'LIKE'],
         'id' => ['name' => 'id', 'condition' => '='],
         'status' => ['name' => 'status', 'condition' => '='],
         'type' => ['name' => 'locationable_type', 'condition' => '=']

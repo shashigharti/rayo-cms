@@ -2,7 +2,7 @@
     <div class="col s12">
     	<label>High School</label>
         <select name="elementary_school_id[]" 
-        data-selected="{{ implode( ',', $query_params['high_school_id'] ?? [] ) }}" multiple 
+        data-selected="{{ implode( ',', $query_params['elementary_school_id'] ?? [] ) }}" multiple 
         data-placeholder="Select Options" 
         class="browser-default advance-search_location multi-select" 
         data-url="{{route('api.real-estate.locations.type', ['high-schools'])}}"
