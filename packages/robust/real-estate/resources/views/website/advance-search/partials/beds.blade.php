@@ -4,7 +4,7 @@
 <div class="mb-20">
     <div class="input-field col s6">
         <select name="beds_min">
-            <option value="" disabled selected>Min</option>
+            <option value="">Min</option>
             @for($beds = $beds_min; $beds <= $beds_max; $beds += $beds_increase)
                 <option value="{{$beds}}">{{$beds}}</option>
             @endfor
@@ -13,7 +13,7 @@
     </div>
     <div class="input-field col s6">
         <select name="beds_max">
-            <option value="" disabled selected>Max</option>
+            <option value="">Max</option>
             @for($beds = $beds_min; $beds <= $beds_max; $beds += $beds_increase)
                 <option value="{{$beds}}">{{$beds}}</option>
             @endfor
