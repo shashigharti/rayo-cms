@@ -34,10 +34,17 @@ class ListingController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active()
+    public function active($location_type = null,  $location = null,  $price_range = null)
     {        
         $query_params = request()->all();
-        $results  = $this->model->getListings(['status' => 'Active'])->paginate(40);
+        $results  = $this->model->getListings(
+            [
+                'status' => 'Active',
+                'location_type' => $location_type,
+                'location' => $location,
+                'system_price' => $price_range != null? explode('-', $price_range) : $price_range                
+            ])
+            ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
 
@@ -45,10 +52,17 @@ class ListingController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sold()
+    public function sold($location_type = null,  $location = null,  $price_range = null)
     {        
         $query_params = request()->all();
-        $results  = $this->model->getListings(['status' => 'Closed'])->paginate(40);
+        $results  = $this->model->getListings(
+            [
+                'status' => 'Closed',
+                'location_type' => $location_type,
+                'location' => $location,
+                'system_price' => $price_range != null? explode('-', $price_range) : $price_range             
+            ])
+            ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
 

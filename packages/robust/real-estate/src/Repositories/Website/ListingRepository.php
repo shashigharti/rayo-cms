@@ -5,6 +5,7 @@ use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Listing;
+use Illuminate\Support\Arr;
 
 
 /**
@@ -14,9 +15,7 @@ use Robust\RealEstate\Models\Listing;
 class ListingRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
-    /**
-     *
-     */
+    
     protected const LISTING_FIELDS = [
         'index' => [
             'real_estate_listings.id','real_estate_listings.uid','real_estate_listings.slug',
@@ -39,6 +38,17 @@ class ListingRepository
         'city_id' => ['name' => 'real_estate_listings.city_id', 'condition' => '='],
         'zip_id' => ['name' => 'real_estate_listings.zip_id', 'condition' => '='],
         'county_id' => ['name' => 'real_estate_listings.county_id', 'condition' => '=']
+    ];
+
+    protected const LOCATION_TYPE_MAP = [
+        'location_type' => [
+            'cities' => 'city_id',
+            'zips' => 'zip_id',
+            'counties' => 'county_id',
+            'high_schools' => 'high_school_id',
+            'elementary_schools' => 'elementary_school_id',
+            'middle_schools' => 'middle_school_id'
+        ]
     ];
 
     /**
@@ -85,11 +95,33 @@ class ListingRepository
      * @return Eloquent Collection
      */
     public function getListings($params = [], $limit = null)
-    {
+    {        
         $qBuilder = $this->model;
-
         $qBuilder = $qBuilder->select(ListingRepository::LISTING_FIELDS['index']);
 
+        // Remove all params that are null
+        foreach($params as $key => $param){
+            if($param == null){
+                Arr::forget($params, $key);
+            }
+        }
+
+        // Get mapping location field        
+        if(Arr::has($params, 'location_type')){            
+            $params[
+                ListingRepository::LOCATION_TYPE_MAP['location_type'][$params['location_type']]
+            ] = $params['location'];
+            Arr::forget($params, 'location_type');            
+            Arr::forget($params, 'location');
+        }
+
+        // Check if param has prices
+        if(Arr::has($params, 'system_price')){            
+           $qBuilder = $qBuilder->whereBetween('system_price', $params['system_price']);
+           Arr::forget($params, 'system_price');
+        }
+        
+        
         foreach($params as $key => $param){
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'],
             ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
@@ -99,7 +131,6 @@ class ListingRepository
         if($limit > 0){
             $qBuilder = $qBuilder->limit($limit);
         }
-
         return $qBuilder;
     }
 
