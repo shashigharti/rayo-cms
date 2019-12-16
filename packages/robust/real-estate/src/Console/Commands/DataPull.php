@@ -112,20 +112,117 @@ class DataPull extends RetsCommands
     //Palm Beach, Broward, Martin, St Lucie
     protected $conditions = [
         'counties' => [
-            'Palm Beach' => '1552FDYRQZIB',
-            'Broward' => '1552FDYRIW50',
-            'Martin' => '1552FDYRQ3SA',
-            'St. Lucie' => '1552FDYRSN94',
+           'A' => [
+               'Palm Beach' => '1552FDYRQZIB',
+               'Broward' => '1552FDYRIW50',
+               'Martin' => '1552FDYRQ3SA',
+               'St. Lucie' => '1552FDYRSN94',
+           ],
+           'B' => [
+               'Palm Beach' => '1DEK1CX064G6',
+               'Broward' => '1DEK1CWY7BTK',
+               'Martin' => '1DEK1CWYTDDA',
+               'St. Lucie' => '1DEK1CX0K245',
+           ],
+           'C' => [
+               'Palm Beach' => '1DEK1CX2AY64',
+               'Broward' => '1DEK1CX0RH3V',
+               'Martin' => '1DEK1CX1AVA8',
+               'St. Lucie' => '1DEK1CX2NZPU',
+           ],
+           'D' => [
+               'Palm Beach' => '1DEK1CX4HV0L',
+               'Broward' => '1DEK1CX2UPG8',
+               'Martin' => '1DEK1CX3G2FL',
+               'St. Lucie' => '1DEK1CX4ZQ77',
+           ],
+            'E' => [
+                'Palm Beach' => '1DEK1CX6QUKN',
+                'Broward' => '1DEK1CX56FW5',
+                'Martin' => '1DEK1CX5PTSV',
+                'St. Lucie' => '1DEK1CX74D13',
+            ],
+            'F' => [
+                'Palm Beach' => '1DEK1CX6QUKN',
+                'Broward' => '1DEK1CX56FW5',
+                'Martin' => '1DEK1CX5PTSV',
+                'St. Lucie' => '1DEK1CX74D13',
+            ]
         ],
         'cities' => [
-
+            'A' => [
+                'Boca Raton' => '12LM4LA7AGIT',
+                'Delray Beach' => '12LM4LFDRK7J',
+                'Boynton Beach' => '12LM4LAAAHAJ',
+                'Deerfield Beach' => '12LM4LDYXFCY',
+                'West Palm Beach' => '12LM4O5ENL56',
+                'Palm Beach Gardens' => '12LM4LXYRE6N',
+                'Wellington' => '12LM4O5947SQ',
+                'Parkland' => '12LM4LZFOYMT',
+                'Highland Beach' => '12LM4LJ2YFPK'
+            ],
+            'B' => [
+                'Boca Raton' => '12MKUJQFXPDX',
+                'Delray Beach' => '12MKUJQFZ60O',
+                'Boynton Beach' => '12MKUJQFXSJY',
+                'Deerfield Beach' => '12MKUJQFZ36Z',
+                'West Palm Beach' => '12MKUJQG9O1Z',
+                'Palm Beach Gardens' => '12MKUJQG5OML',
+                'Wellington' => '12MKUJQG9I62',
+                'Parkland' => '12MKUJQG62XV',
+                'Highland Beach' => '12MKUJQG0PPA'
+            ],
+            'C' => [
+                'Boca Raton' => '12MKULNRNKCO',
+                'Delray Beach' => '12MKULNROXCD',
+                'Boynton Beach' => '12MKULNRNNQZ',
+                'Deerfield Beach' => '12MKULNROURY',
+                'West Palm Beach' => '12MKULNRZG1R',
+                'Palm Beach Gardens' => '12MKULNRVAO0',
+                'Wellington' => '12MKULNRZAFL',
+                'Parkland' => '12MKULNRVP1T',
+                'Highland Beach' => '12MKULNRQJPU'
+            ],
+            'D' => [
+                'Boca Raton' => '12MKV68SFIA8',
+                'Delray Beach' => '12MKV68SGVI5',
+                'Boynton Beach' => '12MKV68SFLN7',
+                'Deerfield Beach' => '12MKV68SGSYQ',
+                'West Palm Beach' => '12MKV68SQV4T',
+                'Palm Beach Gardens' => '12MKV68SMV1D',
+                'Wellington' => '12MKV68SQQ3H',
+                'Parkland' => '12MKV68SN8LA',
+                'Highland Beach' => '12MKV68SIHSQ'
+            ],
+            'E' => [
+                'Boca Raton' => '12ML73ZYI3MK',
+                'Delray Beach' => '12ML73ZYJA99',
+                'Boynton Beach' => '12ML73ZYI5UB',
+                'Deerfield Beach' => '12ML73ZYJ7ZI',
+                'West Palm Beach' => '12ML73ZYRZFM',
+                'Palm Beach Gardens' => '12ML73ZYOSWB',
+                'Wellington' => '12ML73ZYRUKU',
+                'Parkland' => '12ML73ZYP4J0',
+                'Highland Beach' => '12ML73ZYKP3T'
+            ],
+            'F' => [
+                'Boca Raton' => '12MKV6FG7USK',
+                'Delray Beach' => '12MKV6FG98OD',
+                'Boynton Beach' => '12MKV6FG7XNQ',
+                'Deerfield Beach' => '12MKV6FG95TK',
+                'West Palm Beach' => '12MKV6FGJE87',
+                'Palm Beach Gardens' => '12MKV6FGF93M',
+                'Wellington' => '12MKV6FGJ8XZ',
+                'Parkland' => '12MKV6FGFOAU',
+                'Highland Beach' => '12MKV6FGASYE'
+            ]
         ]
     ];
     //we cannot send the default names while querying in the server. Above are lookup values
 
     //just to be fast for now
     protected $conditions_map = [
-        'counties' => 'LIST_41', 'system_price' =>'LIST_22'
+        'counties' => 'LIST_41', 'system_price' =>'LIST_22','cities' => 'LIST_39'
     ];
 
     protected $min_price = 10000;
@@ -161,12 +258,13 @@ class DataPull extends RetsCommands
                 if(is_array($condition)){
                     $query .= ',(' . $this->conditions_map[$key] . '=';
                 }
-                $query .= implode(',',$condition);
+                $query .= implode(',',$condition[$class]);
                 $query .= ')' ;
             }
             //query for system price above 10000
             $query .= ',('. $this->conditions_map['system_price'] .'='. $this->min_price .'+)';
-            $results = $this->rets->Search('Property',$class,$query,['Select'=>$fields,'Limit' =>1]);
+
+            $results = $this->rets->Search('Property',$class,$query,['Select'=>['LIST_1'],'Limit' =>1]);
             $total = $results->getTotalResultsCount();
             $this->info($total);
             do {
