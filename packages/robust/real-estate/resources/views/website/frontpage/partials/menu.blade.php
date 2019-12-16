@@ -32,17 +32,27 @@
                     <div id="cities" class=" tab--content col s12">
                         <ul>
                             @if(isset($locations['cities']))
-                                @foreach($locations['cities'] as $city)
-                                  <li><a href="#">{{$city->name}} ({{$city->active ?? $city->active_count}})</a></li>
+                                @foreach($locations['cities'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab-filter__location" href="#">
+                                            {{ $location->name }} 
+                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div id="counties" class=" tab--content col s12">
+                    <div id="counties" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['counties']))
-                                @foreach($locations['counties'] as $county)
-                                    <li><a href="#">{{$county->name}} ({{$county->active ?? $city->active_count}})</a></li>
+                                @foreach($locations['counties'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab-filter__location" href="#">
+                                            {{ $location->name }} 
+                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
@@ -50,8 +60,13 @@
                     <div id="zipcodes" class=" tab--content col s12">
                         <ul>
                             @if(isset($locations['zips']))
-                                @foreach($locations['zips'] as $zips)
-                                    <li><a href="#">{{$zips->name}} ({{$zips->active ?? $city->active_count}})</a></li>
+                                @foreach($locations['zips'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab-filter__location" href="#">
+                                            {{ $location->name }} 
+                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
