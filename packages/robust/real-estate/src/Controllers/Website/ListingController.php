@@ -44,6 +44,7 @@ class ListingController extends Controller
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
             ->with('property')
+            ->with('images')
             ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }

@@ -26,11 +26,11 @@
             <div class="row">
                 @forelse($results as $result)
                     @set('properties',$result->property->pluck('value','type'))
+                    @set('images',$result->images)
                     <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
-                                @set('first_image',$result->images()->first())
-                                <img src={{$first_image ? $first_image->url :  ''}}>
+                                <img src={{$images ? $images->first()->url :  ''}}>
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
