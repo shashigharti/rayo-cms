@@ -69,14 +69,14 @@ class Listing extends BaseModel
         $empty_values = ['', null];
 
         // Remove empty and null values
-        foreach($query_params as $property => $values){            
+        foreach($query_params as $property => $values){
             if(is_array($values) && count($values) >= 0 ){
                 $new_properties[$property] = $values;
             }
             elseif(!in_array($values, $empty_values)){
                 $new_properties[$property] = $values;
             }
-        }       
+        }
 
         // Build where condition
         foreach($new_properties as $property => $values){
@@ -86,7 +86,7 @@ class Listing extends BaseModel
                         $query->where('type', 'LIKE', $property)
                         ->where('value','LIKE',"%$value%");
                     });
-                }                
+                }
             }else{
                 $builder = $builder->where('type', 'LIKE', $property);
             }
@@ -109,6 +109,14 @@ class Listing extends BaseModel
     public function city()
     {
         return $this->belongsTo('Robust\RealEstate\Models\City');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function subdivision()
+    {
+        return $this->belongsTo('Robust\RealEstate\Models\Subdivision');
     }
 
 

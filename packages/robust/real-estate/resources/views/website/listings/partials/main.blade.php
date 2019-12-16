@@ -26,15 +26,15 @@
             <div class="row">
                 @forelse($results as $result)
                     @set('properties',$result->property->pluck('value','type'))
-                    @set('images',$result->images)
+                    @set('image',$result->images ? $result->images->first() : null)
                     <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
-                                <img src={{$images ? $images->first()->url :  ''}}>
+                                <img src={{$image ? $image->url :  ''}}>
                                 <div class="list--overlay">
 									<span class="tag active">
 										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
-                                            {{$result->status}}  {{$result->system_price}}
+                                            {{$result->status}}
                                         @endif
 									</span>
                                     <span class="fav">
