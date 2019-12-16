@@ -83,18 +83,18 @@ class ListingRepository
      */
     public function getListings($params = [], $limit = null)
     { 
-        $this->params = $params;
+        
         $qBuilder = $this->model->select(ListingRepository::LISTING_FIELDS['index']);
 
         // Remove all params that are null
-        foreach($this->params as $key => $param){
-            if($this->params == null){
-                Arr::forget($this->params, $key);
+        foreach($params as $key => $param){
+            if($params == null){
+                Arr::forget($params, $key);
             }
         }
         
         // Add dynamic where conditions using passed params
-        foreach($this->params as $key => $param){
+        foreach($params as $key => $param){
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'], 
             ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
@@ -134,7 +134,7 @@ class ListingRepository
      */
     public function limit($limit){
         $this->model = $this->model->limit($limit);
-        return $this;
+        return $this->model;
     }
 
     
