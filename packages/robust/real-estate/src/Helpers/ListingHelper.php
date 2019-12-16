@@ -1,6 +1,7 @@
 <?php
 namespace Robust\RealEstate\Helpers;
 
+use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
@@ -9,6 +10,9 @@ use Robust\RealEstate\Repositories\Website\ListingRepository;
  */
 class ListingHelper
 {
+    /**
+     *
+     */
     protected const FIELDS_MAPPING = [
       'cities' => 'city_id',
       'zips' => 'zip_id',
@@ -38,7 +42,7 @@ class ListingHelper
      */
     public function getListingsByType($type, $id, $limit)
     {
-        
+
         $column = ListingHelper::FIELDS_MAPPING[$type];
         return $this->model->getListings([$column => $id], $limit)->get();
     }
@@ -75,5 +79,16 @@ class ListingHelper
             }
         }
         return $src;
+    }
+
+    /**
+     * @param $id
+     * @param $types
+     * @return mixed
+     */
+    public function getPropertiesByTypes($id, $types)
+    {
+        //shall we make a new helper or add repository mam
+        return ListingProperty::where('listing_id',$id)->whereIn('type',$types)->get();
     }
 }

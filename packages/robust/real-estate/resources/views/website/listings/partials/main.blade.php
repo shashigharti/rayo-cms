@@ -25,7 +25,7 @@
         <div class="listing--houses">
             <div class="row">
                 @forelse($results as $result)
-                    @set('properties',$result->property->pluck('value','type'))
+                    @set('properties',$listing_helper->getPropertiesByTypes($result->id,['year_built'])->pluck('value','type'))
                     <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
