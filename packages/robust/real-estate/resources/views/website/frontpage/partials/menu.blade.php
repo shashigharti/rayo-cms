@@ -29,14 +29,14 @@
                             <span><input type="radio" name="status_filter" value='all'>All</span>
                         </ul>
                     </div>
-                    <div id="cities" class=" tab--content col s12">
+                    <div id="cities" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['cities']))
                                 @foreach($locations['cities'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab-filter__location" href="#">
+                                        <a class="tab__location" href="#">
                                             {{ $location->name }} 
-                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                            <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                         </a>
                                     </li>
                                 @endforeach
@@ -48,23 +48,21 @@
                             @if(isset($locations['counties']))
                                 @foreach($locations['counties'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab-filter__location" href="#">
-                                            {{ $location->name }} 
-                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                        <a class="tab__location" href="#">
+                                            {{ $location->name }} ({{ $location->active ?? $location->active_count }})
                                         </a>
                                     </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div id="zipcodes" class=" tab--content col s12">
+                    <div id="zipcodes" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['zips']))
                                 @foreach($locations['zips'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab-filter__location" href="#">
-                                            {{ $location->name }} 
-                                            <span class="tab-filter__location-count"> ({{ $location->active ?? $location->active_count }}) </span>
+                                        <a class="tab__location" href="#">
+                                            {{ $location->name }} ({{ $location->active ?? $location->active_count }})
                                         </a>
                                     </li>
                                 @endforeach
