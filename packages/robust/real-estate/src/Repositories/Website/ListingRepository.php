@@ -38,14 +38,12 @@ class ListingRepository
     ];
 
     protected const LOCATION_TYPE_MAP = [
-        'location_type' => [
-            'cities' => 'city_id',
-            'zips' => 'zip_id',
-            'counties' => 'county_id',
-            'high_schools' => 'high_school_id',
-            'elementary_schools' => 'elementary_school_id',
-            'middle_schools' => 'middle_school_id'
-        ]
+        'cities' => 'city_id',
+        'zips' => 'zip_id',
+        'counties' => 'county_id',
+        'high_schools' => 'high_school_id',
+        'elementary_schools' => 'elementary_school_id',
+        'middle_schools' => 'middle_school_id'
     ];
 
     /**
@@ -105,11 +103,10 @@ class ListingRepository
     /**
      * @return QueryBuilder this
      */
-    public function wherePriceBetween(){
-        if((Arr::has($this->params, 'location_type')) && ($this->params['system_price'] != null)){
-            $this->model = $this->model->whereBetween('system_price', $this->params['system_price']);
-            Arr::forget($this->params, 'system_price');
-        }
+    public function wherePriceBetween($params){
+        if($params['system_price'] != null){
+            $this->model = $this->model->whereBetween('system_price', $params['system_price']);
+        }        
         return $this;
     }
 
@@ -117,12 +114,12 @@ class ListingRepository
     /**
      * @return QueryBuilder this
      */
-    public function whereLocation(){
-        if(Arr::has($this->params, 'location_type') && ($this->params['system_price'] != null)){ 
-            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP['location_type'][$this->params['location_type']], '=', $this->params['location']);
-            Arr::forget($this->params, 'location_type');            
-            Arr::forget($this->params, 'location');            
-        }       
+    public function whereLocation($params){
+        $key = key($params);
+        if($params[$key] != null){            
+            $value = $params[$key];
+            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP[$key], '=', $value);
+        }  
         return $this;
     }
 
