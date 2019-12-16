@@ -9,7 +9,10 @@
                         <h4 class="sub-title">Homes For Sale in {{$properties->location ? $location_helper->getName($properties->location_type,$properties->location) :  ''}}</h4>
                     </div>
                     <div class="col s4 right-align">
-                        <a href="{{route('website.realestate.city',['city'=>$properties->location])}}" class="view-all">View All</a>
+                        <a href="{{route('website.realestate.homes-for-sale',[
+                            'location_type' => 'city',
+                            'location' => $properties->location
+                            ])}}" class="view-all">View All</a>
                     </div>
                 </div>
                 <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">

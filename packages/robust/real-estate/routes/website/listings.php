@@ -5,24 +5,24 @@ Route::group([
     'group' => 'Listing'],
     function () {
 
-        Route::get('/homes-for-sale', [
-            'name' =>'Homes for sale',
-            'as' => 'homes-for-sale',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@index'
-        ]);
-
-        Route::get('/sold-homes', [
-            'name' =>'Sold Homes',
-            'as' => 'sold-homes',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
-        ]);
-
         //added prefix as it was affecting others routes
         Route::get('/real-estate/{id}/{slug}', [
             'name' =>'Single Listing',
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
+        ]);      
+
+        Route::get('/homes-for-sale/{location_type?}/{location?}/{price?}',[
+            'name' =>'Homes for sale in',
+            'as' => 'homes-for-sale',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
         ]);
+         Route::get('/sold-homes/{location_type?}/{location?}/{price?}',[
+            'name' =>'Homes for sale in',
+            'as' => 'sold-homes',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
+        ]);
+
 
         Route::get('/homes-for-sale/{type}/{value}/{id}',[
             'name' =>'Similar Listing',
@@ -30,22 +30,24 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
         ]);
 
-        Route::get('/homes-for-sale/city/{city}',[
-            'name' =>'Homes for sale in',
-            'as' => 'city',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCity'
-        ]);
+        
 
-        Route::get('/homes-for-sale/city/{city}/price/{price}',[
-            'name' =>'Homes for sale in',
-            'as' => 'city.price',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCityPrice'
-        ]);
+        // Route::get('/homes-for-sale/city/{city}',[
+        //     'name' =>'Homes for sale in',
+        //     'as' => 'city',
+        //     'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCity'
+        // ]);
 
-        Route::post('search',[
-           'name' => 'Search',
-           'as' => 'search',
-           'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@search'
-        ]);
+        // Route::get('/homes-for-sale/city/{city}/price/{price}',[
+        //     'name' =>'Homes for sale in',
+        //     'as' => 'city.price',
+        //     'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCityPrice'
+        // ]);
+
+        // Route::post('search',[
+        //    'name' => 'Search',
+        //    'as' => 'search',
+        //    'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@search'
+        // ]);
 
 });

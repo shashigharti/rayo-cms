@@ -15,7 +15,11 @@
                                     @if(isset($properties->prices) && is_array($properties->prices))
                                         @foreach($properties->prices as  $price)
                                             @set('property_count',$properties->property_counts->$price ?? 0)
-                                            <a href="{{route('website.realestate.city.price',['city' => $properties->location,'price' => $price])}}">{{$price}} ({{$property_count}})</a>
+                                            <a href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'city',
+                                                'location' => $properties->location,
+                                                'price' => $price
+                                                ])}}">{{$price}} ({{$property_count}})</a>
                                         @endforeach
                                     @endif
                                 </div>
