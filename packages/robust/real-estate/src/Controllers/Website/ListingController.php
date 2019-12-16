@@ -39,13 +39,10 @@ class ListingController extends Controller
         $query_params = request()->all();
         $results  = $this->model->getListings(
             [
-                'status' => 'Active',
-                'location_type' => $location_type,
-                'location' => $location,
-                'system_price' => $price_range != null? explode('-', $price_range) : $price_range
+                'status' => 'Active'
             ])
-            ->whereLocation()
-            ->wherePriceBetween()
+            ->whereLocation([ $location_type => $location ])
+            ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
             ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
@@ -59,15 +56,12 @@ class ListingController extends Controller
         $query_params = request()->all();
         $results  = $this->model->getListings(
             [
-                'status' => 'Closed',
-                'location_type' => $location_type,
-                'location' => $location,
-                'system_price' => $price_range != null? explode('-', $price_range) : $price_range
+                'status' => 'Closed'
             ])
-            ->whereLocation()
-            ->wherePrice()
+            ->whereLocation([ $location_type => $location ])
+            ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
             ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
+        return view(Site::templateResolver('real-estate::website.listings.index'), [ 'results' => $results ]);
     }
 
     /**

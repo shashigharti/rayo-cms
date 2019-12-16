@@ -5,6 +5,7 @@ use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 use Illuminate\Support\Arr;
 
 
@@ -14,17 +15,14 @@ use Illuminate\Support\Arr;
  */
 class ListingRepository
 {
-    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
+    use CommonRepositoryTrait;
 
     protected const LISTING_FIELDS = [
         'index' => [
-            'real_estate_listings.id','real_estate_listings.name',
-            'real_estate_listings.uid','real_estate_listings.slug',
+            'real_estate_listings.id','real_estate_listings.uid','real_estate_listings.slug',
             'real_estate_listings.system_price','real_estate_listings.picture_count',
             'real_estate_listings.status','real_estate_listings.address_street','state',
-            'real_estate_listings.baths_full','real_estate_listings.bedrooms',
-            'real_estate_listings.city_id','real_estate_listings.county_id',
-            'real_estate_listings.zip_id'
+            'real_estate_listings.baths_full','real_estate_listings.bedrooms'
         ]
     ];
     protected const FIELDS_QUERY_MAP = [
@@ -41,14 +39,12 @@ class ListingRepository
     ];
 
     protected const LOCATION_TYPE_MAP = [
-        'location_type' => [
-            'cities' => 'city_id',
-            'zips' => 'zip_id',
-            'counties' => 'county_id',
-            'high_schools' => 'high_school_id',
-            'elementary_schools' => 'elementary_school_id',
-            'middle_schools' => 'middle_school_id'
-        ]
+        'cities' => 'city_id',
+        'zips' => 'zip_id',
+        'counties' => 'county_id',
+        'high_schools' => 'high_school_id',
+        'elementary_schools' => 'elementary_school_id',
+        'middle_schools' => 'middle_school_id'
     ];
 
     /**
@@ -56,7 +52,7 @@ class ListingRepository
      */
     protected $model;
 
-     /**
+    /**
      * @var array params
      */
     protected $params;
@@ -65,9 +61,11 @@ class ListingRepository
      * ListingRepository constructor.
      * @param Listing $model
      */
-    public function __construct(Listing $model)
+    public function __construct(Listing $model, Location $location)
     {
         $this->model = $model;
+        // This is a temporary fix; we will use locationable_id / polymorphic relation later
+        $this->location = $location;
     }
 
     /**
@@ -85,20 +83,21 @@ class ListingRepository
      */
     public function getListings($params = [], $limit = null)
     {
-        $this->params = $params;
+
         $qBuilder = $this->model->select(ListingRepository::LISTING_FIELDS['index']);
 
         // Remove all params that are null
-        foreach($this->params as $key => $param){
-            if($this->params == null){
-                Arr::forget($this->params, $key);
+        foreach($params as $key => $param){
+            if($params == null){
+                Arr::forget($params, $key);
             }
         }
 
-        foreach($this->params as $key => $param){
+        // Add dynamic where conditions using passed params
+        foreach($params as $key => $param){
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'],
-            ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
-            $param);
+                ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
+                $param);
         }
 
         $this->model = $qBuilder;
@@ -108,10 +107,9 @@ class ListingRepository
     /**
      * @return QueryBuilder this
      */
-    public function wherePriceBetween(){
-        if((Arr::has($this->params, 'location_type')) && ($this->params['system_price'] != null)){
-            $this->model = $this->model->whereBetween('system_price', $this->params['system_price']);
-            Arr::forget($this->params, 'system_price');
+    public function wherePriceBetween($params){
+        if($params['system_price'] != null){
+            $this->model = $this->model->whereBetween('system_price', $params['system_price']);
         }
         return $this;
     }
@@ -120,11 +118,13 @@ class ListingRepository
     /**
      * @return QueryBuilder this
      */
-    public function whereLocation(){
-        if(Arr::has($this->params, 'location_type') && ($this->params['system_price'] != null)){
-            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP['location_type'][$this->params['location_type']], '=', $this->params['location']);
-            Arr::forget($this->params, 'location_type');
-            Arr::forget($this->params, 'location');
+    public function whereLocation($params){
+        $key = key($params);
+        if($params[$key] != null){
+            $value = $params[$key];
+            // This is a temporary fix; we will use locationable_id / polymorphic relation later
+            $location = $this->location->where('slug', '=', $value)->first();
+            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP[$key], '=', $location->id);
         }
         return $this;
     }
@@ -134,7 +134,7 @@ class ListingRepository
      */
     public function limit($limit){
         $this->model = $this->model->limit($limit);
-        return $this;
+        return $this->model;
     }
 
 
@@ -147,10 +147,10 @@ class ListingRepository
     public function getCommunities($type, $location)
     {
         return $this->model->where($type,$location)
-                       ->select('subdivision_id')
-                       ->groupBy('subdivision_id')
-                       ->get()
-                       ->pluck('subdivision_id');
+            ->select('subdivision_id')
+            ->groupBy('subdivision_id')
+            ->get()
+            ->pluck('subdivision_id');
     }
 
     /**
@@ -160,9 +160,9 @@ class ListingRepository
     public function getCommunityPrice($community)
     {
         return $this->model->where('subdivision_id',$community)
-                    ->where('status','Active')
-                    ->where('picture_status',1)
-                    ->orderBy('input_date','desc');
+            ->where('status','Active')
+            ->where('picture_status',1)
+            ->orderBy('input_date','desc');
     }
 
 }
