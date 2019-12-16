@@ -24,16 +24,16 @@
                             <li class="tab"><a class="active" href="#cities">CITIES ({{$locations['cities'] ? count($locations['cities']): '0'}})</a></li>
                             <li class="tab"><a href="#counties">COUNTIES ({{$locations['counties'] ? count($locations['counties']): '0'}})</a></li>
                             <li class="tab"><a href="#zipcodes">ZIP CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
-                            <span><input type="radio" name='active'>Homes for Sale</span>
-                            <span><input type="radio" name='sold'>Sold Homes</span>
-                            <span><input type="radio" name='all'>All</span>
+                            <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
+                            <span><input type="radio" name="status_filter" value='sold'>Sold Homes</span>
+                            <span><input type="radio" name="status_filter" value='all'>All</span>
                         </ul>
                     </div>
                     <div id="cities" class=" tab--content col s12">
                         <ul>
                             @if(isset($locations['cities']))
                                 @foreach($locations['cities'] as $city)
-                                  <li><a href="#">{{$city->name}} ({{$city->active ?? '0'}})</a></li>
+                                  <li><a href="#">{{$city->name}} ({{$city->active ?? $city->active_count}})</a></li>
                                 @endforeach
                             @endif
                         </ul>
@@ -42,7 +42,7 @@
                         <ul>
                             @if(isset($locations['counties']))
                                 @foreach($locations['counties'] as $county)
-                                    <li><a href="#">{{$county->name}} ({{$county->active ?? '0'}})</a></li>
+                                    <li><a href="#">{{$county->name}} ({{$county->active ?? $city->active_count}})</a></li>
                                 @endforeach
                             @endif
                         </ul>
@@ -51,7 +51,7 @@
                         <ul>
                             @if(isset($locations['zips']))
                                 @foreach($locations['zips'] as $zips)
-                                    <li><a href="#">{{$zips->name}} ({{$zips->active ?? '0'}})</a></li>
+                                    <li><a href="#">{{$zips->name}} ({{$zips->active ?? $city->active_count}})</a></li>
                                 @endforeach
                             @endif
                         </ul>
