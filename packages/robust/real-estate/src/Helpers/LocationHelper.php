@@ -4,7 +4,6 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Repositories\Website\LocationRepository;
-use Robust\RealEstate\Repositories\Website\CityRepository;
 
 /**
  * Class LocationHelper
@@ -21,13 +20,9 @@ class LocationHelper
      * LocationHelper constructor.
      * @param LocationRepository $location
      */
-    public function __construct(LocationRepository $location, CityRepository $city)
+    public function __construct(LocationRepository $location)
     {
         $this->location = $location;
-
-        // temporary fix
-        $this->cities = $city;
-
     }
 
     /**
@@ -49,8 +44,8 @@ class LocationHelper
      * @return String
      */
     public function getName($type, $id)
-    {   
-        // this will be changed
-        return $this->$type->getById($id)->first()->name;
+    {  
+        return "";
+        //return $this->location->getById($id)->first()->name;    
     }
 }

@@ -67,6 +67,8 @@ class LocationRepository
             LocationRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
+
+        $qBuilder = $qBuilder->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
         return $qBuilder->get();
     }
 
