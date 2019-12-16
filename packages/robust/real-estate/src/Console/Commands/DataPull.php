@@ -118,7 +118,7 @@ class DataPull extends RetsCommands
             'St. Lucie' => '1552FDYRSN94',
         ],
         'cities' => [
-            
+
         ]
     ];
     //we cannot send the default names while querying in the server. Above are lookup values

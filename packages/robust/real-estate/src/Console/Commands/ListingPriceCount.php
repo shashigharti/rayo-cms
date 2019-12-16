@@ -78,8 +78,10 @@ class ListingPriceCount extends Command
             if ($location != '' && $prices != '') {
                 $properties['property_counts'] = [];
                 foreach ($prices as $key => $price) {
+                    $system_price = explode('-',$price);
                     $properties['property_counts'][$price] = $this->listing
-                        ->getListingByPrice($this->maps[$type], $location, $price)
+                        ->getListingByType($this->maps[$type], $location,null)
+                        ->whereBetween('system_price',$system_price)
                         ->count();
                 }
                 $block->update(['properties' => json_encode($properties)]);
@@ -91,7 +93,9 @@ class ListingPriceCount extends Command
                 $properties['tabs'][$tab] = [];
                 if (isset($this->tabs_maps[$tab])) {
                     foreach ($prices as $price) {
-                        $properties['tabs'][$tab][$price] = $this->listing->getListingByPrice($this->maps[$type], $location, $price)
+                        $system_price = explode('-',$price);
+                        $properties['tabs'][$tab][$price] = $this->listing->getListingByType($this->maps[$type], $location, null)
+                            ->whereBetween('system_price',$system_price)
                             ->whereHas('property', function ($query) use ($tab){
                                 $query->where('type', $this->tabs_maps[$tab])
                                     ->where('value', $this->tabs_maps[$tab]);
