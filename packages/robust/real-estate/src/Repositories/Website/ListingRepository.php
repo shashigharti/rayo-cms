@@ -22,7 +22,9 @@ class ListingRepository
             'real_estate_listings.id','real_estate_listings.uid','real_estate_listings.slug',
             'real_estate_listings.system_price','real_estate_listings.picture_count',
             'real_estate_listings.status','real_estate_listings.address_street','state',
-            'real_estate_listings.baths_full','real_estate_listings.bedrooms'
+            'real_estate_listings.baths_full','real_estate_listings.bedrooms',
+            'real_estate_listings.city_id','real_estate_listings.county_id',
+            'real_estate_listings.zip_id'
         ]
     ];
     /**

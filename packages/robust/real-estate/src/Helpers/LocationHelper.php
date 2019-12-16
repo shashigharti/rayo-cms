@@ -27,7 +27,7 @@ class LocationHelper
 
     /**
      * @param String $type
-     * @return Array
+     * @return array
      */
     public function getLocations($types)
     {
@@ -43,9 +43,9 @@ class LocationHelper
      * @param String $id
      * @return String
      */
-    public function getName($type, $id)
-    {  
-        return "";
-        //return $this->location->getById($id)->first()->name;    
+    public function getName($id)
+    {
+        return $this->location->getById($id);
+        //return $this->location->getById($id)->first()->name;
     }
 }

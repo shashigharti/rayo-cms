@@ -1,14 +1,20 @@
+@set('params',request()->route()->parameters())
+@set('location',isset($params['location']) ? $location_helper->getName($params['location']) : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <div class="inner--main--title center-align">
-                    <h1>OAHU HI SOLD REAL ESTATE</h1>
+                    @if($location)
+                        <h1>{{$location->name}}  Homes for sale</h1>
+                    @else
+                        <h1>Boca Raton Homes for sale</h1>
+                    @endif
                 </div>
                 <div class="top--breadcrumb center-align">
-                    <span><a href="#">493 Homes For Sale</a></span>
+                    <span><a href="#">{{$location->active_count ?? $results->total()}} Homes For Sale</a></span>
                     <span>/</span>
-                    <span><a href="#">14030 Sold Homes</a></span>
+                    <span><a href="#">{{$location->sold_count ?? ''}} Sold Homes</a></span>
                     <span>/</span>
                     <span><a href="#" class="active">486 Subdivisions</a></span>
                 </div>
@@ -19,6 +25,7 @@
         <div class="listing--houses">
             <div class="row">
                 @forelse($results as $result)
+                    @set('properties',$result->property->pluck('value','type'))
                     <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
                         <div class="col s3">
                             <div class="single--list--block">
@@ -36,16 +43,14 @@
                                     <div class="bottom--detail">
                                         <h3 class="price">
                                             @if(isset($result->system_price) && !in_array($result->system_price,['none','None']))
-                                                {{$result->status}}
+                                                ${{$result->system_price}}
                                             @endif
                                         </h3>
                                         <p class="info">
                                             @if(isset($result->address_street) && !in_array($result->address_street,['none','None','0']))
                                                 {{$result->address_street}}
                                             @endif
-                                            @if(isset($result->city) && !in_array($result->city,['none','None','0']))
-                                                {{$result->city}}
-                                            @endif
+                                            {{$location_helper->getName($result->city_id)->name}}
                                             @if(isset($result->state) && !in_array($result->state,['none','None','0']))
                                                 {{ ' | '.$result->state}}
                                             @endif
@@ -54,10 +59,10 @@
                                             @endif
                                         </p>
                                         <span>
-                                        @if(isset($result->year_built) && !in_array($result->year_built,['none','None','0']))
-                                                {{ 'Built in '.$result->year_built}}
+                                            @if(isset($properties['year_built']))
+                                                {{ 'Built in '.$properties['year_built']}}
                                             @endif
-                                    </span>
+                                        </span>
 
                                         <span>
                                         @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))

@@ -329,7 +329,10 @@ class DataPull extends RetsCommands
                     $info ='Processed : ' . $processed . ' || Total count : ' .$total .' || ' .
                         'Updated Count : ' .$updated .' || ' .
                         'Created Count : ' .$created . '||
-                     Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count . ' || Offset : ' .$offset * $this->limit;
+                     Resource : Property || Class : '.$class . ' || Total Images : ' . $listing->picture_count . ' || Offset : ' .$offset * $this->limit
+                    .' || System Price : ' .$listing->system_price . ' || City : ' .$listing_data['city'] . ' || County : '.$listing_data['county'];
+
+                    ;
                     $this->info($info);
                 }
             } while($processed < $total);

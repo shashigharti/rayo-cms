@@ -50,7 +50,7 @@ class LocationRepository
 
         // Get mapping locationable object for type
         $params = collect($params)->map(function ($value, $key) {
-            if($key == 'type'){                
+            if($key == 'type'){
                 return LocationRepository::RELATION_MAP[$value]['class'];
             }
             return $param;
@@ -61,9 +61,9 @@ class LocationRepository
         if(count($fields) > 0){
             $qBuilder = $qBuilder->select($fields);
         }
-        
+
         foreach($params as $key => $param){
-            $qBuilder = $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'], 
+            $qBuilder = $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'],
             LocationRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
@@ -71,7 +71,7 @@ class LocationRepository
         $qBuilder = $qBuilder->where(function($q) {
          $q->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
         });
-        
+
         return $qBuilder->get();
     }
 
@@ -81,6 +81,6 @@ class LocationRepository
      */
     public function getById($id)
     {
-        return $this->model->where('id', $id)->get();
+        return $this->model->where('id', $id)->first();
     }
 }
