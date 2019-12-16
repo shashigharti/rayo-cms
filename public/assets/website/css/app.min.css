@@ -1776,10 +1776,10 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .distance--block .mapouter{width:97%}.more-property-detail .detail-block{margin:0}
 button.get-distance{border-radius:0;background-color:#002349}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
-.search--right--section{position:absolute;top:468px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
-.search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:406px}
-.search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block .intro--section{margin:50px 0}
-.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
+.search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px}
+.search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
+.search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
 .search--right--section .right--single--block .intro--section p{color:#777;font-size:14px}
 .search--right--section .right--single--block .data--section table{width:100%;color:#111}
 .search--right--section .right--single--block .data--section table td{padding:10px 0 10px 5px;border-bottom:0;border:1px solid #777}
