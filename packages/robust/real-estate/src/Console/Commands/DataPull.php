@@ -87,7 +87,7 @@ class DataPull extends RetsCommands
         'baths_full',
         'bedrooms',
         'status',
-     ];
+    ];
     protected $maps = [
         'area' => 'area_id',
         'city' => 'city_id',
@@ -95,7 +95,8 @@ class DataPull extends RetsCommands
         'zip' => 'zip_id',
         'elementary_school' =>'elementary_school_id',
         'high_school' => 'high_school_id',
-        'middle_school' => 'middle_school_id'
+        'middle_school' => 'middle_school_id',
+        'subdivision' => 'subdivision_id'
     ];
     protected $mapping = [
         'city' => 'Robust\RealEstate\Models\City',
@@ -105,23 +106,26 @@ class DataPull extends RetsCommands
         'middle_school' => 'Robust\RealEstate\Models\MiddleSchool',
         'high_school' => 'Robust\RealEstate\Models\HighSchool',
         'zip' =>  'Robust\RealEstate\Models\Zip',
+        'subdivision' =>  'Robust\RealEstate\Models\Subdivision',
     ];
 
     //Palm Beach, Broward, Martin, St Lucie
     protected $conditions = [
-      'counties' => [
-        'Palm Beach' => '1552FDYRQZIB',
-        'Broward' => '1552FDYRIW50',
-        'Martin' => '1552FDYRQ3SA',
-        'St. Lucie' => '1552FDYRSN94',
-      ]
+        'counties' => [
+            'Palm Beach' => '1552FDYRQZIB',
+            'Broward' => '1552FDYRIW50',
+            'Martin' => '1552FDYRQ3SA',
+            'St. Lucie' => '1552FDYRSN94',
+        ],
     ];
     //we cannot send the default names while querying in the server. Above are lookup values
 
     //just to be fast for now
     protected $conditions_map = [
-      'counties' => 'LIST_41'
+        'counties' => 'LIST_41', 'system_price' =>'LIST_22'
     ];
+
+    protected $min_price = 10000;
     /**
      * @var int
      */
@@ -145,21 +149,23 @@ class DataPull extends RetsCommands
             $fields = implode(',',array_values($resource));
             $date = Carbon::now()->subDay($days)->toAtomString(); //only accepts atom format
             dump($date);
-            $query = '*'; //this is for accepting all data with out any condition
+//            $query = '*'; //this is for accepting all data with out any condition
 
             $query = '(LIST_132='.$date .'+)'; // this is according to input date
-//             zero property count for B (mutilfamily)
-//            foreach ($this->conditions as $key => $condition)
-//            {
-//                if(is_array($condition)){
-//                    $query .= ',(' . $this->conditions_map[$key] . '=';
-//                }
-//                $query .= implode(',',$condition);
-//                $query .= ')' ;
-//            }
-            $results = $this->rets->Search('Property',$class,$query,['Select'=>'LIST_1','Limit' =>1]);
+//             zero property count for B (mutilfamily) on below condition
+            foreach ($this->conditions as $key => $condition)
+            {
+                if(is_array($condition)){
+                    $query .= ',(' . $this->conditions_map[$key] . '=';
+                }
+                $query .= implode(',',$condition);
+                $query .= ')' ;
+            }
+            //query for system price above 10000
+            $query .= ',('. $this->conditions_map['system_price'] .'='. $this->min_price .'+)';
+            $results = $this->rets->Search('Property',$class,$query,['Limit' =>1]);
+            dd($results[0]);
             $total = $results->getTotalResultsCount();
-            dump($total);
             do {
                 $results = $this->rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset * $this->limit]);
                 $offset+=1;
@@ -187,18 +193,21 @@ class DataPull extends RetsCommands
                         if(isset($this->mapping[$key])){
                             if(!in_array($data,['','none','None','Undefined'])){
                                 $map =  $this->mapping[$key]::where('slug',Str::slug($data))->first();
-                                $listing_data[$this->maps[$key]] = $map ? $map->id : null;
+                                $listing_data[$this->maps[$key]] = $map ? $map->id : $this->mapping[$key]::create([
+                                    'name' => $data,
+                                    'slug' => Str::slug($data)
+                                ])->id;
                             }
                         }
                     }
                     //check for integer fields and convert
                     foreach ($this->integer_fields as $field){
                         if(isset($listing_data[$field])){
-                            $listing_data[$field] = $this->changeToInt($listing_data[$field]);
+                            $listing_data[$field] = (int) $listing_data[$field];
                         }
                     }
                     //convert values like class A
-                    $listing_data['class'] = $this->changePropertyClass($listing_data['class']);
+                    $listing_data['class'] = $this->property_class[$listing_data['class']];
                     $listing = Listing::updateOrCreate(['uid' => $listing_data['uid']],$listing_data);
 
                     if($listing->wasChanged()){
@@ -216,25 +225,5 @@ class DataPull extends RetsCommands
                 }
             } while($processed < $total);
         }
-
-
-    }
-
-    /**
-     * @param $data
-     * @return mixed
-     */
-    public function changePropertyClass($data)
-    {
-        return $this->property_class[$data];
-    }
-
-    /**
-     * @param $data
-     * @return int
-     */
-    public function changeToInt($data)
-    {
-        return (int) $data;
     }
 }

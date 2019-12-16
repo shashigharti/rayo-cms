@@ -25,23 +25,13 @@
                                             <div class="subdivs--list__btn">
                                                 <i class="material-icons">redo</i>
                                                 <span class="subdivs--list__text">See</span> {{$sub_area}}
-
+                                                @set('tab_fields',$properties->tabs->$sub_area ?? [])
                                                 <div class="subdivs--list">
                                                     <p><label>{{$sub_area}}:</label></p>
                                                     <ul>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
-                                                        <li><a href="#">Bay Point (20)</a></li>
+                                                       @foreach($tab_fields as $key => $count)
+                                                            <li><a href="#">{{$key}} ({{$count}})</a></li>
+                                                       @endforeach
                                                     </ul>
                                                 </div>
                                             </div>

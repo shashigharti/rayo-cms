@@ -60,7 +60,6 @@ class ListingRepository
     public function getListingByType($type, $name, $count)
     {
        return  $this->model->where($type,$name)
-                ->select('id','name','system_price','slug')
                 ->where('status','Active')
                 ->where('picture_status',1)
                 ->orderBy('input_date','asc')
@@ -198,5 +197,22 @@ class ListingRepository
             ->select(ListingRepository::LISTING_FIELDS['index'])
             ->leftJoin('real_estate_listing_properties', 'real_estate_listings.id', '=', 'real_estate_listing_properties.listing_id')
             ->paginate(40);
+    }
+
+    public function getCommunities($type,$location)
+    {
+        return $this->model->where($type,$location)
+                       ->select('subdivision_id')
+                       ->groupBy('subdivision_id')
+                       ->get()
+                       ->pluck('subdivision_id');
+    }
+
+    public function getCommunityPrice($community)
+    {
+        return $this->model->where('subdivision_id',$community)
+                    ->where('status','Active')
+                    ->where('picture_status',1)
+                    ->orderBy('input_date','desc');
     }
 }

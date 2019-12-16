@@ -184,7 +184,7 @@ return [
                 'unit_number' => 'LIST_35',
                 'governing_bodies' => 'LIST_59',
                 'zoning' => 'LIST_74',
-                'building' => 'LIST_113',
+                'builder_name' => 'LIST_113',
                 'geo_area' => 'LIST_86',
                 'development_name' => 'LIST_130',
                 'dock' => 'LIST_122',
@@ -267,6 +267,7 @@ return [
                 'modified' => 'LIST_87',
                 'list_office' => 'listing_office_name',
                 'selling_office' => 'selling_office_name',
+
 
                 //Room dimensions
                 'balcony_length' => 'ROOM_BL_room_length',
@@ -427,7 +428,7 @@ return [
                 'address' => 'LIST_31',
                 'unit_number' => 'LIST_35',
                 'zoning' => 'LIST_74',
-                'building' => 'LIST_113',
+                'builder_name' => 'LIST_113',
                 'geo_area' => 'LIST_86',
                 'development_name' => 'LIST_130',
 

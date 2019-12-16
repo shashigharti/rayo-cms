@@ -206,8 +206,8 @@ return [
             'display' => 'Zoning'
         ],
         [
-            'name'=> 'building',
-            'display' => 'Building'
+            'name'=> 'builder_name',
+            'display' => 'Builder'
         ],
         [
             'name'=> 'geo_area',
