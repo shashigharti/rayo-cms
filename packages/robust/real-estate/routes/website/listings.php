@@ -27,25 +27,4 @@ Route::group([
             'as' => 'listings.similar',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
         ]);
-
-        
-
-        // Route::get('/homes-for-sale/city/{city}',[
-        //     'name' =>'Homes for sale in',
-        //     'as' => 'city',
-        //     'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCity'
-        // ]);
-
-        // Route::get('/homes-for-sale/city/{city}/price/{price}',[
-        //     'name' =>'Homes for sale in',
-        //     'as' => 'city.price',
-        //     'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@byCityPrice'
-        // ]);
-
-        // Route::post('search',[
-        //    'name' => 'Search',
-        //    'as' => 'search',
-        //    'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@search'
-        // ]);
-
 });
