@@ -35,7 +35,10 @@ class ListingRepository
         'slug' => ['name' => 'real_estate_listings.slug', 'condition' => 'LIKE'],
         'status' => ['name' => 'real_estate_listings.status', 'condition' => '='],
         'baths_full' => ['name' => 'real_estate_listings.baths_full', 'condition' => '='],
-        'bedrooms' => ['name' => 'real_estate_listings.bedrooms', 'condition' => '=']
+        'bedrooms' => ['name' => 'real_estate_listings.bedrooms', 'condition' => '='],
+        'city_id' => ['name' => 'real_estate_listings.city_id', 'condition' => '='],
+        'zip_id' => ['name' => 'real_estate_listings.zip_id', 'condition' => '='],
+        'county_id' => ['name' => 'real_estate_listings.county_id', 'condition' => '=']
     ];
 
     /**
@@ -81,7 +84,7 @@ class ListingRepository
      * @param $params
      * @return Eloquent Collection
      */
-    public function getListings($params = [])
+    public function getListings($params = [], $limit = null)
     {
         $qBuilder = $this->model;
 
@@ -91,6 +94,10 @@ class ListingRepository
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'],
             ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
+        }
+
+        if($limit > 0){
+            $qBuilder = $qBuilder->limit($limit);
         }
 
         return $qBuilder;

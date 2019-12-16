@@ -68,7 +68,10 @@ class LocationRepository
             $param);
         }
 
-        $qBuilder = $qBuilder->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
+        $qBuilder = $qBuilder->where(function($q) {
+         $q->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
+        });
+        
         return $qBuilder->get();
     }
 
