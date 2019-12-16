@@ -14,10 +14,10 @@ class ListingHelper
      *
      */
     protected const FIELDS_MAPPING = [
-      'cities' => 'city_id',
-      'zips' => 'zip_id',
-      'counties' => 'county_id',
-      'subdivisions' => 'subdivision_id'
+        'cities' => 'city_id',
+        'zips' => 'zip_id',
+        'counties' => 'county_id',
+        'subdivisions' => 'subdivision_id'
     ];
     /**
      * @var ListingRepository
@@ -42,9 +42,8 @@ class ListingHelper
      */
     public function getListingsByType($type, $id, $limit)
     {
-
         $column = ListingHelper::FIELDS_MAPPING[$type];
-        return $this->model->getListings([$column => $id], $limit)->get();
+        return $this->model->getListings([$column => $id], $limit)->limit($limit)->get();
     }
 
     /**

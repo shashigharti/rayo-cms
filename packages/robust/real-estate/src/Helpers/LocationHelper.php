@@ -46,6 +46,5 @@ class LocationHelper
     public function getName($id)
     {
         return $this->location->getById($id);
-        //return $this->location->getById($id)->first()->name;
     }
 }

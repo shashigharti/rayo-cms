@@ -53,7 +53,7 @@ class LocationRepository
             if($key == 'type'){
                 return LocationRepository::RELATION_MAP[$value]['class'];
             }
-            return $param;
+            return $value;
         });
 
 

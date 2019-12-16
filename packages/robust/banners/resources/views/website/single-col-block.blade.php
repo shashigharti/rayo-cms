@@ -10,7 +10,7 @@
                         <div class="single-block">
                             <img src="{{$image}}" alt="">
                             <div class="figcaption center-align">
-                                <h2>{{$properties->location ? $location_helper->getName($properties->location_type, $properties->location) :  ''}}</h2>
+                                <h2>{{$properties->location ? $location_helper->getName($properties->location) :  ''}}</h2>
                                 <div class="available-prices">
                                     @if(isset($properties->prices) && is_array($properties->prices))
                                         @foreach($properties->prices as  $price)

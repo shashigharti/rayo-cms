@@ -5,6 +5,7 @@ use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Listing;
+use Illuminate\Support\Arr;
 
 
 /**
@@ -14,9 +15,7 @@ use Robust\RealEstate\Models\Listing;
 class ListingRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
-    /**
-     *
-     */
+
     protected const LISTING_FIELDS = [
         'index' => [
             'real_estate_listings.id','real_estate_listings.name',
@@ -28,9 +27,6 @@ class ListingRepository
             'real_estate_listings.zip_id'
         ]
     ];
-    /**
-     *
-     */
     protected const FIELDS_QUERY_MAP = [
         'id' => ['name' => 'real_estate_listings.id', 'condition' => '='],
         'name' => ['name' => 'real_estate_listings.id', 'condition' => 'LIKE'],
@@ -44,10 +40,26 @@ class ListingRepository
         'county_id' => ['name' => 'real_estate_listings.county_id', 'condition' => '=']
     ];
 
+    protected const LOCATION_TYPE_MAP = [
+        'location_type' => [
+            'cities' => 'city_id',
+            'zips' => 'zip_id',
+            'counties' => 'county_id',
+            'high_schools' => 'high_school_id',
+            'elementary_schools' => 'elementary_school_id',
+            'middle_schools' => 'middle_school_id'
+        ]
+    ];
+
     /**
      * @var Listing
      */
     protected $model;
+
+     /**
+     * @var array params
+     */
+    protected $params;
 
     /**
      * ListingRepository constructor.
@@ -67,44 +79,65 @@ class ListingRepository
         return $this->model->where('id',$id)->with('property')->with('images')->first();
     }
 
-
     /**
-     * @param $type
-     * @param $name
-     * @param $count
-     * @return mixed
-     */
-    public function getListingByType($type, $name, $count)
-    {
-       return  $this->model->where($type,$name)
-                ->where('status','Active')
-                ->where('picture_status',1)
-                ->orderBy('input_date','asc')
-                ->limit($count);
-    }
-
-     /**
      * @param $params
-     * @return Eloquent Collection
+     * @return  QueryBuilder this
      */
     public function getListings($params = [], $limit = null)
     {
-        $qBuilder = $this->model;
+        $this->params = $params;
+        $qBuilder = $this->model->select(ListingRepository::LISTING_FIELDS['index']);
 
-        $qBuilder = $qBuilder->select(ListingRepository::LISTING_FIELDS['index']);
+        // Remove all params that are null
+        foreach($this->params as $key => $param){
+            if($this->params == null){
+                Arr::forget($this->params, $key);
+            }
+        }
 
-        foreach($params as $key => $param){
+        foreach($this->params as $key => $param){
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'],
             ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
 
-        if($limit > 0){
-            $qBuilder = $qBuilder->limit($limit);
-        }
-
-        return $qBuilder;
+        $this->model = $qBuilder;
+        return $this;
     }
+
+    /**
+     * @return QueryBuilder this
+     */
+    public function wherePriceBetween(){
+        if((Arr::has($this->params, 'location_type')) && ($this->params['system_price'] != null)){
+            $this->model = $this->model->whereBetween('system_price', $this->params['system_price']);
+            Arr::forget($this->params, 'system_price');
+        }
+        return $this;
+    }
+
+
+    /**
+     * @return QueryBuilder this
+     */
+    public function whereLocation(){
+        if(Arr::has($this->params, 'location_type') && ($this->params['system_price'] != null)){
+            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP['location_type'][$this->params['location_type']], '=', $this->params['location']);
+            Arr::forget($this->params, 'location_type');
+            Arr::forget($this->params, 'location');
+        }
+        return $this;
+    }
+
+    /**
+     * @return QueryBuilder this
+     */
+    public function limit($limit){
+        $this->model = $this->model->limit($limit);
+        return $this;
+    }
+
+
 
     /**
      * @param $type
@@ -131,4 +164,5 @@ class ListingRepository
                     ->where('picture_status',1)
                     ->orderBy('input_date','desc');
     }
+
 }
