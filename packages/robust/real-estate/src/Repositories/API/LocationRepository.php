@@ -63,7 +63,7 @@ class LocationRepository
         }
         
         foreach($params as $key => $param){
-            $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'], 
+            $qBuilder = $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'], 
             LocationRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }

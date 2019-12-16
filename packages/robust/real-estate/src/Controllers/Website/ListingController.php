@@ -35,25 +35,21 @@ class ListingController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function active()
-    {
-        $results = [];
-        
+    {        
         $query_params = request()->all();
-        if(count($query_params) > 0) {
-            $results  = $this->model->getListings();
-        }
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+        $results  = $this->model->getListings(['status' => 'Active'])->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
+
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sold()
-    {
-        $results = $this->model->getListings('Closed');
-        $total = count($results);
-        return view(Site::templateResolver('real-estate::website.listings.index'),
-        ['results'=>$results,'total' => $total]);
+    {        
+        $query_params = request()->all();
+        $results  = $this->model->getListings(['status' => 'Closed'])->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
 
     /**
@@ -67,19 +63,19 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
-    /**
-     * @param $type
-     * @param $value
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getSimilarProperty($type, $value, $id)
-    {
-        $price = $this->model->find($id)->system_price;
-        $results = $this->model->getCountByType($type,$value)
-                ->where('system_price', '>' ,$price - 50000)
-                ->where('system_price', '<', $price + 50000)
-                ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
-    }
+    // /**
+    //  * @param $type
+    //  * @param $value
+    //  * @param $id
+    //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    //  */
+    // public function getSimilarProperty($type, $value, $id)
+    // {
+    //     $price = $this->model->find($id)->system_price;
+    //     $results = $this->model->getCountByType($type,$value)
+    //             ->where('system_price', '>' ,$price - 50000)
+    //             ->where('system_price', '<', $price + 50000)
+    //             ->paginate(40);
+    //     return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+    // }
 }

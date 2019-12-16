@@ -25,6 +25,15 @@ class ListingRepository
             'real_estate_listings.baths_full','real_estate_listings.bedrooms'
         ]
     ];
+    protected const FIELDS_QUERY_MAP = [
+        'id' => ['name' => 'real_estate_listings.id', 'condition' => '='],
+        'name' => ['name' => 'real_estate_listings.id', 'condition' => 'LIKE'],
+        'uid' => ['name' => 'real_estate_listings.uid', 'condition' => 'LIKE'],
+        'slug' => ['name' => 'real_estate_listings.slug', 'condition' => 'LIKE'],
+        'status' => ['name' => 'real_estate_listings.status', 'condition' => '='],
+        'baths_full' => ['name' => 'real_estate_listings.baths_full', 'condition' => '='],
+        'bedrooms' => ['name' => 'real_estate_listings.bedrooms', 'condition' => '=']
+    ];
 
     /**
      * @var Listing
@@ -49,60 +58,23 @@ class ListingRepository
         return $this->model->where('id',$id)->with('property')->with('images')->first();
     }
 
-    /**
-     * @param $type
-     * @param $name
-     * @param $count
-     * @return mixed
+
+     /**
+     * @param $params
+     * @return Eloquent Collection
      */
-    public function getListingByType($type, $name, $count)
+    public function getListings($params = [])
     {
-       return  $this->model->where($type,$name)
-                ->select('id','name','system_price','slug')
-                ->where('status','Active')
-                ->where('picture_status',1)
-                ->orderBy('input_date','asc')
-                ->limit($count);
-    }
+        $qBuilder = $this->model;
 
-    /**
-     * @param $type
-     * @param $location
-     * @param $price
-     * @return mixed
-     */
-    public function getListingByPrice($type, $location, $price)
-    {
-        $prices = $prices = explode('-',$price);
-        return $this->model
-            ->where($type,$location)
-            ->where('status','Active')
-            ->whereBetween('system_price',$prices)
-            ->where('picture_status',1)
-            ->orderBy('input_date','desc');
-    }
+        $qBuilder = $qBuilder->select(ListingRepository::LISTING_FIELDS['index']);
+        
+        foreach($params as $key => $param){
+            $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'], 
+            ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
+            $param);
+        }
 
-
-    /**
-     * @param $type
-     * @param $value
-     * @return mixed
-     */
-    public function getCountByType($type, $value)
-    {
-        return $this->model->where($type,$value)
-            ->where('status','Active')
-            ->where('picture_status',1);
-    }
-
-
-    /**
-     * @return mixed
-     */
-    public function getListings(){
-        return $this->model->search()
-            ->select(ListingRepository::LISTING_FIELDS['index'])
-            ->leftJoin('real_estate_listing_properties', 'real_estate_listings.id', '=', 'real_estate_listing_properties.listing_id')
-            ->paginate(40);
+        return $qBuilder;
     }
 }
