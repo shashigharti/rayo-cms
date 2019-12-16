@@ -8,6 +8,7 @@ use Illuminate\Support\Str;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingImages;
 use Robust\RealEstate\Models\ListingProperty;
+use Robust\RealEstate\Models\Location;
 
 /**
  * Class DataPull
@@ -294,9 +295,16 @@ class DataPull extends RetsCommands
                         if(isset($this->mapping[$key])){
                             if(!in_array($data,['','none','None','Undefined'])){
                                 $map =  $this->mapping[$key]::where('slug',Str::slug($data))->first();
-                                $listing_data[$this->maps[$key]] = $map ? $map->id : $this->mapping[$key]::create([
+                                $map_id = $map ? $map->id : $this->mapping[$key]::create([
                                     'name' => $data,
                                     'slug' => Str::slug($data)
+                                ])->id;
+                                $location = Location::where(['location_id' => $map_id,'locationable_type' => $this->mapping[$key]])->first();
+                                $listing_data[$this->maps[$key]] = $location ? $location->id : Location::create([
+                                    'name' => $data,
+                                    'slug' => Str::slug($data),
+                                    'location_id' => $map_id,
+                                    'locationable_type' => $this->mapping[$key]
                                 ])->id;
                             }
                         }
