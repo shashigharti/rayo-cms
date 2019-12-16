@@ -3,7 +3,7 @@
     @set('properties', json_decode($TwoColAd->properties))
     @if($properties)
         @set('image',$listing_helper->getImageByCity($properties->location,$properties->image))
-        @set('url',!in_array($properties->button_url,['','#']) ? $properties->button_url : route('website.realestate.city',['city'=>$properties->location]))
+        @set('url',!in_array($properties->button_url,['','#']) ? $properties->button_url : route('website.realestate.homes-for-sale', ['location_type' => 'city', 'location' => $properties->location]))
         <section class="adv--block">
             <div class="container-fluid">
                 <div class="row">

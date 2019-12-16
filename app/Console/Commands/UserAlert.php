@@ -24,7 +24,7 @@
 //     */
 //    public $now;
 //    /**
-//     * @var \Robust\Landmarks\Model\Listings
+//     * @var \Robust\RealEstate\Model\Listings
 //     */
 //    public $listings;
 //    /**
@@ -51,7 +51,7 @@
 //     * UserAlert constructor.
 //     * @param \Robust\Leads\Models\UserSearch $userSearch
 //     * @param \App\Helpers\DateTimeHelper $dateTimeHelper
-//     * @param \Robust\Landmarks\Model\Listings $listings
+//     * @param \Robust\RealEstate\Model\Listings $listings
 //     */
 //    public function __construct(UserSearch $userSearch, DateTimeHelper $dateTimeHelper, Listing $listings)
 //    {

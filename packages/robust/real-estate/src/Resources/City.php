@@ -6,7 +6,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class City
- * @package Robust\Landmarks\Resources
+ * @package Robust\RealEstate\Resources
  */
 class City extends JsonResource
 {

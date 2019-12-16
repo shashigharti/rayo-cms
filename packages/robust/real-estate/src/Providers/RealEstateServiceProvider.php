@@ -5,6 +5,7 @@ namespace Robust\RealEstate\Providers;
 use Illuminate\Support\ServiceProvider;
 use Robust\RealEstate\Events\SendEmailToFriend;
 use Robust\RealEstate\Helpers\CoreSettingHelper;
+use Robust\RealEstate\Helpers\AdvanceSearchHelper;
 use Robust\RealEstate\Listeners\SendEmailToFriendListener;
 
 /**
@@ -33,6 +34,10 @@ class RealEstateServiceProvider extends ServiceProvider
 
         $this->app->bind(CoreSettingHelper::class, function ($app) {
             return new CoreSettingHelper($app->make('Robust\RealEstate\Repositories\Website\CoreSettingRepository'));
+        });
+
+        $this->app->bind(AdvanceSearchHelper::class, function ($app) {
+            return new AdvanceSearchHelper($app->make('Robust\RealEstate\Repositories\Website\AttributeRepository'));
         });
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'real-estate');
         $this->register_includes();

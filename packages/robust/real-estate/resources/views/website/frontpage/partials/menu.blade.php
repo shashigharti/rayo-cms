@@ -23,35 +23,57 @@
                         <ul class="tabs">
                             <li class="tab"><a class="active" href="#cities">CITIES ({{$locations['cities'] ? count($locations['cities']): '0'}})</a></li>
                             <li class="tab"><a href="#counties">COUNTIES ({{$locations['counties'] ? count($locations['counties']): '0'}})</a></li>
-                            <li class="tab"><a href="#zipcodes">Zip CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
-                            <span><input type="radio">Homes for Sale</span>
-                            <span><input type="radio">Sold Homes</span>
-                            <span><input type="radio">All</span>
+                            <li class="tab"><a href="#zipcodes">ZIP CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
+                            <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
+                            <span><input type="radio" name="status_filter" value='sold'>Sold Homes</span>
+                            <span><input type="radio" name="status_filter" value='all'>All</span>
                         </ul>
                     </div>
-                    <div id="cities" class=" tab--content col s12">
+                    <div id="cities" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['cities']))
-                                @foreach($locations['cities'] as $city)
-                                  <li><a href="#">{{$city->name}} ({{$city->active ?? '0'}})</a></li>
+                                @foreach($locations['cities'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'cities',
+                                                'location' => $location->slug
+                                                ])}}">
+                                            {{ $location->name }} 
+                                            <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div id="counties" class=" tab--content col s12">
+                    <div id="counties" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['counties']))
-                                @foreach($locations['counties'] as $county)
-                                    <li><a href="#">{{$county->name}} ({{$county->active ?? '0'}})</a></li>
+                                @foreach($locations['counties'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'counties',
+                                                'location' => $location->slug
+                                                ])}}">
+                                            {{ $location->name }} ({{ $location->active ?? $location->active_count }})
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>
                     </div>
-                    <div id="zipcodes" class=" tab--content col s12">
+                    <div id="zipcodes" class="tab-filter tab--content col s12">
                         <ul>
                             @if(isset($locations['zips']))
-                                @foreach($locations['zips'] as $zips)
-                                    <li><a href="#">{{$zips->name}} ({{$zips->active ?? '0'}})</a></li>
+                                @foreach($locations['zips'] as $location)
+                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'zips',
+                                                'location' => $location->slug
+                                                ])}}">
+                                            {{ $location->name }} ({{ $location->active ?? $location->active_count }})
+                                        </a>
+                                    </li>
                                 @endforeach
                             @endif
                         </ul>

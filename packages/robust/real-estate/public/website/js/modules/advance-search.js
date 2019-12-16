@@ -19,5 +19,6 @@
                 elem.value = elem.getAttribute('data-selected');
             });
         }
+
     });
 }(jQuery, FRW, window, document));

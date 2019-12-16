@@ -7,7 +7,7 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 /**
  * Class MiddleSchool
- * @package Robust\Landmarks\Resources
+ * @package Robust\RealEstate\Resources
  */
 class MiddleSchool extends JsonResource
 {

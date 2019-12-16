@@ -6,6 +6,8 @@
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
+
+                    @set('adSearchConfig', config('rws.advance-search'))    
                     @include(Site::templateResolver('real-estate::website.advance-search.first-block'),['blocks' => $blocks['first_block']])
                     @include(Site::templateResolver('real-estate::website.advance-search.second-block'),['blocks' => $blocks['second_block']])
                     @include(Site::templateResolver('real-estate::website.advance-search.third-block'),['blocks' => $blocks['third_block']])

@@ -117,6 +117,9 @@ class DataPull extends RetsCommands
             'Martin' => '1552FDYRQ3SA',
             'St. Lucie' => '1552FDYRSN94',
         ],
+        'cities' => [
+            
+        ]
     ];
     //we cannot send the default names while querying in the server. Above are lookup values
 
@@ -163,9 +166,9 @@ class DataPull extends RetsCommands
             }
             //query for system price above 10000
             $query .= ',('. $this->conditions_map['system_price'] .'='. $this->min_price .'+)';
-            $results = $this->rets->Search('Property',$class,$query,['Limit' =>1]);
-            dd($results[0]);
+            $results = $this->rets->Search('Property',$class,$query,['Select'=>$fields,'Limit' =>1]);
             $total = $results->getTotalResultsCount();
+            $this->info($total);
             do {
                 $results = $this->rets->Search('Property',$class,$query,['Limit' =>$this->limit,'Select' => $fields,'Offset' => $offset * $this->limit]);
                 $offset+=1;

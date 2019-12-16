@@ -7,7 +7,7 @@ use Robust\RealEstate\Models\Listing;
 
 /**
  * Class Subdivision
- * @package Robust\Landmarks\Models
+ * @package Robust\RealEstate\Models
  */
 class Subdivision extends BaseModel
 {

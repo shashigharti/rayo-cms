@@ -341,6 +341,10 @@ return [
             'name'=> 'terms_of_sale',
             'display' => 'Terms of Sale'
         ],
+        [
+            'name'=> 'business_type',
+            'display' => 'Type of business'
+        ],
     ],
     'Extra Information' => [
         [
@@ -372,4 +376,30 @@ return [
             'display' => 'Virtual Tour'
         ],
     ],
+    'Building Info' => [
+        [
+            'name'=> 'number_of_offices',
+            'display' => 'Number of Offices'
+        ],
+        [
+            'name'=> 'number_of_employees',
+            'display' => 'Number of employees'
+        ],
+        [
+            'name'=> 'seating_capacity',
+            'display' => 'Seating Capacity'
+        ],
+        [
+            'name'=> 'bar_stools',
+            'display' => 'Bar Stools'
+        ],
+        [
+            'name'=> 'door_height',
+            'display' => 'Door Height'
+        ],
+        [
+            'name'=> 'loading_docks',
+            'display' => 'Loading Docks'
+        ],
+    ]
 ];

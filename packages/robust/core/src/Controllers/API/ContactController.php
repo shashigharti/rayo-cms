@@ -10,6 +10,7 @@ use Robust\Core\Services\ContactEmail;
 
 class ContactController extends Controller
 {
+
     public function __construct(ContactRepository $contact, ContactEmail $mail)
     {
         $this->contact = $contact;

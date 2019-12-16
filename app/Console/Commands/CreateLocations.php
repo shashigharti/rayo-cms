@@ -1,18 +1,6 @@
 <?php
 namespace App\Console\Commands;
 
-use Robust\RealEstate\Models\City;
-use Robust\RealEstate\Models\SchoolDistrict;
-use Robust\RealEstate\Models\County;
-use Robust\RealEstate\Models\Listing;
-use Robust\RealEstate\Models\Zip;
-use Robust\RealEstate\Models\Area;
-use Robust\RealEstate\Models\HighSchool;
-use Robust\RealEstate\Models\ElementarySchool;
-use Robust\RealEstate\Models\MiddleSchool;
-use Robust\RealEstate\Models\Grid;
-use Robust\RealEstate\Models\Subdivision;
-
 use Illuminate\Console\Command;
 
 /**
@@ -23,10 +11,11 @@ class CreateLocations extends Command
 {
     /**
      * Create locations
-     * Example: rws:create-locations --type=city --type=high_school
+     * Example: rws:create-locations
      * @var string
      */
-    protected $signature = 'rws:create-locations {--type=*}';
+    protected $signature = 'rws:create-locations';
+
     /**
      * The console command description.
      * @var string
@@ -40,84 +29,145 @@ class CreateLocations extends Command
      */
     public function handle()
     {
-       // Read params
-        $location_types = $this->option('type', []);
+        $this->info('Adding Cities');
+        $cities = \DB::table('real_estate_cities')->get(); 
+        foreach($cities as $city){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('city_id', $city->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('city_id', $city->id)->count();
+            
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $city->name,
+                'slug' => $city->slug,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'location_id' => $city->id,
+                'locationable_type' => '\Robust\RealEstate\Models\City'
+            ]);
+            \DB::table('real_estate_listings')
+                ->where('city_id', $city->id)
+                ->update(['city_id' => $id]);
+        }
 
-        // Read from config : settings
-        $all_locations = [
-            'city' => ['table_name'=>'real_estate_cities'],
-            'district' => ['table_name'=>'real_estate_school_districts'],
-            'county' => ['table_name'=>'real_estate_counties'],
-            'zip' => ['table_name'=>'real_estate_zips'],
-            'area' => ['table_name'=>'real_estate_areas'],
-            'high_school' => ['table_name'=>'real_estate_high_schools'],
-            'elem_school' => ['table_name'=>'real_estate_elem_schools'],
-            'middle_school' => ['table_name'=>'real_estate_middle_schools'],
-            'grid' => ['table_name'=>'real_estate_grids'] ,
-            'subdivision' => ['table_name'=>'real_estate_subdivisions']
-        ];
+        $this->info('Adding Counties');
+        $counties = \DB::table('real_estate_counties')->get();
+        foreach($counties as $county){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('county_id', $county->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('county_id', $county->id)->count();
+          
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $county->name,
+                'slug' => $county->slug,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'location_id' => $county->id,
+                'locationable_type' => '\Robust\RealEstate\Models\County'
+            ]);
 
-        $locations = [];
-        foreach ($all_locations as $type => $location) {
-            if (in_array($type, $location_types)) {
-                $locations[$type] = $location;
-            }
+            \DB::table('real_estate_listings')
+                ->where('county_id', $county->id)
+                ->update(['county_id' => $id]);
+        }
+
+        $this->info('Adding Areas');
+        $areas = \DB::table('real_estate_areas')->get();
+        foreach($areas as $area){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('area_id', $area->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('area_id', $area->id)->count();
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $area->name,
+                'slug' => $area->slug,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'location_id' => $area->id,
+                'locationable_type' => '\Robust\RealEstate\Models\Area'
+            ]);
+
+            \DB::table('real_estate_listings')
+                ->where('area_id', $area->id)
+                ->update(['area_id' => $id]);
         }
 
 
-        // For each location add/remove location
-        foreach ($locations as $location_type_field => $attr) {
-            $this->AddRemoveLocations($location_type_field, $attr);
+        $this->info('Adding Zip');
+        $zips = \DB::table('real_estate_zips')->get();
+        foreach($zips as $zip){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('zip_id', $zip->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('zip_id', $zip->id)->count();
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $zip->name,
+                'slug' => $zip->slug,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'location_id' => $zip->id,
+                'locationable_type' => '\Robust\RealEstate\Models\Zip'
+            ]);
+
+            \DB::table('real_estate_listings')
+                ->where('zip_id', $zip->id)
+                ->update(['zip_id' => $id]);
         }
-    }
 
-    /**
-     * Create new locations
-     *
-     * @param String $location_type_field
-     * @param String $attr
-     */
-    private function AddRemoveLocations($location_type_field, $attr)
-    {
-        // Read from config : settings
-        $excluded_locations = collect([
-            'counties' => [],
-            'cities' => []
-        ]);
+        $this->info('Adding Elementary School');
+        $real_estate_elementary_schools = \DB::table('real_estate_elementary_schools')->get();
+        foreach($real_estate_elementary_schools as $element_school){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('elementary_school_id', $element_school->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('elementary_school_id', $element_school->id)->count();
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $element_school->name,
+                'slug' => $element_school->slug,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'location_id' => $element_school->id,
+                'locationable_type' => '\Robust\RealEstate\Models\ElementarySchool'
+            ]);
 
-        // Locations
-        $locations = Listing::select($location_type_field)
-        ->distinct()
-        ->pluck($location_type_field)->toArray();
-
-        // Existing Locations
-        $existing_locations = Listing::select($location_type_field)
-        ->leftJoin($attr['table_name'], $attr['table_name'].".name", '=', "real_estate_listings.{$location_type_field}")
-        ->whereNotIn("real_estate_listings.{$location_type_field}", $locations)
-        ->distinct()
-        ->pluck($location_type_field)->toArray();
-
-
-        $new_locations = collect(array_udiff($locations, $existing_locations, 'strcasecmp'));
-
-        // Filter excluded locations and get new array of locations
-        $new_locations_arr = $new_locations->map(function ($location) use ($excluded_locations){
-            $isExcluded = false;
-            foreach($excluded_locations as $ex_locations){
-                $isExcluded = \Arr::has( $ex_locations, $location);
-            }
-            return !$isExcluded? [
-                    'name' =>  $location,
-                    'slug' => str_slug($location, '-')
-                ]:false;
-        })->reject(function ($value) {
-            return $value === false;
-        });
-
-        // Create New Locations
-        if($new_locations_arr->count() > 0){
-            $locations_added = \DB::table($attr['table_name'])->insert($new_locations_arr->toArray());
-            $this->info('Created Locations:' . ((bool) $locations_added));
+            \DB::table('real_estate_listings')
+                ->where('elementary_school_id', $element_school->id)
+                ->update(['elementary_school_id' => $id]);
         }
+
+
+        $this->info('Adding High School');
+        $real_estate_high_schools = \DB::table('real_estate_high_schools')->get();
+        foreach($real_estate_high_schools as $high_school){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('high_school_id', $high_school->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('high_school_id', $high_school->id)->count();
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $high_school->name,
+                'slug' => $high_school->slug,
+                'location_id' => $high_school->id,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'locationable_type' => '\Robust\RealEstate\Models\HighSchool'
+            ]);
+            \DB::table('real_estate_listings')
+                ->where('high_school_id', $high_school->id)
+                ->update(['high_school_id' => $id]);
+        }
+
+        $this->info('Adding Middle School');
+        $real_estate_middle_schools = \DB::table('real_estate_middle_schools')->get();
+        foreach($real_estate_middle_schools as $middle_school){
+            $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('middle_school_id', $middle_school->id)->count();
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('middle_school_id', $middle_school->id)->count();
+          
+            $id = \DB::table('real_estate_locations')->insertGetId([
+                'name' => $middle_school->name,
+                'slug' => $middle_school->slug,
+                'location_id' => $middle_school->id,
+                'active_count' => $active_count,
+                'sold_count' => $sold_count,
+                'locationable_type' => '\Robust\RealEstate\Models\MiddleSchool'
+            ]);
+            \DB::table('real_estate_listings')
+                ->where('middle_school_id', $middle_school->id)
+                ->update(['middle_school_id' => $id]);
+        }
+       
     }
 }

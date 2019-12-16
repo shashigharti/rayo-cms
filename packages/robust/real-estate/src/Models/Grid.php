@@ -7,7 +7,7 @@ use Robust\Core\Models\BaseModel;
 
 /**
  * Class Grid
- * @package Robust\Landmarks\Models
+ * @package Robust\RealEstate\Models
  */
 class Grid extends BaseModel
 {

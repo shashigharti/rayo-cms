@@ -34,33 +34,22 @@ class ListingController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function index()
-    {
+    public function active()
+    {        
         $query_params = request()->all();
-        if(count($query_params) > 0) {
-            $results  = $this->model->getListings();
-        }
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+        $results  = $this->model->getListings(['status' => 'Active'])->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function active()
-    {
-        $results = $this->model->getListing('Active')->paginate(40);
-        $total = $this->model->getListing('Active')->count();
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
-    }
 
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function sold()
-    {
-        $results = $this->model->getListing('Closed')->paginate(40);
-        $total = $this->model->getListing('Closed')->count();
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
+    {        
+        $query_params = request()->all();
+        $results  = $this->model->getListings(['status' => 'Closed'])->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
 
     /**
@@ -74,66 +63,19 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
-
-    /**
-     * @param Request $request
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function search(Request $request)
-    {
-        $data = $request->all();
-        dd($data);
-        // if(isset($data['searchType']) && $data['searchType'] == 'search')
-        // {
-        //     $prices = explode(',',$data['price']);
-        //     $bedrooms = explode(',',$data['bedroom']);
-        //     $bathrooms = explode(',',$data['bathrooms']);
-        //     $data['price_min'] = $prices[0] ?? '0';
-        //     $data['price_max'] = $prices[1] ?? '0';
-        //     $data['beds_min'] = $bedrooms[0] ?? '0';
-        //     $data['beds_max'] = $bedrooms[1] ?? '0';
-        //     $data['bathrooms_min'] = $bathrooms[0] ?? '0';
-        //     $data['bathrooms_max'] = $bathrooms[1] ?? '0';
-        // }
-        // $results = $this->model->getListingBySearch($data)->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
-    }
-
-    /**
-     * @param $city
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function byCity($city)
-    {
-        $results =  $this->model->getListingByType('city_id',$city,null)->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
-    }
-
-    /**
-     * @param $city
-     * @param $price
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function byCityPrice($city, $price)
-    {
-        $results =  $this->model->getListingByPrice('city_id',$city,$price)->paginate(40);
-        $total = $this->model->getListingByType('city_id',$city,null)->count();
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results,'total'=>$total]);
-    }
-
-    /**
-     * @param $type
-     * @param $value
-     * @param $id
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function getSimilarProperty($type, $value, $id)
-    {
-        $price = $this->model->find($id)->system_price;
-        $results = $this->model->getCountByType($type,$value)
-                ->where('system_price', '>' ,$price - 50000)
-                ->where('system_price', '<', $price + 50000)
-                ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
-    }
+    // /**
+    //  * @param $type
+    //  * @param $value
+    //  * @param $id
+    //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    //  */
+    // public function getSimilarProperty($type, $value, $id)
+    // {
+    //     $price = $this->model->find($id)->system_price;
+    //     $results = $this->model->getCountByType($type,$value)
+    //             ->where('system_price', '>' ,$price - 50000)
+    //             ->where('system_price', '<', $price + 50000)
+    //             ->paginate(40);
+    //     return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+    // }
 }

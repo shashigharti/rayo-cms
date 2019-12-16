@@ -1,32 +1,5 @@
 <?php
 return [
-    'property_class' => [
-        'A' => 'ResidentialProperty',
-        'B' => 'MultiFamily',
-        'C' => 'LotsAndLand',
-        'D' => 'CommonInterest',
-        'E' => 'Industry',
-        'F' => 'Rental',
-    ],
-    'functions' => [
-        'changePropertyClass' => [
-            'class'
-        ],
-        'changeToJson' => [
-            'amenities',
-            'interior',
-            'waterfrontview'
-        ],
-        'changeToInt' => [
-            'total_finished_area',
-            'system_price',
-            'picture_count',
-            'year_built',
-            'bedrooms',
-            'baths_full',
-            'days_on_mls'
-        ]
-    ],
     'property' => [
         'listing' => [
             'A'=> [
@@ -96,6 +69,48 @@ return [
                 'elementary_school' => 'LIST_85',
                 'middle_school' => 'LIST_32',
                 'high_school' => 'LIST_73',
+                'picture_count' => 'LIST_133',
+                'input_date' => 'LIST_132',
+                'status' => 'LIST_15',
+            ],
+            'D'=> [
+                'name' => 'LIST_1',
+                'slug' => 'LIST_1',
+                'uid' => 'LIST_1',
+                'mls_number' => 'LIST_105',
+                'class' => 'LIST_8',
+                'area' => 'LIST_29',
+                'system_price' => 'LIST_22',
+                'asking_price' => 'LIST_22',
+                'address_number' => 'LIST_31',
+                'address_street' => 'LIST_31',
+                'city' => 'LIST_39',
+                'state' => 'LIST_40',
+                'zip' => 'LIST_43',
+                'county' => 'LIST_41',
+                'elementary_school' => 'LIST_85',
+                'middle_school' => 'LIST_32',
+                'high_school' => 'LIST_73',
+                'picture_count' => 'LIST_133',
+                'input_date' => 'LIST_132',
+                'status' => 'LIST_15',
+            ],
+            'E'=> [
+                'name' => 'LIST_1',
+                'slug' => 'LIST_1',
+                'uid' => 'LIST_1',
+                'mls_number' => 'LIST_105',
+                'class' => 'LIST_8',
+                'area' => 'LIST_29',
+                'system_price' => 'LIST_22',
+                'asking_price' => 'LIST_22',
+                'address_number' => 'LIST_31',
+                'address_street' => 'LIST_31',
+                'city' => 'LIST_39',
+                'state' => 'LIST_40',
+                'zip' => 'LIST_43',
+                'subdivision' => 'LIST_77',
+                'county' => 'LIST_41',
                 'picture_count' => 'LIST_133',
                 'input_date' => 'LIST_132',
                 'status' => 'LIST_15',
@@ -494,6 +509,214 @@ return [
                 'model_name' => 'LIST_101',
                 'special_assessment' => 'LIST_110',
                 'short_sale_au' => 'LIST_113',
+                'owner' => 'LIST_150',
+                'auction' => 'LIST_154',
+                'broker_advertise' => 'LIST_157',
+                'update_date' => 'LIST_87',
+                'modified' => 'LIST_87',
+                'list_office' => 'listing_office_name',
+                'selling_office' => 'selling_office_name',
+            ],
+            'D' => [
+                //property descriptions
+
+                //building Info
+                'number_of_offices' => 'FEAT20121227211413283292000000',
+                'number_of_employees' => 'FEAT20121227211732273682000000',
+                'seating_capacity' => 'FEAT20121227211504168891000000',
+                'bar_stools' => 'FEAT20121227211748376588000000',
+                'door_height' => 'FEAT20121227211342123569000000',
+                'loading_docks' => 'FEAT20121227211525945049000000',
+
+                //exterior
+                'parking' => 'GF20121206202914938674000000',
+                'construction' => 'GF20121206202913690592000000',
+                'security' => 'GF20121206202915449375000000',
+                'special_info' => 'GF20121206202915832531000000',
+                'roof_type' => 'GF20121206202915832531000000',
+                'stories' => 'LIST_64',
+
+                //Heating & cooling
+                'cooling_type' => 'GF20121206202913609761000000',
+                'heating_type' => 'GF20121206202914323008000000',
+
+                //view information
+                'waterfront' => 'LIST_108',
+
+                //street information
+                'street_direction' => 'LIST_33',
+                'street_name' => 'LIST_34',
+                'street_post_dir' => 'LIST_36',
+                'street_suffix' => 'LIST_37',
+
+
+                // Address Information
+                'directions' => 'LIST_82',
+                'postal_code' => 'LIST_43',
+                'address' => 'LIST_31',
+                'unit_number' => 'LIST_35',
+                'zoning' => 'LIST_74',
+                'builder_name' => 'LIST_113',
+                'geo_area' => 'LIST_86',
+                'dock' => 'LIST_122',
+
+                //size & dimensions
+                'living_square_feet' => 'LIST_48',
+                'guest_house_square_feet' => 'LIST_50',
+                'square_feet_source' => 'LIST_97',
+
+
+                //extra information
+                'days_on_mls' => 'LIST_137',
+                'mls_approved' => 'LIST_4',
+                'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
+                'possession' => 'GF20121206202915041661000000',
+
+                //terms & fees
+                'terms' => 'GF20121206202915944331000000',
+                'business_type' => 'LIST_91',
+                'selling_info' => 'LIST_131',
+                'multiple_offer' => 'LIST_115',
+                'dual_rate' => 'LIST_116',
+                'application_fee' => 'LIST_121',
+                'list_price_per_square_feet' => 'LIST_125',
+                'sold_price_per_square_feet' => 'LIST_126',
+                'total_tax' => 'LIST_75',
+                'tax_year' => 'LIST_76',
+                'legal_description' => 'LIST_81',
+                'maintenance_fee_inclusive' => 'GF20121206202914743943000000',
+                'document_count' => 'LIST_162',
+                'terms_of_sale' => 'LIST_28',
+
+
+                //others
+                'uid' => 'LIST_1',
+                'property_group' => 'LIST_7',
+                'list_agent' => 'LIST_5',
+                'modification_date' => 'LIST_87',
+                'property_type' => 'LIST_9',
+                'expiration_date' => 'LIST_11',
+                'closing_date' => 'LIST_12',
+                'contract_date' => 'LIST_13',
+                'fallthrough_date' => 'LIST_14',
+                'status_change_date' => 'LIST_16',
+                'temp_off_market_date' => 'LIST_17',
+                'cancel_date' => 'LIST_18',
+                'contingent' => 'LIST_19',
+                'original_price' => 'LIST_21',
+                'sold_price' => 'LIST_23',
+                'latitude' => 'LIST_46',
+                'longitude' => 'LIST_47',
+                'year_built' => 'LIST_53',
+                'short_sale_addendum' => 'LIST_54',
+                'short_sale' => 'LIST_71',
+                'hardship_package' => 'LIST_72',
+                'public_remarks' => 'LIST_78',
+                'owners_name' => 'LIST_83',
+                'owners_phone' => 'LIST_84',
+                'list_type' => 'LIST_88',
+                'comm_brk' => 'LIST_89',
+                'list_off_agency' => 'LIST_90',
+                'special_assessment' => 'LIST_110',
+                'short_sale_au' => 'LIST_113',
+                'owner' => 'LIST_150',
+                'auction' => 'LIST_154',
+                'broker_advertise' => 'LIST_157',
+                'update_date' => 'LIST_87',
+                'modified' => 'LIST_87',
+                'list_office' => 'listing_office_name',
+                'selling_office' => 'selling_office_name',
+            ],
+            'E' => [
+                //property descriptions
+
+                //building Info
+                'number_of_offices' => 'FEAT20121228141330591036000000',
+                'number_of_employees' => 'FEAT20121228141522363023000000',
+                'seating_capacity' => 'FEAT20121228141538045232000000',
+
+                //exterior
+                'construction' => 'GF20121206202935157741000000',
+                'security' => 'GF20121206202936970585000000',
+                'special_info' => 'GF20121206202937320302000000',
+                'roof_type' => 'GF20121206202936671897000000',
+                'stories' => 'LIST_64',
+
+                //Heating & cooling
+                'cooling_type' => 'GF20121206202935069920000000',
+                'heating_type' => 'GF20121206202935801841000000',
+
+                //view information
+                'waterfront' => 'LIST_108',
+                'waterfront_details' => 'GF20121206202937679400000000',
+
+                //street information
+                'street_direction' => 'LIST_33',
+                'street_name' => 'LIST_34',
+                'street_post_dir' => 'LIST_36',
+                'street_suffix' => 'LIST_37',
+
+
+                // Address Information
+                'directions' => 'LIST_82',
+                'postal_code' => 'LIST_43',
+                'address' => 'LIST_31',
+                'unit_number' => 'LIST_35',
+                'zoning' => 'LIST_74',
+                'geo_area' => 'LIST_86',
+
+                //size & dimensions
+                'total_square_feet' => 'LIST_48',
+                'square_feet_source' => 'LIST_97',
+                'lot_size' => 'LIST_57',
+
+                //extra information
+                'days_on_mls' => 'LIST_137',
+                'mls_approved' => 'LIST_4',
+                'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
+                'possession' => 'GF20121206202936574401000000',
+
+                //terms & fees
+                'terms' => 'GF20121206202937431318000000',
+                'selling_info' => 'LIST_131',
+                'multiple_offer' => 'LIST_115',
+                'dual_rate' => 'LIST_116',
+                'application_fee' => 'LIST_121',
+                'list_price_per_square_feet' => 'LIST_125',
+                'sold_price_per_square_feet' => 'LIST_126',
+                'total_tax' => 'LIST_75',
+                'tax_year' => 'LIST_76',
+                'legal_description' => 'LIST_81',
+                'document_count' => 'LIST_162',
+                'terms_of_sale' => 'LIST_28',
+
+
+                //others
+                'uid' => 'LIST_1',
+                'property_group' => 'LIST_7',
+                'list_agent' => 'LIST_5',
+                'modification_date' => 'LIST_87',
+                'property_type' => 'LIST_9',
+                'expiration_date' => 'LIST_11',
+                'closing_date' => 'LIST_12',
+                'contract_date' => 'LIST_13',
+                'fallthrough_date' => 'LIST_14',
+                'status_change_date' => 'LIST_16',
+                'temp_off_market_date' => 'LIST_17',
+                'cancel_date' => 'LIST_18',
+                'contingent' => 'LIST_19',
+                'original_price' => 'LIST_21',
+                'sold_price' => 'LIST_23',
+                'latitude' => 'LIST_46',
+                'longitude' => 'LIST_47',
+                'year_built' => 'LIST_53',
+                'hardship_package' => 'LIST_72',
+                'public_remarks' => 'LIST_78',
+                'owners_name' => 'LIST_83',
+                'owners_phone' => 'LIST_84',
+                'list_type' => 'LIST_88',
+                'comm_brk' => 'LIST_89',
+                'list_off_agency' => 'LIST_90',
                 'owner' => 'LIST_150',
                 'auction' => 'LIST_154',
                 'broker_advertise' => 'LIST_157',
