@@ -5,6 +5,7 @@ use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 use Illuminate\Support\Arr;
 
 
@@ -14,7 +15,7 @@ use Illuminate\Support\Arr;
  */
 class ListingRepository
 {
-    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
+    use CommonRepositoryTrait;
     
     protected const LISTING_FIELDS = [
         'index' => [
@@ -60,9 +61,11 @@ class ListingRepository
      * ListingRepository constructor.
      * @param Listing $model
      */
-    public function __construct(Listing $model)
+    public function __construct(Listing $model, Location $location)
     {
         $this->model = $model;
+        // This is a temporary fix; we will use locationable_id / polymorphic relation later
+        $this->location = $location;
     }
 
     /**
@@ -90,6 +93,7 @@ class ListingRepository
             }
         }
         
+        // Add dynamic where conditions using passed params
         foreach($this->params as $key => $param){
             $qBuilder = $qBuilder->where(ListingRepository::FIELDS_QUERY_MAP[$key]['name'], 
             ListingRepository::FIELDS_QUERY_MAP[$key]['condition'],
@@ -118,7 +122,9 @@ class ListingRepository
         $key = key($params);
         if($params[$key] != null){            
             $value = $params[$key];
-            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP[$key], '=', $value);
+            // This is a temporary fix; we will use locationable_id / polymorphic relation later
+            $location = $this->location->where('slug', '=', $value)->first();
+            $this->model = $this->model->where(ListingRepository::LOCATION_TYPE_MAP[$key], '=', $location->id);
         }  
         return $this;
     }
