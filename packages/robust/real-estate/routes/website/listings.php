@@ -22,8 +22,6 @@ Route::group([
             'as' => 'sold-homes',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
-
-
         Route::get('/homes-for-sale/{type}/{value}/{id}',[
             'name' =>'Similar Listing',
             'as' => 'listings.similar',

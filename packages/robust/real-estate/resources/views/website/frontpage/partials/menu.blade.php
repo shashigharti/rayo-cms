@@ -34,7 +34,10 @@
                             @if(isset($locations['cities']))
                                 @foreach($locations['cities'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab__location" href="#">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'cities',
+                                                'location' => $location->slug
+                                                ])}}">
                                             {{ $location->name }} 
                                             <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                         </a>
@@ -48,7 +51,10 @@
                             @if(isset($locations['counties']))
                                 @foreach($locations['counties'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab__location" href="#">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'counties',
+                                                'location' => $location->slug
+                                                ])}}">
                                             {{ $location->name }} ({{ $location->active ?? $location->active_count }})
                                         </a>
                                     </li>
@@ -61,7 +67,10 @@
                             @if(isset($locations['zips']))
                                 @foreach($locations['zips'] as $location)
                                     <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
-                                        <a class="tab__location" href="#">
+                                        <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                                'location_type' => 'zips',
+                                                'location' => $location->slug
+                                                ])}}">
                                             {{ $location->name }} ({{ $location->active ?? $location->active_count }})
                                         </a>
                                     </li>

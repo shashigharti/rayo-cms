@@ -19,7 +19,7 @@
                                                 'location_type' => 'city',
                                                 'location' => $properties->location,
                                                 'price' => $price
-                                                ])}}">{{$price}} ({{$property_count}})</a>
+                                                ])}}"> {{$price}} ({{$property_count}})</a>
                                         @endforeach
                                     @endif
                                 </div>
