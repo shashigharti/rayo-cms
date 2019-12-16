@@ -44,6 +44,8 @@ class ListingController extends Controller
                 'location' => $location,
                 'system_price' => $price_range != null? explode('-', $price_range) : $price_range                
             ])
+            ->whereLocation()
+            ->wherePrice()
             ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
@@ -62,6 +64,8 @@ class ListingController extends Controller
                 'location' => $location,
                 'system_price' => $price_range != null? explode('-', $price_range) : $price_range             
             ])
+            ->whereLocation()
+            ->wherePrice()
             ->paginate(40);
         return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
     }
