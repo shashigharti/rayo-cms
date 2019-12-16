@@ -23,10 +23,10 @@
                         <ul class="tabs">
                             <li class="tab"><a class="active" href="#cities">CITIES ({{$locations['cities'] ? count($locations['cities']): '0'}})</a></li>
                             <li class="tab"><a href="#counties">COUNTIES ({{$locations['counties'] ? count($locations['counties']): '0'}})</a></li>
-                            <li class="tab"><a href="#zipcodes">Zip CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
-                            <span><input type="radio">Homes for Sale</span>
-                            <span><input type="radio">Sold Homes</span>
-                            <span><input type="radio">All</span>
+                            <li class="tab"><a href="#zipcodes">ZIP CODES ({{$locations['zips'] ? count($locations['zips']): '0'}})</a></li>
+                            <span><input type="radio" name='active'>Homes for Sale</span>
+                            <span><input type="radio" name='sold'>Sold Homes</span>
+                            <span><input type="radio" name='all'>All</span>
                         </ul>
                     </div>
                     <div id="cities" class=" tab--content col s12">

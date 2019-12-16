@@ -48,4 +48,6 @@ class City extends BaseModel
     {
         return $this->hasMany('Robust\RealEstate\Models\Subdivision');
     }
+
+    
 }

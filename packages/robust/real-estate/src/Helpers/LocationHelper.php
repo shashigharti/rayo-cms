@@ -3,9 +3,8 @@
 
 namespace Robust\RealEstate\Helpers;
 
+use Robust\RealEstate\Repositories\Website\LocationRepository;
 use Robust\RealEstate\Repositories\Website\CityRepository;
-use Robust\RealEstate\Repositories\Website\CountyRepository;
-use Robust\RealEstate\Repositories\Website\ZipRepository;
 
 /**
  * Class LocationHelper
@@ -14,44 +13,44 @@ use Robust\RealEstate\Repositories\Website\ZipRepository;
 class LocationHelper
 {
     /**
-     * @var CityRepository
+     * @var LocationRepository
      */
-    protected $cities;
-    /**
-     * @var CountyRepository
-     */
-    protected $counties;
-    /**
-     * @var ZipRepository
-     */
-    protected $zips;
+    protected $location;
 
     /**
      * LocationHelper constructor.
-     * @param CityRepository $city
-     * @param CountyRepository $counties
-     * @param ZipRepository $zips
+     * @param LocationRepository $location
      */
-    public function __construct(CityRepository $city, CountyRepository $counties, ZipRepository $zips)
+    public function __construct(LocationRepository $location, CityRepository $city)
     {
+        $this->location = $location;
+
+        // temporary fix
         $this->cities = $city;
-        $this->counties = $counties;
-        $this->zips = $zips;
+
     }
 
+    /**
+     * @param String $type
+     * @return Array
+     */
     public function getLocations($types)
     {
         $locations = [];
-        foreach ($types as $type)
-        {
-            $results = $this->$type->get();
-            $locations[$type] = $results;
+        foreach($types as $type){
+            $locations[$type] = $this->location->getLocations(['type' => $type]);
         }
         return $locations;
     }
 
-    public function getName($type,$id)
-    {
+     /**
+     * @param String $type
+     * @param String $id
+     * @return String
+     */
+    public function getName($type, $id)
+    {   
+        // this will be changed
         return $this->$type->getById($id)->first()->name;
     }
 }

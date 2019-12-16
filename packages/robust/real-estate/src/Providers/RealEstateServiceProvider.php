@@ -37,7 +37,7 @@ class RealEstateServiceProvider extends ServiceProvider
         });
 
         $this->app->bind(AdvanceSearchHelper::class, function ($app) {
-            return new AdvanceSearchHelper($app->make('Robust\RealEstate\Repositories\API\AttributeRepository'));
+            return new AdvanceSearchHelper($app->make('Robust\RealEstate\Repositories\Website\AttributeRepository'));
         });
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'real-estate');
         $this->register_includes();

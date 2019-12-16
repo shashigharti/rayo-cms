@@ -30,11 +30,11 @@ class CityRepository
     }
 
     /**
-     * @param $id
-     * @return mixed
+     * @param String $id
+     * @return String
      */
     public function getById($id)
-    {
-        return $this->model->where('id',$id);
+    {   
+        return $this->model->where('id', $id)->get();
     }
 }

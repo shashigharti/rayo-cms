@@ -2,7 +2,7 @@
 
 namespace Robust\RealEstate\Helpers;
 
-use Robust\RealEstate\Repositories\API\AttributeRepository;
+use Robust\RealEstate\Repositories\Website\AttributeRepository;
 
 /**
  * Class AdvanceSearchHelper
