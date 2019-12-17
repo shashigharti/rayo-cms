@@ -57,12 +57,14 @@ class ListingController extends Controller
     public function sold($location_type = null,  $location = null,  $price_range = null)
     {
         $query_params = request()->all();
+        $data_timeframe = config('rws.data.data-timeframe');
         $results  = $this->model->getListings(
             [
                 'status' => 'Closed'
             ])
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
+            ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate(40);
