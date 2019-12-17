@@ -38,8 +38,8 @@
                 <option>High to Low</option>
                 <option>Low to High</option>
             </select>
-            <a href="#" class="btn cyan">SOLD</a>
-            <a href="#" class="btn green">ACTIVE</a>
+            <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
+            <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
         </div>
         <div class="col s5 right-align">
             <div class="total--records">
