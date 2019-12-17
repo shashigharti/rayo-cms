@@ -1,6 +1,6 @@
 @set('properties',$result->property->pluck('value','type'))
-@set('city',$result->city->location)
-@set('subdivision',$result->subdivision->location)
+@set('city',$location_helper->byId($result->city_id))
+@set('subdivision',$location_helper->byId($result->subdivision_id))
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
