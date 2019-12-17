@@ -35,9 +35,9 @@ Route::group([
             'as' => 'map-data',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
         ]);
-        // Route::get('/homes-for-sale/{type}/{value}/{id}',[
-        //     'name' =>'Similar Listing',
-        //     'as' => 'listings.similar',
-        //     'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
-        // ]);
+        Route::get('/homes-for-sale/{type}/{value}/{id}',[
+            'name' =>'Similar Listing',
+            'as' => 'listings.similar',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
+        ]);
 });
