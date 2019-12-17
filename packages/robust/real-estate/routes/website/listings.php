@@ -6,7 +6,7 @@ Route::group([
     function () {
 
         //added prefix as it was affecting others routes
-        Route::get('/real-estate/{id}/{slug}', [
+        Route::get('/real-estate/{slug}', [
             'name' =>'Single Listing',
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
