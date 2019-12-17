@@ -36,7 +36,6 @@
             $.post(url,{ids:data},function (response) {
                 let markers = [];
                 const data = response.data;
-                console.log(data);
                 Object.keys(data).map(function(key, index) {
                     const latitude = data[key].latitude;
                     const longitude = data[key].longitude;
@@ -51,7 +50,7 @@
         }
     };
     $(function () {
-        const map = document.getElementById('#map');
+        const map = document.getElementById('map');
         if(map){
             FRW.Map.init();
         }
