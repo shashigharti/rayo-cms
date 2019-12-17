@@ -73,9 +73,11 @@ class ListingRepository
      * @param $id
      * @return mixed
      */
-    public function getSingle($id)
+    public function getSingle($slug)
     {
-        return $this->model->where('id',$id)->with('property')->with('images')->first();
+        return $this->model->where('slug', $slug)
+        ->with('property')
+        ->with('images')->first();
     }
 
     /**

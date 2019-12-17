@@ -74,9 +74,9 @@ class ListingController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function single($id, $slug)
+    public function single($slug)
     {
-        $result = $this->model->getSingle($id);
+        $result = $this->model->getSingle($slug);
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
