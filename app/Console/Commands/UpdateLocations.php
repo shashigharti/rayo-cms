@@ -54,7 +54,6 @@ class UpdateLocations extends Command
             $location->update([
                'active_count' => $active_count,
                'sold_count' => $sold_count,
-               'locationable_type' => "\\" . $location->locationable_type
             ]);
             $this->info('Name : '.  $location->name . ' || Active : ' .$active_count. ' || Sold : ' . $sold_count);
         }
