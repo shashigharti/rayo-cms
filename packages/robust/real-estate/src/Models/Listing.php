@@ -19,6 +19,7 @@ class Listing extends BaseModel
      * @var string
      */
     protected $namespace = 'Robust\RealEstate\Models\Listing';
+
     /**
      * @var array
      */
@@ -109,6 +110,14 @@ class Listing extends BaseModel
     public function city()
     {
         return $this->belongsTo('Robust\RealEstate\Models\City');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function county()
+    {
+        return $this->belongsTo('Robust\RealEstate\Models\County');
     }
 
     /**

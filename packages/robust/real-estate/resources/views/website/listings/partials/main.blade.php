@@ -1,5 +1,6 @@
 @set('params',request()->route()->parameters())
-@set('location',isset($params['location']) ? $location_helper->getName($params['location']) : null)
+@set('location',isset($params['location']) ? $location_helper->getLocation($params['location_type'],$params['location']) : null)
+@set('report',isset($location) ? $report_helper->getMarketReportByLocation($location->location_id,$location->locationable_type) : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -53,13 +54,13 @@
                                                         {{$result->address_street}}
                                                     @endif
                                                     @if(isset($result->city_id))
-                                                        {{$result->city->location->name}}
+                                                        {{$location_helper->byId($result->city_id)->name}}
                                                     @endif
                                                     @if(isset($result->state) && !in_array($result->state,['none','None','0']))
                                                         {{ ' | '.$result->state}}
                                                     @endif
-                                                    @if(isset($result->county) && !in_array($result->county,['none','None','0']))
-                                                        {{ ' | '.$result->county}}
+                                                    @if(isset($result->county_id))
+                                                        {{ ' | '. $location_helper->byId($result->county_id)->name}}
                                                     @endif
                                                 </p>
                                                 <span>
@@ -69,9 +70,9 @@
                                                 </span>
 
                                                 <span>
-                                                @if(isset($result->total_finished_area) && !in_array($result->total_finished_area,['none','None','0']))
-                                                        {{' | '. $result->total_finished_area .' sq.ft'}}
-                                                    @endif
+                                                @if(isset($properties['total_square_feet']))
+                                                    {{' | '. $properties['total_square_feet'] .' sq.ft'}}
+                                                @endif
                                             </span>
                                                 <div class="details">
                                                 <span>
@@ -281,74 +282,7 @@
                     </div>
                 </div>
             </div>
-            <div class="search--right--section change" id="thebar">
-                <a href="javascript:void(0)" class="right-icon bar-open">
-                    <i class="arrow material-icons">keyboard_arrow_right</i>
-                </a>
-                <div class="right--single--block">
-                    <div class="map">
-                        <div class="gmap_canvas"><iframe width="330" height="300" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.crocothemes.net"></a>
-                        </div>
-                    </div>
-                    <div class="intro--section">
-                        <h3>Ohau hi sold real state</h3>
-                        <p>Search homes for sale in the Greater Anchorage Area. Real Estate LIstings include large photos, virtual tours.</p>
-                    </div>
-                    <div class="data--section intro--section">
-                        <h3>Sales activity in 2017 "15-Eucalyptus Hill" Subdivision</h3>
-                        <table>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                            <tr>
-                                <td colspan="3"><label>Properties for sale(Today's date)</label></td>
-                                <td>14</td>
-                            </tr>
-                        </table>
-                    </div>
-                    <div class="comment--section">
-                        <div class="row">
-                            <div class="col-sm-12">
-                                <p>With subdivision Info being few and far between on the Internet, our members are encouraged to share useful information.</br>
-
-                                    If you live in Bellaire Heights Ph 5 or have information that will help others make home buying or selling decisions here, please share it with us!</p>
-                                <textarea class="text-left">Write your comment here..
-                                    </textarea>
-                                <div>
-                                    <input type="checkbox">
-                                    <span>Allow other members to contact me with questions</span>
-                                </div>
-                                <a href="#" class="btn theme-btn">Add Comment</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @include(Site::templateResolver('real-estate::website.listings.partials.map'))
         </div>
     </div>
 </section>

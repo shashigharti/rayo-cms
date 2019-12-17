@@ -221,7 +221,7 @@
                 padding: 20px;
                 margin: 30px 30px 10px;
                 position: relative;
-            }          
+            }
             .row .col {
                 float: left;
                 -webkit-box-sizing: border-box;
@@ -510,7 +510,7 @@
             }
 
         </style>
-        
+
         <script type='application/ld+json'>
             {
               "@context": "http://www.schema.org",
@@ -518,11 +518,11 @@
               "name": "RealWebSystem",
               "url": "http://167.71.244.240/",
               "image":"http://167.71.244.240/assets/website/images/Logo.jpg",
-              "description":"Real estate websites with advanced IDX handling. Search engine optimized pages for homebuyer and home seller leads." 
+              "description":"Real estate websites with advanced IDX handling. Search engine optimized pages for homebuyer and home seller leads."
 
             }
         </script>
-        
+
 
         <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
@@ -544,5 +544,6 @@
 
         <script src="{{ url('assets/website/js/app.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCzxcQleV3T217C7sHCP4N-j9G8AdmDb7k"></script>
     </body>
 </html>

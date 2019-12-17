@@ -23,7 +23,7 @@
                                 <span class="txt-property">Bathrooms</span>
                             </li>
                         @endif
-                        @if(isset($properties['total_square_feet'])))
+                        @if(isset($properties['total_square_feet']))
                             <li>
                                 <span class="txt-num">{{$properties['total_square_feet']}}</span><br>
                                 <span class="txt-property">Square Feet</span>

@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\CoreSetting;
+use Robust\RealEstate\Models\MarketReport;
 use Robust\RealEstate\Repositories\Website\CoreSettingRepository;
 
 /**
@@ -11,7 +12,7 @@ use Robust\RealEstate\Repositories\Website\CoreSettingRepository;
  */
 class MarketReportHelper
 {
-    
+
     /**
      * @param Collection $locations
      * @param string $status
@@ -31,9 +32,20 @@ class MarketReportHelper
      * @return integer
      */
     public function countAvgActive($locations, $status, $attr)
-    {  
+    {
         return $locations->filter(function ($model) use ($status){
             return ($model->status == $status);
         })->avg($attr);
+    }
+
+    /**
+     * @param $id
+     * @param $type
+     * @return mixed
+     */
+    public function getMarketReportByLocation($id, $type)
+    {
+        //access through relation need to refactor
+        return MarketReport::where('reportable_id',$id)->where('reportable_type',$type)->first();
     }
 }

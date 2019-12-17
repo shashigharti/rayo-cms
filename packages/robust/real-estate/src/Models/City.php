@@ -54,8 +54,6 @@ class City extends BaseModel
      */
     public function location()
     {
-        return $this->morphOne('Robust\RealEstate\Models\Location','location','locationable_type','location_id');
+        return $this->morphOne('Robust\RealEstate\Models\Location','locationable','locationable_type','location_id');
     }
-
-
 }

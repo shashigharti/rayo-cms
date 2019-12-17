@@ -6,18 +6,19 @@
                 @set('properties', json_decode($singleColBanner->properties))
                 @set('image',$listing_helper->getImageByCity($properties->location,$properties->image))
                 @if($properties)
+                    @set('location',$location_helper->byId($properties->location))
                     <div class="col s4">
                         <div class="single-block">
                             <img src="{{$image}}" alt="">
                             <div class="figcaption center-align">
-                                <h2>{{$properties->location ? $location_helper->getName($properties->location)->name :  ''}}</h2>
+                                <h2>{{$location->name}}</h2>
                                 <div class="available-prices">
                                     @if(isset($properties->prices) && is_array($properties->prices))
                                         @foreach($properties->prices as  $price)
                                             @set('property_count',$properties->property_counts->$price ?? 0)
                                             <a href="{{route('website.realestate.homes-for-sale',[
-                                                'location_type' => 'city',
-                                                'location' => $properties->location,
+                                                'location_type' => 'cities',
+                                                'location' => $location->slug,
                                                 'price' => $price
                                                 ])}}"> {{$price}} ({{$property_count}})</a>
                                         @endforeach
@@ -34,7 +35,15 @@
                                                     <p><label>{{$sub_area}}:</label></p>
                                                     <ul>
                                                        @foreach($tab_fields as $key => $count)
-                                                            <li><a href="#">{{$key}} ({{$count}})</a></li>
+                                                            <li><a href="{{route('website.realestate.homes-for-sale.sub_area',[
+                                                                    'location_type'=>'cities',
+                                                                    'location' =>  $location->slug,
+                                                                    'price' => $key,
+                                                                    'sub_area' => $sub_area
+                                                                     ])}}">
+                                                                    {{$key}} ({{$count}})
+                                                                </a>
+                                                            </li>
                                                        @endforeach
                                                     </ul>
                                                 </div>

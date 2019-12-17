@@ -38,13 +38,21 @@ class LocationHelper
         return $locations;
     }
 
-     /**
-     * @param String $type
-     * @param String $id
-     * @return String
+    /**
+     * @param $id
+     * @return mixed
      */
-    public function getName($id)
+    public function byId($id)
     {
         return $this->location->getById($id);
+    }
+    /**
+     * @param $type
+     * @param $slug
+     * @return mixed
+     */
+    public function getLocation($type, $slug)
+    {
+        return $this->location->getLocation($type,$slug);
     }
 }
