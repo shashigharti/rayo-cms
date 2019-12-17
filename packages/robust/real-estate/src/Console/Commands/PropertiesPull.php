@@ -44,10 +44,13 @@ class PropertiesPull extends RetsCommands
     {
         $resources = config('real-estate.data-map.property.properties');
         foreach ($resources as $class => $resource){
-            Listing::select('id','uid')
-                ->where('class',$this->property_class[$class])
-                ->whereNull('properties_status')
-                ->chunk($this->limit,function ($listings) use ($resource,$class){
+            $query = Listing::where('class',$this->property_class[$class])
+                   ->whereNull('properties_status');
+            $total = $query->count();
+            $processed = 0;
+
+            $query->chunkById($this->limit,function ($listings) use ($resource,$class,$processed,$total){
+                    $processed+=count($listings);
                     $listing_ids = $listings->pluck('id','uid')->toArray();
                     $query = '(LIST_1=';
                     $query .= implode(',',array_flip($listing_ids));
@@ -79,10 +82,11 @@ class PropertiesPull extends RetsCommands
                             ListingProperty::insert($properties_array);
                             Listing::whereIn('id',array_values($listing_ids))
                                 ->update(['properties_status' => Carbon::now()]);
-                            $this->info('Done....');
-                        }
 
+                        }
+                    $this->info('Total : ' . $total . ' Class : ' .$class . ' || Processed : ' .$processed);
                 });
+
         }
         // cant pull 100 data at a time the server will response as bad request
 

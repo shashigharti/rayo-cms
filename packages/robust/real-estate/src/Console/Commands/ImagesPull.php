@@ -36,7 +36,7 @@ class ImagesPull extends RetsCommands
         Listing::select('id','uid')
             ->where('picture_status',0)
             ->orderBy('id')
-            ->chunk($this->limit,function ($listings){
+            ->chunkById($this->limit,function ($listings){
                 $images_array = [];
                 $listing_ids = $listings->pluck('id','uid')->toArray();
                 foreach ($listing_ids as $uid => $id){
