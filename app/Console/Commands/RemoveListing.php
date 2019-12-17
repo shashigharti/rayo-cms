@@ -62,10 +62,11 @@ class RemoveListing extends Command
         Listing::chunk(1000,function ($listings) use ($counter,$removed,$total){
            foreach ($listings as $listing){
                $counter+=1;
+
                $city = Location::where('id',$listing->city_id)
                         ->where('locationable_type',self::RELATION_MAP['cities']['class'])->first();
-               if($city && in_array($city->name,$this->cities)){
-                   $this->info('Matched : ' .$city->name);
+               if($city && in_array($city->name,$this->cities) && $listing->system_price > 10000){
+                   $this->info('Matched : ' .$city->name . ' || Price : ' .$listing->system_price);
                }else{
                    if($city){
                        $this->info('Unmatched : ' . $city->name);
