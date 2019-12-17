@@ -2,7 +2,6 @@
    <h1>Find Your Dream House With Us</h1>
    <div class="search-section">
       <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
-         @csrf
          <div class="row">
             <div class="col s3">
                <p>Location</p>
@@ -31,7 +30,7 @@
                </div>
                <div class="right">
                   <p>19723 HOMES FOR SALE</p>
-                  <button type="submit" value="search" name="searchType" class="theme-btn">Search</button>
+                  <button type="submit" value="search" class="theme-btn">Search</button>
                </div>
             </div>
          </div>
