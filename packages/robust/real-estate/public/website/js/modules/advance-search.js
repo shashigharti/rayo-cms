@@ -4,6 +4,7 @@
 
     $(function () {
         let advSearchElem = $('.advance-search');
+        let searchFrm = document.querySelector('#frm-search');
 
         // Check if it has advance search
         if (advSearchElem.length > 0) {
@@ -18,6 +19,12 @@
                 // Set the selected value for all those elements who are not of class multi-select
                 elem.value = elem.getAttribute('data-selected');
             });
+        }
+
+        // Check if it has search form
+        if (searchFrm.length > 0) {
+
+            console.log('it has search form');
         }
 
     });

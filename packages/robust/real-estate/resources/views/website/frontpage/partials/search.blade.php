@@ -1,7 +1,7 @@
 <div class="banner-caption">
    <h1>Find Your Dream House With Us</h1>
    <div class="search-section">
-      <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
+      <form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
          <div class="row">
             <div class="col s3">
                <p>Location</p>
