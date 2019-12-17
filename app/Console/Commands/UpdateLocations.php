@@ -53,7 +53,8 @@ class UpdateLocations extends Command
                 ->where($this->mapping[$location->locationable_type], $location->id)->count();
             $location->update([
                'active_count' => $active_count,
-               'sold_count' => $sold_count
+               'sold_count' => $sold_count,
+               'locationable_type' => "\\" . $location->locationable_type
             ]);
             $this->info('Name : '.  $location->name . ' || Active : ' .$active_count. ' || Sold : ' . $sold_count);
         }

@@ -100,14 +100,14 @@ class DataPull extends RetsCommands
         'subdivision' => 'subdivision_id'
     ];
     protected $mapping = [
-        'city' => 'Robust\RealEstate\Models\City',
-        'county' => 'Robust\RealEstate\Models\County',
-        'area' => 'Robust\RealEstate\Models\Area',
-        'elementary_school' => 'Robust\RealEstate\Models\ElementarySchool',
-        'middle_school' => 'Robust\RealEstate\Models\MiddleSchool',
-        'high_school' => 'Robust\RealEstate\Models\HighSchool',
-        'zip' =>  'Robust\RealEstate\Models\Zip',
-        'subdivision' =>  'Robust\RealEstate\Models\Subdivision',
+        'city' => '\Robust\RealEstate\Models\City',
+        'county' => '\Robust\RealEstate\Models\County',
+        'area' => '\Robust\RealEstate\Models\Area',
+        'elementary_school' => '\Robust\RealEstate\Models\ElementarySchool',
+        'middle_school' => '\Robust\RealEstate\Models\MiddleSchool',
+        'high_school' => '\Robust\RealEstate\Models\HighSchool',
+        'zip' =>  '\Robust\RealEstate\Models\Zip',
+        'subdivision' =>  '\Robust\RealEstate\Models\Subdivision',
     ];
 
     //Palm Beach, Broward, Martin, St Lucie
