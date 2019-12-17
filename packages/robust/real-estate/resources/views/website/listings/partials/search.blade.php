@@ -25,7 +25,7 @@
             </form>
         </div>
         <div class="col s2 center-align">
-            <p>19723 ACTIVE LIstings</p>
+            <p>{{$results->total()}} ACTIVE LIstings</p>
             <a href="#" class="theme-btn">search</a>
         </div>
     </div>
