@@ -7,7 +7,7 @@
         </div>
 
         <div class="col s8">
-            <form method="post" action="{{$advancesearch_helper->getSearchURL()}}">
+            <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
                 <div class="row">
                     <div class="col s4 range-bar">
                         <p>PRICE</p>
@@ -25,8 +25,9 @@
             </form>
         </div>
         <div class="col s2 center-align">
-            <p>{{$results->total()}} ACTIVE LIstings</p>
-            <a href="#" class="theme-btn">search</a>
+            <p>{{$results->total()}} ACTIVE LISTINGS</p>
+            {{-- <a href="#" class="theme-btn">search</a> --}}
+            <button type="submit" value="search" class="theme-btn">Search</button>
         </div>
     </div>
 </div>
