@@ -1,3 +1,4 @@
+@set('sort_settings',  config('rws.sorting'))
 <div class="listing--search  search-section">
     <div class="row">
         <div class="col s2 center-align">
@@ -33,10 +34,10 @@
     <div class="row">
         <div class="col s7">
             <label>Sort By :</label>
-            <select>
-                <option>Recently Added</option>
-                <option>High to Low</option>
-                <option>Low to High</option>
+            <select name="sort">
+                @foreach($sort_settings as $sort)
+                <option value="{{$sort['value']}}">{{$sort['display']}}</option>
+                @endforeach
             </select>
             <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
             <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>

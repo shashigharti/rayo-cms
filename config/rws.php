@@ -1,6 +1,14 @@
 <?php
 
 return [
+    'sorting' => [
+        ['display' => 'Recently Added', 'value' => 'input_date-desc'],
+        ['display' => 'Price High - Low', 'value' => 'system_price-asc'],
+        ['display' => 'Price Low - High', 'value' => 'system_price-desc'],        
+        ['display' => 'Recently Sold 7 Days', 'value' => 'sold_date-7_days'],
+        ['display' => 'Recently Sold 14 Days', 'value' => 'sold_date-14_days'],
+        ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days']
+    ],
     'data' => [
         'data-price' => [
             'price' => 10000, 'condition' => '>'
