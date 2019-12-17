@@ -57,12 +57,14 @@ class ListingController extends Controller
     public function sold($location_type = null,  $location = null,  $price_range = null)
     {
         $query_params = request()->all();
+        $data_timeframe = config('rws.data.data-timeframe');
         $results  = $this->model->getListings(
             [
                 'status' => 'Closed'
             ])
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
+            ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate(40);
@@ -80,21 +82,21 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
     }
 
-    // /**
-    //  * @param $type
-    //  * @param $value
-    //  * @param $id
-    //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-    //  */
-    // public function getSimilarProperty($type, $value, $id)
-    // {
-    //     $price = $this->model->find($id)->system_price;
-    //     $results = $this->model->getCountByType($type,$value)
-    //             ->where('system_price', '>' ,$price - 50000)
-    //             ->where('system_price', '<', $price + 50000)
-    //             ->paginate(40);
-    //     return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
-    // }
+    /**
+     * @param $type
+     * @param $value
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getSimilarProperty($type, $value, $id)
+    {
+        $price = $this->model->find($id)->system_price;
+        $results = $this->model->getCountByType($type,$value)
+                ->where('system_price', '>' ,$price - 50000)
+                ->where('system_price', '<', $price + 50000)
+                ->paginate(40);
+        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+    }
 
     public function subArea($location_type, $location,$price_range,$sub_area)
     {

@@ -3,7 +3,6 @@
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
-use Robust\RealEstate\Models\Scopes\QueryScope;
 
 /**
  * Class Listing
@@ -53,7 +52,7 @@ class Listing extends BaseModel
         'status',
     ];
 
-   /**
+    /**
      * Add search filters
      *
      * @return \Illuminate\Database\Eloquent\Builder

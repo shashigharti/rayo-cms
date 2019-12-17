@@ -1,6 +1,12 @@
 <?php
 
 return [
+    'data' => [
+        'data-price' => [
+            'price' => 10000, 'condition' => '>'
+        ],
+        'data-timeframe' => "- 365 day"
+    ],
     // third party server field mapping with listing properties
     'advance-search' => [
         'lot_description' => [
