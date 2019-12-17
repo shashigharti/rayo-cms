@@ -7,7 +7,16 @@
         status_filter.forEach(elem => {
             elem.addEventListener('click', function (e) {
                 locations.forEach((elem) => {
-                    let count = elem.getAttribute(`data-${this.value}`);
+                    let [count, url, string_to_replace] = [
+                        elem.getAttribute(`data-${this.value}`),
+                        '',
+                        elem.getAttribute(`data-${this.value}-url`)
+                    ];
+                    let string_to_search = (string_to_replace == 'homes-for-sale') ? 'sold-homes' : 'homes-for-sale';
+
+                    url = elem.querySelector("a").getAttribute("href");
+                    url = url.replace(new RegExp(string_to_search), `${string_to_replace}`);
+                    elem.querySelector("a").setAttribute("href", url);
                     elem.querySelector(".tab__location-count").innerHTML = `(${count})`;
                 });
             });

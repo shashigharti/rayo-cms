@@ -33,7 +33,11 @@
                         <ul>
                             @if(isset($locations['cities']))
                                 @foreach($locations['cities'] as $location)
-                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                    <li data-active ="{{ $location->active_count }}"
+                                        data-active-url="homes-for-sale"
+                                        data-sold-url="sold-homes"  
+                                        data-sold="{{ $location->sold_count }}" 
+                                        data-all="{{ $location->sold_count + $location->active_count }}">
                                         <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                 'location_type' => 'cities',
                                                 'location' => $location->slug
@@ -50,7 +54,9 @@
                         <ul>
                             @if(isset($locations['counties']))
                                 @foreach($locations['counties'] as $location)
-                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                    <li data-active="{{ $location->active_count }}" 
+                                        data-sold="{{ $location->sold_count }}" 
+                                        data-all="{{ $location->sold_count + $location->active_count }}">
                                         <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                 'location_type' => 'counties',
                                                 'location' => $location->slug
@@ -66,7 +72,9 @@
                         <ul>
                             @if(isset($locations['zips']))
                                 @foreach($locations['zips'] as $location)
-                                    <li data-active="{{ $location->active_count }}" data-sold="{{ $location->sold_count }}" data-all="{{ $location->sold_count + $location->active_count }}">
+                                    <li data-active="{{ $location->active_count }}" 
+                                        data-sold="{{ $location->sold_count }}" 
+                                        data-all="{{ $location->sold_count + $location->active_count }}">
                                         <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                 'location_type' => 'zips',
                                                 'location' => $location->slug
