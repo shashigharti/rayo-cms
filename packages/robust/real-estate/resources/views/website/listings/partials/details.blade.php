@@ -1,6 +1,7 @@
 @set('properties',$result->property->pluck('value','type'))
 @set('city',$location_helper->byId($result->city_id))
 @set('subdivision',$location_helper->byId($result->subdivision_id))
+@set('image',$result->images ? $result->images->first() : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -54,7 +55,6 @@
                             </div>
                         </div>
                         <div class="single--map_container">
-                            @set('image',$result->images ? $result->images->first() : null)
                             <div id="listingMap" data-zoom="10">
                                 <p
                                     class="listing-map_data hidden"
@@ -288,11 +288,13 @@
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Get more Property Info </a>
                                 </div>
+                                @set('href',Auth::check() ? '#' : '#registermodal')
+                                @set('printer_class',Auth::check() ? 'printer-trigger' : 'modal-trigger')
                                 <div class="col s6 padding-left-0 padding-right-0">
-                                    <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Print this listing </a>
+                                    <a href='{{$href}}' data-url="{{route('website.realestate.print',['slug' => $result->slug])}}" class="btn btn-success left-button not_authenticated {{$printer_class}}"> Print this listing </a>
                                 </div>
                                 <div class="col s6 right-align padding-left-0 padding-right-0">
-                                    <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email if Property Sells </a>
+                                    <a href='#' class="btn btn-success left-button not_authenticated {{$printer_class}}"> Email if Property Sells </a>
                                 </div>
                                 <div class="col s6 padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email Price Changes </a>
@@ -398,12 +400,8 @@
             <div class="form-group row">
                 <label>Message:</label>
                 <p>I found a property at {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
-                @if($result->images() && $result->images()->first())
-                    @set('first_image',$result->images()-first())
-
-                @endif
                 <div class="email-modal-image">
-                    <img src="http://cdn.photos.sparkplatform.com/bc/20191202010414020863000000-o.jpg" alt="">
+                    <img src="{{$image ? $image->url :  ''}}" alt="">
                 </div>
             </div>
             <div class="form-group row">
@@ -449,10 +447,9 @@
             <div class="form-group row">
                 <label>Message:</label>
                 <p>Please send me more info about {{$result->listing_name}} . Asking Price {{$result->system_price}}$</p>
-                @if($result->images() && $result->images()->first())
-                    @set('first_image',$result->images()-first())
-                    <img src="{{$first_image->listing_url}}" alt="">
-                @endif
+            </div>
+            <div class="email-modal-image">
+                <img src="{{$image ? $image->url :  ''}}" alt="">
             </div>
             <div class="form-group row">
                 <textarea  name="message" class="form-control" placeholder="Comments or Questions" required=""></textarea>

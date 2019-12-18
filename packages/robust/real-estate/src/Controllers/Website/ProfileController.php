@@ -6,7 +6,7 @@ namespace Robust\RealEstate\Controllers\Website;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Robust\RealEstate\Repositories\Api\LeadRepositories;
+use Robust\RealEstate\Repositories\Website\LeadRepository;
 
 /**
  * Class ProfileController
@@ -15,15 +15,15 @@ use Robust\RealEstate\Repositories\Api\LeadRepositories;
 class ProfileController
 {
     /**
-     * @var LeadRepositories
+     * @var LeadRepository
      */
     protected $lead;
 
     /**
      * ProfileController constructor.
-     * @param LeadRepositories $lead
+     * @param LeadRepository $lead
      */
-    public function __construct(LeadRepositories $lead)
+    public function __construct(LeadRepository $lead)
     {
         $this->lead = $lead;
     }

@@ -55,7 +55,7 @@ class RegisterController
             'member_id' => $lead->id,
             'member_type' => self::MEMBER_TYPE,
             'email' => $data['email'],
-            'password' => $data['password'],
+            'password' => Hash::make($data['password']),
             'user_name' => $lead->username,
         ]);
     }

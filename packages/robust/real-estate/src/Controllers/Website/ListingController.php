@@ -3,11 +3,8 @@ namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use Robust\Core\Helpage\Site;
-use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
-
 
 /**
  * Class ListingController
@@ -98,7 +95,14 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
     }
 
-    public function subArea($location_type, $location,$price_range,$sub_area)
+    /**
+     * @param $location_type
+     * @param $location
+     * @param $price_range
+     * @param $sub_area
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function subArea($location_type, $location, $price_range, $sub_area)
     {
 
         $query_params = request()->all();
@@ -115,19 +119,16 @@ class ListingController extends Controller
         return view(Site::templateResolver('real-estate::website.listings.index'), [ 'results' => $results ]);
     }
 
-    public function mapData(Request $request)
+    /**
+     * @param $slug
+     * @return array|string
+     * @throws \Throwable
+     */
+    public function print($slug)
     {
-        $data = $request->all();
-        $ids = explode(',',$data['ids']);
-        $properties = ListingProperty::select('listing_id','type','value')
-                ->whereIn('listing_id',$ids)
-                ->whereIn('type',['latitude','longitude'])
-                ->get();
-        $result = [];
-        foreach ($properties as $property)
-        {
-            $result[$property->listing_id][$property->type] = $property->value;
-        }
-        return response()->json(['data'=>$result]);
+        $result = $this->model->getSingle($slug);
+        $view = view(Site::templateResolver('real-estate::website.frontpage.partials.print'),['result' => $result]);
+        return $view->render();
     }
+
 }
