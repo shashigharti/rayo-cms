@@ -14,6 +14,9 @@ class LocationRepository
      */
     protected $model;
 
+    /**
+     *
+     */
     protected const FIELDS_QUERY_MAP = [
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'slug' => ['name' => 'slug', 'condition' => 'LIKE'],
@@ -22,6 +25,9 @@ class LocationRepository
         'type' => ['name' => 'locationable_type', 'condition' => '=']
     ];
 
+    /**
+     *
+     */
     protected const RELATION_MAP = [
         'cities' => ['class' => '\Robust\RealEstate\Models\City'],
         'zips' => ['class' => '\Robust\RealEstate\Models\Zip'],
@@ -82,5 +88,18 @@ class LocationRepository
     public function getById($id)
     {
         return $this->model->where('id', $id)->first();
+    }
+
+    /**
+     * @param $type
+     * @param $slug
+     * @return mixed
+     */
+    public function getLocation($type, $slug)
+    {
+        return $this->model
+            ->where('locationable_type',LocationRepository::RELATION_MAP[$type]['class'])
+            ->where('slug',$slug)
+            ->first();
     }
 }

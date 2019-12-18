@@ -1,11 +1,13 @@
 @set('properties',$result->property->pluck('value','type'))
+@set('city',$location_helper->byId($result->city_id))
+@set('subdivision',$location_helper->byId($result->subdivision_id))
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col s7">
                 <div class="list--inner--title">
-                    <h4>{{strtoupper($result->city->name)}} {{strtoupper($result->status)}} REAL ESTATE</h4>
-                    <p>{{$result->subdivision}} Subdivision</p>
+                    <h4>{{$city ? $city->name : ''}} {{strtoupper($result->status)}} REAL ESTATE</h4>
+                    <p>{{$subdivision ? $subdivision->name : ''}} Subdivision</p>
                 </div>
                 <div class="head-list-info">
                     <ul>
@@ -21,7 +23,7 @@
                                 <span class="txt-property">Bathrooms</span>
                             </li>
                         @endif
-                        @if(isset($properties['total_square_feet'])))
+                        @if(isset($properties['total_square_feet']))
                             <li>
                                 <span class="txt-num">{{$properties['total_square_feet']}}</span><br>
                                 <span class="txt-property">Square Feet</span>
@@ -178,6 +180,12 @@
                                     <tr class="txt-descript-bold">
                                         <td> Property Type </td>
                                         <td >{{$result->class}} </td>
+                                    </tr>
+                                @endif
+                                @if(isset($properties['property_type']))
+                                    <tr class="txt-descript-bold">
+                                        <td> Property Sub-type </td>
+                                        <td >{{$properties['property_type']}} </td>
                                     </tr>
                                 @endif
                                 @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))

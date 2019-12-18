@@ -48,4 +48,12 @@ class Subdivision extends BaseModel
     {
         return $this->hasMany(Listing::class, 'subdivision', 'name');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+     */
+    public function location()
+    {
+        return $this->morphOne('Robust\RealEstate\Models\Location','location','locationable_type','location_id');
+    }
 }

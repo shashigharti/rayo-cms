@@ -19,11 +19,13 @@ class ListingRepository
 
     protected const LISTING_FIELDS = [
         'index' => [
-            'real_estate_listings.id','real_estate_listings.name','real_estate_listings.uid','real_estate_listings.slug',
+            'real_estate_listings.id','real_estate_listings.name',
+            'real_estate_listings.uid','real_estate_listings.slug',
             'real_estate_listings.system_price','real_estate_listings.picture_count',
             'real_estate_listings.status','real_estate_listings.address_street','state',
             'real_estate_listings.baths_full','real_estate_listings.bedrooms',
-            'real_estate_listings.city_id',
+            'real_estate_listings.city_id','real_estate_listings.county_id',
+            'real_estate_listings.input_date'
         ]
     ];
     protected const FIELDS_QUERY_MAP = [
@@ -73,9 +75,11 @@ class ListingRepository
      * @param $id
      * @return mixed
      */
-    public function getSingle($id)
+    public function getSingle($slug)
     {
-        return $this->model->where('id',$id)->with('property')->with('images')->first();
+        return $this->model->where('slug', $slug)
+        ->with('property')
+        ->with('images')->first();
     }
 
     /**
@@ -115,6 +119,13 @@ class ListingRepository
         return $this;
     }
 
+    /**
+     * @return QueryBuilder this
+     */
+    public function whereDateBetween($params){
+        return $this->model->whereBetween('input_date', $params);
+    }
+
 
     /**
      * @return QueryBuilder this
@@ -130,15 +141,29 @@ class ListingRepository
         return $this;
     }
 
-    /**
-     * @return QueryBuilder this
-     */
-    public function limit($limit){
-        $this->model = $this->model->limit($limit);
-        return $this->model;
+    public function whereSubArea($type)
+    {
+        $tabs_map = [
+            'waterfront' => [
+                'type' => 'waterfront',
+                'value' => 'Yes'
+            ],
+            'condos' => [
+                'type' => 'property_type',
+                'value' => 'Condo/Coop'
+            ],
+            'hopa' => [
+                'type' => 'hopa',
+                'value' => 'Yes-Verified'
+            ]
+        ];
+        $tab = $tabs_map[$type];
+        $this->model = $this->model->whereHas('property', function ($query) use ($tab){
+            $query->where('type', $tab['type'])
+                ->where('value', $tab['value']);
+        });
+        return $this;
     }
-
-
 
     /**
      * @param $type
@@ -164,6 +189,15 @@ class ListingRepository
             ->where('status','Active')
             ->where('picture_status',1)
             ->orderBy('input_date','desc');
+    }
+
+
+    /**
+     * @return QueryBuilder this
+     */
+    public function limit($limit){
+        $this->model = $this->model->limit($limit);
+        return $this->model;
     }
 
 }

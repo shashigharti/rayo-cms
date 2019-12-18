@@ -21,7 +21,8 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\FixImagesCount',
         'App\Console\Commands\CreateLocations',
         'App\Console\Commands\CreateMarketReport',
-        'App\Console\Commands\CreateAttributes'
+        'App\Console\Commands\CreateAttributes',
+        'App\Console\Commands\UpdateLocations',
     ];
 
     /**

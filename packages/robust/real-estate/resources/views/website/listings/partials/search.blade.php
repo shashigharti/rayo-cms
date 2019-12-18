@@ -1,3 +1,4 @@
+@set('sort_settings',  config('rws.sorting'))
 <div class="listing--search  search-section">
     <div class="row">
         <div class="col s2 center-align">
@@ -6,7 +7,7 @@
         </div>
 
         <div class="col s8">
-            <form method="post" action="{{$advancesearch_helper->getSearchURL()}}">
+            <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
                 <div class="row">
                     <div class="col s4 range-bar">
                         <p>PRICE</p>
@@ -24,8 +25,9 @@
             </form>
         </div>
         <div class="col s2 center-align">
-            <p>19723 ACTIVE LIstings</p>
-            <a href="#" class="theme-btn">search</a>
+            <p>{{$results->total()}} ACTIVE LISTINGS</p>
+            {{-- <a href="#" class="theme-btn">search</a> --}}
+            <button type="submit" value="search" class="theme-btn">Search</button>
         </div>
     </div>
 </div>
@@ -33,13 +35,13 @@
     <div class="row">
         <div class="col s7">
             <label>Sort By :</label>
-            <select>
-                <option>Recently Added</option>
-                <option>High to Low</option>
-                <option>Low to High</option>
+            <select name="sort">
+                @foreach($sort_settings as $sort)
+                <option value="{{$sort['value']}}">{{$sort['display']}}</option>
+                @endforeach
             </select>
-            <a href="#" class="btn cyan">SOLD</a>
-            <a href="#" class="btn green">ACTIVE</a>
+            <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
+            <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
         </div>
         <div class="col s5 right-align">
             <div class="total--records">

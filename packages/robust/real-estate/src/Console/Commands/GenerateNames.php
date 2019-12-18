@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Str;
 use Robust\RealEstate\Models\City;
 use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Models\Zip;
 
 
@@ -46,11 +47,11 @@ class GenerateNames extends Command
                     foreach ($listings as $listing){
                         $name  = '';
                         $name .= ucfirst($listing->address_number);
-                        $city = City::where('id',$listing->city_id)->first();
+                        $city = Location::where('id',$listing->city_id)->first();
                         if($city){
                             $name .= ', ' . $city->name;
                         }
-                        $zip =  Zip::where('id',$listing->zip_id)->first();
+                        $zip =  Location::where('id',$listing->zip_id)->first();
                         if($zip){
                             $name .= ' ' . $zip->name;
                         }

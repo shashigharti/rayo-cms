@@ -27,4 +27,12 @@ class Location extends BaseModel
         'location_id',
         'locationable_type'
     ];
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     */
+    public function locationable()
+    {
+        return $this->morphTo();
+    }
 }

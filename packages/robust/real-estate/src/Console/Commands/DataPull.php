@@ -100,56 +100,56 @@ class DataPull extends RetsCommands
         'subdivision' => 'subdivision_id'
     ];
     protected $mapping = [
-        'city' => 'Robust\RealEstate\Models\City',
-        'county' => 'Robust\RealEstate\Models\County',
-        'area' => 'Robust\RealEstate\Models\Area',
-        'elementary_school' => 'Robust\RealEstate\Models\ElementarySchool',
-        'middle_school' => 'Robust\RealEstate\Models\MiddleSchool',
-        'high_school' => 'Robust\RealEstate\Models\HighSchool',
-        'zip' =>  'Robust\RealEstate\Models\Zip',
-        'subdivision' =>  'Robust\RealEstate\Models\Subdivision',
+        'city' => '\Robust\RealEstate\Models\City',
+        'county' => '\Robust\RealEstate\Models\County',
+        'area' => '\Robust\RealEstate\Models\Area',
+        'elementary_school' => '\Robust\RealEstate\Models\ElementarySchool',
+        'middle_school' => '\Robust\RealEstate\Models\MiddleSchool',
+        'high_school' => '\Robust\RealEstate\Models\HighSchool',
+        'zip' =>  '\Robust\RealEstate\Models\Zip',
+        'subdivision' =>  '\Robust\RealEstate\Models\Subdivision',
     ];
 
     //Palm Beach, Broward, Martin, St Lucie
     protected $conditions = [
-        'counties' => [
-           'A' => [
-               'Palm Beach' => '1552FDYRQZIB',
-               'Broward' => '1552FDYRIW50',
-               'Martin' => '1552FDYRQ3SA',
-               'St. Lucie' => '1552FDYRSN94',
-           ],
-           'B' => [
-               'Palm Beach' => '1DEK1CX064G6',
-               'Broward' => '1DEK1CWY7BTK',
-               'Martin' => '1DEK1CWYTDDA',
-               'St. Lucie' => '1DEK1CX0K245',
-           ],
-           'C' => [
-               'Palm Beach' => '1DEK1CX2AY64',
-               'Broward' => '1DEK1CX0RH3V',
-               'Martin' => '1DEK1CX1AVA8',
-               'St. Lucie' => '1DEK1CX2NZPU',
-           ],
-           'D' => [
-               'Palm Beach' => '1DEK1CX4HV0L',
-               'Broward' => '1DEK1CX2UPG8',
-               'Martin' => '1DEK1CX3G2FL',
-               'St. Lucie' => '1DEK1CX4ZQ77',
-           ],
-            'E' => [
-                'Palm Beach' => '1DEK1CX6QUKN',
-                'Broward' => '1DEK1CX56FW5',
-                'Martin' => '1DEK1CX5PTSV',
-                'St. Lucie' => '1DEK1CX74D13',
-            ],
-            'F' => [
-                'Palm Beach' => '1DEK1CX6QUKN',
-                'Broward' => '1DEK1CX56FW5',
-                'Martin' => '1DEK1CX5PTSV',
-                'St. Lucie' => '1DEK1CX74D13',
-            ]
-        ],
+//        'counties' => [
+//           'A' => [
+//               'Palm Beach' => '1552FDYRQZIB',
+//               'Broward' => '1552FDYRIW50',
+//               'Martin' => '1552FDYRQ3SA',
+//               'St. Lucie' => '1552FDYRSN94',
+//           ],
+//           'B' => [
+//               'Palm Beach' => '1DEK1CX064G6',
+//               'Broward' => '1DEK1CWY7BTK',
+//               'Martin' => '1DEK1CWYTDDA',
+//               'St. Lucie' => '1DEK1CX0K245',
+//           ],
+//           'C' => [
+//               'Palm Beach' => '1DEK1CX2AY64',
+//               'Broward' => '1DEK1CX0RH3V',
+//               'Martin' => '1DEK1CX1AVA8',
+//               'St. Lucie' => '1DEK1CX2NZPU',
+//           ],
+//           'D' => [
+//               'Palm Beach' => '1DEK1CX4HV0L',
+//               'Broward' => '1DEK1CX2UPG8',
+//               'Martin' => '1DEK1CX3G2FL',
+//               'St. Lucie' => '1DEK1CX4ZQ77',
+//           ],
+//            'E' => [
+//                'Palm Beach' => '1DEK1CX6QUKN',
+//                'Broward' => '1DEK1CX56FW5',
+//                'Martin' => '1DEK1CX5PTSV',
+//                'St. Lucie' => '1DEK1CX74D13',
+//            ],
+//            'F' => [
+//                'Palm Beach' => '1DEK1CX6QUKN',
+//                'Broward' => '1DEK1CX56FW5',
+//                'Martin' => '1DEK1CX5PTSV',
+//                'St. Lucie' => '1DEK1CX74D13',
+//            ]
+//        ],
         'cities' => [
             'A' => [
                 'Boca Raton' => '12LM4LA7AGIT',
@@ -225,7 +225,6 @@ class DataPull extends RetsCommands
     protected $conditions_map = [
         'counties' => 'LIST_41', 'system_price' =>'LIST_22','cities' => 'LIST_39'
     ];
-
     protected $min_price = 10000;
     /**
      * @var int
