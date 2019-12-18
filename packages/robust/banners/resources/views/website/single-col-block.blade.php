@@ -6,7 +6,7 @@
                 @set('properties', json_decode($singleColBanner->properties))
                 @set('image',$listing_helper->getImageByCity($properties->location,$properties->image))
                 @if($properties)
-                    <div class="col s4">
+                    <div class="col m4 s12">
                         <div class="single-block">
                             <img src="{{$image}}" alt="">
                             <div class="figcaption center-align">

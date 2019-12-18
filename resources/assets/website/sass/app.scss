@@ -16,7 +16,7 @@
 @import "../../../../node_modules/materialize-css/sass/components/forms/forms.scss";
 @import "../../../../node_modules/materialize-css/sass/components/forms/radio-buttons.scss";
 @import "../../../../node_modules/materialize-css/sass/components/forms/select.scss";
-
+@import "../../../../node_modules/materialize-css/sass/components/sidenav.scss";
 @import "../../../../node_modules/material-icons/iconfont/material-icons.scss";
 
 @import "components/color.scss";
@@ -31,3 +31,4 @@
 @import "market/survey.scss";
 @import "user/login.scss";
 @import "user/profile.scss";
+@import "responsive.scss";
