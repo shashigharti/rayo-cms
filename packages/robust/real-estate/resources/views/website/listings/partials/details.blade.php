@@ -4,7 +4,7 @@
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col s7">
+            <div class="col m7 s12">
                 <div class="list--inner--title">
                     <h4>{{$city ? $city->name : ''}} {{strtoupper($result->status)}} REAL ESTATE</h4>
                     <p>{{$subdivision ? $subdivision->name : ''}} Subdivision</p>
@@ -89,7 +89,7 @@
                             </div>
                         </div>
 
-                        <div id="calculator" class="col s12">
+                        <div id="calculator" class="col m12 s12">
                             <div id="m-calculator">
                                 <form id="homenote" role="form" class="well">
                                     <div class="form-group">
@@ -160,7 +160,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s5">
+            <div class="col m5 s12">
                 <div class="top more-inner">
                     <a href="#" class="single--listing--button_back left btn btn-list-back" role="button">
                         <i class="material-icons">keyboard_backspace</i>
@@ -265,44 +265,44 @@
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
                                 @set('href',Auth::check() ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
-                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">star</i></span> Save to Favorites
                                     </a>
                                 </div>
                                 @set('href',Auth::check() ? '#emailModal' : '#registermodal')
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">email</i></span> Email a friend
                                     </a>
                                 </div>
                                 @set('href',Auth::check() ? route('website.realestate.leads.requests',['id' => $result->id]) : '#registermodal')
-                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="schedule--viewing btn btn-success left-button not_authenticated modal-trigger"> Schedule a Viewing </a>
                                 </div>
                                 @set('href',Auth::check() ? '#noteModal' : '#registermodal')
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Rate Property/My Notes </a>
                                 </div>
                                 @set('href',Auth::check() ? '#infoModal' : '#registermodal')
-                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Get more Property Info </a>
                                 </div>
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Print this listing </a>
                                 </div>
-                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email if Property Sells </a>
                                 </div>
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email Price Changes </a>
                                 </div>
                                 @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'zip_id','value' => $result->zip_id,'id'=>$result->id]) : '#registermodal')
-                                <div class="col s6 right-align padding-left-0 padding-right-0">
+                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show Similar Priced Props in this zip </a>
                                 </div>
                                 @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'subdivision_id','value' => $result->subdivision_id,'id'=>$result->id]) : '#registermodal')
-                                <div class="col s6 padding-left-0 padding-right-0">
+                                <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show other props in subdivision</a>
                                 </div>
                             </div>

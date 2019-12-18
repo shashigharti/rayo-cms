@@ -1722,7 +1722,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .map--content img.map--content_image{width:200px;-o-object-fit:cover;object-fit:cover}
 .map--content .map--content_footer{font-size:15px;font-weight:600;margin:3px}.listings--map_container{width:380px}
 .listings--map_container #listingMap{height:300px;width:100%}.listings--map_container .leaflet-popup-content-wrapper,.listings--map_container .leaflet-popup-tip{width:242px}
-.single--map_container{width:100%}.single--map_container #listingMap{width:100%;height:350px}
+.single--map_container{width:100%;margin-top:10px}.single--map_container #listingMap{width:100%;height:350px}
 .single--map_container .leaflet-popup-content-wrapper,.single--map_container .leaflet-popup-tip{width:242px}
 .leaflet-marker_icon i{color:#f44336;font-size:40px}header{background:#002349}.site-menu{width:100%;padding:10px 0}
 .site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
@@ -2089,4 +2089,6 @@ footer{padding:20px 0 20px}footer h3{margin-bottom:10px;margin-top:20px}.sub-hea
 .top--breadcrumb span{margin:10px 0;font-size:10px}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:9px;height:29px;line-height:29px;padding:0;width:48px}
 .total--records{font-size:10px;margin-top:20px}.listing--pagination span{height:20px;width:20px;line-height:20px;font-size:10px}
 .listing--tags span{font-size:10px;padding:0 7px;height:22px;line-height:22px}.listing--tags a.theme-btn{width:58px;height:20px;line-height:20px}
-.search--right--section{top:272px}}
+.search--right--section{top:272px}.btn-social-detail .btn,.btn-social-detail .btn-large,.btn-social-detail .btn-small,.btn-social-detail .btn-large,.btn-social-detail .btn-small{margin:10px 0 0;width:100%;background-color:#002349;font-size:12px;text-transform:none;height:30px;line-height:31px}
+.head-list-info ul li{width:30.6%}.market__btns--container a{padding:4px 6px;margin-right:5px;margin-top:8px}
+.market__search--lists--side-nav{min-height:auto}}
