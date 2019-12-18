@@ -3,6 +3,7 @@ namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
+use Barryvdh\DomPDF\Facade as PDF;
 use Robust\Core\Helpage\Site;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 
@@ -127,8 +128,9 @@ class ListingController extends Controller
     public function print($slug)
     {
         $result = $this->model->getSingle($slug);
-        $view = view(Site::templateResolver('real-estate::website.frontpage.partials.print'),['result' => $result]);
-        return $view->render();
+        $html = view('real-estate::website.frontpage.partials.print',['result'=>$result])->render();
+        return PDF::loadHTML($html)->setPaper('a4', 'portrait')
+            ->setWarnings(false)->stream( $result->name .'.pdf');
     }
 
 }

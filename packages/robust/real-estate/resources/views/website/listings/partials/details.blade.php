@@ -292,7 +292,7 @@
                                 @set('href',Auth::check() ? '#' : '#registermodal')
                                 @set('printer_class',Auth::check() ? 'printer-trigger' : 'modal-trigger')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
-                                    <a href='{{$href}}' data-url="{{route('website.realestate.print',['slug' => $result->slug])}}" class="btn btn-success left-button not_authenticated {{$printer_class}}"> Print this listing </a>
+                                    <a href='{{route('website.realestate.print',['slug' => $result->slug])}}' target="_blank" class="btn btn-success left-button not_authenticated"> Print this listing </a>
                                 </div>
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated {{$printer_class}}"> Email if Property Sells </a>
