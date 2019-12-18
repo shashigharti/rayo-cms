@@ -4,9 +4,6 @@
     FRW.Map = {
         init: function () {
             this.map = null;
-            this.location = [];
-            this.groups = null;
-            this.colors = ["#F00", "#11055b", "#65f441", "#f46542"];
             this.markerClusters = L.markerClusterGroup({
                 iconCreateFunction: function (cluster) {
                     let childCount = cluster.getChildCount();
@@ -24,11 +21,11 @@
                     });
                 }
             });
-            const mapOptions = {
-                center: new L.LatLng(26.4885708, 87.1275611), zoom: 7,
-            };
             const map = document.getElementById('listingMap');
-            this.map = new L.Map(document.getElementById('listingMap'), mapOptions);
+            const zoom = map.dataset.zoom;
+
+
+            this.map = new L.Map(document.getElementById('listingMap'));
             L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this.map);
             const items = document.querySelectorAll('#listingMap .listing-map_data');
             let markers = [];
@@ -63,6 +60,7 @@
             this.markerClusters.addLayers(markers);
             this.map.fitBounds(this.markerClusters.getBounds());
             this.map.addLayer(this.markerClusters);
+            this.map.setZoom(zoom);
         }
     };
     $(function () {

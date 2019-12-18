@@ -1768,7 +1768,8 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .comment--section .theme-btn{width:130px;margin-left:0;-webkit-box-shadow:1px 1px 4px 1px #777;box-shadow:1px 1px 4px 1px #777;padding:0;margin-top:10px}
 .area--list--block a{font-size:12px;color:#232222;font-weight:500}.area--list--block a:hover{color:#007bff}
 .bottom-text{margin:20px 0;padding-top:20px;border-top:1px solid #777;color:#777;font-size:13px;font-weight:500;line-height:23px}
-.advertisement h4.sub-title{margin-top:0}.distance--block{margin-bottom:40px}.distance--block .get-distance-container .input-group{display:block}
+.advertisement h4.sub-title{margin-top:0}.distance--block{margin-bottom:40px}.distance--block .single--map_container{width:100%}
+.distance--block .single--map_container #listingMap{width:100%;height:350px}.distance--block .get-distance-container .input-group{display:block}
 .distance--block .get-distance-container input.form-control{display:inline-block;width:75% !important;border:1px solid #ccc !important;padding:10px !important;height:15px !important}
 .distance--block .get-distance-container .input-group-prepend{display:inline-block;vertical-align:middle;margin-top:0;margin-left:0}
 .distance--block .get-distance-container .input-group-prepend .btn,.distance--block .get-distance-container .input-group-prepend .btn-large,.distance--block .get-distance-container .input-group-prepend .btn-small{border:0;color:#fff}
@@ -1778,7 +1779,7 @@ button.get-distance{border-radius:0;background-color:#002349}.search--main--cont
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
 .search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
-.search--right--section .map{width:380px}.search--right--section .map #listingMap{height:300px;width:100%}
+.search--right--section .listings--map_container{width:380px}.search--right--section .listings--map_container #listingMap{height:300px;width:100%}
 .search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
 .search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
 .search--right--section .right--single--block .intro--section p{color:#777;font-size:14px}

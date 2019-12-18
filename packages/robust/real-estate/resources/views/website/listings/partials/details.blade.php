@@ -1,6 +1,7 @@
 @set('properties',$result->property->pluck('value','type'))
 @set('city',$location_helper->byId($result->city_id))
 @set('subdivision',$location_helper->byId($result->subdivision_id))
+
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -53,8 +54,17 @@
                                 <button class="btn btn-default get-distance" type="button">Get distance</button>
                             </div>
                         </div>
-                        <div class="map--block">
-                            <div class="mapouter"><div class="gmap_canvas"><iframe height="500" id="gmap_canvas" src="https://maps.google.com/maps?q=university%20of%20san%20francisco&t=&z=13&ie=UTF8&iwloc=&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><a href="https://www.embedgooglemap.org">embedgooglemap.org</a></div><style>.mapouter{position:relative;text-align:right;height:500px;width:600px;}.gmap_canvas {overflow:hidden;background:none!important;height:500px;width:600px;}</style></div>
+                        <div class="single--map_container">
+                            <div id="listingMap" data-zoom="10">
+                                <p
+                                    class="listing-map_data hidden"
+                                    data-name="{{$result->name}}"
+                                    data-slug="{{$result->slug}}"
+                                    data-price="{{$result->system_price}}"
+                                    data-lat="{{$properties['latitude'] ?? ''}}"
+                                    data-lng="{{$properties['longitude'] ?? ''}}">
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
