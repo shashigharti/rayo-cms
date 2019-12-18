@@ -33,7 +33,7 @@
 </div>
 <div class="listing--btn--block col s12">
     <div class="row">
-        <div class="col s7">
+        <div class="col m7 s12">
             <label>Sort By :</label>
             <select name="sort">
                 @foreach($sort_settings as $sort)
@@ -43,7 +43,7 @@
             <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
             <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
         </div>
-        <div class="col s5 right-align">
+        <div class="col m5 s12 right-align">
             <div class="total--records">
                 <span>{{$results->perPage()}}</span> of <span>{{$results->total()}}</span> Total Properties
             </div>

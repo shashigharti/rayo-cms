@@ -7,7 +7,7 @@
                 @set('image',$listing_helper->getImageByCity($properties->location,$properties->image))
                 @if($properties)
                     @set('location',$location_helper->byId($properties->location))
-                    <div class="col s4">
+                    <div class="col m4 s12">              
                         <div class="single-block">
                             <img src="{{$image}}" alt="">
                             <div class="figcaption center-align">

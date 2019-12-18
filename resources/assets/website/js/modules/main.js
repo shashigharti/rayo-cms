@@ -35,6 +35,7 @@ $(window).load(function () {
     $('select').formSelect();
     $('.tabs').tabs();
     $('.modal').modal();
+    $('.sidenav').sidenav();
 
 
     const priceSlider = $('.price-range-slider');

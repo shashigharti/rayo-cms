@@ -8,6 +8,7 @@
         <div class="container-fluid">
             <div class="site-menu">
                 @include(Site::templateResolver('real-estate::website.frontpage.partials.menu'))
+                @include(Site::templateResolver('real-estate::website.frontpage.partials.mobile-menu'))
             </div>
         </div>
     </header>
