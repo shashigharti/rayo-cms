@@ -32,7 +32,6 @@
                             <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
                                 <div class="col m3 s12">
                                     <div class="single--list--block">
-                                        @set('first_image',$result->images()->first())
                                         <img src={{$image ? $image->url :  ''}}>
                                         <div class="list--overlay">
         									<span class="tag active">

@@ -1700,7 +1700,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#04122d;border:1px solid #f6f7f9;color:#fff;padding:1px 5px}
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff}
 .multi-select-container input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:0;-webkit-box-shadow:none;box-shadow:none}
-.leaflet-marker_icon i{color:#bb54ef;font-size:20px}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
@@ -1718,7 +1718,14 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .theme-blue .back-bar .pointer{width:14px;height:14px;top:-5px;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:10px;border:1px solid #AAA;background-color:#e7e7e7;background-image:-webkit-gradient(linear,left top,left bottom,from(#eee),to(#ddd));background-image:linear-gradient(to bottom,#eee,#ddd);background-repeat:repeat-x;filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffeeeeee',endColorstr='#ffdddddd',GradientType=0)}
 .theme-blue .back-bar .pointer-label{color:#999}.theme-blue .back-bar .focused{color:#333}
 .theme-blue .scale span{border-left:1px solid #e5e5e5}.theme-blue .scale ins{color:#999}
-header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
+.map--content{width:220px}.map--content p.map--content_title{color:#007bff !important;font-size:16px;word-break:break-word;margin:2px;width:200px}
+.map--content img.map--content_image{width:200px;-o-object-fit:cover;object-fit:cover}
+.map--content .map--content_footer{font-size:15px;font-weight:600;margin:3px}.listings--map_container{width:380px}
+.listings--map_container #listingMap{height:300px;width:100%}.listings--map_container .leaflet-popup-content-wrapper,.listings--map_container .leaflet-popup-tip{width:242px}
+.single--map_container{width:100%}.single--map_container #listingMap{width:100%;height:350px}
+.single--map_container .leaflet-popup-content-wrapper,.single--map_container .leaflet-popup-tip{width:242px}
+.leaflet-marker_icon i{color:#f44336;font-size:40px}header{background:#002349}.site-menu{width:100%;padding:10px 0}
+.site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
 .site-menu .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
 .site-menu li.active>.nav-link{color:rgba(255,255,255,0.8)}.site-menu .nav-link.active,.site-menu .nav-link.show{color:rgba(255,255,255,0.8)}
 .site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}.mobile-menu-btn{display:none}
@@ -1791,8 +1798,7 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .comment--section .theme-btn{width:130px;margin-left:0;-webkit-box-shadow:1px 1px 4px 1px #777;box-shadow:1px 1px 4px 1px #777;padding:0;margin-top:10px}
 .area--list--block a{font-size:12px;color:#232222;font-weight:500}.area--list--block a:hover{color:#007bff}
 .bottom-text{margin:20px 0;padding-top:20px;border-top:1px solid #777;color:#777;font-size:13px;font-weight:500;line-height:23px}
-.advertisement h4.sub-title{margin-top:0}.distance--block{margin-bottom:40px}.distance--block .single--map_container{width:100%}
-.distance--block .single--map_container #listingMap{width:100%;height:350px}.distance--block .get-distance-container .input-group{display:block}
+.advertisement h4.sub-title{margin-top:0}.distance--block{margin-bottom:40px}.distance--block .get-distance-container .input-group{display:block}
 .distance--block .get-distance-container input.form-control{display:inline-block;width:75% !important;border:1px solid #ccc !important;padding:10px !important;height:15px !important}
 .distance--block .get-distance-container .input-group-prepend{display:inline-block;vertical-align:middle;margin-top:0;margin-left:0}
 .distance--block .get-distance-container .input-group-prepend .btn,.distance--block .get-distance-container .input-group-prepend .btn-large,.distance--block .get-distance-container .input-group-prepend .btn-small{border:0;color:#fff}
@@ -1800,12 +1806,11 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .distance--block .mapouter{width:97%}.more-property-detail .detail-block{margin:0}
 button.get-distance{border-radius:0;background-color:#002349}.listing--advance_search #adv-search-dropdown{top:247px;z-index:99999}
 .listing--advance_search #adv-search-dropdown .inner{padding:10px 0 10px 10px}.listing--btn--block .select-wrapper .dropdown-content li{min-height:32px}
-.listing--btn--block .select-wrapper .dropdown-content li a,.listing--btn--block .select-wrapper .dropdown-content li span{font-size:13px;color:#686b6b;line-height:16px;padding:8px 8px}
+.listing--btn--block .select-wrapper .dropdown-content li a,.listing--btn--block .select-wrapper .dropdown-content li span{font-size:11px;color:#686b6b;line-height:16px;padding:8px 8px}
 .search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.m3{width:50%}
 .search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
-.search--right--section .listings--map_container{width:380px}.search--right--section .listings--map_container #listingMap{height:300px;width:100%}
 .search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
 .search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
 .search--right--section .right--single--block .intro--section p{color:#777;font-size:14px}

@@ -1,5 +1,4 @@
 @extends(Site::templateResolver('real-estate::website.layouts.default'))
-
 @set('locations', $location_helper->getLocations(['cities','counties','zips']))
 @section('header')
     <div class="banner">

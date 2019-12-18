@@ -33,8 +33,11 @@
                 className:'leaflet-marker_icon',
                 html: '<i class="material-icons">home</i>'
             });
+            const base_url = window.location.origin;
+
             items.forEach(function (item) {
                 const name = item.dataset.name;
+                const image = item.dataset.image;
                 const slug = item.dataset.slug;
                 const lat = item.dataset.lat;
                 const lng = item.dataset.lng;
@@ -43,16 +46,19 @@
                     title:name,
                     icon:icon
                 });
-                marker.bindPopup(`<p>Name : ${name} || </p> <p> Price : ${price} </p>`);
+                const url = `${base_url}/real-estate/${slug}`;
+                const content = `
+                    <div class="map--content">
+                        <p class="map--content_title"><a href="${url}">${name}</a></p>
+                        <img class="map--content_image" src="${image}" alt="${slug}">
+                        <p class="map--content_footer">$${price}</p>
+                    </div>
+                `;
+                marker.bindPopup(content);
                 marker.on('mouseover', function (e) {
                     this.openPopup();
                 });
-                marker.on('mouseout', function (e) {
-                    this.closePopup();
-                });
                 marker.on('click',function () {
-                    const base_url = window.location.origin;
-                    const url = `${base_url}/real-estate/${slug}`;
                     window.open(url,'_blank');
                 });
                 markers.push(marker);
