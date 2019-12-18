@@ -7,8 +7,10 @@
             <div id="listingMap" data-zoom="10">
                 @foreach($results as $result)
                   @set('properties',$result->property->pluck('value','type'))
+                  @set('image',$result->images ? $result->images->first() : null)
                     <p
                         class="listing-map_data hidden"
+                        data-image="{{$image ? $image->url :  ''}}"
                         data-name="{{$result->name}}"
                         data-slug="{{$result->slug}}"
                         data-price="{{$result->system_price}}"
