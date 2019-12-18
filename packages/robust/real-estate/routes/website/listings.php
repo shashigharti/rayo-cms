@@ -40,4 +40,9 @@ Route::group([
             'as' => 'listings.similar',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
         ]);
+        Route::get('/real-estate/{slug}/print', [
+            'name' =>'print Listing',
+            'as' => 'print',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
+        ]);
 });

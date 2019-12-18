@@ -13,4 +13,5 @@
 //import("modules/subarea.js")
 //import("modules/note.js")
 //import("modules/email.js")
+//import("modules/print.js")
 

@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-light">   
+<nav class="navbar navbar-expand-lg navbar-light">
     <ul class="right hide-on-med-and-down">
         <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>
         <li class="nav-item mega--dropdown">
@@ -24,14 +24,14 @@
                                     @foreach($locations['cities'] as $location)
                                         <li data-active ="{{ $location->active_count }}"
                                             data-active-url="homes-for-sale"
-                                            data-sold-url="sold-homes"  
-                                            data-sold="{{ $location->sold_count }}" 
+                                            data-sold-url="sold-homes"
+                                            data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
                                             <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                     'location_type' => 'cities',
                                                     'location' => $location->slug
                                                     ])}}">
-                                                {{ $location->name }} 
+                                                {{ $location->name }}
                                                 <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                             </a>
                                         </li>
@@ -43,8 +43,8 @@
                             <ul>
                                 @if(isset($locations['counties']))
                                     @foreach($locations['counties'] as $location)
-                                        <li data-active="{{ $location->active_count }}" 
-                                            data-sold="{{ $location->sold_count }}" 
+                                        <li data-active="{{ $location->active_count }}"
+                                            data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
                                             <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                     'location_type' => 'counties',
@@ -61,8 +61,8 @@
                             <ul>
                                 @if(isset($locations['zips']))
                                     @foreach($locations['zips'] as $location)
-                                        <li data-active="{{ $location->active_count }}" 
-                                            data-sold="{{ $location->sold_count }}" 
+                                        <li data-active="{{ $location->active_count }}"
+                                            data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
                                             <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                     'location_type' => 'zips',
@@ -97,7 +97,7 @@
                     <div class="modal-content">
                         <p class="center-align">To access Advanced MLS Information, login below</p>
                         <div class="form-group row">
-                            <input id="email" type="email" class="form-control" name="email" value="" placeholder="E-Mail Address" required="">
+                            <input type="email" class="form-control" name="email" value="" placeholder="E-Mail Address" required="">
                         </div>
                         <div class="form-group row">
                             <input type="password" class="form-control" name="password" value="" placeholder="Password" required="">
@@ -152,7 +152,7 @@
                 </form>
             </div>
         </li>
-    </ul>        
+    </ul>
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 </nav>
