@@ -31,15 +31,19 @@
             const sliders = searchFrm.querySelectorAll('.jrange-slider');
 
             sliders.forEach(elem => {
-                let [scale_min, scale_max] = [elem.getAttribute('data-scale-min'), elem.getAttribute('data-scale-max')];
+                let [scale_min, scale_max, format] = [
+                    elem.getAttribute('data-scale-min'),
+                    elem.getAttribute('data-scale-max'),
+                    elem.getAttribute('data-format') || "%s"
+                ];
 
                 // temporarily using jquery $ object and jquery library
                 $(elem).jRange({
                     from: elem.getAttribute('data-min'),
                     to: elem.getAttribute('data-max'),
-                    step: 1,
+                    step: elem.getAttribute('data-step') || 1,
                     scale: [scale_min, scale_max],
-                    format: '$%s',
+                    format,
                     width: 150,
                     isRange: true,
                 });
