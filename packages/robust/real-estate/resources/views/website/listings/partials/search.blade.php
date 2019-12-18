@@ -29,7 +29,6 @@
             </div>
         </div>
     </div>
-<<<<<<< HEAD
 </div>
 <div class="listing--btn--block col s12">
     <div class="row">
@@ -46,19 +45,6 @@
         <div class="col m5 s12 right-align">
             <div class="total--records">
                 <span>{{$results->count()}}</span> of <span>{{$results->total()}}</span> Total Properties
-=======
-    <div class="listing--btn--block col s12">
-        <div class="row">
-            <div class="col s7">
-                <label>Sort By :</label>
-                <select name="sort">
-                    @foreach($sort_settings as $sort)
-                    <option value="{{$sort['value']}}">{{$sort['display']}}</option>
-                    @endforeach
-                </select>
-                <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
-                <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
->>>>>>> Added leaflet libraries
             </div>
             <div class="col s5 right-align">
                 <div class="total--records">

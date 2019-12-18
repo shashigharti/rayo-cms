@@ -102,8 +102,10 @@
             // On form save
             document.querySelector('#frm-search').addEventListener('submit', (e) => {
                 e.preventDefault();
-                console.log(encodeQueryData(params));
-
+                const url = document.querySelector('#frm-search').getAttribute('action');
+                let qParams = encodeQueryData(params);
+                qParams = (qParams == '') ? '' : "?" + qParams;
+                window.location.replace(url + qParams);
             });
         }
 
