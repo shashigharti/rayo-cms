@@ -2,6 +2,16 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
 
+    function encodeQueryData(data) {
+        const ret = [];
+        for (let d in data) {
+            if (data[d] > 0) {
+                ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
+            }
+        }
+        return ret.join('&');
+    }
+
     $(function () {
         let advSearchElem = $('.advance-search');
         let searchFrm = document.querySelector('#frm-search');
@@ -24,9 +34,13 @@
         // Check if it has search form
         if (searchFrm.length > 0) {
             let params = {
-                bedrooms: {},
-                price: {},
-                bathrooms: {}
+                price_min: 0,
+                price_max: 0,
+                beds_min: 0,
+                beds_max: 0,
+                bathrooms_min: 0,
+                bathrooms_max: 0
+
             };
             const sliders = searchFrm.querySelectorAll('.jrange-slider');
 
@@ -54,55 +68,43 @@
                         $(this).val().split(",")[1],
                         $(this).attr("name")
                     ];
+
                     if (name == 'price') {
-                        $("#adv-search-dropdown [name='price_min']>option[value='" + min + "']").prop('selected', true);
-                        $("#adv-search-dropdown [name='price_max']>option[value='" + max + "']").prop('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='price_min']>option[value='" + min + "']").setAttribute('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='price_max']>option[value='" + max + "']").setAttribute('selected', true);
                         $("#adv-search-dropdown [name='price_min']").formSelect();
                         $("#adv-search-dropdown [name='price_max']").formSelect();
+                        params["price_min"] = min;
+                        params["price_max"] = max;
                     }
 
                     if (name == 'bedrooms') {
-                        $("#adv-search-dropdown [name='beds_min']>option[value='" + min + "']").prop('selected', true);
-                        $("#adv-search-dropdown [name='beds_max']>option[value='" + max + "']").prop('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='beds_min']>option[value='" + min + "']").setAttribute('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='beds_max']>option[value='" + max + "']").setAttribute('selected', true);
                         $("#adv-search-dropdown [name='beds_min']").formSelect();
                         $("#adv-search-dropdown [name='beds_max']").formSelect();
+                        params["beds_min"] = min;
+                        params["beds_max"] = max;
                     }
 
                     if (name == 'bathrooms') {
-                        $("#adv-search-dropdown [name='bathrooms_min']>option[value='" + min + "']").prop('selected', true);
-                        $("#adv-search-dropdown [name='bathrooms_max']>option[value='" + max + "']").prop('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='bathrooms_min']>option[value='" + min + "']").setAttribute('selected', true);
+                        document.querySelector("#adv-search-dropdown [name='bathrooms_max']>option[value='" + max + "']").setAttribute('selected', true);
                         $("#adv-search-dropdown [name='bathrooms_min']").formSelect();
                         $("#adv-search-dropdown [name='bathrooms_max']").formSelect();
+                        params["bathrooms_min"] = min;
+                        params["bathrooms_max"] = max;
                     }
-
-
-
-                    //document.querySelector('#adv-search-dropdown [name="beds_min"] option[value=" ' + min + ' "]').setAttribute('selected', true);
-                    // document.querySelector('#adv-search-dropdown [name="beds_min"]').setAttribute('input', 2);
-                    // console.log(document.querySelector('#adv-search-dropdown [name="beds_min"]'));
-
-                    // document.querySelector("#adv-search-dropdown [name='beds_min']>option[value='" + min + "']").setAttribute('selected', true);
-                    // $('#adv-search-dropdown [name="beds_min"]').formSelect();
-                    // if ($(this).attr("name") == 'price') {
-                    //     params["price"] = { 'price_min': min, 'price_max': max }
-                    //     document.querySelector('#adv-search-dropdown [name="price_min"]').setAttribute('value', min);
-                    //     document.querySelector('#adv-search-dropdown [name="price_max"]').setAttribute('value', max);
-                    // }
-                    // if ($(this).attr("name") == 'bedrooms') {
-                    //     params["bedrooms"] = { 'beds_min': min, 'beds_max': max };
-                    //     document.querySelector('#adv-search-dropdown [name="beds_min"]').setAttribute('value', min);
-                    //     document.querySelector('#adv-search-dropdown [name="beds_max"]').setAttribute('value', max);
-                    // }
-                    // if ($(this).attr("name") == 'bathrooms') {
-                    //     params["bathrooms"] = { 'bathrooms_min': min, 'bathrooms_max': max };
-                    //     document.querySelector('#adv-search-dropdown [name="bathrooms_min"]').setAttribute('value', min);
-                    //     document.querySelector('#adv-search-dropdown [name="bathrooms_max"]').setAttribute('value', max);
-                    // }
                 });
             });
 
 
+            // On form save
+            document.querySelector('#frm-search').addEventListener('submit', (e) => {
+                e.preventDefault();
+                console.log(encodeQueryData(params));
 
+            });
         }
 
     });
