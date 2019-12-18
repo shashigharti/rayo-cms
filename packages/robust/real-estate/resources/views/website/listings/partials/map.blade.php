@@ -4,8 +4,18 @@
     </a>
     <div class="right--single--block">
         <div class="map">
-            <div class="gmap_canvas">
-                <div id="map" style="height: 300px;" data-url="{{route('website.realestate.map-data')}}" data-ids="{{implode(',',$results->pluck('id')->toArray())}}"></div>
+            <div id="listingMap" data-url="{{route('website.realestate.map-data')}}" data-ids="{{implode(',',$results->pluck('id')->toArray())}}">
+                @foreach($results as $result)
+                  @set('properties',$result->property->pluck('value','type'))
+                    <p
+                        class="listing-map_data hidden"
+                        data-name="{{$result->name}}"
+                        data-slug="{{$result->slug}}"
+                        data-price="{{$result->system_price}}"
+                        data-lat="{{$properties['latitude'] ?? ''}}"
+                        data-lng="{{$properties['longitude'] ?? ''}}">
+                    </p>
+                @endforeach
             </div>
         </div>
         <div class="intro--section">

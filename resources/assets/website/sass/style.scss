@@ -1291,7 +1291,7 @@ button{
       height: auto;
       padding-top: 3px;
       margin-bottom: 5px;
-    } 
+    }
     .select2-selection--multiple{
       background-color: transparent;
       border: 1px solid #aaa;
@@ -1305,10 +1305,16 @@ button{
       .select2-selection__choice__remove {
         color:$white;
       }
-    } 
+    }
   }
   input[type=search]:not(.browser-default):focus:not([readonly]){
     border-bottom:0;
     box-shadow:none;
   }
 }
+
+.leaflet-marker_icon i{
+    color:#bb54ef;
+    font-size: 20px
+}
+

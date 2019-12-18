@@ -29,7 +29,7 @@
                         @forelse($results as $result)
                             @set('properties',$result->property->pluck('value','type'))
                             @set('image',$result->images ? $result->images->first() : null)
-                            <a href="{{route('website.realestate.single',['id' => $result->id,'name' => $result->slug])}}">
+                            <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
                                 <div class="col s3">
                                     <div class="single--list--block">
                                         @set('first_image',$result->images()->first())
@@ -101,6 +101,7 @@
 
                     </div>
                 </div>
+
                 <div class="listing--report">
                     <div class="row">
                         <div class="col s12">

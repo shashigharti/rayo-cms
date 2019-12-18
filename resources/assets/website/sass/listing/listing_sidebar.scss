@@ -45,6 +45,15 @@
         position: fixed;
         right: 0;
         top:292px;
+        z-index: 999;
+    }
+
+    .map{
+        width:380px;
+        #listingMap {
+            height: 300px;
+            width: 100%;
+        }
     }
     .right--single--block {
         overflow-x: hidden;
