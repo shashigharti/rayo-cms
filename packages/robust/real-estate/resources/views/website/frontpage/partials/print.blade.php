@@ -8,6 +8,8 @@
     <title>Document</title>
 </head>
 <body>
+    @set('image',$result->images ? $result->images->first() : null)
     <h1>{{$result->name}}</h1>
+    <img src="http://cdn.photos.sparkplatform.com/fl/20191217104315409479000000-o.jpg" alt="">
 </body>
 </html>

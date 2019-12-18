@@ -25,7 +25,7 @@ class SendEmailToFriend
     /**
      * @var
      */
-    public $lead;
+    public $member;
 
     /**
      * @var
@@ -34,11 +34,11 @@ class SendEmailToFriend
 
     public $message;
 
-    public function __construct($to, $listing, $lead,$message)
+    public function __construct($to, $listing, $member,$message)
     {
         $this->to = $to;
         $this->listing = $listing;
-        $this->lead = $lead;
+        $this->member = $member;
         $this->message = $message;
     }
 

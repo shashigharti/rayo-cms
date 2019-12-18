@@ -30,17 +30,24 @@ class EmailController
         $this->listing = $listing;
     }
 
+
+    /**
+     * @param $slug
+     * @param Request $request
+     */
+    public function sendEmailToFriend($slug, Request $request)
+    {
+        $data = $request->all();
+        $listing = $this->listing->getSingle($slug);
+        $member = Auth::user()->member;
+        event(new SendEmailToFriend($data['email_to'],$listing,$member,$data['message']));
+    }
+
     /**
      * @param $id
      * @param Request $request
      */
-    public function sendEmailToFriend($id, Request $request)
-    {
-        $data = $request->all();
-        event(new SendEmailToFriend($data['email_to'],$this->listing->find($id),Auth::user()->member,$data['message']));
-    }
-
-    public function sendEmailtoAgent($id,Request $request)
+    public function sendEmailtoAgent($id, Request $request)
     {
         //agents assigned mail
         $data = $request->all();

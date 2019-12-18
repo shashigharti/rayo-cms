@@ -5,12 +5,12 @@ Route::group(['prefix' => 'emails',
     'group' => 'Emails'],
     function () {
 
-        Route::post('friends/{id}', [
+        Route::post('friends/{slug}', [
             'name' => 'Email To friend',
             'as' => 'friend',
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\EmailController@sendEmailToFriend'
         ]);
-        Route::post('agent/{id}', [
+        Route::post('agent/{slug', [
             'name' => 'More property info',
             'as' => 'agent',
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\EmailController@sendEmailtoAgent'

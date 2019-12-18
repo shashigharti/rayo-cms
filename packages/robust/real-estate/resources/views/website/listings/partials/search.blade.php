@@ -45,7 +45,7 @@
         </div>
         <div class="col m5 s12 right-align">
             <div class="total--records">
-                <span>{{$results->perPage()}}</span> of <span>{{$results->total()}}</span> Total Properties
+                <span>{{$results->count()}}</span> of <span>{{$results->total()}}</span> Total Properties
             </div>
             <div class="listing--pagination">
                 <span><a href="{{$results->previousPageUrl()}}"><<</a></span>

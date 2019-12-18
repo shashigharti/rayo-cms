@@ -22,18 +22,18 @@ class SendEmailToFriend extends Mailable
     /**
      * @var
      */
-    public $lead;
+    public $member;
 
 
     /**
      * SendEmailToFriend constructor
      * @param $listing
-     * @param $lead
+     * @param $member
      */
-    public function __construct($listing, $lead)
+    public function __construct($listing, $member)
     {
         $this->listing = $listing;
-        $this->lead = $lead;
+        $this->member = $member;
     }
 
     /**

@@ -31,7 +31,7 @@ class SendEmailToFriendListener
     public function handle(Event $event)
     {
         Mail::to($event->to)->send(
-            new SendEmailToFriend($event->listing,$event->lead)
+            new SendEmailToFriend($event->listing,$event->member)
         );
     }
 }

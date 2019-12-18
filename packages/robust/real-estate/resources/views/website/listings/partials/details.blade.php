@@ -382,7 +382,7 @@
 
 @if(Auth::check())
 <div id="emailModal" class="modal listing--modal">
-    <form method="post" id="email-form" action="" data-url="{{route('website.realestate.email.friend',['id' => $result->id])}}">
+    <form method="post" id="email-form" action="" data-url="{{route('website.realestate.email.friend',['slug' => $result->slug])}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>
@@ -432,7 +432,7 @@
     </form>
 </div>
 <div id="infoModal" class="modal">
-    <form method="post" id="info-form" action="" data-url="{{route('website.realestate.email.agent',['id'=>$result->id])}}">
+    <form method="post" id="info-form" action="" data-url="{{route('website.realestate.email.agent',['slug'=>$result->slug])}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>
