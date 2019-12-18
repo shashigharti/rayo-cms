@@ -3,8 +3,8 @@
         <i class="arrow material-icons">keyboard_arrow_right</i>
     </a>
     <div class="right--single--block">
-        <div class="map">
-            <div id="listingMap" data-url="{{route('website.realestate.map-data')}}" data-ids="{{implode(',',$results->pluck('id')->toArray())}}">
+        <div class="listings--map_container">
+            <div id="listingMap" data-zoom="10">
                 @foreach($results as $result)
                   @set('properties',$result->property->pluck('value','type'))
                     <p
