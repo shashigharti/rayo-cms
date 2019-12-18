@@ -1678,7 +1678,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#04122d;border:1px solid #f6f7f9;color:#fff;padding:1px 5px}
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff}
 .multi-select-container input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:0;-webkit-box-shadow:none;box-shadow:none}
-.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.leaflet-marker_icon i{color:#bb54ef;font-size:20px}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
@@ -1777,7 +1777,8 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 button.get-distance{border-radius:0;background-color:#002349}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.s3{width:50%}
 .search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
-.search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px}
+.search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
+.search--right--section .map{width:380px}.search--right--section .map #listingMap{height:300px;width:100%}
 .search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
 .search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
 .search--right--section .right--single--block .intro--section p{color:#777;font-size:14px}

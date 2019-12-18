@@ -27,30 +27,46 @@
             const mapOptions = {
                 center: new L.LatLng(26.4885708, 87.1275611), zoom: 7,
             };
-            const map = document.getElementById('map');
-            this.map = new L.Map(document.getElementById("map"), mapOptions);
-            const roads = L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this.map);
-            const data = map.dataset.ids;
-            const url = map.dataset.url;
-            const $this = this;
-            $.post(url,{ids:data},function (response) {
-                let markers = [];
-                const data = response.data;
-                Object.keys(data).map(function(key, index) {
-                    const latitude = data[key].latitude;
-                    const longitude = data[key].longitude;
-                    const marker = new L.Marker([latitude,longitude],{
-                        title:key,
-                    });
-                    markers.push(marker);
-                });
-                $this.markerClusters.addLayers(markers);
-                $this.map.fitBounds($this.markerClusters.getBounds());
+            const map = document.getElementById('listingMap');
+            this.map = new L.Map(document.getElementById('listingMap'), mapOptions);
+            L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this.map);
+            const items = document.querySelectorAll('#listingMap .listing-map_data');
+            let markers = [];
+            const icon = new L.DivIcon({
+                className:'leaflet-marker_icon',
+                html: '<i class="material-icons">home</i>'
             });
+            items.forEach(function (item) {
+                const name = item.dataset.name;
+                const slug = item.dataset.slug;
+                const lat = item.dataset.lat;
+                const lng = item.dataset.lng;
+                const price = item.dataset.price;
+                const marker = new L.Marker([lat,lng],{
+                    title:name,
+                    icon:icon
+                });
+                marker.bindPopup(`<p>Name : ${name} || </p> <p> Price : ${price} </p>`);
+                marker.on('mouseover', function (e) {
+                    this.openPopup();
+                });
+                marker.on('mouseout', function (e) {
+                    this.closePopup();
+                });
+                marker.on('click',function () {
+                    const base_url = window.location.origin;
+                    const url = `${base_url}/real-estate/${slug}`;
+                    window.open(url,'_blank');
+                });
+                markers.push(marker);
+            });
+            this.markerClusters.addLayers(markers);
+            this.map.fitBounds(this.markerClusters.getBounds());
+            this.map.addLayer(this.markerClusters);
         }
     };
     $(function () {
-        const map = document.getElementById('map');
+        const map = document.getElementById('listingMap');
         if(map){
             FRW.Map.init();
         }
