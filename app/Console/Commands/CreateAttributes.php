@@ -54,8 +54,8 @@ class CreateAttributes extends Command
         
         foreach($all_properties as $key => $values){
             \DB::table('real_estate_attributes')->insert([
-                'name' => $key,
-                'display_name' => ucwords(str_replace('_', ' ', $key)),
+                'property_name' => $key,
+                'name' => ucwords(str_replace('_', ' ', $key)),
                 'values' => json_encode(collect($values)->map(function ($value) {
                         return ['name' => $value, 'status' => 1];
                     })),

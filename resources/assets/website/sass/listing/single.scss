@@ -447,3 +447,12 @@ button.get-distance {
     border-radius: 0px;
     background-color: $theme_color;
 }
+.listing--advance_search {
+    #adv-search-dropdown{
+        top:247px;
+        z-index:99999;
+        .inner{
+          padding:10px 0px 10px 10px;
+        }
+    }
+}
