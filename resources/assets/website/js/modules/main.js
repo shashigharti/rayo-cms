@@ -36,48 +36,4 @@ $(window).load(function () {
     $('.tabs').tabs();
     $('.modal').modal();
     $('.sidenav').sidenav();
-
-
-    const priceSlider = $('.price-range-slider');
-    let min = priceSlider.data('min');
-    let max = priceSlider.data('max');
-    let scale_min = priceSlider.data('scale-min');
-    let scale_max = priceSlider.data('scale-max');
-    priceSlider.jRange({
-        from: min,
-        to: max,
-        step: 1,
-        scale: [scale_min, scale_max],
-        format: '$%s',
-        width: 150,
-        isRange: true,
-    });
-    const bedroomSlider = $('.bedroom-range-slider');
-    min = bedroomSlider.data('min');
-    max = bedroomSlider.data('max');
-    scale_min = bedroomSlider.data('scale-min');
-    scale_max = bedroomSlider.data('scale-max');
-    bedroomSlider.jRange({
-        from: min,
-        to: max,
-        step: 1,
-        scale: [scale_min, scale_max],
-        format: '%s',
-        width: 150,
-        isRange: true
-    });
-    const bathroomSlider = $('.bathroom-range-slider');
-    min = bathroomSlider.data('min');
-    max = bathroomSlider.data('max');
-    scale_min = bathroomSlider.data('scale-min');
-    scale_max = bathroomSlider.data('scale-max');
-    bathroomSlider.jRange({
-        from: min,
-        to: max,
-        step: 1,
-        scale: [scale_min, scale_max],
-        format: '%s',
-        width: 150,
-        isRange: true
-    });
 });
