@@ -69,7 +69,7 @@
         <div class="s4">
             {{$properties['total_square_feet'] ?? ''}}  sqft {{$properties['property_type'] ?? ''}}
         </div>
-        <p>{{$properties['public_remarks']}}</p>
+        <p>{{$properties['public_remarks'] ?? ''}}</p>
         @foreach($details as $title => $detail)
             <h4>{{$title}}</h4>
             <table border="1">
