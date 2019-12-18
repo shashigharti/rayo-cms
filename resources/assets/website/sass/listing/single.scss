@@ -456,3 +456,18 @@ button.get-distance {
         }
     }
 }
+.listing--btn--block{
+  .select-wrapper{
+    .dropdown-content{
+      li{
+        min-height:32px;
+        a,span{
+          font-size:11px;
+          color:#686b6b;
+          line-height:16px;
+          padding:8px 8px;
+        }
+      }
+    }
+  }
+}

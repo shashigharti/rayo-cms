@@ -1748,10 +1748,11 @@ footer p{font-size:12px;color:#d1d1d1}footer i{margin-right:10px}.footer-bottom{
 .search-section button.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
 #adv-search-dropdown{position:absolute;top:365px;z-index:9;left:76px;background:#04122d;width:87.4%;opacity:0;-webkit-transition:ease-in-out .2s;transition:ease-in-out .2s;padding:4px;font-size:10px;display:none}
 #adv-search-dropdown.show{opacity:1}#adv-search-dropdown .inner{border:2px solid #fff;padding:10px 0}
-#adv-search-dropdown button.theme-btn{border:0;margin-right:10px;width:93%;margin-left:10px;margin-top:16px}
+#adv-search-dropdown .mb-20{margin-bottom:16px}#adv-search-dropdown button.theme-btn{border:0;margin-right:10px;width:93%;margin-left:10px;margin-top:16px}
 #adv-search-dropdown .input-field>label{-webkit-transform:none;transform:none}#adv-search-dropdown .input-field>label:not(.label-icon).active{-webkit-transform:none;transform:none}
 #adv-search-dropdown label,#adv-search-dropdown [type="checkbox"]+span:not(.lever){font-size:10px}
 #adv-search-dropdown input[type="text"]{height:1rem}#adv-search-dropdown .select-wrapper{margin:0}
+#adv-search-dropdown .multi-select-container label{margin-top:15px}#adv-search-dropdown .multi-select-container .select2-container .select2-selection--multiple{min-height:30px}
 .mb-20{margin-bottom:20px}#adv-search-dropdown a.advance-search_close{position:absolute;right:7px;top:10px;color:#fff}
 #adv-search-dropdown input.select-dropdown.dropdown-trigger{font-weight:bold;font-size:10px;height:1rem}
 #adv-search-dropdown p{margin-bottom:2px}#adv-search-dropdown .select-wrapper{margin-top:21px;width:100%}
@@ -1804,7 +1805,9 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .distance--block .gmap_canvas{width:100%}.distance--block .gmap_canvas iframe{width:100%}
 .distance--block .mapouter{width:97%}.more-property-detail .detail-block{margin:0}
 button.get-distance{border-radius:0;background-color:#002349}.listing--advance_search #adv-search-dropdown{top:247px;z-index:99999}
-.listing--advance_search #adv-search-dropdown .inner{padding:10px 0 10px 10px}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.listing--advance_search #adv-search-dropdown .inner{padding:10px 0 10px 10px}.listing--btn--block .select-wrapper .dropdown-content li{min-height:32px}
+.listing--btn--block .select-wrapper .dropdown-content li a,.listing--btn--block .select-wrapper .dropdown-content li span{font-size:11px;color:#686b6b;line-height:16px;padding:8px 8px}
+.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.m3{width:50%}
 .search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
