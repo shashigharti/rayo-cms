@@ -168,4 +168,32 @@
 	    padding: 0;
 	    width: 48px;
 	}
+	.total--records {
+	    font-size: 10px;
+	    margin-top: 20px;
+	}
+	.listing--pagination{
+		span {
+		    height: 20px;
+		    width: 20px;
+		    line-height: 20px;
+		    font-size: 10px;
+		} 
+	}
+	.listing--tags{
+	 	span {
+		    font-size: 10px;
+		    padding: 0px 7px;
+		    height:22px;
+		    line-height: 22px;
+		}
+		a.theme-btn {
+		    width: 58px;
+		    height: 20px;
+		    line-height: 20px;
+		}
+	}
+	.search--right--section {
+	    top: 272px;
+	}
 }

@@ -30,7 +30,7 @@
                             @set('properties',$result->property->pluck('value','type'))
                             @set('image',$result->images ? $result->images->first() : null)
                             <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
-                                <div class="col s3">
+                                <div class="col m3 s12">
                                     <div class="single--list--block">
                                         @set('first_image',$result->images()->first())
                                         <img src={{$image ? $image->url :  ''}}>
