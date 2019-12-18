@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col s2">
+    <div class="col m2 s12">
         <div class="market__search--lists--side-nav">
             <div class="market--search__lists--filter">
                 <span class="btn-default btn-checkbox active"></span><label>$0 - $1000</label>
@@ -15,10 +15,10 @@
             </div>
         </div>
     </div>
-    <div id="market__search--lists" class="market__search--lists col s10">
+    <div id="market__search--lists" class="market__search--lists col m10 s12">
         <div class="row">
             @foreach($records as $report)
-            <div class="col m2">
+            <div class="col m2 s6">
                 <div class="market__search--lists-item card">
                     <div class="card-content">
                         <p data-id="{{$report->reportable->id}}" data-type="Title" 

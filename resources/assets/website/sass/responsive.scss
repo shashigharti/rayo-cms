@@ -196,4 +196,26 @@
 	.search--right--section {
 	    top: 272px;
 	}
+	.btn-social-detail .btn, .btn-social-detail .btn-large, .btn-social-detail .btn-small {
+	    margin: 10px 0 0;
+	    width: 100%;
+	    background-color: #002349;
+	    font-size: 12px;
+	    text-transform: none;
+	    height: 30px;
+	    line-height: 31px;
+	}
+	.head-list-info ul li {
+    	width: 30.6%;
+	}
+	.market__btns--container {
+		a{
+			padding: 4px 6px;
+    		margin-right: 5px;
+    		margin-top: 8px;
+		}
+	}
+	.market__search--lists--side-nav{
+		min-height:auto;
+	}
 }
