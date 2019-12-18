@@ -162,7 +162,7 @@
             </div>
             <div class="col s5">
                 <div class="top more-inner">
-                    <a href="#" class="single--listing--button_back left btn btn-list-back" role="button">
+                    <a href="{{url()->previous()}}" class="single--listing--button_back left btn btn-list-back" role="button">
                         <i class="material-icons">keyboard_backspace</i>
                         </span>Return To All Listings </a>
                     <div class="right txt-price"> $ <span class="single-listing-price"> {{$result->system_price}}</span> </div>
