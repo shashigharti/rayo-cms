@@ -28,7 +28,7 @@
                                     selected = 'selected';
                                 }
 
-                                child = `<option value="${option.id || option.name}" ${selected} >${option.name}</option>`;
+                                child = `<option value="${option.slug || option.name}" ${selected} >${option.name}</option>`;
                                 $(elem).append(child);
                             });
                         }

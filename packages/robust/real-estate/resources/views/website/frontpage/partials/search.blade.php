@@ -15,7 +15,7 @@
                   </div>
                   <div class="col s4 range-bar">
                      <p>BEDROOMS</p>
-                     <input class="bedroom-range-slider jrange-slider" data-min="1" data-max="5" data-scale-min="1"  data-scale-max="5+" name="bedrooms" type="hidden" value="1,5" />
+                     <input class="bedroom-range-slider jrange-slider" data-min="1" data-max="5" data-scale-min="1"  data-scale-max="5+" name="beds" type="hidden" value="1,5" />
                   </div>
                   <div class="col s4 range-bar">
                      <p>BATHROOMS</p>
