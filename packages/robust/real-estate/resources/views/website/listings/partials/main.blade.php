@@ -1,6 +1,6 @@
 @set('params',request()->route()->parameters())
-@set('location',isset($params['location']) ? $location_helper->getLocation($params['location_type'],$params['location']) : null)
-@set('report',isset($location) ? $report_helper->getMarketReportByLocation($location->location_id,$location->locationable_type) : null)
+@set('location',isset($params['location']) ? $location_helper->getLocation($params['location_type'], $params['location']) : null)
+@set('report',isset($location) ? $report_helper->getMarketReportByLocation($location->location_id, $location->locationable_type) : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -9,15 +9,19 @@
                     @if($location)
                         <h1>{{$location->name}}  Homes for sale</h1>
                     @else
-                        <h1>Boca Raton Homes for sale</h1>
+                        <h1>Homes for sale</h1>
                     @endif
                 </div>
                 <div class="top--breadcrumb center-align">
-                    <span><a href="#">{{$location->active_count ?? $results->total()}} Homes For Sale</a></span>
+                    <span>
+                        <a href="{{route('website.realestate.homes-for-sale')}}">
+                            {{$location->active_count ?? $results->total()}} Homes For Sale
+                        </a>
+                    </span>
                     <span>/</span>
-                    <span><a href="#">{{$location->sold_count ?? ''}} Sold Homes</a></span>
+                    <span><a href="{{route('website.realestate.sold-homes')}}">{{$location->sold_count ?? ''}} Sold Homes</a></span>
                     <span>/</span>
-                    <span><a href="#" class="active">486 Subdivisions</a></span>
+                    <span><a href="#">486 Subdivisions</a></span>
                 </div>
                 @include(Site::templateResolver('real-estate::website.listings.partials.search'))
             </div>

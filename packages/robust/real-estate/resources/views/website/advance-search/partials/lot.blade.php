@@ -2,7 +2,7 @@
 @set('lot_max',$search_settings['lot_max'] ?? '20000')
 @set('lot_increase',$search_settings['lot_increase'] ?? '2500')
 <div class="mb-20">
-    <div class="input-field col s6">
+    <div class="input-field col s6" class="ad-search-field">
         <select name="beds_min">
             <option value="" selected disabled>Min</option>
             @for($lot = $lot_min; $lot <= $lot_max; $lot += $lot_increase)
@@ -11,7 +11,7 @@
         </select>
         <label>Lot (min-max)</label>
     </div>
-    <div class="input-field col s6">
+    <div class="input-field col s6" class="ad-search-field">
         <select name="beds_max">
             <option value="" selected disabled>Max</option>
             @for($lot = $lot_min; $lot <= $lot_max; $lot += $lot_increase)

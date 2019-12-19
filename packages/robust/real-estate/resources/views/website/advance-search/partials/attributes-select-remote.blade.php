@@ -4,8 +4,8 @@
         <select name="{{$attribute."[]"}}" 
         data-selected="{{ implode( ',', $query_params[$attribute] ?? [] ) }}" 
         data-placeholder="Select Options" multiple 
-        class="browser-default multi-select" 
-        data-url="{{route('api.real-estate.locations.type', [$attribute])}}">
+        class="browser-default multi-select ad-search-field" 
+        data-url="{{route('api.realestate.attributes.property_name', [$attribute])}}">
             <option value="" disabled>Select Options</option>
         </select>
     </div>
