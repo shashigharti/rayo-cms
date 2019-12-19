@@ -44,25 +44,21 @@
         </div>
         <div class="col m5 s12 right-align">
             <div class="total--records">
-                <span>{{$results->count()}}</span> of <span>{{$results->total()}}</span> Total Properties
+                <span>{{$results->perPage()}}</span> of <span>{{$results->total()}}</span> Total Properties
             </div>
-            <div class="col s5 right-align">
-                <div class="total--records">
-                    <span>{{$results->perPage()}}</span> of <span>{{$results->total()}}</span> Total Properties
-                </div>
-                <div class="listing--pagination">
-                    <span><a href="{{$results->previousPageUrl()}}"><<</a></span>
-                    <span class="active">{{$results->currentPage()}}</span>
-                    <span><a href="{{$results->nextPageUrl()}}">>></a></span>
-                </div>
-            </div>
-            <div class="col s12 listing--tags">
-                <span>Active</span>
-                <span>Price : low to high</span>
-                <a href="#" class=" btn btn-sm theme-btn">CLEAR ALL</a>
+            <div class="listing--pagination">
+                <span><a href="{{$results->previousPageUrl()}}"><<</a></span>
+                <span class="active">{{$results->currentPage()}}</span>
+                <span><a href="{{$results->nextPageUrl()}}">>></a></span>
             </div>
         </div>
+        <div class="col s12 listing--tags">
+            <span>Active</span>
+            <span>Price : low to high</span>
+            <a href="#" class=" btn btn-sm theme-btn">CLEAR ALL</a>
+        </div>
     </div>
+</div>
 </form>
 
 <div class="listing--advance_search">
