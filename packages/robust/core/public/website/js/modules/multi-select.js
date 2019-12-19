@@ -12,7 +12,6 @@
                     if ($(elem).data('selected')) {
                         selectedElements = $(elem).data('selected').split(",");
                     }
-                    console.log('selected elements', selectedElements);
                     $.get(URL).then(response => {
                         const options = response.data;
 

@@ -32,6 +32,9 @@
         // Set search params on value change
         if (searchSection.length > 0) {
             let params = {};
+            $('.search-section__select').on('change', function () {
+                $('#frm-search').find('[name="sort_by"]').val($(this).val());
+            });
 
             const sliders = searchSection.find('.jrange-slider');
             $.each(sliders, (index, elem) => {

@@ -34,9 +34,9 @@
         <div class="row">
             <div class="col m7 s12">
                 <label>Sort By :</label>
-                <select name="sort">
+                <select name="sort_by" class="search-section__select">
                     @foreach($sort_settings as $sort)
-                    <option value="{{$sort['value']}}">{{$sort['display']}}</option>
+                        <option value="{{$sort['value']}}" {{ ( isset($query_params['sort_by']) && $query_params['sort_by'] == $sort['value'] ) ? 'selected':'' }}>{{$sort['display']}}</option>
                     @endforeach
                 </select>
                 <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>

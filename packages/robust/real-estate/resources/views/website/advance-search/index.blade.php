@@ -19,5 +19,6 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="sort_by" value="">
     </form>
 @endif
