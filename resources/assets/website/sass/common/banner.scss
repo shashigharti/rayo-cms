@@ -111,6 +111,9 @@
         border: 0;
         height: 35px;
         line-height: 35px;
+        &:hover{
+          color:#fff;
+        }
     }
     button.theme-btn{
         width: 120px;

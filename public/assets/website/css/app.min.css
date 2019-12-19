@@ -1745,7 +1745,7 @@ footer p{font-size:12px;color:#d1d1d1}footer i{margin-right:10px}.footer-bottom{
 .theme-green .back-bar .pointer{width:12px;height:12px;top:-5px;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:0;border:1px solid #002349;background:#002349;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .range-bar .theme-green .back-bar{height:2px}.range-bar .theme-green .back-bar .selected-bar{border-radius:2px;background-color:#002349;background-image:-webkit-gradient(linear,left top,left bottom,from(#002349),to(#002349));background-image:linear-gradient(to bottom,#002349,#002349)}
 .banner-caption a.theme-btn{width:145px;padding:10px 0}.search-section a.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
-.search-section button.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
+.search-section a.theme-btn:hover{color:#fff}.search-section button.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
 #adv-search-dropdown{position:absolute;top:365px;z-index:9;left:76px;background:#04122d;width:87.4%;opacity:0;-webkit-transition:ease-in-out .2s;transition:ease-in-out .2s;padding:4px;font-size:10px;display:none}
 #adv-search-dropdown.show{opacity:1}#adv-search-dropdown .inner{border:2px solid #fff;padding:10px 0}
 #adv-search-dropdown .mb-20{margin-bottom:16px}#adv-search-dropdown button.theme-btn{border:0;margin-right:10px;width:93%;margin-left:10px;margin-top:16px}
@@ -1768,7 +1768,8 @@ section.main-content{padding-top:100px}.inner--main--title h1{font-size:30px;col
 .inner--main--title h1:after{content:"";background:#073a71;height:3px;width:284px;display:block;right:0;position:absolute;top:17px}
 .inner--main--title h1:before{content:"";background:#073a71;height:3px;width:284px;display:block;left:0;position:absolute;top:17px}
 .listing--search{background:#fff;margin:30px 0 16px;padding:0}.listing--search.search-section p{color:#555;margin-bottom:0}
-.listing--search a.theme-btn{width:155px;margin-left:0}.listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
+.listing--search a.theme-btn{width:155px;margin-left:0}.listing--search a.theme-btn:hover{color:#fff}
+.listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
 .listing--search .range-bar .slider-container .back-bar .pointer-label{color:#555}
 .listing--search .range-bar .theme-green .scale ins{color:#555}.listing--btn--block label{font-weight:bold;color:#555}
 .listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0;width:100px;font-weight:600}
@@ -1809,7 +1810,7 @@ button.get-distance{border-radius:0;background-color:#002349}.listing--advance_s
 .listing--btn--block .select-wrapper .dropdown-content li a,.listing--btn--block .select-wrapper .dropdown-content li span{font-size:11px;color:#686b6b;line-height:16px;padding:8px 8px}
 .search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.m3{width:50%}
-.search--right--section{position:absolute;top:380px;right:0;display:block;z-index:8;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search--right--section{position:absolute;top:358px;right:0;display:block;z-index:8;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
 .search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
 .search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
