@@ -1,5 +1,4 @@
 @set('sort_settings', config('rws.sorting'))
-<form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
     <div class="listing--search  search-section">
         <div class="row">
             <div class="col s2 center-align">
@@ -63,4 +62,3 @@
     <div class="listing--advance_search">
         @include(Site::templateResolver('real-estate::website.advance-search.index'))
     </div>
-</form>

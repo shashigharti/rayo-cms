@@ -14,7 +14,7 @@
 
     $(function () {
         let advSearchElem = $('.advance-search');
-        let searchFrm = document.querySelector('#frm-search');
+        let searchFrm = document.querySelector('#search-container');
 
         // Check if it has advance search
         if (advSearchElem.length > 0) {
@@ -81,13 +81,14 @@
 
 
             // On form save
-            document.querySelector('#frm-search').addEventListener('submit', (e) => {
-                e.preventDefault();
-                const url = document.querySelector('#frm-search').getAttribute('action');
-                let qParams = encodeQueryData(params);
-                qParams = (qParams == '') ? '' : "?" + qParams;
-                window.location.replace(url + qParams);
-            });
+            // document.querySelector('#frm-search').addEventListener('submit', (e) => {
+            //     e.preventDefault();
+            //     const url = document.querySelector('#frm-search').getAttribute('action');
+            //     let qParams = encodeQueryData(params);
+            //     qParams = (qParams == '') ? '' : "?" + qParams;
+            //     console.log(qParams);
+            //     //window.location.replace(url + qParams);
+            // });
 
             // Set params value on advance search fields value change
             $('.ad-search-field').on('change', function (e) {
