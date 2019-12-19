@@ -24,7 +24,7 @@
             </div>
             <div class="col s2 center-align">
                 <p>{{$results->total()}} ACTIVE LISTINGS</p>
-                <button type="submit" value="search" class="theme-btn">Search</button>
+                <button id="search-btn" class="theme-btn">Search</button>
             </div>
         </div>
     </div>
