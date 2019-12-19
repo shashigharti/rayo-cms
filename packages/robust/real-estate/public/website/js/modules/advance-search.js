@@ -2,19 +2,16 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
 
-    function encodeQueryData(data) {
-        const ret = [];
-        for (let d in data) {
-            if (data[d] > 0) {
-                ret.push(encodeURIComponent(d) + '=' + encodeURIComponent(data[d]));
-            }
-        }
-        return ret.join('&');
+    function submit() {
+        let url = $('#frm-search').attr('action');
+        let qParams = $('#frm-search').serialize();
+        qParams = (qParams == '') ? '' : '?' + qParams;
+        window.location.replace(url + qParams);
     }
 
     $(function () {
         let advSearchElem = $('.advance-search');
-        let searchFrm = document.querySelector('#search-container');
+        let searchSection = $('#search-section');
 
         // Check if it has advance search
         if (advSearchElem.length > 0) {
@@ -24,39 +21,34 @@
                 $('#adv-search-dropdown').toggleClass('show');
             });
 
-            inputElements = document.querySelectorAll('[data-selected]:not(.multi-select)');
-            inputElements.forEach(elem => {
+            inputElements = $('[data-selected]:not(.multi-select)');
+            $.each(inputElements, (index, elem) => {
                 // Set the selected value for all those elements who are not of class multi-select
-                elem.value = elem.getAttribute('data-selected');
+                elem.value = $(elem).attr('data-selected');
             });
         }
 
         // Check if it has search form 
         // Set search params on value change
-        if (searchFrm.length > 0) {
-            let params = {
-                price_min: 0,
-                price_max: 0,
-                beds_min: 0,
-                beds_max: 0,
-                bathrooms_min: 0,
-                bathrooms_max: 0
+        if (searchSection.length > 0) {
+            let params = {};
+            $('.search-section__select').on('change', function () {
+                $('#frm-search').find('[name="sort_by"]').val($(this).val());
+            });
 
-            };
-            const sliders = searchFrm.querySelectorAll('.jrange-slider');
-
-            sliders.forEach(elem => {
+            const sliders = searchSection.find('.jrange-slider');
+            $.each(sliders, (index, elem) => {
                 let [scale_min, scale_max, format] = [
-                    elem.getAttribute('data-scale-min'),
-                    elem.getAttribute('data-scale-max'),
-                    elem.getAttribute('data-format') || "%s"
+                    $(elem).attr('data-scale-min'),
+                    $(elem).attr('data-scale-max'),
+                    $(elem).attr('data-format') || "%s"
                 ];
 
                 // temporarily using jquery $ object and jquery library
                 $(elem).jRange({
-                    from: elem.getAttribute('data-min'),
-                    to: elem.getAttribute('data-max'),
-                    step: elem.getAttribute('data-step') || 1,
+                    from: $(elem).attr('data-min'),
+                    to: $(elem).attr('data-max'),
+                    step: $(elem).attr('data-step') || 1,
                     scale: [scale_min, scale_max],
                     format,
                     width: 150,
@@ -70,25 +62,34 @@
                         $(this).attr("name")
                     ];
                     let [min_name, max_name] = [name + '_min', name + '_max'];
-                    document.querySelector("#adv-search-dropdown [name='" + min_name + "']>option[value='" + min + "']").setAttribute('selected', true);
-                    document.querySelector("#adv-search-dropdown [name='" + max_name + "']>option[value='" + max + "']").setAttribute('selected', true);
+                    $("#adv-search-dropdown [name='" + min_name + "']>option[value='" + min + "']").attr('selected', true);
+                    $("#adv-search-dropdown [name='" + max_name + "']>option[value='" + max + "']").attr('selected', true);
                     $("#adv-search-dropdown [name='" + min_name + "']").formSelect();
                     $("#adv-search-dropdown [name='" + max_name + "']").formSelect();
+
+                    if (!params[min_name]) {
+                        params[max_name] = 0;
+                    }
+                    if (!params[max_name]) {
+                        params[max_name] = 0;
+                    }
                     params[min_name] = min;
                     params[max_name] = max;
                 });
             });
 
 
-            // On form save
-            // document.querySelector('#frm-search').addEventListener('submit', (e) => {
-            //     e.preventDefault();
-            //     const url = document.querySelector('#frm-search').getAttribute('action');
-            //     let qParams = encodeQueryData(params);
-            //     qParams = (qParams == '') ? '' : "?" + qParams;
-            //     console.log(qParams);
-            //     //window.location.replace(url + qParams);
-            // });
+            // On search button click
+            $('#frm-search').on('submit', (e) => {
+                e.preventDefault();
+                submit();
+                console.log(params)
+            });
+            // On search button click
+            $('#search-btn').on('click', (e) => {
+                e.preventDefault();
+                submit();
+            });
 
             // Set params value on advance search fields value change
             $('.ad-search-field').on('change', function (e) {

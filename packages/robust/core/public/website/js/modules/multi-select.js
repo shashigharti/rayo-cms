@@ -16,12 +16,12 @@
                         const options = response.data;
 
                         if (options) {
-                            options.map(function (option) {
+                            options.forEach(option => {
                                 let inArray = -1;
                                 let child = '';
                                 let selected = '';
                                 if (selectedElements.length > 0) {
-                                    inArray = selectedElements.findIndex(selectedElem => selectedElem == option.id);
+                                    inArray = selectedElements.findIndex(selectedElem => (selectedElem == option.name) || (selectedElem == option.slug));
                                 }
 
                                 if (inArray >= 0) {

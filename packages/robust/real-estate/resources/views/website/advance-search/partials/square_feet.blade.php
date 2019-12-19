@@ -3,7 +3,7 @@
 @set('square_increase',$search_settings['square_increase'] ?? '1')
 <div class="mb-20">
     <div class="input-field col s6">
-        <select name="square_min" class="ad-search-field">
+        <select name="square_min" class="ad-search-field" data-selected="{{$query_params['square_min'] ?? ''}}">
             <option value="" selected disabled>Min</option>
             @for($square = $square_min; $square <= $square_max; $square += $square_increase)
                 <option value="{{$square}}">{{$square}}</option>
@@ -12,7 +12,7 @@
         <label>SquareFeet(min-max)</label>
     </div>
     <div class="input-field col s6">
-        <select name="square_max" class="ad-search-field">
+        <select name="square_max" class="ad-search-field" data-selected="{{$query_params['square_max'] ?? ''}}">
             <option value="" selected disabled>Max</option>
             @for($square = $square_min; $square <= $square_max; $square += $square_increase)
                 <option value="{{$square}}">{{$square}}</option>
