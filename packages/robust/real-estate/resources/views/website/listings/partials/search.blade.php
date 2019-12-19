@@ -1,4 +1,5 @@
 @set('sort_settings', config('rws.sorting'))
+<div>
     <div class="listing--search  search-section">
         <div class="row">
             <div class="col s2 center-align">
@@ -56,6 +57,7 @@
             </div>
         </div>
     </div>
-    <div class="listing--advance_search">
-        @include(Site::templateResolver('real-estate::website.advance-search.index'))
-    </div>
+</div>
+<div class="listing--advance_search">
+    @include(Site::templateResolver('real-estate::website.advance-search.index'))
+</div>
