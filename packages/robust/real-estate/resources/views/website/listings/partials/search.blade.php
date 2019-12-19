@@ -1,5 +1,5 @@
 @set('sort_settings', config('rws.sorting'))
-<div>
+<div id="search-section">
     <div class="listing--search  search-section">
         <div class="row">
             <div class="col s2 center-align">
