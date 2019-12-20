@@ -188,7 +188,21 @@
         }).join('');
     }
 
+    function priceRange(min, max, range) {
+        let i = min;
+        let priceArr = [];
+
+        for (; i <= max; i = i + range) {
+            priceArr.push(i);
+        }
+        if (priceArr.indexOf(max) < 0) {
+            priceArr.push(max);
+        }
+        console.log(priceArr.length);
+    }
+
     $(function () {
+        priceRange(10000, 44500000, 100000)
         let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
 
         if (!isMarketReport) {
