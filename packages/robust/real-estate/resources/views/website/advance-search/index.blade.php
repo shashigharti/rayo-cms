@@ -19,6 +19,6 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="sort_by" value="">
+    <input type="hidden" name="sort_by" value="{{ $query_params['sort_by'] ?? ''}}">
     </form>
 @endif

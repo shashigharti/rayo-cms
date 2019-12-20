@@ -9,6 +9,48 @@
         window.location.replace(url + qParams);
     }
 
+    function getParams() {
+
+        let response = {}, queries, url;
+
+        url = window.location.search.substring(1);
+
+        // Split into key/value pairs
+        queries = url.split("&");
+
+        // Convert the array of strings into an object
+        $.each(queries, function (index, value) {
+            let params = decodeURIComponent(value).split('=');
+            let key = params[0].replace(/[\[\]']+/g, '');
+            let param_value = params[1];
+
+            // For single value form params
+            if (!response[key]) {
+                response[key] = param_value;
+            } else {
+                // For multiselect form params
+                if (!Array.isArray(response[key])) {
+                    response[key] = [response[key], param_value];
+                } else {
+                    response[key].push(param_value);
+                }
+            }
+        });
+
+        return response;
+    }
+
+    function renderTags(params) {
+        let tagContainer = $('.search-section__tags'), template = [];
+
+        $.each(params, function (key, value) {
+            if (value != '') {
+                template.push(`<span> ${key} : ${value} </span>`);
+            }
+        });
+        tagContainer.html(template);
+    }
+
     $(function () {
         let advSearchElem = $('.advance-search');
         let searchSection = $('#search-section');
@@ -32,6 +74,12 @@
         // Set search params on value change
         if (searchSection.length > 0) {
             let params = {};
+
+            // Load params using form field if they are set on load
+            params = getParams();
+            renderTags(params);
+
+            // Set sort value to sort_by field in advance search form
             $('.search-section__select').on('change', function () {
                 $('#frm-search').find('[name="sort_by"]').val($(this).val());
             });
@@ -83,7 +131,6 @@
             $('#frm-search').on('submit', (e) => {
                 e.preventDefault();
                 submit();
-                console.log(params)
             });
             // On search button click
             $('#search-btn').on('click', (e) => {
