@@ -40,6 +40,10 @@
         return response;
     }
 
+    function deleteTag() {
+
+    }
+
     function renderTags(params) {
         let tagContainer = $('.search-section__tags'), template = [];
 
@@ -47,10 +51,10 @@
             if (value != '') {
                 if (Array.isArray(value)) {
                     $.each(value, function (k, v) {
-                        template.push(`<span> ${key} : ${v} </span>`);
+                        template.push(`<span class="chip"> ${key} : ${v} <i class="close material-icons">close</i></span>`);
                     });
                 } else {
-                    template.push(`<span> ${key} : ${value} </span>`);
+                    template.push(`<span class="chip"> ${key} : ${value} <i class="close material-icons">close</i></span>`);
                 }
 
             }
