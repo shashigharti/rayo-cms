@@ -45,7 +45,14 @@
 
         $.each(params, function (key, value) {
             if (value != '') {
-                template.push(`<span> ${key} : ${value} </span>`);
+                if (Array.isArray(value)) {
+                    $.each(value, function (k, v) {
+                        template.push(`<span> ${key} : ${v} </span>`);
+                    });
+                } else {
+                    template.push(`<span> ${key} : ${value} </span>`);
+                }
+
             }
         });
         tagContainer.html(template);
