@@ -20,28 +20,26 @@
 
         // Convert the array of strings into an object
         $.each(queries, function (index, value) {
-            let params = decodeURIComponent(value).split('=');
+            let params = decodeURIComponent(value).split('='), isArray;
             let key = params[0].replace(/[\[\]']+/g, '');
             let param_value = params[1];
+            isArray = /[\[\]']+/g.test(params[0]);
 
-            // For single value form params
-            if (!response[key]) {
-                response[key] = param_value;
-            } else {
-                // For multiselect form params
-                if (!Array.isArray(response[key])) {
-                    response[key] = [response[key], param_value];
+            if (param_value != '') {
+                // For single value form params
+                if (!isArray) {
+                    response[key] = param_value;
                 } else {
+                    if (!response[key]) {
+                        response[key] = [];
+                    }
                     response[key].push(param_value);
                 }
             }
+
         });
 
         return response;
-    }
-
-    function deleteTag() {
-
     }
 
     function renderTags(params) {
@@ -51,10 +49,10 @@
             if (value != '') {
                 if (Array.isArray(value)) {
                     $.each(value, function (k, v) {
-                        template.push(`<span class="chip"> ${key} : ${v} <i class="close material-icons">close</i></span>`);
+                        template.push(`<span class="chip" data-key="${key}" data-value="${v}"> ${key} : ${v} <i class="close material-icons">close</i></span>`);
                     });
                 } else {
-                    template.push(`<span class="chip"> ${key} : ${value} <i class="close material-icons">close</i></span>`);
+                    template.push(`<span class="chip" data-key="${key}" data-value="${value}"> ${key} : ${value} <i class="close material-icons">close</i></span>`);
                 }
 
             }
@@ -84,11 +82,29 @@
         // Check if it has search form 
         // Set search params on value change
         if (searchSection.length > 0) {
-            let params = {};
+            let params = {}, qParams;
 
             // Load params using form field if they are set on load
             params = getParams();
             renderTags(params);
+
+            $('.chip').on('click', function (e) {
+                let key = $(this).data('key'), value = $(this).data('value'), value_index;
+                let values = params[key];
+
+                if (Array.isArray(params[key])) {
+                    value_index = params[key].indexOf(value);
+                    params[key].splice(value_index, 1);
+                    if (params[key].length <= 0) {
+                        delete params[key];
+                    }
+                } else {
+                    delete params[key];
+                }
+                qParams = (qParams == '') ? '' : '?' + $.param(params);
+                window.location.search = qParams;
+                console.log(window.location);
+            });
 
             // Set sort value to sort_by field in advance search form
             $('.search-section__select').on('change', function () {
