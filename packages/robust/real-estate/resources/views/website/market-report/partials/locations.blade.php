@@ -32,7 +32,6 @@
         </div>
     </div>
     <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists col m10 s12">
-        <div class="row">            
-        </div>
+        
     </div>
 </div>

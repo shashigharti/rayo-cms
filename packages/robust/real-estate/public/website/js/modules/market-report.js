@@ -190,7 +190,7 @@
     }
 
     function renderTemplate(locations) {
-        let searchContainer = $('#market__search--lists .row'), template = ``;
+        let searchContainer = $('#market__search--lists'), template = ``;
         let location_type = $('#market__search--lists').data('page-type');
 
         locations.forEach((location) => {
@@ -270,7 +270,7 @@
 
     $(function () {
         let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
-        let searchContainer = $('#market__search--lists .row');
+        let searchContainer = $('#market__search--lists');
 
         if (!isMarketReport) {
             return;
