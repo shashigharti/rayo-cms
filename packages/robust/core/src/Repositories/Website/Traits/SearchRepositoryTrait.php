@@ -4,7 +4,7 @@ namespace Robust\Core\Repositories\Traits;
 
 /**
  * Class SearchRepositoryTrait
- * @package Robust\Core\Repositories\Traits
+ * @package Robust\Core\Repositories\Website\Traits
  */
 trait SearchRepositoryTrait
 {

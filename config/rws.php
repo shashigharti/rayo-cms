@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'market-report' => [
+        'report-type' => [
+            'cities' => 'City', 'zips' => 'Zip Code', 'school_districts' => 'School District'
+        ]
+    ],
     'sorting' => [
         ['display' => 'Recently Added', 'value' => 'input_date-desc'],
         ['display' => 'Price High - Low', 'value' => 'system_price-asc'],
