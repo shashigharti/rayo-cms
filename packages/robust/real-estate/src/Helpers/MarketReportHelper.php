@@ -68,4 +68,15 @@ class MarketReportHelper
 
         return $priceArr;
     }
+
+     /**
+     * Checks if the amount is between the given price range
+     * @return mixed
+     */
+    public function isActivePriceRange($amount, $min, $max){
+        if(($amount >= $min) && ($amount < $max)){
+            return 'active';
+        }       
+        return false;
+    }
 }
