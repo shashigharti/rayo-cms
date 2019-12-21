@@ -2,7 +2,7 @@
 namespace Robust\RealEstate\Repositories\API;
 
 use Illuminate\Database\Eloquent\Builder;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
 
 /**
