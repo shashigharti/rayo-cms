@@ -3,9 +3,6 @@ namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\API\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\API\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Repositories\API\MarketReportRepository;
 
 /**
@@ -14,7 +11,6 @@ use Robust\RealEstate\Repositories\API\MarketReportRepository;
  */
 class MarketReportController extends Controller
 {
-    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
      * @var MarketReportRepository
@@ -39,7 +35,10 @@ class MarketReportController extends Controller
      */
     public function getReports(Request $request, $location_type){
         $data = $request->all();
-        $records = $this->model->getReports($location_type, $data);
+        $records = $this->model->getReports($location_type)
+        ->wherePriceBetween(explode('-', $data['price']))
+        ->get();
+
         return response()->json($records);
     }
 }

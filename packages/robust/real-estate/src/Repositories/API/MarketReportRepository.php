@@ -2,8 +2,8 @@
 namespace Robust\RealEstate\Repositories\API;
 
 use Illuminate\Database\Eloquent\Builder;
-use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
+use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
 
 /**
  * Class MarketReportRepository
@@ -66,22 +66,32 @@ class MarketReportRepository
      * @param string|array $data
      * @return mixed
      */
-    public function getReports($location_type, $data = []){
-        $query = $this->model
+    public function getReports($location_type){
+        $qBuilder = $this->model
             ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
 
         if(isset($data['type'])){
             $sub_location_type = $data['type'];
             $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
-            $query = $query->whereHasMorph(
+            $qBuilder = $qBuilder->whereHasMorph(
                 'reportable',
                 [$reportable_type],
                 function (Builder $query) use($data) {
                     $query->whereIn(MarketReportRepository::PARAM_MAP[$data['type']], explode(',', $data['ids']));
                 });
+        }  
+        $this->model = $qBuilder;
+        return $this;
+    }
+
+     /**
+     * @return QueryBuilder this
+     */
+    public function wherePriceBetween($params){
+        $settings = config('rws.market-report.price-range');
+        if(count($params) > 0){
+            $this->model = $this->model->whereBetween($settings['field_to_compare'], $params);
         }
-        
-        $reports = $query->get();
-        return ($reports)?$reports:[];
+        return $this;
     }
 }

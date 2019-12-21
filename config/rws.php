@@ -11,8 +11,10 @@ return [
             'min' => 10000, 
             'max' => 44500000, 
             'increment' => 1500000,
-            'default' => ['average' => '3010000']
+            'default' => ['average' => '3010000'],
+            'field_to_compare' => 'median_price_active'
         ]
+        
     ],
     'sorting' => [
         ['display' => 'Recently Added', 'value' => 'input_date-desc'],
