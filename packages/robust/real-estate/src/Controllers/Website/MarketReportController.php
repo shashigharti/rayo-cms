@@ -35,7 +35,7 @@ class MarketReportController extends Controller
      */
     public function index(Request $request, $location_type){
         $data = $request->all();
-        $records = $this->model->getLocations($location_type, $data);
+        $records = $this->model->getReports($location_type, $data);
         return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);
     }
 

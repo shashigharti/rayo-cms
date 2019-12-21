@@ -76,7 +76,7 @@ class MarketReportRepository
      * @param string|array $data
      * @return mixed
      */
-    public function getLocations($location_type, $data = []){
+    public function getReports($location_type, $data = []){
         $query = $this->model
             ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
 

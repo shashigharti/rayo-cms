@@ -37,7 +37,9 @@ class MarketReportController extends Controller
      * @param $location_type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getReports(Request $request, $location_type, $location = null){
-        return response()->json($this->model->getReports());
+    public function getReports(Request $request, $location_type){
+        $data = $request->all();
+        $records = $this->model->getReports($location_type, $data);
+        return response()->json($records);
     }
 }
