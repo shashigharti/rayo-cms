@@ -3,9 +3,9 @@ namespace Robust\Banners\Repositories;
 
 use Carbon\Carbon;
 use Robust\Banners\Models\Image;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 
 /**
  * Class ImageRepository

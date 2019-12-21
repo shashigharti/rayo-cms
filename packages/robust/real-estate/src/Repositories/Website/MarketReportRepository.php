@@ -2,9 +2,9 @@
 namespace Robust\RealEstate\Repositories\Website;
 
 use Illuminate\Database\Eloquent\Builder;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
 
 /**
