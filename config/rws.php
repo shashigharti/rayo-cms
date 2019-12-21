@@ -4,6 +4,12 @@ return [
     'market-report' => [
         'report-type' => [
             'cities' => 'City', 'zips' => 'Zip Code', 'school_districts' => 'School District'
+        ],
+        'price-range' => [
+            'min' => 10000, 
+            'max' => 44500000, 
+            'increment' => 1500000,
+            'default' => ['average' => '3010000']
         ]
     ],
     'sorting' => [

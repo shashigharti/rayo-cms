@@ -1,18 +1,17 @@
+@set('ranges', $marketreport_helper->generatePriceRanges())
+@set('settings', config('rws.market-report.price-range'))
 <div class="row">
-    <div class="col m2 s12">
+    <div class="col m2 s12">        
         <div class="market__search--lists--side-nav">
-            <div class="market--search__lists--filter">
-                <span class="btn-default btn-checkbox active"></span><label>$0 - $1000</label>
-            </div>
-            <div class="market--search__lists--filter">
-                <span class="btn-default btn-checkbox"></span><label>$1000 - $10000</label>
-            </div>
-            <div class="market--search__lists--filter">
-                <span class="btn-default btn-checkbox"></span><label>$1000 - $10000</label>
-            </div>
-            <div class="market--search__lists--filter">
-                <span class="btn-default btn-checkbox"></span><label>$1000 - $10000</label>
-            </div>
+            @foreach($ranges as $key => $value)
+                <div class="market--search__lists--filter">
+                    @if(isset($ranges[$key-1]))
+                        <label>${{ $ranges[$key-1] }} - ${{ $value }}</label>
+                    @else 
+                        <label>${{ $settings['min'] }} - ${{ $value }}</label>
+                    @endif
+                </div>
+            @endforeach
         </div>
     </div>
     <div id="market__search--lists" class="market__search--lists col m10 s12">
