@@ -16,6 +16,7 @@
                           <input class="market-report__type" name="market-report__type" 
                             value="{{ $key }}" type="radio" 
                             data-href={{route("website.realestate.market.reports", ['location_type' => $key])}}
+                            {{ ($page_type == $key) ? 'checked': ''}}
                           />
                           <span>{{ $option }}</span>
                         </label>
