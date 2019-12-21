@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Core\API\Traits;
+namespace Robust\Core\Repositories\API\Traits;
 
 /**
  * Class SearchRepositoryTrait

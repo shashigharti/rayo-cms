@@ -13,13 +13,12 @@ use Robust\RealEstate\Models\Website\Agent;
  */
 class AgentRepository
 {
+    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
      * @var Agent
      */
     protected $model;
-    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
-
 
     /**
      * AgentRepository constructor.

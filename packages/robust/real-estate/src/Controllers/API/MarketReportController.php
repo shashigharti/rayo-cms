@@ -3,6 +3,9 @@ namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Repositories\API\MarketReportRepository;
 
 /**
@@ -11,6 +14,7 @@ use Robust\RealEstate\Repositories\API\MarketReportRepository;
  */
 class MarketReportController extends Controller
 {
+    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
      * @var MarketReportRepository
@@ -33,12 +37,7 @@ class MarketReportController extends Controller
      * @param $location_type
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getReport(Request $request, $location_type, $location = null){
-        return response()->json([
-            'name' => $location
-        ]);
-        // $data = $request->all();
-        // $records = $this->model->getLocations($location_type, $data);
-        // return view('real-estate::website.market-report.index', ['records' => $records, 'page_type' => $location_type]);
+    public function getReports(Request $request, $location_type, $location = null){
+        return response()->json($this->model->getReports());
     }
 }
