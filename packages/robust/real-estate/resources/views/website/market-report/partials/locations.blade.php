@@ -1,5 +1,4 @@
 @set('ranges', $marketreport_helper->generatePriceRanges())
-@set('settings', config('rws.market-report.price-range'))
 <div class="row">
     <div class="col m2 s12">        
         <div class="market__search--lists--side-nav">
@@ -11,7 +10,7 @@
                         </div>
                     @else 
                         <div data-href="#">
-                            ${{ price_format($settings['min']) }} - ${{ price_format($value) }}
+                            ${{ price_format($settings['price-range']['min']) }} - ${{ price_format($value) }}
                         </div>
                     @endif
                 </div>
@@ -21,7 +20,7 @@
     <div id="market__search--lists" class="market__search--lists col m10 s12">
         <div class="row">
             @foreach($records as $report)
-            {{-- <div class="col m2 s6">
+            <div class="col m2 s6">
                 <div class="market__search--lists-item card">
                     <div class="card-content">
                         <p data-id="{{$report->reportable->id}}" data-type="Title" 
@@ -47,7 +46,7 @@
                         </p>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             @endforeach
         </div>
     </div>

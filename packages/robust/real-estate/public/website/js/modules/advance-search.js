@@ -103,7 +103,6 @@
                 }
                 qParams = (qParams == '') ? '' : '?' + $.param(params);
                 window.location.search = qParams;
-                console.log(window.location);
             });
 
             // Set sort value to sort_by field in advance search form

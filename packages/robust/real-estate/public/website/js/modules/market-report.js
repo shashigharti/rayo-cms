@@ -102,6 +102,7 @@
             }
         });
     }
+
     function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
     function sortLocations() {
@@ -188,17 +189,11 @@
         }).join('');
     }
 
-    $(function () {
-        let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
 
-        if (!isMarketReport) {
-            return;
-        }
 
-        let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
+    function initEventHandlers() {
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
-
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -218,6 +213,24 @@
                 renderLocations();
             });
         });
+
+        // Add event listeners on location selection
+        $('.market-report__type').on('click', function (e) {
+            window.location = $(this).data("href");
+        });
+    }
+
+    $(function () {
+        let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
+
+        if (!isMarketReport) {
+            return;
+        }
+
+        let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
+
+        // initialize event Handlers
+        initEventHandlers();
 
         // Read all the initial locations from page and initialize locations array list
         initializeLocations(mr_locations);

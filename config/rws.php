@@ -3,7 +3,9 @@
 return [
     'market-report' => [
         'report-type' => [
-            'cities' => 'City', 'zips' => 'Zip Code', 'school_districts' => 'School District'
+            'cities' => 'City', 
+            'zips' => 'Zip Code', 
+            'school_districts' => 'School District'
         ],
         'price-range' => [
             'min' => 10000, 

@@ -2,8 +2,9 @@
 
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @inject('marketreport_helper','Robust\RealEstate\Helpers\MarketReportHelper')
-@set('locations',$location_helper->getLocations(['cities','counties','zips']))
 
+@set('locations',$location_helper->getLocations(['cities','counties','zips']))
+@set('settings', config('rws.market-report'))
 @section('header')
     <header class="sub-header">
         <div class="container-fluid">
@@ -14,14 +15,14 @@
         </div>
     </header>
 @endsection
-@section('body_section')
+@section('body_section')    
     <section class="market main-content" data-page='{{$page_type}}'>
-    <div class="container-fluid">
-        @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
-        @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-        @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))  
-    </div>
-</section>
+        <div class="container-fluid">
+            @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
+            @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
+            @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))  
+        </div>
+    </section>
 @endsection
 @section('footer')
     @include(Site::templateResolver('real-estate::website.frontpage.partials.footer'))
