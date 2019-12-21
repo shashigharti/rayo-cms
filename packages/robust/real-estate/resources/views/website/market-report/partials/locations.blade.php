@@ -6,9 +6,13 @@
             @foreach($ranges as $key => $value)
                 <div class="market--search__lists--filter">
                     @if(isset($ranges[$key-1]))
-                        <label>${{ $ranges[$key-1] }} - ${{ $value }}</label>
+                        <div data-href="#">
+                            ${{ price_format($ranges[$key-1]) }} - ${{ price_format($value) }}
+                        </div>
                     @else 
-                        <label>${{ $settings['min'] }} - ${{ $value }}</label>
+                        <div data-href="#">
+                            ${{ price_format($settings['min']) }} - ${{ price_format($value) }}
+                        </div>
                     @endif
                 </div>
             @endforeach
@@ -17,7 +21,7 @@
     <div id="market__search--lists" class="market__search--lists col m10 s12">
         <div class="row">
             @foreach($records as $report)
-            <div class="col m2 s6">
+            {{-- <div class="col m2 s6">
                 <div class="market__search--lists-item card">
                     <div class="card-content">
                         <p data-id="{{$report->reportable->id}}" data-type="Title" 
@@ -43,7 +47,7 @@
                         </p>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             @endforeach
         </div>
     </div>

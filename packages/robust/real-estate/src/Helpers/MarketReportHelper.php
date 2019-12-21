@@ -60,10 +60,10 @@ class MarketReportHelper
         $priceArr = [];
 
         for (; $i <= $max; $i = $i + $config['increment']) {
-            $priceArr[] = price_format($i);
+            $priceArr[] = $i;
         }
         if (array_search($max, $priceArr) < 0) {
-            $priceArr[] = price_format($max);
+            $priceArr[] = $max;
         }
 
         return $priceArr;
