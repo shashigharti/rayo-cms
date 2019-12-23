@@ -50,6 +50,8 @@ class Listing extends BaseModel
         'baths_full',
         'bedrooms',
         'status',
+        'days_on_mls',
+        'school_district_id'
     ];
 
     /**
