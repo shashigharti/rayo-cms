@@ -2,7 +2,8 @@
 
 return [
     'data-field-mapping' => [
-        'sold' => 'closed'                
+        'sold' => 'Closed',
+        'active' => 'Active'                
     ],
     'market-report' => [
         'report-type' => [

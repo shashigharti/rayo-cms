@@ -23,6 +23,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class CreateMarketReport extends Command
 {
+    protected $status = [];
+
     /**
      * Create market report for different locations
      * Example: rws:create-market-report --type=city --type=high_school
@@ -36,7 +38,7 @@ class CreateMarketReport extends Command
      *
      * @var string
      */
-    protected $description = 'Save to database the main reports data ( model_id , model_type , total_listings, total_listings_active , total_listings_sold , median_price_active , median_price_sold , average_price_active , average_price_sold , average_dos , median_dos )';
+    protected $description = 'Generate market report for listings';
 
     /**
      * Create a new command instance.
@@ -57,10 +59,13 @@ class CreateMarketReport extends Command
      */
     public function handle()
     {
+        $active = config('rws.data-field-mapping')['active'];
+        $sold = config('rws.data-field-mapping')['sold'];
+
         $this->byGroupName = false;
         $this->status = [
-            'sold'=>'Closed',
-            'active'=>'Active'
+            'sold'=> $sold,
+            'active'=> $active
         ];
         $location_types = $this->option('type', []);
         \DB::beginTransaction();
@@ -180,30 +185,31 @@ class CreateMarketReport extends Command
         ];
 
         $listingArr = DB::table('real_estate_listings')
-            ->select(\DB::raw(implode(',', $fields)))
+            ->select( \DB::raw(implode(',', $fields)) )
             ->where( $settings["listings-price"]["field-to-compare"], $settings["listings-price"]["condition"], $settings["listings-price"]["min"] )
-            ->groupBy($location)
+            ->groupBy( $location )
             ->get()
-            ->keyBy($location);
+            ->keyBy( $location );
 
         foreach ($collection as $model) {
-            $totalListings = isset($listingArr[$model->name]) ? $listingArr[$model->name]->count : null;
-            $totalListingsActive = isset($listingArr[$model->name]) ? $listingArr[$model->name]->active_count : null;
-            $totalListingsSold = isset($listingArr[$model->name]) ? $listingArr[$model->name]->sold_count : null;
-            $totalSoldThisYear = isset($listingArr[$model->name]) ? $listingArr[$model->name]->sold_count_this_year : null;
-            $totalSoldLastYear = isset($listingArr[$model->name]) ? $listingArr[$model->name]->sold_count_past_year : null;
-            $averagePriceActive = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_price_active : null, 1, ".", "");
-            $averagePriceSold = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_price_sold : null, 1, ".", "");
-            $averagePriceSoldLastYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_price_sold_past_year : null, 1, ".", "");
-            $averagePriceSoldThisYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_price_sold_this_year : null, 1, ".", "");
-            $averageDaysOnMLS = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls : null, 1, ".", "");
-            $averageDaysOnMLSLastYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls_past_year : null, 1, ".", "");
-            $averageDaysOnMLSThisYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls_this_year : null, 1, ".", "");
-            $median_price_active = 0;//$this->getMedian($location, $model->name, 'system_price', true);
-            $median_price_sold = 0;//$this->getMedian($location, $model->name, 'system_price', false);
-            $median_price_sold_past_year = 0;//$this->getMedian($location, $model->name, 'system_price', false, date('Y') - 1);
-            $median_price_sold_this_year = 0;//$this->getMedian($location, $model->name, 'system_price', false, date('Y'));
-            $median_dos_sold = 0;//$this->getMedian($location, $model->name, 'days_on_mls', false);
+            $totalListings = isset($listingArr[$model->id]) ? $listingArr[$model->id]->count : null;
+            $totalListingsActive = isset($listingArr[$model->id]) ? $listingArr[$model->id]->active_count : null;
+            $totalListingsSold = isset($listingArr[$model->id]) ? $listingArr[$model->id]->sold_count : null;
+            $totalSoldThisYear = isset($listingArr[$model->id]) ? $listingArr[$model->id]->sold_count_this_year : null;
+            $totalSoldLastYear = isset($listingArr[$model->id]) ? $listingArr[$model->id]->sold_count_past_year : null;
+            $averagePriceActive = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_price_active : null, 1, ".", "");
+            $averagePriceSold = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_price_sold : null, 1, ".", "");
+            $averagePriceSoldLastYear = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_price_sold_past_year : null, 1, ".", "");
+            $averagePriceSoldThisYear = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_price_sold_this_year : null, 1, ".", "");
+            $averageDaysOnMLS = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_days_on_mls : null, 1, ".", "");
+            $averageDaysOnMLSLastYear = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_days_on_mls_past_year : null, 1, ".", "");
+            $averageDaysOnMLSThisYear = number_format(isset($listingArr[$model->id]) ? $listingArr[$model->id]->avg_days_on_mls_this_year : null, 1, ".", "");
+            
+            $median_price_active = $this->getMedian($location, $model->id, 'system_price', $active);
+            $median_price_sold = $this->getMedian($location, $model->id, 'system_price', $sold);
+            $median_price_sold_past_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y') - 1);
+            $median_price_sold_this_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y'));
+            $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
 
             \DB::table('real_estate_market_reports')->insert([
                 'reportable_id' => $model->id,
@@ -298,5 +304,36 @@ class CreateMarketReport extends Command
                 ]);
             }
         }
+    }
+
+
+    /**
+     * @param string $location_type
+     * @param integer $location_value
+     * @param string $field 
+     */
+    private function getMedian($location_type, $location_value, $field, $status = 'Active', $year = null)
+    {
+        $year_condition = "TRUE";
+
+        if($year != null){
+            $year_condition = "YEAR(input_date)='" . addslashes((string)$year) . "'";
+        }
+            
+               
+        $query_str = "SELECT AVG(t1.$field) AS median_val FROM 
+                    (
+                        SELECT $field, @rownum:=@rownum+1 AS `row_number`, @total_rows:=@rownum
+                        FROM real_estate_listings,  (SELECT @rownum:=0) r
+                        WHERE {$location_type}={$location_value}
+                        AND `status`='{$status}'
+                        AND {$year_condition}
+                        ORDER BY $field
+                    ) AS t1
+                    WHERE t1.row_number IN ( FLOOR((@total_rows+1)/2), FLOOR((@total_rows+2)/2) );";     
+        
+
+        $row = \DB::select($query_str)[0];
+        return ($row->median_val == null)? 0 : $row->median_val;
     }
 }
