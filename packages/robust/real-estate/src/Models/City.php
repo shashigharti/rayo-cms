@@ -41,13 +41,13 @@ class City extends BaseModel
         return $this->hasMany('Robust\RealEstate\Models\Listing');
     }
 
-    /**
-     * Listing  associated with this city
-     */
-    public function subdivisions()
-    {
-        return $this->hasMany('Robust\RealEstate\Models\Subdivision');
-    }
+    // /**
+    //  * Listing  associated with this city
+    //  */
+    // public function subdivisions()
+    // {
+    //     return $this->hasMany('Robust\RealEstate\Models\Subdivision');
+    // }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphOne
