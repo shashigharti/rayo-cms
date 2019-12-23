@@ -1,8 +1,8 @@
 <?php
 
 return [
-    'data-mapping' => [
-        'sold' => 'closed'
+    'data-field-mapping' => [
+        'sold' => 'closed'                
     ],
     'market-report' => [
         'report-type' => [
@@ -15,7 +15,7 @@ return [
             'max' => 44500000, 
             'increment' => 1500000,
             'default' => ['average' => '3010000'],
-            'field_to_compare' => 'median_price_active'
+            'field-to-compare' => 'median_price_active'
         ]
         
     ],
@@ -28,10 +28,8 @@ return [
         ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days']
     ],
     'data' => [
-        'data-price' => [
-            'price' => 10000, 'condition' => '>='
-        ],
-        'data-timeframe' => "- 365 day"
+        'listings-price' => ['min' => 10000, 'condition' => '>=', 'field-to-compare' => 'system_price'],
+        'timeframe' => "- 365 day"
     ],
     // third party server field mapping with listing properties
     'advance-search' => [

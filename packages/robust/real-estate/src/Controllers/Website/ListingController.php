@@ -55,7 +55,7 @@ class ListingController extends Controller
     public function sold($location_type = null,  $location = null,  $price_range = null)
     {
         $query_params = request()->all();
-        $data_timeframe = config('rws.data.data-timeframe');
+        $data_timeframe = config('rws.data.timeframe');
         $results  = $this->model->getListings(
             [
                 'status' => 'Closed'

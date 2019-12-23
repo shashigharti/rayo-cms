@@ -88,9 +88,9 @@ class MarketReportRepository
      * @return QueryBuilder this
      */
     public function wherePriceBetween($params){
-        $settings = config('rws.market-report.price-range');
+        $settings = config("rws.market-report.price-range");
         if(count($params) > 0){
-            $this->model = $this->model->whereBetween($settings['field_to_compare'], $params);
+            $this->model = $this->model->whereBetween($settings["field-to-compare"], $params);
         }
         return $this;
     }

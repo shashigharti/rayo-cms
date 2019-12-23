@@ -159,6 +159,9 @@ class CreateMarketReport extends Command
         $settings = config('rws.data');
         $active = $this->status['active'];
         $sold = $this->status['sold'];
+
+        // Delete records for given location type
+        DB::table('real_estate_market_reports')->where('reportable_type', get_class($collection->first()))->delete();
         
         $fields = [
             "COUNT(*) as count",
@@ -178,7 +181,7 @@ class CreateMarketReport extends Command
 
         $listingArr = DB::table('real_estate_listings')
             ->select(\DB::raw(implode(',', $fields)))
-            ->where( 'system_price', $settings['data-price']['condition'] , $settings['data-price']['price'] )
+            ->where( $settings["listings-price"]["field-to-compare"], $settings["listings-price"]["condition"], $settings["listings-price"]["min"] )
             ->groupBy($location)
             ->get()
             ->keyBy($location);
