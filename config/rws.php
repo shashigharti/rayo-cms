@@ -11,7 +11,7 @@ return [
             'school_districts' => 'School District'
         ],
         'price-range' => [
-            'min' => 10000, 
+            'min' => 0, 
             'max' => 44500000, 
             'increment' => 1500000,
             'default' => ['average' => '3010000'],
