@@ -41,6 +41,8 @@ class CreateRealEstateLeadMetadatasTable extends Migration
             $table->integer('emails_count')->default(0);
             $table->integer('calls_count')->default(0);
             $table->integer('comments_count')->default(0);
+            $table->integer('distance_count')->default(0);
+            $table->integer('texts_count')->default(0);
             $table->integer('notes_count')->default(0);
             $table->integer('email_replies_count')->default(0);
             $table->text('market_stats');
