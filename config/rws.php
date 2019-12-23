@@ -1,6 +1,9 @@
 <?php
 
 return [
+    'data-mapping' => [
+        'sold' => 'closed'
+    ],
     'market-report' => [
         'report-type' => [
             'cities' => 'City', 
@@ -26,7 +29,7 @@ return [
     ],
     'data' => [
         'data-price' => [
-            'price' => 10000, 'condition' => '>'
+            'price' => 10000, 'condition' => '>='
         ],
         'data-timeframe' => "- 365 day"
     ],

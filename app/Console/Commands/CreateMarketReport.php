@@ -59,30 +59,30 @@ class CreateMarketReport extends Command
     {
         $this->byGroupName = false;
         $this->status = [
-            'closed'=>'Closed',
+            'sold'=>'Closed',
             'active'=>'Active'
         ];
         $location_types = $this->option('type', []);
-
         \DB::beginTransaction();
         try {
 
             $all_report_types = collect([
-                'city' => (new City()),
-                'county' => (new County()),
-                'zip' => (new Zip()),
-                'subdivision' => (new Subdivision()),
-                'district' => (new SchoolDistrict()),
-                'high_school' => (new HighSchool()),
-                'area' => (new Area()),
+                'city' => ['city_id' => (new City())],
+                'county' => ['county_id' => (new County())],
+                'zip' => ['zip_id' => (new Zip())],
+                'subdivision' =>  ['subdivision_id' => (new Subdivision())],
+                'school_district' => ['district_id' => (new SchoolDistrict())],
+                'high_school' =>  ['high_school_id' => (new HighSchool())],
+                'area' =>  ['area_id' => (new Area())]
             ]);
             $report_types = [];
-            foreach ($all_report_types as $type => $model) {
-                if (in_array($type, $location_types)) {
-                    $report_types[$type] = $model;
+            foreach ($all_report_types as $key => $model) {
+                $location = key($model);
+                if (in_array($key, $location_types)) {
+                    $report_types[$location] = $model[$location];
                 }
             }
-
+            
             $this->populateReports($report_types);
             \DB::commit();
         } catch (\Exception $e) {
@@ -96,9 +96,9 @@ class CreateMarketReport extends Command
      */
     private function populateReports(array $report_types)
     {
-        foreach ($report_types as $attr => $model) {
+        foreach ($report_types as $location => $model) {
             $selectArr = ['id', 'name', 'slug'];
-            if( $model->getTable() == 'subdivisions'){
+            if( $model->getTable() == 'real_estate_subdivisions'){
                 if($this->byGroupName ){
                     $selectArr = ['id', 'group_name as name', 'group_slug as slug'];
                     return $model->query()
@@ -118,18 +118,18 @@ class CreateMarketReport extends Command
             }
 
             if (get_class($collection->first()) == 'Robust\RealEstate\Models\Subdivision') {
-                $this->subdivisionReport($collection, $attr);
+                $this->subdivisionReport($collection);
             }else{
-                $this->locationReport($collection, $attr);
+                $this->locationReport($collection, $location);
             }
-             $this->info("Complete Report Data Creation for {$attr}");
+             $this->info("Complete Report Data Creation for {$location}");
         }
     }
 
     /**
      * @param Model $model
      * @return Collection
-     * returns reportable model with listings
+     * @return reportable model with listings
      */
     private function getDataWithListings(Model $model): Collection
     {
@@ -151,33 +151,37 @@ class CreateMarketReport extends Command
 
     }
 
-    private function locationReport($collection, $attr){
+    /**
+     * @param Collection $collection
+     * @param string $location 
+     */
+    private function locationReport($collection, $location){
+        $settings = config('rws.data');
         $active = $this->status['active'];
-        $closed = $this->status['closed'];
-
+        $sold = $this->status['sold'];
+        
         $fields = [
             "COUNT(*) as count",
-            "city",
-            "SUM( IF(status = '{$active}', 1, 0)) AS active_count",
-            "SUM( IF(status = '{$closed}', 1, 0)) AS sold_count",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', 1, 0)) as sold_count_past_year",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)date('Y') . "', 1, 0)) as sold_count_this_year",
-            "AVG( IF(status = '{$active}', system_price, NULL)) as avg_price_active",
-            "AVG( IF(status = '{$closed}', system_price, NULL)) as avg_price_sold",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', system_price, NULL)) as avg_price_sold_past_year",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y')) . "', system_price, NULL)) as avg_price_sold_this_year",
-            "AVG( IF(status = '{$closed}', days_on_mls, NULL)) as avg_days_on_mls",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', days_on_mls, NULL)) as avg_days_on_mls_past_year",
-            "SUM( IF(status = '{$closed}' AND YEAR(input_date)='" . (string)(date('Y')) . "', days_on_mls, NULL)) as avg_days_on_mls_this_year"
+            " {$location}",
+            " SUM( IF(status = '{$active}', 1, 0)) AS active_count",
+            " SUM( IF(status = '{$sold}', 1, 0)) AS sold_count",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', 1, 0)) as sold_count_past_year",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)date('Y') . "', 1, 0)) as sold_count_this_year",
+            " AVG( IF(status = '{$active}', system_price, NULL)) as avg_price_active",
+            " AVG( IF(status = '{$sold}', system_price, NULL)) as avg_price_sold",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', system_price, NULL)) as avg_price_sold_past_year",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y')) . "', system_price, NULL)) as avg_price_sold_this_year",
+            " AVG( IF(status = '{$sold}', days_on_mls, NULL)) as avg_days_on_mls",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', days_on_mls, NULL)) as avg_days_on_mls_past_year",
+            " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y')) . "', days_on_mls, NULL)) as avg_days_on_mls_this_year"
         ];
 
         $listingArr = DB::table('real_estate_listings')
             ->select(\DB::raw(implode(',', $fields)))
-            ->where('system_price','>=','50000')
-            ->groupBy($attr)
+            ->where( 'system_price', $settings['data-price']['condition'] , $settings['data-price']['price'] )
+            ->groupBy($location)
             ->get()
-            ->keyBy($attr);
-
+            ->keyBy($location);
 
         foreach ($collection as $model) {
             $totalListings = isset($listingArr[$model->name]) ? $listingArr[$model->name]->count : null;
@@ -192,11 +196,11 @@ class CreateMarketReport extends Command
             $averageDaysOnMLS = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls : null, 1, ".", "");
             $averageDaysOnMLSLastYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls_past_year : null, 1, ".", "");
             $averageDaysOnMLSThisYear = number_format(isset($listingArr[$model->name]) ? $listingArr[$model->name]->avg_days_on_mls_this_year : null, 1, ".", "");
-            $median_price_active = 0;//$this->getMedian($attr, $model->name, 'system_price', true);
-            $median_price_sold = 0;//$this->getMedian($attr, $model->name, 'system_price', false);
-            $median_price_sold_past_year = 0;//$this->getMedian($attr, $model->name, 'system_price', false, date('Y') - 1);
-            $median_price_sold_this_year = 0;//$this->getMedian($attr, $model->name, 'system_price', false, date('Y'));
-            $median_dos_sold = 0;//$this->getMedian($attr, $model->name, 'days_on_mls', false);
+            $median_price_active = 0;//$this->getMedian($location, $model->name, 'system_price', true);
+            $median_price_sold = 0;//$this->getMedian($location, $model->name, 'system_price', false);
+            $median_price_sold_past_year = 0;//$this->getMedian($location, $model->name, 'system_price', false, date('Y') - 1);
+            $median_price_sold_this_year = 0;//$this->getMedian($location, $model->name, 'system_price', false, date('Y'));
+            $median_dos_sold = 0;//$this->getMedian($location, $model->name, 'days_on_mls', false);
 
             \DB::table('real_estate_market_reports')->insert([
                 'reportable_id' => $model->id,
@@ -228,7 +232,11 @@ class CreateMarketReport extends Command
 
     }
 
-    private function subdivisionReport($collection, $attr){
+     /**
+     * @param Collection $collection
+     * @param string $location 
+     */
+    private function subdivisionReport($collection){
         $part_count = floor(count($collection) / 25);
         $chunked = $collection->chunk($part_count);
 
