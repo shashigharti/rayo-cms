@@ -23,7 +23,8 @@ class CreateRealEstateListingsTable extends Migration
             $table->integer('area_id')->nullable();
             $table->integer('sub_area_id')->nullable();
             $table->integer('borough_id')->nullable();
-            $table->integer('system_price')->nullable();
+            $table->float('system_price')->default(0);
+            $table->float('sold_price')->default(0);
             $table->integer('days_on_mls')->nullable();
             $table->integer('asking_price')->nullable();
             $table->string('address_number', 15)->nullable();

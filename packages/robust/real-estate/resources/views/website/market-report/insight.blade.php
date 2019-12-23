@@ -1,7 +1,11 @@
 @extends(Site::templateResolver('real-estate::website.layouts.default'))
-@inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
+
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
+@inject('marketreport_helper','Robust\RealEstate\Helpers\MarketReportHelper')
+
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
+@set('settings', config('rws.market-report'))
+
 @section('header')
     <header class="sub-header">
         <div class="container-fluid">
@@ -19,7 +23,9 @@
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
                 @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
                 @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
-                ['records' => $data['records']??[]])
+                [
+                    'records' => $data['records']??[]
+                ])
             </div>
         @endif
         <div class="container-fluid">
