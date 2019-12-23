@@ -226,6 +226,10 @@
         searchContainer.trigger("loaded");
     }
 
+    function initEventHandlersAfterDataLoading() {
+
+    }
+
     function initEventHandlers() {
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
@@ -276,11 +280,11 @@
             return;
         }
 
+        // initialize event Handlers
+        initEventHandlers();
+
         searchContainer.on('loaded', function () {
             let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
-
-            // initialize event Handlers
-            initEventHandlers();
 
             // Read all the initial locations from page and initialize locations array list
             initializeLocations(mr_locations);
@@ -289,10 +293,7 @@
             renderLocations();
         });
 
-        // initialize event Handlers
-        initEventHandlers();
-
-        // Triggr click event for anchor tag
+        // Trigger click event for anchor tag
         $('.market__price-range-item a.active').trigger('click');
 
     });
