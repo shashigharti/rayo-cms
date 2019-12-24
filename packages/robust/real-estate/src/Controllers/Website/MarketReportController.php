@@ -49,6 +49,7 @@ class MarketReportController extends Controller
         return view('real-estate::website.market-report.insight', [
             'data' => $response,
             'page_type' => $location_type,
+            'title' => ucwords(str_replace('-', ' ', $slug)),
             'sub_location_type' => $response['sub_location_type'] ?? null
         ]);
     }

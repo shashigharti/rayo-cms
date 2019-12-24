@@ -20,6 +20,7 @@
             <div class="container-fluid">
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
                 @if(isset($data['records']))
+                    <h5> {{ $title }} Subdivisions </h5>
                     @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
                     @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
                     [
