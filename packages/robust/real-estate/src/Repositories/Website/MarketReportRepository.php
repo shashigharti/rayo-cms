@@ -2,9 +2,9 @@
 namespace Robust\RealEstate\Repositories\Website;
 
 use Illuminate\Database\Eloquent\Builder;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\MarketReport;
 
 /**
@@ -26,20 +26,22 @@ class MarketReportRepository
     protected const REPORTABLE_MAP = [
         'cities' => 'Robust\RealEstate\Models\City',
         'subdivisions' => 'Robust\RealEstate\Models\Subdivision',
-    ];
-
-    /**
-     * @var const PARAM_MAP
-     */
-    protected const PARAM_MAP = [
-        'cities' => 'city_id'
+        'zips' => 'Robust\RealEstate\Models\Zip',
+        'school_districts' => 'Robust\RealEstate\Models\SchoolDistrict',
+        'counties' => 'Robust\RealEstate\Models\County',
+        'areas' => 'Robust\RealEstate\Models\Area',
+        'high_schools' => 'Robust\RealEstate\Models\HighSchool'
     ];
 
     /**
      * @var const LOCATION_TYPES_WITH_SUBLOCATIONS
      */
     protected const LOCATION_TYPES_WITH_SUBLOCATIONS = [
-        'cities' => ['sub_location_type'=>'subdivisions','field' => 'city_id','reportable_type' => 'Robust\RealEstate\Models\Subdivision']
+        'cities' => [
+            'sub_location_type'=>'subdivisions',
+            'field' => 'city_id',
+            'reportable_type' => 'Robust\RealEstate\Models\Subdivision'
+        ]
     ];
 
     /**
@@ -61,32 +63,6 @@ class MarketReportRepository
     public function __construct(MarketReport $model)
     {
         $this->model = $model;
-    }
-
-
-    /**
-     * Queries report table and return locations
-     *
-     * @param string $location_type
-     * @param string|array $data
-     * @return mixed
-     */
-    public function getLocations($location_type, $data = []){
-        $query = $this->model
-            ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type]);
-
-        if(isset($data['type'])){
-            $sub_location_type = $data['type'];
-            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
-            $query = $query->whereHasMorph(
-                'reportable',
-                [$reportable_type],
-                function (Builder $query) use($data) {
-                    $query->whereIn(MarketReportRepository::PARAM_MAP[$data['type']], explode(',', $data['ids']));
-                });
-        }
-        $reports = $query->get();
-        return ($reports)?$reports:[];
     }
 
     /**

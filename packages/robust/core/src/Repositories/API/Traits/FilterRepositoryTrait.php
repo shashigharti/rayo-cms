@@ -1,10 +1,10 @@
 <?php
 
-namespace Robust\Core\Repositories\Traits\Website;
+namespace Robust\Core\Repositories\API\Traits;
 
 /**
  * Class FilterRepositoryTrait
- * @package Robust\Core\Repositories\Traits\Website
+ * @package Robust\Core\Repositories\API\Traits
  */
 trait FilterRepositoryTrait
 {

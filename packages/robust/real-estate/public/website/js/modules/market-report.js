@@ -102,6 +102,7 @@
             }
         });
     }
+
     function isNumber(n) { return !isNaN(parseFloat(n)) && !isNaN(n - 0) }
 
     function sortLocations() {
@@ -188,17 +189,50 @@
         }).join('');
     }
 
-    $(function () {
-        let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
+    function renderTemplate(locations) {
+        let searchContainer = $('#market__search--lists'), template = ``;
+        let location_type = $('#market__search--lists').data('page-type');
 
-        if (!isMarketReport) {
-            return;
-        }
+        locations.forEach((location) => {
+            template += `
+                        <div class="col m2 s6">
+                            <div class="market__search--lists-item card">
+                                <div class="card-content">
+                                    <p data-id="${location.reportable_id}" data-type="Title"
+                                                    data-value="${location.slug}"
+                                                    data-url="http://www.rws-glenn.local/market/reports/in/${location_type}/${location.slug}"
+                                                    data-class="">
+                                                    <input type="checkbox" value="${location.name}">
+                                                    <label><a href="#">${location.name}</a></label>
+                                    </p>
+                                    <p data-type="Active" data-value="${location.total_listings_active}" data-class="fa fa-bookmark">
+                                        <span><i class="material-icons">bookmark</i>Active : ${location.total_listings_active}</span>
+                                    </p>
+                                    <p data-type="Sold" data-value="${location.total_listings_sold}" data-class="fa fa-shopping-cart">
+                                        <span><i class="material-icons">shopping_cart</i>Sold : ${location.total_listings_sold}</span>
+                                    </p>
+                                    <p data-type="Average" data-value="${location.average_price_sold}" data-class="fa fa-percent">
+                                        <span><i>%</i>Average : </span>$${location.average_price_sold}
+                                    </p>
+                                    <p data-type="Median" data-value="${location.median_price_sold}" data-class="fa fa-crosshairs">
+                                        <span><i class="material-icons">adjust</i>Median : </span>$${location.median_price_sold}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+        });
+        searchContainer.html(template);
+        searchContainer.trigger("loaded");
+    }
 
-        let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
+    function initEventHandlersAfterDataLoading() {
+
+    }
+
+    function initEventHandlers() {
         let display_buttons = document.getElementById('market--right__display').querySelectorAll('.market--right__display-content > span');
         let sort_buttons = document.getElementById('market--left__sort').querySelectorAll('a');
-
 
         // Add event listeners for display buttons
         getSelectedDisplayOptions(display_buttons);
@@ -219,12 +253,48 @@
             });
         });
 
-        // Read all the initial locations from page and initialize locations array list
-        initializeLocations(mr_locations);
+        // Add event listeners on location selection
+        $('.market-report__type').on('click', function (e) {
+            window.location = $(this).data("href");
+        });
 
-        // Render Locations
-        renderLocations();
+        // Add event listeners on price selection
+        $('.market__price-range-item a').on('click', function (e) {
+            e.preventDefault();
 
+            // Get data from the server based on query params
+            $.ajax({
+                method: "GET",
+                url: $(this).attr("href")
+            }).done(function (response) {
+                renderTemplate(response);
+            });
+        });
+    }
+
+    $(function () {
+        let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
+        let searchContainer = $('#market__search--lists');
+
+        if (!isMarketReport) {
+            return;
+        }
+
+        // initialize event Handlers
+        initEventHandlers();
+
+        searchContainer.on('loaded', function () {
+            let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
+
+            // Read all the initial locations from page and initialize locations array list
+            initializeLocations(mr_locations);
+
+            // Render Locations
+            renderLocations();
+        });
+
+        // Trigger click event for anchor tag
+        $('.market__price-range-item a.active').trigger('click');
 
     });
 }(jQuery, FRW, window, document));

@@ -1,13 +1,13 @@
 <?php
 
-namespace Robust\Core\Repositories\Traits;
-
+namespace Robust\Core\Repositories\API\Traits;
 /**
- * Class PolyMorphRepositoryTrait
- * @package Robust\Core\Repositories\Traits
+ * Class CrudRepositoryTrait
+ * @package Robust\Core\Repositories\API\Traits
  */
-trait PivotRepositoryTrait
+trait CrudRepositoryTrait
 {
+
     /**
      * @return mixed
      */
@@ -24,11 +24,7 @@ trait PivotRepositoryTrait
      */
     public function store($data)
     {
-        $type = $data['relation_type'];
-        $model = $this->model->create($data);
-
-        $model->$type()->sync($data[$this->relation[$type]]);
-        return $model;
+        return $this->model->create($data);
     }
 
 
@@ -39,11 +35,7 @@ trait PivotRepositoryTrait
      */
     public function update($id, $data)
     {
-        $type = $data['relation_type'];
-        $model = $this->model->find($id)->update($data);
-
-        $this->model->find($id)->$type()->sync($data[$this->relation[$type]]);
-        return $model;
+        return $this->model->find($id)->update($data);
     }
 
     /**
@@ -67,5 +59,11 @@ trait PivotRepositoryTrait
             $this->model->get($columns);
         }
         return $this->model->get();
+    }
+
+    public function updateOrCreate($conditions,$data)
+    {
+        $this->model = $this->model->updateOrCreate($conditions,$data);
+        return $this;
     }
 }

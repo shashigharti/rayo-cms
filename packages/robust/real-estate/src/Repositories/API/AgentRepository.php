@@ -1,10 +1,10 @@
 <?php
 namespace Robust\RealEstate\Repositories\API;
 
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
-use Robust\RealEstate\Models\Agent;
+use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\SearchRepositoryTrait;
+use Robust\RealEstate\Models\Website\Agent;
 
 
 /**
@@ -13,13 +13,12 @@ use Robust\RealEstate\Models\Agent;
  */
 class AgentRepository
 {
+    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**
      * @var Agent
      */
     protected $model;
-    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
-
 
     /**
      * AgentRepository constructor.

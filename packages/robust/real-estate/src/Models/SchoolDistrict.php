@@ -20,6 +20,6 @@ class SchoolDistrict extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'name', 'slug', 'active', 'sold', 'front_page_order', 'menu_order', 'latitude', 'longitude','dropdown'
+        'name', 'slug'
     ];
 }

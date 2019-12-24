@@ -1,6 +1,6 @@
 @set('sort_settings', config('rws.sorting'))
 <div id="search-section">
-    <div class="listing--search  search-section">
+    <div class="listing--search search-section">
         <div class="row">
             <div class="col s2 center-align">
                 <p>FEATURES</p>
@@ -53,9 +53,11 @@
                 </div>
             </div>
             <div class="col s12 listing--tags">
-                <span>Active</span>
-                <span>Price : low to high</span>
-                <a href="#" class=" btn btn-sm theme-btn">CLEAR ALL</a>
+                <div class="search-section__tags">
+                </div>
+                <div class="search-section__tags-action">
+                    <a href="#" class=" btn btn-sm theme-btn">CLEAR ALL</a>
+                </div>
             </div>
         </div>
     </div>

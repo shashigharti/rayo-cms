@@ -74,6 +74,7 @@ class DataPull extends RetsCommands
         'asking_price',
         'address_number',
         'address_street',
+        'days_on_mls',
         'city',
         'zip',
         'state',
@@ -97,7 +98,8 @@ class DataPull extends RetsCommands
         'elementary_school' =>'elementary_school_id',
         'high_school' => 'high_school_id',
         'middle_school' => 'middle_school_id',
-        'subdivision' => 'subdivision_id'
+        'subdivision' => 'subdivision_id',
+        'school_district' => 'school_district-id'
     ];
     protected $mapping = [
         'city' => '\Robust\RealEstate\Models\City',
@@ -108,6 +110,7 @@ class DataPull extends RetsCommands
         'high_school' => '\Robust\RealEstate\Models\HighSchool',
         'zip' =>  '\Robust\RealEstate\Models\Zip',
         'subdivision' =>  '\Robust\RealEstate\Models\Subdivision',
+        'school_district' =>  '\Robust\RealEstate\Models\SchoolDistrict',
     ];
 
     //Palm Beach, Broward, Martin, St Lucie
@@ -288,6 +291,7 @@ class DataPull extends RetsCommands
                             $listing_data[$field] = $data[$field];
                         }
                     }
+                    $listing_data['school_district'] = 'Test';
                     // add id
                     foreach ($listing_data as $key => $data)
                     {

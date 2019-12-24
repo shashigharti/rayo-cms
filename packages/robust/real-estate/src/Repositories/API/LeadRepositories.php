@@ -3,9 +3,9 @@ namespace Robust\RealEstate\Repositories\API;
 
 use Carbon\Carbon;
 use Illuminate\Support\Facades\DB;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\API\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Lead;
 
 

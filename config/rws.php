@@ -1,6 +1,25 @@
 <?php
 
 return [
+    'data-field-mapping' => [
+        'sold' => 'Closed',
+        'active' => 'Active'                
+    ],
+    'market-report' => [
+        'report-type' => [
+            'cities' => 'City', 
+            'zips' => 'Zip Code', 
+            'school_districts' => 'School District'
+        ],
+        'price-range' => [
+            'min' => 0, 
+            'max' => 44500000, 
+            'increment' => 1500000,
+            'default' => ['average' => '3010000'],
+            'field-to-compare' => 'median_price_active'
+        ]
+        
+    ],
     'sorting' => [
         ['display' => 'Recently Added', 'value' => 'input_date-desc'],
         ['display' => 'Price High - Low', 'value' => 'system_price-asc'],
@@ -10,10 +29,8 @@ return [
         ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days']
     ],
     'data' => [
-        'data-price' => [
-            'price' => 10000, 'condition' => '>'
-        ],
-        'data-timeframe' => "- 365 day"
+        'listings-price' => ['min' => 10000, 'condition' => '>=', 'field-to-compare' => 'system_price'],
+        'timeframe' => "- 365 day"
     ],
     // third party server field mapping with listing properties
     'advance-search' => [
