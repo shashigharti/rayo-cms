@@ -1839,7 +1839,7 @@ a.orange-line{border-bottom:1px solid #f7941d}.page--info{margin-bottom:60px}.ma
 a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
-.market__search--lists-item{min-height:144px;-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px}
+.market__search--lists-item{min-height:131px;-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px;background:#f9f7f7}
 .market__search--lists-item p{margin-bottom:0;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
 .market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
 .market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:655px;overflow-y:auto}
