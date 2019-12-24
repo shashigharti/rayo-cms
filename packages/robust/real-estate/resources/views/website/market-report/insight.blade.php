@@ -19,7 +19,7 @@
     <section class="market market-insight main-content" data-page='{{$page_type}}'>        
             <div class="container-fluid">
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
-                @if(isset($data['records']))
+                @if(isset($data['records']) && (count($data['records']) > 0))
                     <div class="row">
                         <div class="col s12">
                             <h5> {{ $title }} Subdivisions </h5>
