@@ -1,7 +1,7 @@
 <?php
 Route::group([
     'prefix' => 'api/market',
-    'as' => 'api.realestate.market.',
+    'as' => 'api.market.',
     'group' => 'Market Report'],
     function () {
 

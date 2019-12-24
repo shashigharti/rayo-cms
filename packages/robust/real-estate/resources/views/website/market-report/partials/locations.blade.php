@@ -6,22 +6,26 @@
                 @foreach($ranges as $key => $value)
                     <div class="market__price-range-item">
                         @if(isset($ranges[$key-1]))
-                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}" href="{{ route(" api.realestate.market.reports ", 
+                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}" 
+                                href="{{ route(" api.market.reports ", 
                                                 [
                                                     'location_type' => $page_type,
                                                     'price' => "{$ranges[$key-1]}-{$value} "
                                                 ]) 
-                                            }}">
-                                            ${{ price_format($ranges[$key-1]) }} - ${{ price_format($value) }}
+                                }}"
+                            >
+                                ${{ price_format($ranges[$key-1]) }} - ${{ price_format($value) }}
                             </a> 
                         @else
-                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}" href="{{ route(" api.realestate.market.reports ", 
+                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}" 
+                                href="{{ route(" api.market.reports ", 
                                                 [
                                                     'location_type' => $page_type,
                                                     'price' => "{$settings[ 'price-range'][ 'min']}-{$value} "
                                                 ]) 
-                                            }}">
-                                            ${{ price_format($settings['price-range']['min']) }} - ${{ price_format($value) }}
+                                }}"
+                            >
+                                ${{ price_format($settings['price-range']['min']) }} - ${{ price_format($value) }}
                             </a> 
                         @endif
                     </div>
@@ -44,7 +48,7 @@
                         <div class="card-content">
                             <p data-id="{{$report->reportable->id}}" 
                                 data-type="Title" data-value="{{$report->reportable->name}}" 
-                                data-url="{{route('website.realestate.market.reports.in', 
+                                data-url="{{route('market.reports.in', 
                                 [
                                     $sub_location_type ?? $page_type, 
                                     $report->reportable->slug

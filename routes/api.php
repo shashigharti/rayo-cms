@@ -15,9 +15,3 @@ Route::group(['as' => 'admin.', 'middleware' => ['auth']], function () {
 Route::get('/media/{id}','HomeController@getThumbnail');
 Route::get('/images','HomeController@getMedia');
 Route::post('/media/','HomeController@uploadMedia');
-Route::get('/user/all','API\UserController@index');
-Route::get('/user/edit/{id}','API\UserController@edit');
-Route::put('/user/update/{id}','API\UserController@update');
-Route::post('/user/store/','API\UserController@store');
-Route::apiResource('/role','\Robust\Admin\Controllers\API\RoleController');
-Route::apiResource('/permission','\Robust\Admin\Controllers\API\PermissionController');

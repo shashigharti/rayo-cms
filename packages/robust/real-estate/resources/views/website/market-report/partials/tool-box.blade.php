@@ -23,12 +23,12 @@
         <span class="btn--label">Checkmark areas to :</span>
         <div class="market__btns--container">
             @if($page_type != 'subdivisions')
-                <a id="market__btns--subdivisions" class="btn-orange" href="" data-base-url="{{route('website.realestate.market.reports', 'subdivisions')}}">
+                <a id="market__btns--subdivisions" class="btn-orange" href="" data-base-url="{{route('market.reports', 'subdivisions')}}">
                     Show Subdivisions
                 </a>
             @endif
 
-            <a id="market__btns--compare" data-base-url="{{route('website.realestate.market.reports', $page_type)}}" class="btn-green">
+            <a id="market__btns--compare" data-base-url="{{route('market.reports', $page_type)}}" class="btn-green">
                 Compare Selected Areas
             </a>
             <a href="#" class="btn-blue">

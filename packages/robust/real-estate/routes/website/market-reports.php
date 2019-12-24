@@ -1,6 +1,6 @@
 <?php
 Route::group(['prefix' => 'market',
-'as' => 'website.realestate.market.',
+'as' => 'market.',
 'group' => 'Market Report'],
 function () {
     Route::get('reports/{location_type}', [
