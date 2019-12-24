@@ -1,7 +1,6 @@
 <?php
 namespace Robust\RealEstate\Repositories\API;
 
-use Illuminate\Database\Eloquent\Builder;
 use Robust\RealEstate\Models\MarketReport;
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\RealEstate\Repositories\Interfaces\IMarketReport;

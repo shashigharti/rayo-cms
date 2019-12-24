@@ -2,6 +2,7 @@
 
 namespace Robust\RealEstate\Repositories\Common\Traits;
 
+use Illuminate\Database\Eloquent\Builder;
 use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 
 /**
@@ -23,12 +24,12 @@ trait MarketReportTrait
 
         if(isset($data['type'])){
             $sub_location_type = $data['type'];
-            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
+            $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
             $qBuilder = $qBuilder->whereHasMorph(
                 'reportable',
                 [$reportable_type],
                 function (Builder $query) use($data) {
-                    $query->whereIn(MarketReportRepository::PARAM_MAP[$data['type']], explode(',', $data['ids']));
+                    $query->whereIn(IMarketReport::PARAM_MAP[$data['type']], explode(',', $data['ids']));
                 });
         }  
         $this->model = $qBuilder;
@@ -55,29 +56,29 @@ trait MarketReportTrait
      */
     public function getInsight($location_type, $slug){
         $response = [];
-        $reportable_type = MarketReportRepository::REPORTABLE_MAP[$location_type];
+        $reportable_type = IMarketReport::REPORTABLE_MAP[$location_type];
 
         $report = $this->model
-            ->where('reportable_type', MarketReportRepository::REPORTABLE_MAP[$location_type])
+            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type])
             ->whereHasMorph(
                 'reportable',
-                [MarketReportRepository::REPORTABLE_MAP[$location_type]],
+                [IMarketReport::REPORTABLE_MAP[$location_type]],
                 function (Builder $query) use($slug) {
                     $query->where('slug', $slug);
                 })->first();
 
         // Get insights of listing for this domain
         $response['insights'] = $report->reportable->listings()
-            ->select(\DB::raw(implode(',', MarketReportRepository::INSIGHTS)))
+            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS)))
             ->groupBy('year')
             ->groupBy('month')
             ->groupBy('year')
             ->get();
 
         // Get sub locations within this domain if any : example subdivisions for cities
-        if(array_key_exists($location_type, MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS)){
-            $field = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
-            $reportable_type = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];
+        if(array_key_exists($location_type, IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS)){
+            $field = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
+            $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];
 
             $sub_location_reports = $this->model
                 ->where('reportable_type', $reportable_type)
@@ -88,7 +89,7 @@ trait MarketReportTrait
                         $query->where($field, $report->reportable->id);
                     })->get();
             $response['records'] = $sub_location_reports;
-            $response['sub_location_type'] = MarketReportRepository::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['sub_location_type'];
+            $response['sub_location_type'] = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['sub_location_type'];
         }
 
         return $response;

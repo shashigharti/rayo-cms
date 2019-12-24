@@ -267,6 +267,7 @@
 
     $(function () {
         let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
+        let isInsight = (document.getElementsByClassName('insight').length > 0) ? true : false;
         let searchContainer = $('#market__search--lists');
 
         // Add event listeners on location selection
@@ -282,6 +283,7 @@
         initEventHandlers();
 
         searchContainer.on('loaded', function () {
+            console.log('loaded');
             let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
 
             // Read all the initial locations from page and initialize locations array list
@@ -293,6 +295,11 @@
 
         // Trigger click event for anchor tag
         $('.market__price-range-item a.active').trigger('click');
+
+        // Trigger loaded event for search list container for market report page only
+        if (!isInsight) {
+            searchContainer.trigger("loaded");
+        }
 
     });
 }(jQuery, FRW, window, document));
