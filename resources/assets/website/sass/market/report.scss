@@ -322,7 +322,7 @@ a {
         font-weight: 600;
     }
     .market-insight__stat-container {
-        overflow-y: scroll;
+        overflow-y:auto;
         height: 500px;
         margin-bottom: 50px;
     }

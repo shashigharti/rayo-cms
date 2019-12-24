@@ -1855,7 +1855,7 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists-item [type="checkbox"]:not(:checked),.market__search--lists-item [type="checkbox"]:checked{position:relative;opacity:1;pointer-events:initial;margin-top:2px}
 .market--left__sort--btns .active{border:1px solid #0091ff !important;background:#0091ff;color:#fff !important}
-.market-insight__stat h4{font-size:18px;font-weight:600}.market-insight__stat .market-insight__stat-container{overflow-y:scroll;height:500px;margin-bottom:50px}
+.market-insight__stat h4{font-size:18px;font-weight:600}.market-insight__stat .market-insight__stat-container{overflow-y:auto;height:500px;margin-bottom:50px}
 .market-insight__stat td,.market-insight__stat th{display:table-cell;text-align:left !important;vertical-align:middle;border-radius:2px;width:auto;font-size:12px}
 .market--right__display--radio{font-weight:600;margin-top:10px}.market--right__display--radio .single--block{display:inline-block;margin:0 12px}
 .market--right__display--radio .row{margin-bottom:5px}.market--right__display--radio [type="radio"]+span:before,.market--right__display--radio [type="radio"]+span:after{margin:4px 0}
