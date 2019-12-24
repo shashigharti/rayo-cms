@@ -2067,7 +2067,8 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .agree-to-terms a{display:inline-block !important;width:auto;font-size:12px !important;text-decoration:underline;color:#111;padding:0 !important}
 .profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
 .sort-favourite .btn,.sort-favourite .btn-large,.sort-favourite .btn-small{-webkit-box-shadow:none;box-shadow:none}
-.profile--tab{min-height:400px}@media(max-width:767px){.mobile--menu.sidenav{background-color:#04122d}
+.profile--tab{min-height:400px}@media(max-width:1248px){.search-section{display:none}
+.site-menu .nav-link{margin-right:0}.search-lists .row .col.m4{width:50%}}@media(max-width:767px){.mobile--menu.sidenav{background-color:#04122d}
 .mobile--menu.sidenav li>a{color:white}.mobile--menu.sidenav li>a>i.material-icons{float:none;margin:0 0 0 10px;color:#fff}
 .mobile--menu.sidenav .mega--dropdown{position:relative}.mobile--menu.sidenav .mega--dropdown .mega--dropdown__child{background:#082152;position:relative;top:0}
 .mobile--menu.sidenav .mega--dropdown .mega--dropdown__child span#mega-dropdown_close{line-height:18px}
