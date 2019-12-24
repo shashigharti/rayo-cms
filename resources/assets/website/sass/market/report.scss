@@ -121,7 +121,7 @@ a {
 }
 
 .market__search--lists-item.card .card-content {
-  padding: 15px;
+      padding: 10px 7px;
 }
 
 a {
@@ -170,8 +170,10 @@ a {
 
 .market__search--lists-item {
     min-height: 144px;
+    box-shadow: 1px 1px 1px 1px #d6d1d1;
+    margin-bottom: 15px;
   p {
-    margin-bottom: 2px;
+    margin-bottom: 0px;
     font-size: 11px;
     color: #5a5959;
     font-weight:500;
@@ -265,25 +267,31 @@ a {
     background: $white;
   }
 }
-.market__search--lists--side-nav{
+.market__left-nav{
     padding: 20px 15px;
     box-shadow:0px 1px 1px 1px #b5b3b3;
     min-height:645px;
     margin-top:8px;
     margin-bottom:50px;
-  .market--search__lists--filter {
+    height: 655px;
+    overflow-y: scroll;
+  .market__price-range-item {
     margin-bottom:15px;    
-    .btn-checkbox,.market--search__lists--filter .btn-default:active:hover,.market--search__lists--filter .btn-default.active:hover{
-      color: #333 !important;
-      border: 1px solid #333 !important;
-      background: $white;
-    }
-    label {
+    a,{
+      color: #3a3838 !important;
+      box-shadow: 1px 1px 1px 0px #b9b5b5;
+      background: #fff;
+      display: block;
+      text-align: center;
+      border: 1px solid #e2e1e1;
+      padding: 4px;
+      font-weight: 600;
       font-size: 12px;
-      color: #585757;
-      width: 78%;
-      vertical-align: middle;
-      margin-bottom: 0px;
+      &:hover,&.active{
+        background:$theme_color;
+        color:$white !important;
+        border-color: #002349;
+      }
     }
   }
 }

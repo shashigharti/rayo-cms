@@ -1,7 +1,7 @@
 @set('ranges', $marketreport_helper->generatePriceRanges())
 <div class="row">
     <div class="col m2 s12">        
-        <div class="market__right-nav">
+        <div class="market__left-nav">
             @foreach($ranges as $key => $value)
                 <div class="market__price-range-item">
                     @if(isset($ranges[$key-1]))
@@ -31,7 +31,7 @@
             @endforeach
         </div>
     </div>
-    <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists col m10 s12">
+    <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists market--right__search col m10 s12">
         
     </div>
 </div>

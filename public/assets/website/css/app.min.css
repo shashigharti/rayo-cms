@@ -1833,11 +1833,12 @@ a.orange-line{border-bottom:1px solid #f7941d}.page--info{margin-bottom:60px}.ma
 .market--left__sort--btns a{font-size:13px;display:inline-block;margin-right:7px;text-align:center;width:44%;border:1px solid #ccc;border-radius:3px;padding:4px;color:#555;margin-top:10px;text-decoration:none}
 .market--left__sort--btns a:hover{background:#0091ff;color:#fff}.market--right__display--options div{font-size:13px;color:#555;display:inline-block;width:48%;margin-bottom:6px}
 .market--right__display--options input{vertical-align:middle;margin-right:8px}.market__btns--container a{text-decoration:none;color:#666;font-size:14px;display:inline-block;border:1px solid #777;padding:4px 10px;margin-right:10px}
-.market__search--lists-item.card .card-content{padding:15px}a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}
+.market__search--lists-item.card .card-content{padding:10px 7px}a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}
 a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
-.market__search--lists-item{min-height:144px}.market__search--lists-item p{margin-bottom:2px;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
+.market__search--lists-item{min-height:144px;-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px}
+.market__search--lists-item p{margin-bottom:0;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
 .market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
 .market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:655px;overflow-y:auto}
 .market__search--lists a{color:#333;text-decoration:none}.market__search--lists a:hover{color:#0b96e5}
@@ -1846,10 +1847,9 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .btn-default{color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;font-size:14px;line-height:1.42857;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options p{margin-bottom:18px}
 .market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__search--lists--side-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:8px;margin-bottom:50px}
-.market__search--lists--side-nav .market--search__lists--filter{margin-bottom:15px}
-.market__search--lists--side-nav .market--search__lists--filter .btn-checkbox,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default:active:hover,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default.active:hover{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__search--lists--side-nav .market--search__lists--filter label{font-size:12px;color:#585757;width:78%;vertical-align:middle;margin-bottom:0}
+.market__left-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:8px;margin-bottom:50px;height:655px;overflow-y:scroll}
+.market__left-nav .market__price-range-item{margin-bottom:15px}.market__left-nav .market__price-range-item a{color:#3a3838 !important;-webkit-box-shadow:1px 1px 1px 0 #b9b5b5;box-shadow:1px 1px 1px 0 #b9b5b5;background:#fff;display:block;text-align:center;border:1px solid #e2e1e1;padding:4px;font-weight:600;font-size:12px}
+.market__left-nav .market__price-range-item a:hover,.market__left-nav .market__price-range-item a.active{background:#002349;color:#fff !important;border-color:#002349}
 .show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists-item [type="checkbox"]:not(:checked),.market__search--lists-item [type="checkbox"]:checked{position:relative;opacity:1;pointer-events:initial;margin-top:2px}
 .market--left__sort--btns .active{border:1px solid #0091ff !important;background:#0091ff;color:#fff !important}
