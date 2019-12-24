@@ -46,7 +46,7 @@
                         <tbody>
                             @foreach ($data['insights'] as $insight)
                                 <tr class="text-center">
-                                    <th scope="text-left">{{ date('F Y', strtotime($insight->input_date)) }}</th>
+                                    <th>{{ DateTime::createFromFormat('!m', $insight->month)->format('F') . ", " . $insight->year }}</th>
                                     <td>{{ $insight->active_count }}</td>
                                     <td>{{ $insight->sold_count }}</td>
                                     <td>${{ number_format($insight->system_price_avg) }}</td>
