@@ -46,12 +46,12 @@
                         <tbody>
                             @foreach ($data['insights'] as $insight)
                                 <tr class="text-center">
-                                    <th scope="text-left">{{ $insight->active_count}}</th>
-                                    <td>{{ $insight->system_price}}</td>
-                                    <td>{{ $insight->system_price}}</td>
-                                    <td>{{ $insight->system_price}}</td>
-                                    <td>{{ $insight->system_price}}</td>
-                                    <td>{{ $insight->system_price}}</td>
+                                    <th>{{ DateTime::createFromFormat('!m', $insight->month)->format('F') . ", " . $insight->year }}</th>
+                                    <td>{{ $insight->active_count }}</td>
+                                    <td>{{ $insight->sold_count }}</td>
+                                    <td>${{ number_format($insight->system_price_avg) }}</td>
+                                    <td>{{ $insight->days_on_mls_avg }}</td>
+                                    <td>{{ $insight->percent }}%</td>
                                 </tr>
                             @endforeach
                         </tbody>
