@@ -1847,7 +1847,7 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .btn-default{color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;font-size:14px;line-height:1.42857;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options p{margin-bottom:18px}
 .market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__left-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:8px;margin-bottom:50px;height:655px;overflow-y:scroll}
+.market__left-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:0;margin-bottom:50px;height:655px;overflow-y:scroll}
 .market__left-nav .market__price-range-item{margin-bottom:15px}.market__left-nav .market__price-range-item a{color:#3a3838 !important;-webkit-box-shadow:1px 1px 1px 0 #b9b5b5;box-shadow:1px 1px 1px 0 #b9b5b5;background:#fff;display:block;text-align:center;border:1px solid #e2e1e1;padding:4px;font-weight:600;font-size:12px}
 .market__left-nav .market__price-range-item a:hover,.market__left-nav .market__price-range-item a.active{background:#002349;color:#fff !important;border-color:#002349}
 .show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
