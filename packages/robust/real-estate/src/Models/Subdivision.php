@@ -41,12 +41,12 @@ class Subdivision extends BaseModel
         return $this->hasOne('Robust\RealEstate\Models\City');
     }
 
-    /**
-     * Get the listings
+     /**
+     * Listing  associated with this subdivision
      */
     public function listings()
     {
-        return $this->hasMany(Listing::class, 'subdivision', 'name');
+        return $this->hasMany('Robust\RealEstate\Models\Listing');
     }
 
     /**
