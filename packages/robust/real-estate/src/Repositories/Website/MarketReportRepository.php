@@ -63,8 +63,8 @@ class MarketReportRepository
     public function __construct(MarketReport $model)
     {
         $this->model = $model;
-    }
-
+    }   
+    
     /**
      * Queries report table and listings
      *
@@ -111,6 +111,5 @@ class MarketReportRepository
         }
 
         return $response;
-
     }
 }

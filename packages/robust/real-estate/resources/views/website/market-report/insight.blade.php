@@ -16,18 +16,17 @@
     </header>
 @endsection
 @section('body_section')
-    <section class="market market-insight main-content" data-page='{{$page_type}}'>
-
-        @if(isset($data['records']))
+    <section class="market market-insight main-content" data-page='{{$page_type}}'>        
             <div class="container-fluid">
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
-                @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-                @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
-                [
-                    'records' => $data['records']??[]
-                ])
-            </div>
-        @endif
+                @if(isset($data['records']))
+                    @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
+                    @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
+                    [
+                        'records' => $data['records']??[]
+                    ])
+                @endif
+            </div>       
         <div class="container-fluid">
             <div class="market-insight__stat">
                 <h4> Monthly Summary Report </h4>
@@ -35,7 +34,7 @@
                     <table class="table striped">
                         <thead>
                             <tr>
-                                <th>SN</th>
+                                <th>Year</th>
                                 <th class="text-center">#Props Active</th>
                                 <th class="text-center">#Props Sold</th>
                                 <th class="text-center">Average Price</th>
@@ -44,16 +43,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr class="text-center">
-                                <th scope="text-left">5</th>
-                                <td>10</td>
-                                <td>11</td>
-                                <td>12</td>
-                                <td>13</td>
-                                <td>14</td>
-                            </tr>
                             @foreach ($data['insights'] as $insight)
-
                                 <tr class="text-center">
                                     <th scope="text-left">{{ $insight->active_count}}</th>
                                     <td>{{ $insight->system_price}}</td>

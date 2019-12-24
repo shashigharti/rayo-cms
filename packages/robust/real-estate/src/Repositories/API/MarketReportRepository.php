@@ -82,7 +82,7 @@ class MarketReportRepository
         }  
         $this->model = $qBuilder;
         return $this;
-    }
+    }    
 
      /**
      * @return QueryBuilder this
