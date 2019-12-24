@@ -48,10 +48,11 @@ class MarketReportRepository
      * @var const INSIGHTS
      */
     protected const INSIGHTS = [
+        "SUM( IF(status = 'Closed', 1, 0)) AS sold_count",
         "SUM( IF(status = 'Active', 1, 0)) AS active_count",
         "AVG(system_price) system_price_avg",
         "AVG(days_on_mls) days_on_mls_avg",
-        "AVG(sold_price) sold_price_avg",
+        'ROUND(AVG(sold_price) / AVG(system_price) * 100, 2) as percent',
         "YEAR(input_date) year",
         "MONTH(input_date) month"
     ];
