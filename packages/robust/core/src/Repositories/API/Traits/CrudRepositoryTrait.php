@@ -9,14 +9,6 @@ trait CrudRepositoryTrait
 {
 
     /**
-     * @return mixed
-     */
-    public function getModel()
-    {
-        return $this->model;
-    }
-
-    /**
      * Create a new row
      *
      * @param  array $data
@@ -29,6 +21,8 @@ trait CrudRepositoryTrait
 
 
     /**
+     * Update a row
+     * 
      * @param $id
      * @param $data
      * @return mixed
@@ -47,23 +41,5 @@ trait CrudRepositoryTrait
     public function delete($id)
     {
         return $this->model->destroy($id);
-    }
-
-    /**
-     * @param $columns
-     * @return mixed
-     */
-    public function get($columns = [])
-    {
-        if ($columns) {
-            $this->model->get($columns);
-        }
-        return $this->model->get();
-    }
-
-    public function updateOrCreate($conditions,$data)
-    {
-        $this->model = $this->model->updateOrCreate($conditions,$data);
-        return $this;
     }
 }

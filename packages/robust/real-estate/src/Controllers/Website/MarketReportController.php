@@ -34,7 +34,11 @@ class MarketReportController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request, $location_type){
+        $records = $this->model->getReports($location_type)
+        //->wherePriceBetween(explode('-', $data['price']))
+        ->get();
         return view('real-estate::website.market-report.index', [
+            'records' => $records,
             'page_content' => 'market-report',
             'page_type' => $location_type]
         );

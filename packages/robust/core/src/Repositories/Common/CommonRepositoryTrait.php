@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Core\Repositories\API\Traits;
+namespace Robust\Core\Repositories\Common\Traits;
 
 /**
  * Class CommonRepositoryTrait
@@ -27,5 +27,13 @@ trait CommonRepositoryTrait
             $this->model->get($columns);
         }
         return $this->model->get();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getModel()
+    {
+        return $this->model;
     }
 }

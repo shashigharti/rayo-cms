@@ -2,7 +2,7 @@
 namespace Robust\Banners\Repositories;
 
 use Robust\Banners\Models\Banner;
-use Robust\Core\Repositories\Website\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 

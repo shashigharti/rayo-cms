@@ -3,9 +3,9 @@
 namespace Robust\Core\Repositories\Api;
 
 use Robust\Core\Models\Setting;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 
 
 /**

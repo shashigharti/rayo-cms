@@ -3,9 +3,9 @@ namespace Robust\Menus\Repositories\Admin;
 
 
 use Robust\Menus\Models\Menu;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 
 
 /**
