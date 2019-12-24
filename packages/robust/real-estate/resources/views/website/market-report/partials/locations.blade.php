@@ -7,7 +7,7 @@
                     <div class="market__price-range-item">
                         @if(isset($ranges[$key-1]))
                             <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}" 
-                                href="{{ route(" api.market.reports ", 
+                                href="{{ route("api.market.reports", 
                                                 [
                                                     'location_type' => $page_type,
                                                     'price' => "{$ranges[$key-1]}-{$value} "
@@ -18,7 +18,7 @@
                             </a> 
                         @else
                             <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}" 
-                                href="{{ route(" api.market.reports ", 
+                                href="{{ route("api.market.reports", 
                                                 [
                                                     'location_type' => $page_type,
                                                     'price' => "{$settings[ 'price-range'][ 'min']}-{$value} "

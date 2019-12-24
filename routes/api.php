@@ -12,6 +12,6 @@ Route::group(['as' => 'admin.', 'middleware' => ['auth']], function () {
     Route::post('details', 'API\UserController@details');
 });
 
-Route::get('/media/{id}','HomeController@getThumbnail');
-Route::get('/images','HomeController@getMedia');
-Route::post('/media/','HomeController@uploadMedia');
+// Route::get('/media/{id}','HomeController@getThumbnail');
+// Route::get('/images','HomeController@getMedia');
+// Route::post('/media/','HomeController@uploadMedia');
