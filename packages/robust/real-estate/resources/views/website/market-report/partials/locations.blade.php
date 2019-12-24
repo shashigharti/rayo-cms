@@ -66,7 +66,10 @@
                 @endforeach            
         </div>
     @elseif(($page_content == 'market-report') )
-        <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists market--right__search col m10 s12">
+        <div id="market__search--lists" data-page-type="{{$page_type}}" 
+            data-insight-url="{{url('market/reports/in')}}" 
+            class="market__search--lists market--right__search col m10 s12"
+        >
         </div>
     @endif
 </div>

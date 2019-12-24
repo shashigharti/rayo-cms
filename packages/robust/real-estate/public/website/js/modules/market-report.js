@@ -191,16 +191,18 @@
 
     function renderTemplate(locations) {
         let searchContainer = $('#market__search--lists'), template = ``;
-        let location_type = $('#market__search--lists').data('page-type');
+        let location_type = $('#market__search--lists').data('page-type'),
+            base_insight_url = searchContainer.data('insight-url');
+
 
         locations.forEach((location) => {
             template += `
                         <div class="col m2 s6">
-                            <div class="market__search--lists-item card">
+                            <div class="market__search--lists-item">
                                 <div class="card-content">
                                     <p data-id="${location.reportable_id}" data-type="Title"
                                                     data-value="${location.slug}"
-                                                    data-url="http://www.rws-glenn.local/market/reports/in/${location_type}/${location.slug}"
+                                                    data-url="${base_insight_url}/${location_type}/${location.slug}"
                                                     data-class="">
                                                     <input type="checkbox" value="${location.name}">
                                                     <label><a href="#">${location.name}</a></label>
@@ -224,10 +226,6 @@
         });
         searchContainer.html(template);
         searchContainer.trigger("loaded");
-    }
-
-    function initEventHandlersAfterDataLoading() {
-
     }
 
     function initEventHandlers() {
@@ -284,6 +282,7 @@
         initEventHandlers();
 
         searchContainer.on('loaded', function () {
+            console.log('loaded');
             let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
 
             // Read all the initial locations from page and initialize locations array list
