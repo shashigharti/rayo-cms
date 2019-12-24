@@ -33,7 +33,8 @@
             </div>
         </div>
     @endif
-    @if(($page_content == 'insight') && (count($data['records']) > 0))
+    {{-- @if(($page_content == 'insight') && (count($data['records']) > 0)) --}}
+    @if($page_content == 'insight')
         <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists market--right__search col m10 s12">            
                 @foreach($data['records'] as $report)
                     <div class="col m2 s6">
