@@ -169,9 +169,10 @@ a {
 }
 
 .market__search--lists-item {
-    min-height: 144px;
+    min-height: 131px;
     box-shadow: 1px 1px 1px 1px #d6d1d1;
     margin-bottom: 15px;
+    background: #f9f7f7;
   p {
     margin-bottom: 0px;
     font-size: 11px;
@@ -372,4 +373,8 @@ a {
     font-size: 20px;
     margin-bottom: 20px;
     font-weight: 500;
+}
+.market__search--lists-item--single{
+  width:20%;
+  display:inline-block;
 }

@@ -69,7 +69,7 @@
 
         render() {
             return `
-            <div class="col m2">
+            <div class="col market__search--lists-item--single">
             <div class="market__search--lists-item card">
                 <div class="card-content">
             ${this.locationItems.map((locationItem) => {
@@ -197,7 +197,7 @@
 
         locations.forEach((location) => {
             template += `
-                        <div class="col m2 s6">
+                        <div class="col market__search--lists-item--single">
                             <div class="market__search--lists-item">
                                 <div class="card-content">
                                     <p data-id="${location.reportable_id}" data-type="Title"
