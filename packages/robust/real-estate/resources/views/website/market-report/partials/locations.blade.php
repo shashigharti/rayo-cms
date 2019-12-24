@@ -29,7 +29,7 @@
             </div>
         </div>
     @endif 
-    @if($page_content == 'market-report')
+    @if($page_content == 'insight')
         <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists market--right__search col m10 s12">
         
         </div>
