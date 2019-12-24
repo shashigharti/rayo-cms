@@ -1849,8 +1849,8 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .btn-default{color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;font-size:14px;line-height:1.42857;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options p{margin-bottom:18px}
 .market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__left-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:0;margin-bottom:50px;height:655px;overflow-y:scroll}
-.market__left-nav .market__price-range-item{margin-bottom:15px}.market__left-nav .market__price-range-item a{color:#3a3838 !important;-webkit-box-shadow:1px 1px 1px 0 #b9b5b5;box-shadow:1px 1px 1px 0 #b9b5b5;background:#fff;display:block;text-align:center;border:1px solid #e2e1e1;padding:4px;font-weight:600;font-size:12px}
+.market__left-nav{padding:10px 8px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:0;margin-bottom:50px;height:655px;overflow-y:auto}
+.market__left-nav .market__price-range-item{margin-bottom:10px}.market__left-nav .market__price-range-item a{color:#3a3838 !important;-webkit-box-shadow:1px 1px 1px 0 #b9b5b5;box-shadow:1px 1px 1px 0 #b9b5b5;background:#fff;display:block;text-align:center;border:1px solid #e2e1e1;padding:6px;font-weight:600;font-size:12px}
 .market__left-nav .market__price-range-item a:hover,.market__left-nav .market__price-range-item a.active{background:#002349;color:#fff !important;border-color:#002349}
 .show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists-item [type="checkbox"]:not(:checked),.market__search--lists-item [type="checkbox"]:checked{position:relative;opacity:1;pointer-events:initial;margin-top:2px}
@@ -1862,8 +1862,9 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .market--right__display--radio [type="radio"]:not(:checked)+span,.market--right__display--radio [type="radio"]:checked+span{font-size:12px;color:#555;padding-left:25px}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:after{background-color:#002349}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:before,.market--right__display--radio [type="radio"].with-gap:checked+span:after{border:2px solid #002349}
-.map-section .row{margin-right:0;margin-left:0}.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}
-.market-survey__right-container h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:0;margin-bottom:0}
+.market__btns--container{display:inline-block}.market__btns .btn--label{font-weight:600;margin-right:5px}
+.market-insight h5{font-size:20px;margin-bottom:20px;font-weight:500}.map-section .row{margin-right:0;margin-left:0}
+.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}.market-survey__right-container h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:0;margin-bottom:0}
 .market-survey__right-container--tabs .tabs{display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#fff;text-align:center;overflow-x:hidden;overflow-y:hidden;font-size:16px;border-bottom:1px solid #e2e2e2}
 .market-survey__right-container--tabs .tabs li{width:50%;line-height:53px;height:53px}
 .market-survey__right-container--tabs .tabs li a{color:#333;display:inline;text-decoration:none}
