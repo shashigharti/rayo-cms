@@ -3,7 +3,7 @@
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @inject('marketreport_helper','Robust\RealEstate\Helpers\MarketReportHelper')
 
-@set('locations',$location_helper->getLocations(['cities','counties','zips']))
+@set('locations', $location_helper->getLocations(['cities','counties','zips']))
 @set('settings', config('rws.market-report'))
 @section('header')
     <header class="sub-header">

@@ -71,11 +71,11 @@
             return `
             <div class="col market__search--lists-item--single">
             <div class="market__search--lists-item card">
-                <div class="card-content">
+            <div class="card-content">
             ${this.locationItems.map((locationItem) => {
                 return locationItem.render(this._selectedDisplayOptions);
             }).join('')}
-                </div>
+            </div>
             </div>
             </div>
         `;
@@ -205,7 +205,7 @@
                                                     data-url="${base_insight_url}/${location_type}/${location.slug}"
                                                     data-class="">
                                                     <input type="checkbox" value="${location.name}">
-                                                    <label><a href="#">${location.name}</a></label>
+                                                    <label><a href="${base_insight_url}/${location_type}/${location.slug}">${location.name}</a></label>
                                     </p>
                                     <p data-type="Active" data-value="${location.total_listings_active}" data-class="fa fa-bookmark">
                                         <span><i class="material-icons">bookmark</i>Active : ${location.total_listings_active}</span>
@@ -251,11 +251,6 @@
             });
         });
 
-        // Add event listeners on location selection
-        $('.market-report__type').on('click', function (e) {
-            window.location = $(this).data("href");
-        });
-
         // Add event listeners on price selection
         $('.market__price-range-item a').on('click', function (e) {
             e.preventDefault();
@@ -274,7 +269,12 @@
         let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
         let searchContainer = $('#market__search--lists');
 
-        if (!isMarketReport) {
+        // Add event listeners on location selection
+        $('.market-report__type').on('click', function (e) {
+            window.location = $(this).data("href");
+        });
+
+        if (!isMarketReport || (searchContainer.length <= 0)) {
             return;
         }
 
@@ -282,7 +282,6 @@
         initEventHandlers();
 
         searchContainer.on('loaded', function () {
-            console.log('loaded');
             let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
 
             // Read all the initial locations from page and initialize locations array list
