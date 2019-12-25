@@ -24,7 +24,8 @@ trait MarketReportTrait
             ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type]);
 
         if(isset($data['by'])){ 
-            
+
+            // Get ids of locations
             $ids = $this->location
             ->select('locationable_id')
             ->where('locationable_type', IMarketReport::REPORTABLE_MAP[$data['by']])
@@ -34,13 +35,17 @@ trait MarketReportTrait
 
             $sub_location_type = $data['by'];
             $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
+            
+            // Additional condition to relation table(morphological)
             $qBuilder = $qBuilder->whereHasMorph(
                 'reportable',
                 [$reportable_type],
-                function (Builder $query) use($data) {
-                    $query->whereIn(IMarketReport::PARAM_MAP[$data['by']], explode(',', $data['ids']));
+                function (Builder $query) use($data, $ids) {
+                    $query->whereIn(IMarketReport::PARAM_MAP[$data['by']], $ids);
                 });
+
         }  
+
         $this->model = $qBuilder;
         return $this;
     }    
