@@ -24,8 +24,10 @@
                         <h5> {{ $title }} Subdivisions </h5>
                     </div>
                 </div>
-                @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-                @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))
+                @if($sub_location_type != '')
+                    @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))                
+                    @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))
+                @endif
             </div>       
         <div class="container-fluid">
             <div class="row">

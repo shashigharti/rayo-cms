@@ -82,7 +82,7 @@ class CreateMarketReport extends Command
                 'county' => ['county_id' => (new County())],
                 'zip' => ['zip_id' => (new Zip())],
                 'subdivision' =>  ['subdivision_id' => (new Subdivision())],
-                'school_district' => ['district_id' => (new SchoolDistrict())],
+                'school_district' => ['school_district_id' => (new SchoolDistrict())],
                 'high_school' =>  ['high_school_id' => (new HighSchool())],
                 'area' =>  ['area_id' => (new Area())]
             ]);
@@ -151,7 +151,7 @@ class CreateMarketReport extends Command
             // Delete records for given location type
             DB::table('real_estate_market_reports')->where('reportable_type', get_class($collection->first()))->delete();
     
-
+            
             if (get_class($collection->first()) == 'Robust\RealEstate\Models\Subdivision') {
                 $this->subdivisionReport($collection, $location);
             }else{
@@ -258,21 +258,21 @@ class CreateMarketReport extends Command
     private function subdivisionReport($collection, $location){
         $active = $this->status['active'];
         $sold = $this->status['sold'];        
-            
+        
         $part_count = floor(count($collection) / 25);
         $chunked = $collection->chunk($part_count);
 
         // It will be remove and refactored; Temporary fix
         $marketHelper = new MarketReportHelper();
-
+        
         foreach ($chunked as $key => $chunked_collection) {
 
             if(!$this->byGroupName ){                
                 $chunked_collection->load(['listings' => function ($relation) {                    
-                    $relation->select(['status', 'system_price', 'days_on_mls', 'city_id', 'county_id', 'zip_id', 'subdivision_id', 'district_id', 'input_date']);
+                    $relation->select(['status', 'system_price', 'days_on_mls', 'city_id', 'county_id', 'zip_id', 'subdivision_id', 'school_district_id', 'input_date']);
                 }]);             
             } 
-            foreach ($chunked_collection as $model) {
+            foreach ($chunked_collection as $model) {                
                 $listingArr = $model->listings()
                 ->select( \DB::raw(implode(',', $this->fields)) )
                 ->where( $this->settings["listings-price"]["field-to-compare"], $this->settings["listings-price"]["condition"], $this->settings["listings-price"]["min"] )

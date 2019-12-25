@@ -20,7 +20,7 @@ class CreateRealEstateLocations extends Migration
             $table->boolean('status')->default(1);
             $table->integer('active_count')->default(0);
             $table->integer('sold_count')->default(0);
-            $table->integer('location_id')->unsigned();
+            $table->integer('locationable_id')->unsigned();
             $table->string('locationable_type');
             $table->timestamps();
         });

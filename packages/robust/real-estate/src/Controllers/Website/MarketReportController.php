@@ -34,11 +34,14 @@ class MarketReportController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index(Request $request, $location_type){
-        $records = $this->model->getReports($location_type)
+        $data = $request->all();
+        $records = $this->model->getReports($location_type, $data)
         ->get();
         return view('real-estate::website.market-report.index', [
             'records' => $records,
             'page_content' => 'market-report',
+            'sub_location_type' => count($data) > 0 ? $location_type: '',
+            'title' => '',
             'page_type' => $location_type]
         );
     }
@@ -50,7 +53,7 @@ class MarketReportController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getInsights(Request $request, $location_type, $slug){
+    public function getInsights(Request $request, $location_type, $slug){        
         $response = $this->model->getInsights($location_type, $slug);
         return view('real-estate::website.market-report.insight', [
             'data' => $response,

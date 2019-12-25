@@ -6,6 +6,7 @@ use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 use Robust\RealEstate\Repositories\Common\Traits\MarketReportTrait;
 use Robust\RealEstate\Repositories\API\MarketReportRepository;
+use Robust\RealEstate\Models\Location;
 
 /**
  * Class MarketReportRepository
@@ -23,10 +24,12 @@ class MarketReportRepository implements IMarketReport
     /**
      * MarketReportRepository constructor.
      * @param MarketReport $model
+     * @param Location $location
      */
-    public function __construct(MarketReport $model)
+    public function __construct(MarketReport $model, Location $location)
     {
         $this->model = $model;
-    }
+        $this->location = $location;
+    }   
 
 }

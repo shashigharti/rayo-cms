@@ -22,7 +22,7 @@
     <div class="market__btns col s12 mt-40">
         <span class="btn--label">Checkmark areas to :</span>
         <div class="market__btns--container">
-            @if(!isset($sub_location_type) || $sub_location_type != 'subdivisions')
+            @if((!isset($sub_location_type)) || ($sub_location_type != 'subdivisions'))
                 <a id="market__btns--subdivisions" 
                     class="market__btns btn-orange" href="" 
                     data-base-url="{{route('market.reports', 'subdivisions')}}"

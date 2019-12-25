@@ -48,8 +48,9 @@
                 <div class="col market__search--lists-item--single">
                     <div class="market__search--lists-item card">
                         <div class="card-content">
-                            <p data-id="{{$report->reportable->id}}" 
-                                data-type="Title" data-value="{{$report->reportable->name}}" 
+                            <p data-id="{{$report->reportable->slug}}" 
+                                data-type="Title" 
+                                data-value="{{$report->reportable->name}}" 
                                 data-url="{{route('market.reports.in', 
                                 [
                                     $sub_location_type ?? $page_type, 

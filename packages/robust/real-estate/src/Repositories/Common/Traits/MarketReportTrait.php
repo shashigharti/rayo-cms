@@ -11,6 +11,7 @@ use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
  */
 trait MarketReportTrait
 {
+    
     /**
      * Queries report table and return locations
      *
@@ -18,18 +19,26 @@ trait MarketReportTrait
      * @param string|array $data
      * @return mixed
      */
-    public function getReports($location_type){
+    public function getReports($location_type, $data = []){
         $qBuilder = $this->model
             ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type]);
 
-        if(isset($data['type'])){
-            $sub_location_type = $data['type'];
+        if(isset($data['by'])){ 
+            
+            $ids = $this->location
+            ->select('locationable_id')
+            ->where('locationable_type', IMarketReport::REPORTABLE_MAP[$data['by']])
+            //->whereIn('slug', $data['ids'])
+            ->get();
+            dd($ids);
+            // dd($data['ids'], IMarketReport::REPORTABLE_MAP[$data['by']]);
+            $sub_location_type = $data['by'];
             $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
             $qBuilder = $qBuilder->whereHasMorph(
                 'reportable',
                 [$reportable_type],
                 function (Builder $query) use($data) {
-                    $query->whereIn(IMarketReport::PARAM_MAP[$data['type']], explode(',', $data['ids']));
+                    $query->whereIn(IMarketReport::PARAM_MAP[$data['by']], explode(',', $data['ids']));
                 });
         }  
         $this->model = $qBuilder;

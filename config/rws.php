@@ -29,7 +29,11 @@ return [
         ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days']
     ],
     'data' => [
-        'listings-price' => ['min' => 10000, 'condition' => '>=', 'field-to-compare' => 'system_price'],
+        'listings-price' => [
+            'min' => 10000, 
+            'condition' => '>=', 
+            'field-to-compare' => 'system_price'
+        ],
         'timeframe' => "- 365 day"
     ],
     // third party server field mapping with listing properties

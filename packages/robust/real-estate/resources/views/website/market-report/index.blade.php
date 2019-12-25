@@ -19,6 +19,13 @@
     <section class="market main-content" data-page='{{$page_type}}'>
         <div class="container-fluid">
             @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
+            @if($sub_location_type != '')
+                <div class="row">
+                    <div class="col s12">
+                        <h5> {{ $title }} Subdivisions </h5>
+                    </div>
+                </div>
+            @endif
             @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
             @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))  
         </div>

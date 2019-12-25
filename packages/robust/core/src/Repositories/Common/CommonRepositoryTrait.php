@@ -36,4 +36,15 @@ trait CommonRepositoryTrait
     {
         return $this->model;
     }
+
+    /**
+     * @param $columns
+     * @return mixed
+     */
+    public function limit($default = 100)
+    {
+        $this->model = $this->model->limit($default);
+        return $this;
+    }
+
 }

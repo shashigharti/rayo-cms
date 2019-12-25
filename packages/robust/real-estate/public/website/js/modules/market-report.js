@@ -162,13 +162,9 @@
                         document.getElementById("market__btns--compare").getAttribute('data-base-url'),
                         document.getElementById("market__btns--subdivisions")
                     ],
+                    subdivision_btn_url = null,
                     map_btn_url = document.getElementById("market__btns--map").getAttribute('data-base-url');
 
-                if (btn_subdivision) {
-                    subdivision_btn_url = subdivision_btn_url.getAttribute('data-base-url');
-                    subdivision_btn_url = subdivision_btn_url + `?type=${type}&ids=${ids}`;
-                    document.getElementById("market__btns--subdivisions").setAttribute('href', subdivision_btn_url);
-                }
 
                 // Add/Remove Tag
                 if (this.checked) {
@@ -183,10 +179,16 @@
 
                 // Generate URL
                 ids = tags.map((tag) => tag._id);
-                compare_btn_url = compare_btn_url + `?type=${type}&ids=${ids}`;
-                map_btn_url = map_btn_url + `?type=${type}&ids=${ids}`;
+                compare_btn_url = compare_btn_url + `?by=${type}&ids=${ids}`;
+                map_btn_url = map_btn_url + `?by=${type}&ids=${ids}`;
                 document.getElementById("market__btns--compare").setAttribute('href', compare_btn_url);
                 document.getElementById("market__btns--map").setAttribute('href', map_btn_url);
+
+                if (btn_subdivision) {
+                    subdivision_btn_url = document.getElementById("market__btns--subdivisions").getAttribute('data-base-url');
+                    subdivision_btn_url = subdivision_btn_url + `?by=${type}&ids=${ids}`;
+                    document.getElementById("market__btns--subdivisions").setAttribute('href', subdivision_btn_url);
+                }
             });
 
         });
@@ -209,8 +211,8 @@
                         <div class="col market__search--lists-item--single">
                             <div class="market__search--lists-item">
                                 <div class="card-content">
-                                    <p data-id="${location.reportable_id}" data-type="Title"
-                                                    data-value="${location.slug}"
+                                    <p data-id="${location.slug}" data-type="Title"
+                                                    data-value="${location.name}"
                                                     data-url="${base_insight_url}/${location_type}/${location.slug}"
                                                     data-class="">
                                                     <input type="checkbox" value="${location.name}">
