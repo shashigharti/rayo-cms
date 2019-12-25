@@ -30,6 +30,16 @@ Interface IMarketReport {
             'sub_location_type'=>'subdivisions',
             'field' => 'city_id',
             'reportable_type' => 'Robust\RealEstate\Models\Subdivision'
+        ],
+        'zips' => [
+            'sub_location_type'=>'subdivisions',
+            'field' => 'zip_id',
+            'reportable_type' => 'Robust\RealEstate\Models\Subdivision'
+        ],
+        'school_districts' => [
+            'sub_location_type'=>'subdivisions',
+            'field' => 'school_district_id',
+            'reportable_type' => 'Robust\RealEstate\Models\Subdivision'
         ]
     ];    
 
