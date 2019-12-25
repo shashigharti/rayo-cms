@@ -72,4 +72,19 @@ class MarketReportController extends Controller
             'sub_location_type' => $response['sub_location_type'] ?? null
         ]);
     }
+
+    /**
+     * @param Request $request
+     * @param $location_type
+     * @param $slug
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function compareLocations(Request $request){     
+        $data = $request->all();   
+        $response = $this->model->compareLocations($data);
+        return view('real-estate::website.market-report.compare', [
+            'records' => $response,
+            'page_type' => $data['by']
+        ]);
+    }
 }

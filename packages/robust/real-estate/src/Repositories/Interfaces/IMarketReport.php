@@ -57,4 +57,18 @@ Interface IMarketReport {
         "YEAR(input_date) year",
         "MONTH(input_date) month"
     ];
+
+    /**
+     * @var const INSIGHTS
+     */
+    public const INSIGHTS_COMPARE = [
+        "SUM( IF(status = 'Closed', 1, 0)) AS sold_count",
+        "SUM( IF(status = 'Active', 1, 0)) AS active_count",
+        "AVG(system_price) system_price_avg",
+        "ROUND(AVG(days_on_mls), 0) as days_on_mls_avg",
+        'ROUND(AVG(sold_price) / AVG(system_price) * 100, 2) as percent',
+        "AVG(sold_price) sold_price_avg",
+        "AVG(system_price) system_price_avg",
+        "real_estate_market_reports.name"
+    ];
 }

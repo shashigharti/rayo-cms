@@ -135,5 +135,27 @@ trait MarketReportTrait
         $this->model = $qBuilder;
         return $this;
     }
+
+
+     /**
+     * Compare locations
+     *
+     * @return mixed
+     */
+    public function compareLocations($data){
+        $response = [];
+        $location_type = $data['by'];
+        $reportable_type = IMarketReport::REPORTABLE_MAP[$location_type];
+        
+        $response = $this->model
+            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS_COMPARE)))
+            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type])
+            ->whereIn('real_estate_market_reports.slug', explode(",", $data['ids']))         
+            ->leftJoin('real_estate_listings', "real_estate_market_reports.reportable_id", '=', "real_estate_listings.".IMarketReport::PARAM_MAP[$data['by']])
+            ->groupBy('real_estate_market_reports.name')
+            ->get();
+
+        return $response;
+    }
   
 }
