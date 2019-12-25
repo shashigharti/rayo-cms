@@ -19,18 +19,13 @@
     <section class="market market-insight main-content" data-page='{{$page_type}}'>        
             <div class="container-fluid">
                 @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
-                @if(isset($data['records']) && (count($data['records']) > 0))
-                    <div class="row">
-                        <div class="col s12">
-                            <h5> {{ $title }} Subdivisions </h5>
-                        </div>
+                <div class="row">
+                    <div class="col s12">
+                        <h5> {{ $title }} Subdivisions </h5>
                     </div>
-                    @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
-                    @include(Site::templateResolver('real-estate::website.market-report.partials.locations'),
-                    [
-                        'records' => $data['records']??[]
-                    ])
-                @endif
+                </div>
+                @include(Site::templateResolver('real-estate::website.market-report.partials.tool-box'))
+                @include(Site::templateResolver('real-estate::website.market-report.partials.locations'))
             </div>       
         <div class="container-fluid">
             <div class="row">

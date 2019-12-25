@@ -11,6 +11,6 @@ function () {
     Route::get('reports/in/{location_type}/{slug}', [
         'name' =>'Market Report Insight',
         'as' => 'reports.in',
-        'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsight'
+        'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsights'
     ]);
 });

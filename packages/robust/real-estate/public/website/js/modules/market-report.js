@@ -283,7 +283,6 @@
         initEventHandlers();
 
         searchContainer.on('loaded', function () {
-            console.log('loaded');
             let mr_locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item")];
 
             // Read all the initial locations from page and initialize locations array list

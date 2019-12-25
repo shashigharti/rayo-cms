@@ -7,22 +7,24 @@
                     <div class="market__price-range-item">
                         @if(isset($ranges[$key-1]))
                             <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}" 
-                                href="{{ route("api.market.reports", 
-                                                [
-                                                    'location_type' => $page_type,
-                                                    'price' => "{$ranges[$key-1]}-{$value} "
-                                                ]) 
+                                href="{{ route("api.market.reports.in.subdivisions", 
+                                            [
+                                                'location_type' => $page_type,
+                                                'slug' => $location_name_slug,
+                                                'price' => "{$ranges[$key-1]}-{$value} "
+                                            ]) 
                                 }}"
                             >
                                 ${{ price_format($ranges[$key-1]) }} - ${{ price_format($value) }}
                             </a> 
                         @else
                             <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}" 
-                                href="{{ route("api.market.reports", 
-                                                [
-                                                    'location_type' => $page_type,
-                                                    'price' => "{$settings[ 'price-range'][ 'min']}-{$value} "
-                                                ]) 
+                                href="{{ route("api.market.reports.in.subdivisions", 
+                                            [
+                                                'location_type' => $page_type,
+                                                'slug' => $location_name_slug,
+                                                'price' => "{$settings[ 'price-range'][ 'min']}-{$value} "
+                                            ]) 
                                 }}"
                             >
                                 ${{ price_format($settings['price-range']['min']) }} - ${{ price_format($value) }}

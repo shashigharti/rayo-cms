@@ -27,18 +27,17 @@ class MarketReportController extends Controller
         $this->model = $model;
     }
 
-
     /**
      * @param Request $request
      * @param $location_type
+     * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getReports(Request $request, $location_type){
+    public function getSubdivisions(Request $request, $location_type, $slug){
         $data = $request->all();
-        $records = $this->model->getReports($location_type)
-        ->wherePriceBetween(explode('-', $data['price']))
-        ->get();
-
+        $records = $this->model->getSubdivisions($location_type, $slug)
+            ->wherePriceBetween(explode('-', $data['price']))
+            ->get();
         return response()->json($records);
     }
 }
