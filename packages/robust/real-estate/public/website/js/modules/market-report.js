@@ -201,9 +201,10 @@
     }
 
     function renderTemplate(locations) {
-        let searchContainer = $('#market__search--lists'), template = ``;
-        let location_type = $('#market__search--lists').data('page-type'),
-            base_insight_url = searchContainer.data('insight-url');
+        let searchContainer = $('#market__search--lists'),
+            location_type = $('#market__search--lists').data('page-type'),
+            base_insight_url = searchContainer.data('insight-url'),
+            template = `No subdivisions found!`;
 
 
         locations.forEach((location) => {
@@ -265,6 +266,8 @@
         // Add event listeners on price selection
         $('.market__price-range-item a').on('click', function (e) {
             e.preventDefault();
+            $('.market__price-range-item a').removeClass("active");
+            $(this).toggleClass("active");
 
             // Get data from the server based on query params
             $.ajax({
@@ -308,5 +311,6 @@
 
         // Trigger loaded event for search list container for market report page only
         searchContainer.trigger("loaded");
+
     });
 }(jQuery, FRW, window, document));
