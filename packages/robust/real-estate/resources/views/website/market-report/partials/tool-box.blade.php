@@ -33,13 +33,13 @@
 
             <a id="market__btns--compare"                 
                 class="market__btns btn-green"
-                data-base-url="{{route('market.reports', $page_type)}}" 
+                data-base-url="{{route('market.reports.compare')}}" 
             >
                 Compare Selected Areas
             </a>
             <a  id="market__btns--map"
                 class="market__btns btn-blue"
-                data-base-url="{{route('market.reports', $page_type)}}"
+                data-base-url="{{route('market.reports.compare', $page_type)}}"
             >
                 Show On Map
             </a>

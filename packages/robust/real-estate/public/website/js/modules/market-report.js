@@ -147,6 +147,11 @@
             return location.render();
         }).join('');
 
+        // Display message if the locations container is empty
+        if (mrLocations.length <= 0) {
+            document.getElementById('market__search--lists').innerHTML = 'No records found!';
+        }
+
         // Add event listeners for locations
         let locations = [...document.querySelectorAll("#market__search--lists .market__search--lists-item input")];
         locations.forEach((elem) => {
@@ -204,7 +209,7 @@
         let searchContainer = $('#market__search--lists'),
             location_type = $('#market__search--lists').data('page-type'),
             base_insight_url = searchContainer.data('insight-url'),
-            template = `No subdivisions found!`;
+            template = ``;
 
 
         locations.forEach((location) => {
