@@ -107,10 +107,9 @@ class CreateMarketReport extends Command
      */
     private function populateReports(array $report_types)
     {
+        $active = $this->status['active'];
+        $sold = $this->status['sold'];
         foreach ($report_types as $location => $model) {
-            $active = $this->status['active'];
-            $sold = $this->status['sold'];
-
             $this->fields = [
             "COUNT(*) as count",
             " {$location}",
@@ -126,7 +125,6 @@ class CreateMarketReport extends Command
             " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y') - 1) . "', days_on_mls, NULL)) as avg_days_on_mls_past_year",
             " SUM( IF(status = '{$sold}' AND YEAR(input_date)='" . (string)(date('Y')) . "', days_on_mls, NULL)) as avg_days_on_mls_this_year"
             ];
-
 
             $selectArr = ['id', 'name', 'slug'];
             if( $model->getTable() == 'real_estate_subdivisions'){
@@ -145,46 +143,23 @@ class CreateMarketReport extends Command
             ->get();
 
             if(count($collection) <= 0) {
+                $this->info("Complete Report Data Creation for {$location}");
                 continue;
             }
 
             // Delete records for given location type
             DB::table('real_estate_market_reports')->where('reportable_type', get_class($collection->first()))->delete();
     
-            
             if (get_class($collection->first()) == 'Robust\RealEstate\Models\Subdivision') {
                 $this->subdivisionReport($collection, $location);
             }else{
                 $this->locationReport($collection, $location);
             }
-             $this->info("Complete Report Data Creation for {$location}");
+
+            $this->info("Complete Report Data Creation for {$location}");
         }
     }
 
-    /**
-     * @param Model $model
-     * @return Collection
-     * @return reportable model with listings
-     */
-    private function getDataWithListings(Model $model): Collection
-    {
-        $selectArr = ['id', 'name', 'slug'];
-        if( $model->getTable() == 'real_estate_subdivisions'){
-            if($this->byGroupName){
-                $selectArr = ['id', 'group_name as name', 'group_slug as slug'];
-                return $model->query()
-                    ->select($selectArr)
-                    ->whereNotNull('group_name')
-                    ->groupBy('group_name')
-                    ->get();
-            }
-        }
-
-        return $model->query()
-            ->select($selectArr)
-            ->get();
-
-    }
 
     /**
      * @param Collection $collection
@@ -193,13 +168,14 @@ class CreateMarketReport extends Command
     private function locationReport($collection, $location){
         $active = $this->status['active'];
         $sold = $this->status['sold'];
-        
+
         $listingArr = DB::table( 'real_estate_listings' )
             ->select( \DB::raw(implode(',', $this->fields)) )
             ->where( $this->settings["listings-price"]["field-to-compare"], $this->settings["listings-price"]["condition"], $this->settings["listings-price"]["min"] )
             ->groupBy( $location )
             ->get()
             ->keyBy( $location );
+             
 
         foreach ($collection as $model) {
             $totalListings = isset($listingArr[$model->id]) ? $listingArr[$model->id]->count : null;
@@ -219,7 +195,7 @@ class CreateMarketReport extends Command
             $median_price_sold = $this->getMedian($location, $model->id, 'system_price', $sold);
             $median_price_sold_past_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y') - 1);
             $median_price_sold_this_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y'));
-            $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
+            $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);           
 
             \DB::table('real_estate_market_reports')->insert([
                 'reportable_id' => $model->id,
