@@ -153,13 +153,22 @@
             elem.addEventListener("click", function (event) {
 
                 // Initialize Variables
-                let [parent, value, type, ids, compare_btn_url, subdivision_btn_url] = [this.parentNode,
-                this.getAttribute('value'),
-                document.querySelectorAll("[data-page]")[0].getAttribute('data-page'),
-                    '',
-                document.getElementById("market__btns--compare").getAttribute('data-base-url'),
-                document.getElementById("market__btns--subdivisions").getAttribute('data-base-url')
-                ];
+                let [parent, value, type, ids, compare_btn_url, btn_subdivision] =
+                    [
+                        this.parentNode,
+                        this.getAttribute('value'),
+                        document.querySelectorAll("[data-page]")[0].getAttribute('data-page'),
+                        '',
+                        document.getElementById("market__btns--compare").getAttribute('data-base-url'),
+                        document.getElementById("market__btns--subdivisions")
+                    ],
+                    map_btn_url = document.getElementById("market__btns--map").getAttribute('data-base-url');
+
+                if (btn_subdivision) {
+                    subdivision_btn_url = subdivision_btn_url.getAttribute('data-base-url');
+                    subdivision_btn_url = subdivision_btn_url + `?type=${type}&ids=${ids}`;
+                    document.getElementById("market__btns--subdivisions").setAttribute('href', subdivision_btn_url);
+                }
 
                 // Add/Remove Tag
                 if (this.checked) {
@@ -175,9 +184,9 @@
                 // Generate URL
                 ids = tags.map((tag) => tag._id);
                 compare_btn_url = compare_btn_url + `?type=${type}&ids=${ids}`;
-                subdivision_btn_url = subdivision_btn_url + `?type=${type}&ids=${ids}`;
+                map_btn_url = map_btn_url + `?type=${type}&ids=${ids}`;
                 document.getElementById("market__btns--compare").setAttribute('href', compare_btn_url);
-                document.getElementById("market__btns--subdivisions").setAttribute('href', subdivision_btn_url);
+                document.getElementById("market__btns--map").setAttribute('href', map_btn_url);
             });
 
         });
@@ -296,9 +305,6 @@
         $('.market__price-range-item a.active').trigger('click');
 
         // Trigger loaded event for search list container for market report page only
-        if (!isInsight) {
-            searchContainer.trigger("loaded");
-        }
-
+        searchContainer.trigger("loaded");
     });
 }(jQuery, FRW, window, document));
