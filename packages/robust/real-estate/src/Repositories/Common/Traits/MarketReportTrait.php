@@ -28,10 +28,10 @@ trait MarketReportTrait
             $ids = $this->location
             ->select('locationable_id')
             ->where('locationable_type', IMarketReport::REPORTABLE_MAP[$data['by']])
-            //->whereIn('slug', $data['ids'])
-            ->get();
-            dd($ids);
-            // dd($data['ids'], IMarketReport::REPORTABLE_MAP[$data['by']]);
+            ->whereIn('slug', explode(",", $data['ids']))
+            ->pluck('locationable_id')
+            ->toArray();
+            
             $sub_location_type = $data['by'];
             $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];            
             $qBuilder = $qBuilder->whereHasMorph(
