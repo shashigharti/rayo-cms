@@ -242,12 +242,12 @@ class CreateMarketReport extends Command
         $marketHelper = new MarketReportHelper();
         
         foreach ($chunked as $key => $chunked_collection) {
-
             if(!$this->byGroupName ){                
                 $chunked_collection->load(['listings' => function ($relation) {                    
                     $relation->select(['status', 'system_price', 'days_on_mls', 'city_id', 'county_id', 'zip_id', 'subdivision_id', 'school_district_id', 'input_date']);
                 }]);             
             } 
+            
             foreach ($chunked_collection as $model) {                
                 $listingArr = $model->listings()
                 ->select( \DB::raw(implode(',', $this->fields)) )

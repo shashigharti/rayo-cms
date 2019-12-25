@@ -36,7 +36,9 @@
         </div>
     @endif 
     @if($page_content == 'insight')
-        <div id="market__search--lists" data-page-type="{{$page_type}}" class="market__search--lists market--right__search col m10 s12">
+        <div id="market__search--lists" 
+        data-page-type="{{$page_type}}" 
+        class="market__search--lists market--right__search col m10 s12">
         
         </div>
     @elseif(($page_content == 'market-report') )
@@ -47,13 +49,13 @@
             @foreach($records as $report)
                 <div class="col market__search--lists-item--single">
                     <div class="market__search--lists-item card">
-                        <div class="card-content">
+                        <div class="card-content">                            
                             <p data-id="{{$report->reportable->slug}}" 
                                 data-type="Title" 
                                 data-value="{{$report->reportable->name}}" 
                                 data-url="{{route('market.reports.in', 
                                 [
-                                    $sub_location_type ?? $page_type, 
+                                    $sub_location_type == '' ? $page_type : $sub_location_type, 
                                     $report->reportable->slug
                                 ])}}" 
                                 data-class=""
