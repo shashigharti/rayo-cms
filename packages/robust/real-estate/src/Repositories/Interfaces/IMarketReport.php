@@ -6,13 +6,13 @@ Interface IMarketReport {
      * @var const REPORTABLE_MAP
      */
     public const REPORTABLE_MAP = [
-        'cities' => '\Robust\RealEstate\Models\City',
-        'subdivisions' => '\Robust\RealEstate\Models\Subdivision',
-        'zips' => '\Robust\RealEstate\Models\Zip',
-        'school_districts' => '\Robust\RealEstate\Models\SchoolDistrict',
-        'counties' => '\Robust\RealEstate\Models\County',
-        'areas' => '\Robust\RealEstate\Models\Area',
-        'high_schools' => '\Robust\RealEstate\Models\HighSchool'
+        'cities' => 'Robust\RealEstate\Models\City',
+        'subdivisions' => 'Robust\RealEstate\Models\Subdivision',
+        'zips' => 'Robust\RealEstate\Models\Zip',
+        'school_districts' => 'Robust\RealEstate\Models\SchoolDistrict',
+        'counties' => 'Robust\RealEstate\Models\County',
+        'areas' => 'Robust\RealEstate\Models\Area',
+        'high_schools' => 'Robust\RealEstate\Models\HighSchool'
     ];
 
     /**
