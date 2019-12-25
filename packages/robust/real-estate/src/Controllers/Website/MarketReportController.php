@@ -37,13 +37,20 @@ class MarketReportController extends Controller
         $data = $request->all();
         $records = $this->model->getReports($location_type, $data)
         ->get();
-        return view('real-estate::website.market-report.index', [
+
+        $response_data = [
             'records' => $records,
             'page_content' => 'market-report',
             'sub_location_type' => count($data) > 0 ? $location_type: '',
             'title' => '',
-            'page_type' => $location_type]
-        );
+            'page_type' => $location_type
+        ];
+
+        if(isset($data['ids'])){
+            $response_data['title'] = ucwords(str_replace('-', ' ', $data['ids']));
+        }
+
+        return view('real-estate::website.market-report.index', $response_data);
     }
 
 
