@@ -30,7 +30,7 @@
             const items = document.querySelectorAll('#listingMap .listing-map_data');
             let markers = [];
             const icon = new L.DivIcon({
-                className:'leaflet-marker_icon',
+                className: 'leaflet-marker_icon',
                 html: '<i class="material-icons">home</i>'
             });
             const base_url = window.location.origin;
@@ -42,9 +42,9 @@
                 const lat = item.dataset.lat;
                 const lng = item.dataset.lng;
                 const price = item.dataset.price;
-                const marker = new L.Marker([lat,lng],{
-                    title:name,
-                    icon:icon
+                const marker = new L.Marker([lat, lng], {
+                    title: name,
+                    icon: icon
                 });
                 const url = `${base_url}/real-estate/${slug}`;
                 const content = `
@@ -58,8 +58,8 @@
                 marker.on('mouseover', function (e) {
                     this.openPopup();
                 });
-                marker.on('click',function () {
-                    window.open(url,'_blank');
+                marker.on('click', function () {
+                    window.open(url, '_blank');
                 });
                 markers.push(marker);
             });
@@ -71,7 +71,7 @@
     };
     $(function () {
         const map = document.getElementById('listingMap');
-        if(map){
+        if (map) {
             FRW.Map.init();
         }
 

@@ -1,24 +1,25 @@
 <div id="market-survey__listings--content" class="row">
     <div class="search--bar">
-        <input type="text" placeholder="input your address to go local">
+        <input name="location" class="search-filter search-filter__location" type="text" placeholder="input your address to go local">
         <button class="theme-btn" type="button">Clear</button>
     </div>
     <div class="filter--bar">
         <div class="row">
             <div class="col s7">
                 <label>Price</label>
-                <select>
+                <select class="search-filter search-filter__price" name="price">
                     <option>Max</option>
                 </select>
                 <span>to</span>
-                <select>
+                <select class="search-filter search-filter__min" name="min">
                     <option>Min</option>
                 </select>
             </div>
             <div class="col s5">
-                <label>Sold</label>
-                <select>
-                    <option>Last 30 days</option>
+                <label>Status</label>
+                <select  class="search-filter search-filter__status" name="status">
+                    <option>Active</option>
+                    <option>Sold</option>
                 </select>
             </div>
         </div>

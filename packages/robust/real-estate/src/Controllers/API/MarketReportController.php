@@ -31,7 +31,7 @@ class MarketReportController extends Controller
      * @param Request $request
      * @param $location_type
      * @param $slug
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Illuminate\Http\JsonResponse
      */
     public function getSubdivisions(Request $request, $location_type, $slug){
         $data = $request->all();

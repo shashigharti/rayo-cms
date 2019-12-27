@@ -11,12 +11,25 @@
         </div>
     </header>
 @endsection
+
 @section('body_section')
-    <section class="market-survey main-content map-section">
+    <section class="market market-survey main-content">
         <div class="row">
            <div class="col s7">
-                <div height="400px" id="market-survey__left-container" class="market-survey__left-container map" >
-                        display map here
+                <div id="leaflet__map-container" data-zoom="10"
+                    style="width: 100%; height: 900px"
+                    class="market-survey__left-container leaflet__map-container" 
+                >
+                    <p
+                        class="leaflet__map-data hidden"
+                        data-image="https://www.w3schools.com/css/paris.jpg"
+                        data-name="Paris"
+                        data-slug="paris"
+                        data-price="100"
+                        data-lat="26.328458"
+                        data-lng="-80.074392">
+                    </p>
+                        
                 </div>
             </div>
             <div class="col s5">
@@ -29,8 +42,7 @@
                             <li class="tab"><a  href="#market-survey__insights">Market Insights</a></li>
                         </ul>
                     </div>
-
-                    <div id="market-survey__listings" class="market-survey__listings">
+                    <div id="" class="market-survey__listings" data-url="{{route()}}">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.listings'))
                     </div>
                     <div id="market-survey__insights" class="market-survey__insights">
@@ -41,34 +53,6 @@
             </div>
         </div>
     </section>
-    <script>
-        function initMap() {
-            var map = new google.maps.Map(document.getElementById('market-survey__left-container'), {
-                center: {lat: -34.397, lng: 150.644},
-                zoom: 8
-            });
-
-            var drawingManager = new google.maps.drawing.DrawingManager({
-                drawingMode: google.maps.drawing.OverlayType.MARKER,
-                drawingControl: true,
-                drawingControlOptions: {
-                    position: google.maps.ControlPosition.TOP_CENTER,
-                    drawingModes: ['circle']
-                },
-                markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'},
-                circleOptions: {
-                    fillColor: '#599de6',
-                    fillOpacity: 0.6,
-                    strokeWeight:0,
-                    clickable: false,
-                    editable: true,
-                    zIndex: 1
-                }
-            });
-            drawingManager.setMap(map);
-        }
-    </script>
-    
 @endsection
 
 
