@@ -47,4 +47,14 @@ trait CommonRepositoryTrait
         return $this;
     }
 
+    /**
+     * @param $field
+     * @return $this
+     */
+    public function with($field)
+    {
+        $this->model = $this->model->with($field);
+        return $this;
+    }
+
 }
