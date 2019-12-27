@@ -35,15 +35,15 @@
     }
 
     $(function () {
-        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false;
+        // let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false;
 
-        if (!isMarketSurvey) {
-            return;
-        }
-        for (let i = 1; i < 5; i++) {
-            properties.push(new Property(i, "Test" + i, "Test" + i, "Test" + i, "Test" + i));
-        }
+        // if (!isMarketSurvey) {
+        //     return;
+        // }
+        // for (let i = 1; i < 5; i++) {
+        //     properties.push(new Property(i, "Test" + i, "Test" + i, "Test" + i, "Test" + i));
+        // }
 
-        renderProperties();
+        // renderProperties();
     });
 }(jQuery, FRW, window, document));

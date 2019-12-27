@@ -15,8 +15,8 @@
     <section class="market-survey main-content map-section">
         <div class="row">
            <div class="col s7">
-                <div id="market-survey__left-container" class="market-survey__left-container map" >
-
+                <div height="400px" id="market-survey__left-container" class="market-survey__left-container map" >
+                        display map here
                 </div>
             </div>
             <div class="col s5">
@@ -41,7 +41,7 @@
             </div>
         </div>
     </section>
-    <!-- <script>
+    <script>
         function initMap() {
             var map = new google.maps.Map(document.getElementById('market-survey__left-container'), {
                 center: {lat: -34.397, lng: 150.644},
@@ -67,9 +67,8 @@
             });
             drawingManager.setMap(map);
         }
-    </script> -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVMGPU0xbiE-XtO-U61AltLGW05KKF0cY&libraries=drawing&callback=initMap"
-            async defer></script>
+    </script>
+    
 @endsection
 
 
