@@ -2,9 +2,8 @@
 "use strict"
 // Global function for leaflet map
 class LMap {
-    constructor(container, properties, base_url = null) {
+    constructor(container, base_url = null) {
         this._container = container;
-        this._properties = properties;
         this._zoom = this._container.getAttribute('data-zoom');
         this._map = new L.Map(container);
         this._baseurl = (base_url == null) ? window.location.origin : base_url;
@@ -29,9 +28,9 @@ class LMap {
         L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this._map);
         this._map.setZoom(this._zoom);
     }
-    render() {
+    render(properties) {
         let markers = [];
-        this._properties.forEach(function (property) {
+        properties.forEach(function (property) {
             const marker = new L.Marker([property._location._lat, property._location._lng], {
                 title: property.name
             });

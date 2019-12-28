@@ -55,9 +55,13 @@
 
     }
 
-    function loadProperties() {
+    function loadProperties(query_string = '') {
         const listingContainer = document.getElementById('market-survey__listings');
-        const url = listingContainer.getAttribute("data-url")
+        let url = listingContainer.getAttribute("data-url");
+
+        if (query_string != '') {
+            //url += "?" + query_string;
+        }
 
         // Get data from the server and load properties array
         $.ajax({
@@ -82,16 +86,15 @@
     }
 
     function init() {
-        let filters = document.querySelectorAll("search-filter");
-        filters.forEach((filter) => {
-            filter.addEventListener("change", function (event) {
-                console.log('changed');
-            });
+        let search = new Search();
+
+        $('.search-filter').on('change', function (e) {
+            loadProperties(search.getQueryString());
         });
     }
 
     class MarketSurveyMap extends LMap {
-        render() {
+        render(properties) {
             let markers = [], base_url;
             const icon = new L.DivIcon({
                 className: 'leaflet-marker_icon',
@@ -99,7 +102,7 @@
             });
             base_url = this._baseurl;
 
-            this._properties.forEach(function (property) {
+            properties.forEach(function (property) {
                 const marker = new L.Marker([property._location._lat, property._location._lng], {
                     title: property.name,
                     icon: icon
@@ -146,11 +149,10 @@
 
         // Declare and initialize map container
         let mapContainer = document.getElementById('leaflet__map-container');
+        let map = new MarketSurveyMap(mapContainer);
 
         $(listingContainer).on('loaded', function () {
-            // Initialize Map
-            let map = new MarketSurveyMap(mapContainer, properties);
-            map.render();
+            map.render(properties);
         });
     });
 }(jQuery, FRW, window, document));

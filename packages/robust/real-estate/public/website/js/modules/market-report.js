@@ -286,7 +286,6 @@
 
     $(function () {
         let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
-        let isInsight = (document.getElementsByClassName('insight').length > 0) ? true : false;
         let searchContainer = $('#market__search--lists');
 
         // Add event listeners on location selection
