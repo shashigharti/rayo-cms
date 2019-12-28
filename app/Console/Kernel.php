@@ -23,6 +23,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\CreateMarketReport',
         'App\Console\Commands\CreateAttributes',
         'App\Console\Commands\UpdateLocations',
+        'App\Console\Commands\UpdateGeoLocations',
     ];
 
     /**

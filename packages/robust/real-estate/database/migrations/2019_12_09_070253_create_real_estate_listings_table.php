@@ -44,6 +44,8 @@ class CreateRealEstateListingsTable extends Migration
             $table->decimal('baths_full', 10, 0)->nullable();
             $table->integer('bedrooms')->nullable();
             $table->string('status', 100)->nullable();
+            $table->string('latitude', 25)->nullable();
+            $table->string('longitude', 25)->nullable();
             $table->timestamps();
         });
     }

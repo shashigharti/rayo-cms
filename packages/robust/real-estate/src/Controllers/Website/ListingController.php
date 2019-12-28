@@ -33,7 +33,7 @@ class ListingController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active($location_type = null,  $location = null,  $price_range = null)
+    public function active($location_type = null,  $location = null,  $price_range = [])
     {
         $query_params = request()->all();
         $results  = $this->model->getListings(
@@ -41,7 +41,7 @@ class ListingController extends Controller
                 'status' => 'Active'
             ])
             ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
+            ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
             ->with('property')
             ->with('images')
             ->paginate(40);
@@ -52,7 +52,7 @@ class ListingController extends Controller
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sold($location_type = null,  $location = null,  $price_range = null)
+    public function sold($location_type = null,  $location = null,  $price_range = [])
     {
         $query_params = request()->all();
         $data_timeframe = config('rws.data.timeframe');
@@ -61,7 +61,7 @@ class ListingController extends Controller
                 'status' => 'Closed'
             ])
             ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
+            ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
             ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
@@ -112,7 +112,7 @@ class ListingController extends Controller
                 'status' => 'Active'
             ])
             ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])
+            ->wherePriceBetween($price_range != null? explode('-', $price_range) : [])
             ->whereSubArea($sub_area)
             ->with('property')
             ->with('images')

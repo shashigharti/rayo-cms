@@ -51,7 +51,9 @@ class Listing extends BaseModel
         'bedrooms',
         'status',
         'days_on_mls',
-        'school_district_id'
+        'school_district_id',
+        'latitude',
+        'longitude'
     ];
 
     /**

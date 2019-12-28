@@ -20,15 +20,7 @@
                     style="width: 100%; height: 900px"
                     class="market-survey__left-container leaflet__map-container" 
                 >
-                    <p
-                        class="leaflet__map-data hidden"
-                        data-image="https://www.w3schools.com/css/paris.jpg"
-                        data-name="Paris"
-                        data-slug="paris"
-                        data-price="100"
-                        data-lat="26.328458"
-                        data-lng="-80.074392">
-                    </p>
+                    
                         
                 </div>
             </div>
@@ -42,7 +34,7 @@
                             <li class="tab"><a  href="#market-survey__insights">Market Insights</a></li>
                         </ul>
                     </div>
-                    <div id="" class="market-survey__listings" data-url="{{route()}}">
+                    <div id="market-survey__listings" class="market-survey__listings" data-url="{{route('api.market.survey.listings')}}">
                         @include(Site::templateResolver('real-estate::website.market-survey.partials.listings'))
                     </div>
                     <div id="market-survey__insights" class="market-survey__insights">

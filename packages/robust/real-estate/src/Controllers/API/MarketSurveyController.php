@@ -32,13 +32,13 @@ class MarketSurveyController extends Controller
      * @return Illuminate\Http\JsonResponse
      */
     public function getListings(Request $request){
-        $price_range = $request->has('price')? explode('-', $request->get('price')) : null;
+        $price_range = $request->has('price')? explode('-', $request->get('price')) : [];
         $data = $request->except('price');
-        $qBuilder = $this->model->getListings($data);
-        if(is_array($price_range)){
-            $qBuilder = $qBuilder->wherePriceBetween($price_range);
-        }
-        $records = $qBuilder->get(); 
+        $additional_fields = ["real_estate_listings.latitude", "real_estate_listings.longitude"];
+        $records = $this->model->getListings($data, $additional_fields)
+        ->wherePriceBetween($price_range)
+        ->limit(6)
+        ->get(); 
         return response()->json($records);
     }
 }

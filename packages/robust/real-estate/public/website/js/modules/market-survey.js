@@ -3,41 +3,62 @@
     "use strict"
     let properties = [];
     let qParams = {};
+    class Location {
+        constructor(lat, lng) {
+            this._lat = lat;
+            this._lng = lng;
+        }
+    }
 
     class Property {
-        constructor(id, title, asking, location, sold) {
+        constructor(id, name, slug, price, location, image, url, asking = null, sold = null) {
             this._id = id;
-            this._title = title;
-            this._asking = asking;
+            this._name = name;
+            this._slug = slug;
+            this._price = price;
             this._location = location;
+            this._image = image;
+            this._url = url;
+            this._asking = asking;
             this._sold = sold;
         }
 
         render() {
             return `
-                <div class="col s12 m7">
-                    <div class="card">
-                        <div class="card-image">
-                            <input type="checkbox" value=${this._id}>                            
-                            <span class="card-title">${this._asking}</span>
-                            <p>${this._sold}</p>
-                            <a href="#">${this._location}</a>
-                            <img src="${this._img}">
-                        </div>
+                <div class="col s6">
+                    <div class="market-survey__listings--details-card">
+                        <a href="${this._url}">
+                            <img class="${this._image}">
+                            <div class="card-overlay">
+                                <input type="checkbox" value=${this._slug}>
+                                <div class="card--details">
+                                    <p>Price ${this._price}</p>
+                                    <p>${this._name}</p>
+                                </div>
+                            </div>
+                        </a>
                     </div>
-                </div>`;
+                </div>
+            `;
         }
     }
 
     function renderProperties() {
-        document.getElementById('market-survey__listings--content').innerHTML = properties.map(function (property) {
+        let template = properties.map(function (property) {
             return property.render();
-        });
+        }).join(" ");
+
+        document.getElementById('market-survey__listings--details-block').innerHTML = `
+            <div class="row">
+                ${template}
+            </div>
+        `;
+
     }
 
     function loadProperties() {
         const listingContainer = document.getElementById('market-survey__listings');
-        const url = listingContainer.getAttribute("data-href")
+        const url = listingContainer.getAttribute("data-url")
 
         // Get data from the server and load properties array
         $.ajax({
@@ -45,9 +66,18 @@
             url: url
         }).done(function (response) {
             response.forEach((property) => {
-                properties.push(property);
+                properties.push(new Property(
+                    property.id,
+                    property.name,
+                    property.slug,
+                    property.system_price,
+                    new Location(property.latitude, property.longitude),
+                    'website/images/banner.jpg',
+                    '#'
+                ));
             });
-            listingContainer.trigger('loaded');
+            renderProperties();
+            $(listingContainer).trigger('loaded');
         });
     }
 
@@ -61,9 +91,10 @@
     }
 
     FRW.LMap = {
-        init: function (items) {
-            let zoom = document.getElementById('leaflet__map-container').getAttribute('data-zoom');
-            this.map = new L.Map(document.getElementById('leaflet__map-container'));
+        init: function (properties) {
+            let mapContainer = document.getElementById('leaflet__map-container'),
+                zoom = mapContainer.getAttribute('data-zoom');
+            this.map = new L.Map(mapContainer);
             this.markerClusters = L.markerClusterGroup({
                 iconCreateFunction: function (cluster) {
                     let childCount = cluster.getChildCount();
@@ -83,11 +114,11 @@
             });
 
             L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this.map);
-            this.renderMarkers();
+            this.renderMarkers(properties);
             this.map.setZoom(zoom);
 
         },
-        renderMarkers: function (url = null, items = []) {
+        renderMarkers: function (properties = [], url = null) {
             let markers = [];
             const icon = new L.DivIcon({
                 className: 'leaflet-marker_icon',
@@ -95,27 +126,17 @@
             }),
                 base_url = (url == null) ? window.location.origin : url;
 
-            if (items.length <= 0) {
-                items = document.querySelectorAll('#leaflet__map-container .leaflet__map-data');
-            }
-
-            items.forEach(function (item) {
-                const name = item.dataset.name;
-                const image = item.dataset.image;
-                const slug = item.dataset.slug;
-                const lat = item.dataset.lat;
-                const lng = item.dataset.lng;
-                const price = item.dataset.price;
-                const marker = new L.Marker([lat, lng], {
-                    title: name,
+            properties.forEach(function (property) {
+                const marker = new L.Marker([property._location._lat, property._location._lng], {
+                    title: property.name,
                     icon: icon
                 });
-                const url = `${base_url}/real-estate/${slug}`;
+                const url = `${base_url}/real-estate/${property.slug}`;
                 const content = `
                     <div class="map--content">
-                        <p class="map--content_title"><a href="${url}">${name}</a></p>
-                        <img class="map--content_image" src="${image}" alt="${slug}">
-                        <p class="map--content_footer">$${price}</p>
+                        <p class="map--content_title"><a href="${property.url}">${property.name}</a></p>
+                        <img class="map--content_image" src="${property.image}" alt="${property.slug}">
+                        <p class="map--content_footer">$${property.price}</p>
                     </div>
                 `;
                 marker.bindPopup(content);
@@ -127,13 +148,18 @@
                 });
                 markers.push(marker);
             });
-            this.markerClusters.addLayers(markers);
-            this.map.fitBounds(this.markerClusters.getBounds());
-            this.map.addLayer(this.markerClusters);
+
+            if (markers.length > 0) {
+                this.markerClusters.addLayers(markers);
+                this.map.fitBounds(this.markerClusters.getBounds());
+                this.map.addLayer(this.markerClusters);
+            }
+
         }
     };
     $(function () {
-        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false;
+        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false,
+            listingContainer = document.getElementById('market-survey__listings');
         if (!isMarketSurvey) {
             return;
         }
@@ -142,11 +168,12 @@
         init();
 
         // Get Data from the Server
-        loadProperties()
+        loadProperties();
 
-        // Initialize Map
-        FRW.LMap.init(properties);
-
+        $(listingContainer).on('loaded', function () {
+            // Initialize Map
+            FRW.LMap.init(properties);
+        });
 
     });
 }(jQuery, FRW, window, document));

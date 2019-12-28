@@ -28,10 +28,11 @@ trait ListingTrait
      * @param $params
      * @return  QueryBuilder this
      */
-    public function getListings($params = [])
-    {
-
-        $qBuilder = $this->model->select(IListings::LISTING_FIELDS['index']);
+    public function getListings($params = [], $fields = [])
+    {        
+        $additional_fields = array_diff( $fields, IListings::LISTING_FIELDS['index'] );
+        $select_fields = array_merge( $additional_fields, IListings::LISTING_FIELDS['index'] );        
+        $qBuilder = $this->model->select( $select_fields );
 
         // Remove all params that are null
         foreach($params as $key => $param){
@@ -55,7 +56,10 @@ trait ListingTrait
      * @return QueryBuilder this
      */
     public function wherePriceBetween($params){
-       $this->model = $this->model->whereBetween('system_price', $params);
+        if(count($params) > 0){
+            $this->model = $this->model->whereBetween('system_price', $params);
+        }
+       
        return $this;
     }
 

@@ -1,6 +1,33 @@
 <?php
 
 return [
+    'advance-search-filters' => [
+        'price' => [
+            'min' => 25000,
+            'max' => 1000000,
+            'increase' => 25000
+        ]
+
+    ],
+    'map' => [
+        'map-filters' => [
+            'price' => [
+                'min' => 25000,
+                'max' => 1000000,
+                'increase' => 25000
+            ]            
+        ],
+        'market' => [
+            'search-filters' => [
+                'status' => 'Status'
+            ]
+        ],
+        'market-survey-tools' => [
+            'search-filters' => [
+                'sold' => 'Sold'
+            ]
+        ]        
+    ],
     'data-field-mapping' => [
         'sold' => 'Closed',
         'active' => 'Active'                

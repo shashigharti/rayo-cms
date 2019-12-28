@@ -1,27 +1,44 @@
+@set('price_settings', config('rws.map.map-filters.price') )
+@set('filters', config('rws.map.market.search-filters') )
 <div id="market-survey__listings--content" class="row">
     <div class="search--bar">
-        <input name="location" class="search-filter search-filter__location" type="text" placeholder="input your address to go local">
+        <input name="location" class="search-filter search-filter__location" 
+            type="text" 
+            placeholder="input your address to go local"
+        >
         <button class="theme-btn" type="button">Clear</button>
     </div>
     <div class="filter--bar">
         <div class="row">
             <div class="col s7">
                 <label>Price</label>
-                <select class="search-filter search-filter__price" name="price">
-                    <option>Max</option>
-                </select>
+                <select class="search-filter search-filter__price-min" 
+                    name="price_min"
+                >
+                    <option value="" selected disabled>Min</option>
+                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increase'])
+                        <option value="{{$price}}">${{$price}}</option>
+                    @endfor
+                </select>                
                 <span>to</span>
-                <select class="search-filter search-filter__min" name="min">
-                    <option>Min</option>
+                <select class="search-filter search-filter__price-max" 
+                    name="price_max"
+                >
+                    <option value="" selected disabled>Max</option>
+                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increase'])
+                        <option value="{{$price}}">${{$price}}</option>
+                    @endfor
                 </select>
             </div>
-            <div class="col s5">
-                <label>Status</label>
-                <select  class="search-filter search-filter__status" name="status">
-                    <option>Active</option>
-                    <option>Sold</option>
-                </select>
-            </div>
+            @if(isset($filters['status']))
+                <div class="col s5">
+                    <label>Status</label>
+                    <select class="search-filter search-filter__status" name="status">
+                        <option>Active</option>
+                        <option>Sold</option>
+                    </select>
+                </div>
+            @endif
         </div>
     </div>
     <div class="row">
@@ -33,7 +50,7 @@
             <button class="theme-btn">Compare</button>
         </div>
         <div class="row">
-            <div class="market-survey__listings--details-block">
+            <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">
                 <div class="row">
                     <div class="col s6">
                         <div class="market-survey__listings--details-card">
