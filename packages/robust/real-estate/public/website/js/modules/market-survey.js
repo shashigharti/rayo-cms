@@ -2,7 +2,8 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
     let properties = [];
-    let qParams = {};
+    let selectedProperties = [];
+
     class Location {
         constructor(lat, lng) {
             this._lat = lat;
