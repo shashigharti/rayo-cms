@@ -17,14 +17,18 @@ return [
                 'increase' => 25000
             ]            
         ],
-        'market' => [
-            'search-filters' => [
-                'status' => 'Status'
-            ]
-        ],
         'market-survey-tools' => [
             'search-filters' => [
-                'sold' => 'Sold'
+                'sold' => [
+                    'display' => 'Sold', 
+                    'values' => [     
+                        ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days'],
+                        ['display' => 'Recently Sold 60 Days', 'value' => 'sold_date-60_days'],
+                        ['display' => 'Recently Sold 3 Months', 'value' => 'sold_date-3_months'],
+                        ['display' => 'Recently Sold 6 Months', 'value' => 'sold_date-6_months'],
+                        ['display' => 'Recently Sold 12 Months', 'value' => 'sold_date-12_months']
+                    ]
+                ]
             ]
         ]        
     ],
@@ -44,8 +48,7 @@ return [
             'increment' => 1500000,
             'default' => ['average' => '3010000'],
             'field-to-compare' => 'median_price_active'
-        ]
-        
+        ]        
     ],
     'sorting' => [
         ['display' => 'Recently Added', 'value' => 'input_date-desc'],

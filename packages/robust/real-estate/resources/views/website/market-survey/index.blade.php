@@ -16,13 +16,21 @@
     <section class="market market-survey main-content">
         <div class="row">
            <div class="col s7">
+                <div class="col s12">
+                    <ul class="tabs">
+                        <li class="tab col s3"><a class="active" href="#leaflet__map-container">Map View</a></li>
+                        <li class="tab col s3"><a  href="#compare">Compare</a></li>
+                    </ul>
+                </div>
                 <div id="leaflet__map-container" data-zoom="10"
                     style="width: 100%; height: 900px"
                     class="market-survey__left-container leaflet__map-container" 
-                >
-                    
+                >                  
                         
                 </div>
+                <div id="compare" class="col s12">
+                    No properties selected to compare
+                </div>                
             </div>
             <div class="col s5">
                 <div class="market-survey__right-container">

@@ -1,5 +1,5 @@
 @set('price_settings', config('rws.map.map-filters.price') )
-@set('filters', config('rws.map.market.search-filters') )
+@set('filters', config('rws.map.market-survey-tools.search-filters') )
 <div id="market-survey__listings--content" class="row">
     <div class="search--bar">
         <input name="location" class="search-filter search-filter__location" 
@@ -30,12 +30,13 @@
                     @endfor
                 </select>
             </div>
-            @if(isset($filters['status']))
+            @if(isset($filters['sold']))
                 <div class="col s5">
-                    <label>Status</label>
+                    <label>{{$filters['sold']['display']}}</label>
                     <select class="search-filter search-filter__status" name="status">
-                        <option>Active</option>
-                        <option>Sold</option>
+                        @foreach($filters['sold']['values'] as $value)
+                            <option value="{{ $value['value'] }}">{{ $value['display'] }}</option>
+                        @endforeach
                     </select>
                 </div>
             @endif
@@ -51,92 +52,7 @@
         </div>
         <div class="row">
             <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">
-                <div class="row">
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col s6">
-                        <div class="market-survey__listings--details-card">
-                            <a href="#">
-                                <img class="website/images/banner.jpg">
-                                <div class="card-overlay">
-                                    <input type="checkbox">
-                                    <div class="card--details">
-                                        <p>Sold $45k</p>
-                                        <p>Dolphin HarbourPanama City Beach</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
