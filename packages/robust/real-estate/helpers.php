@@ -3,7 +3,8 @@
 if (!function_exists('price_format')) {
 
     /**
-     * @param $url
+     * @param integer $n
+     * @param integer $precision
      * @return string
      */
 
@@ -39,5 +40,41 @@ if (!function_exists('price_format')) {
             $n_format = str_replace( $dotzero, '', $n_format );
         }
         return $n_format . $suffix;
+    }
+}
+
+if (!function_exists('geocode')) {
+
+    /**
+     * @param string $address
+     * @param integer $limit
+     * @return array
+     */
+    function geocode( $address, $limit = 3 ) {
+        if ($limit == 0) {
+            return false;
+        }
+        $addressLatLong = [];
+        $api_key = env('GOOGLE_API_KEY');
+        try {
+            $response = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . urlencode($api_key));
+            $response = json_decode($response, true);
+
+            if ($response['status'] == "OVER_QUERY_LIMIT") {
+                sleep(1);
+                \Log::info('GeoLocations: Limit exceeded');
+                return geocode($address, $limit - 1);
+            } elseif ($response['status'] == "ZERO_RESULTS") {
+                return false;
+            }
+
+            if (isset($response['results'][0])) {
+                $addressLatLong = $response['results'][0];
+            }
+            return $addressLatLong;
+        } catch (\Exception $e) {
+            return false;
+        }
+        return false;
     }
 }

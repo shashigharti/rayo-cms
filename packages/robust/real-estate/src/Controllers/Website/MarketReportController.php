@@ -75,8 +75,6 @@ class MarketReportController extends Controller
 
     /**
      * @param Request $request
-     * @param $location_type
-     * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function compareLocations(Request $request){     
@@ -86,5 +84,19 @@ class MarketReportController extends Controller
             'records' => $response,
             'page_type' => $data['by']
         ]);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showInMap(Request $request){     
+        $data = $request->all(); 
+        dd($data);  
+        // $response = $this->model->compareLocations($data);
+        // return view('real-estate::website.market-report.compare', [
+        //     'records' => $response,
+        //     'page_type' => $data['by']
+        // ]);
     }
 }

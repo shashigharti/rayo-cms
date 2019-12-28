@@ -8,6 +8,11 @@ function () {
         'as' => 'reports.compare',
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@compareLocations'
     ]);
+    Route::get('reports/map', [
+        'name' =>'Locations Map',
+        'as' => 'reports.map',
+        'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@showInMap'
+    ]);
     Route::get('reports/{location_type}', [
         'name' =>'Market Report',
         'as' => 'reports',
@@ -18,4 +23,5 @@ function () {
         'as' => 'reports.in',
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsights'
     ]);
+    
 });

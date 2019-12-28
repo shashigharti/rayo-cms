@@ -39,7 +39,7 @@
             </a>
             <a  id="market__btns--map"
                 class="market__btns btn-blue"
-                data-base-url="{{route('market.reports.compare', $page_type)}}"
+                data-base-url="{{route('market.reports.map')}}"
             >
                 Show On Map
             </a>
