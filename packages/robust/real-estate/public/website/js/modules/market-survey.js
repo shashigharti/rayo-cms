@@ -118,9 +118,11 @@
 
     }
     function renderCompareTable(selectedProperties) {
-        let template;
         if (Object.keys(selectedProperties).length > 0) {
-            template = `
+            $('.market-survey__left-container .tabs a').removeClass('active');
+            $('.tabs').tabs('select', 'leaflet__compare-container');
+
+            let template = `
             <table>
             <thead>
             <tr>
