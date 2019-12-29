@@ -16,7 +16,7 @@ class ListingView extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_listing_views';
+    protected $table = 'real_estate_lead_views';
 
 
     /**

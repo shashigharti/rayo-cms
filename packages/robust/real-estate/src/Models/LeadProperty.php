@@ -14,7 +14,7 @@ class LeadProperty extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_leads_properties';
+    protected $table = 'real_estate_lead_properties';
 
     /**
      * @var array
