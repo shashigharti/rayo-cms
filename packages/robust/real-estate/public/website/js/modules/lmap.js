@@ -31,8 +31,13 @@ class LMap {
     render(properties) {
         let markers = [];
         properties.forEach(function (property) {
+            const icon = new L.DivIcon({
+                className: 'leaflet-marker_icon',
+                html: '<i class="material-icons">home</i>'
+            });
             const marker = new L.Marker([property._location._lat, property._location._lng], {
-                title: property.name
+                title: property.name,
+                icon
             });
             const content = `
                     <div class="map--content">
