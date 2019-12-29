@@ -2,6 +2,7 @@
 //import("modules/search.js")
 //import("modules/market-report.js")
 //import("modules/market-survey.js")
+//import("modules/market-map-view.js")
 //import("modules/advance-search.js")
 //import("modules/tab-menu.js")
 //import("modules/load-google-maps.js")

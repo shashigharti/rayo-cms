@@ -15,27 +15,29 @@
             this._location = location;
         }
     }
-    function loadProperties() {
-        const listingContainer = document.getElementById('market-survey__listings');
-        // Read properties
-
-        $(listingContainer).trigger('loaded');
-    }
 
     $(function () {
-        let isMarketReportMapView = (document.getElementsByClassName('map-view').length > 0) ? true : false;
+        let marketReportMapViewContainer = document.getElementsByClassName('map-view'),
+            isMarketReportMapView = (marketReportMapViewContainer) ? true : false;
 
         if (!isMarketReportMapView) {
             return;
         }
 
+        console.log('Market Report Map View');
+
+        const items = document.querySelectorAll('#leaflet__map-container .leaflet__map-items');
+        items.forEach(function (property) {
+            properties.push(new Property(
+                property.dataset.id,
+                property.dataset.name,
+                new Location(property.dataset.latitude, property.dataset.longitude)
+            ));
+        });
+
         // Declare and initialize map container
         let mapContainer = document.getElementById('leaflet__map-container');
-
-        $(listingContainer).on('loaded', function () {
-            // Initialize Map
-            let map = new MarketSurveyMap(mapContainer, properties);
-            map.render();
-        });
+        let map = new LMap(mapContainer);
+        map.render(properties);
     });
 }(jQuery, FRW, window, document));

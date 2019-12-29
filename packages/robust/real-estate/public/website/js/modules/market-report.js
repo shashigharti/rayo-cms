@@ -285,7 +285,9 @@
     }
 
     $(function () {
-        let isMarketReport = (document.getElementsByClassName('market').length > 0) ? true : false;
+        let marketReportContainer = document.querySelector('.market-report, .market-insight'),
+            isMarketReport = (marketReportContainer) ? true : false;
+
         let searchContainer = $('#market__search--lists');
 
         // Add event listeners on location selection
@@ -296,6 +298,8 @@
         if (!isMarketReport || (searchContainer.length <= 0)) {
             return;
         }
+
+        console.log('Market Report || Insight');
 
         // initialize event Handlers
         initEventHandlers();

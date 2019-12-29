@@ -1,10 +1,7 @@
 @extends(Site::templateResolver('real-estate::website.layouts.default'))
 
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
-@inject('marketreport_helper','Robust\RealEstate\Helpers\MarketReportHelper')
-
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
-@set('settings', config('rws.market-report'))
 
 @section('header')
     <header class="sub-header">
@@ -16,11 +13,21 @@
     </header>
 @endsection
 @section('body_section')
-    <section class="market compare-locations main-content" data-page='{{$page_type}}'> 
+    <section class="market map-view main-content" data-page='{{$page_type}}'> 
         <div class="container-fluid">
             <div class="row">
-                <div id="leaflet__map-container" class="col s12 leaflet__map-container">
-                    
+                <div id="leaflet__map-container" data-zoom="10"
+                    style="width: 100%; height: 900px" 
+                    class="col s12 leaflet__map-container"
+                >
+                    @foreach($records as $record)
+                        <p
+                            class="leaflet__map-items hidden"
+                            data-name="{{$record->name}}"
+                            data-latitude="{{$record->latitude}}"
+                            data-longitude="{{$record->longitude}}">
+                        </p>             
+                    @endforeach       
                 </div>
             </div>
         </div>

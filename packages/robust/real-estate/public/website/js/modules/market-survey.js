@@ -231,6 +231,8 @@
             return;
         }
 
+        console.log('Market Survey');
+
         // Initialize Event Handlers
         init();
 

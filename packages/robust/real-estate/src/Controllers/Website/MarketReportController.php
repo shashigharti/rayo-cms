@@ -91,12 +91,11 @@ class MarketReportController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function showInMap(Request $request){     
-        $data = $request->all(); 
-        dd($data);  
-        // $response = $this->model->compareLocations($data);
-        // return view('real-estate::website.market-report.compare', [
-        //     'records' => $response,
-        //     'page_type' => $data['by']
-        // ]);
+        $data = $request->all();
+        $response = $this->model->compareLocations($data);
+        return view('real-estate::website.market-report.map', [
+            'records' => $response,
+            'page_type' => $data['by']
+        ]);
     }
 }
