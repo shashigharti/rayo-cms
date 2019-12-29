@@ -118,11 +118,12 @@
 
     }
     function renderCompareTable(selectedProperties) {
+        let template = 'No property is selected to compare';
         if (Object.keys(selectedProperties).length > 0) {
             $('.market-survey__left-container .tabs a').removeClass('active');
             $('.tabs').tabs('select', 'leaflet__compare-container');
 
-            let template = `
+            template = `
             <table>
             <thead>
             <tr>
@@ -148,8 +149,9 @@
             </tbody>
             </table>
             `;
-            document.getElementById('leaflet__compare-container').innerHTML = template;
+
         }
+        document.getElementById('leaflet__compare-container').innerHTML = template;
 
     }
 
@@ -202,12 +204,21 @@
         $(document).on('click', '.market-survey__listings--details-card :input[name="property"]', function (e) {
             let value_to_search = $(this).val();
             let elem = findObjInArray(properties, '_slug', value_to_search);
-            if (elem != -1) {
-                if (!selectedProperties[elem._slug]) {
-                    selectedProperties[elem._slug] = '';
+
+            if ($(this).prop("checked") == true) {
+                // Add property
+                if (elem != -1) {
+                    if (!selectedProperties[elem._slug]) {
+                        selectedProperties[elem._slug] = '';
+                    }
+                    selectedProperties[elem._slug] = elem;
                 }
-                selectedProperties[elem._slug] = elem;
+            } else {
+                // Remove if unchecked
+                if (selectedProperties[elem._slug])
+                    delete selectedProperties[elem._slug];
             }
+
             renderCompareTable(selectedProperties);
         });
     }
