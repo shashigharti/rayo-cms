@@ -2,6 +2,7 @@
 
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
+@set('settings', config('rws.market-report'))
 
 @section('header')
     <header class="sub-header">
@@ -15,9 +16,10 @@
 @section('body_section')
     <section class="market map-view main-content" data-page='{{$page_type}}'> 
         <div class="container-fluid">
+            @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
             <h5>
             @foreach($records as $record)
-                {{$record->name . ","}}
+                {{ $record->name . "," }}
             @endforeach
             </h5>
             <div class="row">
