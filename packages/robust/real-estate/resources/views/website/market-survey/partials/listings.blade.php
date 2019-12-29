@@ -6,7 +6,7 @@
             type="text" 
             placeholder="input your address to go local"
         >
-        <button class="theme-btn" type="button">Clear</button>
+        <button class="theme-btn" type="button">Reset Filter</button>
     </div>
     <div class="filter--bar">
         <div class="row">
@@ -42,13 +42,9 @@
             @endif
         </div>
     </div>
-    <div class="row">
-        <button class="theme-btn market-survey__listings--reset-btn">Reset Filter</button>
-    </div>
     <div class="market-survey__listings--details">
         <div class="row">
             <label>Checkmark Properties to Compare</label>
-            <button class="theme-btn">Compare</button>
         </div>
         <div class="row">
             <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">

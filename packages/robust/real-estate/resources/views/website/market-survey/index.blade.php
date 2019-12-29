@@ -19,7 +19,7 @@
                 <div class="col s12">
                     <ul class="tabs">
                         <li class="tab col s3"><a class="active" href="#leaflet__map-container">Map View</a></li>
-                        <li class="tab col s3"><a  href="#compare">Compare</a></li>
+                        <li class="tab col s3"><a  href="#leaflet__compare-container">Compare</a></li>
                     </ul>
                 </div>
                 <div id="leaflet__map-container" data-zoom="10"
@@ -28,7 +28,7 @@
                 >                  
                         
                 </div>
-                <div id="compare" class="col s12">
+                <div id="leaflet__compare-container" class="col s12">
                     No properties selected to compare
                 </div>                
             </div>
