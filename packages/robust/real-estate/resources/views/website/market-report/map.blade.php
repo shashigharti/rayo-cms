@@ -15,6 +15,11 @@
 @section('body_section')
     <section class="market map-view main-content" data-page='{{$page_type}}'> 
         <div class="container-fluid">
+            <h5>
+            @foreach($records as $record)
+                {{$record->name . ","}}
+            @endforeach
+            </h5>
             <div class="row">
                 <div id="leaflet__map-container" data-zoom="10"
                     style="width: 100%; height: 900px" 
