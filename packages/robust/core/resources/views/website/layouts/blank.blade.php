@@ -38,10 +38,9 @@
 
             }
         </script>
+        <link href="{{ URL::asset('assets/website/css/landing.min.css') }}" rel="stylesheet">
 
-
-        <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
-        <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
+        
 
         <!--[if lt IE 9]>
         <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
@@ -57,7 +56,8 @@
     <body>
         {!! settings('ga-analytics','code') !!}
         @yield('body_content')
-
+        <link href="{{ URL::asset('assets/website/css/app.min.css') }}" rel="stylesheet">
+        <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
         <script src="{{ url('assets/website/js/app.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
        
