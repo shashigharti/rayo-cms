@@ -1,16 +1,16 @@
 <?php
-namespace Robust\Banners\Controllers\Admin;
+namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Robust\Banners\Repositories\BannerRepository;
-use Robust\Banners\Repositories\ImageRepository;
+use Robust\RealEstate\Repositories\BannerRepository;
+use Robust\RealEstate\Repositories\ImageRepository;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Illuminate\Http\Request;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
 
 /**
  * Class ImageController
- * @package Robust\Banners\Controllers\Admin
+ * @package Robust\RealEstate\Controllers\Admin
  */
 class ImageController extends Controller
 {
@@ -27,7 +27,7 @@ class ImageController extends Controller
     {
         $this->model = $banner_image;
         $this->request = $request;
-        $this->ui = 'Robust\Banners\UI\Image';
+        $this->ui = 'Robust\RealEstate\UI\Image';
         $this->package_name = 'banners';
         $this->view = 'admin.images';
         $this->banner = $banner;
@@ -49,8 +49,8 @@ class ImageController extends Controller
                 'records' => $records,
                 'package' => $this->package_name,
                 'model' => $banner,
-                'child_ui' => new \Robust\Banners\UI\Image,
-                'ui' => 'Robust\Banners\UI\Banner'
+                'child_ui' => new \Robust\RealEstate\UI\Image,
+                'ui' => 'Robust\RealEstate\UI\Banner'
             ]
         );
     }

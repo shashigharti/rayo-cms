@@ -1,12 +1,12 @@
 <?php
-namespace Robust\Banners\UI;
+namespace Robust\RealEstate\UI;
 
 use Robust\Core\UI\Traits\RouteTrait;
-use Robust\Banners\Models\Banner as Model;
+use Robust\RealEstate\Models\Banner as Model;
 
 /**
  * Class Banner
- * @package Robust\Banners\UI
+ * @package Robust\RealEstate\UI
  */
 class Banner
 {

@@ -1,11 +1,11 @@
 <?php
-namespace Robust\Banners\Models;
+namespace Robust\RealEstate\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class Banner
- * @package Robust\Banners\Models
+ * @package Robust\RealEstate\Models
  */
 class Banner extends Model
 {
@@ -22,7 +22,7 @@ class Banner extends Model
     /**
      * @var string
      */
-    protected $namespace = 'Robust\Banners\Models\Banner';
+    protected $namespace = 'Robust\RealEstate\Models\Banner';
 
     /**
      * @var string

@@ -1,14 +1,14 @@
 <?php
-namespace Robust\Banners\Repositories;
+namespace Robust\RealEstate\Repositories;
 
-use Robust\Banners\Models\Banner;
+use Robust\RealEstate\Models\Banner;
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 
 /**
  * Class BannerRepository
- * @package Robust\Banners\Repositories
+ * @package Robust\RealEstate\Repositories
  */
 class BannerRepository
 {

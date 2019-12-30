@@ -1,5 +1,5 @@
 <div id="modal__register" class="modal">
-    <form method="post" id="register--form" action="" data-url="{{route('website.realestate.leads.register')}}">
+    <form method="post" id="register--form" action="" data-url="{{route('website.auth.register')}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>
@@ -25,7 +25,8 @@
         <div class="modal-footer">
             <a href="" id="login--link" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>
             <button type="submit" class="btn btn-primary">
-                <div class="loader-01"></div> Register </button>
+                <div class="loader-01"></div> Register
+            </button>
         </div>
     </form>
 </div>

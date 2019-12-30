@@ -174,9 +174,11 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         //Webwizo\Shortcodes\ShortcodesServiceProvider::class,
+        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         \Robust\Core\Providers\RobustMailServiceProvider::class,
-        //Maatwebsite\Excel\ExcelServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
 
     ], Robust\Core\Helpers\CoreHelper::service_providers()),
         [
@@ -198,7 +200,6 @@ return [
     */
 
     'aliases' => [
-
         'App' => Illuminate\Support\Facades\App::class,
         'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
@@ -242,8 +243,7 @@ return [
         'Avatar' => Laravolt\Avatar\Facade::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Site' => \Robust\Core\Helpage\Site::class,
-        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
-
+        'ReCaptcha' => Biscolab\ReCaptcha\Facades\ReCaptcha::class
     ],
 
 ];

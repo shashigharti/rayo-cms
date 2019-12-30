@@ -1,13 +1,12 @@
 <?php
+namespace Robust\RealEstate\Helpers;
 
-namespace Robust\Banners\Helpers;
-
-use Robust\Banners\Models\Banner;
-use Robust\Banners\Repositories\BannerRepository;
+use Robust\RealEstate\Models\Banner;
+use Robust\RealEstate\Repositories\BannerRepository;
 
 /**
  * Class BannerHelper
- * @package Robust\Banners\Helpers
+ * @package Robust\RealEstate\Helpers
  */
 class BannerHelper
 {

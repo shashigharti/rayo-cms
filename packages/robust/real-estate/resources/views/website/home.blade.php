@@ -3,7 +3,7 @@
 @section('header')
     <div class="banner">
         <div class="slider">
-            @include(Site::templateResolver('banners::website.main-banner'))
+            @include(Site::templateResolver('real-estate::website.banners.main-banner'))
             @include(Site::templateResolver('real-estate::website.frontpage.partials.mobile-menu'))
             <div class="banner-overlay">
                 <div class="container-fluid">

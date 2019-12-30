@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Hash;
 use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Website\RegisterRepository;
 use Robust\Core\Controllers\Admin\Controller;
+use Robust\Core\Helpage\Site;
 
 /**
  * Class UserController

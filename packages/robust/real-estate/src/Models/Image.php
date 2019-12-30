@@ -5,8 +5,8 @@ use Illuminate\Database\Eloquent\Model;
 use Robust\Core\Models\Media;
 
 /**
- * Class Image
- * @package Robust\Banners\Models
+ * Class RealEstate
+ * @package Robust\RealEstate\Models
  */
 class Image extends Model
 {
@@ -23,7 +23,7 @@ class Image extends Model
     /**
      * @var string
      */
-    protected $namespace = 'Robust\Banners\Models\Image';
+    protected $namespace = 'Robust\RealEstate\Models\Image';
 
     /**
      * @var string

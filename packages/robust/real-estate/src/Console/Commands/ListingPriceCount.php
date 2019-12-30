@@ -3,7 +3,7 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
-use Robust\Banners\Repositories\BannerRepository;
+use Robust\RealEstate\Repositories\BannerRepository;
 use Robust\RealEstate\Models\Subdivision;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 

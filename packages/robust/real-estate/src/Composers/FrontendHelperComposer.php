@@ -1,7 +1,7 @@
 <?php namespace Robust\RealEstate\Composers;
 
 use Illuminate\Contracts\View\View;
-use Robust\Banners\Helpers\BannerHelper;
+use Robust\RealEstate\Helpers\BannerHelper;
 use Robust\RealEstate\Helpers\ListingHelper;
 use Robust\RealEstate\Helpers\LocationHelper;
 use Robust\RealEstate\Helpers\AdvanceSearchHelper;

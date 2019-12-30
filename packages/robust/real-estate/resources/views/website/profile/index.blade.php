@@ -1,5 +1,5 @@
 @extends(Site::templateResolver('real-estate::website.layouts.default'))
-@inject('banner_helper','Robust\Banners\Helpers\BannerHelper')
+@inject('banner_helper','Robust\RealEstate\Helpers\BannerHelper')
 @inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
 @set('locations',$location_helper->getLocations(['cities','counties','zips']))
 @section('header')

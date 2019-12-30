@@ -26,7 +26,7 @@
                 </div>
                 <h3 class="text-center">REGISTER HERE</h3>
 
-                {{ Form::open(['route' => 'auth.register', 'role' => 'form', 'class' => 'form', 'autocomplete'=> 'off']) }}
+                {{ Form::open(['route' => 'website.auth.register', 'role' => 'form', 'class' => 'form', 'autocomplete'=> 'off']) }}
                 <div class="form-group form-material floating {{ $errors->has('first_name') ? ' has-error' : '' }}">
                     <label class="floating-label">First Name</label>
                     {{ Form::text('first_name', null, [
@@ -91,7 +91,7 @@
                 </button>
                 {{ Form::close() }}
 
-               <p>Already Registered? Please go to <a href="{{route('auth.login')}}">Log in</a></p>
+               <p>Already Registered? Please go to <a href="{{route('website.auth.login')}}">Log in</a></p>
 
             </div>
            <footer class="page-copyright text-center">

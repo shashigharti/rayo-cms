@@ -1,15 +1,15 @@
 <?php
-namespace Robust\Banners\Repositories;
+namespace Robust\RealEstate\Repositories;
 
 use Carbon\Carbon;
-use Robust\Banners\Models\Image;
+use Robust\RealEstate\Models\Image;
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
 
 /**
  * Class ImageRepository
- * @package Robust\Banners\Repositories
+ * @package Robust\RealEstate\Repositories
  */
 class ImageRepository
 {
