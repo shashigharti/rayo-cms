@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Schema;
-use Robust\Core\Models\Redirect;
 
 /**
  * Class RouteServiceProvider
@@ -29,19 +28,7 @@ class RouteServiceProvider extends ServiceProvider
                 Artisan::call('up');
             }
         }
-
         parent::boot();
-
-        if (Schema::hasTable('redirects')) {
-            $redirect = \Robust\Core\Models\Redirect::where('from', \Request::url())->enabled()->first();
-            if ($redirect) {
-                $url = $redirect->to;
-                $redirect->increment('hits');
-
-                return redirect()->to($url, '301')->send();
-            }
-        }
-
     }
 
     /**
