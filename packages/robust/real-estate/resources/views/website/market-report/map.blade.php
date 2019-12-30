@@ -14,7 +14,7 @@
     </header>
 @endsection
 @section('body_section')
-    <section class="market map-view main-content" data-page='{{$page_type}}'> 
+    <section class="market market-map-view main-content" data-page='{{$page_type}}'> 
         <div class="container-fluid">
             @include(Site::templateResolver('real-estate::website.market-report.partials.info'))
             <h5>

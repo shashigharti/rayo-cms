@@ -1,4 +1,4 @@
-<div id="registermodal" class="modal">
+<div id="modal__register" class="modal">
     <form method="post" id="register--form" action="" data-url="{{route('website.realestate.leads.register')}}">
         @csrf
         <div class="row modal-header">

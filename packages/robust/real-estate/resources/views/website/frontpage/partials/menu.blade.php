@@ -85,7 +85,7 @@
             @if(Auth::check())
                 <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.profile.index')}}">My Review</a>
             @else
-                <a class="nav-link waves-effect waves-light modal-trigger" href="#loginmodal">Login</a>
+                <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__login">Login</a>
             @endif
             @include(Site::templateResolver('real-estate::website.auth.login'))
         </li>
@@ -93,7 +93,7 @@
             @if(Auth::check())
                 <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.leads.logout')}}">Logout</a>
             @else
-                <a class="nav-link waves-effect waves-light modal-trigger" href="#registermodal">Register</a>
+                <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__register">Register</a>
             @endif
             @include(Site::templateResolver('real-estate::website.auth.register'))
         </li>
