@@ -15,7 +15,7 @@ class LeadCall extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_leads_calls';
+    protected $table = 'real_estate_lead_calls';
 
 
     /**
