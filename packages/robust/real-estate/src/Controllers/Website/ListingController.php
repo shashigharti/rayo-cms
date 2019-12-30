@@ -58,7 +58,7 @@ class ListingController extends Controller
         $data_timeframe = config('rws.data.data-timeframe');
         $results  = $this->model->getListings(
             [
-                'status' => 'Closed'
+                'status' => 'Closed' // this should be configurable.
             ])
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween(['system_price' => $price_range != null? explode('-', $price_range) : $price_range ])

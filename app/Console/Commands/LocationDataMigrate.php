@@ -50,10 +50,10 @@ class LocationDataMigrate extends Command
             'table' => 'counties',
             'class' => '\Robust\RealEstate\Models\County'
         ],
-        'real_estate_subdivisions' => [
-            'table' => 'subdivisions',
-            'class' => '\Robust\RealEstate\Models\Subdivision'
-        ],
+//        'real_estate_subdivisions' => [
+//            'table' => 'subdivisions',
+//            'class' => '\Robust\RealEstate\Models\Subdivision'
+//        ],
         'real_estate_areas' => [
             'table' => 'areas',
             'class' => '\Robust\RealEstate\Models\Area'
@@ -80,6 +80,7 @@ class LocationDataMigrate extends Command
         {
             DB::table($key)->truncate();
         }
+        DB::table($this->table)->truncate();
         foreach($this->mapping as $key => $map)
         {
             $this->info('Starting Migration for table' . $map['table']);

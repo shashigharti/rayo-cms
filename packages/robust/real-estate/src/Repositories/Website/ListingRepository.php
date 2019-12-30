@@ -200,4 +200,9 @@ class ListingRepository
         return $this->model;
     }
 
+    public function whereType($type,$value)
+    {
+        return $this->model->where($type,$value);
+    }
+
 }

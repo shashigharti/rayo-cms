@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -81,11 +82,16 @@ class ListingDataMigrate extends Command
         DB::table('real_estate_listings')->truncate();
         DB::table('real_estate_listing_properties')->truncate();
         DB::table('real_estate_listing_images')->truncate();
+        $active_cities = DB::connection('mysql2')
+            ->table('cities')
+            ->where('frontpage',0)->get()->pluck('name');
         $fields = array_values($this->mapping);
         $count = 0;
-        $total = DB::connection('mysql2')->table('listings')->count();
+        $total = DB::connection('mysql2')->table('listings')->whereIn('city',$active_cities)->count();
         //get data from different database
-        DB::connection('mysql2')->table('listings')->chunkById(1000,function ($listings) use ($fields,$count,$total){
+        DB::connection('mysql2')->table('listings')
+            ->whereIn('city',$active_cities)
+            ->chunkById(1000,function ($listings) use ($fields,$count,$total){
             foreach ($listings as $listing){
                 DB::connection()->enableQueryLog();
                 $start_time = microtime(true);
@@ -111,23 +117,20 @@ class ListingDataMigrate extends Command
                     }
                 }
                 //listing data add id for locations
-                foreach ($listing_data as $data)
-                {
-                    foreach ($this->classes as $key => $class){
-                        $map =  $class::where('slug',Str::slug($data))->first();
-                        $map_id = $map ? $map->id : $class::create([
-                            'name' => $listing_data[$key],
-                            'slug' => Str::slug($listing_data[$key])
-                        ])->id;
-                        $location = DB::table('real_estate_locations')->where(['location_id' => $map_id,'locationable_type' => $this->mapping[$key]])->first();
-                        $listing_data[$key] = $location ? $location->id : DB::table('real_estate_locations')->insertGetId([
-                            'name' => $listing_data[$key],
-                            'slug' => Str::slug($listing_data[$key]),
-                            'location_id' => $map_id,
-                            'locationable_type' => $class
-                        ]);
 
-                    }
+                foreach ($this->classes as $key => $class){
+                    $map =  $class::where('slug',Str::slug($listing_data[$key]))->first();
+                    $map_id = $map ? $map->id : $class::create([
+                        'name' => $listing_data[$key],
+                        'slug' => Str::slug($listing_data[$key])
+                    ])->id;
+                    $location = DB::table('real_estate_locations')->where(['location_id' => $map_id,'locationable_type' => $class])->first();
+                    $listing_data[$key] = $location ? $location->id : DB::table('real_estate_locations')->insertGetId([
+                        'name' => $listing_data[$key],
+                        'slug' => Str::slug($listing_data[$key]),
+                        'location_id' => $map_id,
+                        'locationable_type' => $class
+                    ]);
                 }
                 $listing_id = DB::table('real_estate_listings')->insertGetId($listing_data); //insert into listing table
                 //get listing details
@@ -164,6 +167,9 @@ class ListingDataMigrate extends Command
                 foreach ($images as $image)
                 {
                     $image = (array) $image;
+                    if(!$image['type']){
+                        $image['type'] = 'image';
+                    }
                     $image['url'] = $image['listing_url'];
                     $image['listing_id'] = $listing_id;
                     unset($image['listing_url']);
@@ -180,6 +186,18 @@ class ListingDataMigrate extends Command
                             ' || Total Properties : ' .$properties_count .
                             ' || Total Images : '.$images_count .
                             ' || Execution Time : ' . $execution_time);
+                if($images_count > 0){
+                    DB::table('real_estate_listings')->where('id',$listing_id)->update([
+                        'picture_status' => 1
+                    ]);
+                }
+
+                if($properties_count > 0){
+                    DB::table('real_estate_listings')->where('id',$listing_id)->update([
+                        'properties_status' => Carbon::now()
+                    ]);
+                }
+
                 $queries = DB::getQueryLog();
                 Log::info($queries);
             }

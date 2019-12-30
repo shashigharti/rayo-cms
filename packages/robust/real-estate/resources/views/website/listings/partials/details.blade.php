@@ -352,21 +352,24 @@
                                         <table class="table table-striped">
                                             <tbody>
                                             @if(isset($result->elementary_school_id))
+                                                @set('school_name',$location_helper->byId($result->elementary_school_id))
                                                 <tr>
                                                     <td>Elementary</td>
-                                                    <td>{{$result->elementary->name}}</td>
+                                                    <td>{{$school_name->name}}</td>
                                                 </tr>
                                             @endif
                                             @if(isset($result->middle_school_id))
+                                                @set('school_name',$location_helper->byId($result->middle_school_id))
                                                 <tr>
                                                     <td>Middle</td>
-                                                    <td>{{$result->middle->name}}</td>
+                                                    <td>{{$school_name->name}}</td>
                                                 </tr>
                                             @endif
                                             @if(isset($result->high_school_id))
+                                                @set('school_name',$location_helper->byId($result->high_school_id))
                                                 <tr>
                                                     <td>High</td>
-                                                    <td>{{$result->high->name}}</td>
+                                                    <td>{{$school_name->name}}</td>
                                                 </tr>
                                             @endif
                                             </tbody>

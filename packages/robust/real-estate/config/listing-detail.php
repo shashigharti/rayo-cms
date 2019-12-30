@@ -18,6 +18,10 @@ return [
             'display' => 'Flooring'
         ],
         [
+            'name'=> 'total_floor',
+            'display' => 'Total Floor'
+        ],
+        [
             'name'=> 'amenities',
             'display' => 'Amenities'
         ],
@@ -54,15 +58,50 @@ return [
             'display' => 'Equipments'
         ],
         [
+            'name'=> 'equipment',
+            'display' => 'Equipments'
+        ],
+        [
             'name'=> 'utilities',
             'display' => 'Utilities'
         ],
-
+        [
+            'name'=> 'basement_desc',
+            'display' => 'Basement Description'
+        ],
+        [
+            'name'=> 'bath_desc',
+            'display' => 'Bathroom Description'
+        ],
+        [
+            'name'=> 'bath_type',
+            'display' => 'Bathroom Type'
+        ],
+        [
+            'name'=> 'main_bedrooms',
+            'display' => 'Main Bedrooms'
+        ],
+        [
+            'name'=> 'utility_room',
+            'display' => 'Utility rooms'
+        ],
+        [
+            'name'=> 'dining_area_desc',
+            'display' => 'Dining Area Description'
+        ],
     ],
     'Exterior' => [
         [
+          'name' => 'property_condition',
+          'display' => 'Property Condition'
+        ],
+        [
             'name'=> 'exterior',
             'display' => 'Exterior'
+        ],
+        [
+            'name'=> 'external_amenities',
+            'display' => 'Amenities'
         ],
         [
             'name'=> 'lot_description',
@@ -88,6 +127,11 @@ return [
             'name'=> 'construction_status',
             'display' => 'Construction Status'
         ],
+        [
+            'name'=> 'foundation_type',
+            'display' => 'Foundation type'
+        ],
+
         [
             'name'=> 'construction',
             'display' => 'Construction'
@@ -136,7 +180,14 @@ return [
             'name'=> 'boat_service',
             'display' => 'Boat Service'
         ],
-
+        [
+            'name'=> 'garage_desc',
+            'display' => 'Garage Description'
+        ],
+        [
+            'name'=> 'beach_type',
+            'display' => 'Beach Type'
+        ],
     ],
     'Heating & Cooling' => [
         [
@@ -144,8 +195,36 @@ return [
             'display' => 'Cooling Type'
         ],
         [
+            'name'=> 'cooling_source',
+            'display' => 'Cooling Source'
+        ],
+        [
             'name'=> 'heating_type',
             'display' => 'Heating Type'
+        ],
+        [
+            'name'=> 'heating_source',
+            'display' => 'Heating Source'
+        ],
+        [
+            'name'=> 'fireplace',
+            'display' => 'Fireplace'
+        ],
+        [
+            'name'=> 'fireplaces',
+            'display' => 'Fireplaces'
+        ],
+        [
+            'name'=> 'fireplace_location',
+            'display' => 'Fireplace Location'
+        ],
+        [
+            'name'=> 'fireplace_type',
+            'display' => 'Fireplace Type'
+        ],
+        [
+            'name'=> 'energy_related',
+            'display' => 'Energy'
         ],
     ],
     'View Information' => [
@@ -158,8 +237,48 @@ return [
             'display' => 'Waterfront'
         ],
         [
+            'name'=> 'waterfrontview',
+            'display' => 'Waterfront View'
+        ],
+        [
+            'name'=> 'water_description',
+            'display' => 'Water Description'
+        ],
+        [
+            'name'=> 'waterfront_name',
+            'display' => 'Waterfront'
+        ],
+        [
             'name'=> 'waterfront_details',
             'display' => 'Waterfront details'
+        ],
+        [
+            'name'=> 'waterfront_footage',
+            'display' => 'Waterfront Footage'
+        ],
+        [
+            'name'=> 'waterfront_num',
+            'display' => 'Waterfront Number'
+        ],
+        [
+            'name'=> 'waterfront_present',
+            'display' => 'Waterfront Present'
+        ],
+        [
+            'name'=> 'waterfront_elevation',
+            'display' => 'Waterfront Elevation'
+        ],
+        [
+            'name'=> 'lakechainname',
+            'display' => 'Lake Chain Name'
+        ],
+        [
+            'name'=> 'lakewaterfront',
+            'display' => 'Waterfront'
+        ],
+        [
+            'name'=> 'topography',
+            'display' => 'Topography'
         ],
     ],
     'Street Information' => [
@@ -186,12 +305,20 @@ return [
             'display' => 'Directions'
         ],
         [
+            'name'=> 'mls_area',
+            'display' => 'Mls Area'
+        ],
+        [
             'name'=> 'postal_code',
             'display' => 'Postal Code'
         ],
         [
             'name'=> 'address',
             'display' => 'Address'
+        ],
+        [
+            'name'=> 'location',
+            'display' => 'Location'
         ],
         [
             'name'=> 'unit_number',
@@ -223,6 +350,22 @@ return [
         ],
     ],
     'Size & Dimensions' => [
+        [
+            'name'=> 'room_dr',
+            'display' => 'Dining Room'
+        ],
+        [
+            'name'=> 'room_kt',
+            'display' => 'Kitchen Room'
+        ],
+        [
+            'name'=> 'room_mbr',
+            'display' => 'Master BedRoom'
+        ],
+        [
+            'name'=> 'room_br',
+            'display' => 'BedRoom'
+        ],
         [
             'name'=> 'living_square_feet',
             'display' => 'Living SqFt'
@@ -258,6 +401,18 @@ return [
         [
             'name'=> 'leasable_square_feet',
             'display' => 'Leasable SqFt'
+        ],
+        [
+            'name'=> 'basement_sqft',
+            'display' => 'Basement SqFt'
+        ],
+        [
+            'name'=> 'land_lot',
+            'display' => 'Land Lot'
+        ],
+        [
+            'name'=> 'floor_sqft',
+            'display' => 'Floor SqFt'
         ],
     ],
     'Terms & Fees' => [
@@ -298,6 +453,10 @@ return [
             'display' => 'List Price/SqFt'
         ],
         [
+            'name'=> 'price_per_sqft',
+            'display' => 'List Price/SqFt'
+        ],
+        [
             'name'=> 'sold_price_per_square_feet',
             'display' => 'Sold Price/SqFt'
         ],
@@ -318,8 +477,12 @@ return [
             'display' => 'Total Tax'
         ],
         [
-            'name'=> 'total_tax',
-            'display' => 'Total Tax'
+            'name'=> 'hoa_amt',
+            'display' => 'Hoa Amount'
+        ],
+        [
+            'name'=> 'hoa_dues_include',
+            'display' => 'Hoa Dues Include'
         ],
         [
             'name'=> 'tax_year',
@@ -328,6 +491,10 @@ return [
         [
             'name'=> 'legal_description',
             'display' => 'Legal Description'
+        ],
+        [
+            'name'=> 'maintenance',
+            'display' => 'Maintenance'
         ],
         [
             'name'=> 'maintenance_fee_inclusive',
@@ -345,8 +512,20 @@ return [
             'name'=> 'business_type',
             'display' => 'Type of business'
         ],
+        [
+            'name'=> 'owner_occupancy',
+            'display' => 'Owner Occupancy'
+        ],
     ],
     'Extra Information' => [
+        [
+            'name'=> 'sewer_type',
+            'display' => 'Sewer Type'
+        ],
+        [
+            'name'=> 'basement',
+            'display' => 'Basement'
+        ],
         [
             'name'=> 'days_on_mls',
             'display' => 'Days on mls'
@@ -375,8 +554,68 @@ return [
             'name'=> 'virtual_tour',
             'display' => 'Virtual Tour'
         ],
+        [
+            'name'=> 'off_market_date',
+            'display' => 'Off Market Date'
+        ],
+        [
+            'name'=> 'boathouse_dock',
+            'display' => 'BoatHouse Dock'
+        ],
+        [
+            'name'=> 'exclusion',
+            'display' => 'Exclusion'
+        ],
+        [
+            'name'=> 'special_conditions',
+            'display' => 'Special Conditions'
+        ],
+        [
+            'name'=> 'office_remarks',
+            'display' => 'Office Remarks'
+        ],
+        [
+            'name'=> 'showing_instructions',
+            'display' => 'Showing Instructions'
+        ],
     ],
     'Building Info' => [
+        [
+            'name'=> 'oven_source',
+            'display' => 'Oven Source'
+        ],
+        [
+            'name'=> 'property_description',
+            'display' => 'Property Description'
+        ],
+        [
+            'name'=> 'parking_features',
+            'display' => 'Parking Features'
+        ],
+        [
+            'name'=> 'community_features',
+            'display' => 'Community Features'
+        ],
+        [
+            'name'=> 'oven_type',
+            'display' => 'Oven Type'
+        ],
+        [
+            'name'=> 'kitchen_breakfast',
+            'display' => 'Kitchen BreakFast'
+        ],
+        [
+            'name'=> 'laundry_type',
+            'display' => 'Laundry Type'
+        ],
+        [
+            'name'=> 'laundry_location',
+            'display' => 'Laundry Location'
+        ],
+        [
+            'name'=> 'lot',
+            'display' => 'Lot'
+        ],
         [
             'name'=> 'number_of_offices',
             'display' => 'Number of Offices'
