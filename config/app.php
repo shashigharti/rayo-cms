@@ -2,7 +2,6 @@
 
 use Collective\Html\HtmlServiceProvider;
 use Intervention\Image\ImageServiceProvider;
-use Laravel\Passport\PassportServiceProvider;
 use Laravel\Socialite\SocialiteServiceProvider;
 use Laravolt\Avatar\ServiceProvider;
 
@@ -184,8 +183,7 @@ return [
             \App\Providers\AppServiceProvider::class,
             \App\Providers\AuthServiceProvider::class,
             \App\Providers\EventServiceProvider::class,
-            \App\Providers\RouteServiceProvider::class,
-            PassportServiceProvider::class
+            \App\Providers\RouteServiceProvider::class
         ]),
 
     /*
@@ -236,8 +234,15 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'Site' => \Robust\Core\Helpage\Site::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
+        'Debugbar' => Barryvdh\Debugbar\Facade::class,
+        'Shortcode' => Webwizo\Shortcodes\Facades\Shortcode::class,
+        'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Avatar' => Laravolt\Avatar\Facade::class,
+        'Image' => Intervention\Image\Facades\Image::class,
+        'Site' => \Robust\Core\Helpage\Site::class,
+        'Recaptcha' => Greggilbert\Recaptcha\Facades\Recaptcha::class,
 
     ],
 

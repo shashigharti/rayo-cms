@@ -1,3 +1,4 @@
 <?php
-Route::group(['prefix' => 'user', 'as' => 'admin.', 'group' => 'User'], function () {
+Route::group(['prefix' => config('core.frw.user'), 'as' => 'website.','group' => 'User'], function () {
+    
 });

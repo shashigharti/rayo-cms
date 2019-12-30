@@ -2,12 +2,16 @@
 
 namespace App\Providers;
 
+use App\Articles\SearchRepository;
+use Elasticsearch\Client;
+use Elasticsearch\ClientBuilder;
 use Illuminate\Support\ServiceProvider;
-
+use Validator;
 
 class AppServiceProvider extends ServiceProvider
 {
-    /**
+
+   /**
      * Register any application services.
      *
      * @return void
@@ -16,7 +20,6 @@ class AppServiceProvider extends ServiceProvider
     {
         //
     }
-
     /**
      * Bootstrap any application services.
      *

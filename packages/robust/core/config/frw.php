@@ -14,7 +14,9 @@ return [
     */
     'uri' => 'admin',
     'api' => 'api',
-    'ajax' => 'admin/ajax',
+    'auth' => 'auth',
+    'website' => '',
+    'user' => 'user',
     'image' => [
         'small' => [
             'height' => 200,

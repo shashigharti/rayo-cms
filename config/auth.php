@@ -40,16 +40,9 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-
-        'lead' => [
-            'driver' => 'session',
-            'provider' => 'leads'
-        ],
-
         'api' => [
-            'driver' => 'passport', //replaced token
-            'provider' => 'users',
-            'hash' => false,
+            'driver' => 'token', //replaced token
+            'provider' => 'users'
         ],
     ],
 
@@ -73,17 +66,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
-        ],
-        'leads' => [
-            'driver' => 'eloquent',
-            'model' => Robust\RealEstate\Models\Lead::class
+            'model' => \Robust\Admin\Models\User::class,
         ]
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
     ],
 
     /*

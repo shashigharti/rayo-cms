@@ -1,5 +1,6 @@
 <?php
 Route::group([
+    'prefix' => config('real-estate.frw.website'),
     'as' => 'website.realestate.leads.',
     'group' => 'Notes'],
     function () {

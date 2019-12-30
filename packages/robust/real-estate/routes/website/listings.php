@@ -1,6 +1,6 @@
 <?php
 Route::group([
-    //'prefix' => 'real-estate',
+    'prefix' => config('real-estate.frw.website'),
     'as' => 'website.realestate.',
     'group' => 'Listing'],
     function () {
@@ -12,35 +12,35 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
 
-        Route::get('/homes-for-sale/{location_type?}/{location?}/{price?}',[
+        Route::get('/' . config('real-estate.frw.active') . '/{location_type?}/{location?}/{price?}',[
             'name' =>'Homes for sale in',
             'as' => 'homes-for-sale',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
         ]);
 
-         Route::get('/sold-homes/{location_type?}/{location?}/{price?}',[
+         Route::get('/' . config('real-estate.frw.sold') . '/{location_type?}/{location?}/{price?}',[
             'name' =>'Homes for sale in',
             'as' => 'sold-homes',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
 
-        Route::get('/homes-for-sale/{location_type?}/{location?}/{price?}/{sub_area}',[
+        Route::get('/' . config('real-estate.frw.active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
             'name' =>'Homes for sale in',
             'as' => 'homes-for-sale.sub_area',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
         ]);
 
-        Route::post('/homes-for-sale/map',[
+        Route::post('/' . config('real-estate.frw.active') . '/map',[
             'name' =>'Map Data',
             'as' => 'map-data',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
         ]);
-        Route::get('/homes-for-sale/{type}/{value}/{id}',[
+        Route::get('/' . config('real-estate.frw.active') . '/{type}/{value}/{id}',[
             'name' =>'Similar Listing',
             'as' => 'listings.similar',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
         ]);
-        Route::get('/real-estate/{slug}/print', [
+        Route::get('/' . config('real-estate.frw.active') . '/{slug}/print', [
             'name' =>'print Listing',
             'as' => 'print',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'

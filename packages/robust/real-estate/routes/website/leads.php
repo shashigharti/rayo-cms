@@ -1,7 +1,8 @@
 <?php
-Route::group(['prefix' => 'leads',
+Route::group([
+    'prefix' => config('real-estate.frw.website'),
     'as' => 'website.realestate.leads.',
-    'group' => 'Leads'],
+    'group' => 'Frontend Authentication'],
     function () {
 
         Route::post('login', [

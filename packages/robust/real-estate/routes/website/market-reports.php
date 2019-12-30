@@ -1,6 +1,7 @@
 <?php
-Route::group(['prefix' => 'market',
-'as' => 'market.',
+Route::group([
+'prefix' => config('real-estate.frw.website') ."/market",
+'as' => 'website.realestate.market.',
 'group' => 'Market Report'],
 function () {
     Route::get('reports/compare', [

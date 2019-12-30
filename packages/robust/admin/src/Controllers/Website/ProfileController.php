@@ -34,7 +34,7 @@ class ProfileController extends Controller
     public function getProfile()
     {
         $user = Auth::user();
-        return view(Site::templateResolver('core::website.member.profile'), compact('user'));
+        return view(Site::templateResolver('admin::website.member.profile'), compact('user'));
     }
 
     /**

@@ -1,6 +1,6 @@
 <?php
 
-return [
+return [    
     'advance-search-filters' => [
         'price' => [
             'min' => 25000,

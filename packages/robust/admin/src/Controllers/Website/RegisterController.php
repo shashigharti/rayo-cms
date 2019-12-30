@@ -30,6 +30,15 @@ class RegisterController extends Controller
     }
 
     /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function register()
+    {
+        return view(Site::templateResolver('admin::website.auth.register'));
+    }
+
+
+    /**
      * @param User $user
      * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      * @throws \Illuminate\Validation\ValidationException

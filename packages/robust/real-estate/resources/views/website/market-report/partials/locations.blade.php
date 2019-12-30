@@ -53,7 +53,7 @@
                             <p data-id="{{$report->reportable->slug}}" 
                                 data-type="Title" 
                                 data-value="{{$report->reportable->name}}" 
-                                data-url="{{route('market.reports.in', 
+                                data-url="{{route('website.realestate.market.reports.in', 
                                 [
                                     $sub_location_type == '' ? $page_type : $sub_location_type, 
                                     $report->reportable->slug

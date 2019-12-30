@@ -46,6 +46,7 @@ class RealEstateServiceProvider extends ServiceProvider
     public function register_includes()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'real-estate.permissions');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/frw.php', 'real-estate.frw');
         $this->mergeConfigFrom(__DIR__ . '/../../config/advance-search.php', 'real-estate.search');
         $this->mergeConfigFrom(__DIR__ . '/../../config/listing-detail.php', 'real-estate.detail');
         $this->mergeConfigFrom(__DIR__ . '/../../config/data-map.php', 'real-estate.data-map');

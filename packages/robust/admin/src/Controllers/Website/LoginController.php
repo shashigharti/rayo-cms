@@ -24,11 +24,25 @@ class LoginController extends Controller
         $this->request = $request;
     }
 
-    public function getLogin()
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function login()
     {
-        return view(Site::templateResolver('core::website.forms.login'));
+        return view(Site::templateResolver('admin::website.auth.login'));
     }
 
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function resetPassword()
+    {
+        return view(Site::templateResolver('admin::website.auth.reset-password'));
+    }
+
+    /**
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function postLogin()
     {
         $userdata = [

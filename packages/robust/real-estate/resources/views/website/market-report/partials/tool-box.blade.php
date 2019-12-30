@@ -25,7 +25,7 @@
             @if((!isset($sub_location_type)) || ($sub_location_type != 'subdivisions'))
                 <a id="market__btns--subdivisions" 
                     class="market__btns btn-orange" href="" 
-                    data-base-url="{{route('market.reports', 'subdivisions')}}"
+                    data-base-url="{{route('website.realestate.market.reports', 'subdivisions')}}"
                 >
                     Show Subdivisions
                 </a>
@@ -33,13 +33,13 @@
 
             <a id="market__btns--compare"                 
                 class="market__btns btn-green"
-                data-base-url="{{route('market.reports.compare')}}" 
+                data-base-url="{{route('website.realestate.market.reports.compare')}}" 
             >
                 Compare Selected Areas
             </a>
             <a  id="market__btns--map"
                 class="market__btns btn-blue"
-                data-base-url="{{route('market.reports.map')}}"
+                data-base-url="{{route('website.realestate.market.reports.map')}}"
             >
                 Show On Map
             </a>
