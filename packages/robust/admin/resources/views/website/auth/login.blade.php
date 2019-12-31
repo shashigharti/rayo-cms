@@ -37,8 +37,10 @@
                             @endif
 
                             Before proceeding, please check your email for a verification link.
-                            If you did not receive the email, <a href="{{ route('verification.resend') }}">click here to
-                                request another</a>.
+                            If you did not receive the email, 
+                            <a href="{{ route('verification.resend') }}">click here to
+                                request another
+                            </a>.
                         </div>
                     @else
                         <h3 class="text-center">LOGIN HERE</h3>

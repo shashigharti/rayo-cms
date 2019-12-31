@@ -28,8 +28,8 @@
         {{ Form::email('email', null, ['class'=>'form-control', 'required' => 'required']) }}
         @if ($errors->has('email'))
             <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
         @endif
     </div>
     <div class="form-group {{ $errors->has('roles') ? ' has-error' : '' }}">
@@ -38,29 +38,9 @@
 
         @if ($errors->has('roles'))
             <span class="help-block">
-                                <strong>{{ $errors->first('roles') }}</strong>
-                    </span>
+                <strong>{{ $errors->first('roles') }}</strong>
+            </span>
         @endif
-    </div>
-
-    <div class="form-group form-material row">
-        <div class="col-md-12">
-            {{ Form::label('organization') }}
-            {{ Form::text('organization', null, [
-            'class'=>'form-control token-field',
-            'data-src-url' => route('users.organization'),
-                          'data-suggested-only' => 'false',
-            ]) }}
-        </div>
-    </div>
-
-    <div class="form-group form-material row">
-        <div class="col-md-12">
-            {{ Form::label('department') }}
-            {{ Form::text('department', null, ['class'=>'form-control token-field',
-              'data-src-url' => route('users.department'),
-                          'data-suggested-only' => 'false',]) }}
-        </div>
     </div>
 
     @if(is_add_mode($model))
@@ -70,8 +50,8 @@
 
             @if ($errors->has('password'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                            </span>
+                    <strong>{{ $errors->first('password') }}</strong>
+                </span>
             @endif
         </div>
         <div class="form-group form-material {{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
@@ -80,8 +60,8 @@
 
             @if ($errors->has('password_confirmation'))
                 <span class="help-block">
-                                        <strong>{{ $errors->first('password_confirmation') }}</strong>
-                            </span>
+                    <strong>{{ $errors->first('password_confirmation') }}</strong>
+                </span>
             @endif
         </div>
     @endif

@@ -80,9 +80,6 @@ class User extends Authenticatable implements MustVerifyEmail
         event(new PasswordResetEvent($this, $token));
     }
 
-    /**
-     *
-     */
     public function sendEmailVerificationNotification()
     {
         $this->notify(new VerifyEmail());

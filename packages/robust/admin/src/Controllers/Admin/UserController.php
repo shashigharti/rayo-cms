@@ -36,19 +36,4 @@ class UserController extends Controller
 
     }
 
-    public function index()
-    {
-        $records = $this->model->paginate();
-        return $this->display('core::admin.layouts.sub-layouts.table',
-            [
-                'records' => $records,
-                'primary_menu' => (new MenuHelper())->getPrimaryMenu($this->package_name),
-                'title' => (isset($this->title)) ? $this->title : '',
-                'package' => $this->package_name,
-                'default_data' => false,
-                'view' => $this->view
-            ]
-        );
-    }
-
 }

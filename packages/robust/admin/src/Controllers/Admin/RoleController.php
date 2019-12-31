@@ -29,23 +29,6 @@ class RoleController extends Controller
         $this->package_name = 'admin';
         $this->view = 'admin.roles';
         $this->title = 'Roles';
-
-    }
-
-    public function index()
-    {
-        $records = $this->model->paginate();
-        return $this->display('core::admin.layouts.sub-layouts.table',
-            [
-                'records' => $records,
-                'primary_menu' => (new MenuHelper())->getPrimaryMenu($this->package_name),
-                'title' => (isset($this->title)) ? $this->title : '',
-
-                'default_data' => false,
-                'package' => $this->package_name,
-                'view' => $this->view
-            ]
-        );
     }
 
 }

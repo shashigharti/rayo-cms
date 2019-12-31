@@ -2,10 +2,7 @@
 
 namespace Robust\Admin\Models;
 
-
-use Illuminate\Notifications\Notifiable;
 use Robust\Core\Models\BaseModel;
-
 
 /**
  * Class User
@@ -19,7 +16,6 @@ class Admin extends BaseModel
      * @var array
      */
     protected $fillable = [
-
         'first_name',
         'last_name',
         'avatar',
@@ -33,6 +29,6 @@ class Admin extends BaseModel
      */
     public function member()
     {
-        return $this->morphOne('App\User', 'member');
+        return $this->morphOne('App\User');
     }
 }
