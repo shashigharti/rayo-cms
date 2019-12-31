@@ -3,18 +3,18 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
     Route::get('login', [
         'name' => 'Login',
         'as' => 'login',
-        'uses' => 'Robust\Admin\Controllers\Website\LoginController@login'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@login'
     ]);
     Route::get('/register', [
         'as' => 'register',
-        'uses' => 'Robust\Admin\Controllers\Website\RegisterController@register'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@register'
     ]);
     Route::post('/login', [
         'as' => 'post_login',
-        'uses' => 'Robust\Admin\Controllers\Website\LoginController@postLogin'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@postLogin'
     ]);
     Route::post('/register', [
         'as' => 'post_register',
-        'uses' => 'Robust\Admin\Controllers\Website\RegisterController@postRegister'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@postRegister'
     ]);
 });

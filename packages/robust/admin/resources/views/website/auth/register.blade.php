@@ -31,29 +31,28 @@
                     <label class="floating-label">First Name</label>
                     {{ Form::text('first_name', null, [
                      'class'       => 'form-control',
-                     'required'    => 'required',
-                 ]) }}
-                    
+                     'required'    => 'required']) 
+                    }}                    
                 </div>
                 <div class="form-group form-material floating {{ $errors->has('last_name') ? ' has-error' : '' }}">
                     <label class="floating-label">Last Name</label>
                     {{ Form::text('last_name', null, [
                      'class'       => 'form-control',
-                     'required'    => 'required',
-                 ]) }}
+                     'required'    => 'required']) 
+                    }}
 
                 </div>
                 <div class="form-group form-material floating {{ $errors->has('email') ? ' has-error' : '' }}">
                     <label class="floating-label">Email</label>
                     {{ Form::email('email', null, [
                      'class'       => 'form-control',
-                     'required'    => 'required',
-                 ]) }}
+                     'required'    => 'required']) 
+                    }}
 
                     @if ($errors->has('email'))
                         <span class="help-block">
-                                        <strong>{{ $errors->first('email') }}</strong>
-                                    </span>
+                            <strong>{{ $errors->first('email') }}</strong>
+                        </span>
                     @endif
                 </div>               
                 <div class="form-group form-material floating">
@@ -61,13 +60,13 @@
 
                     <div class="{{ $errors->has('password') ? 'has-error' : '' }} control-required">
                         {{ Form::password('password', [
-                            'class'       => 'form-control',
-                            'required'    => 'required'
-                        ]) }}
+                            'class'     => 'form-control',
+                            'required'  => 'required']) 
+                        }}
                         @if ($errors->has('password'))
                             <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
@@ -81,13 +80,14 @@
                         ]) }}
                         @if ($errors->has('password_confirmation'))
                             <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
                 </div>
              
-                <button type="submit" class="btn btn-primary margin-top-40 sign-in btn-block btn-lg">Register
+                <button type="submit" class="btn btn-primary margin-top-40 sign-in btn-block btn-lg">
+                    Register
                 </button>
                 {{ Form::close() }}
 

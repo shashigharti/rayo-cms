@@ -1,6 +1,5 @@
 <?php
-
-namespace Robust\Core\Events;
+namespace Robust\Admin\Events;
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -10,7 +9,7 @@ use Robust\Core\Helpage\Site;
 
 /**
  * Class UserCreatedEvent
- * @package Robust\Core\Events
+ * @package Robust\Admin\Events
  */
 class PasswordResetEvent extends Mailable
 {
@@ -28,9 +27,9 @@ class PasswordResetEvent extends Mailable
         $this->token = $token;
     }
 
-    public function build()
-    {
-        $this->to($this->user->email);
-        return $this->view(Site::templateResolver('core::admin.emails.password-reset'));
-    }
+    // public function build()
+    // {
+    //     $this->to($this->user->email);
+    //     return $this->view(Site::templateResolver('core::admin.emails.password-reset'));
+    // }
 }

@@ -1,5 +1,5 @@
 <?php
-namespace Robust\Core\Events;
+namespace Robust\Admin\Events;
 
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -9,7 +9,7 @@ use Robust\Core\Helpage\Site;
 
 /**
  * Class UserUpdatedEvent
- * @package Robust\Core\Events
+ * @package Robust\Admin\Events
  */
 class UserUpdatedEvent extends Mailable
 {
@@ -26,9 +26,9 @@ class UserUpdatedEvent extends Mailable
         $this->user = $user;
     }
 
-    public function build()
-    {
-        $this->to($this->user->email);
-        return $this->view(Site::templateResolver('core::admin.emails.profile-update'));
-    }
+    // public function build()
+    // {
+    //     $this->to($this->user->email);
+    //     return $this->view(Site::templateResolver('core::admin.emails.profile-update'));
+    // }
 }
