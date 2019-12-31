@@ -41,19 +41,19 @@ class Subdivision extends BaseModel
         return $this->hasOne('Robust\RealEstate\Models\City');
     }
 
-    /**
-     * Get the listings
+     /**
+     * Listing  associated with this subdivision
      */
     public function listings()
     {
-        return $this->hasMany(Listing::class, 'subdivision', 'name');
+        return $this->hasMany('Robust\RealEstate\Models\Listing');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphOne
-     */
-    public function location()
-    {
-        return $this->morphOne('Robust\RealEstate\Models\Location','location','locationable_type','location_id');
-    }
+    // /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+    //  */
+    // public function location()
+    // {
+    //     return $this->morphOne('Robust\RealEstate\Models\Location','location','locationable_type','location_id');
+    // }
 }

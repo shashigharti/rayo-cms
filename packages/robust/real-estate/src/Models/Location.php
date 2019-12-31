@@ -24,7 +24,7 @@ class Location extends BaseModel
         'status',
         'active_count',
         'sold_count',
-        'location_id',
+        'locationable_id',
         'locationable_type'
     ];
 

@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
 use Robust\Core\Helpers\MenuHelper;
-use Robust\Core\Repositories\MediaRepository;
+use Robust\Core\Repositories\Admin\MediaRepository;
 
 /**
  * Class MediaController

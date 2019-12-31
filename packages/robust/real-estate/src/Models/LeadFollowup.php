@@ -13,7 +13,7 @@ class LeadFollowup extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_leads_followups';
+    protected $table = 'real_estate_lead_followups';
 
 
     /**

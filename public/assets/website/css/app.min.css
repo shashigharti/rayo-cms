@@ -1739,13 +1739,13 @@ footer p{font-size:12px;color:#d1d1d1}footer i{margin-right:10px}.footer-bottom{
 .banner .slider .slides{height:100%}.banner .slider .slides li{height:100%}.banner-overlay{width:100%;height:100%;background:rgba(0,0,0,0.4);position:absolute;top:0;left:0;z-index:9}
 .banner-caption{margin-top:8.3%;width:100%}.banner-caption h1{text-align:center;font-size:36px;color:#fff}
 .search-section{background:rgba(199,199,199,0.5);padding:20px;margin:30px 30px 10px;position:relative}
-.search-section p{text-align:center;color:#fff;font-size:11px}.search-section input{width:94% !important}
+.search-section p{text-align:center;color:#fff;font-size:11px}.search-section input{width:94% !important;color:#fff}
 .range-bar .slider-container{margin:0 auto}.range-bar p{color:#fff;margin-bottom:1.7rem}
 .range-bar .theme-green .scale ins{color:#fff}.range-bar .slider-container .back-bar .pointer-label{background:transparent;font-size:10px;color:#fff}
 .theme-green .back-bar .pointer{width:12px;height:12px;top:-5px;-webkit-box-sizing:border-box;box-sizing:border-box;border-radius:0;border:1px solid #002349;background:#002349;-webkit-transform:rotate(45deg);transform:rotate(45deg)}
 .range-bar .theme-green .back-bar{height:2px}.range-bar .theme-green .back-bar .selected-bar{border-radius:2px;background-color:#002349;background-image:-webkit-gradient(linear,left top,left bottom,from(#002349),to(#002349));background-image:linear-gradient(to bottom,#002349,#002349)}
 .banner-caption a.theme-btn{width:145px;padding:10px 0}.search-section a.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
-.search-section button.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
+.search-section a.theme-btn:hover{color:#fff}.search-section button.theme-btn{width:120px;padding:0;border:0;height:35px;line-height:35px}
 #adv-search-dropdown{position:absolute;top:365px;z-index:9;left:76px;background:#04122d;width:87.4%;opacity:0;-webkit-transition:ease-in-out .2s;transition:ease-in-out .2s;padding:4px;font-size:10px;display:none}
 #adv-search-dropdown.show{opacity:1}#adv-search-dropdown .inner{border:2px solid #fff;padding:10px 0}
 #adv-search-dropdown .mb-20{margin-bottom:16px}#adv-search-dropdown button.theme-btn{border:0;margin-right:10px;width:93%;margin-left:10px;margin-top:16px}
@@ -1768,7 +1768,8 @@ section.main-content{padding-top:100px}.inner--main--title h1{font-size:30px;col
 .inner--main--title h1:after{content:"";background:#073a71;height:3px;width:284px;display:block;right:0;position:absolute;top:17px}
 .inner--main--title h1:before{content:"";background:#073a71;height:3px;width:284px;display:block;left:0;position:absolute;top:17px}
 .listing--search{background:#fff;margin:30px 0 16px;padding:0}.listing--search.search-section p{color:#555;margin-bottom:0}
-.listing--search a.theme-btn{width:155px;margin-left:0}.listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
+.listing--search a.theme-btn{width:155px;margin-left:0}.listing--search a.theme-btn:hover{color:#fff}
+.listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
 .listing--search .range-bar .slider-container .back-bar .pointer-label{color:#555}
 .listing--search .range-bar .theme-green .scale ins{color:#555}.listing--btn--block label{font-weight:bold;color:#555}
 .listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0;width:100px;font-weight:600}
@@ -1804,12 +1805,14 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .distance--block .get-distance-container .input-group-prepend .btn,.distance--block .get-distance-container .input-group-prepend .btn-large,.distance--block .get-distance-container .input-group-prepend .btn-small{border:0;color:#fff}
 .distance--block .gmap_canvas{width:100%}.distance--block .gmap_canvas iframe{width:100%}
 .distance--block .mapouter{width:97%}.more-property-detail .detail-block{margin:0}
-button.get-distance{border-radius:0;background-color:#002349}.listing--advance_search #adv-search-dropdown{top:247px;z-index:99999}
+button.get-distance{border-radius:0;background-color:#002349}.listing--advance_search #adv-search-dropdown{top:247px;z-index:9}
 .listing--advance_search #adv-search-dropdown .inner{padding:10px 0 10px 10px}.listing--btn--block .select-wrapper .dropdown-content li{min-height:32px}
 .listing--btn--block .select-wrapper .dropdown-content li a,.listing--btn--block .select-wrapper .dropdown-content li span{font-size:11px;color:#686b6b;line-height:16px;padding:8px 8px}
-.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search-section__tags{display:inline-block}.search-section__tags span{margin-right:4px;vertical-align:middle}
+.search-section__tags i{margin-top:1px;font-size:12px;color:#111;opacity:1;margin-left:7px}
+.search-section__tags-action{display:inline-block;width:auto}.search--main--content{-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--main--content.page-slide{padding-right:350px;margin-bottom:80px}.search--main--content.page-slide .listing--houses .row .col.m3{width:50%}
-.search--right--section{position:absolute;top:358px;right:0;display:block;z-index:1400;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
+.search--right--section{position:absolute;top:358px;right:0;display:block;z-index:8;color:#fff;font-family:Roboto,sans-serif;height:100%;width:0;-webkit-transition:all .5s ease-in-out;transition:all .5s ease-in-out}
 .search--right--section.fix{width:380px;padding-right:20px;padding-left:15px}.search--right--section a.right-icon{color:#fff;background:#002349;padding:10px;position:fixed;right:0;top:292px;z-index:999}
 .search--right--section .right--single--block{overflow-x:hidden}.search--right--section .right--single--block [type="checkbox"]+span:not(.lever){line-height:14px}
 .search--right--section .right--single--block .intro--section{margin:50px 0}.search--right--section .right--single--block .intro--section h3{color:#002349;font-size:16px;font-weight:600}
@@ -1832,11 +1835,12 @@ a.orange-line{border-bottom:1px solid #f7941d}.page--info{margin-bottom:60px}.ma
 .market--left__sort--btns a{font-size:13px;display:inline-block;margin-right:7px;text-align:center;width:44%;border:1px solid #ccc;border-radius:3px;padding:4px;color:#555;margin-top:10px;text-decoration:none}
 .market--left__sort--btns a:hover{background:#0091ff;color:#fff}.market--right__display--options div{font-size:13px;color:#555;display:inline-block;width:48%;margin-bottom:6px}
 .market--right__display--options input{vertical-align:middle;margin-right:8px}.market__btns--container a{text-decoration:none;color:#666;font-size:14px;display:inline-block;border:1px solid #777;padding:4px 10px;margin-right:10px}
-.market__search--lists-item.card .card-content{padding:15px}a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}
+.market__search--lists-item.card .card-content{padding:10px 7px}a.btn-orange{background:#f7941d;color:#fff;border:1px solid #f7941d}
 a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
-.market__search--lists-item{min-height:144px}.market__search--lists-item p{margin-bottom:2px;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
+.market__search--lists-item{min-height:131px;-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px;background:#f9f7f7}
+.market__search--lists-item p{margin-bottom:0;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
 .market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
 .market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:655px;overflow-y:auto}
 .market__search--lists a{color:#333;text-decoration:none}.market__search--lists a:hover{color:#0b96e5}
@@ -1845,20 +1849,22 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .btn-default{color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;font-size:14px;line-height:1.42857;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}
 .btn-checkbox.active:after{content:"\2713"}.market--right__display--options p{margin-bottom:18px}
 .market--right__display--options .show-average-data-btn.active,.market--right__display--options .show-active-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__search--lists--side-nav{padding:20px 15px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:8px;margin-bottom:50px}
-.market__search--lists--side-nav .market--search__lists--filter{margin-bottom:15px}
-.market__search--lists--side-nav .market--search__lists--filter .btn-checkbox,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default:active:hover,.market__search--lists--side-nav .market--search__lists--filter .market--search__lists--filter .btn-default.active:hover{color:#333 !important;border:1px solid #333 !important;background:#fff}
-.market__search--lists--side-nav .market--search__lists--filter label{font-size:12px;color:#585757;width:78%;vertical-align:middle;margin-bottom:0}
+.market__left-nav{padding:10px 8px;-webkit-box-shadow:0 1px 1px 1px #b5b3b3;box-shadow:0 1px 1px 1px #b5b3b3;min-height:645px;margin-top:0;margin-bottom:50px;height:655px;overflow-y:auto}
+.market__left-nav .market__price-range-item{margin-bottom:10px}.market__left-nav .market__price-range-item a{color:#3a3838 !important;-webkit-box-shadow:1px 1px 1px 0 #b9b5b5;box-shadow:1px 1px 1px 0 #b9b5b5;background:#fff;display:block;text-align:center;border:1px solid #e2e1e1;padding:6px;font-weight:600;font-size:12px}
+.market__left-nav .market__price-range-item a:hover,.market__left-nav .market__price-range-item a.active{background:#002349;color:#fff !important;border-color:#002349}
 .show-sold-data-btn.active{color:#333 !important;border:1px solid #333 !important;background:#fff}
 .market__search--lists-item [type="checkbox"]:not(:checked),.market__search--lists-item [type="checkbox"]:checked{position:relative;opacity:1;pointer-events:initial;margin-top:2px}
 .market--left__sort--btns .active{border:1px solid #0091ff !important;background:#0091ff;color:#fff !important}
-.market-insight__stat h4{font-size:18px;font-weight:600}.market-insight__stat .market-insight__stat-container{overflow-y:scroll;height:500px;margin-bottom:50px}
+.market-insight__stat h4{margin-bottom:20px;font-size:18px;font-weight:600;text-align:center}
+.market-insight__stat .market-insight__stat-container{overflow-y:auto;height:500px;margin-bottom:50px}
 .market-insight__stat td,.market-insight__stat th{display:table-cell;text-align:left !important;vertical-align:middle;border-radius:2px;width:auto;font-size:12px}
 .market--right__display--radio{font-weight:600;margin-top:10px}.market--right__display--radio .single--block{display:inline-block;margin:0 12px}
 .market--right__display--radio .row{margin-bottom:5px}.market--right__display--radio [type="radio"]+span:before,.market--right__display--radio [type="radio"]+span:after{margin:4px 0}
 .market--right__display--radio [type="radio"]:not(:checked)+span,.market--right__display--radio [type="radio"]:checked+span{font-size:12px;color:#555;padding-left:25px}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:after{background-color:#002349}
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:before,.market--right__display--radio [type="radio"].with-gap:checked+span:after{border:2px solid #002349}
+.market__btns--container{display:inline-block}.market__btns .btn--label{font-weight:600;margin-right:5px}
+.market-insight h5{font-size:20px;margin-bottom:20px;font-weight:500}.market__search--lists-item--single{width:20%;display:inline-block}
 .map-section .row{margin-right:0;margin-left:0}.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}
 .market-survey__right-container h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:0;margin-bottom:0}
 .market-survey__right-container--tabs .tabs{display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#fff;text-align:center;overflow-x:hidden;overflow-y:hidden;font-size:16px;border-bottom:1px solid #e2e2e2}
@@ -2066,7 +2072,8 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .agree-to-terms a{display:inline-block !important;width:auto;font-size:12px !important;text-decoration:underline;color:#111;padding:0 !important}
 .profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
 .sort-favourite .btn,.sort-favourite .btn-large,.sort-favourite .btn-small{-webkit-box-shadow:none;box-shadow:none}
-.profile--tab{min-height:400px}@media(max-width:767px){.mobile--menu.sidenav{background-color:#04122d}
+.profile--tab{min-height:400px}@media(max-width:1248px){.search-section{display:none}
+.site-menu .nav-link{margin-right:0}.search-lists .row .col.m4{width:50%}}@media(max-width:767px){.mobile--menu.sidenav{background-color:#04122d}
 .mobile--menu.sidenav li>a{color:white}.mobile--menu.sidenav li>a>i.material-icons{float:none;margin:0 0 0 10px;color:#fff}
 .mobile--menu.sidenav .mega--dropdown{position:relative}.mobile--menu.sidenav .mega--dropdown .mega--dropdown__child{background:#082152;position:relative;top:0}
 .mobile--menu.sidenav .mega--dropdown .mega--dropdown__child span#mega-dropdown_close{line-height:18px}

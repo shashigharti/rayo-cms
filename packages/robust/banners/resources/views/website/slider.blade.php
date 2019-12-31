@@ -25,7 +25,7 @@
                         @set('first_image', $listing->images()->first())
                         <a href="{{route('website.realestate.single',['slug' => $listing->slug])}}">
                             <div class="single-block item">
-                                <img src={{$first_image->url ?? ''}}>
+                                <img src={{$first_image->url ?? ''}} alt="{{$listing->name ?? ''}}">
                                 <div class="slider--text">
                                     <h4>${{$listing->system_price}}</h4>
                                     <p>{{$listing->name ?? ''}}</p>

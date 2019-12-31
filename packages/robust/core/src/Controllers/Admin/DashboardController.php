@@ -6,8 +6,8 @@ use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Admin\UserRepository;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Repositories\DashboardRepository;
-use Robust\Core\Repositories\WidgetRepository;
+use Robust\Core\Repositories\Admin\DashboardRepository;
+use Robust\Core\Repositories\Admin\WidgetRepository;
 
 /**
  * Class DashboardController
@@ -34,6 +34,10 @@ class DashboardController extends Controller
         $this->view = 'admin.dashboards';
         $this->ajax_view = 'admin.ajax.dashboards';
         $this->title = 'Dashboards';
+
+        $this->previous_url = route('admin.home');
+
+        $this->middleware('auth');
     }
 
 
@@ -79,6 +83,7 @@ class DashboardController extends Controller
     public function show(UserRepository $user, $slug = null)
     {
         $dashboard = $user->find(\Auth::user()->id)->dashboards->where('is_default', true)->first();
+
         if ($slug !== null) {
             $dashboard = $this->model->where('slug', $slug)->get()->first();
         }

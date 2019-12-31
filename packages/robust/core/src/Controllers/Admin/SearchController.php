@@ -3,7 +3,7 @@ namespace Robust\Core\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Robust\Core\Helpers\MenuHelper;
-use Robust\Core\Repositories\SearchRepository;
+use Robust\Core\Repositories\Admin\SearchRepository;
 
 /**
  * Class SearchController

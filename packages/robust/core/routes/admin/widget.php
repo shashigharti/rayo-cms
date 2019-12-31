@@ -12,7 +12,3 @@ Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.dashboards.', '
     ]);
 
 });
-Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => 'Dashboard Widgets'], function () {
-
-    Route::resource('widgets', '\Robust\Core\Controllers\Admin\WidgetController');
-});

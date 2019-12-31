@@ -1,14 +1,20 @@
 <?php
 namespace Robust\RealEstate\Repositories\API;
 
+use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\RealEstate\Repositories\Common\Traits\ListingTrait;
+use Robust\RealEstate\Repositories\Interfaces\IListings;
 use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 
 /**
  * Class ListingRepository
  * @package Robust\RealEstate\Repositories\Website
  */
-class ListingRepository
+class ListingRepository implements IListings
 {
+    use CommonRepositoryTrait, ListingTrait;   
+    
     /**
      * @var Listing
      */

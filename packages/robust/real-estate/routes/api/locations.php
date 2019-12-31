@@ -1,7 +1,7 @@
 <?php
 
 Route::group(['prefix' => config('core.frw.api'), 
-'as' => 'api.real-estate.', 
+'as' => 'api.', 
 'group' => 'Locations'], 
 function () {
     Route::get('locations', [

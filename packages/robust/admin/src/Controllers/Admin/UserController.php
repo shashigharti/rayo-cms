@@ -6,7 +6,7 @@ use Robust\Core\Controllers\Admin\Controller;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
 use Robust\Core\Helpers\MenuHelper;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CommonRepositoryTrait;
 use Robust\Core\Services\MailService;
 
 /**
@@ -36,9 +36,6 @@ class UserController extends Controller
 
     }
 
-    /**
-     * @return UserController
-     */
     public function index()
     {
         $records = $this->model->paginate();

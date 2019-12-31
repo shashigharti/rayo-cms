@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
 use Robust\Core\Models\Backup;
-use Robust\Core\Repositories\BackupRepository;
+use Robust\Core\Repositories\Admin\BackupRepository;
 
 
 /**
@@ -31,7 +31,6 @@ class BackupController extends Controller
         $this->package_name = 'core';
         $this->view = 'admin.backup';
         $this->title = 'Back Up';
-
 
     }
 
@@ -71,6 +70,21 @@ class BackupController extends Controller
             'file' => $backup->path . $backup->name
         ]);
 
+        return redirect()->back();
+    }
+
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy($id)
+    {
+        $backup = $this->model->find($id);
+        $file = $backup->path . $backup->name;
+        if(file_exists($file)){
+            unlink($file);
+        }
+        $backup->delete();
         return redirect()->back();
     }
 }

@@ -1,3 +1,19 @@
+@media(max-width:1248px){
+	.search-section{
+		display:none;
+	}
+	.site-menu .nav-link {
+	    margin-right: 0px;
+	}
+	.search-lists{
+		.row{
+			.col.m4 {
+    			width: 50%;
+			}
+		}
+	}
+}
+
 @media(max-width: 767px){
 	.mobile--menu{
 	  &.sidenav{

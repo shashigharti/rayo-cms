@@ -16,6 +16,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'subdivision' => 'LIST_77',
                 'county' => 'LIST_41',
                 'elementary_school' => 'LIST_85',
@@ -41,6 +42,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'subdivision' => 'LIST_77',
                 'county' => 'LIST_41',
                 'elementary_school' => 'LIST_85',
@@ -64,6 +66,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'subdivision' => 'LIST_77',
                 'county' => 'LIST_41',
                 'elementary_school' => 'LIST_85',
@@ -87,6 +90,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'county' => 'LIST_41',
                 'elementary_school' => 'LIST_85',
                 'middle_school' => 'LIST_32',
@@ -109,6 +113,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'subdivision' => 'LIST_77',
                 'county' => 'LIST_41',
                 'picture_count' => 'LIST_133',
@@ -129,6 +134,7 @@ return [
                 'city' => 'LIST_39',
                 'state' => 'LIST_40',
                 'zip' => 'LIST_43',
+                'days_on_mls' => 'LIST_137',
                 'subdivision' => 'LIST_77',
                 'county' => 'LIST_41',
                 'elementary_school' => 'LIST_85',
@@ -215,7 +221,6 @@ return [
                 'lot_dimensions' => 'LIST_56',
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'pets_allowed' => 'LIST_112',
                 'pet_restriction' => 'GF20180201155859549336000000',
@@ -352,7 +357,6 @@ return [
                 'lot_dimensions' => 'LIST_56',
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
                 'possession' => 'GF20121206202431248446000000',
@@ -455,7 +459,6 @@ return [
                 'lot_dimensions' => 'LIST_56',
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
 
@@ -567,7 +570,6 @@ return [
 
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
                 'possession' => 'GF20121206202915041661000000',
@@ -671,7 +673,6 @@ return [
                 'lot_size' => 'LIST_57',
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',
                 'possession' => 'GF20121206202936574401000000',
@@ -781,7 +782,6 @@ return [
                 'unit_floor' => 'LIST_123',
 
                 //extra information
-                'days_on_mls' => 'LIST_137',
                 'mls_approved' => 'LIST_4',
                 'pets_allowed' => 'LIST_112',
                 'virtual_tour' => 'UNBRANDEDIDXVIRTUALTOUR',

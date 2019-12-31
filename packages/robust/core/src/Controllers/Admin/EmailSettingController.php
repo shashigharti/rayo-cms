@@ -5,7 +5,7 @@ namespace Robust\Core\Controllers\Admin;
 use Illuminate\Http\Request;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Repositories\EmailSettingRepository;
+use Robust\Core\Repositories\Admin\EmailSettingRepository;
 
 /**
  * Class EmailSettingController

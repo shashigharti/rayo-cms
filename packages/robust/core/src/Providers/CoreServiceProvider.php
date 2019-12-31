@@ -60,27 +60,7 @@ class CoreServiceProvider extends ServiceProvider
 
         BladeExtensions::register();
 
-        include __DIR__ . '/../../macros.php';
-
-        Validator::extend('greater_than', function ($attribute, $value, $parameters, $validator) {
-
-            $other = Input::get($parameters[0]);
-            if (is_string($value)) {
-                $value = intval($value);
-            }
-            if (is_string($other)) {
-                $other = intval($other);
-            }
-            if ($value == 0) {
-                return true;
-            }
-            return $value > $other;
-        });
-
-        Validator::replacer('greater_than', function ($message, $attribute, $rule, $params) {
-            return str_replace('_', ' ', 'The ' . $attribute . ' must be greater than the ' . $params[0]);
-        });
-
+        //include __DIR__ . '/../../macros.php';
     }
 
        public function registerFacades()
@@ -101,10 +81,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/reports.php', 'core.reports');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'core.settings');
         $this->mergeConfigFrom(__DIR__ . '/../../config/email-settings.php', 'core.email-settings');
-
-        foreach (new \DirectoryIterator(__DIR__ . '/../..') as $fileInfo) {
-            if (!$fileInfo->isDot()) {
-                include __DIR__ . '/../../helpers.php';
+       
+        $packages = CoreHelper::names();
+        foreach ($packages as $key => $package) {
+            if (file_exists(base_path() . "/packages/robust/{$key}/helpers.php")) {
+                include base_path() . "/packages/robust/{$key}/helpers.php";      
             }
         }
 

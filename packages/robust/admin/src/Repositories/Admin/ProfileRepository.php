@@ -5,8 +5,8 @@ namespace Robust\Admin\Repositories\Admin;
 use Illuminate\Support\Facades\Hash;
 use Robust\Admin\Models\Role;
 use Robust\Admin\Models\User;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
 
 /**
  * Class ProfileRepository
@@ -28,10 +28,6 @@ class ProfileRepository
     private $roles;
 
 
-    /**
-     * ProfileRepository constructor.
-     * @param User $profile
-     */
     public function __construct(User $profile)
     {
         $this->model = $profile;

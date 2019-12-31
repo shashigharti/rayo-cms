@@ -1,12 +1,11 @@
 @set('blocks',$setting_helper->getValuesBySlug('search-block'))
 @set('search_settings',$setting_helper->getValuesBySlug('search'))
 @if(!empty($blocks))
-    <div id='adv-search-dropdown'>
-        <form method="get" action="{{$advancesearch_helper->getSearchURL()}}">
+    <form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
+        <div id='adv-search-dropdown'>
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
-
                     @set('adSearchConfig', config('rws.advance-search'))    
                     @include(Site::templateResolver('real-estate::website.advance-search.first-block'),['blocks' => $blocks['first_block']])
                     @include(Site::templateResolver('real-estate::website.advance-search.second-block'),['blocks' => $blocks['second_block']])
@@ -19,6 +18,7 @@
                     </div>
                 </div>
             </div>
-        </form>
-    </div>
+        </div>
+    <input type="hidden" name="sort_by" value="{{ $query_params['sort_by'] ?? ''}}">
+    </form>
 @endif

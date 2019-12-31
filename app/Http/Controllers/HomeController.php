@@ -26,48 +26,48 @@ class HomeController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getMedia()
-    {
-        $medias = Media::get();
-        return response()->json($medias);
-    }
+    // /**
+    //  * @return \Illuminate\Http\JsonResponse
+    //  */
+    // public function getMedia()
+    // {
+    //     $medias = Media::get();
+    //     return response()->json($medias);
+    // }
 
-    /**
-     * @param Request $request
-     * @param MediaRepository $model
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function uploadMedia(Request $request, MediaRepository $model)
-    {
+    // /**
+    //  * @param Request $request
+    //  * @param MediaRepository $model
+    //  * @return \Illuminate\Http\JsonResponse
+    //  */
+    // public function uploadMedia(Request $request, MediaRepository $model)
+    // {
 
-        $validator = Validator::make($request->all(),[
-            'file' => 'required',
-        ]);
-        if($validator->fails()){
-            return response()->json(['errors' => $validator->errors()],422);
-        }
-        $data = $request->files;
-        $model->store($data);
-        return response()->json(['success' =>true]);
-    }
+    //     $validator = Validator::make($request->all(),[
+    //         'file' => 'required',
+    //     ]);
+    //     if($validator->fails()){
+    //         return response()->json(['errors' => $validator->errors()],422);
+    //     }
+    //     $data = $request->files;
+    //     $model->store($data);
+    //     return response()->json(['success' =>true]);
+    // }
 
-    /**
-     * @param $id
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function getThumbnail($id)
-    {
-        $thumbnail = Media::where('id',$id)->first();
-        return response()->json($thumbnail);
-    }
+    // /**
+    //  * @param $id
+    //  * @return \Illuminate\Http\JsonResponse
+    //  */
+    // public function getThumbnail($id)
+    // {
+    //     $thumbnail = Media::where('id',$id)->first();
+    //     return response()->json($thumbnail);
+    // }
 
-    /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
-     */
-    public function backend(){
-        return view('backend');
-    }
+    // /**
+    //  * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+    //  */
+    // public function backend(){
+    //     return view('backend');
+    // }
 }

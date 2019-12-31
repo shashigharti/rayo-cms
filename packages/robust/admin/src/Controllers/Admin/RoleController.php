@@ -32,9 +32,6 @@ class RoleController extends Controller
 
     }
 
-    /**
-     * @return RoleController
-     */
     public function index()
     {
         $records = $this->model->paginate();

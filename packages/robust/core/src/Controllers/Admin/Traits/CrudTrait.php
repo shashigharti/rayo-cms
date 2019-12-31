@@ -41,8 +41,7 @@ trait CrudTrait
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function create(Request $request)
     {
@@ -92,6 +91,7 @@ trait CrudTrait
             ])->render();
             return response()->json(['view' => $view]);
         }
+
 
         return $this->display(Site::templateResolver("{$this->package_name}::{$this->view}.create"), [
                 'model' => $model,

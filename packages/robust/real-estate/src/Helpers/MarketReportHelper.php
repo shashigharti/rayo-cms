@@ -48,4 +48,35 @@ class MarketReportHelper
         //access through relation need to refactor
         return MarketReport::where('reportable_id',$id)->where('reportable_type',$type)->first();
     }
+
+    /**
+     * Generates price ranges
+     * @return string
+     */
+    public function generatePriceRanges(){
+        $config = config('rws.market-report.price-range');
+        $i = $config['min'];
+        $max = $config['max'];
+        $priceArr = [];
+
+        for (; $i <= $max; $i = $i + $config['increment']) {
+            $priceArr[] = $i;
+        }
+        if (array_search($max, $priceArr) < 0) {
+            $priceArr[] = $max;
+        }
+
+        return $priceArr;
+    }
+
+     /**
+     * Checks if the amount is between the given price range
+     * @return mixed
+     */
+    public function isActivePriceRange($amount, $min, $max){
+        if(($amount >= $min) && ($amount < $max)){
+            return 'active';
+        }       
+        return false;
+    }
 }

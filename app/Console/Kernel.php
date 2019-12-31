@@ -28,6 +28,7 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\LeadDataMigrate',
         'App\Console\Commands\MarketReportMigrate',
         'App\Console\Commands\BannerMigrate',
+        'App\Console\Commands\UpdateGeoLocations',
     ];
 
     /**

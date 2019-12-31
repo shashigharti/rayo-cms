@@ -31,41 +31,28 @@ class Zip extends BaseModel
         'longitude'
     ];
 
-
     /**
-     * @param $query
+     * Get the city's report.
      */
-    public function scopeSatisfying($query)
+    public function report()
     {
-//        $params = Client::get()->getSatisfyingCount();
-        $params = ['sold' => '1', 'active' => '1']; // Temp until Clients model is resolved
-        $query->where(function ($query) use ($params) {
-            $query->where('active', '>=', $params['active'])
-                ->orWhere('sold', '>=', $params['sold']);
-        });
+        return $this->morphOne('Robust\RealEstate\Models\MarketReport', 'reportable');
     }
 
-    /**
-     * @return bool
+
+     /**
+     * Listing  associated with this city
      */
-    public function isHiddenDropdown()
+    public function listings()
     {
-        return $this->where($this->dropdown, '!=', 1);
+        return $this->hasMany('Robust\RealEstate\Models\Listing');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function city()
-    {
-        return $this->hasOne(City::class, 'id', 'city_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function county()
-    {
-        return $this->hasOne(County::class, 'id', 'county_id');
-    }
+    //  /**
+    //  * @return \Illuminate\Database\Eloquent\Relations\MorphOne
+    //  */
+    // public function location()
+    // {
+    //     return $this->morphOne('Robust\RealEstate\Models\Location','locationable','locationable_type','location_id');
+    // }
 }

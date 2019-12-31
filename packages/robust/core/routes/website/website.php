@@ -1,6 +1,6 @@
 <?php
 Route::get('/', [
-    'as' => 'website.home',
+    'as' => 'home',
     'uses' => '\Robust\Core\Controllers\Website\HomeController@index'
 ]);
 

@@ -5,9 +5,9 @@ namespace Robust\Admin\Repositories\Admin;
 use Illuminate\Notifications\Notifiable;
 use Robust\Admin\Models\Role;
 use Robust\Admin\Models\User;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
 
 /**
  * Class UserRepository
@@ -85,16 +85,5 @@ class UserRepository
             $user->delete();
             $user->roles()->detach();
         }
-    }
-
-    /**
-     * @param $name
-     * @return mixed
-     */
-    public function getUsersByRole($name)
-    {
-        return $this->model->whereHas('roles',function($query) use ($name){
-           $query->where('name',$name);
-        })->get();
     }
 }

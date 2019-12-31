@@ -55,4 +55,15 @@ module.exports = function () {
         .pipe(flatten())
         .pipe(gulp.dest('public/assets/website/images'))
         .pipe(notify({ message: 'Website Images task complete' }));
+
+    gulp.src(['resources/assets/website/css/landing.css'])
+        .pipe(cssimport().on('error', util.log))
+        .pipe(autoprefixer('last 2 version'))
+        .pipe(concat('landing.min.css'))
+        .pipe(uglifycss({
+            "maxLineLen": 80,
+            "uglyComments": true
+        }))
+        .pipe(gulp.dest('public/assets/website/css'))
+        .pipe(notify({message: 'Scripts Website CSS task complete'}));
 }

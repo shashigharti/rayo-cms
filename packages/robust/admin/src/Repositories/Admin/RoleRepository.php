@@ -4,9 +4,9 @@ namespace Robust\Admin\Repositories\Admin;
 
 use Robust\Admin\Models\Permission;
 use Robust\Admin\Models\Role;
-use Robust\Core\Repositories\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
 
 /**
  * Class RoleRepository

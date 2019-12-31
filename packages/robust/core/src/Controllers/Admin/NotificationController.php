@@ -3,7 +3,7 @@ namespace Robust\Core\Controllers\Admin;
 
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Robust\Core\Models\NotificationRepository;
+use Robust\Core\Repositories\Admin\NotificationRepository;
 
 /**
  * Class NotificationController

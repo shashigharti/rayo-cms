@@ -4,7 +4,7 @@ namespace Robust\Core\Controllers\Admin;
 
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
 use Robust\Core\Models\Setting;
-use Robust\Core\Repositories\SettingRepository;
+use Robust\Core\Repositories\Admin\SettingRepository;
 use Illuminate\Http\Request;
 
 /**

@@ -15,7 +15,7 @@ class LeadRating extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_leads_ratings';
+    protected $table = 'real_estate_lead_ratings';
 
 
     /**

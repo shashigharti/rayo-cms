@@ -5,7 +5,7 @@ namespace Robust\Core\Controllers\Admin;
 use Illuminate\Http\Request;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Repositories\SchedulesRepository;
+use Robust\Core\Repositories\Admin\ScheduleRepository;
 
 /**
  * Class ScheduleController
@@ -17,10 +17,10 @@ class ScheduleController extends Controller
 
     /**
      * ScheduleController constructor.
-     * @param SchedulesRepository $model
+     * @param ScheduleRepository $model
      */
     public function __construct(
-        SchedulesRepository $model
+        ScheduleRepository $model
     ) {
         $this->model = $model;
         $this->ui = 'Robust\Core\UI\Schedule';

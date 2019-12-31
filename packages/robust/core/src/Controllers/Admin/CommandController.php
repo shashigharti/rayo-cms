@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
 use Robust\Core\Controllers\Admin\Traits\CrudTrait;
 use Robust\Core\Controllers\Admin\Traits\ViewTrait;
-use Robust\Core\Repositories\CommandRepository;
+use Robust\Core\Repositories\Admin\CommandRepository;
 
 
 /**
@@ -32,13 +32,8 @@ class CommandController extends Controller
         $this->title = 'Commands';
     }
 
-    /**
-     *
-     */
     public function getCommand()
     {
         Artisan::queue('robust:reset-menu');
-
-
     }
 }

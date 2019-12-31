@@ -14,9 +14,3 @@ Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => '
     ]);
 
 });
-
-Route::get('medias/type/{type}', [
-        'as' => 'admin.media.modal.type',
-        'uses' => '\Robust\Core\Controllers\Admin\MediaController@getMediasByType']
-
-);

@@ -1,6 +1,6 @@
 <?php
 Route::group(['prefix' => 'market',
-'as' => 'website.realestate.market.',
+'as' => 'market.',
 'group' => 'Market Survey'],
 function () {
     Route::get('survey', [
