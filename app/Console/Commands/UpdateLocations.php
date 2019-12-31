@@ -29,14 +29,14 @@ class UpdateLocations extends Command
      * @var array
      */
     protected $mapping = [
-        'Robust\RealEstate\Models\City' => 'city_id',
-        'Robust\RealEstate\Models\County' => 'county_id',
-        'Robust\RealEstate\Models\Area' =>'area_id',
-        'Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
-        'Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id',
-        'Robust\RealEstate\Models\HighSchool' => 'high_school_id',
-        'Robust\RealEstate\Models\Zip' => 'zip_id',
-        'Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
+        '\Robust\RealEstate\Models\City' => 'city_id',
+        '\Robust\RealEstate\Models\County' => 'county_id',
+        '\Robust\RealEstate\Models\Area' =>'area_id',
+        '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
+        '\Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id',
+        '\Robust\RealEstate\Models\HighSchool' => 'high_school_id',
+        '\Robust\RealEstate\Models\Zip' => 'zip_id',
+        '\Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
     ];
     /**
      * Execute the console command.

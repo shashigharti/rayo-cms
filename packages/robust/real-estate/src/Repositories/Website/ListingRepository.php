@@ -99,4 +99,9 @@ class ListingRepository implements IListings
         return $this->model;
     }
 
+    public function whereType($type,$value)
+    {
+        return $this->model->where($type,$value);
+    }
+
 }

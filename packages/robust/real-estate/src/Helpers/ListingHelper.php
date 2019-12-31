@@ -1,7 +1,6 @@
 <?php
 namespace Robust\RealEstate\Helpers;
 
-use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
@@ -62,19 +61,20 @@ class ListingHelper
 
 
     /**
-     * @param $city
+     * @param $location
      * @param $image
      * @return mixed
      */
-    public function getImageByCity($city, $image)
+    public function getImageByCity($location, $image)
     {
         $src = '';
         if($image){
             $src =  getMedia($image);
         }else{
-            $listing = $this->model->getImageByType('city_id',$city)->first();
+            $listing = $this->model->whereType('city_id',$location)
+                    ->where('picture_status',1)->first();
             if($listing && $listing->images() && $listing->images()->first()){
-                $src = $listing->images()->first()->listing_url;
+                $src = $listing->images()->first()->url;
             }
         }
         return $src;
