@@ -6,10 +6,10 @@ use Robust\Core\Models\BaseModel;
 
 
 /**
- * Class CoreEmailTemplate
+ * Class EmailTemplate
  * @package Robust\RealEstate\Models
  */
-class CoreEmailTemplate extends BaseModel
+class EmailTemplate extends BaseModel
 {
     /**
      * @var string

@@ -41,11 +41,14 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
     /**
-     * @return mixed
+     * Route notifications for the mail channel.
+     *
+     * @param  \Illuminate\Notifications\Notification  $notification
+     * @return string
      */
-    public static function getDefaultAgent()
+    public function routeNotificationForMail($notification)
     {
-        return User::find(1);
+        return $this->email;
     }
 
     /**
@@ -73,22 +76,9 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     /**
-     * @param string $token
-     */
-    public function sendPasswordResetNotification($token)
-    {
-        event(new PasswordResetEvent($this, $token));
-    }
-
-    public function sendEmailVerificationNotification()
-    {
-        $this->notify(new VerifyEmail());
-    }
-
-    /**
      * @return \Illuminate\Database\Eloquent\Relations\MorphTo
      */
-    public function member()
+    public function memberable()
     {
         return $this->morphTo();
     }

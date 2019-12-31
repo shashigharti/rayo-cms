@@ -8,6 +8,7 @@ use Robust\Admin\Repositories\Website\RegisterRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Robust\Core\Notifications\LeadRegistrationNotification;
 
 class RegisterController extends Controller
 {
@@ -85,10 +86,29 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password'])
         ];
 
-        $new_user = $this->model->store($registration_details);       
+        $new_user = \User::create($member_details);     
+
+        $token = md5(uniqid(rand(), true));
+        $token_data = [
+            'user_id' => $new_user->id,
+            'token' => $token
+        ];
+
+        Dashboard::create([
+            'name' => "{$new_user->first_name} Dashboard",
+            'slug' => str_slug("{$new_user->first_name} Dashboard"),
+            'description' => 'Main Dashboard',
+            'is_default' => true,
+            'user_id' => $new_user->id
+        ]);
+
+        
+
+        //ProfileToken::query()->insert($token_data);         
 
         if ($new_user) {
             $event = $this->events['create'];
+            $user->notify(new LeadRegistrationNotification($lead));
 
             // Raise user created event
             event(new $event($user));            

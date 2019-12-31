@@ -77,4 +77,77 @@ if (!function_exists('geocode')) {
         }
         return false;
     }
+
+
+    
+    if (!function_exists('email_template')) {
+        /**
+         * @param string $name
+         * @return string
+         */
+        function email_template($name){
+            return EmailTemplate::where('type', $name)->first();
+        }
+    }
+
+    if (!function_exists('replace_variables')) {
+        /**
+         * @param string $content
+         * @return string
+         */
+        function replace_variables($content, $user, $type){
+            $agent = $user;
+            $replacements = [
+                'lead' => [
+                    '*|LEAD_FIRSTNAME|*' => $user->memberable->first_name,
+                    '*|LEAD_LASTNAME|*' => $user->memberable->last_name,
+                    '*|LEAD_FULLNAME|*' => $user->memberable->first_name . " " . $user->memberable->last_name,
+                    '*|LEAD_MAIL|*' => $user->email,
+                    '*|LEAD_PHONE|*' => $user->memberable->phone,
+                    '*|SITE_NAME|*' => config('rws.client.name'),
+                    '*|PASSWORD|*' => $user->password,
+                    '*|ACTIVATION_LINK|*' => '', //route('lead.import.mail', ['token' => $this->token]),
+                    '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
+                ],
+                'agent' => [
+                    '*|AGENT_FIRSTNAME|*' => $agent->memberable->first_name,
+                    '*|AGENT_LASTNAME|*' => $agent->memberable->last_name,
+                    '*|AGENT_FULLNAME|*' => $user->memberable->first_name . " " . $user->memberable->last_name,
+                    '*|AGENT_MAIL|*' => $agent->memberable->email,
+                    '*|AGENT_PHONE|*' => $agent->memberable->phone,
+
+                    '*|LISTING_STREET|*' => '',
+                    '*|LISTING_NUMBER|*' =>  '',
+                    '*|LISTING_SYSTEM_PRICE|*' => '',
+                    '*|LISTING_NAME|*' => '',
+                    '*|URL|*' => '',
+                    '*|SUBJECT_THIS_EMAIL|*' => $this->data['subject'],
+                    '*|LOGO|*' => $this->data['logo'],
+
+                    '*|FIRST_VIEW|*' => '',
+                    '*|VIEW_COUNT|*' => '',
+                    '*|LISTING_VIEWER|*' => '',
+                    '*|CONTENT|*' => '',
+                    '*|SELLING_AGENT|*' => '',
+                    '*|LOCATION_TYPE|*' => '',
+                    '*|COUNT_LOCATION|*' => ''
+                ]                
+            ];
+
+            $common = [
+                '*|WEBSITE|*' => '<a href="' . \URL::to('/') . '">' . preg_replace('#^https?://#', '', \URL::to('/')) . '</a>',
+                '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
+                '*|FOOTER_TEXT|*' => '',
+                '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
+                '*|LOCATION|*' => config('rws.client.name')    
+            ];
+
+            $all_replacements = array_merge($replacements[$type], $common);
+            foreach ($all_replacements as $search => $replace) {
+                $content = str_replace($search, $replace, $content);
+            }
+
+            return $content;
+        }
+    }
 }
