@@ -2,7 +2,6 @@
 
 namespace Robust\Core\Events;
 
-use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Robust\Admin\Models\User;
@@ -13,7 +12,7 @@ use Robust\Core\Helpage\Site;
  * Class ExceptionEvent
  * @package Robust\Core\Events
  */
-class ExceptionEvent extends Mailable
+class ExceptionEvent
 {
     use InteractsWithSockets, SerializesModels;
 
@@ -33,15 +32,15 @@ class ExceptionEvent extends Mailable
     }
 
 
-    /**
-     * @param User $user
-     * @return $this
-     */
-    public function build(User $user)
-    {
-        $this->to($user->find(1)->email);
-        return $this->view(Site::templateResolver('core::admin.emails.exception'), [
-            'exception' => $this->exception
-        ]);
-    }
+    // /**
+    //  * @param User $user
+    //  * @return $this
+    //  */
+    // public function build(User $user)
+    // {
+    //     $this->to($user->find(1)->email);
+    //     return $this->view(Site::templateResolver('core::admin.emails.exception'), [
+    //         'exception' => $this->exception
+    //     ]);
+    // }
 }

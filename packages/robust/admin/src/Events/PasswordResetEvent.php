@@ -1,7 +1,6 @@
 <?php
 namespace Robust\Admin\Events;
 
-use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Robust\Admin\Models\User;
@@ -11,7 +10,7 @@ use Robust\Core\Helpage\Site;
  * Class UserCreatedEvent
  * @package Robust\Admin\Events
  */
-class PasswordResetEvent extends Mailable
+class PasswordResetEvent
 {
     use InteractsWithSockets, SerializesModels;
 
