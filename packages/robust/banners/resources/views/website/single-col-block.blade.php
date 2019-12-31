@@ -9,7 +9,7 @@
                     @set('location',$location_helper->byId($properties->location))
                     <div class="col m4 s12">              
                         <div class="single-block">
-                            <img src="{{$image}}" alt="">
+                            <img src="{{$image}}" alt="{{$location->name}}">
                             <div class="figcaption center-align">
                                 <h2>{{$location->name}}</h2>
                                 <div class="available-prices">

@@ -36,7 +36,7 @@
                             <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
                                 <div class="col m3 s12">
                                     <div class="single--list--block">
-                                        <img src={{$image ? $image->url :  ''}}>
+                                        <img src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->byId($result->city_id)->name}}">
                                         <div class="list--overlay">
         									<span class="tag active">
         										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
