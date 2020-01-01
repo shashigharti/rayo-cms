@@ -18,10 +18,11 @@
                    cellpadding="0">
                 <tr>
                     <td height="30" bgcolor="{{ config('rws.settings.email-template.header-logo') }}">&nbsp;</td>
+                    <!--asset('assets/website/images/logo.png') -->
                 </tr>
                 <tr align="left">
                     <td colspan="2" bgcolor="{{ config('rws.settings.email-template.header-background') }}">
-                        <img src="{{ config('rws.settings.email-template.header-img') }}"
+                        <img src=""
                              width="{{ config('rws.settings.email-template.header-width') }}"
                              height="{{ config('rws.settings.email-template.header-height') }}"/>
                     </td>

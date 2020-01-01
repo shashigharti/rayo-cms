@@ -11,12 +11,6 @@ Route::group([
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\LoginController@login'
         ]);
 
-        Route::post('register', [
-            'name' =>'Leads Register',
-            'as' => 'register',
-            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\RegisterController@register'
-        ]);
-
         Route::get('logout', [
             'name' =>'Leads Logout',
             'as' => 'logout',

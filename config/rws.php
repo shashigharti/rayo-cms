@@ -35,10 +35,10 @@ return [
         'settings' => [
             'email-template' => [
                 'header-background' => '#101f2d',
-                'header-logo' =>  asset('assets/website/images/logo.png'),
+                'header-logo' => '',
                 'header-image' => '',
                 'header-width' => '124',
-                'header-height' => '34',
+                'header-height' => '34'
             ]
 
         ]

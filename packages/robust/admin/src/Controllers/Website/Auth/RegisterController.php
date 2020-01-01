@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Robust\Core\Notifications\LeadRegistrationNotification;
+use Robust\Admin\Repositories\Website\UserRepository;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
