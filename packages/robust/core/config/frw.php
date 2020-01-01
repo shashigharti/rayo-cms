@@ -12,7 +12,7 @@ return [
     | services your application utilizes. Set this in your ".env" file.
     |
     */
-    'uri' => 'admin',
+    'admin' => 'admin',
     'api' => 'api',
     'auth' => 'auth',
     'website' => '',

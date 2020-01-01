@@ -7,9 +7,8 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
     Route::post('login', [
         'as' => 'login.post',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@postLogin'
-    ]);
+    ]);   
     Route::get('logout', [
-        'name' => 'Logout',
         'as' => 'logout',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@logout'
     ]);
@@ -17,14 +16,11 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
     Route::get('register', [
         'as' => 'register',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@register'
-    ]);
-    
+    ]);    
     Route::post('register', [
         'as' => 'register.post',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@postRegister'
     ]);
-
-
 
     Route::get('password/reset', [
         'as' => 'password.request',

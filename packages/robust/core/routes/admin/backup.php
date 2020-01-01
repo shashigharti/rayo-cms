@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => 'Back Up'], function () {
+Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' => 'Back Up'], function () {
 
     Route::get('backup/reset', [
         'as' => 'backup.reset',

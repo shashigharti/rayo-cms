@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => 'Notifications'], function () {
+Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' => 'Notifications'], function () {
     Route::post('/notifications', [
         'as' => 'notifications',
         'uses' => 'Robust\Core\Controllers\Admin\NotificationController@getNotificationsByDate',

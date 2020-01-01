@@ -1,5 +1,5 @@
 <?php
-Route::group(['prefix' => config('core.frw.uri'), 'as' => 'admin.', 'group' => 'Commands'], function () {
+Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' => 'Commands'], function () {
     Route::get('/commands/run',[
         'as'=> 'commands.run',
         'uses' =>'\Robust\Core\Controllers\Admin\CommandController@getCommand']);

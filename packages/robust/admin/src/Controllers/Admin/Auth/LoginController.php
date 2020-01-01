@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Admin\Controllers\Website\Auth;
+namespace Robust\Admin\Controllers\Admin\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
