@@ -15,7 +15,7 @@ class testLeadNotification extends TestCase
      *
      * @return void
      */
-    public function testLeadRegistrationNotification()
+    public function testUserRegistrationNotification()
     {
         Notification::fake();
 
