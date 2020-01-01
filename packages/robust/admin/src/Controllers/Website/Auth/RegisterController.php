@@ -4,7 +4,6 @@ namespace Robust\Admin\Controllers\Website\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
-use Robust\Admin\Repositories\Website\RegisterRepository;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -35,15 +34,16 @@ class RegisterController extends Controller
     /**
      * RegisterController constructor.
      * @param UserRepository $user
+     * @param LeadRepository $lead
      */
-    public function __construct(RegisterRepository $user, Request $request)
+    public function __construct(UserRepository $user, Request $request)
     {
         $this->middleware('guest');
 
         $this->model = $user;
         $this->request = $request;
         $this->events = [
-            'create' => 'Robust\Admin\Events\UserCreatedEvent',
+            'user_created' => 'Robust\Admin\Events\UserCreatedEvent',
         ];
     }
 
@@ -70,48 +70,35 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function create(array $data)
+    protected function create(Dashboard $dashboard, array $data)
     {   
-        // will be removed
-        $lead = Lead::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name']
-        ]);
-
-        $member_details = [
+        // create a user account
+        $new_user = $this->user->create([
             'user_name' => $data['email'],
             'email' => $data['email'],
-            'memberable_id' => $lead->id,
-            'memberable_type' => 'Robust\RealEstate\Models\Lead',
             'password' => Hash::make($data['password'])
-        ];
+        ]); 
 
-        $new_user = \User::create($member_details);     
-
-        $token = md5(uniqid(rand(), true));
-        $token_data = [
-            'user_id' => $new_user->id,
-            'token' => $token
-        ];
-
-        Dashboard::create([
-            'name' => "{$new_user->first_name} Dashboard",
-            'slug' => str_slug("{$new_user->first_name} Dashboard"),
+        // create dashboard data for the new user
+        $dashboard->create([
+            'name' => "{$data['first_name']} Dashboard",
+            'slug' => str_slug("{$data['first_name']} Dashboard"),
             'description' => 'Main Dashboard',
             'is_default' => true,
             'user_id' => $new_user->id
         ]);
 
-        
-
-        //ProfileToken::query()->insert($token_data);         
-
         if ($new_user) {
-            $event = $this->events['create'];
-            $user->notify(new LeadRegistrationNotification($lead));
+            $config = config('rws.override_event_notifications');
+            $event = $this->events['user_created'];
 
+            // if overridding events does exists in configuration, raise that event.
+            if(isset($config['user_created'])){
+                $event = $config['user_created'];                  
+            } 
+            
             // Raise user created event
-            event(new $event($user));            
+            event(new $event($user, $data));            
         }
 
         if (\Cache::get('redirect_url')) {

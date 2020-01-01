@@ -1,22 +1,22 @@
 <?php
-namespace Robust\Admin\Events;
+namespace Robust\RealEstate\Events;
 
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Robust\Admin\Models\User;
 
 /**
- * Class UserCreatedEvent
+ * Class LeadCreatingEvent
  * @package Robust\Admin\Events
  */
-class UserCreatedEvent
+class LeadCreatingEvent
 {
     use InteractsWithSockets, SerializesModels;
 
     public $user;
 
     /**
-     * UserCreatedEvent constructor. Create a new event instance.
+     * LeadCreatingEvent constructor. Create a new event instance.
      *
      * @param  Robust\Admin\Models\User  $user
      * @param  array  $data

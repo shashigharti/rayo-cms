@@ -1,29 +1,36 @@
 <?php
 
-return [  
+return [    
+    'members' => [
+        'backend' => Robust\Core\Models\Admin::class,
+        'frontend' =>[ 
+            'user' => Robust\RealEstate\Models\Lead::class,
+            'notifications' => [
+                'Lead registration' => '',
+                'Lead import' => '',
+                'Get more property Info' => '',
+                'MLS report' => '',
+                'Schedule viewing' => '',
+                'Lead registration to email' => '',
+                'Discuss with realtor' => '',
+                'Property multiple views notification' => '',
+                'Notification that lead has returned to website' => '',
+                'Email if property sells' => '',
+                'Email price changes' => '',
+                'Blank email' => '',
+                'Custom email' => '',
+                'Blank with signature' => ''
+            ]
+        ]
+    ],  
+    'override_event_notifications' => [
+        'user_created' => 'Robust\RealEstate\Events\LeadCreatingEvent'
+    ],
     'client' => [
         'name' => 'Alaska',
-        'default' => 'support@realwebsystems.com',
-        'support' => 'support@realwebsystems.com'
-    ],
-    'email' => [
-        'default' => 'support@realwebsystems.com',
-        'support' => 'support@realwebsystems.com',
-        'default_templates' => [
-            'Lead registration',
-            'Lead import',
-            'Get more property Info',
-            'MLS report',
-            'Schedule viewing',
-            'Lead registration to email',
-            'Discuss with realtor',
-            'Property multiple views notification',
-            'Notification that lead has returned to website',
-            'Email if property sells',
-            'Email price changes',
-            'Blank email',
-            'Custom email',
-            'Blank with signature'
+        'email' => [
+            'default' => 'support@realwebsystems.com',
+            'support' => 'support@realwebsystems.com'
         ]
     ],
     'advance-search-filters' => [

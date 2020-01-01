@@ -1,22 +1,33 @@
 <?php
-namespace Robust\Core\Notifications;
+namespace Robust\RealEstate\Notifications;
 
-use Robust\Admin\Models\User;
+use Robust\RealEstate\Models\Lead;
 use Illuminate\Bus\Queueable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 
 class LeadRegistrationNotification extends Notification
 {
     use Queueable, SerializesModels;
 
     /**
-     * The user instance.
+     * The lead instance.
      *
-     * @var User
+     * @var Lead
      */
-    public $user;
+    public $lead;
+
+    /**
+     * Create a new notification instance.
+     *
+     * @return void
+     */
+    public function __construct(Lead $lead)
+    {
+        $this->lead = $lead;
+    }
 
 
     /**
@@ -39,10 +50,10 @@ class LeadRegistrationNotification extends Notification
     public function toMail($notifiable)
     {
         $template = email_template('Lead Registration');
-        $body = replace_variables($template->body, $lead, 'lead');
-        $subject = replace_variables($template->subject, $lead, 'lead');
+        $body = replace_variables($template->body, $this->lead, 'lead');
+        $subject = replace_variables($template->subject, $this->lead, 'lead');
         return (new MailMessage)
-            ->from(config('rws.email.support'))
+            ->from(config('rws.client.email.support'))
             ->subject($subject)
             ->line($body);
     }

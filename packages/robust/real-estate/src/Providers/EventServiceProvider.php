@@ -1,12 +1,12 @@
 <?php
 
-namespace Robust\Core\Providers;
+namespace Robust\RealEstate\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
 /**
  * Class EventServiceProvider
- * @package Robust\Core\Providers
+ * @package Robust\RealEstate\Providers
  */
 class EventServiceProvider extends ServiceProvider
 {
@@ -16,8 +16,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \Robust\Core\Events\ExceptionEvent::class => [
-            \Robust\Core\Listeners\ExceptionEventListener::class
+        \Robust\RealEstate\Events\LeadCreatingEvent::class => [
+            \Robust\RealEstate\Listeners\LeadCreatingListener::class
         ]
     ];
 

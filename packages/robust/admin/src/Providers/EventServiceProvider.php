@@ -1,6 +1,5 @@
 <?php
-
-namespace Robust\Core\Providers;
+namespace Robust\Admin\Providers;
 
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -16,9 +15,15 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        \Robust\Core\Events\ExceptionEvent::class => [
-            \Robust\Core\Listeners\ExceptionEventListener::class
-        ]
+        \Robust\Core\Events\UserCreatedEvent::class => [
+            \Robust\Core\Listeners\UserCreatedEventListener::class,
+        ],
+        \Robust\Core\Events\UserUpdatedEvent::class => [
+            \Robust\Core\Listeners\UserUpdatedEventListener::class,
+        ],
+        \Robust\Core\Events\PasswordResetEvent::class => [
+            \Robust\Core\Listeners\PasswordResetEventListener::class
+        ],
     ];
 
     /**

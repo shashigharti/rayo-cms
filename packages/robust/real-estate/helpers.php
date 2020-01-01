@@ -104,7 +104,7 @@ if (!function_exists('geocode')) {
                     '*|LEAD_FULLNAME|*' => $user->memberable->first_name . " " . $user->memberable->last_name,
                     '*|LEAD_MAIL|*' => $user->email,
                     '*|LEAD_PHONE|*' => $user->memberable->phone,
-                    '*|SITE_NAME|*' => config('rws.client.name'),
+                    '*|SITE_NAME|*' => config('rws.client.email.name'),
                     '*|PASSWORD|*' => $user->password,
                     '*|ACTIVATION_LINK|*' => '', //route('lead.import.mail', ['token' => $this->token]),
                     '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
@@ -139,7 +139,7 @@ if (!function_exists('geocode')) {
                 '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
                 '*|FOOTER_TEXT|*' => '',
                 '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
-                '*|LOCATION|*' => config('rws.client.name')    
+                '*|LOCATION|*' => config('rws.client.email.name')    
             ];
 
             $all_replacements = array_merge($replacements[$type], $common);
