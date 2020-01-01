@@ -25,10 +25,4 @@ class PasswordResetEvent
         $this->user = $user;
         $this->token = $token;
     }
-
-    // public function build()
-    // {
-    //     $this->to($this->user->email);
-    //     return $this->view(Site::templateResolver('core::admin.emails.password-reset'));
-    // }
 }

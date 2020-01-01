@@ -2,5 +2,5 @@
 
 @section('content')
     <h2>Thank you..</h2>
-    <h3>User has been created successfully</h3>
+    <h3>Your password reset link</h3>
 @endsection

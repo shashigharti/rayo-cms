@@ -24,10 +24,4 @@ class UserUpdatedEvent
     {
         $this->user = $user;
     }
-
-    // public function build()
-    // {
-    //     $this->to($this->user->email);
-    //     return $this->view(Site::templateResolver('core::admin.emails.profile-update'));
-    // }
 }

@@ -30,7 +30,17 @@ return [
         'name' => 'Alaska',
         'email' => [
             'default' => 'support@realwebsystems.com',
-            'support' => 'support@realwebsystems.com'
+            'support' => 'support@realwebsystems.com',
+        ],
+        'settings' => [
+            'email-template' => [
+                'header-background' => '#101f2d',
+                'header-logo' =>  asset('assets/website/images/logo.png'),
+                'header-image' => '',
+                'header-width' => '124',
+                'header-height' => '34',
+            ]
+
         ]
     ],
     'advance-search-filters' => [

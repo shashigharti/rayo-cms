@@ -38,13 +38,10 @@ class PasswordResetNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $template = email_template('Lead Registration');
-        $body = replace_variables($template->body, $lead, 'lead');
-        $subject = replace_variables($template->subject, $lead, 'lead');
         return (new MailMessage)
             ->from(config('rws.client.email.support'))
-            ->subject($subject)
-            ->line($body);
+            ->subject("New user create")
+            ->line(Site::templateResolver('admin::website.emails.password-reset'));
     }
 
     /**
