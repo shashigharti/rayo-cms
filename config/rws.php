@@ -1,6 +1,9 @@
 <?php
 
-return [    
+return [
+    'templates' => [
+        'home' => 'real-estate::website.home'
+    ],
     'members' => [
         'backend' => Robust\Core\Models\Admin::class,
         'frontend' =>[ 

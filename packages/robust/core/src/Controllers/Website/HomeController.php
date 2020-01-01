@@ -15,7 +15,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view(Site::templateResolver('core::website.home'), [
+        $templates = config('rws.templates');
+        $view = 'core::website.home';
+        
+        if(isset($templates['home'])){
+            $view = $templates['home'];
+        }
+
+        return view(Site::templateResolver($view), [
             'page' => 'home'
         ]);
     }

@@ -86,7 +86,7 @@
          @else
             <a class="nav-link waves-effect waves-light modal-trigger" href="#loginmodal">Login</a>
             <div id="loginmodal" class="modal">
-                <form  method="post" id="login--form" data-url="{{route('website.realestate.leads.login')}}">
+                <form  method="post" id="login--form" data-url="{{route('website.auth.login')}}">
                     @csrf
                     <div class="row modal-header">
                         <button type="button" class="modal-close"> <span>×</span> </button>
