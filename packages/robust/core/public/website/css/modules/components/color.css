@@ -1,0 +1,38 @@
+.gradient-45deg-purple-deep-orange {
+    background: #9c27b0 !important;
+    box-shadow: 3px 3px 4px 0 rgb(78,51,113);
+}
+.gradient-45deg-purple-deep-orange:hover,.gradient-45deg-purple-deep-orange:focus
+{
+    background:#6b4994;
+}
+
+.gradient-45deg-purple-deep-orange.gradient-shadow
+{
+    -webkit-box-shadow: 0 6px 20px 0 rgba(255, 110, 64, .5) !important;
+            box-shadow: 0 6px 20px 0 rgba(255, 110, 64, .5) !important;
+}
+.purple
+{
+    background-color: #9c27b0 !important;
+}
+.cyan
+{
+    background-color: #00bcd4 !important;
+}
+.green
+{
+    background-color: #4caf50 !important;
+}
+.yellow
+{
+    background-color: #ffeb3b !important;
+}
+.amber
+{
+    background-color: #ffc107 !important;
+}
+.orange
+{
+    background-color: #ff9800 !important;
+}
