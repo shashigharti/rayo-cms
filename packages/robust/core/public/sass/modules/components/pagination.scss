@@ -1,0 +1,24 @@
+/*pagination */
+
+.theme--pagination {
+    margin-top: -2px;
+    margin-bottom: 0px;
+
+    li {
+        height: 24px;
+        line-height: 24px;
+
+        &.active {
+            background-color: #6b4994;
+        }
+
+        a {
+            font-size: 12px;
+            line-height: 24px;
+        }
+    }
+}
+
+.pagination--top {
+    display: inline;
+}

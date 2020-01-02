@@ -1,0 +1,118 @@
+/*----------------------------------------
+    Forms
+------------------------------------------*/
+
+.input-field {
+    div.error {
+        font-size: .8rem;
+        position: relative;
+        top: 0rem;
+        left: 0rem;
+        -webkit-transform: translateY(0%);
+        -moz-transform: translateY(0%);
+        -ms-transform: translateY(0%);
+        -o-transform: translateY(0%);
+        transform: translateY(0%);
+        color: #ff4081;
+    }
+
+    label.active {
+        width: 100%;
+    }
+}
+
+.left-alert {
+    input {
+        &[type=text] + label:after, &[type=password] + label:after, &[type=email] + label:after, &[type=url] + label:after, &[type=time] + label:after, &[type=date] + label:after, &[type=datetime-local] + label:after, &[type=tel] + label:after, &[type=number] + label:after, &[type=search] + label:after {
+            left: 0;
+        }
+    }
+
+    textarea.materialize-textarea + label:after {
+        left: 0;
+    }
+}
+
+.right-alert {
+    input {
+        &[type=text] + label:after, &[type=password] + label:after, &[type=email] + label:after, &[type=url] + label:after, &[type=time] + label:after, &[type=date] + label:after, &[type=datetime-local] + label:after, &[type=tel] + label:after, &[type=number] + label:after, &[type=search] + label:after {
+            right: 70px;
+        }
+    }
+
+    textarea.materialize-textarea + label:after {
+        right: 70px;
+    }
+}
+
+/*input*/
+
+input {
+    &:not([type]):focus:not([readonly]), &[type=text]:not(.browser-default):focus:not([readonly]), &[type=password]:not(.browser-default):focus:not([readonly]), &[type=email]:not(.browser-default):focus:not([readonly]), &[type=url]:not(.browser-default):focus:not([readonly]), &[type=time]:not(.browser-default):focus:not([readonly]), &[type=date]:not(.browser-default):focus:not([readonly]), &[type=datetime]:not(.browser-default):focus:not([readonly]), &[type=datetime-local]:not(.browser-default):focus:not([readonly]), &[type=tel]:not(.browser-default):focus:not([readonly]), &[type=number]:not(.browser-default):focus:not([readonly]), &[type=search]:not(.browser-default):focus:not([readonly]) {
+        border-bottom: 1px solid #8d62c1 !important;
+        box-shadow: 0 1px 0 0 #8d62c1 !important;
+    }
+}
+
+textarea.materialize-textarea:focus:not([readonly]) {
+    border-bottom: 1px solid #8d62c1 !important;
+    box-shadow: 0 1px 0 0 #8d62c1 !important;
+}
+
+.input-field .prefix.active {
+    color: #6b4994;
+}
+
+input {
+    &:not([type]):focus:not([readonly]) + label, &[type=text]:not(.browser-default):focus:not([readonly]) + label, &[type=password]:not(.browser-default):focus:not([readonly]) + label, &[type=email]:not(.browser-default):focus:not([readonly]) + label, &[type=url]:not(.browser-default):focus:not([readonly]) + label, &[type=time]:not(.browser-default):focus:not([readonly]) + label, &[type=date]:not(.browser-default):focus:not([readonly]) + label, &[type=datetime]:not(.browser-default):focus:not([readonly]) + label, &[type=datetime-local]:not(.browser-default):focus:not([readonly]) + label, &[type=tel]:not(.browser-default):focus:not([readonly]) + label, &[type=number]:not(.browser-default):focus:not([readonly]) + label, &[type=search]:not(.browser-default):focus:not([readonly]) + label {
+        color: #6b4994;
+    }
+}
+
+textarea.materialize-textarea:focus:not([readonly]) + label {
+    color: #6b4994;
+}
+
+input {
+    &:not([type]):focus.valid ~ label, &[type=text]:not(.browser-default):focus.valid ~ label, &[type=password]:not(.browser-default):focus.valid ~ label, &[type=email]:not(.browser-default):focus.valid ~ label, &[type=url]:not(.browser-default):focus.valid ~ label, &[type=time]:not(.browser-default):focus.valid ~ label, &[type=date]:not(.browser-default):focus.valid ~ label, &[type=datetime]:not(.browser-default):focus.valid ~ label, &[type=datetime-local]:not(.browser-default):focus.valid ~ label, &[type=tel]:not(.browser-default):focus.valid ~ label, &[type=number]:not(.browser-default):focus.valid ~ label, &[type=search]:not(.browser-default):focus.valid ~ label {
+        color: #6b4994;
+    }
+}
+
+textarea.materialize-textarea:focus.valid ~ label {
+    color: #6b4994;
+}
+
+/*----------------------------------------
+    Tables
+------------------------------------------*/
+
+table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
+    td:first-child:before, th:first-child:before {
+        line-height: 15px;
+        top: 19px;
+        text-indent: -1px !important;
+    }
+}
+
+.textarea-field textarea {
+    min-height: 150px;
+    padding: 10px;
+    transition: border .3s, -webkit-box-shadow .3s;
+    transition: box-shadow .3s, border .3s;
+
+    &:focus {
+        border: 1px solid #8d62c1 !important;
+        box-shadow: 0 1px 0 0 #8d62c1 !important;
+    }
+}
+
+.profile-img {
+    width: 140px;
+    height: 140px;
+    overflow: hidden;
+
+    img {
+        width: 100%;
+    }
+}
