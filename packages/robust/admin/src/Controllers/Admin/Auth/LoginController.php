@@ -51,4 +51,8 @@ class LoginController extends Controller
             'password' => ['required', 'string', 'min:5', 'confirmed']
         ]);
     }
+
+    function login(){
+        
+    }
 }

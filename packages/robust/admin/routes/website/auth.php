@@ -42,6 +42,15 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
         'uses' => 'Robust\Admin\Controllers\Website\Auth\ResetPasswordController@reset'
     ]);
 
+    Route::get('admin-login', [
+        'as' => 'admin-login',
+        'uses' => 'Robust\Admin\Controllers\Admin\Auth\LoginController@login'
+    ]);    
+    Route::post('admin-login', [
+        'as' => 'admin-login.post',
+        'uses' => 'Robust\Admin\Controllers\Admin\Auth\LoginController@postLogin'
+    ]);
+
 });
 
 Route::group(['prefix' => '', 'as' => 'website.auth.verification.','group' => 'Verification'], function () {
@@ -60,5 +69,14 @@ Route::group(['prefix' => '', 'as' => 'website.auth.verification.','group' => 'V
         'as' => 'resend',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\VerificationController@resend'
     ]);
+});
+
+//
+Route::group(['prefix' => 'admin', 'as' => 'admin.auth.','group' => 'Auth'], function () {    
+    
+    // Route::get('logout', [
+    //     'as' => 'logout',
+    //     'uses' => 'Robust\Admin\Controllers\Admin\Auth\LoginController@logout'
+    // ]);
 });
 
