@@ -8,18 +8,14 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{settings('general-setting','company_name')}}</title>
-    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">           
 
-    <!-- Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css"
-          integrity="sha384-XdYbMnZ/QjLh6iI4ogqCTaIjrFk87ip+ekIjefZch0Y+PvJ8CDYtEs1ipDmPorQ+" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700">
-
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,300italic'>
+    
     @set('secure', (env('APP_ENV') == 'production') ? true : false)
 
+    {{ \Site::assets('assets/css/app-1.min.css', 'style', $secure) }} <!-- its for css files compiled -->
     {{ \Site::assets('assets/css/app.min.css', 'style', $secure) }}
-    {{ \Site::assets('assets/css/app-1.min.css', 'style', $secure) }}
+    
 
 
     <!--[if lt IE 9]>

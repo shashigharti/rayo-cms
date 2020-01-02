@@ -1,6 +1,6 @@
 @extends('core::admin.layouts.default')
 @section('content')
-    {{-- @set('ui', new $ui) --}}
+    @set('ui', new $ui)
     <!-- BEGIN: Header-->
     <header class="page-topbar" id="header">
       <div class="navbar navbar-fixed"> 

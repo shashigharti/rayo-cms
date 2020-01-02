@@ -6,6 +6,7 @@ var gulp = require('gulp'),
     requireDir = require('require-dir');
 
 var tasks = requireDir('./gulp-tasks');
+gulp.task('admin', tasks.admin);
 gulp.task('website', tasks.website);
 //gulp.task('imagemin', tasks.imagemin);
 // gulp.task('watch', function () {
@@ -20,6 +21,6 @@ gulp.task('clean', function () {
     });
 });
 
-gulp.task('default', gulp.series('clean', gulp.parallel('website'), (done) => {
+gulp.task('default', gulp.series('clean', gulp.parallel('admin', 'website'), (done) => {
     done();
 }));
