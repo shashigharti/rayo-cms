@@ -1,15 +1,11 @@
 <?php
-namespace Robust\Core\Common\Admin\Traits;
+namespace Robust\Core\Controllers\Common\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Pagination\Paginator;
 use Robust\Core\Helpers\MenuHelper;
 
-/**
- * Class ViewTrait
- * @package Robust\Core\Common\Admin\Traits
- */
 trait ViewTrait
 {
     /**

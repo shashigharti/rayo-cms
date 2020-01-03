@@ -4,7 +4,7 @@ namespace Robust\Core\Repositories\Admin;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Notifications\Notification;
 use Illuminate\Support\Facades\DB;
-use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 
 /**
  * Class NotificationRepository

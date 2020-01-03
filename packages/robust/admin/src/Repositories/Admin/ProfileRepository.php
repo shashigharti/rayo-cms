@@ -5,8 +5,8 @@ namespace Robust\Admin\Repositories\Admin;
 use Illuminate\Support\Facades\Hash;
 use Robust\Admin\Models\Role;
 use Robust\Admin\Models\User;
-use Robust\Core\Repositories\Admin\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 
 /**
  * Class ProfileRepository

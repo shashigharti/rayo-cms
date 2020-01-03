@@ -1,11 +1,7 @@
 <?php
 
-namespace Robust\Core\Repositories\Admin\Traits;
+namespace Robust\Core\Repositories\Common\Traits;
 
-/**
- * Class SearchRepositoryTrait
- * @package Robust\Core\Repositories\Admin\Traits
- */
 trait SearchRepositoryTrait
 {
 

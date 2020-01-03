@@ -2,7 +2,7 @@
 namespace Robust\Pages\Website\Repositories;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 use Robust\Pages\Models\Page;
 
 /**

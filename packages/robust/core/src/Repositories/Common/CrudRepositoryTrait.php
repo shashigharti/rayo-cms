@@ -1,10 +1,7 @@
 <?php
 
-namespace Robust\Core\Repositories\Website\Traits;
-/**
- * Class CrudRepositoryTrait
- * @package Robust\Core\Repositories\Website\Traits
- */
+namespace Robust\Core\Repositories\Common\Traits;
+
 trait CrudRepositoryTrait
 {   
 

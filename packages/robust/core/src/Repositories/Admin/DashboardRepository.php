@@ -1,9 +1,9 @@
 <?php
 namespace Robust\Core\Repositories\Admin;
 
-use Robust\Core\Repositories\Admin\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Admin\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Admin\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 use Robust\Core\Models\Dashboard;
 
 /**

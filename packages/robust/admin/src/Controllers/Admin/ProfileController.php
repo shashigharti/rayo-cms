@@ -5,8 +5,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Admin\ProfileRepository;
-use Robust\Core\Common\Admin\Traits\CrudTrait;
-use Robust\Core\Common\Admin\Traits\ViewTrait;
+use Robust\Core\Controllers\Common\Traits\CrudTrait;
+use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Illuminate\Support\Facades\Hash;
 use Robust\Core\Events\UserUpdatedEvent;
 

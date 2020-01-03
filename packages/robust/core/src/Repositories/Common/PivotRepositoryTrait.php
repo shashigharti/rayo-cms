@@ -1,11 +1,8 @@
 <?php
 
-namespace Robust\Core\Repositories\Website\Traits;
+namespace Robust\Core\Repositories\Common\Traits;
 
-/**
- * Class PolyMorphRepositoryTrait
- * @package Robust\Core\Repositories\Website\Traits
- */
+
 trait PivotRepositoryTrait
 {
     /**

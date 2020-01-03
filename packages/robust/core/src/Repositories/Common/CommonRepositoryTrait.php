@@ -2,10 +2,6 @@
 
 namespace Robust\Core\Repositories\Common\Traits;
 
-/**
- * Class CommonRepositoryTrait
- * @package Robust\Core\Repositories\API\Traits
- */
 trait CommonRepositoryTrait
 {
     /**
@@ -37,6 +33,17 @@ trait CommonRepositoryTrait
         return $this->model;
     }
 
+     /**
+     * @param $select_string
+     * @return $this
+     */
+    public function select($select_string)
+    {
+        $this->model = $this->model->select($select_string);
+        return $this;
+    }
+
+
     /**
      * @param $columns
      * @return mixed
@@ -48,6 +55,14 @@ trait CommonRepositoryTrait
     }
 
     /**
+     * @return mixed
+     */
+    public function first()
+    {
+        return $this->model->first();
+    }
+
+    /**
      * @param $field
      * @return $this
      */
@@ -56,5 +71,17 @@ trait CommonRepositoryTrait
         $this->model = $this->model->with($field);
         return $this;
     }
+
+    /**
+     * @param $id
+     */
+    public function toggleStatus($id)
+    {
+        $model = $this->model->find($id);
+        $model->status = ($model->status == 0) ? 1 : 0;
+        $model->save();
+
+    }
+
 
 }

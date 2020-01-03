@@ -1,16 +1,12 @@
 <?php
 
-namespace Robust\Core\Common\Admin\Traits;
+namespace Robust\Core\Controllers\Common\Traits;
 
 use Illuminate\Http\Request;
 use Robust\Core\Helpage\Site;
 use Robust\Core\Helpers\MenuHelper;
 use Robust\DynamicForms\Models\Form;
 
-/**
- * Class CrudTrait
- * @package Robust\Core\Common\Admin\Traits
- */
 trait CrudTrait
 {
     /**

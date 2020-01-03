@@ -4,8 +4,8 @@ namespace Robust\Core\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Artisan;
-use Robust\Core\Common\Admin\Traits\CrudTrait;
-use Robust\Core\Common\Admin\Traits\ViewTrait;
+use Robust\Core\Controllers\Common\Traits\CrudTrait;
+use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\CommandRepository;
 
 

@@ -2,8 +2,8 @@
 namespace Robust\RealEstate\Repositories\Website;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
-use Robust\Core\Repositories\Website\Traits\CrudRepositoryTrait;
-use Robust\Core\Repositories\Website\Traits\SearchRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\ListingImages;
 
 
