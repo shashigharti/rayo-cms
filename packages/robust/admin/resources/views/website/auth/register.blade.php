@@ -8,8 +8,10 @@
 
         <div class="msg">
             <div class="msg-info">
+            testing
             </div> 
             <div class="msg-error">
+                Lorem ipsum dolor sit amet !
             </div>   
         </div>    
         <div class="modal-content">

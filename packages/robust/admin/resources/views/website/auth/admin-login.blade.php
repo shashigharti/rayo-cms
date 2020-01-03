@@ -17,8 +17,7 @@
                         <i class="material-icons prefix pt-2">person_outline</i>
                         <label for="email" class="center-align">{{ __('E-Mail Address') }}</label>
                         {{ Form::text('email', null, [
-                            'required'      => 'required',
-                            'placeholder'   => __('E-Mail Address'),
+                            'required'      => 'required',                
                             'value'         => old('email'),
                             'autocomplete'  => 'email',
                             'autofocus'     => 'autofocus'])
@@ -58,7 +57,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         {{ Form::submit( __('Login'), [
-                            'class' => 'btn waves-effect waves-light border-round gradient-45deg-purple-deep-orange col s12'
+                            'class' => 'btn btn-theme col s12'
                             ]) 
                         }}
                     </div>

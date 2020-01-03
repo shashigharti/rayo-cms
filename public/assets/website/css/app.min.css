@@ -885,6 +885,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice{background-color:#04122d;border:1px solid #f6f7f9;color:#fff;padding:1px 5px}
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff}
 .multi-select-container input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:0;-webkit-box-shadow:none;box-shadow:none}
+.modal-content{border:0}.msg-info{color:#0b568c}.msg-error{color:#ab2012}.msg-info,.msg-error{background:#fff;padding:9px 20px;height:auto;line-height:20px;border:0;font-weight:500;font-size:12px;text-transform:none}
 .slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
@@ -1255,6 +1256,10 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .modal .modal-footer .btn-primary{color:#fff;font-size:12px;background:#012466;padding:6px 8px;border-radius:3px;-webkit-box-shadow:1px 1px 2px 1px #111;box-shadow:1px 1px 2px 1px #111;width:82px !important;display:inline-block;text-align:center;margin-right:0;margin-top:4px;border:0;float:right;margin-bottom:20px;line-height:20px;margin-right:8px !important}
 .agree-to-terms{margin-top:40px;font-size:12px;font-style:italic;width:88%;line-height:20px !important}
 .agree-to-terms a{display:inline-block !important;width:auto;font-size:12px !important;text-decoration:underline;color:#111;padding:0 !important}
+.login-page{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
+.login-page .card-panel.border-radius-6.login-card{margin-left:0 !important}.login-page [type="checkbox"]+span:not(.lever){font-weight:400}
+.login-page input:not([type]):focus:not([readonly]),.login-page input[type=text]:not(.browser-default):focus:not([readonly]),.login-page input[type=password]:not(.browser-default):focus:not([readonly]),.login-page input[type=email]:not(.browser-default):focus:not([readonly]),.login-page input[type=url]:not(.browser-default):focus:not([readonly]),.login-page input[type=time]:not(.browser-default):focus:not([readonly]),.login-page input[type=date]:not(.browser-default):focus:not([readonly]),.login-page input[type=datetime]:not(.browser-default):focus:not([readonly]),.login-page input[type=datetime-local]:not(.browser-default):focus:not([readonly]),.login-page input[type=tel]:not(.browser-default):focus:not([readonly]),.login-page input[type=number]:not(.browser-default):focus:not([readonly]),.login-page input[type=search]:not(.browser-default):focus:not([readonly]),.login-page textarea.materialize-textarea:focus:not([readonly]){border-bottom:1px solid #002349;-webkit-box-shadow:0 1px 0 0 #002349;box-shadow:0 1px 0 0 #002349}
+.login-page .input-field .prefix.active{color:#002349}.login-page .input-field .prefix ~ label{font-weight:400}
 .profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
 .sort-favourite .btn,.sort-favourite .btn-large,.sort-favourite .btn-small{-webkit-box-shadow:none;box-shadow:none}
 .profile--tab{min-height:400px}@media(max-width:1248px){.search-section{display:none}

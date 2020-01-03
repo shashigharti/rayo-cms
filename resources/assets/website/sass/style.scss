@@ -1309,3 +1309,23 @@ button{
   }
 }
 
+
+.modal-content {
+    border: none;
+}
+.msg-info {
+    color: #0b568c;
+}
+.msg-error {
+    color: #ab2012;
+}
+.msg-info,.msg-error {
+    background: $white;    
+    padding: 9px 20px;
+    height: auto;
+    line-height: 20px;
+    border: none;
+    font-weight: 500;
+    font-size: 12px;
+    text-transform:none;
+}
