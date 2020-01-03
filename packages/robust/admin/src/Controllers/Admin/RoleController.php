@@ -4,8 +4,8 @@ namespace Robust\Admin\Controllers\Admin;
 
 use Robust\Admin\Repositories\Admin\RoleRepository;
 use Robust\Core\Controllers\Admin\Controller;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
-use Robust\Core\Controllers\Admin\Traits\ViewTrait;
+use Robust\Core\Common\Admin\Traits\CrudTrait;
+use Robust\Core\Common\Admin\Traits\ViewTrait;
 use Robust\Core\Helpers\MenuHelper;
 
 

@@ -18,7 +18,6 @@ class MarketSurveyController extends Controller
      */
     protected $model;
 
-
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */

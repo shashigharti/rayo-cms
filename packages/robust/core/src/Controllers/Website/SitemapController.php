@@ -10,8 +10,6 @@ use Illuminate\Support\Facades\Storage;
  */
 class SitemapController extends Controller
 {
-
-
     /**
      * @return \Illuminate\Contracts\Routing\ResponseFactory|\Illuminate\Http\Response
      * @throws \Illuminate\Contracts\Filesystem\FileNotFoundException

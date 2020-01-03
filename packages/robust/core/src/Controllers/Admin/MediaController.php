@@ -4,8 +4,8 @@ namespace Robust\Core\Controllers\Admin;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Http\Request;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
-use Robust\Core\Controllers\Admin\Traits\ViewTrait;
+use Robust\Core\Common\Admin\Traits\CrudTrait;
+use Robust\Core\Common\Admin\Traits\ViewTrait;
 use Robust\Core\Helpers\MenuHelper;
 use Robust\Core\Repositories\Admin\MediaRepository;
 

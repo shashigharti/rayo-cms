@@ -11,6 +11,12 @@ class CoreMenuTableSeeder extends Seeder
      */
     public function run()
     {
+        Route::resources([
+            'photos' => 'PhotoController',
+            'posts' => 'PostController'
+        ]);
+
+
         DB::table('menus')->insert([
             [
                 'display_name' => 'Settings',

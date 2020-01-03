@@ -1,6 +1,6 @@
 <?php
 
-namespace Robust\Core\Controllers\Admin\Traits;
+namespace Robust\Core\Common\Admin\Traits;
 
 use Illuminate\Http\Request;
 use Robust\Core\Helpage\Site;
@@ -9,7 +9,7 @@ use Robust\DynamicForms\Models\Form;
 
 /**
  * Class CrudTrait
- * @package Robust\Core\Controllers\Admin\Traits
+ * @package Robust\Core\Common\Admin\Traits
  */
 trait CrudTrait
 {
@@ -48,14 +48,6 @@ trait CrudTrait
         parse_str($request->getQueryString(), $query_params);
         $model = $this->model->getModel();
 
-        if ($request->ajax()) {
-            $view = $this->display("{$this->package_name}::{$this->ajax_view}.create", [
-                'model' => $model,
-                'query_params' => $query_params
-            ])->render();
-            return response()->json(['view' => $view]);
-        }
-
         return $this->display(Site::templateResolver("{$this->package_name}::{$this->view}.create"), [
             'model' => $model,
             'query_params' => $query_params
@@ -83,15 +75,6 @@ trait CrudTrait
     {
         parse_str($request->getQueryString(), $query_params);
         $model = $this->model->find($id);
-
-        if ($request->ajax()) {
-            $view = $this->display("{$this->package_name}::{$this->ajax_view}.create", [
-                'model' => $model,
-                'query_params' => $query_params
-            ])->render();
-            return response()->json(['view' => $view]);
-        }
-
 
         return $this->display(Site::templateResolver("{$this->package_name}::{$this->view}.create"), [
                 'model' => $model,
@@ -200,49 +183,9 @@ trait CrudTrait
         parse_str($request->getQueryString(), $query_params);
         $model = $this->model->find($id);
 
-        if ($request->ajax()) {
-            $view = $this->display("{$this->package_name}::{$this->ajax_view}.show", [
-                'model' => $model,
-                'query_params' => $query_params
-            ])->render();
-            return response()->json(['view' => $view]);
-        }
-
-
         return $this->display("{$this->package_name}::{$this->view}.show", [
                 'model' => $model,
                 'query_params' => $query_params
-            ]
-        );
-    }
-
-
-    /**
-     * @param $status
-     * @param Request $request
-     * @return mixed
-     */
-    public function getByStatus($status, Request $request)
-    {
-        $query = $this->model;
-        if ($request->has('type') && $request->has('keyword')) {
-            $type = $request->get('type');
-            $keyword = $request->get('keyword');
-            $query = $query->where($type, "%" . $keyword . "%", 'LIKE');
-        }
-
-        if (isset($this->scopes)) {
-            foreach ($this->scopes as $scope) {
-                $query = $query->$scope();
-            }
-        }
-        $records = $query->$status()->paginate();
-        return $this->display($this->table,
-            [
-                'records' => $records,
-                'primary_menu' => (new MenuHelper())->getPrimaryMenu($this->package_name),
-                'title' => (isset($this->title)) ? $this->title : '',
-                'package' => $this->package_name,
             ]
         );
     }

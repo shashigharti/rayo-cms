@@ -4,8 +4,8 @@ namespace Robust\Core\Controllers\Admin;
 use Illuminate\Http\Request;
 use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Admin\UserRepository;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
-use Robust\Core\Controllers\Admin\Traits\ViewTrait;
+use Robust\Core\Common\Admin\Traits\CrudTrait;
+use Robust\Core\Common\Admin\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\DashboardRepository;
 use Robust\Core\Repositories\Admin\WidgetRepository;
 

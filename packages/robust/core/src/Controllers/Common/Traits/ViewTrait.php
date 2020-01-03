@@ -1,5 +1,5 @@
 <?php
-namespace Robust\Core\Controllers\Admin\Traits;
+namespace Robust\Core\Common\Admin\Traits;
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -8,14 +8,14 @@ use Robust\Core\Helpers\MenuHelper;
 
 /**
  * Class ViewTrait
- * @package Robust\Core\Controllers\Admin\Traits
+ * @package Robust\Core\Common\Admin\Traits
  */
 trait ViewTrait
 {
     /**
      * @param $view
      * @param $data
-     * @return $this
+     * @return view
      */
     public function display($view, $data)
     {
@@ -27,6 +27,11 @@ trait ViewTrait
         return view($view, $data);
     }
 
+    /**
+     * @param Collection $collection
+     * @param int $perPage
+     * @return LengthAwarePaginator
+     */
     public function customPagination(Collection $collection, $perPage = 0)
     {
         if ($perPage == 0 && settings('app-setting', 'pagination'))

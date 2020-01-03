@@ -3,7 +3,7 @@ namespace Robust\Admin\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Robust\Admin\Repositories\Admin\PermissionRepository;
-use Robust\Core\Controllers\Admin\Traits\CrudTrait;
+use Robust\Core\Common\Admin\Traits\CrudTrait;
 
 /**
  * Class PermissionController

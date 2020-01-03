@@ -8,16 +8,13 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{settings('general-setting','company_name')}}</title>
-    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}">           
-
+    <link rel="shortcut icon" href="{{ URL::asset('assets/images/favicon.ico') }}"> 
     
     @set('secure', (env('APP_ENV') == 'production') ? true : false)
 
     {{ \Site::assets('assets/css/app-1.min.css', 'style', $secure) }} <!-- its for css files compiled -->
     {{ \Site::assets('assets/css/app.min.css', 'style', $secure) }}
     
-
-
     <!--[if lt IE 9]>
     <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
     <![endif]-->
@@ -32,7 +29,11 @@
     {{ settings('contact-setting', 'g-analytics') }}
 
 </head>
-    <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns  " data-open="click" data-menu="vertical-menu-nav-dark" data-col="2-columns">
+    <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns" 
+        data-open="click" 
+        data-menu="vertical-menu-nav-dark" 
+        data-col="2-columns"
+    >
         {{--@include("core::admin.partials.nav")
         @include("core::admin.partials.menus.left-menu")}} --}}
         @yield('content')
