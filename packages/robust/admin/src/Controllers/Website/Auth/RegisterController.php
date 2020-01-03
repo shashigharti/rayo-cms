@@ -94,8 +94,10 @@ class RegisterController extends Controller
         $new_user = $this->user->store([
             'user_name' => $data['email'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'token' => md5(uniqid(rand(), true))
         ]); 
+        \Log::info($new_user);
         // create dashboard data for the new user
         $this->dashboard->store([
             'name' => "{$data['first_name']} Dashboard",

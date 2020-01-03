@@ -8,6 +8,9 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Support\HtmlString;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\URL;
+use Illuminate\Support\Facades\Config;
 
 class LeadRegistrationNotification extends Notification
 {
@@ -50,19 +53,35 @@ class LeadRegistrationNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        $config = config('rws.emails.subjects');
-        
+        $config = config('rws.emails.subjects');        
         $template = email_template('Lead Registration');
         $data = [
             'subject' => $config['Lead Registration'],
-            'logo' => ''
+            'logo' => '',
+            'verification_url' => $this->verificationUrl($notifiable)
         ];
+
         $body = replace_variables($template->body, $this->lead, $data);
         $subject = replace_variables($template->subject, $this->lead, $data);
         return (new MailMessage)
             ->from(config('rws.client.email.support'))
             ->subject($subject)
             ->line(new HtmlString($body));
+    }
+
+    /**
+     * Get the verification URL for the given notifiable.
+     *
+     * @param  mixed  $notifiable
+     * @return string
+     */
+    protected function verificationUrl($notifiable)
+    {
+        return URL::temporarySignedRoute(
+            'website.auth.verification.verify',
+            Carbon::now()->addMinutes(Config::get('auth.verification.expire', 60)),
+            ['id' => $notifiable->token]
+        );
     }
 
     /**

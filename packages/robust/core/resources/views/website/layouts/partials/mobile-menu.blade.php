@@ -82,7 +82,7 @@
     <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market Stats</a></li>
     <li class="nav-btn">
         @if(Auth::check())
-            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.profile.index')}}">My Review</a>
+            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.user.profile')}}">My Review</a>
          @else
             <a class="nav-link waves-effect waves-light modal-trigger" href="#loginmodal">Login</a>
             <div id="loginmodal" class="modal">
@@ -116,11 +116,11 @@
     </li>
     <li class="nav-btn">
         @if(Auth::check())
-            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.auth.register.post')}}">Logout</a>
+            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.auth.logout')}}">Logout</a>
         @else
             <a class="nav-link waves-effect waves-light modal-trigger" href="#registermodal">Register</a>
             <div id="registermodal" class="modal">
-                <form method="post" id="register--form" action="" data-url="{{route('website.realestate.leads.register')}}">
+                <form method="post" id="register--form" action="" data-url="{{route('website.auth.register.post')}}">
                     @csrf
                     <div class="row modal-header">
                         <button type="button" class="modal-close"> <span>×</span> </button>

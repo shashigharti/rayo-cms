@@ -12,6 +12,7 @@ use Robust\Admin\Repositories\Website\RoleRepository;
 use Robust\RealEstate\Notifications\LeadRegistrationNotification;
 
 
+
 class LeadCreatingListener
 {
     /**
@@ -52,6 +53,7 @@ class LeadCreatingListener
             'memberable_type' => 'Robust\RealEstate\Models\Lead',
             'roles' => $roles
         ]);
+
 
         // notify lead
         $event->user->notify(new LeadRegistrationNotification($new_lead));

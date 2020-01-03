@@ -110,7 +110,7 @@ if (!function_exists('geocode')) {
                     '*|LEAD_PHONE|*' => $member->phone_number,
                     '*|SITE_NAME|*' => config('rws.client.email.name'),
                     //'*|PASSWORD|*' => $lead->user->password,
-                    '*|ACTIVATION_LINK|*' => '', //route('lead.import.mail', ['token' => $this->token]),
+                    '*|VERIFICATION_LINK|*' => $data['verification_url'],
                     '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
                 ],
                 'agent' => [
