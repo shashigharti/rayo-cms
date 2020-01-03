@@ -86,7 +86,7 @@ if (!function_exists('geocode')) {
          * @return string
          */
         function email_template($name){
-            return EmailTemplate::where('type', $name)->first();
+            return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();            
         }
     }
 
@@ -95,34 +95,38 @@ if (!function_exists('geocode')) {
          * @param string $content
          * @return string
          */
-        function replace_variables($content, $user, $type){
-            $agent = $user;
+        function replace_variables($content, $member, $data){
+            $type = 'agent';
+            if(get_class($member) == 'Robust\RealEstate\Models\Lead'){
+               $type = 'lead'; 
+            }
+
             $replacements = [
                 'lead' => [
-                    '*|LEAD_FIRSTNAME|*' => $user->memberable->first_name,
-                    '*|LEAD_LASTNAME|*' => $user->memberable->last_name,
-                    '*|LEAD_FULLNAME|*' => $user->memberable->first_name . " " . $user->memberable->last_name,
-                    '*|LEAD_MAIL|*' => $user->email,
-                    '*|LEAD_PHONE|*' => $user->memberable->phone,
+                    '*|LEAD_FIRSTNAME|*' => $member->first_name,
+                    '*|LEAD_LASTNAME|*' => $member->last_name,
+                    '*|LEAD_FULLNAME|*' => $member->first_name . " " . $member->last_name,
+                    '*|LEAD_MAIL|*' => $member->user->email,
+                    '*|LEAD_PHONE|*' => $member->phone_number,
                     '*|SITE_NAME|*' => config('rws.client.email.name'),
-                    '*|PASSWORD|*' => $user->password,
+                    //'*|PASSWORD|*' => $lead->user->password,
                     '*|ACTIVATION_LINK|*' => '', //route('lead.import.mail', ['token' => $this->token]),
                     '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
                 ],
                 'agent' => [
-                    '*|AGENT_FIRSTNAME|*' => $agent->memberable->first_name,
-                    '*|AGENT_LASTNAME|*' => $agent->memberable->last_name,
-                    '*|AGENT_FULLNAME|*' => $user->memberable->first_name . " " . $user->memberable->last_name,
-                    '*|AGENT_MAIL|*' => $agent->memberable->email,
-                    '*|AGENT_PHONE|*' => $agent->memberable->phone,
+                    '*|AGENT_FIRSTNAME|*' => $member->first_name,
+                    '*|AGENT_LASTNAME|*' => $member->last_name,
+                    '*|AGENT_FULLNAME|*' => $member->first_name . " " . $member->last_name,
+                    '*|AGENT_MAIL|*' => $member->user->email,
+                    '*|AGENT_PHONE|*' => $member->phone,
 
                     '*|LISTING_STREET|*' => '',
                     '*|LISTING_NUMBER|*' =>  '',
                     '*|LISTING_SYSTEM_PRICE|*' => '',
                     '*|LISTING_NAME|*' => '',
                     '*|URL|*' => '',
-                    '*|SUBJECT_THIS_EMAIL|*' => $this->data['subject'],
-                    '*|LOGO|*' => $this->data['logo'],
+                    '*|SUBJECT_THIS_EMAIL|*' => $data['subject'],
+                    '*|LOGO|*' => $data['logo'],
 
                     '*|FIRST_VIEW|*' => '',
                     '*|VIEW_COUNT|*' => '',

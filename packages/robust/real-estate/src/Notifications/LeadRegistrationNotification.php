@@ -49,9 +49,15 @@ class LeadRegistrationNotification extends Notification
      */
     public function toMail($notifiable)
     {
+        $config = config('rws.emails.subjects');
+        
         $template = email_template('Lead Registration');
-        $body = replace_variables($template->body, $this->lead, 'lead');
-        $subject = replace_variables($template->subject, $this->lead, 'lead');
+        $data = [
+            'subject' => $config['Lead Registration'],
+            'logo' => ''
+        ];
+        $body = replace_variables($template->body, $this->lead, $data);
+        $subject = replace_variables($template->subject, $this->lead, $data);
         return (new MailMessage)
             ->from(config('rws.client.email.support'))
             ->subject($subject)

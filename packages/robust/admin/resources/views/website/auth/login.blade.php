@@ -1,5 +1,5 @@
 <div id="modal__login" class="modal">
-    <form method="post" id="login--form" data-url="{{route('website.auth.login')}}">
+    <form method="post" id="login--form" data-url="{{route('website.auth.login.post')}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>

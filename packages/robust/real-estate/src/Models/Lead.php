@@ -63,6 +63,14 @@ class Lead extends Authenticatable
     ];
 
     /**
+     * Get user
+     */
+    public function user()
+    {
+        return $this->morphOne('Robust\Admin\Models\User', 'memberable');
+    }
+
+    /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function favourites()

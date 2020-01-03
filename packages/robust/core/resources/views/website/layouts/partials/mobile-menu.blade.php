@@ -116,7 +116,7 @@
     </li>
     <li class="nav-btn">
         @if(Auth::check())
-            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.leads.logout')}}">Logout</a>
+            <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.auth.register.post')}}">Logout</a>
         @else
             <a class="nav-link waves-effect waves-light modal-trigger" href="#registermodal">Register</a>
             <div id="registermodal" class="modal">

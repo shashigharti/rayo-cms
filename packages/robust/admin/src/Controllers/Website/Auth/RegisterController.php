@@ -9,7 +9,9 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Robust\Core\Notifications\LeadRegistrationNotification;
 use Robust\Admin\Repositories\Website\UserRepository;
+use Robust\Core\Repositories\Admin\DashboardRepository;
 use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
 
 class RegisterController extends Controller
 {
@@ -23,32 +25,28 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
     use RegistersUsers;
-
+    
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
-
+    protected $redirectTo = '/';
     /**
      * RegisterController constructor.
      * @param UserRepository $user
      * @param LeadRepository $lead
      */
-    public function __construct(UserRepository $user, Request $request)
+    public function __construct(UserRepository $user, DashboardRepository $dashboard)
     {
         $this->middleware('guest');
-
-        $this->model = $user;
-        $this->request = $request;
+        $this->user = $user;
+        $this->dashboard = $dashboard;
         $this->events = [
             'user_created' => 'Robust\Admin\Events\UserCreatedEvent',
         ];
     }
-
     /**
      * Get a validator for an incoming registration request.
      *
@@ -65,48 +63,60 @@ class RegisterController extends Controller
         ]);
     }
 
+
+     /**
+     * User registration without login
+     *
+     * @param  array  $data
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        $user = $this->create($request->all());
+
+        return response()->json([
+                    'message' => 'Successfully registered! A new verification email has been sent to your email. 
+                    Please review it first before logging in.',
+                    'status' => 'success'
+        ], 201);
+    }
+
     /**
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
      * @return \Illuminate\Http\RedirectResponse
      */
-    protected function create(Dashboard $dashboard, array $data)
+    protected function create(array $data)
     {   
         // create a user account
-        $new_user = $this->user->create([
+        $new_user = $this->user->store([
             'user_name' => $data['email'],
             'email' => $data['email'],
             'password' => Hash::make($data['password'])
         ]); 
-
         // create dashboard data for the new user
-        $dashboard->create([
+        $this->dashboard->store([
             'name' => "{$data['first_name']} Dashboard",
             'slug' => str_slug("{$data['first_name']} Dashboard"),
             'description' => 'Main Dashboard',
             'is_default' => true,
             'user_id' => $new_user->id
         ]);
-
         if ($new_user) {
             $config = config('rws.override_event_notifications');
             $event = $this->events['user_created'];
-
             // if overridding events does exists in configuration, raise that event.
             if(isset($config['user_created'])){
                 $event = $config['user_created'];                  
             } 
             
             // Raise user created event
-            event(new $event($user, $data));            
+            event(new $event($new_user, $data));            
         }
 
-        if (\Cache::get('redirect_url')) {
-            return redirect(\Cache::get('redirect_url'));
-        }
-
-        return redirect()->route('verification.notice')
-        ->with('message', 'A new verification email has been sent to your email. Please review it first before logging in.');
+        return $new_user;        
     }
 }

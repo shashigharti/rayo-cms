@@ -63,10 +63,11 @@ class UserRepository
     public function update($id, $data)
     {
         $user = $this->model->findOrFail($id);
-
+        $roles = $data['roles'];
         if ($user) {
-            $user->update($data);
-            $user->roles()->sync($data['roles']);
+            unset($data['roles']);
+            $this->model->where('id', $id)->update($data);
+            $user->roles()->sync($roles);
         }
 
         return $user;

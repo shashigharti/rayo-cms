@@ -1,25 +1,16 @@
 <?php
-Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','group' => 'Auth'], function () {
-    Route::get('login', [
-        'as' => 'login',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@login'
-    ]);
+Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','group' => 'Auth'], function () {   
     Route::post('login', [
         'as' => 'login.post',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@postLogin'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@login'
     ]);   
     Route::get('logout', [
         'as' => 'logout',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\LoginController@logout'
     ]);
-    
-    Route::get('register', [
-        'as' => 'register',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@register'
-    ]);    
     Route::post('register', [
         'as' => 'register.post',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@postRegister'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\RegisterController@register'
     ]);
 
     Route::get('password/reset', [
