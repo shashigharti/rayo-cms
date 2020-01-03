@@ -45,7 +45,7 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'), ['results'=>$results]);
+        return view(Site::templateResolver('core::website.listings.index'), ['results'=>$results]);
     }
 
 
@@ -66,7 +66,7 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'), [ 'results' => $results ]);
+        return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
     }
 
     /**
@@ -77,7 +77,7 @@ class ListingController extends Controller
     public function single($slug)
     {
         $result = $this->model->getSingle($slug);
-        return view(Site::templateResolver('real-estate::website.listings.single'),['result'=>$result]);
+        return view(Site::templateResolver('core::website.listings.single'),['result'=>$result]);
     }
 
     /**
@@ -93,7 +93,7 @@ class ListingController extends Controller
                 ->where('system_price', '>' ,$price - 50000)
                 ->where('system_price', '<', $price + 50000)
                 ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'),['results'=>$results]);
+        return view(Site::templateResolver('core::website.listings.index'),['results'=>$results]);
     }
 
     /**
@@ -117,7 +117,7 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate(40);
-        return view(Site::templateResolver('real-estate::website.listings.index'), [ 'results' => $results ]);
+        return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
     }
 
     /**
@@ -128,7 +128,7 @@ class ListingController extends Controller
     public function print($slug)
     {
         $result = $this->model->getSingle($slug);
-        $html = view('real-estate::website.frontpage.partials.print',['result'=>$result])->render();
+        $html = view('core::website.layouts.partials.print',['result'=>$result])->render();
         return PDF::loadHTML($html)->setPaper('a4', 'portrait')
             ->setWarnings(false)->stream( $result->name .'.pdf');
     }

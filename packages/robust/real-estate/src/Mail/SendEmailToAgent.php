@@ -44,6 +44,6 @@ class SendEmailToAgent extends Mailable
      */
     public function build()
     {
-        return $this->view('real-estate::website.email.lead.sendEmailToAgent');
+        return $this->view('core::website.email.lead.sendEmailToAgent');
     }
 }

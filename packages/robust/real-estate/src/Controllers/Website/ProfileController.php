@@ -36,7 +36,7 @@ class ProfileController
         if(Auth::check()){
             $user = Auth::user()->load('member');
             $lead = $user->member->load('favourites','bookmarks','reports','searches');
-            return view('real-estate::website.profile.index',['lead' => $lead]);
+            return view('core::website.profile.index',['lead' => $lead]);
         }
         return  redirect()->back();
     }

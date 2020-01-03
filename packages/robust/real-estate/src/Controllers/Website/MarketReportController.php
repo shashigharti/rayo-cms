@@ -50,7 +50,7 @@ class MarketReportController extends Controller
             $response_data['title'] = ucwords(str_replace('-', ' ', $data['ids']));
         }
 
-        return view('real-estate::website.market-report.index', $response_data);
+        return view('core::website.market-report.index', $response_data);
     }
 
 
@@ -62,7 +62,7 @@ class MarketReportController extends Controller
      */
     public function getInsights(Request $request, $location_type, $slug){        
         $response = $this->model->getInsights($location_type, $slug);
-        return view('real-estate::website.market-report.insight', [
+        return view('core::website.market-report.insight', [
             'data' => $response,
             'isInsight' => true,
             'page_type' => $location_type,
@@ -80,7 +80,7 @@ class MarketReportController extends Controller
     public function compareLocations(Request $request){     
         $data = $request->all();   
         $response = $this->model->compareLocations($data);
-        return view('real-estate::website.market-report.compare', [
+        return view('core::website.market-report.compare', [
             'records' => $response,
             'page_type' => $data['by']
         ]);
@@ -93,7 +93,7 @@ class MarketReportController extends Controller
     public function showInMap(Request $request){     
         $data = $request->all();
         $response = $this->model->compareLocations($data);
-        return view('real-estate::website.market-report.map', [
+        return view('core::website.market-report.map', [
             'records' => $response,
             'page_type' => $data['by']
         ]);

@@ -30,7 +30,7 @@ class BannerController extends Controller
         $this->package_name = 'banners';
         $this->view = 'admin.banners';
         $this->title = 'Banners';
-        $this->child_table = 'real-estate::admin.images.table';
+        $this->child_table = 'core::admin.images.table';
     }
 
 

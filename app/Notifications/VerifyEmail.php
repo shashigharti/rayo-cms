@@ -46,7 +46,7 @@ class VerifyEmail extends Notification
 
         return (new MailMessage)
             ->subject(Lang::getFromJson('Welcome to '. env('APP_URL')))
-            ->markdown('real-estate::website.email.lead.verification',
+            ->markdown('core::website.email.lead.verification',
                 [
                     'member' => $member,'verificationUrl' => $verificationUrl
                 ]);

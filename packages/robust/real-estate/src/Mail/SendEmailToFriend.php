@@ -43,6 +43,6 @@ class SendEmailToFriend extends Mailable
      */
     public function build()
     {
-        return $this->view('real-estate::website.email.lead.sendEmailToFriend');
+        return $this->view('core::website.email.lead.sendEmailToFriend');
     }
 }

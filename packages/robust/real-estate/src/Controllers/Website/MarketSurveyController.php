@@ -24,6 +24,6 @@ class MarketSurveyController extends Controller
      */
     public function index()
     {
-        return view('real-estate::website.market-survey.index');
+        return view('core::website.market-survey.index');
     }
 }
