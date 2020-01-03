@@ -13,13 +13,12 @@
 @endsection
 @section('body_section')
     <section class="main-content">
-        <div class="container-fluid">
             <div class="row">
-                <div class="col s2 side-tab">
+                <div class="side-tab">
                     @include(Site::templateResolver('core::website.user-profile.partials.side-nav'))
                 </div>
-                <div class="col s10">
-                    <div class="side-tab-content profile--tab col s12">
+                <div class="side-tab-content">
+                    <div class="profile--tab col s12">
                         <div id="profile" class="col s12">
                             @include(Site::templateResolver('core::website.user-profile.partials.info'))
                         </div>
@@ -38,7 +37,6 @@
                     </div>
                 </div>
             </div>
-        </div>
     </section>
 @endsection
 @section('footer')

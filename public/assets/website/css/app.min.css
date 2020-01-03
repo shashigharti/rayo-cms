@@ -843,11 +843,12 @@ a.buy-now-btn{color:#fff;display:inline-block;background:#002349;padding:10px 43
 .single-block:hover .available-prices{max-height:1000px;opacity:1}.search-section input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;width:90%}
 .inner--title{margin-top:0}.inner--title h1{margin-top:0}p.sub--inner{font-size:12px}
 .side-tab-content .form-group label{vertical-align:middle;float:left;margin-top:7px;margin-right:10px;width:20%;padding:0;font-size:12px !important;text-align:left !important}
-.side-tab-content .form-group input{width:63% !important;float:left !important;height:21px !important;border:1px solid #ccc !important;font-size:12px !important;padding:5px 15px !important;margin-bottom:10px !important}
-.btn-xs{font-size:12px;height:25px;line-height:25px}.side-tab .tabs{margin:20px 0;-webkit-box-shadow:1px 1px 1px 1px #777;box-shadow:1px 1px 1px 1px #777;color:#111;min-height:400px}
-.side-tab li.tab{text-align:left;color:#111}.side-tab .tabs .tab a{color:#111;font-weight:500;text-decoration:none}
-.side-tab .tabs .tab a:hover,.side-tab .tabs .tab a.active{background-color:#002349;color:#fff}
-.side-tab .tabs .indicator{display:none}.side-tab-content{margin-bottom:50px}.select-wrapper{display:inline-block;border:1px solid #ccc;height:30px;vertical-align:middle;margin:0 4px;padding:2px 0}
+.side-tab-content .form-group input{width:76% !important;float:left !important;height:21px !important;border:1px solid #ccc !important;font-size:12px !important;padding:5px 15px !important;margin-bottom:10px !important}
+.btn-xs{font-size:12px;height:25px;line-height:25px}.side-tab{display:inline-block;margin-left:18px;height:100vh;width:14.7%}
+.side-tab .tabs{margin:20px 0;color:#111;min-height:400px}.side-tab li.tab{text-align:left;color:#111}
+.side-tab .tabs .tab a{color:#111;font-weight:500;text-decoration:none}.side-tab .tabs .tab a:hover,.side-tab .tabs .tab a.active{background-color:#ccc;color:#fff}
+.side-tab .tabs .indicator{display:none}.side-tab-content{margin-bottom:50px;display:inline-block;width:83%;vertical-align:top}
+.select-wrapper{display:inline-block;border:1px solid #ccc;height:30px;vertical-align:middle;margin:0 4px;padding:2px 0}
 .select-wrapper input.select-dropdown{border:0 !important;border-bottom:0 !important;height:25px !important;line-height:1rem !important;width:100% !important;font-size:11px !important;padding:0 6px !important}
 .select-wrapper input.select-dropdown li>a,.select-wrapper input.select-dropdown li>span{font-size:12px;color:#333;display:block;line-height:22px;padding:8px 16px}
 .select-wrapper .caret{position:absolute;right:6px}.search--bar input[type="text"]{padding:6px}
@@ -1260,7 +1261,7 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .login-page .card-panel.border-radius-6.login-card{margin-left:0 !important}.login-page [type="checkbox"]+span:not(.lever){font-weight:400}
 .login-page input:not([type]):focus:not([readonly]),.login-page input[type=text]:not(.browser-default):focus:not([readonly]),.login-page input[type=password]:not(.browser-default):focus:not([readonly]),.login-page input[type=email]:not(.browser-default):focus:not([readonly]),.login-page input[type=url]:not(.browser-default):focus:not([readonly]),.login-page input[type=time]:not(.browser-default):focus:not([readonly]),.login-page input[type=date]:not(.browser-default):focus:not([readonly]),.login-page input[type=datetime]:not(.browser-default):focus:not([readonly]),.login-page input[type=datetime-local]:not(.browser-default):focus:not([readonly]),.login-page input[type=tel]:not(.browser-default):focus:not([readonly]),.login-page input[type=number]:not(.browser-default):focus:not([readonly]),.login-page input[type=search]:not(.browser-default):focus:not([readonly]),.login-page textarea.materialize-textarea:focus:not([readonly]){border-bottom:1px solid #002349;-webkit-box-shadow:0 1px 0 0 #002349;box-shadow:0 1px 0 0 #002349}
 .login-page .input-field .prefix.active{color:#002349}.login-page .input-field .prefix ~ label{font-weight:400}
-.profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:90%}
+.profile-inner .title-detail{border-bottom:1px solid #ccc;margin-bottom:20px;width:100%}
 .sort-favourite .btn,.sort-favourite .btn-large,.sort-favourite .btn-small{-webkit-box-shadow:none;box-shadow:none}
 .profile--tab{min-height:400px}@media(max-width:1248px){.search-section{display:none}
 .site-menu .nav-link{margin-right:0}.search-lists .row .col.m4{width:50%}}@media(max-width:767px){.mobile--menu.sidenav{background-color:#04122d}
