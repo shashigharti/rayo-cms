@@ -2,6 +2,8 @@
 
 namespace Robust\Admin\Controllers\Website\Auth;
 
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
@@ -38,40 +40,43 @@ class AdminLoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    // /**
-    //  * Get a validator for an incoming registration request.
-    //  *
-    //  * @param  array  $data
-    //  * @return \Illuminate\Contracts\Validation\Validator
-    //  */
-    // protected function validator(array $data)
-    // {
-    //     return Validator::make($data, [
-    //         'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-    //         'password' => ['required', 'string', 'min:5', 'confirmed']
-    //     ]);
-    // }
-
-    protected function authenticated(Request $request, $user)
+    /**
+     * Get a validator for an incoming registration request.
+     *
+     * @param  array  $data
+     * @return \Illuminate\Contracts\Validation\Validator
+     */
+    protected function validator(array $data)
     {
-        dd($user);
-        // if ( $user->isAdmin() ) {// do your magic here
-        //     return redirect()->route('dashboard');
-        // }
-
-        // return redirect('/home');
+        return Validator::make($data, [
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:5', 'confirmed']
+        ]);
     }
-
-
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
      */
-    function login(){
-        return view('admin::website.auth.admin-login');
+    protected function authenticated(Request $request, $user)
+    {
+        if(isAdmin($user)){
+            return redirect()->route('admin.home');
+        }
+
+        Auth::logout($user);
+        return redirect()->back()->withErrors(['Admin user not found']);
     }
 
-    function postLogin(){
-        dd('testing');
+    /**
+     * Display admin login page
+     * 
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    function index(){
+        return view('admin::website.auth.admin-login');
     }
 }

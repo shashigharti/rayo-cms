@@ -35,11 +35,11 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
 
     Route::get('admin-login', [
         'as' => 'admin-login',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\AdminLoginController@login'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\AdminLoginController@index'
     ]);    
     Route::post('admin-login', [
         'as' => 'admin-login.post',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\AdminLoginController@postLogin'
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\AdminLoginController@login'
     ]);
 
 });
