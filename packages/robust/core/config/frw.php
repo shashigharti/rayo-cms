@@ -16,7 +16,7 @@ return [
     'api' => 'api',
     'auth' => 'auth',
     'website' => '',
-    'user' => 'user',
+    'profile' => 'profile',
     'image' => [
         'small' => [
             'height' => 200,
