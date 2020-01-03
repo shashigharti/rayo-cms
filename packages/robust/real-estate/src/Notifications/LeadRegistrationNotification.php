@@ -7,6 +7,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
+use Illuminate\Support\HtmlString;
 
 class LeadRegistrationNotification extends Notification
 {
@@ -61,7 +62,7 @@ class LeadRegistrationNotification extends Notification
         return (new MailMessage)
             ->from(config('rws.client.email.support'))
             ->subject($subject)
-            ->line($body);
+            ->line(new HtmlString($body));
     }
 
     /**

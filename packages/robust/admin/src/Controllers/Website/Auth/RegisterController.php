@@ -77,8 +77,7 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
 
         return response()->json([
-                    'message' => 'Successfully registered! A new verification email has been sent to your email. 
-                    Please review it first before logging in.',
+                    'message' => __('A fresh verification link has been sent to your email address.') . ". " . __('Before proceeding, please check your email for a verification link.'),
                     'status' => 'success'
         ], 201);
     }
