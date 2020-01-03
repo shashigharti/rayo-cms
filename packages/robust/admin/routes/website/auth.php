@@ -61,13 +61,3 @@ Route::group(['prefix' => '', 'as' => 'website.auth.verification.','group' => 'V
         'uses' => 'Robust\Admin\Controllers\Website\Auth\VerificationController@resend'
     ]);
 });
-
-//
-Route::group(['prefix' => 'admin', 'as' => 'admin.auth.','group' => 'Auth'], function () {    
-    
-    // Route::get('logout', [
-    //     'as' => 'logout',
-    //     'uses' => 'Robust\Admin\Controllers\Admin\Auth\LoginController@logout'
-    // ]);
-});
-

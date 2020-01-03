@@ -77,8 +77,7 @@ class RegisterController extends Controller
         $user = $this->create($request->all());
 
         return response()->json([
-                    'message' => 'Successfully registered! A new verification email has been sent to your email. 
-                    Please review it first before logging in.',
+                    'message' => __('A fresh verification link has been sent to your email address.') . ". " . __('Before proceeding, please check your email for a verification link.'),
                     'status' => 'success'
         ], 201);
     }
@@ -95,8 +94,10 @@ class RegisterController extends Controller
         $new_user = $this->user->store([
             'user_name' => $data['email'],
             'email' => $data['email'],
-            'password' => Hash::make($data['password'])
+            'password' => Hash::make($data['password']),
+            'token' => md5(uniqid(rand(), true))
         ]); 
+        \Log::info($new_user);
         // create dashboard data for the new user
         $this->dashboard->store([
             'name' => "{$data['first_name']} Dashboard",

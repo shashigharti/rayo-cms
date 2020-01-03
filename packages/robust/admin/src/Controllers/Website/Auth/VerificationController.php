@@ -2,9 +2,13 @@
 
 namespace Robust\Admin\Controllers\Website\Auth;
 
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
+use Illuminate\Http\Request;
+use Robust\Admin\Repositories\Website\UserRepository;
+use Illuminate\Support\Carbon;
 
 class VerificationController extends Controller
 {
@@ -26,7 +30,7 @@ class VerificationController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/user';
 
     /**
      * Create a new controller instance.
@@ -35,8 +39,30 @@ class VerificationController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
-        $this->middleware('signed')->only('verify');
         $this->middleware('throttle:6,1')->only('verify', 'resend');
+        $this->middleware('guest');
+        
     }
+
+    /**
+     * Overrriden function.
+     * Mark the authenticated user's email address as verified. 
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
+     */
+    public function verify(UserRepository $user, Request $request)
+    {        
+        $user = $user->where('token', $request->route('id'))->first();
+        if($user->token == $request->route('id')){
+            $user->update([
+                'email_verified_at' => Carbon::now()
+            ]);
+        }
+        //Auth::login($user);   
+            
+        return redirect()->route($redirectTo)->with('verified', true);
+    }
+
 }

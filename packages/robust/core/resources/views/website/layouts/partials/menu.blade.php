@@ -83,7 +83,7 @@
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market Stats</a></li>
         <li class="nav-btn">
             @if(Auth::check())
-                <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.profile.index')}}">My Review</a>
+                <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.user.profile')}}">My Review</a>
             @else
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__login">Login</a>
             @endif
@@ -91,7 +91,7 @@
         </li>
         <li class="nav-btn">
             @if(Auth::check())
-                <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.realestate.leads.logout')}}">Logout</a>
+                <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.auth.logout')}}">Logout</a>
             @else
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__register">Register</a>
             @endif

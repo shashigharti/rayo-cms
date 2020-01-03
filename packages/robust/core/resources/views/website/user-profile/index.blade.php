@@ -16,24 +16,24 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col s2 side-tab">
-                    @include(Site::templateResolver('core::website.profile.partials.side-nav'))
+                    @include(Site::templateResolver('core::website.user-profile.partials.side-nav'))
                 </div>
                 <div class="col s10">
                     <div class="side-tab-content profile--tab col s12">
                         <div id="profile" class="col s12">
-                            @include(Site::templateResolver('core::website.profile.partials.info'))
+                            @include(Site::templateResolver('core::website.user-profile.partials.info'))
                         </div>
                         <div id="favourites" class="col s12">
-                            @include(Site::templateResolver('core::website.profile.partials.favourites'))
+                            @include(Site::templateResolver('core::website.user-profile.partials.favourites'))
                         </div>
                         <div id="reports" class="col s12">
-                            @include(Site::templateResolver('core::website.profile.partials.reports'))
+                            @include(Site::templateResolver('core::website.user-profile.partials.reports'))
                         </div>
                         <div id="bookmarks" class="col s12">
-                            @include(Site::templateResolver('core::website.profile.partials.bookmarks'))
+                            @include(Site::templateResolver('core::website.user-profile.partials.bookmarks'))
                         </div>
                         <div id="searches" class="col s12">
-                            @include(Site::templateResolver('core::website.profile.partials.searches'))
+                            @include(Site::templateResolver('core::website.user-profile.partials.searches'))
                         </div>
                     </div>
                 </div>

@@ -5,7 +5,7 @@
          <div class="row">
             <h3 class="title-detail info-form"> Personal info</h3>
          </div>
-         <form action="{{route('website.realestate.profile.update')}}" method="POST">
+         <form action="" method="POST">
              @csrf
             <div class="form-group row">
                <label for="txtuser" class=" control-label">Firstname</label>
