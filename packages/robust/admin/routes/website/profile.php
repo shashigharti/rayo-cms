@@ -1,6 +1,6 @@
 <?php
-Route::group(['prefix' => config('core.frw.profile'), 'as' => 'website.user.', 'group' => 'User Profile'], function () {
-    Route::get('/', [ // appends profile
+Route::group(['prefix' => config('core.frw.user'), 'as' => 'website.user.', 'group' => 'User Profile'], function () {
+    Route::get('profile', [ // appends user
     'as' => 'profile',
     'uses' => '\Robust\Core\Controllers\Website\ProfileController@index'
     ]);
