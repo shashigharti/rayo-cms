@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Console\Commands;
+namespace Robust\RealEstate\Console\Commands;
 
 use DB;
 use Robust\RealEstate\Models\City;

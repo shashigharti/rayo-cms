@@ -1,5 +1,5 @@
 <?php
-namespace App\Console\Commands;
+namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
 
@@ -31,7 +31,6 @@ class CreateAttributes extends Command
         // Get all listings
         $location_properties = \DB::table('real_estate_listing_properties')
         ->distinct('type')
-        //->limit(10000)
         ->get();
 
         $all_properties = [];

@@ -1,5 +1,5 @@
 <?php
-namespace App\Console\Commands;
+namespace Robust\RealEstate\Console\Commands;
 
 use Robust\RealEstate\Models\Listing;
 use Illuminate\Console\Command;
@@ -8,21 +8,21 @@ use Robust\RealEstate\Models\Location;
 
 
 /**
- * Class UpdateLocations
+ * Class UpdateLocationsCount
  * @package App\Console\Commands
  */
-class UpdateLocations extends Command
+class UpdateLocationsCount extends Command
 {
     /**
      * The name and signature of the console command.
      * @var string
      */
-    protected $signature = 'rws:update-locations';
+    protected $signature = 'rws:update-locations-count';
     /**
      * The console command description.
      * @var string
      */
-    protected $description = "Update location table data";
+    protected $description = "Update locations count";
 
     /**
      * @var array
@@ -48,12 +48,14 @@ class UpdateLocations extends Command
         {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')
                 ->where($this->mapping[$location->locationable_type], $location->id)->count();
-            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')
+            $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')            
                 ->where($this->mapping[$location->locationable_type], $location->id)->count();
+
             $location->update([
                'active_count' => $active_count,
                'sold_count' => $sold_count,
             ]);
+            
             $this->info('Name : '.  $location->name . ' || Active : ' .$active_count. ' || Sold : ' . $sold_count);
         }
     }

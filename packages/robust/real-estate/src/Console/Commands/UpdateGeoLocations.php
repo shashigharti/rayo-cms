@@ -1,9 +1,8 @@
 <?php
-namespace App\Console\Commands;
+namespace Robust\RealEstate\Console\Commands;
 
 use Robust\RealEstate\Models\Listing;
 use Illuminate\Console\Command;
-
 
 /**
  * Class UpdateGeoLocations
@@ -33,6 +32,7 @@ class UpdateGeoLocations extends Command
 
         foreach($listings as $listing){
             $properties = $listing->property()
+            
             ->where(function($query) use ($listing){
                 $query->where('type', 'latitude')
                 ->where('value', '!=', '')

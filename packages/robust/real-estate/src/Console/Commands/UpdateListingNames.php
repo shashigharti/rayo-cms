@@ -1,5 +1,4 @@
 <?php
-
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -11,21 +10,21 @@ use Robust\RealEstate\Models\Zip;
 
 
 /**
- * Class GenerateNames
+ * Class UpdateListingNames
  * @package Robust\RealEstate\Console\Commands
  */
-class GenerateNames extends Command
+class UpdateListingNames extends Command
 {
 
     /**
      * @var string
      */
-    protected $signature = 'rws:generate-names';
+    protected $signature = 'rws:update-listing-names';
 
     /**
      * @var string
      */
-    protected $description = 'Generates Listing Names';
+    protected $description = 'Update Listing Names';
 
 
     /**
@@ -38,29 +37,33 @@ class GenerateNames extends Command
 
 
     /**
-     *
+     * Execute the console command.
+     * @return mixed
      */
     public function handle()
     {
-        Listing::select('id','city_id','zip_id','address_number')
-                ->chunk(1000,function ($listings){
+        Listing::select('id','city_id','zip_id','address_number')->chunk(1000, function ($listings){
                     foreach ($listings as $listing){
                         $name  = '';
                         $name .= ucfirst($listing->address_number);
-                        $city = Location::where('id',$listing->city_id)->first();
+
+                        $city = Location::where('id', $listing->city_id)->first();
                         if($city){
                             $name .= ', ' . $city->name;
                         }
-                        $zip =  Location::where('id',$listing->zip_id)->first();
+
+                        $zip =  Location::where('id', $listing->zip_id)->first();
                         if($zip){
                             $name .= ' ' . $zip->name;
                         }
-                       $listing->update(
-                            ['name' => $name,'slug' => Str::slug($name)]
+
+                        $listing->update(
+                            ['name' => $name, 'slug' => Str::slug($name)]
                         );
+
                         $this->info($listing->name);
                     }
-                });
+        });
     }
 
 }
