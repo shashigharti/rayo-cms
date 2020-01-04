@@ -9,7 +9,7 @@ use Robust\Core\Models\BaseModel;
  * Class CoreGroup
  * @package Robust\RealEstate\Model
  */
-class CoreGroup extends BaseModel
+class LeadGroup extends BaseModel
 {
     /**
      * @var string

@@ -1,12 +1,9 @@
 <?php
-namespace Robust\Pages\Models;
+namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
 
-/**
- * Class Page
- * @package Robust\Pages\Models
- */
+
 class Page extends BaseModel
 {
     /**

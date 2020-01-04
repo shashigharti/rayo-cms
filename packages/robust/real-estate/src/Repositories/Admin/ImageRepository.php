@@ -1,5 +1,5 @@
 <?php
-namespace Robust\RealEstate\Repositories;
+namespace Robust\RealEstate\Repositories\Admin;
 
 use Carbon\Carbon;
 use Robust\RealEstate\Models\Image;
@@ -7,10 +7,6 @@ use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 
-/**
- * Class ImageRepository
- * @package Robust\RealEstate\Repositories
- */
 class ImageRepository
 {
 
