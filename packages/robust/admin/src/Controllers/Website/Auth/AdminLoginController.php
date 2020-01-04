@@ -63,7 +63,7 @@ class AdminLoginController extends Controller
      */
     protected function authenticated(Request $request, $user)
     {
-        if(isAdmin($user)){
+        if(isAdmin()){
             return redirect()->route('admin.home');
         }
 

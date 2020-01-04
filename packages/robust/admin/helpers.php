@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-if (!function_exists('is_admin')) {
+if (!function_exists('isAdmin')) {
     /**
      * @param $user
      * @return boolean

@@ -39,9 +39,14 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-        \Log::info("is admin " . Auth::user());
-        if ((Auth::user() && Auth::user()->can('admin.view')) || (Auth::user()->id === 1))
+       
+        if (Auth::user() && isAdmin()){
+            \Log::info("is admin " . Auth::user());
             return $next($request);
+        }elseif(Auth::user() && !isAdmin()){            
+            \Log::info("is user " . Auth::user());
+            return redirect()->route('website.profile');
+        }           
 
         return redirect()->route('website.home');
     }

@@ -32,11 +32,8 @@ class DashboardController extends Controller
         $this->ui = 'Robust\Core\UI\Dashboard';
         $this->package_name = 'core';
         $this->view = 'admin.dashboards';
-        $this->ajax_view = 'admin.ajax.dashboards';
         $this->title = 'Dashboards';
-
         $this->previous_url = route('admin.home');
-
         $this->middleware('auth');
     }
 
@@ -52,14 +49,6 @@ class DashboardController extends Controller
         parse_str($request->getQueryString(), $query_params);
         $dashboard = $this->model->find($query_params['parent_id']);
         $widgets = $widget->all();
-
-        $view = $this->display("{$this->package_name}::{$this->ajax_view}.add-widget", [
-            'model' => $this->model->getModel(),
-            'records' => $widgets,
-            'dashboard_widgets' => $dashboard->widgets->pluck('id')->toArray(),
-            'query_params' => $query_params
-        ])->render();
-
         return response()->json(['view' => $view]);
     }
 
