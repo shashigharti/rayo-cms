@@ -24,15 +24,5 @@ class AdminServiceProvider extends ServiceProvider
     public function registerIncludes()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'admin.permissions');
-        foreach (new \DirectoryIterator(__DIR__ . '/../../routes/admin/') as $fileInfo) {
-            if (!$fileInfo->isDot()) {
-                include __DIR__ . '/../../routes/admin/' . $fileInfo->getFilename();
-            }
-        }
-        foreach (new \DirectoryIterator(__DIR__ . '/../../routes/website/') as $fileInfo) {
-            if (!$fileInfo->isDot()) {
-                include __DIR__ . '/../../routes/website/' . $fileInfo->getFilename();
-            }
-        }
     }
 }

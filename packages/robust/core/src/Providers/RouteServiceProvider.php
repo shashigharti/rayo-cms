@@ -64,14 +64,18 @@ class RouteServiceProvider extends ServiceProvider
             'middleware' => 'web',
         ], function ($router) {
             foreach (glob(base_path() . '/packages/robust/core/routes/website/*') as $file) {
-                require $file;
+                if (!is_dir($file)) {
+                    require $file;
+                }
             }
         });
         Route::group([
             'middleware' => ['web', 'api'],
         ], function ($router) {
             foreach (glob(base_path() . '/packages/robust/core/routes/api/*') as $file) {
-                require $file;
+                if (!is_dir($file)) {
+                    require $file;
+                }
             }
         });
 
