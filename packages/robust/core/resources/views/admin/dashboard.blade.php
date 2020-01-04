@@ -109,6 +109,20 @@
         </h1>
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+            @inject('menu_helper', 'Robust\Core\Helpers\MenuHelper')
+            {{-- @foreach($menu_helper->getMenus() as $index => $menu)
+                @if($menu->type == 'primary')
+                    @set('sub_menus', $menu_helper->getSubMenus($menu->id))
+                    @can($menu->permission)
+                        <li class="active bold">
+                            <a class="active waves-effect waves-cyan " href="#">
+                                <i class="material-icons">{{ $menu->icon }}</i>
+                                <span class="menu-title" data-i18n="">{{ $menu->display_name }}</span>
+                            </a>
+                        </li>
+                    @endcan
+                @endif
+            @endforeach --}}
         <li class="active bold">
             <a class="active waves-effect waves-cyan " href="#">
                 <i class="material-icons">settings_input_svideo</i>

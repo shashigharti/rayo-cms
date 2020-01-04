@@ -11,11 +11,6 @@ class CoreMenuTableSeeder extends Seeder
      */
     public function run()
     {
-        Route::resources([
-            'photos' => 'PhotoController',
-            'posts' => 'PostController'
-        ]);
-
 
         DB::table('menus')->insert([
             [
@@ -39,31 +34,6 @@ class CoreMenuTableSeeder extends Seeder
                 'icon' => 'md-image'
 
             ]
-
-        ]);
-        DB::table('menus')->insert([
-            [
-                'display_name' => 'Database Management',
-                'name' => 'core.backup',
-                'url' => route('admin.backup.index'),
-                'permission' => 'core.backup.manage',
-                'package_name' => 'core',
-                'parent_id' => 0,
-                'type' => 'primary',
-                'icon' => 'md-home'
-            ],
-        ]);
-        $id = DB::table('menus')->max('id');
-        DB::table('menus')->insert([
-            [
-                'display_name' => 'Back Up',
-                'name' => 'core.backup',
-                'url' => route('admin.backup.index'),
-                'permission' => 'core.backup.manage',
-                'package_name' => 'core',
-                'parent_id' => $id,
-                'type' => 'primary',
-            ],
 
         ]);
         DB::table('menus')->insert([

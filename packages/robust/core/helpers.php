@@ -52,11 +52,11 @@ if (!function_exists('settings')) {
     }
 }
 
-if (!function_exists('getMedia')) {
+if (!function_exists('media')) {
     /**
      * @return string
      */
-    function getMedia($media_id)
+    function media($media_id)
     {
         if ($media_id) {
             $media = (new \Robust\Core\Models\Media)->find($media_id);
@@ -66,7 +66,6 @@ if (!function_exists('getMedia')) {
         return null;
     }
 }
-
 if (!function_exists('emails')) {
     /**
      * @return string
@@ -79,7 +78,6 @@ if (!function_exists('emails')) {
                 $emails = explode(', ', $event_model->email);
                 return $emails;
             }
-            return null;
         }
         return null;
     }
