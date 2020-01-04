@@ -4,10 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
-use Robust\RealEstate\Console\Commands\GenerateMlsDataMap;
-use Robust\RealEstate\Console\Commands\MlsPullData;
-use Robust\RealEstate\Console\Commands\MlsPullImages;
-
+use Robust\Core\Models\Command as Task;
 
 class Kernel extends ConsoleKernel
 {
@@ -19,16 +16,11 @@ class Kernel extends ConsoleKernel
         'App\Console\Commands\MigrateData',
         'App\Console\Commands\FixImages',
         'App\Console\Commands\FixImagesCount',
-        'App\Console\Commands\CreateLocations',
-        'App\Console\Commands\CreateMarketReport',
-        'App\Console\Commands\CreateAttributes',
-        'App\Console\Commands\UpdateLocations',
         'App\Console\Commands\LocationDataMigrate',
         'App\Console\Commands\ListingDataMigrate',
         'App\Console\Commands\LeadDataMigrate',
         'App\Console\Commands\MarketReportMigrate',
-        'App\Console\Commands\BannerMigrate',
-        'App\Console\Commands\UpdateGeoLocations',
+        'App\Console\Commands\BannerMigrate'
     ];
 
     /**
@@ -38,9 +30,12 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->command('send:user-alerts')
-            ->daily()
-            ->at('7:00');
+        $commands = Task::where('status', 1)->get();
+        foreach($commands as $cmd){
+            $frequency = $cmd->frequency;
+            $schedule->command($cmd->command)->$frequency()->at($cmd->at ?? '24:10');
+            \Log::info($cmd->command . " " . $frequency . "() at " . $cmd->at);
+        }   
     }
 
     /**

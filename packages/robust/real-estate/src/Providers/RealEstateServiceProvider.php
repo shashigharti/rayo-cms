@@ -7,6 +7,7 @@ use Robust\RealEstate\Events\SendEmailToFriend;
 use Robust\RealEstate\Helpers\CoreSettingHelper;
 use Robust\RealEstate\Helpers\AdvanceSearchHelper;
 use Robust\RealEstate\Listeners\SendEmailToFriendListener;
+use Robust\RealEstate\Console\Kernel;
 
 /**
  * Class RealEstateServiceProvider
@@ -15,14 +16,20 @@ use Robust\RealEstate\Listeners\SendEmailToFriendListener;
 class RealEstateServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        'Robust\RealEstate\Console\Commands\AdvanceSearch',
-        'Robust\RealEstate\Console\Commands\ListingPriceCount',
         'Robust\RealEstate\Console\Commands\DataPull',
         'Robust\RealEstate\Console\Commands\FieldsPull',
         'Robust\RealEstate\Console\Commands\PropertiesPull',
         'Robust\RealEstate\Console\Commands\ImagesPull',
         'Robust\RealEstate\Console\Commands\RetsPullAll',
-        'Robust\RealEstate\Console\Commands\GenerateNames',
+
+
+        'Robust\RealEstate\Console\Commands\UpdateListingNames',
+        'Robust\RealEstate\Console\Commands\CreateAttributes',
+        'Robust\RealEstate\Console\Commands\CreateLocations',
+        'Robust\RealEstate\Console\Commands\CreateMarketReport',
+        'Robust\RealEstate\Console\Commands\UpdateGeoLocations',
+        'Robust\RealEstate\Console\Commands\UpdateLocationsCount',
+        'Robust\RealEstate\Console\Commands\RegisterCommands',
     ];
 
 

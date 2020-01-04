@@ -15,7 +15,7 @@ class Command extends BaseModel
      * @var string
      */
     protected $fillable = [
-        'name'
+        'name', 'description', 'status', 'command', 'frequency', 'at', 'executed_at', 'next_execution_at', 'last_execution_status'
     ];
 
 }

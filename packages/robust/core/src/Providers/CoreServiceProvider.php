@@ -32,7 +32,7 @@ class CoreServiceProvider extends ServiceProvider
         'Robust\Core\Console\Commands\Restore',
         'Robust\Core\Console\Commands\SitemapGenerate',
         'Robust\Core\Console\Commands\ResetSetting',
-        'Robust\Core\Console\Commands\SendEmailMinute',
+        //'Robust\Core\Console\Commands\SendEmailMinute',
         //'Robust\Core\Console\Commands\SendEmailWeekly',
     ];
 
