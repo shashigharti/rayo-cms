@@ -52,11 +52,11 @@ if (!function_exists('settings')) {
     }
 }
 
-if (!function_exists('media')) {
+if (!function_exists('getMedia')) {
     /**
      * @return string
      */
-    function media($media_id)
+    function getMedia($media_id)
     {
         if ($media_id) {
             $media = (new \Robust\Core\Models\Media)->find($media_id);

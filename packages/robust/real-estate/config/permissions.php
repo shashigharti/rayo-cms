@@ -14,22 +14,36 @@ return [
     /* {package-name}.{model or object}.{action}*/
     'actions' => [
 
-        'react.dashboard.view' => 'View Dashboard',
-        'react.leads.view' => 'View Leads',
-        'react.pages' => 'Pages',
-        'react.pages.view' => 'View Pages',
-        'react.locations.view' => 'View Locations',
-        'react.cities.view' => 'View Cities',
-        'react.zips.view' => 'View Zips',
-        'react.counties.view' => 'View Counties',
-        'react.email.view' => 'View Email Templates',
-        'react.banner.view' => 'View Banner',
-        'react.agent.view' => 'View Agent',
-        'react.admin.view' => 'Admin',
-        'react.users.view' => 'View Users',
-        'react.groups.view' => 'View Groups',
-        'react.menus.view' => 'View Groups',
-        'react.settings.view' => 'View Settings',
-        'mls.manage' => 'MLS',
+        'real-estate.manage' => "Realestate",
+
+        'real-estate.leads.manage' => "Manage Leads",
+        'real-estate.leads.add' => "Add Lead",
+        'real-estate.leads.edit' => "Lead Edit",
+        'real-estate.leads.delete' => "Lead Delete",
+
+        'real-estate.agents.manage' => "Manage Agents",
+        'real-estate.agents.add' => "Add Agent",
+        'real-estate.agents.edit' => "Agent Edit",
+        'real-estate.agents.delete' => "Agent Delete",
+
+        'real-estate.email-templates.manage' => "Manage Agents",
+        'real-estate.email-templates.add' => "Add Email Template",
+        'real-estate.email-templates.edit' => "Email Template Edit",
+        'real-estate.email-templates.delete' => "Email Template Delete",
+
+        'real-estate.locations.manage' => "Manage Locations",
+        'real-estate.locations.add' => "Add Location",
+        'real-estate.locations.edit' => "Location Edit",
+        'real-estate.locations.delete' => "Location Delete",
+
+        'real-estate.banners.manage' => "Manage Banners",
+        'real-estate.banners.add' => "Add Banner",
+        'real-estate.banners.edit' => "Banner Edit",
+        'real-estate.banners.delete' => "Banner Delete",
+
+        'real-estate.pages.manage' => "Manage Pages",
+        'real-estate.pages.add' => "Add Page",
+        'real-estate.pages.edit' => "Page Edit",
+        'real-estate.pages.delete' => "Page Delete"
     ]
 ];
