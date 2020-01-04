@@ -15,7 +15,7 @@ class MenuHelper
      */
     public function getMenus()
     {
-        $menus = Menu::where('parent_id', 0)->orderBy('display_name', 'ASC')->get();
+        $menus = Menu::where('parent_id', 0)->orderBy('order', 'ASC')->get();
         return $menus;
     }
 
@@ -24,18 +24,8 @@ class MenuHelper
      */
     public function getSubMenus($id)
     {
-        $menus = \DB::table('menus')->where('parent_id', $id)->orderBy('display_name', 'ASC')->get();
+        $menus = Menu::where('parent_id', $id)->orderBy('order', 'ASC')->get();
         return $menus;
-    }
-
-    /**
-     * @param $package_name
-     * @return mixed
-     */
-    public function getPrimaryMenu($package_name)
-    {
-        return Menu::where('parent_id', 0)
-            ->where('package_name', $package_name)->first();
     }
 
     /**

@@ -14,14 +14,24 @@ class CoreMenuTableSeeder extends Seeder
 
         DB::table('menus')->insert([
             [
+                'display_name' => 'Dashboard',
+                'name' => 'core.dashboard',
+                'url' => route('admin.home'),
+                'permission' => 'core.dashboards.manage',
+                'package_name' => 'core',
+                'parent_id' => 0,
+                'type' => 'primary',
+                'icon' => 'settings_input_svideo'
+            ],
+            [
                 'display_name' => 'Settings',
                 'name' => 'core.settings',
                 'url' => route('admin.settings.edit', ['general-setting']),
                 'permission' => 'core.settings.edit',
                 'package_name' => 'core',
                 'parent_id' => 0,
-                'type' => 'secondary',
-                'icon' => 'md-settings'
+                'type' => 'primary',
+                'icon' => 'settings'
             ],
             [
                 'display_name' => 'Media Manager',
@@ -31,8 +41,7 @@ class CoreMenuTableSeeder extends Seeder
                 'package_name' => 'core',
                 'parent_id' => 0,
                 'type' => 'primary',
-                'icon' => 'md-image'
-
+                'icon' => 'image'
             ]
 
         ]);
@@ -45,7 +54,7 @@ class CoreMenuTableSeeder extends Seeder
                 'package_name' => 'core',
                 'parent_id' => 0,
                 'type' => 'primary',
-                'icon' => 'md-home'
+                'icon' => 'graphic_eq'
             ],
         ]);
         $id = DB::table('menus')->max('id');
@@ -57,7 +66,8 @@ class CoreMenuTableSeeder extends Seeder
                 'permission' => 'core.commands.manage',
                 'package_name' => 'core',
                 'parent_id' => $id,
-                'type' => 'primary',
+                'type' => 'child',
+                'icon' => 'flash_on'
             ],
 
         ]);

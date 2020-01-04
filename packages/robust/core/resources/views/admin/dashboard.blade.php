@@ -110,79 +110,46 @@
       </div>
       <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
             @inject('menu_helper', 'Robust\Core\Helpers\MenuHelper')
-            {{-- @foreach($menu_helper->getMenus() as $index => $menu)
+            @foreach($menu_helper->getMenus() as $index => $menu)
                 @if($menu->type == 'primary')
                     @set('sub_menus', $menu_helper->getSubMenus($menu->id))
                     @can($menu->permission)
-                        <li class="active bold">
-                            <a class="active waves-effect waves-cyan " href="#">
-                                <i class="material-icons">{{ $menu->icon }}</i>
-                                <span class="menu-title" data-i18n="">{{ $menu->display_name }}</span>
-                            </a>
-                        </li>
+                        @if(count($sub_menus) <= 0)
+                            <li class="bold">
+                                <a class="waves-effect waves-cyan " href="{{ $menu->url }}">
+                                    <i class="material-icons">{{ $menu->icon }}</i>
+                                    <span class="menu-title" data-i18n="">
+                                        {{ $menu->display_name }}
+                                    </span>
+                                </a>
+                            </li>
+                        @else
+                            <li class="bold">
+                                <a class="collapsible-header waves-effect waves-cyan " href="#">
+                                    <i class="material-icons">{{ $menu->icon }}</i>
+                                    <span class="menu-title" data-i18n="">
+                                        {{ $menu->display_name }}
+                                    </span>
+                                </a>
+                                <div class="collapsible-body">
+                                    <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                        @foreach($sub_menus as $sub_menu)
+                                            @can($sub_menu->permission)
+                                                <li>
+                                                    <a class="collapsible-body" href="{{ $sub_menu->url }}" data-i18n="">
+                                                        <i class="material-icons">{{ $sub_menu->icon }}</i>
+                                                        <span>{{ $sub_menu->display_name }}</span>
+                                                    </a>
+                                                </li>
+                                            @endcan
+                                        @endforeach
+                                    </ul>
+                                </div>
+                            </li>                            
+                        @endif
                     @endcan
                 @endif
-            @endforeach --}}
-        <li class="active bold">
-            <a class="active waves-effect waves-cyan " href="#">
-                <i class="material-icons">settings_input_svideo</i>
-                <span class="menu-title" data-i18n="">Dashboard</span>
-            </a>
-        </li>        
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan " href="#">
-                <i class="material-icons">content_paste</i>
-                <span class="menu-title" data-i18n="">Pages</span>
-            </a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                  <li>
-                    <a class="collapsible-body" href="page-edit.html" data-i18n="">
-                        <i class="material-icons">radio_button_unchecked</i><span>Page Categories</span>
-                    </a>
-                  </li>
-                  <li>
-                    <a class="collapsible-body" href="page-list.html" data-i18n="">
-                        <i class="material-icons">radio_button_unchecked</i><span>Pages</span>
-                    </a>
-                  </li>
-                </ul>
-             </div>
-        </li>
-        <li class="bold">
-            <a class="waves-effect waves-cyan " href="create-menu.html">
-                <i class="material-icons">crop_original</i>
-                <span class="menu-title" data-i18n="">Menus</span>
-            </a>
-        </li> 
-        <li class="bold">
-            <a class="waves-effect waves-cyan " href="leads.html">
-                <i class="material-icons">show_chart</i>
-                <span class="menu-title" data-i18n="">Leads</span>
-            </a>
-        </li> 
-        <li class="bold">
-            <a class="collapsible-header waves-effect waves-cyan " href="#">
-                <i class="material-icons">people_outline</i>
-                <span class="menu-title" data-i18n="">User Management</span>
-            </a>
-            <div class="collapsible-body">
-                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
-                    <li>
-                        <a class="collapsible-body" href="roles-list.html" data-i18n="">
-                            <i class="material-icons">radio_button_unchecked</i>
-                            <span>Roles</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a class="collapsible-body" href="user.html" data-i18n="">
-                            <i class="material-icons">radio_button_unchecked</i>
-                            <span>Users</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </li>    
+            @endforeach
       </ul>
       <div class="navigation-background"></div><a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out"><i class="material-icons">menu</i></a>
     </aside>

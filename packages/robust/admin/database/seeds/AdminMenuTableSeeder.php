@@ -20,8 +20,7 @@ class AdminMenuTableSeeder extends Seeder
                 'package_name' => 'admin',
                 'parent_id' => 0,
                 'type' => 'primary',
-                'icon' => 'md-accounts-add',
-                'order' => '20'
+                'icon' => 'people_outline'
             ]
         ]);
         $id = DB::table('menus')->max('id');
@@ -34,7 +33,8 @@ class AdminMenuTableSeeder extends Seeder
                 'permission' => 'admin.user.manage',
                 'package_name' => 'admin',
                 'parent_id' => $id,
-                'type' => 'child'
+                'type' => 'child',
+                'icon' => 'person_add'
             ],
             [
                 'display_name' => 'Roles',
@@ -43,7 +43,8 @@ class AdminMenuTableSeeder extends Seeder
                 'permission' => 'admin.user.manage',
                 'package_name' => 'admin',
                 'parent_id' => $id,
-                'type' => 'child'
+                'type' => 'child',
+                'icon' => 'nature_people'
 
             ]
         ]);

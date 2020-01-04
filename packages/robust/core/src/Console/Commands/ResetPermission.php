@@ -47,7 +47,6 @@ class ResetPermission extends Command
         if ($executePermissions) {
             // truncate roles permission table
             $all_permissions = (new PermissionHelper())->get_all_permissions();
-//            DB::table('permissions')->truncate();
             $role = Role::find(1);
 
             foreach ($all_permissions as $package_name => $permissions) {
@@ -67,18 +66,9 @@ class ResetPermission extends Command
                     $datas = \DB::table('permission_role')->where('permission_id', $permission->id)->where('role_id', $role->id)->first();
                     if (!$datas) {
                         $role->permissions()->attach($permission->id);
-
                     }
                 }
             }
-
-//            DB::table('permission_role')->truncate();
-
-//            $all_permissions = Permission::all();
-//
-//            foreach ($all_permissions as $permission) {
-//                $role->permissions()->attach($permission->id);
-//            }
         }
     }
 }
