@@ -4,7 +4,6 @@ namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\CoreSetting;
 use Robust\RealEstate\Models\MarketReport;
-use Robust\RealEstate\Repositories\Website\CoreSettingRepository;
 
 /**
  * Class MarketReportHelper

@@ -2,7 +2,7 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\Banner;
-use Robust\RealEstate\Repositories\BannerRepository;
+use Robust\RealEstate\Repositories\Website\BannerRepository;
 
 /**
  * Class BannerHelper

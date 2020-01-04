@@ -4,7 +4,6 @@ namespace App\Console\Commands;
 use Robust\RealEstate\Models\Listing;
 use Illuminate\Console\Command;
 use Robust\RealEstate\Models\ListingProperty;
-use Robust\RealEstate\Models\ListingDetail;
 
 /**
  * Class FixImages
