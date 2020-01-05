@@ -1016,7 +1016,9 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .content__table .select-wrapper .dropdown-content{min-width:80px}.content__table .select-wrapper .dropdown-content li{min-height:30px}
 .content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px 2px}
 .content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:16px}
-.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
+textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:14px}
+input{font-size:14px !important}.tabs .tab a:hover,.tabs .tab a.active{background-color:#9c27b0;color:#fff}
+.tabs .indicator{background-color:#9c27b0}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
 .sidenav-main span.badge.new{line-height:20px;margin-top:11px;background-color:#6b4994}
 .brand-sidebar{position:fixed;top:0;left:0;width:inherit;height:64px;background:#575758;-webkit-box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .brand-sidebar .logo-wrapper{font-size:22px;line-height:17px !important;margin:0;white-space:nowrap}

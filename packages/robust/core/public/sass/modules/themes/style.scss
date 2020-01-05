@@ -1459,3 +1459,21 @@ table {
         }
     }
 }
+textarea {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    margin-top: 12px;
+    padding: 10px;
+    font-size: 14px;
+}
+input{
+    font-size:14px !important;
+}
+.tabs .tab a:hover, .tabs .tab a.active {
+    background-color: #9c27b0;
+    color: #ffffff;
+}
+.tabs .indicator {
+    background-color: #9c27b0;
+}
