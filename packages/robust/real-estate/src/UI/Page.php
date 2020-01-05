@@ -18,8 +18,8 @@ class Page extends BaseUI
      * @var array
      */
     public $columns = [
-        'name' => 'Name',
-        'Excerpt' => ['callback' => 'Excerpt'],
+        'title' => 'Title',
+        'slug' => 'Slug',
         'options' => [
             'edit' => [
                 'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Edit',
@@ -45,18 +45,15 @@ class Page extends BaseUI
      */
     public $right_menu = [
         'add' => [
-            'display_name' => 'Add', 'url' => 'admin.pages.create', 'permission' => 'real-estate.pages.add', 'icon' => ''
+            'display_name' => 'Add', 'url' => 'admin.pages.create', 'permission' => 'real-estate.pages.add', 'icon' => 'add'
         ]
     ];
     /**
      * @var array
      */
     public $addrules = [
-        'name' => 'required',
-        'slug' => 'required| unique:pages',
-        'category_id' => 'required',
-        'excerpt' => 'max:250',
-        'content' => 'required',
+        'title' => 'required',
+        'slug' => 'required| unique:pages'
     ];
     /**
      * @var array
@@ -69,14 +66,6 @@ class Page extends BaseUI
     public function getRoute($category)
     {
         return $category->exists ? ['admin.pages.update', $category->id] : ['admin.pages.store'];
-    }
-    /**
-     * @param $params
-     * @return string
-     */
-    public function getExcerpt($params)
-    {
-        return str_limit(strip_tags($params['excerpt']), 40);
     }
     /**
      * @return string

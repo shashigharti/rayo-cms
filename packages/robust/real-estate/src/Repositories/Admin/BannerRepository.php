@@ -11,10 +11,7 @@ class BannerRepository
 
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
-    /**
-     * BannerRepository constructor.
-     * @param Banner $model
-     */
+    
     public function __construct(Banner $model)
     {
         $this->model = $model;
