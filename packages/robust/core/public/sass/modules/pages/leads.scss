@@ -1,0 +1,114 @@
+/*tabs*/
+
+.theme__tabs {
+    .tab a {
+        color: #333333;
+        font-weight: 600;
+        padding: 0 10px;
+        font-size: 12px;
+
+        &:hover, &.active {
+            color: #6b4994;
+            background-color: #ebc9f1;
+        }
+
+        &:focus {
+            background-color: transparent;
+
+            &.active {
+                background-color: transparent;
+            }
+        }
+    }
+
+    &.tabs {
+        height: 40px;
+    }
+
+    .tab {
+        line-height: 40px;
+        height: 40px;
+    }
+}
+
+.filter--bar .tabs {
+    background-color: transparent;
+    margin-bottom: 15px;
+}
+
+/*select*/
+
+.theme--select {
+    .select-wrapper input.select-dropdown {
+        height: 16px;
+        line-height: 21px;
+        font-size: 14px;
+        padding: 0 0 3px;
+
+        &:focus {
+            border-bottom: 1px solid #6b4994;
+        }
+    }
+
+    .dropdown-content li {
+        > {
+            a, span {
+                color: #6b4994;
+                font-size: 12px;
+                line-height: 12px;
+                padding: 10px 12px;
+            }
+        }
+
+        min-height: 32px;
+    }
+}
+
+.filter--bar .input-field {
+    margin-bottom: 0px;
+}
+
+/*btn*/
+
+.btn--bar .btn {
+    font-size: 10px;
+    box-shadow: none;
+    height: 16px;
+    line-height: 16px;
+    border-right: 1px solid #969292;
+    border-radius: 0px;
+    color: #333;
+    background-color: transparent;
+    vertical-align: text-bottom;
+
+    i {
+        font-size: 12px;
+    }
+}
+
+.theme--btn {
+    background-color: #6b4994 !important;
+
+    &:hover {
+        background-color: #8d62c1 !important;
+    }
+}
+
+span.badge-secondary {
+    color: #333;
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.theme--select {
+    margin-top: 10px;
+}
+
+.filter--bar .theme__tabs .tab a {
+    font-size: 11px;
+    font-weight: bold;
+}
+
+.leads-table small {
+    font-size: 10px;
+}

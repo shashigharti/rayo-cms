@@ -908,6 +908,7 @@ li.home {
 	position: relative;
 	display: inline-block;
 	width: 28px;
+    margin-top:15px;
 	vertical-align: bottom;
 	white-space: nowrap;
 	border-radius: 50px;
@@ -1412,4 +1413,49 @@ table {
 			background: transparent;
 		}
 	}
+}
+.content__table {
+    .select-wrapper {
+        input.select-dropdown {
+            font-size: 13px;
+            line-height: 20px;
+            height: 20px;
+            border: 1px solid #ccc;
+            padding: 5px 0px 5px 5px;
+            width: 96%;
+        }
+
+        .dropdown-content {
+            min-width: 80px;
+
+            li {
+                min-height: 30px;
+
+                > span {
+                    padding: 6px 10px;
+                }
+            }
+        }
+    }
+
+    .input-group {
+        input[type=text] {
+            height: 21px;
+            border: 1px solid #ccc;
+            font-size: 12px;
+            padding: 5px;
+            margin: 0 2px 8px 2px;
+        }
+
+        .input-group-btn {
+            .btn {
+                background-color: #9c27b0;
+                height: 32px;
+                line-height: 33px;
+                padding: 0 10px;
+                font-size: 12px;
+                margin-left:16px;
+            }
+        }
+    }
 }
