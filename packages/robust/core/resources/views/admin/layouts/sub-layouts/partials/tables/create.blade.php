@@ -1,24 +1,10 @@
-@set('left_menus', $ui->left_menu)
-@foreach($left_menus as $key => $menu)
-    <div class="pull-right">
-        <div role="group" class="media-arrangement">
-            @can($menu['permission'])
-            <a
-                    @if(isset($ui->isModal) && $ui->isModal)
-                    data-toggle="modal"
-                    data-modal="crudModal"
-                    data-title="{{ $ui->getTitle()  }}"
-
-                    data-url="{{isset($child_ui)?$ui->getCreateRoute($key, ['parent_id' => $model->id]):$ui->getCreateRoute($key)}}"
-                    href='javascript:void(0)'
-                    @else
-                    href="{{isset($child_ui)?$ui->getCreateRoute($key, ['parent_id' => $model->id]):$ui->getCreateRoute($key)}}"
-                    @endif
-                    >
-                <i aria-hidden="true"
-                   class="{{$menu['icon'] or 'icon md-plus'}}"></i><span>{{$menu['display_name']}}</span>
-            </a>
-            @endcan
-        </div>
-    </div>
+@set('right_menus', $ui->right_menu)
+@foreach($right_menus as $key => $menu)
+    @can($menu['permission'])
+        <a class="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right" 
+            href="{{isset($child_ui)?$ui->getCreateRoute($key, ['parent_id' => $model->id]):$ui->getCreateRoute($key)}}"
+        >
+            <i class="{{$menu['icon']}}">{{$menu['display_name']}}}}</i>
+        </a>
+    @endcan
 @endforeach

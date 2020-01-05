@@ -3,35 +3,34 @@
 @section('content')
     @set('ui', new $ui)
     <div class="page {{ $title }}">
-        <div class="page-content">
-            <div class="container">
-                <div class="page-title">
-                    <div class="rayo-breadcrumb pull-left">
-                        <span><h3>{{ $title }}</h3></span>
-                        {!! Breadcrumb::getInstance()->render(false)  !!}
-
-
+        <div id="main" class="content">
+            <div class="row">
+                <div class="container">
+                    <div class="row breadcrumbs-inline" id="breadcrumbs-wrapper">
+                        <div class="col s10 m6 l6 breadcrumbs-left">
+                            {!! Breadcrumb::getInstance()->render()  !!}
+                        </div>
+                        <div class="col s2 m6 l6 right--button">
+                            @section('left_menu')
+                                @if(isset($ui->right_menu))
+                                    <span class="create-btn clearfix pull-right">
+                                        @include("core::admin.layouts.sub-layouts.partials.tables.create",
+                                        [
+                                            'ui' => isset($child_ui)?$child_ui:$ui
+                                        ])
+                                    </span>
+                                @endif
+                            @show
+                        </div>
                     </div>
-                    @section('left_menu')
-                        @if(isset($ui->left_menu))
-                            <span class="create-btn clearfix pull-right">
-                                @include("core::admin.layouts.sub-layouts.partials.tables.create",
-                                [
-                                    'ui' => isset($child_ui)?$child_ui:$ui
-                                ])
-                            </span>
-                        @endif
-                    @show
                 </div>
-
-                @include("core::admin.partials.tabs.tabs")
-                <div class="panel form-panel">
-                    <div class="panel-body">
-                        @if(isset($ui->right_menu))
-                            <span class="clearfix pull-left">
-                            </span>
-                        @endif
-                        @include("core::admin.partials.messages.info")
+            </div>
+            <div class="row content__table">
+                <div class="content-wrapper-before blue-grey lighten-5"> </div>
+                <div class="col s12 content__">
+                    <div class="container-fluid">
+                        @include("core::admin.partials.tabs.tabs")
+                         @include("core::admin.partials.messages.info")
 
                         @if(method_exists($ui, 'getModel'))
                             <div class="col-sm-6 pull-right">
@@ -54,10 +53,10 @@
                             @if(isset($extra_view))
                                 @include($extra_view)
                             @endif
-                        @show
+                        @show                       
                     </div>
                 </div>
             </div>
-        </div>
+        </div>          
     </div>
 @endsection

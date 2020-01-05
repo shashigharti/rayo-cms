@@ -34,14 +34,21 @@
         data-menu="vertical-menu-nav-dark" 
         data-col="2-columns"
     >
-        {{--@include("core::admin.partials.nav")
-        @include("core::admin.partials.menus.left-menu")}} --}}
-        @yield('content')
-        {{-- @include("core::admin.partials.footer")
-        @include("core::admin.medias.ajax.media")
-        @include("core::admin.partials.modals.modal")
-        @include("core::admin.partials.modals.crud")
-        @include("core::admin.partials.modals.content_modal")
-        @include("core::admin.medias.ajax.media") --}}
+        @include("core::admin.partials.nav")
+        <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full">
+            <div class="brand-sidebar">
+                <h1 class="logo-wrapper">
+                    <a class="brand-logo darken-1" href="index.html">
+                        <span class="logo-text hide-on-med-and-down">RealEstate</span>
+                    </a>
+                </h1>
+            </div>
+            @include("core::admin.partials.menus.left-menu")
+            <div class="navigation-background"></div>
+            <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out">
+                <i class="material-icons">menu</i>
+            </a>
+        </aside>
+        @yield('content')                
     </body>
 </html>

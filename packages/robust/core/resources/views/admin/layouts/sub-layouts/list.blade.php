@@ -7,11 +7,6 @@
             <div class="page-title">
                 <div class="rayo-breadcrumb pull-left">
                     <span><h3>{{ $title }}</h3></span>
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Workflow</a></li>
-                        <li class="breadcrumb-item active">Data</li>
-                    </ol>
                 </div>
                 <span class="create-btn clearfix pull-right">
                         @set('create_route', isset($child_ui)?$child_ui->getCreateRoute('add', ['parent_id' => $model->id]):$ui->getCreateRoute())
@@ -19,7 +14,7 @@
                     [
                         'ui' => isset($child_ui)?$child_ui:$ui
                     ])
-                    </span>
+                </span>
             </div>
 
             <div class="panel-body">
