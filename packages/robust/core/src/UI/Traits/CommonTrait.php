@@ -2,11 +2,6 @@
 
 namespace Robust\Core\UI\Traits;
 
-
-    /**
-     * Class CommonTrait
-     * @package Robust\Core\UI\Traits
-     */
 /**
  * Class CommonTrait
  * @package Robust\Core\UI\Traits

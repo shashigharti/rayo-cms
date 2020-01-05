@@ -30,7 +30,7 @@ return [
         'core.services.manage' => "Services",
 
         'core.commands.manage' => "Manage Command",
-        'core.commands.add' => "Add Command",
+        'core.commands.run' => "Run Command",
         'core.commands.edit' => "Command Edit",
         'core.commands.delete' => "Command Delete",
 

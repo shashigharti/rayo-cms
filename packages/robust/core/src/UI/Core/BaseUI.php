@@ -16,11 +16,7 @@ class BaseUI
      * @var
      */
     public $params;
-
-    /**
-     * @var array
-     */
-    public $left_menu = [];
+    
     /**
      * @var array
      */

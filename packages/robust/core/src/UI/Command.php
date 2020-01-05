@@ -16,11 +16,10 @@ class Command extends BaseUI
             'run' => [
                 'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Run',
                 'url' => "admin.commands.run",
-                'permission' => 'core.commands.manage'
+                'permission' => 'core.commands.run'
             ],
 
         ]
-
     ];
 
 }
