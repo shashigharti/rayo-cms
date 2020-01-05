@@ -1,5 +1,5 @@
 <?php
-namespace Robust\RealEstate\Admin\Repositories;
+namespace Robust\RealEstate\Repositories\Admin;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;

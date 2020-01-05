@@ -4,7 +4,7 @@
         <a class="btn btn-floating waves-effect waves-light gradient-45deg-purple-deep-orange breadcrumbs-btn right" 
             href="{{isset($child_ui)?$ui->getCreateRoute($key, ['parent_id' => $model->id]):$ui->getCreateRoute($key)}}"
         >
-            <i class="{{$menu['icon']}}">{{$menu['display_name']}}}}</i>
+            <i class="material-icons">{{$menu['icon']}}</i>
         </a>
     @endcan
 @endforeach

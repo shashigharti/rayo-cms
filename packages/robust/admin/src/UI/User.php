@@ -29,14 +29,6 @@ class User extends  BaseUI
             ]
         ]
     ];
-    /**
-     * @var array
-     */
-//    public $right_menu = [
-//        'enable' => ['display_name' => 'Enabled', 'url' => '#'],
-//        'disable' => ['display_name' => 'Disabled', 'url' => '#'],
-//        'deleted' => ['display_name' => 'Deleted', 'url' => '#'],
-//    ];
 
     /**
      * @var array

@@ -32,17 +32,8 @@ class Role extends BaseUI
     /**
      * @var array
      */
-//    public $right_menu = [
-//        'enable' => ['display_name' => 'Enable', 'url' => '#'],
-//        'disable' => ['display_name' => 'Disable', 'url' => '#'],
-//        'Delete' => ['display_name' => 'Delete', 'url' => '#'],
-//    ];
-
-    /**
-     * @var array
-     */
     public $left_menu = [
-        'add' => ['display_name' => 'Add', 'url' => 'admin.roles.create', 'permission' => 'admin.role.add']
+        'add' => ['display_name' => 'Add', 'url' => 'admin.roles.create', 'permission' => 'admin.role.add', 'icon' => 'add']
     ];
 
     public $addrules = [];

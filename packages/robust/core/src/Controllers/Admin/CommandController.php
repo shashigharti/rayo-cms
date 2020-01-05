@@ -19,21 +19,21 @@ class CommandController extends Controller
 
     /**
      * CommandController constructor.
-     * @param Request $request
      * @param CommandRepository $command
+     * @return void
      */
-    public function __construct(Request $request, CommandRepository $command)
+    public function __construct(CommandRepository $command)
     {
         $this->model = $command;
-        $this->request = $request;
         $this->ui = 'Robust\Core\UI\Command';
         $this->package_name = 'core';
         $this->view = 'admin.commands';
         $this->title = 'Commands';
     }
 
-    public function getCommand()
+    public function run($id)
     {
-        Artisan::queue('robust:reset-menu');
+        $task = $this->model->find($id);
+        //Artisan::run($task->command);
     }
 }

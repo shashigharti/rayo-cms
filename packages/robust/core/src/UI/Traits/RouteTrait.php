@@ -28,7 +28,7 @@ trait RouteTrait
      */
     public function getCreateRoute($type = 'add', $params = [])
     {
-        return route($this->left_menu[$type]['url'], $params);
+        return route($this->right_menu[$type]['url'], $params);
     }
 
     /**

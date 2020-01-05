@@ -47,7 +47,7 @@ class Banner
     /**
      * @var array
      */
-    public $left_menu = [
+    public $right_menu = [
         'add' => ['display_name' => 'Add', 'url' => 'admin.banners.create', 'permission' => 'banners.add']
     ];
 
