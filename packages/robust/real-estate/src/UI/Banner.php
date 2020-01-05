@@ -25,7 +25,7 @@ class Banner
      * @var array
      */
     public $columns = [
-        'name' => 'Name',
+        'title' => 'Title',
         'slug' => 'Slug',
         'options' => [
             'edit' => [
