@@ -2,6 +2,7 @@
 
 @section('form')
     @set('ui', new $ui)
+    @set('template', request()->query('template'))
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
         <div id="{{ $title }}" class="col s12">
             <div class="row">
@@ -32,10 +33,11 @@
                             'single-col-block' => 'Single Column Block',
                             'slider' => 'Slider'
                         ],
-                        1,
+                        $template,
                         [
                             'required'  => 'required',
-                            'class' => 'select-reload-on-change'
+                            'class' => 'select-reload-on-change',
+                            'data-url-to-reload' => url()->current()
                         ])
                     }}
                 </div>

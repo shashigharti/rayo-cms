@@ -292,26 +292,6 @@ $(function() {
    var leftnavHeight = window.innerHeight - leftnav;
    var righttnav = $("#slide-out-right").height();
 
-   if ($("#slide-out.leftside-navigation").length > 0) {
-      if (!$("#slide-out.leftside-navigation").hasClass("native-scroll")) {
-         var ps_leftside_nav = new PerfectScrollbar(".leftside-navigation", {
-            wheelSpeed: 2,
-            wheelPropagation: false,
-            minScrollbarLength: 20
-         });
-      }
-   }
-   if ($(".slide-out-right-body").length > 0) {
-      var ps_slideout_right = new PerfectScrollbar(".slide-out-right-body, .chat-body .collection", {
-         suppressScrollX: true
-      });
-   }
-   if ($(".chat-body .collection").length > 0) {
-      var ps_slideout_chat = new PerfectScrollbar(".chat-body .collection", {
-         suppressScrollX: true
-      });
-   }
-
    // Char scroll till bottom of the char content area
    var chatScrollAuto = $("#right-sidebar-nav #slide-out-chat .chat-body .collection");
    if (chatScrollAuto.length > 0){
@@ -334,7 +314,7 @@ $(function() {
             if (document.msFullscreenElement) {
                document.msExitFullscreen();
             } else {
-             document.documentElement.msRequestFullscreen(); 
+             document.documentElement.msRequestFullscreen();
             }
          }
       } else {
