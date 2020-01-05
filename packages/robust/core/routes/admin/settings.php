@@ -5,9 +5,4 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
             'edit', 'store'
         ]
     ]);
-
-    Route::get('/search', [
-        'as' => 'robust.search',
-        'uses' => '\Robust\Core\Controllers\Admin\SearchController@search'
-    ]);
 });
