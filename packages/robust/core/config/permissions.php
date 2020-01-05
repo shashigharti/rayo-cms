@@ -22,10 +22,17 @@ return [
         'core.medias.edit' => "Image Edit",
         'core.medias.delete' => "Image Delete",
 
-        'core.dashboards.manage' => "Manage Dashboard",
+        'core.dashboards.manage' => "Dashboard",
         'core.dashboards.add' => "Add Dashboard",
         'core.dashboards.edit' => "Dashboard Edit",
         'core.dashboards.delete' => "Dashboard Delete",
+
+        'core.services.manage' => "Services",
+
+        'core.commands.manage' => "Manage Command",
+        'core.commands.add' => "Add Command",
+        'core.commands.edit' => "Command Edit",
+        'core.commands.delete' => "Command Delete",
 
         'core.widgets.manage' => "Manage Widgets",
         'core.widgets.add' => "Add Widget",

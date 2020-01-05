@@ -48,9 +48,9 @@ class CoreMenuTableSeeder extends Seeder
         DB::table('menus')->insert([
             [
                 'display_name' => 'Services',
-                'name' => 'core.commands',
+                'name' => 'core.services',
                 'url' => route('admin.commands.index'),
-                'permission' => 'core.commands.manage',
+                'permission' => 'core.services.manage',
                 'package_name' => 'core',
                 'parent_id' => 0,
                 'type' => 'primary',
@@ -71,31 +71,5 @@ class CoreMenuTableSeeder extends Seeder
             ],
 
         ]);
-        // DB::table('menus')->insert([
-        //     [
-        //         'display_name' => 'Task Schedules',
-        //         'name' => 'core',
-        //         'url' => route('admin.schedules.index'),
-        //         'permission' => 'core.schedules.manage',
-        //         'package_name' => 'core',
-        //         'parent_id' => 0,
-        //         'type' => 'primary',
-        //         'order' => 7,
-        //         'icon' => 'md-file-text'
-        //     ]
-        // ]);
-        // DB::table('menus')->insert([
-        //     [
-        //         'display_name' => 'Email-Settings',
-        //         'name' => 'core.email-settings',
-        //         'url' => route('admin.email-settings.index'),
-        //         'permission' => 'core.email-settings.manage',
-        //         'package_name' => 'core',
-        //         'parent_id' => 0,
-        //         'type' => 'primary',
-        //         'order' => 7,
-        //         'icon' => 'md-settings'
-        //     ]
-        // ]);
     }
 }

@@ -1,30 +1,23 @@
-<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-    <img class="nav-user-photo" src="assets/images/avatars/user.jpg" alt="{{Auth::user()->name}}'s Photo"/>
-								<span class="user-info">
-									<small>Welcome,</small>
-                                    {{Auth::user()->name}}
-								</span>
-
-    <i class="ace-icon fa fa-caret-down"></i>
+<a class="waves-effect waves-block waves-light profile-button" href="javascript:void(0);" data-target="profile-dropdown">
+    <span class="avatar-status avatar-online">
+                                    <img src="{{ getAvatar() }}" alt="avatar">
+                                </span>
 </a>
-<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+<!-- profile-dropdown-->
+<ul class="dropdown-content" id="profile-dropdown">
     <li>
-        <a href="#">
-            <i class="ace-icon fa fa-cog"></i>
-            Settings
+        <a class="grey-text text-darken-1" href="user-profile-page.html">
+            <i class="material-icons">person_outline</i> Profile
         </a>
     </li>
     <li>
-        <a href="profile.html">
-            <i class="ace-icon fa fa-user"></i>
-            Profile
+        <a class="grey-text text-darken-1" href="app-chat.html">
+            <i class="material-icons">settings</i> Settings
         </a>
     </li>
-    <li class="divider"></li>
     <li>
-        <a href="{{ url('/logout') }}">
-            <i class="ace-icon fa fa-power-off"></i>
-            Logout
+        <a class="grey-text text-darken-1" href="user-login.html">
+            <i class="material-icons">keyboard_tab</i> Logout
         </a>
     </li>
 </ul>

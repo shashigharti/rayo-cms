@@ -80,7 +80,6 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/widgets.php', 'core.widgets');
         $this->mergeConfigFrom(__DIR__ . '/../../config/reports.php', 'core.reports');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'core.settings');
-        $this->mergeConfigFrom(__DIR__ . '/../../config/email-settings.php', 'core.email-settings');
        
         $packages = CoreHelper::names();
         foreach ($packages as $key => $package) {

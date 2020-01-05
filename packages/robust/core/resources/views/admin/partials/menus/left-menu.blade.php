@@ -1,34 +1,43 @@
-<div class="left-menu" id="left_menu">
-    <ul class="left scrollable scrollable-vertical" id="theMenu">
-
-        @inject('menu_helper', 'Robust\Core\Helpers\MenuHelper')
-        @foreach($menu_helper->getMenus() as $index => $menu)
-            @if($menu->type == 'primary')
-                @set('sub_menus', $menu_helper->getSubMenus($menu->id))
-                @can($menu->permission)
-                <div class="item-tooltip">
-                    <li class="item">                    
-                        <a href="javascript:void(0)"><i class="icon {{ $menu->icon }}" aria-hidden="true"></i></a>
-                        <span class="btn-class">
-                        <a class="menu_item"
-                           {{ ($sub_menus->count())? 'data-toggle=collapse' :'' }} href="{{ ($sub_menus->count()) ? '#'.str_replace(' ', '',$menu->display_name) : $menu->url}}">{{$menu->display_name}}</a>
-                            @if($sub_menus->count())
-                                <a class="" data-toggle="collapse"
-                                   href="#{{str_replace(' ', '',$menu->display_name)}}"><i class="fa md-plus"></i></a>
-                            @endif
+<ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+    @inject('menu_helper', 'Robust\Core\Helpers\MenuHelper')
+    @foreach($menu_helper->getMenus() as $index => $menu)
+        @if($menu->type == 'primary')
+            @set('sub_menus', $menu_helper->getSubMenus($menu->id))
+            @can($menu->permission)
+                @if(count($sub_menus) <= 0)
+                    <li class="bold">
+                        <a class="waves-effect waves-cyan " href="{{ $menu->url }}">
+                            <i class="material-icons">{{ $menu->icon }}</i>
+                            <span class="menu-title" data-i18n="">
+                                {{ $menu->display_name }}
                             </span>
-                        <ul id="{{str_replace(' ', '',$menu->display_name)}}" class="sub-menu collapse">
-                            @foreach($sub_menus as $sub_menu)
-                                <li>
-                                    <a href="{{$sub_menu->url}}">{{$sub_menu->display_name}}</a>
-                                </li>
-                            @endforeach
-                        </ul>
+                        </a>
                     </li>
-                    <span class="tooltiptext tooltip-right">{{$menu->display_name}}</span>
-                </div>
-                @endcan
-            @endif
-        @endforeach
-    </ul>
-</div>
+                @else
+                    <li class="bold">
+                        <a class="collapsible-header waves-effect waves-cyan " href="#">
+                            <i class="material-icons">{{ $menu->icon }}</i>
+                            <span class="menu-title" data-i18n="">
+                                {{ $menu->display_name }}
+                            </span>
+                        </a>
+                        <div class="collapsible-body">
+                            <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                @foreach($sub_menus as $sub_menu)
+                                    @can($sub_menu->permission)
+                                        <li>
+                                            <a class="collapsible-body" href="{{ $sub_menu->url }}" data-i18n="">
+                                                <i class="material-icons">{{ $sub_menu->icon }}</i>
+                                                <span>{{ $sub_menu->display_name }}</span>
+                                            </a>
+                                        </li>
+                                    @endcan
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>                            
+                @endif
+            @endcan
+        @endif
+    @endforeach
+</ul>

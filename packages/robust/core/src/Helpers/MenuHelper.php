@@ -60,6 +60,16 @@ class MenuHelper
     }
 
     /**
+     * @param $package_name
+     * @return mixed
+     */
+    public function getPrimaryMenu($package_name)
+    {
+        return Menu::where('parent_id', 0)
+            ->where('package_name', $package_name)->first();
+    }
+
+    /**
      * Test purpose only
      * @param \Robust\DynamicForms\Models\Form $form
      * @return mixed

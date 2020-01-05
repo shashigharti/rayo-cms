@@ -45,7 +45,11 @@ class ResetPermission extends Command
         $this->info("=============================================");
         $executePermissions = $this->confirm("Would you like to reset permissions ? [y|N]", false);
         if ($executePermissions) {
-            // truncate roles permission table
+            // truncate permissions and role_permission table
+            Permission::query()->truncate();
+            DB::table('permissions')->truncate();
+            DB::table('permission_role')->truncate();
+
             $all_permissions = (new PermissionHelper())->get_all_permissions();
             $role = Role::find(1);
 
