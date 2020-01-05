@@ -1,6 +1,5 @@
 <?php
 namespace Robust\Core\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use Robust\Admin\Models\User;
 use Robust\Admin\Repositories\Admin\UserRepository;
@@ -8,7 +7,6 @@ use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\DashboardRepository;
 use Robust\Core\Repositories\Admin\WidgetRepository;
-
 /**
  * Class DashboardController
  * @package Robust\Core\Controllers\Admin
@@ -16,8 +14,6 @@ use Robust\Core\Repositories\Admin\WidgetRepository;
 class DashboardController extends Controller
 {
     use CrudTrait, ViewTrait;
-
-
     /**
      * DashboardController constructor.
      * @param Request $request
@@ -36,8 +32,6 @@ class DashboardController extends Controller
         $this->previous_url = route('admin.home');
         $this->middleware('auth');
     }
-
-
     /**
      * @param WidgetRepository $widget
      * @param User $user
@@ -51,7 +45,6 @@ class DashboardController extends Controller
         $widgets = $widget->all();
         return response()->json(['view' => $view]);
     }
-
     /**
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
@@ -60,10 +53,8 @@ class DashboardController extends Controller
     {
         $data = $request->all();
         $this->model->addWidgets($data);
-
         return redirect($this->previous_url)->with('message', 'Widgets successfully added!');
     }
-
     /**
      * @param UserRepository $user
      * @param null $slug
@@ -72,7 +63,6 @@ class DashboardController extends Controller
     public function show(UserRepository $user, $slug = null)
     {
         $dashboard = $user->find(\Auth::user()->id)->dashboards->where('is_default', true)->first();
-
         if ($slug !== null) {
             $dashboard = $this->model->where('slug', $slug)->get()->first();
         }

@@ -1,12 +1,9 @@
 <?php
-
 namespace Robust\Core\Controllers\Admin;
-
 use Illuminate\Http\Request;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\WidgetRepository;
-
 /**
  * Class WidgetController
  * @package Robust\Core\Controllers
@@ -14,8 +11,6 @@ use Robust\Core\Repositories\Admin\WidgetRepository;
 class WidgetController extends Controller
 {
     use CrudTrait, ViewTrait;
-
-
     /**
      * WidgetController constructor.
      * @param Request $request
