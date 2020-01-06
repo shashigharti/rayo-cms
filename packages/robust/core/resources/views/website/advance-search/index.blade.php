@@ -1,5 +1,4 @@
-@set('blocks',$setting_helper->getValuesBySlug('search-block'))
-@set('search_settings',$setting_helper->getValuesBySlug('search'))
+@set('blocks', $setting_helper->getValuesBySlug('advance-search'))
 @if(!empty($blocks))
     <form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
         <div id='adv-search-dropdown'>

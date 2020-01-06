@@ -12,12 +12,12 @@ return [
     | services your application utilizes. Set this in your ".env" file.
     |
     */  
-    [
-        'display_name' => 'Data Mapping',
-        'slug' => 'data-mapping',
-    ],
-    [
-        'display_name' => 'Advance Search',
-        'slug' => 'advance-search',
-    ]
+    // [
+    //     'display_name' => 'Data Mapping',
+    //     'slug' => 'data-mapping',
+    // ],
+    // [
+    //     'display_name' => 'Advance Search',
+    //     'slug' => 'advance-search',
+    // ]
 ];

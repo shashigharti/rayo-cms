@@ -29,12 +29,12 @@ class Banner
         'slug' => 'Slug',
         'options' => [
             'edit' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Edit',
+                'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">edit</i> ',
                 'url' => "admin.banners.edit",
                 'permission' => 'real-estate.banners.edit'
             ],
             'delete' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-delete"></i> Delete',
+                'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">delete</i> ',
                 'url' => "admin.banners.destroy",
                 'permission' => 'real-estate.banners.delete'
             ]
