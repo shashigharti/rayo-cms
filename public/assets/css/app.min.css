@@ -1014,7 +1014,7 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .brand-sidebar .logo-wrapper{padding:17px 18px !important;text-align:center;background:transparent}
 }.content__table .select-wrapper input.select-dropdown{font-size:13px;line-height:20px;height:20px;border:1px solid #ccc;padding:5px 0 5px 5px;width:96% !important}
 .content__table .select-wrapper .dropdown-content{min-width:80px}.content__table .select-wrapper .dropdown-content li{min-height:30px}
-.content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px 2px;width:300px}
+.content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px -3px;width:300px}
 .content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:5px}
 textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:14px}
 input{font-size:14px !important}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
@@ -1158,4 +1158,4 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .btn--bar .btn i,.btn--bar .btn-large i,.btn--bar .btn-small i{font-size:12px}.theme--btn{background-color:#6b4994 !important}
 .theme--btn:hover{background-color:#8d62c1 !important}span.badge-secondary{color:#333;font-size:11px;font-weight:bold}
 .theme--select{margin-top:10px}.filter--bar .theme__tabs .tab a{font-size:11px;font-weight:bold}
-.leads-table small{font-size:10px}
+.leads-table small{font-size:10px}.info-unit{width:30px}

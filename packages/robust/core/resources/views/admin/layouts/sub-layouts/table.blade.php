@@ -25,8 +25,8 @@
             </div>
             <div class="row content__table">
                 <div class="content-wrapper-before blue-grey lighten-5"> </div>
-                <div class="col s12 content__">
-                    <div class="container-fluid">
+                <div class="content__">
+                    <div class="container">
                         @include("core::admin.partials.tabs.tabs")
                          @include("core::admin.partials.messages.info")
 

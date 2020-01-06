@@ -1,5 +1,5 @@
  <div class="col s12">
-    <div class="container">
+    <div class="container-fluid">
         <div class="panel card">
             <table class="table data-table">
                 <thead>
