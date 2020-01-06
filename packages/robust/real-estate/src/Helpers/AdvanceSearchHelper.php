@@ -39,4 +39,17 @@ class AdvanceSearchHelper
         $record = $this->attribute->getAttributes(['property_name' => $property_name])->first();
         return json_decode($record->values, true);
     }
+
+    /**
+     * @return array
+     */
+    public function getAdvanceSearchFilters(){
+        $filters = config('rws.advance-search');
+        $processed_filterst = [];
+        foreach($filters as $filter_attribute => $filter){
+            $processed_filters[$filter_attribute] = $filter['display_name'];
+        }
+
+        return  $processed_filters;
+    }
 }

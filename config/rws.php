@@ -129,6 +129,22 @@ return [
     ],
     // third party server field mapping with listing properties
     'advance-search' => [
+        'search' => [
+            'blade' => 'search',
+            'display_name' => 'Search'
+        ],
+        'property_type' => [
+            'blade' => 'property_type',
+            'display_name' => 'Property Type'
+        ],
+        'status' => [
+            'blade' => 'status',
+            'display_name' => 'Status'
+        ],
+        'pictures' => [
+            'blade' => 'pictures',
+            'display_name' => 'Pictures'
+        ],
         'lot_description' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Lot Description'

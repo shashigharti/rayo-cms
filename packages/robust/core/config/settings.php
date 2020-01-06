@@ -27,9 +27,5 @@ return [
     [
         'display_name' => 'G-Analytics',
         'slug' => 'ga-analytics',
-    ],
-    [
-        'display_name' => 'Maintenance Mode',
-        'slug' => 'maintenance-mode',
     ]
 ];
