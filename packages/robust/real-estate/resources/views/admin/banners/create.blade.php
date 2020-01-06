@@ -24,8 +24,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">
-                    {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
+                <div class="input-field col s6">                    
                     {{ Form::select('template', [
                             'two-col-ad' => 'Two Column Ad',
                             'main-banner' => 'Main Banner',
@@ -40,12 +39,15 @@
                             'data-url-to-reload' => url()->current()
                         ])
                     }}
+                    {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
                 </div>
             </div>
+            <div class="container sub--block">
             @include("real-estate::admin.banners.partials.two-col-ad")
+            </div>
             <div class="row">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn theme-btn']) }}
                 </div>
             </div>
         </div>
