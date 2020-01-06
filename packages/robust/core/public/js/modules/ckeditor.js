@@ -16,7 +16,7 @@
             return;
         }
 
-        FRW.CKEditor.init();
+        //FRW.CKEditor.init();
     });
 
 }(jQuery, FRW, window, document));

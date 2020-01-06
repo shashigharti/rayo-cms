@@ -16,7 +16,7 @@
                     name="price_min"
                 >
                     <option value="" selected disabled>Min</option>
-                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increase'])
+                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increment'])
                         <option value="{{$price}}">${{$price}}</option>
                     @endfor
                 </select>                
@@ -25,7 +25,7 @@
                     name="price_max"
                 >
                     <option value="" selected disabled>Max</option>
-                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increase'])
+                    @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increment'])
                         <option value="{{$price}}">${{$price}}</option>
                     @endfor
                 </select>

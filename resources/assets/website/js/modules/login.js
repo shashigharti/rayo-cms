@@ -15,11 +15,11 @@
                     data:DATA,
                     success:function (response) {
                         $(location).attr('href','/user/profile');
+
                     },
                     error:function (err) {
-                        $.each(err.responseJSON.errors, function(key,value) {
-                            M.toast({html: value})
-                        });
+                        let template = `${response.message}`;
+                        $('.msg-error').html(template);
                     }
                 })
             });
