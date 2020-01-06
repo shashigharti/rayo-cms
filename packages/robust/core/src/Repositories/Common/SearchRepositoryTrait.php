@@ -73,6 +73,14 @@ trait SearchRepositoryTrait
         return $this;
     }
 
+    /**
+     * @return class
+     */
+    public function whereHas($field, $callback){
+        $this->model = $this->model->whereHas($field, $callback);
+        return $this;
+    }
+
 
     /**
      * @return mixed
