@@ -112,7 +112,7 @@ class RealEstateMenuTableSeeder extends Seeder
                 'package_name' => 'real-estate',
                 'parent_id' => $id,
                 'type' => 'child',
-                'icon' => 'location_on'
+                'icon' => 'dns'
             ]
         ]);
     }
