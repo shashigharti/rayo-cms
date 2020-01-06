@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'application' => [
+        'price' => [
+            'min' => 25000,
+            'max' => 1000000,
+            'increment' => 25000
+        ]
+    ],
     'emails' => [
         'templates' => [
             'Lead Registration',
