@@ -136,10 +136,11 @@
   transition: ease-in-out .2s;
   padding: 4px;
   font-size: 10px;
-  display:block;
+  display:none;
 
   &.show {
     opacity: 1;
+    display:block;
   }
 
   .inner {

@@ -84,7 +84,13 @@
 
 .data-table {
     th, td {
-        padding: 15px !important;
+        padding: 5px !important;
+        color: #575758;
+        font-weight: 600;
+    }
+
+    img {
+        vertical-align: middle;
     }
 
     font-size: 12px;
