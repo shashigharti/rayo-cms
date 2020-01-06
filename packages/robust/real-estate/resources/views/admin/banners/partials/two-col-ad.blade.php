@@ -16,18 +16,19 @@
     </div>
 </div>
 <div class="row">
-    <div class="input-field col s6">
-        {{ Form::label('button_text', 'Button Text', ['class' => 'required' ]) }}
-        {{ Form::text('button_text', null, [
-           'placeholder' => 'Button Text',
-           'required'  => 'required'
-           ])
-        }}
+   <div class="input-field col s6">
+            {{ Form::label('locations', 'Locations', ['class' => 'control-label' ]) }}
+            {{ Form::select('locations[]', [], [],
+                    [
+                        'class'=>'browser-default multi-select',
+                        'multiple'
+                    ]) 
+            }}
     </div>
     <div class="input-field col s6">
-        {{ Form::label('button_url', 'Button URL', ['class' => 'required' ]) }}
-        {{ Form::text('button_url', null, [
-           'placeholder' => 'Button URL'
+        {{ Form::label('button_text', 'Button Textt', ['class' => 'required' ]) }}
+        {{ Form::text('button_text', null, [
+           'placeholder' => 'Button Text'
            ])
         }}
     </div>
