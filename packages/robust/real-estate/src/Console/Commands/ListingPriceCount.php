@@ -61,7 +61,11 @@ class ListingPriceCount extends Command
       'hopa' => [
           'type' => 'hopa',
           'value' => 'Yes-Verified'
-      ]
+      ],
+      'communities' => [
+          'type' => 'communities',
+          'value' => 'Yes'
+      ],
     ];
 
     public function handle()
