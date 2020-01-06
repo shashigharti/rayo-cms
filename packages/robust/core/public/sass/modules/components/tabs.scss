@@ -5,11 +5,11 @@
             text-transform: none;
 
             &:hover, &.active, &:focus {
-                background-color: #9c27b0;
-                color: #ffffff;
+                background-color:transparent;
+                color: #9c27b0;
 
                 &.active {
-                    background-color: #9c27b0;
+                    background-color:transparent;
                 }
             }
         }

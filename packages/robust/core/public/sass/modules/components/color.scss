@@ -11,7 +11,14 @@
         box-shadow: 0 6px 20px 0 rgba(255, 110, 64, 0.5) !important;
     }
 }
+.theme-btn {
+    background: #9c27b0 !important;
+    box-shadow: 3px 3px 4px 0 rgb(78, 51, 113);
 
+    &:hover, &:focus {
+        background: #6b4994;
+    }
+}
 .purple {
     background-color: #9c27b0 !important;
 }
