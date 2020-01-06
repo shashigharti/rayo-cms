@@ -1,4 +1,4 @@
-@extends('core::admin.layouts.sub-layouts.create')
+@extends('core::admin.layouts.sub-layouts.create-without-tabs')
 
 @section('form')
     @set('settings_helper', new Robust\Core\Helpers\SettingsHelper)

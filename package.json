@@ -57,6 +57,6 @@
         "owl.carousel": "^2.3.4",
         "require-dir": "^1.2.0",
         "select2": "^4.0.12",
-        "tinymce": "^5.0.3"
+        "tinymce": "^5.1.5"
     }
 }

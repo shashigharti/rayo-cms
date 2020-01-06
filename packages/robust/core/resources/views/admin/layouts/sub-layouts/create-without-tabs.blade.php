@@ -18,14 +18,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
-                            <ul class="tabs">
-                                <li class="tab"><a class="active" href="#pages"> {{ $title }} </a></li>
-                            </ul>
+                            {{ $title }}
                         </div>
                         <div class="col s12">
-                            <div class="panel card tab--content">
-                                @yield('form')
-                            </div>
+                            @yield('form')
                         </div>
                     </div>
                 </div>
