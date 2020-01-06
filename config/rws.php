@@ -5,7 +5,7 @@ return [
         'price' => [
             'min' => 25000,
             'max' => 1000000,
-            'increment' => 25000
+            'increment' => 125000
         ]
     ],
     'emails' => [
