@@ -6,13 +6,13 @@
             <div class="form-group form-material row">
                 <div class="col s3">
                     {{ Form::label('active', 'Active', ['class' => 'control-label' ]) }}
-                    {{ Form::text('active', isset($settings['active'])?$settings['active']:'', [
+                    {{ Form::text('active', isset($settings['active'])?$settings['active']:'Active', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
                 <div class="col s3">
                     {{ Form::label('sold', 'Sold', ['class' => 'control-label' ]) }}
-                    {{ Form::text('sold', isset($settings['sold'])?$settings['sold']:'', [
+                    {{ Form::text('sold', isset($settings['sold'])?$settings['sold']:'Closed', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
@@ -23,13 +23,13 @@
             <div class="form-group form-material row">
                 <div class="col s3">
                     {{ Form::label('url_active', 'URL for homes for sale', ['class' => 'control-label' ]) }}
-                    {{ Form::text('url_active', isset($settings['url_active'])?$settings['url_active']:'', [
+                    {{ Form::text('url_active', isset($settings['url_active'])?$settings['url_active']:'homes-for-sale', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
                 <div class="col s3">
                     {{ Form::label('url_sold', 'URL for sold', ['class' => 'control-label' ]) }}
-                    {{ Form::text('url_sold', isset($settings['url_sold'])?$settings['url_sold']:'', [
+                    {{ Form::text('url_sold', isset($settings['url_sold'])?$settings['url_sold']:'sold', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
@@ -60,30 +60,35 @@
             <legend>Data Pull Settings for Server</legend>
             <div class="form-group form-material row">
                 <div class="col s6">
+
                     {{ Form::label("data['cities']", 'Cities(only)', ['class' => 'control-label' ]) }}
                     {{ Form::text("data['cities']", isset($settings['data']['cities']) ? $settings['data']['cities']:'', [
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
                         ]) 
                     }}
                 </div>
                 <div class="col s6">
                     {{ Form::label("data['zips']", 'Zips(only)', ['class' => 'control-label' ]) }}
                     {{ Form::text("data['zips']", isset($settings['data']['zips']) ? $settings['data']['zips']:'', [
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'placeholder' => 'Comma separated values E.g \'33418, 33419\''
                         ]) 
                     }}
                 </div>
                 <div class="col s6">
                     {{ Form::label("data['counties']", 'Counties(only)', ['class' => 'control-label' ]) }}
                     {{ Form::text("data['counties']", isset($settings['data']['counties']) ? $settings['data']['counties']:'', [
-                            'class' => 'form-control'
+                            'class' => 'form-control',
+                            'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
                         ]) 
                     }}
                 </div>
                 <div class="col s6">
                     {{ Form::label("data['min']", 'Listings Greater Than (Price)', ['class' => 'control-label' ]) }}
-                    {{ Form::text("data['min']", isset($settings['data']['min']) ? $settings['data']['min']:'', [
-                            'class' => 'form-control'
+                    {{ Form::text("data['min']", isset($settings['data']['min']) ? $settings['data']['min']:'10000', [
+                            'class' => 'form-control',
+                            'placeholder' => 'numeric Value E.g \'10000\''
                         ]) 
                     }}
                 </div>

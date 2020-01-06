@@ -3,16 +3,11 @@
     'use strict';
     FRW.DynamicElem = {
         init: function (selectObj) {
-
             selectObj.on('click', function(e){
                 let parent = $(this).parent();
-                let newElem = $(this).clone();
-                newElem.appendTo(parent);
-                newElem.find('.dynamic-elem__btn').toggleClass('hide');
-                console.log(newElem);
+                $(this).clone().appendTo(parent);
+                $(this).find('.dynamic-elem__btn').toggleClass('hide');
             });
-            
-            cln = itm.cloneNode(true);
         }
     };
 
