@@ -3,6 +3,9 @@
 @section('form')
     @set('ui', new $ui)
     @set('template', request()->query('template'))
+    @if($template == '')
+        @set('template', 'two-col-ad')
+    @endif
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
         <div id="{{ $title }}" class="col s12">
             <div class="row">
