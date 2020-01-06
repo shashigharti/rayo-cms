@@ -18,12 +18,12 @@ class User extends  BaseUI
         'email' => 'Email',
         'options' => [
             'edit' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Edit',
+                'display_name' => '<i class="site-menu-icon material-icons">edit</i>',
                 'url' => "admin.users.edit",
                 'permission' => 'admin.user.edit'
             ],
             'delete' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-delete"></i> Delete',
+                'display_name' => '<i class="site-menu-icon material-icons">delete</i>',
                 'url' => "admin.users.destroy",
                 'permission' => 'admin.user.delete'
             ]
@@ -60,12 +60,25 @@ class User extends  BaseUI
         return $user->roles->pluck('id')->toArray();
     }
 
+    /**
+     * @return string
+     */
+    // public function getModel()
+    // {
+    //     return 'Robust\Admin\Models\Page';
+    // }
+
+     /**
+     * @param array $row
+     * @return string
+     */
     public function getName($row)
     {
-        if($row['avatar'] != '')
+        $user = \Robust\Admin\Models\User::find($row['id']);
+        if(isset($row['avatar']))
             $img = $row['avatar'];
         else
-            $img = \Avatar::create($row['first_name'].' '.$row['last_name']);
-        return '<img src="' . $img . '" width="30" style="border-radius:100px">' . ' ' . $row['first_name'].' '.$row['last_name'];
+            $img = \Avatar::create($user->memberable->first_name . ' ' . $user->memberable->last_name);
+        return '<img src="' . $img . '" width="30" style="border-radius:100px">' . ' ' . $user->memberable->first_name . ' ' . $user->memberable->last_name . '</a>';
     }
 }

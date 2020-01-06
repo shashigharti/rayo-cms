@@ -24,16 +24,6 @@ class CoreMenuTableSeeder extends Seeder
                 'icon' => 'settings_input_svideo'
             ],
             [
-                'display_name' => 'Settings',
-                'name' => 'core.settings',
-                'url' => route('admin.settings.edit', ['general-setting']),
-                'permission' => 'core.settings.edit',
-                'package_name' => 'core',
-                'parent_id' => 0,
-                'type' => 'primary',
-                'icon' => 'settings'
-            ],
-            [
                 'display_name' => 'Media Manager',
                 'name' => 'core.medias',
                 'url' => route('admin.medias.index'),
@@ -60,7 +50,7 @@ class CoreMenuTableSeeder extends Seeder
         $id = DB::table('menus')->max('id');
         DB::table('menus')->insert([
             [
-                'display_name' => 'Commands',
+                'display_name' => 'Jobs',
                 'name' => 'core.commands',
                 'url' => route('admin.commands.index'),
                 'permission' => 'core.commands.manage',

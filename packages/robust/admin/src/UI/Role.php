@@ -17,12 +17,12 @@ class Role extends BaseUI
         'name' => 'Name',
         'options' => [
             'edit' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Edit',
+                 'display_name' => '<i class="site-menu-icon material-icons">edit</i>',
                 'url' => "admin.roles.edit",
                 'permission' => 'admin.role.edit'
             ],
             'delete' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-delete"></i> Delete',
+                'display_name' => '<i class="site-menu-icon material-icons">delete</i>',
                 'url' => "admin.roles.destroy",
                 'permission' => 'admin.role.delete'
             ]

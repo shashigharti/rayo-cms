@@ -36,25 +36,13 @@
                                                     @include("core::admin.layouts.sub-layouts.partials.tables.{$key}", ['extra_params' => (isset($option['params']))? $option['params'] : []])
                                                 @else
                                                     <a class='btn btn-info btn-{{$key}} btn-xs waves-effect waves-light'
-                                                    @if(isset($ui->isModal) && $ui->isModal && ($key == 'edit'))
-                                                        data-url="{{$ui->getTableRoute($option,
-                                                                [
-                                                                        'id' => $row['id'],
-                                                                        'params' => ['parent_id' => isset($model)?$model->id:0]
-                                                                ])
-                                                            }}"
-                                                        data-toggle="modal"
-                                                        data-modal="crudModal"
-                                                        href='javascript:void(0)'
-                                                    @else
                                                         href="{{$ui->getTableRoute($option,
                                                             [
                                                                     'id' => $row['id'],
                                                                     'params' => ['parent_id' => isset($model)?$model->id:0]
                                                             ])
                                                         }}"
-                                                            @endif
-                                                    >
+                                                    >                                                    
                                                         {!! $option['display_name'] !!}
                                                     </a>
                                                 @endif

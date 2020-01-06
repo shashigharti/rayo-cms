@@ -44,6 +44,16 @@ return [
         'real-estate.pages.manage' => "Manage Pages",
         'real-estate.pages.add' => "Add Page",
         'real-estate.pages.edit' => "Page Edit",
-        'real-estate.pages.delete' => "Page Delete"
+        'real-estate.pages.delete' => "Page Delete",
+
+        'real-estate.groups.manage' => "Manage Groups",
+        'real-estate.groups.add' => "Add Group",
+        'real-estate.groups.edit' => "Group Edit",
+        'real-estate.groups.delete' => "Group Delete",
+
+        'real-estate.attributes.manage' => "Attributes",
+        'real-estate.attributes.add' => "Attribute Group",
+        'real-estate.attributes.edit' => "Attribute Edit",
+        'real-estate.attributes.delete' => "Attribute Delete"
     ]
 ];

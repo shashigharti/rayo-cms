@@ -44,7 +44,7 @@ class SettingsHelper
      */
     public function getSettingBySlug($slug)
     {
-        return Setting::where('slug', $slug)->first();;
+        return Setting::where('slug', $slug)->first();
     }
 
     /**

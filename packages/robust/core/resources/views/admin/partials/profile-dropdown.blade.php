@@ -11,7 +11,7 @@
         </a>
     </li>
     <li>
-        <a class="grey-text text-darken-1" href="app-chat.html">
+    <a class="grey-text text-darken-1" href="{{route('admin.settings.edit', 'general-setting')}}">
             <i class="material-icons">settings</i> Settings
         </a>
     </li>

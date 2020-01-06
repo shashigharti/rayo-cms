@@ -1,14 +1,10 @@
-@extends('core::admin.layouts.default')
-@section('content')
+@extends('core::admin.layouts.sub-layouts.create')
+
+@section('form')
     @inject('permission_helper', '\Robust\Core\Helpers\PermissionHelper')
     @set('ui', new $ui)
-    <div class="page">
-        <div class="page-content">
-            <div class="container form-container">
-                <div class="panel-box panel-default">
-                    <div class="form__wrapper">
-                        @include("core::admin.partials.messages.info")
-                        {{ Form::model($model, ['route' => ['admin.roles.update', $model->id], 'method' => $ui->getMethod($model) ]) }}
+
+    {{ Form::model($model, ['route' => ['admin.roles.update', $model->id], 'method' => $ui->getMethod($model) ]) }}
                         <div class="form-group form-material row">
                             <div class="">
                                 <div class="col-sm-6">
@@ -43,13 +39,14 @@
                                     <tbody>
                                     @foreach($permission_helper->get_all_permissions_db() as $group => $permissions)
                                         <tr>
-                                            <td><input type="checkbox" class="permissions select_groups"
-                                                       id={{$group}} data-group={{ $group }}></td>
+                                            <td>
+                                                <input type="checkbox" class="permissions select_groups" id={{$group}} data-group={{ $group }}>
+                                            </td>
                                             <td>{{$group}}</td>
                                             <td>
                                                 @if(is_array($permissions))
                                                     @foreach($permissions as  $name => $permissions)
-                                                        {{Form::checkbox('permission[]', $name, $permission_helper->hasPermission($model, $name),['class' => 'each_permission permissions '.$group.'','data-parent' => $group])}} {{$permissions}}
+                                                        {{ Form::checkbox('permission[]', $name, $permission_helper->hasPermission($model, $name),['class' => 'each_permission permissions '.$group.'','data-parent' => $group])}} {{$permissions}}
                                                     @endforeach
                                                 @endif
                                             </td>
@@ -62,10 +59,7 @@
                         <div class="form-group form-material">
                             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
                         </div>
-                        {!! Form::close() !!}
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    {{ Form::close() }}
+
 @endsection
+

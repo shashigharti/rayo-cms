@@ -103,5 +103,17 @@ class RealEstateMenuTableSeeder extends Seeder
                 'icon' => 'location_on'
             ]
         ]);
+        DB::table('menus')->insert([
+            [
+                'display_name' => 'Attributes',
+                'name' => 'real-estate.attributes',
+                'url' => route('admin.attributes.index'),
+                'permission' => 'real-estate.attributes.manage',
+                'package_name' => 'real-estate',
+                'parent_id' => $id,
+                'type' => 'child',
+                'icon' => 'location_on'
+            ]
+        ]);
     }
 }

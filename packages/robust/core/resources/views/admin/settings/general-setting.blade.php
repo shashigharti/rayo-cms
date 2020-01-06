@@ -1,13 +1,13 @@
-<div class="system-settings__general">
+<div class="col s12 system-settings__general">
     {{ Form::open(['route' => ['admin.settings.store'], 'enctype' => 'multipart/form-data', 'method' => $ui->getMethod()])}}
     {{ Form::hidden('slug', $slug, [
                 'class' => 'form-control'
-            ]) }}
+    ]) }}
     <div class="form-group form-material row">
         <div class="col-sm-6 file-upload">
             <div class="col-sm-8 file-upload__preview">
-                <img id="file-upload__img" height="80" src="{{$settings['logo'] or ''}}"/>
-                <div id="file-upload__logo-url">{{$settings['logo'] or ''}}</div>
+                <img id="file-upload__img" height="80" src="{{$settings['logo'] ?? ''}}"/>
+                <div id="file-upload__logo-url">{{$settings['logo'] ?? ''}}</div>
             </div>
             @if(isset($settings['logo']) && $settings['logo'] != "")
                 <i class="md md-close-circle text-danger delete-img" data-preview="#file-upload__img"
@@ -38,8 +38,8 @@
                     'class' =>'image-upload',
                     'data-image-path' => '#file-upload__login-image-url'
                 ])}}
-                {{ Form::hidden('login_page_image', isset($settings['login_page_image'])?$settings['login_page_image']:'', ['id' => 'login_page-img']) }}
-                <div id="file-upload__login-image-url">{{$settings['login_page_image'] or ''}}</div>
+                {{ Form::hidden('login_page_image', $settings['login_page_image'] ?? '', ['id' => 'login_page-img']) }}
+                <div id="file-upload__login-image-url">{{ $settings['login_page_image'] ?? '' }}</div>
                 <button type="button" class="btn theme-btn">Upload Login Image</button>
             </div>
             <div class="col-sm-12">(Image Size: 1200 x 1200)</div>

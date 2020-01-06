@@ -1,20 +1,24 @@
-@extends('core::admin.layouts.default')
+@extends('core::admin.layouts.sub-layouts.create')
 
-@section('content')
+@section('form')
     @set('settings_helper', new Robust\Core\Helpers\SettingsHelper)
     @set('setting', $settings_helper->getSettingBySlug($slug))
     @set('ui', new $ui)
-    <div class="page">
-        <div class="page-content">
-            <div class="container form-container">
-                @include('core::admin.settings.partials.tabs')
-                <div class="panel-box panel-default">
-                    <div class="form__wrapper system-settings">
-                        @include("core::admin.partials.messages.info")
+   <div class="row">
+        <div class="col s12">
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        @include('core::admin.settings.partials.tabs')
+                    </div>
+                    <div class="col s12">
+                        <div class="panel card tab--content">
+                            @include("core::admin.partials.messages.info")
 
-                        @if(View::exists("{$setting->package_name}::admin.settings.{$slug}"))
-                            @include("{$setting->package_name}::admin.settings.{$slug}")
-                        @endif
+                            @if(View::exists("{$setting->package_name}::admin.settings.{$slug}"))
+                                @include("{$setting->package_name}::admin.settings.{$slug}")
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>

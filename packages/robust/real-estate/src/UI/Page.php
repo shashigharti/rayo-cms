@@ -22,12 +22,12 @@ class Page extends BaseUI
         'slug' => 'Slug',
         'options' => [
             'edit' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-edit"></i> Edit',
+                'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">edit</i> ',
                 'url' => "admin.pages.edit",
                 'permission' => 'real-estate.pages.edit'
             ],
             'delete' => [
-                'display_name' => '<i aria-hidden="true" class="site-menu-icon md-delete"></i> Delete',
+                'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">delete</i>',
                 'url' => "admin.pages.destroy",
                 'permission' => 'real-estate.pages.delete'
             ]

@@ -11,25 +11,13 @@ return [
     | running in. This may determine how you prefer to configure various
     | services your application utilizes. Set this in your ".env" file.
     |
-    */
+    */  
     [
-        'display_name' => 'General',
-        'slug' => 'general-setting',
+        'display_name' => 'Data Mapping',
+        'slug' => 'data-mapping',
     ],
     [
-        'display_name' => 'Email',
-        'slug' => 'email-setting',
-    ],
-    [
-        'display_name' => 'Application',
-        'slug' => 'app-setting',
-    ],
-    [
-        'display_name' => 'G-Analytics',
-        'slug' => 'ga-analytics',
-    ],
-    [
-        'display_name' => 'Maintenance Mode',
-        'slug' => 'maintenance-mode',
+        'display_name' => 'Advance Search',
+        'slug' => 'advance-search',
     ]
 ];
