@@ -16,17 +16,8 @@
                         $('.msg-info').html(response.message);
                     },
                     error: function (response) {
-
-                        let template = `${response.message} 
-                        `;
+                        let template = `${response.message}`;
                         $('.msg-error').html(template);
-                        // $.each(response.errors, function (key, value) {
-
-                        //     $('.msg-info').html(`
-                        //         <li> </li>
-                        //     `);
-                        //     //M.toast({ html: value })
-                        // });
                     }
                 })
             });
