@@ -169,7 +169,6 @@ a {
 }
 
 .market__search--lists-item {
-    min-height: 131px;
     box-shadow: 1px 1px 1px 1px #d6d1d1;
     margin-bottom: 15px;
     background: #f9f7f7;
@@ -379,4 +378,14 @@ a {
 .market__search--lists-item--single{
   width:20%;
   display:inline-block;
+}
+.market__search--lists {
+    display: flex;
+    flex-wrap: wrap;
+
+    .market__search--lists-item--single {
+        width: 20%;
+        display: inline-block;
+        border: none;
+    }
 }

@@ -1028,7 +1028,7 @@ a.orange-line{border-bottom:1px solid #f7941d}.page--info{margin-bottom:60px}.ma
 a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{background:#123059;color:#fff;border:1px solid #123059}
 .tags{margin:20px 0;font-size:11px;font-style:italic}.tags span{background:#a1a1a1;color:#fff;padding:2px 9px;margin-right:4px;border-radius:5px}
 .tags i{cursor:pointer;margin-left:4px}.market--right__search{padding-left:40px;margin-bottom:40px}
-.market__search--lists-item{min-height:131px;-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px;background:#f9f7f7}
+.market__search--lists-item{-webkit-box-shadow:1px 1px 1px 1px #d6d1d1;box-shadow:1px 1px 1px 1px #d6d1d1;margin-bottom:15px;background:#f9f7f7}
 .market__search--lists-item p{margin-bottom:0;font-size:11px;color:#5a5959;font-weight:500;font-style:italic}
 .market__search--lists-item label{vertical-align:top;font-weight:bold;margin-left:2px;font-size:12px;margin-bottom:6px;display:inline-block;width:84%;font-style:normal}
 .market__search--lists-item i{margin-right:5px;font-size:11px}.market__search--lists{height:655px;overflow-y:auto}
@@ -1054,6 +1054,8 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .market--right__display--radio [type="radio"]:checked+span:after,.market--right__display--radio [type="radio"].with-gap:checked+span:before,.market--right__display--radio [type="radio"].with-gap:checked+span:after{border:2px solid #002349}
 .market__btns--container{display:inline-block}.market__btns .btn--label{font-weight:600;margin-right:5px}
 .market-insight h5{font-size:20px;margin-bottom:20px;font-weight:500}.market__search--lists-item--single{width:20%;display:inline-block}
+.market__search--lists{display:-webkit-box;display:-ms-flexbox;display:flex;-ms-flex-wrap:wrap;flex-wrap:wrap}
+.market__search--lists .market__search--lists-item--single{width:20%;display:inline-block;border:0}
 .map-section .row{margin-right:0;margin-left:0}.map-section .col-sm-6{padding:0}#map1{height:100vh;width:100%}
 .market-survey__right-container h1{font-weight:500;font-size:24px;color:#333;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;line-height:26px;padding:15px;margin-top:0;margin-bottom:0}
 .market-survey__right-container--tabs .tabs{display:-webkit-box;display:-ms-flexbox;display:flex;background-color:#fff;text-align:center;overflow-x:hidden;overflow-y:hidden;font-size:16px;border-bottom:1px solid #e2e2e2}

@@ -47,7 +47,7 @@
             class="market__search--lists market--right__search col m10 s12"
         >
             @foreach($records as $report)
-                <div class="col market__search--lists-item--single">
+                <div class=" market__search--lists-item--single">
                     <div class="market__search--lists-item card">
                         <div class="card-content">                            
                             <p data-id="{{$report->reportable->slug}}" 
