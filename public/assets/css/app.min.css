@@ -1017,8 +1017,7 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px 2px;width:300px}
 .content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:5px}
 textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:14px}
-input{font-size:14px !important}.tabs .tab a:hover,.tabs .tab a.active{background-color:#9c27b0;color:#fff}
-.tabs .indicator{background-color:#9c27b0}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
+input{font-size:14px !important}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
 .sidenav-main span.badge.new{line-height:20px;margin-top:11px;background-color:#6b4994}
 .brand-sidebar{position:fixed;top:0;left:0;width:inherit;height:64px;background:#575758;-webkit-box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .brand-sidebar .logo-wrapper{font-size:22px;line-height:17px !important;margin:0;white-space:nowrap}
@@ -1078,7 +1077,7 @@ input{font-size:14px !important}.tabs .tab a:hover,.tabs .tab a.active{backgroun
 #breadcrumbs-wrapper .breadcrumbs-nav{margin:8px 0 9px}#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs-title,#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs{display:inline}
 #breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs-left{position:relative;top:8px}
 #breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs-title{padding-right:20px;border-right:1px solid #bdbdbd}
-#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs{padding-left:20px}#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs-btn{top:0}
+#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs{padding-left:4px}#breadcrumbs-wrapper.breadcrumbs-inline .breadcrumbs-btn{top:0}
 @media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){#breadcrumbs-wrapper .breadcrumbs>li+li::before{top:0;width:0;content:'/'}
 }.login-page{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .login-page .card-panel.border-radius-6.login-card{margin-left:0 !important}.btn-small{height:28px;line-height:28px;padding:0 10px;font-size:10px !important;margin:0 2px}
@@ -1141,7 +1140,10 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .leads-table td .info-unit a:hover{color:#038cb8}.table-custom tr td{border:0 !important;padding:0}
 .info-unit small{font-size:12px}.table-custom tr{border:none !important}.table-striped tbody tr:nth-of-type(odd){background-color:rgba(0,0,0,0.05)}
 .data-table{font-size:12px}.data-table th,.data-table td{padding:15px !important}
-.theme__tabs .tab a{color:#333;font-weight:600;padding:0 10px;font-size:12px}.theme__tabs .tab a:hover,.theme__tabs .tab a.active{color:#6b4994;background-color:#ebc9f1}
+.tabs .tab a{color:#575758;text-transform:none}.tabs .tab a:hover,.tabs .tab a.active,.tabs .tab a:focus{background-color:#9c27b0;color:#fff}
+.tabs .tab a:hover.active,.tabs .tab a.active.active,.tabs .tab a:focus.active{background-color:#9c27b0}
+.tabs .indicator{background-color:#9c27b0}.theme__tabs .tab a{color:#333;font-weight:600;padding:0 10px;font-size:12px}
+.theme__tabs .tab a:hover,.theme__tabs .tab a.active{color:#6b4994;background-color:#ebc9f1}
 .theme__tabs .tab a:focus{background-color:transparent}.theme__tabs .tab a:focus.active{background-color:transparent}
 .theme__tabs.tabs{height:40px}.theme__tabs .tab{line-height:40px;height:40px}.filter--bar .tabs{background-color:transparent;margin-bottom:15px}
 .theme--select .select-wrapper input.select-dropdown{height:16px;line-height:21px;font-size:14px;padding:0 0 3px}

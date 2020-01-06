@@ -3,13 +3,9 @@
 @section('content')
     <div id="main" class="page {{$title}}">
         <div class="row">
-            <div class="col s12">
-                <div class="container">
-                    <div class="row breadcrumbs-inline" id="breadcrumbs-wrapper">
-                        <div class="col s10 m6 l6 breadcrumbs-left">
-                            {!! Breadcrumb::getInstance()->render()  !!}
-                        </div>
-                    </div>
+            <div class="container">
+                <div class="row breadcrumbs-inline" id="breadcrumbs-wrapper">
+                    {!! Breadcrumb::getInstance()->render()  !!}
                 </div>
             </div>
         </div>
