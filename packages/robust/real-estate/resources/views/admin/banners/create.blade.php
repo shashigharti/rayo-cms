@@ -30,7 +30,8 @@
                             'main-banner' => 'Main Banner',
                             'full-screen-ad' => 'Full Screen Ad',
                             'single-col-block' => 'Single Column Block',
-                            'slider' => 'Slider'
+                            'slider' => 'Slider',
+                            'banner-slider' => 'Banner Slider'
                         ],
                         $template,
                         [
@@ -43,7 +44,7 @@
                 </div>
             </div>
             <div class="container sub--block">
-            @include("real-estate::admin.banners.partials.two-col-ad")
+            @include("real-estate::admin.banners.partials.{$template}")
             </div>
             <div class="row">
                 <div class="col s12">

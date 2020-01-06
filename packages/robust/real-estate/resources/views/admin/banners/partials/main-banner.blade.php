@@ -15,20 +15,3 @@
         }}
     </div>
 </div>
-<div class="row">
-    <div class="input-field col s6">
-        {{ Form::label('button_text', 'Button Text', ['class' => 'required' ]) }}
-        {{ Form::text('button_text', null, [
-           'placeholder' => 'Button Text',
-           'required'  => 'required'
-           ])
-        }}
-    </div>
-    <div class="input-field col s6">
-        {{ Form::label('button_url', 'Button URL', ['class' => 'required' ]) }}
-        {{ Form::text('button_url', null, [
-           'placeholder' => 'Button URL'
-           ])
-        }}
-    </div>
-</div>

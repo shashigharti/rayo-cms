@@ -41,5 +41,16 @@ return [
                 'report-type' => ['cities', 'zips','school_districts']                    
            ]           
         ])
+    ],
+    [
+        'display_name' => 'Services',
+        'slug' => 'services',
+        'property' => json_encode([
+            'data_pull' => [
+                'status' => 'red, green',
+                'last_executed_on' => '',
+                'data_pulled' => '20',
+            ]          
+        ])
     ]
 ];

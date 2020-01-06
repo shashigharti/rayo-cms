@@ -55,6 +55,11 @@
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete hide"> delete </i></a>
             </div>
+            <div class="form-group form-material row dynamic-elem">
+                <div class="col s6">
+                   <a href="#"> <i class="material-icons"> settings </i> Generate Price Range  </a>
+                </div>
+            </div>
         </fieldset>
         <fieldset>
             <legend>Data Pull Settings for Server</legend>
@@ -94,6 +99,7 @@
                 </div>
             </div>
         </fieldset>
+        
         <div class="form-group form-material">
             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
         </div>
