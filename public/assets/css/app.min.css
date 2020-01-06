@@ -1012,10 +1012,10 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 }@media only screen and (min-width:930px){.flow-text{font-size:1.656rem}}@media only screen and (min-width:960px){.flow-text{font-size:1.68rem}
 }@media only screen and (max-width:360px){.flow-text{font-size:1.2rem}}@media only screen and (max-width:768px){.nav-expanded .brand-sidebar{background:transparent !important}
 .brand-sidebar .logo-wrapper{padding:17px 18px !important;text-align:center;background:transparent}
-}.content__table .select-wrapper input.select-dropdown{font-size:13px;line-height:20px;height:20px;border:1px solid #ccc;padding:5px 0 5px 5px;width:96%}
+}.content__table .select-wrapper input.select-dropdown{font-size:13px;line-height:20px;height:20px;border:1px solid #ccc;padding:5px 0 5px 5px;width:96% !important}
 .content__table .select-wrapper .dropdown-content{min-width:80px}.content__table .select-wrapper .dropdown-content li{min-height:30px}
-.content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px 2px}
-.content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:16px}
+.content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px 2px;width:300px}
+.content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:5px}
 textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:14px}
 input{font-size:14px !important}.tabs .tab a:hover,.tabs .tab a.active{background-color:#9c27b0;color:#fff}
 .tabs .indicator{background-color:#9c27b0}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
@@ -1082,7 +1082,8 @@ input{font-size:14px !important}.tabs .tab a:hover,.tabs .tab a.active{backgroun
 @media screen and (-ms-high-contrast:active),(-ms-high-contrast:none){#breadcrumbs-wrapper .breadcrumbs>li+li::before{top:0;width:0;content:'/'}
 }.login-page{display:-webkit-box;display:-ms-flexbox;display:flex;height:100vh;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center}
 .login-page .card-panel.border-radius-6.login-card{margin-left:0 !important}.btn-small{height:28px;line-height:28px;padding:0 10px;font-size:10px !important;margin:0 2px}
-.btn-small i{font-size:10px;margin-right:4px}.navbar .header-search-wrapper{position:relative;display:inline-block;width:calc(100% - 600px);height:40px;margin:10px auto 0 275px;-webkit-transition:.3s ease all;transition:.3s ease all;-webkit-backface-visibility:hidden;backface-visibility:hidden}
+.btn-small i{font-size:10px;margin-right:4px}.action--btns{width:200px}.action--btns a,.action--btns form{display:inline-block}
+.navbar .header-search-wrapper{position:relative;display:inline-block;width:calc(100% - 600px);height:40px;margin:10px auto 0 275px;-webkit-transition:.3s ease all;transition:.3s ease all;-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .navbar .header-search-wrapper i{font-size:24px;line-height:32px !important;position:absolute;top:6px;left:24px;-webkit-transition:color 200ms ease;transition:color 200ms ease}
 .navbar .nav-collapsed .header-search-wrapper{margin:10px auto 0 100px}.navbar input.header-search-input{font-size:16px;font-weight:400;display:block;width:87%;height:24px;padding:8px 8px 8px 72px;-webkit-transition:all 200ms ease;transition:all 200ms ease;border:0;border-radius:3px;outline:0;background:rgba(255,255,255,0.3);-webkit-appearance:textfield;-moz-appearance:textfield;appearance:textfield}
 .navbar input.header-search-input:hover{background:rgba(255,255,255,0.5)}.navbar input.header-search-input:focus{color:#333;border-bottom:none !important;background:#fff;-webkit-box-shadow:none !important;box-shadow:none !important}

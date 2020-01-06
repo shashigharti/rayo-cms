@@ -7,9 +7,7 @@
             <div class="row">
                 <div class="container">
                     <div class="row breadcrumbs-inline" id="breadcrumbs-wrapper">
-                        <div class="col s10 m6 l6 breadcrumbs-left">
-                            {!! Breadcrumb::getInstance()->render()  !!}
-                        </div>
+                        {!! Breadcrumb::getInstance()->render()  !!}
                         <div class="col s2 m6 l6 right--button">
                             @section('left_menu')
                                 @if(isset($ui->right_menu))
@@ -33,15 +31,15 @@
                          @include("core::admin.partials.messages.info")
 
                         @if(method_exists($ui, 'getModel'))
-                            <div class="col-sm-6 pull-right">
+                            <div class="col s6">
                                 {{ Form::open(['url' => route($ui->getSearchURL()), 'method' => 'get']) }}
-                                <div class="input-group">
-                                    <span class="pull-left">{{ Form::select('type', $ui->getSearchable(), null) }}</span>
-                                    <span class="pull-left col-sm-9">{{ Form::text('keyword', (isset($keyword))? $keyword:'', ['class' => 'form-control']) }}</span>
-                                    <span class="input-group-btn">
-                                        {{ Form::button('Search', ['type' => 'submit', 'class' => 'btn theme-btn']) }}
-                                    </span>
-                                </div>
+                                    <div class="input-group row">
+                                        <span class="col s3">{{ Form::select('type', $ui->getSearchable(), null) }}</span>
+                                        <span class="pull-left">{{ Form::text('keyword', (isset($keyword))? $keyword:'', ['class' => 'form-control']) }}</span>
+                                        <span class="input-group-btn">
+                                            {{ Form::button('Search', ['type' => 'submit', 'class' => 'btn theme-btn']) }}
+                                        </span>
+                                    </div>
                                 {{ Form::close() }}
                             </div>
                         @endif

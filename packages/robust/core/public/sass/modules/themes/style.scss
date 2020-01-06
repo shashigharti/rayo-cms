@@ -1422,7 +1422,7 @@ table {
             height: 20px;
             border: 1px solid #ccc;
             padding: 5px 0px 5px 5px;
-            width: 96%;
+            width: 96% !important;
         }
 
         .dropdown-content {
@@ -1445,6 +1445,7 @@ table {
             font-size: 12px;
             padding: 5px;
             margin: 0 2px 8px 2px;
+            width:300px;
         }
 
         .input-group-btn {
@@ -1454,7 +1455,7 @@ table {
                 line-height: 33px;
                 padding: 0 10px;
                 font-size: 12px;
-                margin-left:16px;
+                margin-left:5px;
             }
         }
     }

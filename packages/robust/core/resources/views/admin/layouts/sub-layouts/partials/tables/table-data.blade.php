@@ -27,7 +27,7 @@
                             @foreach($ui->columns as $key => $header)
                                 @if($key == 'options')
                                     @set('options', $header)
-                                    <td class="text right-align">
+                                    <td class="text action--btns right-align">
                                         @foreach($options as $key => $option)
                                             @can($option['permission'])
                                                 @if($package != '' && View::exists("{$package}::{$current_view}.tables.{$key}"))
@@ -35,7 +35,7 @@
                                                 @elseif(View::exists("core::admin.layouts.sub-layouts.partials.tables.{$key}") )
                                                     @include("core::admin.layouts.sub-layouts.partials.tables.{$key}", ['extra_params' => (isset($option['params']))? $option['params'] : []])
                                                 @else
-                                                    <a class='btn btn-info btn-{{$key}} btn-xs waves-effect waves-light'
+                                                    <a class='btn btn-small btn-{{$key}} cyan waves-effect waves-light'
                                                         href="{{$ui->getTableRoute($option,
                                                             [
                                                                     'id' => $row['id'],
