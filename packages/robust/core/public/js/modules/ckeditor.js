@@ -1,13 +1,12 @@
 ;
 (function ($, FRW, window, document, undefined) {
     'use strict';
-    FRW.TinyMCEEditor = {
+    FRW.CKEditor = {
         init: function () {
-            tinymce.init({
-                selector: 'textarea.editor',
-                width: 900,
-                height: 300
-            });
+            try {
+                CKEDITOR.instances['editor'].destroy(true);
+            } catch (e) { }
+            CKEDITOR.replace('editor');
         }
     };
 
@@ -17,7 +16,7 @@
             return;
         }
 
-        FRW.TinyMCEEditor.init();
+        FRW.CKEditor.init();
     });
 
 }(jQuery, FRW, window, document));

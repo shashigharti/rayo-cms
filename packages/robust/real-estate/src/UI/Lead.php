@@ -45,7 +45,7 @@ class Lead extends BaseUI
      */
     public $right_menu = [
         'add' => [
-            'display_name' => 'Add', 'url' => 'admin.leads.create', 'permission' => 'real-estate.leads.add', 'icon' => 'add'
+            //'display_name' => 'Add', 'url' => 'admin.leads.create', 'permission' => 'real-estate.leads.add', 'icon' => 'add'
         ]
     ];
     /**

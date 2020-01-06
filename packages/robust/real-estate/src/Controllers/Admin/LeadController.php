@@ -19,5 +19,6 @@ class LeadController extends Controller
         $this->package_name = 'real-estate';
         $this->view = 'admin.leads';
         $this->title = 'Leads';
+        $this->table = 'real-estate::admin.leads.index';
     }
 }

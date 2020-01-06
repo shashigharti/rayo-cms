@@ -1,7 +1,7 @@
-//import("../../../../../node_modules/tinymce/jquery.tinymce.js");
+//import("../../../../../node_modules/ckeditor4/ckeditor.js");
 //import("modules/vendors.min.js")
 //import("modules/plugins.js")
 //import("modules/reloadable-select.js")
-//import("modules/tinymce-editor.js")
+//import("modules/ckeditor.js")
 
 
