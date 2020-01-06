@@ -35,6 +35,60 @@
                 </div>
             </div>
         </fieldset>
+        <fieldset>
+            <legend>Price Settings</legend>
+            <div class="form-group form-material row dynamic-elem">
+                <div class="col s3">
+                    {{ Form::label("data['prices'][]", 'Price >=', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['prices'][]", isset($settings['data']['prices[]'])?$settings['data']['prices[]']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+                <div class="col s3">
+                    {{ Form::label("data['increments'][]", 'Increment', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['increments'][]", isset($settings['data']['increments[]'])?$settings['data']['increments[]']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+                <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
+                <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete hide"> delete </i></a>
+            </div>
+        </fieldset>
+        <fieldset>
+            <legend>Data Pull Settings for Server</legend>
+            <div class="form-group form-material row">
+                <div class="col s6">
+                    {{ Form::label("data['cities']", 'Cities(only)', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['cities']", isset($settings['data']['cities']) ? $settings['data']['cities']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+                <div class="col s6">
+                    {{ Form::label("data['zips']", 'Zips(only)', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['zips']", isset($settings['data']['zips']) ? $settings['data']['zips']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+                <div class="col s6">
+                    {{ Form::label("data['counties']", 'Counties(only)', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['counties']", isset($settings['data']['counties']) ? $settings['data']['counties']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+                <div class="col s6">
+                    {{ Form::label("data['min']", 'Listings Greater Than (Price)', ['class' => 'control-label' ]) }}
+                    {{ Form::text("data['min']", isset($settings['data']['min']) ? $settings['data']['min']:'', [
+                            'class' => 'form-control'
+                        ]) 
+                    }}
+                </div>
+            </div>
+        </fieldset>
         <div class="form-group form-material">
             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
         </div>
