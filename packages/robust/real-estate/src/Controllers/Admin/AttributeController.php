@@ -1,45 +1,23 @@
 <?php
 
-
 namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Robust\RealEstate\Repositories\Admin\AttributeRepository;
+use Robust\Core\Controllers\Common\Traits\CrudTrait;
+use Robust\Core\Controllers\Common\Traits\ViewTrait;
 
-
-/**
- * Class AttributeController
- * @package Robust\RealEstate\Controllers\Admin
- */
 class AttributeController extends Controller
 {
-
-    /**
-     * @var AttributeRepository
-     */
+    use CrudTrait, ViewTrait;
     protected $model;
 
-
-    /**
-     * AttributeController constructor.
-     * @param AttributeRepository $model
-     */
     public function __construct(AttributeRepository $model)
     {
         $this->model = $model;
-    }
-
-    /**
-     * @param $name
-     * @return array|mixed
-     */
-    public function index($name)
-    {
-        $values = [];
-        $model = $this->model->getByName($name);
-        if($model){
-            $values =  json_decode($model->values,true);
-        }
-        return response()->json(['data' => $values]);
+        $this->ui = 'Robust\RealEstate\UI\Attribute';
+        $this->package_name = 'real-estate';
+        $this->view = 'admin.attributes';
+        $this->title = 'Attributes';
     }
 }

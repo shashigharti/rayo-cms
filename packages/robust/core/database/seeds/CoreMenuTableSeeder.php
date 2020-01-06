@@ -23,16 +23,16 @@ class CoreMenuTableSeeder extends Seeder
                 'type' => 'primary',
                 'icon' => 'settings_input_svideo'
             ],
-            [
-                'display_name' => 'Media Manager',
-                'name' => 'core.medias',
-                'url' => route('admin.medias.index'),
-                'permission' => 'core.medias.manage',
-                'package_name' => 'core',
-                'parent_id' => 0,
-                'type' => 'primary',
-                'icon' => 'image'
-            ]
+            // [
+            //     'display_name' => 'Media Manager',
+            //     'name' => 'core.medias',
+            //     'url' => route('admin.medias.index'),
+            //     'permission' => 'core.medias.manage',
+            //     'package_name' => 'core',
+            //     'parent_id' => 0,
+            //     'type' => 'primary',
+            //     'icon' => 'image'
+            // ]
 
         ]);
         DB::table('menus')->insert([
