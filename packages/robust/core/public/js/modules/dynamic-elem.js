@@ -2,11 +2,15 @@
 (function ($, FRW, window, document, undefined) {
     'use strict';
     FRW.DynamicElem = {
-        init: function (selectObj) {
-            selectObj.on('click', function(e){
-                let parent = $(this).parent();
-                $(this).clone().appendTo(parent);
-                $(this).find('.dynamic-elem__btn').toggleClass('hide');
+        init: function () {
+            $(document.body).on('click', '.dynamic-elem__add', function () {
+                let container = $(this).parent().parent();
+                let parent = container.parent();
+                container.clone().appendTo(parent);
+                container.find('.dynamic-elem__btn').toggleClass('hide');
+            });
+            $(document.body).on('click', '.dynamic-elem__delete', function () {
+                $(this).parent().parent().remove();
             });
         }
     };
@@ -17,7 +21,7 @@
             return;
         }
 
-        FRW.DynamicElem.init(selectObj);
+        FRW.DynamicElem.init();
     });
 
 }(jQuery, FRW, window, document));
