@@ -4,8 +4,8 @@ return [
     'application' => [
         'price' => [
             'min' => 25000,
-            'max' => 1000000,
-            'increment' => 125000
+            'max' => 5000000,
+            'increment' => 150000
         ]
     ],
     'emails' => [
