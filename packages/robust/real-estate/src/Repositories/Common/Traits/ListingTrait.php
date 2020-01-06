@@ -81,6 +81,9 @@ trait ListingTrait
             $value = $params[$key];
             // This is a temporary fix; we will use locationable_id / polymorphic relation later
             $location = $this->location->where('slug', '=', $value)->first();
+            if(!$location){
+                $location = $this->location->where('id', '=', $value)->first();
+            }
             $this->model = $this->model->where(IListings::LOCATION_TYPE_MAP[$key], '=', $location->id);
         }
         return $this;

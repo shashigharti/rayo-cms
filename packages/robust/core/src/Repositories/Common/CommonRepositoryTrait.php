@@ -26,6 +26,14 @@ trait CommonRepositoryTrait
     }
 
     /**
+     * @return int
+     */
+    public function count()
+    {
+        return $this->model->count();
+    }
+
+    /**
      * @return mixed
      */
     public function getModel()
