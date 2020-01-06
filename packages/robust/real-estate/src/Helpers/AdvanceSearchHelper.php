@@ -52,4 +52,16 @@ class AdvanceSearchHelper
 
         return  $processed_filters;
     }
+    // /**
+    //  * @return array
+    //  */
+    // public function getListofD(){
+    //     $filters = config('rws.advance-search');
+    //     $processed_filterst = [];
+    //     foreach($filters as $filter_attribute => $filter){
+    //         $processed_filters[$filter_attribute] = $filter['display_name'];
+    //     }
+
+    //     return  $processed_filters;
+    // }
 }
