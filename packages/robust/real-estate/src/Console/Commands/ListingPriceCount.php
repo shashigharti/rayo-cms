@@ -96,7 +96,10 @@ class ListingPriceCount extends Command
                         $system_price = explode('-',$price);
                         $properties['tabs'][$tab][$price] = $this->listing->getListings()
                             ->whereLocation([ $type => $location ])
-                            ->count();
+                            ->whereHas('property', function ($query) use ($tab){
+                                $query->where('type', $this->tabs_maps[$tab])
+                                    ->where('value', $this->tabs_maps[$tab]);
+                            })->count();
                     }
                 }
             }

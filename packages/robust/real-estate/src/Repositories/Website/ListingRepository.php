@@ -2,6 +2,7 @@
 namespace Robust\RealEstate\Repositories\Website;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Repositories\Common\Traits\ListingTrait;
 use Robust\RealEstate\Repositories\Interfaces\IListings;
 use Robust\RealEstate\Models\Listing;
@@ -15,7 +16,7 @@ use Robust\RealEstate\Models\Location;
  */
 class ListingRepository implements IListings
 {
-    use CommonRepositoryTrait, ListingTrait;   
+    use CommonRepositoryTrait, ListingTrait, SearchRepositoryTrait;  
 
     /**
      * @var Listing
