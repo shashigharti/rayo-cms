@@ -14,7 +14,7 @@
                     type:"POST",
                     data:DATA,
                     success:function (response) {
-                        $(location).attr('href','/profile');
+                        $(location).attr('href','/user/profile');
                     },
                     error:function (err) {
                         $.each(err.responseJSON.errors, function(key,value) {
