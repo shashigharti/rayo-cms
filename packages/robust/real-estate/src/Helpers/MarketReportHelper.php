@@ -52,8 +52,11 @@ class MarketReportHelper
      * Generates price ranges
      * @return string
      */
-    public function generatePriceRanges(){
+    public function generatePriceRanges($min = null, $max = null){
         $config = config('rws.market-report.price-range');
+        $i = ($min == null) ?  $config['min']:$min;
+        $max = ($max == null) ?  $config['max']:$max;
+
         $i = $config['min'];
         $max = $config['max'];
         $priceArr = [];

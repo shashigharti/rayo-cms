@@ -1,6 +1,13 @@
 <?php
 
 return [
+    'application' => [
+        'price' => [
+            'min' => 25000,
+            'max' => 5000000,
+            'increment' => 150000
+        ]
+    ],
     'emails' => [
         'templates' => [
             'Lead Registration',
@@ -59,7 +66,7 @@ return [
         'price' => [
             'min' => 25000,
             'max' => 1000000,
-            'increase' => 25000
+            'increment' => 25000
         ]
 
     ],
@@ -68,7 +75,7 @@ return [
             'price' => [
                 'min' => 25000,
                 'max' => 1000000,
-                'increase' => 25000
+                'increment' => 25000
             ]            
         ],
         'market-survey-tools' => [

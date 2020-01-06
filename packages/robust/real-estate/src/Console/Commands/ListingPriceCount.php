@@ -61,7 +61,11 @@ class ListingPriceCount extends Command
       'hopa' => [
           'type' => 'hopa',
           'value' => 'Yes-Verified'
-      ]
+      ],
+      'communities' => [
+          'type' => 'communities',
+          'value' => 'Yes'
+      ],
     ];
 
     public function handle()
@@ -70,30 +74,45 @@ class ListingPriceCount extends Command
         foreach ($blocks as $block) {
             $properties = json_decode($block->properties, true);
             $location = $properties['location'];
-            $prices = $properties['prices'];
             $type = $properties['location_type'];
-            if ($location != '' && $prices != '') {
-                $properties['property_counts'] = [];
+            if ($location != '') {
+                $properties['property_counts'] = [];    
+                $field = $this->maps[$type];
+                $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location"); 
+                $prices = generate_price_ranges($result[0]->min, $result[0]->max);
+                $properties['prices'] = $prices;
                 foreach ($prices as $key => $price) {
-                    $system_price = explode('-',$price);
-                    $properties['property_counts'][$price] = $this->listing
+                    $system_price = explode('-', $price);
+                    if(count( $system_price ) > 1){
+                        $properties['property_counts'][$price] = $this->listing
                         ->getListings()
                         ->whereLocation([ $type => $location ])
                         ->wherePriceBetween($system_price)
                         ->count();
+                    }else{
+                        $system_price = explode('>', $price);
+                        $properties['property_counts'][$price] = $this->listing
+                        ->getListings()
+                        ->whereLocation([ $type => $location ])
+                        ->where('system_price', '>', $system_price[0])
+                        ->count();
+                    }
+                    
                 }
                 $block->update(['properties' => json_encode($properties)]);
+                
             }
-
-
             $tabs = $properties['sub_areas'];
             $properties['tabs'] = [];
             $location = 136;
             foreach ($tabs as $tab) {
                 $properties['tabs'][$tab] = [];
                 if (isset($this->tabs_maps[$tab])) {
+                    $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location"); 
+                    $prices = generate_price_ranges($result[0]->min, $result[0]->max);
                     foreach ($prices as $price) {
-                        $system_price = explode('-',$price);
+                        $field = $this->maps[$type];
+                        $system_price = explode('-', $price);
                         $properties['tabs'][$tab][$price] = $this->listing->getListings()
                             ->whereLocation([ $type => $location ])
                             ->whereHas('property', function ($query) use ($tab){

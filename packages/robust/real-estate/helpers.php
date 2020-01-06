@@ -154,4 +154,42 @@ if (!function_exists('geocode')) {
             return $content;
         }
     }
+
+     if (!function_exists('generate_price_ranges')) {
+        /**
+         * Generates price ranges
+         * @return string
+         */
+        function generate_price_ranges($min_price = null, $max_price = null){
+            $ranges = [];
+            $config = config('rws.application.price');
+            if(($min_price != null) && $min_price > $config['min']){
+                $i = $min_price;
+            }
+            if(($max_price != null) && $max_price < $config['max']){
+                $max = $max_price;
+            }
+            $i = $config['min'];
+            $max = $config['max'];
+            
+            $priceArr = [];
+            for (; $i <= $max; $i = $i + $config['increment']) {
+                $priceArr[] = $i;
+            }
+            if (array_search($max, $priceArr) < 0) {
+                $priceArr[] = $max;
+            }
+            $max_array_count = count($priceArr);
+            for ($j = 0; $j <= $max_array_count; $j += 2) {
+                if($j + 1 <= $max_array_count){
+                    $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
+                }  
+
+                if(!isset($priceArr[$j]))
+                    $ranges[] = $priceArr[$max_array_count - 1] . " > ";
+            }
+
+            return $ranges;
+        }
+    }
 }
