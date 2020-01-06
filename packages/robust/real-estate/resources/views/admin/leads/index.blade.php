@@ -348,7 +348,6 @@
                                                 <td>
                                                     <a href="#">Add</a>
                                                 </td>
-                                                <td><a href="#">Lead review<i aria-hidden="true" class="fa fa-external-link ml-1"></i></a></td>
                                             </tr>
                                         </tbody>                                    
                                     </table>              
