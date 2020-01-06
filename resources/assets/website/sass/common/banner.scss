@@ -125,66 +125,80 @@
 }
 
 #adv-search-dropdown {
-  position: absolute;
-  top:365px;
-  z-index: 9;
-  left: 76px;
-  background:$dark_theme_color;
-  width: 87.4%;
-  opacity: 0;
-  -webkit-transition: ease-in-out .2s;
-  transition: ease-in-out .2s;
-  padding: 4px;
-  font-size: 10px;
-  display:none;
-
-  &.show {
-    opacity: 1;
-    display:block;
-  }
-
-  .inner {
-    border: 2px solid $white;
-    padding:10px 0px;
-  }
-  .mb-20{
-    margin-bottom:16px;
-  }
-  button.theme-btn {
-    border: 0;
-    margin-right: 10px;
-    width: 93%;
-    margin-left: 10px;
-    margin-top: 16px;
-  }
-  .input-field > label {
-    &:not(.label-icon).active {
-      transform: none;
-    }
-
-    transform: none;
-  }
-
-  label, [type="checkbox"] + span:not(.lever) {
+    position: absolute;
+    top: 365px;
+    z-index: 9;
+    left: 76px;
+    background: $dark_theme_color;
+    width: 87.4%;
+    opacity: 0;
+    -webkit-transition: ease-in-out .2s;
+    transition: ease-in-out .2s;
+    padding: 4px;
     font-size: 10px;
-  }
+    display: none;
 
-  input[type="text"] {
-    height: 1rem;
-  }
-  .select-wrapper{
-      margin:0 0px;
-  }
-  .multi-select-container {
-    label{
-        margin-top: 15px;
+    &.show {
+        opacity: 1;
+        display: block;
     }
-    .select2-container{
-        .select2-selection--multiple{
-          min-height:30px;
+
+    .inner {
+        border: 2px solid $white;
+        padding: 10px 0px;
+    }
+
+    .mb-20 {
+        margin-bottom: 16px;
+    }
+
+    button.theme-btn {
+        border: 0;
+        margin-right: 10px;
+        width: 93%;
+        margin-left: 10px;
+        margin-top: 16px;
+
+        &:focus, &:hover {
+            background-color: #1a428e !important;
         }
-      } 
-  }
+    }
+
+    .input-field > label {
+        &:not(.label-icon).active {
+            transform: none;
+        }
+
+        transform: none;
+    }
+
+    label, [type="checkbox"] + span:not(.lever) {
+        font-size: 10px;
+    }
+
+    input[type="text"] {
+        height: 1rem;
+    }
+
+    .select-wrapper {
+        margin: 0 0px;
+
+        .caret {
+            fill: rgba(251, 248, 248, 0.87);
+        }
+    }
+
+    .multi-select-container {
+        label {
+            margin-top: 15px;
+        }
+
+        .select2-container {
+            .select2-selection--multiple {
+                min-height: 30px;
+            }
+        }
+    }
 }
 
 .mb-20 {
