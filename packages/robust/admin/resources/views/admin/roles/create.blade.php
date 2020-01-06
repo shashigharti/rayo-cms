@@ -56,7 +56,7 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="form-group form-material">
+                        <div class="form-group form-material mt-2">
                             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
                         </div>
     {{ Form::close() }}

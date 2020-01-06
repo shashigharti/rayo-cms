@@ -127,3 +127,13 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
     border: 1px dashed #ccc;
     margin: 10px 0px 30px;
 }
+#main {
+    [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        position: relative;
+        opacity: 1;
+        pointer-events: initial;
+        vertical-align: middle;
+        margin-left: 6px;
+        margin-bottom: 6px;
+    }
+}
