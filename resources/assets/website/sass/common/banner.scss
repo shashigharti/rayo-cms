@@ -136,7 +136,7 @@
   transition: ease-in-out .2s;
   padding: 4px;
   font-size: 10px;
-  display: none;
+  display:block;
 
   &.show {
     opacity: 1;
