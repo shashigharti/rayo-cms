@@ -136,20 +136,30 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
         margin-left: 6px;
         margin-bottom: 6px;
     }
-}
-.input-field {
-    textarea + label {
-        transform: translateY(-14px) scale(1);
-    }
 
-    [type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
-        display: inline-block;
-        position: relative;
-        vertical-align: middle;
-        margin: 0;
-        transform: translateY(0px);
+    .input-field {
+        textarea + label {
+            transform: translateY(-14px) scale(1);
+        }
+
+        [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+            margin-bottom: 0px;
+            margin-left: 0px;
+
+            + label {
+                display: inline-block;
+                position: relative;
+                vertical-align: middle;
+                margin: 0;
+                transform: translateY(0px);
+            }
+        }
     }
 }
+
 .image-upload {
     display: block;
+}
+.select-wrapper input.select-dropdown{
+    color:#9e9e9e;
 }
