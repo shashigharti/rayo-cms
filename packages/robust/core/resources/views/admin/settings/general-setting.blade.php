@@ -41,7 +41,7 @@
     <div class="form-group form-material row">        
         <div class="col s6 input-field">
             {{ Form::label('contact_email', 'Contact Email', ['class' => 'control-label' ]) }}
-            {{ Form::text('contact_email', isset($settings['primary_email'])?$settings['contact_email']:'', [
+            {{ Form::text('contact_email', isset($settings['contact_email'])?$settings['contact_email']:'', [
                     'class' => 'form-control'
                 ]) 
             }}
@@ -55,25 +55,27 @@
         </div>
     </div>
     <div class="form-group form-material row">
-        <div class="col s12 input-field">
-            {{ Form::label('description', 'Description', ['class' => 'control-label' ]) }}
+        <div class="col s12 input-field">            
             {{ Form::textarea('description', isset($settings['description'])?$settings['description']:'', [
-                'class' => 'form-control']) 
+                'class' => 'form-control'])           
             }}
+            {{ Form::label('description', 'Description', ['class' => 'control-label' ]) }}
         </div>
     </div>
     <div class="form-group form-material row">
         <div class="col s12 input-field">
-            {{ Form::label('address', 'Address', ['class' => 'control-label' ]) }}
             {{ Form::textarea('address', isset($settings['address'])?$settings['address']:'', [
                     'class' => 'form-control'
                 ]) 
             }}
+             {{ Form::label('address', 'Address', ['class' => 'control-label' ]) }}
         </div>
     </div>
 
-    <div class="form-group form-material">
-        {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+    <div class="form-group form-material mt-1 row">
+        <div class="col s12">
+            {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+        </div>
     </div>
 
     {{Form::close()}}
