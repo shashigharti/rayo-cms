@@ -5,8 +5,9 @@
                 ]) 
         }}
         <div class="form-group form-material row">
-            <div class="col s12 input-field">                
-                {{ Form::textarea('code', isset($settings['code'])?$settings['code']:'', [
+            <div class="col s12 input-field">
+                {{ Form::label('script-before-head-closing', 'Script before head closing tag', ['class' => 'control-label' ]) }}
+                {{ Form::textarea('script-before-head-closing', isset($settings['script-before-head-closing'])?$settings['script-before-head-closing']:'', [
                         'class' => 'form-control',
                         'rows' => 3
                     ]) 
@@ -16,8 +17,9 @@
         </div>
 
         <div class="form-group form-material row">
-            <div class="col s12 input-field">                
-                {{ Form::textarea('body-script', isset($settings['body-script'])?$settings['body-script']:'', [
+            <div class="col s12 input-field">
+                {{ Form::label('script-after-body-opening', 'Script after body tag', ['class' => 'control-label' ]) }}
+                {{ Form::textarea('script-after-body-opening', isset($settings['script-after-body-opening'])?$settings['script-after-body-opening']:'', [
                         'class' => 'form-control',
                         'rows' => 3
                     ]) 
