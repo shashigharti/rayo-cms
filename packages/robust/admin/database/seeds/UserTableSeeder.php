@@ -62,9 +62,9 @@ class UserTableSeeder extends Seeder
                 'email' => $admin['email'],
                 'password' => $admin['password'],
             ]);
-            // if($user->wasRecentlyCreated){
-            //     $user->roles()->attach($role->id);
-            // }
+            if($user->wasRecentlyCreated){
+                $user->roles()->attach($role->id);
+            }
 
         }
 
