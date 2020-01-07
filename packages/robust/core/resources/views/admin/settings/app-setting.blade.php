@@ -26,7 +26,7 @@
             <div class="form-group form-material row">
                 <div class="col s5 input-field">
                     {!! Html::decode(Form::label('maintenance_mode', 'Maintenance Mode', ['class' => 'control-label required' ]))  !!}
-                    {{ Form::checkbox('maintenance_mode', 0) }}
+                    {{ Form::checkbox('maintenance_mode', isset($settings['maintenance_mode'])?$settings['maintenance_mode']:'') }}
                 </div>
                 <div class="col s7 input-field">
                     {{ Form::select('maintenance_type', [
