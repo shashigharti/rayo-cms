@@ -27,7 +27,7 @@
         ]); ?>
     </script>
 
-    {{ settings('contact-setting', 'g-analytics') }}
+    {{ settings('g-analytics', 'script-before-head-closing') }}
 
 </head>
     <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns" 

@@ -65,7 +65,7 @@
             @endif
         </div>
     @endif
-    <div class="form-group form-material">
+    <div class="form-group form-material mt-3">
         {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
     </div>
     {{ Form::close() }}
