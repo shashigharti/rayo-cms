@@ -8,7 +8,7 @@
                 <div class="col s6">
                     {{ Form::label('first_block', 'First Block', ['class' => 'control-label' ]) }}
                     {{ Form::select('first_block[]', $advancesearch_helper->getAdvanceSearchFilters(),
-                        isset($settings['first_block']) ? implode(",", $settings['first_block']): '',
+                       $settings['first_block'] ?? [],
                         [
                             'class'=>'browser-default multi-select',
                             'multiple'
@@ -18,7 +18,7 @@
                 <div class="col s6">
                     {{ Form::label('second_block', 'Second Block', ['class' => 'control-label' ]) }}
                     {{ Form::select('second_block[]', $advancesearch_helper->getAdvanceSearchFilters(),
-                        isset($settings['second_block']) ? implode(",", $settings['second_block']): '',
+                        $settings['second_block'] ?? [],
                         [
                             'class'=>'browser-default multi-select',
                             'multiple'
@@ -30,7 +30,7 @@
             <div class="col s6">
                     {{ Form::label('third_block', 'Third Block', ['class' => 'control-label' ]) }}
                     {{ Form::select('third_block[]',  $advancesearch_helper->getAdvanceSearchFilters(),
-                        isset($settings['third_block']) ? implode(",", $settings['third_block']): '',
+                        $settings['third_block'] ?? [],
                         [
                             'class'=>'browser-default multi-select',
                             'multiple'
@@ -40,7 +40,7 @@
                 <div class="col s6">
                     {{ Form::label('fourth_block', 'Fourth Block', ['class' => 'control-label' ]) }}
                     {{ Form::select('fourth_block[]',  $advancesearch_helper->getAdvanceSearchFilters(),
-                        isset($settings['fourth_block']) ? implode(",", $settings['fourth_block']): '',
+                        $settings['fourth_block'] ?? [],
                         [
                         'class'=>'browser-default multi-select',
                         'multiple'
