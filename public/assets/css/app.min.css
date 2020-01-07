@@ -1158,4 +1158,18 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .btn--bar .btn i,.btn--bar .btn-large i,.btn--bar .btn-small i{font-size:12px}.theme--btn{background-color:#6b4994 !important}
 .theme--btn:hover{background-color:#8d62c1 !important}span.badge-secondary{color:#333;font-size:11px;font-weight:bold}
 .theme--select{margin-top:10px}.filter--bar .theme__tabs .tab a{font-size:11px;font-weight:bold}
-.leads-table small{font-size:10px}.info-unit{width:30px}
+.leads-table small{font-size:10px}.info-unit{width:30px}.statistics__block{padding:15px}
+.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
+.statistics__block .statistics__block-single h6.title{font-size:16px;margin-top:15px}
+.statistics__block .statistics__block-single p{margin:2px 0;font-size:12px}.statistics__block .statistics__block-single p.count{font-size:35px;color:#0277bd}
+.statistics__block .statistics__block-single p.price{font-weight:bold}.statistics__block .statistics__block-single a{font-size:13px;font-weight:bold;margin:4px 0 10px;display:block}
+.statistics__block .statistics__block-single button{width:100%;font-weight:600;font-size:13px}
+.Dashboards h5{font-size:20px;color:#575758}.shortcuts__block{padding:10px 10px 25px}
+.shortcuts__block .shortcuts__block-single{display:inline-block;width:45%;padding:10px;margin:10px 6px 6px;color:#fff}
+.shortcuts__block .shortcuts__block-single i{font-size:40px;margin-top:12px}.shortcuts__block .shortcuts__block-single p{margin-top:0}
+.top__block{padding:0 15px 15px}.top__block p{margin-bottom:0;margin-top:4px;font-size:11px;font-weight:800;width:48%;display:inline-block}
+.top__block a{text-align:right;display:inherit;font-size:12px;font-weight:bold;margin-top:2px}
+.properties__block{background:#9c27b0;padding:15px;color:#fff}.properties__block h5{color:#fff;margin-bottom:20px}
+.properties__block .count{display:inline-block;font-size:40px;padding:15px 13px;background:#b728d0;color:#fff;border-radius:50%;-webkit-box-shadow:0 0 1px 1px #ccc;box-shadow:0 0 1px 1px #ccc}
+.totalcount__block--single{padding:15px 15px 0}.totalcount__block--single h5{font-weight:bold;color:#9c27b0;font-size:24px;margin-bottom:5px}
+.totalcount__block--single p{margin-top:0;color:#111;font-weight:bold;margin-bottom:0}
