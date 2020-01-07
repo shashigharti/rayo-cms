@@ -57,14 +57,14 @@ class UserTableSeeder extends Seeder
                 'last_name' => $admin['last_name'],
             ]);
             $user = User::updateOrCreate(['id' =>1],[
-                'member_id' => $created->id,
-                'member_type' => 'Robust\Admin\Models\Admin',
+                'memberable_id' => $created->id,
+                'memberable_type' => 'Robust\Admin\Models\Admin',
                 'email' => $admin['email'],
                 'password' => $admin['password'],
             ]);
-            if($user->wasRecentlyCreated){
-                $user->roles()->attach($role->id);
-            }
+            // if($user->wasRecentlyCreated){
+            //     $user->roles()->attach($role->id);
+            // }
 
         }
 
