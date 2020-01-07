@@ -26,10 +26,9 @@
         <fieldset> 
             <legend>Site Maintenance </legend>
             <div class="form-group form-material row">
-                <div class="col s5 input-field">
-                    {{ Form::checkbox('maintenance_mode', 0) }}
+                <div class="col s5 input-field">                    
+                    {{ Form::checkbox('maintenance_mode', isset($settings['maintenance_mode'])?$settings['maintenance_mode']:'') }}
                     {!! Html::decode(Form::label('maintenance_mode', 'Maintenance Mode', ['class' => 'control-label required' ]))  !!}
-                    
                 </div>
                 <div class="col s7 input-field">
                     {{ Form::select('maintenance_type', [

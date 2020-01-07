@@ -41,7 +41,7 @@
     <div class="form-group form-material row">        
         <div class="col s6 input-field">
             {{ Form::label('contact_email', 'Contact Email', ['class' => 'control-label' ]) }}
-            {{ Form::text('contact_email', isset($settings['primary_email'])?$settings['contact_email']:'', [
+            {{ Form::text('contact_email', isset($settings['contact_email'])?$settings['contact_email']:'', [
                     'class' => 'form-control'
                 ]) 
             }}
