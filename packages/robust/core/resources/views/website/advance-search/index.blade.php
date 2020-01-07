@@ -1,4 +1,5 @@
 @set('blocks', settings('advance-search'))
+@set('default_values',$blocks['default_values'] ?? [])
 @if(!empty($blocks))
     <form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
         <div id='adv-search-dropdown'>

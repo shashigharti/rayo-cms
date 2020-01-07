@@ -52,9 +52,9 @@
         <fieldset class="mt-3">
             <legend>Default Values For Filters</legend>
              <div class="col s4">
-                {{ Form::label("default_values['cities']", 'Cities', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['cities']",  $advancesearch_helper->getAdvanceSearchFilters(),
-                    isset($settings['default_values']['cities']) ? explode(",", $settings['default_values']['cities']):[],
+                {{ Form::label("default_values[cities]", 'Cities', ['class' => 'control-label' ]) }}
+                {{ Form::select("default_values[cities][]", [],
+                    $settings['default_values']['cities'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'
@@ -62,23 +62,23 @@
                 }}
             </div>
             <div class="col s4">
-                {{ Form::label("default_values['property_type']", 'Property Type', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['property_type']",  $advancesearch_helper->getAdvanceSearchFilters(),
-                    isset($settings['default_values']['property_type']) ? explode(",", $settings['default_values']['property_type']):[],
+                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name'))
+                {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
+                {{ Form::select("default_values[property_type][]", $property_types,
+                     $settings['default_values']['property_type'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'
                     ])
                 }}
             </div>
-
             <div class="col s4">
                 {{ Form::label("default_values['status']", 'Property Status', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['status']",  [
-                        'active' => 'Properties for Sale',
-                        'sold' => 'Sold'
+                {{ Form::select("default_values[status][]",  [
+                        'Properties for sale' => 'Properties for Sale',
+                        'Sold' => 'Sold'
                     ],
-                    isset($settings['default_values']['status']) ? explode(",", $settings['default_values']['status']):[],
+                    $settings['default_values']['status'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'

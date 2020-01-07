@@ -29,7 +29,7 @@
                 @if(isset($lead->favourites) && !empty($lead->favourites))
                     @foreach($lead->favourites as $favourite)
                         <tr>
-                            <td>{{$favourite->listing_name}}</td>
+                            <td>{{$favourite->name}}</td>
                             <td>{{$favourite->class}}</td>
                             <td>{{$favourite->system_price}}</td>
                         </tr>
