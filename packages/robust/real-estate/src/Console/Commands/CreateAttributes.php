@@ -30,8 +30,9 @@ class CreateAttributes extends Command
     {
         // Get all listings
         $location_properties = \DB::table('real_estate_listing_properties')
-        ->distinct('type')
-        ->get();
+            ->whereNotIn('type',['public_remarks'])
+            ->distinct('type')
+            ->get();
 
         $all_properties = [];
 
@@ -40,17 +41,17 @@ class CreateAttributes extends Command
                 $all_properties[$property->type] = [];
             }
 
-            $new_values = explode(',', $property->value);            
+            $new_values = explode(',', $property->value);
             $values = array_diff($new_values, $all_properties[$property->type]);
             foreach($values as $value){
                 // Numeric fields that can take any value are excluded
                 if(is_numeric($value)){
                     continue;
-                }      
-                $all_properties[$property->type][] = $value;          
-            }            
-        }   
-        
+                }
+                $all_properties[$property->type][] = $value;
+            }
+        }
+
         foreach($all_properties as $key => $values){
             \DB::table('real_estate_attributes')->insert([
                 'property_name' => $key,
@@ -60,6 +61,6 @@ class CreateAttributes extends Command
                     })),
                 'status' => 1
             ]);
-        } 
+        }
     }
 }
