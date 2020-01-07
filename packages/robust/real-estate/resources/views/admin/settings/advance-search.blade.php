@@ -55,7 +55,7 @@
                 {{ Form::label("default_values[cities]", 'Cities', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[cities][]", [
                         'delray-beach' => 'Delray Beach',
-                        'boca-ranton'  => 'Boca Ranton' ,
+                        'boca-raton'  => 'Boca Raton' ,
                     ] ,
                     $settings['default_values']['cities'] ?? [],
                     [
@@ -80,8 +80,8 @@
             <div class="col s4">
                 {{ Form::label("default_values['status']", 'Property Status', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[status][]",  [
-                        'active' => 'Properties for Sale',
-                        'sold' => 'Sold'
+                        'Properties for sale' => 'Properties for Sale',
+                        'Sold' => 'Sold'
                     ],
                     $settings['default_values']['status'] ?? [],
                     [
