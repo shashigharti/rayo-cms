@@ -64,7 +64,7 @@
                 }}
             </div>
             <div class="col s4">
-                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name'))
+                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name', 'name'))
                 {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[property_type][]", $property_types,
                      $settings['default_values']['property_type'] ?? [],
