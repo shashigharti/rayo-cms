@@ -11,14 +11,13 @@
                 }}
             </div>
         </div>
-
         <div class="form-group form-material row">
             <div class="col s12 input-field">               
-                {{ Form::textarea('footer-content', isset($settings['footer-content'])?$settings['footer-content']:'', [
+                {{ Form::textarea('footer_content', isset($settings['footer_content'])?$settings['footer_content']:'', [
                         'class' => 'form-control editor',
                     ]) 
                 }}
-                {{ Form::label('footer-content', 'Footer Content', ['class' => 'control-label' ]) }}
+                {{ Form::label('footer_content', 'Footer Content', ['class' => 'control-label' ]) }}
             </div>
         </div>
         <div class="row">
