@@ -34,8 +34,10 @@
                 {{ Form::label('script-before-body-closing', 'Script after body closing tag', ['class' => 'control-label' ]) }}
             </div>
         </div>
-        <div class="form-group form-material">
-            {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+        <div class="form-group form-material row mt-1">
+            <div class="col s12">
+                {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+            </div>
         </div>
     {{Form::close()}}
 </div>

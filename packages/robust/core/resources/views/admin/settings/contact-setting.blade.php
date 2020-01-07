@@ -49,8 +49,10 @@
 
         </div>
     </div>
-    <div class="form-group form-material">
-        {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+    <div class="form-group form-material row">
+        <div class="col s12">
+            {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+        </div>
     </div>
     {{Form::close()}}
 </div>
