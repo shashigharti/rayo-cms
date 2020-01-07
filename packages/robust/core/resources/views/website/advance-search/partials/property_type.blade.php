@@ -13,11 +13,12 @@
             <span>Select All</span>
         </label>
     </p>
+    @set('params',$query_params['property_type'] ?? $default_values['property_type'] ?? [])
     @foreach($property_types as $property)
         <p>
             <label>
-                <input name="property_type[]" value="{{$property['name']}}" type="checkbox" 
-                {{ (isset($query_params['property_type']) && in_array($property['name'], $query_params['property_type'])) ? 'checked':'' }}
+                <input name="property_type[]" value="{{$property['name']}}" type="checkbox"
+                {{ (in_array($property['name'], $params)) ? 'checked':'' }}
                 />
                 <span>{{$property['name']}}</span>
             </label>
