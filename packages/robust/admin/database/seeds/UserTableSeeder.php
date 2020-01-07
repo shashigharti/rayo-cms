@@ -41,8 +41,8 @@ class UserTableSeeder extends Seeder
         $admins = [
             [
                 'id' => 1,
-                'email' => 'info@robustitconcepts.com',
-                'password' => Hash::make('12345678'),
+                'email' => 'john@realwebsystems.com',
+                'password' => Hash::make('reel-reel'),
                 'first_name' => 'Super',
                 'last_name' => ' User',
                 'user_name' => 'super_user',
