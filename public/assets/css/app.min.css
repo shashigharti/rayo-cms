@@ -1171,5 +1171,6 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .top__block a{text-align:right;display:inherit;font-size:12px;font-weight:bold;margin-top:2px}
 .properties__block{background:#9c27b0;padding:15px;color:#fff}.properties__block h5{color:#fff;margin-bottom:20px}
 .properties__block .count{display:inline-block;font-size:40px;padding:15px 13px;background:#b728d0;color:#fff;border-radius:50%;-webkit-box-shadow:0 0 1px 1px #ccc;box-shadow:0 0 1px 1px #ccc}
-.totalcount__block--single{padding:15px 15px 0}.totalcount__block--single h5{font-weight:bold;color:#9c27b0;font-size:24px;margin-bottom:5px}
-.totalcount__block--single p{margin-top:0;color:#111;font-weight:bold;margin-bottom:0}
+.totalcount__block{padding-bottom:20px}.totalcount__block .totalcount__block--single{padding:15px 15px 0}
+.totalcount__block .totalcount__block--single h5{font-weight:bold;color:#9c27b0;font-size:24px;margin-bottom:5px}
+.totalcount__block .totalcount__block--single p{margin-top:0;color:#111;font-weight:bold;margin-bottom:0}
