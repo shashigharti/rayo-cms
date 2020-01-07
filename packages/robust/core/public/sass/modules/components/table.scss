@@ -86,7 +86,7 @@
     th, td {
         padding: 5px !important;
         color: #575758;
-        font-weight: 600;
+        font-weight: 500;
     }
 
     img {
@@ -94,4 +94,13 @@
     }
 
     font-size: 12px;
+}
+.table thead th {
+    vertical-align: middle;
+    border-bottom: 1px solid #d5d6d7 !important;
+    padding: 10px .6rem !important;
+    font-weight: bold;
+    color: #111;
+    text-transform: uppercase;
+    font-size: 11px;
 }
