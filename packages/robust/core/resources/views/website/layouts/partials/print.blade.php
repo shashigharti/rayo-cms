@@ -50,7 +50,7 @@
 <body>
 @inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
 @set('image',$result->images ? $result->images->first() : null)
-@set('details',$setting_helper->getValuesBySlug('listing-details'))
+{{-- @set('details',$setting_helper->getValuesBySlug('listing-details')) --}}
 @set('properties',$result->property->pluck('value','type'))
 <div class="header">
     <h1>${{$result->system_price}} - {{$result->name}}</h1>

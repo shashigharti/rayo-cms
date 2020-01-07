@@ -39,16 +39,18 @@ if (!function_exists('settings')) {
     /**
      * @return string
      */
-    function settings($type, $name = null)
+    function settings($slug, $name = null)
     {
-        $setting = (new \Robust\Core\Helpers\SettingsHelper)->get($type);
-        if ($name && isset($setting[$name])) {
-            return $setting[$name];
-        } elseif ($name == null && $setting) {
-            return $setting;
-        } else {
-            return '';
+        $setting = \Robust\Core\Models\Setting::where('slug', $slug)->first();
+        if (isset($setting->values)) {
+            $values = json_decode($setting->values, true);
         }
+
+        if ($name == null) {
+            return isset($values) ? $values : "";
+        }
+
+        return isset($values[$name]) ? $values[$name] : '';
     }
 }
 
