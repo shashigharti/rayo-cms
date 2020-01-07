@@ -3,7 +3,7 @@
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
         <div class="form-group form-material row">
             <div class="col s6 input-field">
-                {{ Form::label('pagination', 'Per page pagination', ['class' => 'control-label' ]) }}
+                {{ Form::label('pagination', 'No of properties per page', ['class' => 'control-label' ]) }}
                 {{ Form::number('pagination', isset($settings['pagination'])?$settings['pagination']:'', [
                         'class' => 'form-control',
                         'min' => 0
