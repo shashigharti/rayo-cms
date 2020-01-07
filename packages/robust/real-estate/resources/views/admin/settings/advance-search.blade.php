@@ -26,8 +26,8 @@
                     }}
                 </div>
             </div>
-            <div class="row multi-select-container">
-            <div class="col s6">
+            <div class="row multi-select-container mt-1">
+                <div class="col s6">
                     {{ Form::label('third_block', 'Third Block', ['class' => 'control-label' ]) }}
                     {{ Form::select('third_block[]',  $advancesearch_helper->getAdvanceSearchFilters(),
                         $settings['third_block'] ?? [],
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </fieldset>
-        <fieldset>
+        <fieldset class="mt-3">
             <legend>Default Values For Filters</legend>
              <div class="col s4">
                 {{ Form::label("default_values['cities']", 'Cities', ['class' => 'control-label' ]) }}
@@ -86,8 +86,10 @@
                 }}
             </div>
         </fieldset>
-        <div class="form-group form-material">
-            {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+        <div class="form-group form-material mt-3 row">
+            <div class="col s12">
+                {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
+            </div>
         </div>
     {{Form::close()}}
 </div>
