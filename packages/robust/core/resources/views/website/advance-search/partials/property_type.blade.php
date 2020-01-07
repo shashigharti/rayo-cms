@@ -1,5 +1,5 @@
-@inject('advance_helper', 'Robust\RealEstate\Helpers\AdvanceSearchHelper')
-@set('property_types', $advance_helper->getAttributesListByPropertyName('property_type'))
+@inject('advancesearch_helper', 'Robust\RealEstate\Helpers\AdvanceSearchHelper')
+@set('property_types', $advancesearch_helper->getAttributesListByPropertyName('property_type'))
 
 <div class="mb-20">
     <p>

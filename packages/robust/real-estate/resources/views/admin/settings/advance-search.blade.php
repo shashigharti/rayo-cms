@@ -53,10 +53,7 @@
             <legend>Default Values For Filters</legend>
              <div class="col s4">
                 {{ Form::label("default_values[cities]", 'Cities', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values[cities][]", [
-                        'delray-beach' => 'Delray Beach',
-                        'boca-raton'  => 'Boca Raton' ,
-                    ] ,
+                {{ Form::select("default_values[cities][]", [],
                     $settings['default_values']['cities'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
@@ -65,11 +62,9 @@
                 }}
             </div>
             <div class="col s4">
+                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name'))
                 {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values[property_type][]",  [
-                         'single-family-detached' => 'Single Family Detached'  ,
-                          'villa' => 'Villa' ,
-                      ],
+                {{ Form::select("default_values[property_type][]", $property_types,
                      $settings['default_values']['property_type'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
