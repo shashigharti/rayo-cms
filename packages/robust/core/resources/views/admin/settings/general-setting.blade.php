@@ -55,20 +55,20 @@
         </div>
     </div>
     <div class="form-group form-material row">
-        <div class="col s12 input-field">
-            {{ Form::label('description', 'Description', ['class' => 'control-label' ]) }}
+        <div class="col s12 input-field">            
             {{ Form::textarea('description', isset($settings['description'])?$settings['description']:'', [
-                'class' => 'form-control']) 
+                'class' => 'form-control'])           
             }}
+            {{ Form::label('description', 'Description', ['class' => 'control-label' ]) }}
         </div>
     </div>
     <div class="form-group form-material row">
         <div class="col s12 input-field">
-            {{ Form::label('address', 'Address', ['class' => 'control-label' ]) }}
             {{ Form::textarea('address', isset($settings['address'])?$settings['address']:'', [
                     'class' => 'form-control'
                 ]) 
             }}
+             {{ Form::label('address', 'Address', ['class' => 'control-label' ]) }}
         </div>
     </div>
 

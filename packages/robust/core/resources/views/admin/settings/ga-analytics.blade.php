@@ -5,24 +5,24 @@
                 ]) 
         }}
         <div class="form-group form-material row">
-            <div class="col s12 input-field">
-                {{ Form::label('code', 'Head Script', ['class' => 'control-label' ]) }}
+            <div class="col s12 input-field">                
                 {{ Form::textarea('code', isset($settings['code'])?$settings['code']:'', [
                         'class' => 'form-control',
                         'rows' => 3
                     ]) 
                 }}
+                {{ Form::label('code', 'Head Script', ['class' => 'control-label' ]) }}
             </div>
         </div>
 
         <div class="form-group form-material row">
-            <div class="col s12 input-field">
-                {{ Form::label('body-script', 'Body Script', ['class' => 'control-label' ]) }}
+            <div class="col s12 input-field">                
                 {{ Form::textarea('body-script', isset($settings['body-script'])?$settings['body-script']:'', [
                         'class' => 'form-control',
                         'rows' => 3
                     ]) 
                 }}
+                {{ Form::label('body-script', 'Body Script', ['class' => 'control-label' ]) }}
             </div>
         </div>
         <div class="form-group form-material">

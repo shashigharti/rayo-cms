@@ -137,3 +137,19 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
         margin-bottom: 6px;
     }
 }
+.input-field {
+    textarea + label {
+        transform: translateY(-14px) scale(1);
+    }
+
+    [type="checkbox"]:not(:checked) + label, [type="checkbox"]:checked + label {
+        display: inline-block;
+        position: relative;
+        vertical-align: middle;
+        margin: 0;
+        transform: translateY(0px);
+    }
+}
+.image-upload {
+    display: block;
+}
