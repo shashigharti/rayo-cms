@@ -2,10 +2,6 @@
 
 @section('form')
     @set('ui', new $ui)
-    @set('template', request()->query('template'))
-    @if($template == '')
-        @set('template', 'two-col-ad')
-    @endif
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
         <div id="{{ $title }}" class="col s12">
             <div class="row">
@@ -36,7 +32,7 @@
                             'slider' => 'Slider',
                             'banner-slider' => 'Banner Slider'
                         ],
-                        $template,
+                        null,
                         [
                             'required'  => 'required',
                             'class' => 'select-reload-on-change',
@@ -48,6 +44,7 @@
             </div>
             <div class="container sub--block">
                 @set('properties', json_decode($model->properties))
+                @set('template', request()->query('template')?? $model->template)
                 @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])
             </div>
             <div class="row">
