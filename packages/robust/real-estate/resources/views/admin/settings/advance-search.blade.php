@@ -52,9 +52,12 @@
         <fieldset>
             <legend>Default Values For Filters</legend>
              <div class="col s4">
-                {{ Form::label("default_values['cities']", 'Cities', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['cities']",  $advancesearch_helper->getAdvanceSearchFilters(),
-                    isset($settings['default_values']['cities']) ? explode(",", $settings['default_values']['cities']):[],
+                {{ Form::label("default_values[cities]", 'Cities', ['class' => 'control-label' ]) }}
+                {{ Form::select("default_values[cities][]", [
+                        'delray-beach' => 'Delray Beach',
+                        'boca-ranton'  => 'Boca Ranton' ,
+                    ] ,
+                    $settings['default_values']['cities'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'
@@ -62,23 +65,25 @@
                 }}
             </div>
             <div class="col s4">
-                {{ Form::label("default_values['property_type']", 'Property Type', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['property_type']",  $advancesearch_helper->getAdvanceSearchFilters(),
-                    isset($settings['default_values']['property_type']) ? explode(",", $settings['default_values']['property_type']):[],
+                {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
+                {{ Form::select("default_values[property_type][]",  [
+                         'single-family-detached' => 'Single Family Detached'  ,
+                          'villa' => 'Villa' ,
+                      ],
+                     $settings['default_values']['property_type'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'
                     ])
                 }}
             </div>
-
             <div class="col s4">
                 {{ Form::label("default_values['status']", 'Property Status', ['class' => 'control-label' ]) }}
-                {{ Form::select("default_values['status']",  [
+                {{ Form::select("default_values[status][]",  [
                         'active' => 'Properties for Sale',
                         'sold' => 'Sold'
                     ],
-                    isset($settings['default_values']['status']) ? explode(",", $settings['default_values']['status']):[],
+                    $settings['default_values']['status'] ?? [],
                     [
                         'class'=>'browser-default multi-select',
                         'multiple'
