@@ -39,14 +39,13 @@ class IsAdmin
      */
     public function handle($request, Closure $next)
     {
-       
         if (Auth::user() && isAdmin()){
             \Log::info("is admin " . Auth::user());
             return $next($request);
-        }elseif(Auth::user() && !isAdmin()){            
+        }elseif(Auth::user() && !isAdmin()){
             \Log::info("is user " . Auth::user());
             return redirect()->route('website.profile');
-        }           
+        }
 
         return redirect()->route('website.home');
     }

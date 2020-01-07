@@ -22,7 +22,7 @@ if (!function_exists('getAvatar')) {
      * @return boolean
      */
     function getAvatar($user = null)
-    {        
+    {
         if($user == null){
             $user = Auth::user();
         }

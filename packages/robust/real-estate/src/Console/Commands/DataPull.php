@@ -102,15 +102,15 @@ class DataPull extends RetsCommands
         'school_district' => 'school_district-id'
     ];
     protected $mapping = [
-        'city' => '\Robust\RealEstate\Models\City',
-        'county' => '\Robust\RealEstate\Models\County',
-        'area' => '\Robust\RealEstate\Models\Area',
-        'elementary_school' => '\Robust\RealEstate\Models\ElementarySchool',
-        'middle_school' => '\Robust\RealEstate\Models\MiddleSchool',
-        'high_school' => '\Robust\RealEstate\Models\HighSchool',
-        'zip' =>  '\Robust\RealEstate\Models\Zip',
-        'subdivision' =>  '\Robust\RealEstate\Models\Subdivision',
-        'school_district' =>  '\Robust\RealEstate\Models\SchoolDistrict',
+        'city' => 'Robust\RealEstate\Models\City',
+        'county' => 'Robust\RealEstate\Models\County',
+        'area' => 'Robust\RealEstate\Models\Area',
+        'elementary_school' => 'Robust\RealEstate\Models\ElementarySchool',
+        'middle_school' => 'Robust\RealEstate\Models\MiddleSchool',
+        'high_school' => 'Robust\RealEstate\Models\HighSchool',
+        'zip' =>  'Robust\RealEstate\Models\Zip',
+        'subdivision' =>  'Robust\RealEstate\Models\Subdivision',
+        'school_district' =>  'Robust\RealEstate\Models\SchoolDistrict',
     ];
 
     //Palm Beach, Broward, Martin, St Lucie
@@ -302,11 +302,11 @@ class DataPull extends RetsCommands
                                     'name' => $data,
                                     'slug' => Str::slug($data)
                                 ])->id;
-                                $location = Location::where(['location_id' => $map_id,'locationable_type' => $this->mapping[$key]])->first();
+                                $location = Location::where(['locationable_id' => $map_id,'locationable_type' => $this->mapping[$key]])->first();
                                 $listing_data[$this->maps[$key]] = $location ? $location->id : Location::create([
                                     'name' => $data,
                                     'slug' => Str::slug($data),
-                                    'location_id' => $map_id,
+                                    'locationable_id' => $map_id,
                                     'locationable_type' => $this->mapping[$key]
                                 ])->id;
                             }

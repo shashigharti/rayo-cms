@@ -76,9 +76,9 @@ class ListingPriceCount extends Command
             $location = $properties['location'];
             $type = $properties['location_type'];
             if ($location != '') {
-                $properties['property_counts'] = [];    
+                $properties['property_counts'] = [];
                 $field = $this->maps[$type];
-                $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location"); 
+                $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location");
                 $prices = generate_price_ranges($result[0]->min, $result[0]->max);
                 $properties['prices'] = $prices;
                 foreach ($prices as $key => $price) {
@@ -97,18 +97,17 @@ class ListingPriceCount extends Command
                         ->where('system_price', '>', $system_price[0])
                         ->count();
                     }
-                    
+
                 }
                 $block->update(['properties' => json_encode($properties)]);
-                
+
             }
             $tabs = $properties['sub_areas'];
             $properties['tabs'] = [];
-            $location = 136;
             foreach ($tabs as $tab) {
                 $properties['tabs'][$tab] = [];
                 if (isset($this->tabs_maps[$tab])) {
-                    $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location"); 
+                    $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location");
                     $prices = generate_price_ranges($result[0]->min, $result[0]->max);
                     foreach ($prices as $price) {
                         $field = $this->maps[$type];

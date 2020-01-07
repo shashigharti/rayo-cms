@@ -28,14 +28,14 @@ class UpdateLocationsCount extends Command
      * @var array
      */
     protected $mapping = [
-        'Robust\RealEstate\Models\City' => 'city_id',
-        'Robust\RealEstate\Models\County' => 'county_id',
-        'Robust\RealEstate\Models\Area' =>'area_id',
-        'Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
-        'Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id',
-        'Robust\RealEstate\Models\HighSchool' => 'high_school_id',
-        'Robust\RealEstate\Models\Zip' => 'zip_id',
-        'Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
+        '\Robust\RealEstate\Models\City' => 'city_id',
+        '\Robust\RealEstate\Models\County' => 'county_id',
+        '\Robust\RealEstate\Models\Area' =>'area_id',
+        '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
+        '\Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id',
+        '\Robust\RealEstate\Models\HighSchool' => 'high_school_id',
+        '\Robust\RealEstate\Models\Zip' => 'zip_id',
+        '\Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
     ];
     /**
      * Execute the console command.
@@ -49,17 +49,17 @@ class UpdateLocationsCount extends Command
             if(isset($this->mapping[$location->locationable_type])){
                 $active_count = \DB::table('real_estate_listings')->where('status', 'Active')
                 ->where($this->mapping[$location->locationable_type], $location->id)->count();
-                $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')            
+                $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')
                     ->where($this->mapping[$location->locationable_type], $location->id)->count();
 
                 $location->update([
-                'active_count' => $active_count,
-                'sold_count' => $sold_count,
+                    'active_count' => $active_count,
+                    'sold_count' => $sold_count,
                 ]);
-                
+
                 $this->info('Name : '.  $location->name . ' || Active : ' .$active_count. ' || Sold : ' . $sold_count);
             }
-            
+
         }
     }
 }
