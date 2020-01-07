@@ -1,19 +1,10 @@
 <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12">
         {{ Form::label('header', 'Header', ['class' => 'required' ]) }}
-        {{ Form::text('properties[header]', null, [
+        {{ Form::text('properties[header]', $properties->header, [
            'placeholder' => 'Banner Content'
            ])
         }}
-    </div>
-    <div class="input-field col s6">
-            {{ Form::label('location_type', 'Location Type', ['class' => 'control-label' ]) }}
-            {{ Form::select('properties[location_type][]', [], [],
-                    [
-                        'class'=>'browser-default multi-select',
-                        'multiple'
-                    ]) 
-            }}
     </div>
 </div>
 <div class="row">
@@ -29,11 +20,13 @@
             ])
         }}
     </div>
-    <div class="input-field col s6">
+</div>
+<div class="row">
+    <div class="input-field col s12">
         {{ Form::label('tabs', 'Tabs', ['class' => 'control-label' ]) }}
-        {{ Form::select('properies[tabs][]', 
+        {{ Form::select('properties[tabs][]', 
             ['condos', 'neighbourhood', 'communities', 'acreages', 'waterfront'], 
-            [],
+            $properties->tabs ?? [],
             [
                 'class'=>'browser-default multi-select',
                 'multiple'
