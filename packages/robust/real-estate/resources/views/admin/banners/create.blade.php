@@ -47,7 +47,8 @@
                 </div>
             </div>
             <div class="container sub--block">
-            @include("real-estate::admin.banners.partials.{$template}")
+                @set('properties', json_decode($model->properties))
+                @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])
             </div>
             <div class="row">
                 <div class="col s12">

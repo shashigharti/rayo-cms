@@ -36,6 +36,18 @@ class Banner extends Model
         'status'
     ];
 
+
+    /**
+     * Change the property attribute to json on save when array is being
+     *
+     * @param  string  $value
+     * @return void
+     */
+    public function setPropertiesAttribute($value)
+    {
+        $this->attributes['properties'] = json_encode($value);
+    }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
