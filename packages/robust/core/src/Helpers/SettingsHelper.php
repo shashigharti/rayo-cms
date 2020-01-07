@@ -19,24 +19,24 @@ class SettingsHelper
         return $settings;
     }
 
-    /**
-     * @param $setting
-     * @param $name
-     * @return string
-     */
-    public function get($setting, $name = null)
-    {
-        $setting = Setting::where('slug', $setting)->first();
-        if (isset($setting->values)) {
-            $values = json_decode($setting->values, true);
-        }
+    // /**
+    //  * @param $setting
+    //  * @param $name
+    //  * @return string
+    //  */
+    // public function get($setting, $name = null)
+    // {
+    //     $setting = Setting::where('slug', $setting)->first();
+    //     if (isset($setting->values)) {
+    //         $values = json_decode($setting->values, true);
+    //     }
 
-        if ($name == null) {
-            return isset($values) ? $values : "";
-        }
+    //     if ($name == null) {
+    //         return isset($values) ? $values : "";
+    //     }
 
-        return isset($values[$name]) ? $values[$name] : '';
-    }
+    //     return isset($values[$name]) ? $values[$name] : '';
+    // }
 
     /**
      * @param $slug
@@ -47,17 +47,17 @@ class SettingsHelper
         return Setting::where('slug', $slug)->first();
     }
 
-    /**
-     * @param $slug
-     * @return array|mixed
-     */
-    public function getValuesBySlug($slug)
-    {
-        $values = [];
-        $setting = Setting::where('slug',$slug)->first();
-        if($setting){
-            $values = json_decode($setting->values,true);
-        }
-        return $values;
-    }
+    // /**
+    //  * @param $slug
+    //  * @return array|mixed
+    //  */
+    // public function getValuesBySlug($slug)
+    // {
+    //     $values = [];
+    //     $setting = Setting::where('slug',$slug)->first();
+    //     if($setting){
+    //         $values = json_decode($setting->values,true);
+    //     }
+    //     return $values;
+    // }
 }
