@@ -37,7 +37,47 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col s8">
+                            <div class="col s6">
+                                <div class="panel card emaildetail__block ">
+                                    <div class="icon-block cyan">
+                                    </div>
+                                    <div class="detail">
+                                        <p>Total Emails Sent</p>
+                                        <h6 class="cyan-c">876</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="panel card emaildetail__block ">
+                                    <div class="icon-block green">
+                                    </div>
+                                    <div class="detail">
+                                        <p>Total Emails Opened</p>
+                                        <h6 class="green-c">876</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="panel card emaildetail__block ">
+                                    <div class="icon-block red">
+                                    </div>
+                                    <div class="detail ">
+                                        <p>Average Emails Sent Per Month</p>
+                                        <h6 class="red-c">876</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s6">
+                                <div class="panel card emaildetail__block ">
+                                    <div class="icon-block orange">
+                                    </div>
+                                    <div class="detail">
+                                        <p>Average Emails Opened</p>
+                                        <h6 class="orange-c">876</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col s8 mt-2">
                                 <div class="panel card shortcuts__block center-align">
                                     <h5 class="title">Quick Links</h5>
                                     <div class="shortcuts__block-single blue">
@@ -66,7 +106,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="col s4">
+                            <div class="col s4 mt-2">
                                 <div class="panel card top__block">
                                     <h5>Top Active Users</h5>
                                     <p>John Mathew</p>

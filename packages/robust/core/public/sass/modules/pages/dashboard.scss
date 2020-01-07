@@ -128,3 +128,46 @@
         }
     }
 }
+.emaildetail__block {
+    margin-bottom: 0px;
+
+    .icon-block {
+        display: inline-block;
+        width: 20px;
+        height: 70px;
+        content: "";
+        vertical-align: top;
+    }
+
+    .detail {
+        display: inline-block;
+        vertical-align: top;
+    }
+
+    p {
+        margin: 10px 0px 0px !important;
+        font-size: 12px;
+        font-weight: bold;
+    }
+
+    h6 {
+        margin: 3px 0px 0px !important;
+        font-size: 24px !important;
+    }
+}
+
+.cyan-c {
+    color: #00bcd4 !important;
+}
+
+.green-c {
+    color: #4caf50 !important;
+}
+
+.red-c {
+    color: #f44336 !important;
+}
+
+.orange-c {
+    color: #ff9800 !important;
+}
