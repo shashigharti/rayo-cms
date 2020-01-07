@@ -1,8 +1,8 @@
 <div class="system-settings__ga-analytics">
     {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
         {{ Form::hidden('slug', $slug, [
-                    'class' => 'form-control'
-                ]) 
+                'class' => 'form-control'
+            ]) 
         }}
         <div class="form-group form-material row">
             <div class="col s12 input-field">
