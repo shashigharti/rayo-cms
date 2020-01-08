@@ -1,6 +1,7 @@
 import jquery from 'jquery';
-window.$ = window.jQuery = jquery;
+//import("../../../../../node_modules/summernote/dist/summernote.js");
 
+window.$ = window.jQuery = jquery;
 window.FRW = {};
 
 $.ajaxSetup({

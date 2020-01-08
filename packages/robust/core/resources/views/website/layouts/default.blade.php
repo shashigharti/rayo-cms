@@ -49,9 +49,8 @@
                 'csrfToken' => csrf_token(),
             ]); ?>
         </script>
-        {!! settings('fb-analytics','code') !!}
     </head>
-    <body>
+    <body data-gapi-key="{{ settings('app-setting','google_api_key') }}">
         {!! settings('ga-analytics','code') !!}
         <header>
             @yield('header')

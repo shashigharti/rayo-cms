@@ -28,7 +28,7 @@
                     {{ Form::textarea('subject', null, [
                             'placeholder' => 'subject i.e. \'Your South Central Alaska Home Search\'',
                             'required'  => 'required',
-                            'class' => 'editor'
+                            'id' => 'editor'
                         ]) 
                     }}
                 </div>
@@ -38,8 +38,7 @@
                     {{ Form::label('body', 'body', ['class' => 'required' ]) }}
                     {{ Form::textarea('body', null, [
                             'placeholder' => 'Email body',
-                            'required'  => 'required',
-                            'class' => 'editor'
+                            'required'  => 'required'
                         ]) 
                     }}
                 </div>
