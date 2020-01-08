@@ -24,19 +24,19 @@ class SettingsHelper
     //  * @param $name
     //  * @return string
     //  */
-    // public function get($setting, $name = null)
-    // {
-    //     $setting = Setting::where('slug', $setting)->first();
-    //     if (isset($setting->values)) {
-    //         $values = json_decode($setting->values, true);
-    //     }
+     public function get($setting, $name = null)
+     {
+         $setting = Setting::where('slug', $setting)->first();
+         if (isset($setting->values)) {
+             $values = json_decode($setting->values, true);
+         }
 
-    //     if ($name == null) {
-    //         return isset($values) ? $values : "";
-    //     }
+         if ($name == null) {
+             return isset($values) ? $values : "";
+         }
 
-    //     return isset($values[$name]) ? $values[$name] : '';
-    // }
+         return isset($values[$name]) ? $values[$name] : '';
+     }
 
     /**
      * @param $slug

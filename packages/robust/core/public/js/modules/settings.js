@@ -3,12 +3,17 @@
     'use strict';
     FRW.TestEmail = {
         init: function (selectObj) {
-            selectObj.on('click', function () {
+            selectObj.on('click', function (e) {
+                e.preventDefault();
+                $('.test-email_result').html(`Processing
+                                <div class="progress">
+                                    <div class="indeterminate"></div>
+                                </div>`);
                 let url = $(this).data('url');
-                const value = $('input[name="test_email"]').val();
+                const value = $('#test_email').val();
                 url = url + '?email=' + value;
                 $.get(url).then(response => {
-                   console.log(response);
+                   $('.test-email_result').html(response);
                 });
             });
         }
