@@ -1,6 +1,4 @@
 import jquery from 'jquery';
-//import("../../../../../node_modules/summernote/dist/summernote.js");
-
 window.$ = window.jQuery = jquery;
 window.FRW = {};
 
