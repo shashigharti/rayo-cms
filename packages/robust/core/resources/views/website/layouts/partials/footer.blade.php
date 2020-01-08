@@ -2,9 +2,7 @@
     <div class="row">
         <div class="col m4 s12">
             <h3>Contact details</h3>
-            <p><i class="fa fa-map"></i>4211 Wailae Avenue, Suite 100, Honolulu</p>
-            <p><i class="fa fa-phone"></i>Cell: 808.291.5441 | Fax: 808.739.4411</p>
-            <p><i class="fa fa-envelope"></i>scott@hiestates.com</p>
+            {!!  settings('app-setting', 'footer_content')  !!}
         </div>
         <div class="col m4 s12">
             <h3>useful links</h3>
