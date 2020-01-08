@@ -10,7 +10,7 @@
                     let selectedElements = [];
 
                     if ($(elem).data('selected')) {
-                        selectedElements = $(elem).data('selected').split(",");
+                        selectedElements = $(elem).data('selected').toString().split(",");
                     }
                     $.get(URL).then(response => {
                         const options = response.data;
