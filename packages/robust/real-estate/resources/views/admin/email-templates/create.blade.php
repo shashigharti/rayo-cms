@@ -24,6 +24,22 @@
             </div>
             <div class="row">
                 <div class="input-field col s12">
+                    {{ Form::select('template', [
+                            'new-lead-registration' => 'Lead Registration',
+                            'lead-import' => 'Lead Import',
+                            'get-more-property-info' => 'Get More Property Info',
+                            'mls-report' => 'MLS Report'
+                        ],
+                        null,
+                        [
+                            'class' => 'select-reload-on-change'
+                        ])
+                    }}
+                    {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s12">
                     {{ Form::label('subject', 'Subject', ['class' => 'required' ]) }}
                     {{ Form::textarea('subject', null, [
                             'placeholder' => 'subject i.e. \'Your South Central Alaska Home Search\'',
