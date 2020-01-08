@@ -12,7 +12,7 @@
     };
 
     $(document).ready(function ($) {
-        let editors = $('textarea.editor');
+        let editors = $('.editor textarea');
         if (editors.length <= 0) {
             return;
         }
