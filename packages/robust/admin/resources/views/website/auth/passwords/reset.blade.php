@@ -1,4 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
+@section('header')
+    @include(Site::templateResolver('core::website.layouts.partials.header'))
+@endsection
 
 @section('body_section')
     <div class="container">

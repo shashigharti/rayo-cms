@@ -31,7 +31,7 @@
                 </select>
             </div>
             @if(isset($filters['sold']))
-                <div class="col s5">
+                <div class="col s5 sold-select-wrapper">
                     <label>{{$filters['sold']['display']}}</label>
                     <select class="search-filter search-filter__status" name="status">
                         @foreach($filters['sold']['values'] as $value)
@@ -44,11 +44,15 @@
     </div>
     <div class="market-survey__listings--details">
         <div class="row">
-            <label>Checkmark Properties to Compare</label>
+           <div class="col s12">
+               <label>Checkmark Properties to Compare</label>
+           </div>
         </div>
         <div class="row">
-            <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">
+            <div class="col s12">
+                <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">
                
+                </div>
             </div>
         </div>
     </div>

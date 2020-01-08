@@ -4,7 +4,7 @@
 		<h3 class="secondary-heading">Average over the last month</h3>
 		<div class="detail--component horizontal primary">
 			<div class="detail">
-				<div class="row">
+				<div class="block">
 					<div class="value">
 						<span>$616K</span>
 					</div>
@@ -15,7 +15,7 @@
 				</div>
 			</div>
 			<div class="detail saleSqft">
-				<div class="row">
+				<div class="block">
 					<div class="value">
 						<span>$441</span>
 					</div>

@@ -9,9 +9,12 @@
 @section('body_section')
     <section class="market market-survey main-content">
         <div class="row">
+            <div class="col s12">
+                <h1>Alaska Real State</h1>
+            </div>
            <div class="col s7">
                <div class="market-survey__left-container">
-                    <div class="col s12">
+                    <div class="col s12 market-survey__right-container--tabs">
                         <ul class="tabs">
                             <li class="tab col s3"><a class="leaflet__map-container active" href="#leaflet__map-container">Map View</a></li>
                             <li class="tab col s3"><a class="leaflet__compare-container" href="#leaflet__compare-container">Compare</a></li>
@@ -32,7 +35,7 @@
                 <div class="market-survey__right-container">
                     <div class="market-survey__right-container--tabs">
                         <div class="market-survey__right-container--header">
-                            <h1>Alaska Real State</h1>
+                            
                             <ul class="tabs">
                                 <li class="tab"><a class="market-survey__listings active" href="#market-survey__listings">Listings</a></li>
                                 <li class="tab"><a class="market-survey__insights" href="#market-survey__insights">Market Insights</a></li>
