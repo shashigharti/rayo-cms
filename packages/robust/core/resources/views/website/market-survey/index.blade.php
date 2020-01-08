@@ -26,7 +26,7 @@
                     >                  
                             
                     </div>
-                    <div id="leaflet__compare-container" class="col s12">
+                    <div id="leaflet__compare-container" class="leaflet__compare-container col s12">
                         No properties selected to compare
                     </div> 
                 </div>               
