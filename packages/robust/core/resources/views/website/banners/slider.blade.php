@@ -2,7 +2,7 @@
 @if(!empty($sliders))
     @foreach($sliders as $slider)
         @set('properties', json_decode($slider->properties))
-        @set('location',$location_helper->byId($properties->location))
+        @set('location',$location_helper->getLocation($properties->locations))
         <section class="advertisement">
             <div class="container-fluid">
                 <div class="row">
@@ -18,9 +18,8 @@
                 </div>
                 <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
                     @set('properties_count', ($properties->property_count > 5)?$properties->property_count: 5)
-                    @set('properties_type', (isset($properties->location_type) && $properties->location_type != '')?$properties->location_type: 'city_id')
-                    @set('location_name', $properties->location)
-                    @set('listings',$listing_helper->getListingsByType($properties_type, $location_name, $properties_count))
+                    @set('properties_type', (isset($properties->location_type) && $properties->location_type != '')?$properties->location_type: 'cities')
+                    @set('listings',$listing_helper->getListingsByType($properties_type, $location->locationable_id, $properties_count))
                     @foreach($listings as $listing)
                         @set('first_image', $listing->images()->first())
                         <a href="{{route('website.realestate.single',['slug' => $listing->slug])}}">

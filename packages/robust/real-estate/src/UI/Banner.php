@@ -53,7 +53,7 @@ class Banner
      * @var array
      */
     public $addrules = [
-        'name' => 'required',
+        'title' => 'required',
         'slug' => 'required| unique:banners'
     ];
 

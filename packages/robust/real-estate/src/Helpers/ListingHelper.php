@@ -18,6 +18,22 @@ class ListingHelper
         'counties' => 'county_id',
         'subdivisions' => 'subdivision_id'
     ];
+
+
+    /**
+     *
+     */
+    protected const Class_Mapping = [
+        'Robust\RealEstate\Models\City' => 'city_id',
+        'Robust\RealEstate\Models\County' => 'county_id',
+        'Robust\RealEstate\Models\Area' => 'area_id' ,
+        'Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
+        'Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id' ,
+        'Robust\RealEstate\Models\HighSchool' => 'high_school_id',
+        'Robust\RealEstate\Models\Zip' => 'zip_id' ,
+        'Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
+        'Robust\RealEstate\Models\SchoolDistrict' => 'school_district_id',
+    ];
     /**
      * @var ListingRepository
      */
@@ -33,10 +49,11 @@ class ListingHelper
         $this->model = $listing;
     }
 
+
     /**
      * @param $type
-     * @param $name
-     * @param $count
+     * @param $id
+     * @param $limit
      * @return mixed
      */
     public function getListingsByType($type, $id, $limit)
@@ -65,13 +82,14 @@ class ListingHelper
      * @param $image
      * @return mixed
      */
-    public function getImageByCity($location, $image)
+    public function getImageByLocation($location, $image)
     {
         $src = '';
         if($image){
             $src =  getMedia($image);
         }else{
-            $listing = $this->model->whereType('city_id',$location)
+            $listing = $this->model
+                    ->whereType(self::Class_Mapping[$location->locationable_type],$location->locationable_id)
                     ->where('picture_status',1)->first();
             if($listing && $listing->images() && $listing->images()->first()){
                 $src = $listing->images()->first()->url;

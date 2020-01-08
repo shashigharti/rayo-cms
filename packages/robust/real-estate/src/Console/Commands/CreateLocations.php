@@ -41,7 +41,7 @@ class CreateLocations extends Command
                 'slug' => $city->slug,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
-                'location_id' => $city->id,
+                'locationable_id' => $city->id,
                 'locationable_type' => 'Robust\RealEstate\Models\City'
             ]);
             \DB::table('real_estate_listings')
@@ -61,7 +61,7 @@ class CreateLocations extends Command
                 'slug' => $county->slug,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
-                'location_id' => $county->id,
+                'locationable_id' => $county->id,
                 'locationable_type' => 'Robust\RealEstate\Models\County'
             ]);
 
@@ -81,7 +81,7 @@ class CreateLocations extends Command
                 'slug' => $area->slug,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
-                'location_id' => $area->id,
+                'locationable_id' => $area->id,
                 'locationable_type' => 'Robust\RealEstate\Models\Area'
             ]);
 
@@ -102,7 +102,7 @@ class CreateLocations extends Command
                 'slug' => $zip->slug,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
-                'location_id' => $zip->id,
+                'locationable_id' => $zip->id,
                 'locationable_type' => 'Robust\RealEstate\Models\Zip'
             ]);
 
@@ -122,7 +122,7 @@ class CreateLocations extends Command
                 'slug' => $element_school->slug,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
-                'location_id' => $element_school->id,
+                'locationable_id' => $element_school->id,
                 'locationable_type' => 'Robust\RealEstate\Models\ElementarySchool'
             ]);
 
@@ -141,7 +141,7 @@ class CreateLocations extends Command
             $id = \DB::table('real_estate_locations')->insertGetId([
                 'name' => $high_school->name,
                 'slug' => $high_school->slug,
-                'location_id' => $high_school->id,
+                'locationable_id' => $high_school->id,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
                 'locationable_type' => 'Robust\RealEstate\Models\HighSchool'
@@ -160,7 +160,7 @@ class CreateLocations extends Command
             $id = \DB::table('real_estate_locations')->insertGetId([
                 'name' => $middle_school->name,
                 'slug' => $middle_school->slug,
-                'location_id' => $middle_school->id,
+                'locationable_id' => $middle_school->id,
                 'active_count' => $active_count,
                 'sold_count' => $sold_count,
                 'locationable_type' => 'Robust\RealEstate\Models\MiddleSchool'
