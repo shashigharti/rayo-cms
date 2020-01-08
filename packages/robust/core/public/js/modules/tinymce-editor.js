@@ -1,22 +1,19 @@
 ;
 (function ($, FRW, window, document, undefined) {
     'use strict';
-    FRW.CKEditor = {
+    FRW.TinyMCEEditor = {
         init: function () {
-            try {
-                CKEDITOR.instances['editor'].destroy(true);
-            } catch (e) { }
-            CKEDITOR.replace('editor');
+            $('#editor').summernote();
         }
     };
 
     $(document).ready(function ($) {
-        let selectObj = $('.editor');
+        let selectObj = $('#editor');
         if (selectObj.length <= 0) {
             return;
         }
 
-        //FRW.CKEditor.init();
+        FRW.TinyMCEEditor.init();
     });
 
 }(jQuery, FRW, window, document));
