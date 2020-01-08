@@ -23,19 +23,30 @@
                 </div>
             </div>
             <div class="row">
+                @set('template', request()->query('template')?? '')
                 <div class="input-field col s12">
                     {{ Form::select('template', [
-                            'new-lead-registration' => 'Lead Registration',
-                            'lead-import' => 'Lead Import',
-                            'get-more-property-info' => 'Get More Property Info',
-                            'mls-report' => 'MLS Report'
+                            '' => 'Select Template',
+                            'distance-drivetime' => 'Distance Drive Time',
+                            'get-more-propertyinfo' => 'Get More Property Info',
+                            'homeowners-feature' => 'Home Owners Feature',
+                            'lead-emails-listing' => 'Lead Email Listing',
+                            'lead-return-to-website' => 'Lead Return To Website',
+                            'market-compare' => 'Market Compare',
+                            'market-comparing' => 'Market Comparing',
+                            'multiple-property-views' => 'Multiple Property Views',
+                            'neighbourhood-sales-report' => 'Neighbourhood Sales Report',
+                            'new-lead-registration' => 'New Lead Registration',
+                            'research-tools-compared' => 'New Tools Compared',
+                            'research-tools' => 'Research Tools',
+                            'schedule-viewing' => 'Schedule Viewing'
                         ],
-                        null,
+                        $template,
                         [
                             'class' => 'select-reload-on-change'
                         ])
                     }}
-                    {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
+                    {{ Form::label('template', 'Select template to load', ['class' => 'required' ]) }}
                 </div>
             </div>
             <div class="row">
