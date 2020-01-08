@@ -1,13 +1,13 @@
 <?php
-namespace Robust\RealEstate\Controllers\API;
+namespace Robust\Core\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use Robust\RealEstate\Repositories\API\SettingsRepository;
+use Robust\Core\Repositories\API\SettingsRepository;
 
 
 /**
  * Class SettingsController
- * @package Robust\RealEstate\Controllers\API
+ * @package Robust\Core\Controllers\API
  */
 class SettingsController extends Controller
 {
