@@ -37,17 +37,40 @@
         </fieldset>
         <fieldset>
             <legend>Price Settings</legend>
+            @set('prices', isset($settings['data']) ? $settings['data']['prices'] : [] )
+            @if(count($prices) > 0)
+                @foreach($prices as $key => $price)
+                    <div class="form-group form-material row dynamic-elem">
+                        <div class="col s3">
+                            {{ Form::label("data[prices][]", 'Price >=', ['class' => 'control-label' ]) }}
+                            {{ Form::text("data[prices][]", $price, [
+                                    'class' => 'form-control'
+                                ]) 
+                            }}
+                        </div>
+                        <div class="col s3">
+                            {{ Form::label("data[increments][]", 'Increment', ['class' => 'control-label' ]) }}
+                            {{ Form::text("data[increments][]", $settings['data']['increments'][$key], [
+                                    'class' => 'form-control'
+                                ]) 
+                            }}
+                        </div>
+                        <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
+                        <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete hide"> delete </i></a>
+                    </div>
+                @endforeach    
+            @else
             <div class="form-group form-material row dynamic-elem">
                 <div class="col s3">
                     {{ Form::label("data[prices][]", 'Price >=', ['class' => 'control-label' ]) }}
-                    {{ Form::text("data[prices][]", isset($settings['data']['prices'])?$settings['data']['prices']:'', [
+                    {{ Form::text("data[prices][]", '', [
                             'class' => 'form-control'
                         ]) 
                     }}
                 </div>
                 <div class="col s3">
                     {{ Form::label("data[increments][]", 'Increment', ['class' => 'control-label' ]) }}
-                    {{ Form::text("data[increments][]", isset($settings['data']['increments'])?$settings['data']['increments']:'', [
+                    {{ Form::text("data[increments][]", '', [
                             'class' => 'form-control'
                         ]) 
                     }}
@@ -55,6 +78,8 @@
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete hide"> delete </i></a>
             </div>
+            @endif          
+            
         </fieldset>
         <fieldset>
             <legend>Data Pull Settings for Server</legend>

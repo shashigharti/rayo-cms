@@ -19,6 +19,11 @@ class ListingController extends Controller
      */
     protected $model;
 
+    /**
+     * @var int
+     */
+    protected $pagination;
+
 
     /**
      * ListingController constructor.
@@ -27,6 +32,7 @@ class ListingController extends Controller
     public function __construct(ListingRepository $model)
     {
         $this->model = $model;
+        $this->pagination = settings('app-setting')['pagination'] ?? 20;
     }
 
 
@@ -44,7 +50,7 @@ class ListingController extends Controller
             ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
             ->with('property')
             ->with('images')
-            ->paginate(40);
+            ->paginate($this->pagination);
         return view(Site::templateResolver('core::website.listings.index'), ['results'=>$results]);
     }
 
@@ -65,7 +71,7 @@ class ListingController extends Controller
             ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
-            ->paginate(40);
+            ->paginate($this->pagination);
         return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
     }
 
@@ -92,7 +98,7 @@ class ListingController extends Controller
         $results = $this->model->getCountByType($type,$value)
                 ->where('system_price', '>' ,$price - 50000)
                 ->where('system_price', '<', $price + 50000)
-                ->paginate(40);
+                ->paginate($this->pagination);
         return view(Site::templateResolver('core::website.listings.index'),['results'=>$results]);
     }
 
@@ -105,7 +111,6 @@ class ListingController extends Controller
      */
     public function subArea($location_type, $location, $price_range, $sub_area)
     {
-
         $query_params = request()->all();
         $results  = $this->model->getListings(
             [
@@ -116,7 +121,7 @@ class ListingController extends Controller
             ->whereSubArea($sub_area)
             ->with('property')
             ->with('images')
-            ->paginate(40);
+            ->paginate($this->pagination);
         return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
     }
 

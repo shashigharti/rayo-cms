@@ -54,15 +54,17 @@
              <div class="col s4">
                 {{ Form::label("default_values[cities]", 'Cities', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[cities][]", [],
-                    $settings['default_values']['cities'] ?? [],
+                    [],
                     [
-                        'class'=>'browser-default multi-select',
-                        'multiple'
+                        'data-url' => route('api.locations.type', ['cities']),
+                        'data-selected' => implode(",", $settings['default_values']['cities'] ?? []),
+                        'class'=>'browser-default multi-select ad-search-field',
+                        'multiple'                        
                     ])
                 }}
             </div>
             <div class="col s4">
-                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name'))
+                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name', 'name'))
                 {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[property_type][]", $property_types,
                      $settings['default_values']['property_type'] ?? [],

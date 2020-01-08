@@ -1,15 +1,17 @@
 <div class="row">
-    <div class="input-field col s6">
+    <div class="input-field col s12">
         {{ Form::label('header', 'Header', ['class' => 'required' ]) }}
-        {{ Form::text('header', null, [
+        {{ Form::text('properties[header]', $properties->header, [
            'placeholder' => 'Banner Header',
            'required'  => 'required'
            ])
         }}
     </div>
-    <div class="input-field col s6">
+</div>
+<div class="row">
+    <div class="input-field col s12">
         {{ Form::label('content', 'Content', ['class' => 'required' ]) }}
-        {{ Form::text('content', null, [
+        {{ Form::textarea('properties[content]', $properties->content, [
            'placeholder' => 'Banner Content'
            ])
         }}

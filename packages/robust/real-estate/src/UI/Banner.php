@@ -27,6 +27,7 @@ class Banner
     public $columns = [
         'title' => 'Title',
         'slug' => 'Slug',
+        'template' => 'Template',
         'options' => [
             'edit' => [
                 'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">edit</i> ',
