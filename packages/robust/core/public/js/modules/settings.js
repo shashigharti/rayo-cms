@@ -4,7 +4,12 @@
     FRW.TestEmail = {
         init: function (selectObj) {
             selectObj.on('click', function () {
-                console.log('ajax call for test email');
+                let url = $(this).data('url');
+                const value = $('input[name="test_email"]').val();
+                url = url + '?email=' + value;
+                $.get(url).then(response => {
+                   console.log(response);
+                });
             });
         }
     };

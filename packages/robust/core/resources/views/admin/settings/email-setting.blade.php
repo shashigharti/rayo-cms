@@ -2,7 +2,7 @@
     {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
     {{ Form::hidden('mail_driver', $slug, [ 'class' => 'form-control' ]) }}
-        
+
         <div class="form-group form-material row">
             <div class="col s6 input-field">
                     {{ Form::label('name', 'Sender Name(From)', ['class' => 'control-label' ]) }}
@@ -16,7 +16,7 @@
                             'class' => 'form-control'
                         ]) }}
             </div>
-        </div>  
+        </div>
         <div class="form-group form-material row">
             <div class="col s12">
                 <fieldset>
@@ -76,7 +76,7 @@
                                     'placeholder' => 'info@robustitconcepts.com'
                                 ]) }}
                         </div>
-                        <a href="#" class="primary-btn dynamic-elem__btn test-email__send">
+                        <a href="#" class="primary-btn dynamic-elem__btn test-email__send" data-url="{{route('api.send.test-email')}}">
                             <i class="material-icons">send</i>
                         </a>
                     </div>

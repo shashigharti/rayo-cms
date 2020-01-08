@@ -15,7 +15,7 @@ class SettingsController extends Controller
     /**
      * @var AttributeRepository
      */
-    protected $model;   
+    protected $model;
 
 
     /**
@@ -27,7 +27,8 @@ class SettingsController extends Controller
         $this->model = $model;
     }
 
-    public function sendTestEmail(){
-        //write code here
+    public function sendTestEmail()
+    {
+      return 'Hello';
     }
 }
