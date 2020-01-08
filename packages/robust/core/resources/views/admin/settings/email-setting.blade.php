@@ -76,7 +76,9 @@
                                     'placeholder' => 'info@robustitconcepts.com'
                                 ]) }}
                         </div>
-                         <a href="#" class="primary-btn"><i class="material-icons dynamic-elem__btn test-email__send">send</i></a>
+                        <a href="#" class="primary-btn dynamic-elem__btn test-email__send">
+                            <i class="material-icons">send</i>
+                        </a>
                     </div>
                 </fieldset>
             </div>
