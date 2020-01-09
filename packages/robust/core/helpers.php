@@ -62,8 +62,8 @@ if (!function_exists('getMedia')) {
     {
         $media = (new \Robust\Core\Models\Media)->find($media_id);
         if($media)
-            return asset('/app/medias/' . $media->id . '/' . $media->file);
-            
+            return asset('/medias/' . $media->id . '/' . $media->file);
+
         return null;
     }
 }
