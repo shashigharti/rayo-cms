@@ -9,6 +9,7 @@ use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingImages;
 use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Models\Location;
+use Robust\RealEstate\Models\Subdivision;
 
 /**
  * Class DataPull
@@ -293,6 +294,7 @@ class DataPull extends RetsCommands
                     }
                     $listing_data['school_district'] = 'Test';
                     // add id
+                    $subdivision = null;
                     foreach ($listing_data as $key => $data)
                     {
                         if(isset($this->mapping[$key])){
@@ -309,6 +311,9 @@ class DataPull extends RetsCommands
                                     'locationable_id' => $map_id,
                                     'locationable_type' => $this->mapping[$key]
                                 ])->id;
+                                if($key === 'subdivision'){
+                                    $subdivision = $listing_data[$this->maps[$key]];
+                                }
                             }
                         }
                     }
@@ -318,6 +323,19 @@ class DataPull extends RetsCommands
                     $name .= ', ' .$listing_data['zip'];
                     $listing_data['name'] = $name;
                     $listing_data['slug'] = Str::slug($name);
+
+                    //update subdivision with ids
+
+                    if($subdivision){
+                        Subdivision::where('id',$subdivision)->update([
+                            'city_id' => $listing_data['city_id'],
+                            'county_id' => $listing_data['county_id'],
+                            'zip_id' => $listing_data['zip_id'],
+                            'area_id' => $listing_data['area_id'],
+                            'school_district_id' => $listing_data['school_district_id'] ?? null,
+                            'status' => 1
+                        ]);
+                    }
                     //check for integer fields and convert
                     foreach ($this->integer_fields as $field){
                         if(isset($listing_data[$field])){
