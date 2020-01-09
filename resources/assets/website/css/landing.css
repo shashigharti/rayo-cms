@@ -1626,16 +1626,15 @@ header {
 .available-prices {
   margin-top: 230px;
 }
-
 .available-prices a {
-  color: #fff;
-  font-size: 11px;
-  width: 38%;
-  display: inline-block;
-  background: rgba(141,141,141,0.7);
-  padding: 5px;
-  margin: 3px;
-  text-decoration: none;
+   color: #fff;
+   font-size: 11px;
+   width: 38%;
+   display: inline-block;
+   background: rgb(134, 133, 133);
+   padding: 5px;
+   margin: 3px;
+   text-decoration: none;
 }
 
 .btn-default {
