@@ -20,6 +20,7 @@
         if (selectObj.length <= 0) {
             return;
         }
+        console.log("Dynamic Element");
 
         FRW.DynamicElem.init();
     });

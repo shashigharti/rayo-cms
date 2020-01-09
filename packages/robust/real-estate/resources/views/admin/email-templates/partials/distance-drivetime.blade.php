@@ -44,7 +44,6 @@
                     <p style="padding: 5px 20px;">There's a preety goood chance that this is the home address or work address for (Lead Full Name)</p>
                 </td> 
             </tr>
-
             <tr>
                 <td style="padding:5px 20px;background-color:white;border-bottom:0px;">
                     <img src="img/Logo.jpg" style="margin-top: 20px;max-height:200px;">

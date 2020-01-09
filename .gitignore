@@ -4,6 +4,7 @@
 /public/storage
 /storage/*.key
 /storage/uploads
+/storage/app
 /vendor
 .env
 .phpunit.result.cache

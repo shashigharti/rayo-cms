@@ -75,7 +75,7 @@
                                     'class' => 'form-control',
                                     'placeholder' => 'info@robustitconcepts.com',
                                 ]) }}
-                            <a href="#" class="primary-btn dynamic-elem__btn test-email__send" data-url="{{route('api.send.test-email')}}">
+                            <a href="#" class="primary-btn test-email__send" data-url="{{route('api.send.test-email')}}">
                                  <i class="material-icons">send</i>
                             </a>
                         </div>

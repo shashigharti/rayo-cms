@@ -20,7 +20,7 @@
     };
 
     $(document).ready(function ($) {
-        let selectObj = $('.dynamic-elem__btn.test-email__send');
+        let selectObj = $('.test-email__send');
         if (selectObj.length <= 0) {
             return;
         }

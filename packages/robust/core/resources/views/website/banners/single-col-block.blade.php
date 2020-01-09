@@ -17,11 +17,13 @@
                                     @if(isset($properties['prices']) && is_array($properties['prices']))
                                         @foreach($properties['prices'] as  $price => $count)
                                             @set('property_count',$properties->property_counts->$price ?? 0)
-                                            <a href="{{route('website.realestate.homes-for-sale',[
-                                                'location_type' => 'cities',
-                                                'location' => $location->slug,
-                                                'price' => $price
-                                                ])}}"> {{$price}} ({{$count}})</a>
+                                            <a href="{{route('website.realestate.homes-for-sale',
+                                                [
+                                                    'location_type' => 'cities',
+                                                    'location' => $location->slug,
+                                                    'price' => $price,
+                                                ]
+                                                )}}"> {{$price}} ({{$count}})</a>
                                         @endforeach
                                     @endif
                                 </div>
@@ -36,7 +38,7 @@
                                                     <p><label>{{$key}}:</label></p>
                                                     <ul>
                                                        @foreach($tabs as $tab => $count)
-                                                            <li><a href="{{route('website.realestate.homes-for-sale.sub_area',
+                                                            <li><a href="{{route('website.realestate.homes-for-sale',
                                                                     [
                                                                         'location_type'=>'cities',
                                                                         'location' =>  $location->slug,
