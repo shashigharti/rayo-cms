@@ -11,10 +11,12 @@
                     <div id="file-upload__logo-url">{{$settings['logo'] ?? ''}}</div>
                 </div>
                 @if(isset($settings['logo']) && $settings['logo'] != "")
-                    <i class="md md-close-circle text-danger delete-img" data-preview="#file-upload__img"
-                       data-image-path="#file-upload__logo-url" data-hidden="#logo"></i>
+                    <i class="md md-close-circle text-danger delete-img" 
+                        data-preview="#file-upload__img"
+                        data-image-path="#file-upload__logo-url" 
+                        data-hidden="#logo">
+                    </i>
                 @endif
-
                 <div class="col s5 file-upload__btn">
                     {{ Form::file('files[logo]', [
                         'class' =>'image-upload',
