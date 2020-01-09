@@ -23,8 +23,9 @@
                 </div>
             </div>
             <div class="row">
-                <div class="input-field col s6">                    
+                <div class="input-field col s6">
                     {{ Form::select('template', [
+                            'Choose template' => 'Choose template',
                             'two-col-ad' => 'Two Column Ad',
                             'main-banner' => 'Main Banner',
                             'full-screen-ad' => 'Full Screen Ad',
@@ -32,7 +33,7 @@
                             'slider' => 'Slider',
                             'banner-slider' => 'Banner Slider'
                         ],
-                        null,
+                        request()->query('template') ?? $model->template ?? 'Choose template',
                         [
                             'required'  => 'required',
                             'class' => 'select-reload-on-change',
@@ -44,8 +45,10 @@
             </div>
             <div class="container sub--block">
                 @set('properties', json_decode($model->properties))
-                @set('template', request()->query('template')?? $model->template)
-                @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])
+                @set('template', request()->query('template') ?? $model->template)
+                @if($template)
+                     @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])
+                @endif
             </div>
             <div class="row">
                 <div class="col s12">

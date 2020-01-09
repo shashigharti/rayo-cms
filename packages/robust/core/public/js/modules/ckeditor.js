@@ -2,21 +2,22 @@
 (function ($, FRW, window, document, undefined) {
     'use strict';
     FRW.CKEditor = {
-        init: function () {
-            try {
-                CKEDITOR.instances['editor'].destroy(true);
-            } catch (e) { }
-            CKEDITOR.replace('editor');
+        init: function (editors) {
+            let id = 'editor';
+            $.each(editors, function (index, editor) {
+                id = $(editor).attr('id');
+                CKEDITOR.replace(id);
+            });
         }
     };
 
     $(document).ready(function ($) {
-        let selectObj = $('.editor');
-        if (selectObj.length <= 0) {
+        let editors = $('.editor textarea');
+        if (editors.length <= 0) {
             return;
         }
 
-        //FRW.CKEditor.init();
+        FRW.CKEditor.init(editors);
     });
 
 }(jQuery, FRW, window, document));

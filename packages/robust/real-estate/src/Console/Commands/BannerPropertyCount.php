@@ -8,11 +8,7 @@ use Robust\RealEstate\Models\Subdivision;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 use Robust\RealEstate\Repositories\Website\LocationRepository;
 
-/**
- * Class ListingPriceCount
- * @package Robust\RealEstate\Console\Commands
- */
-class ListingPriceCount extends Command
+class BannerPropertyCount extends Command
 {
     /**
      * @var BannerRepository

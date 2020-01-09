@@ -2,7 +2,7 @@
     {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
     {{ Form::hidden('mail_driver', $slug, [ 'class' => 'form-control' ]) }}
-        
+
         <div class="form-group form-material row">
             <div class="col s6 input-field">
                     {{ Form::label('name', 'Sender Name(From)', ['class' => 'control-label' ]) }}
@@ -16,47 +16,47 @@
                             'class' => 'form-control'
                         ]) }}
             </div>
-        </div>  
+        </div>
         <div class="form-group form-material row">
             <div class="col s12">
                 <fieldset>
                     <legend>Mailgun Settings</legend>
                     <div class="form-group form-material row">
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_host', 'Host(mail_host)', ['class' => 'control-label' ]) }}
-                            {{ Form::text('mail_host', isset($settings['mail_host'])?$settings['mail_host']:'', [
+                            {{ Form::label('host', 'Host(host)', ['class' => 'control-label' ]) }}
+                            {{ Form::text('host', isset($settings['host'])?$settings['host']:'', [
                                     'class' => 'form-control'
                                 ]) }}
                         </div>
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_port', 'Port(mail_port)', ['class' => 'control-label' ]) }}
-                            {{ Form::text('mail_port', isset($settings['mail_port'])?$settings['mail_port']:'', [
+                            {{ Form::label('port', 'Port(port)', ['class' => 'control-label' ]) }}
+                            {{ Form::text('port', isset($settings['port'])?$settings['port']:'', [
                                     'class' => 'form-control'
                                 ]) }}
                         </div>
                     </div>
                     <div class="form-group form-material row">
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_username', 'Username(mail_username)', ['class' => 'control-label' ]) }}
-                            {{ Form::text('mail_username', isset($settings['mail_username'])?$settings['mail_username']:'', [
+                            {{ Form::label('username', 'Username(username)', ['class' => 'control-label' ]) }}
+                            {{ Form::text('username', isset($settings['username'])?$settings['username']:'', [
                                     'class' => 'form-control'
                                 ]) }}
                         </div>
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_password', 'Password(mail_password)', ['class' => 'control-label' ]) }}
-                            {{ Form::password('mail_password', array('class' => 'form-control')) }}
+                            {{ Form::label('password', 'Password(password)', ['class' => 'control-label' ]) }}
+                            {{ Form::password('password', array('class' => 'form-control')) }}
                         </div>
                     </div>
                     <div class="form-group form-material row">
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_domain', 'Domain(mail_domain)', ['class' => 'control-label' ]) }}
-                            {{ Form::text('mail_domain', isset($settings['mail_domain'])?$settings['mail_domain']:'', [
+                            {{ Form::label('domain', 'Domain(domain)', ['class' => 'control-label' ]) }}
+                            {{ Form::text('domain', isset($settings['domain'])?$settings['domain']:'', [
                                     'class' => 'form-control'
                                 ]) }}
                         </div>
                         <div class="col s6 input-field">
-                            {{ Form::label('mail_secret', 'Mail Secret(mail_secret)', ['class' => 'control-label' ]) }}
-                            {{ Form::text('mail_secret', isset($settings['mail_secret'])?$settings['mail_secret']:'', [
+                            {{ Form::label('encryption', 'Mail encryption(encryption)', ['class' => 'control-label' ]) }}
+                            {{ Form::text('encryption', isset($settings['encryption'])?$settings['encryption']:'', [
                                     'class' => 'form-control'
                                 ]) }}
                         </div>
@@ -71,13 +71,21 @@
                     <div class="form-group form-material row">
                         <div class="col s6 input-field">
                             {{ Form::label('test_email', 'Send Test Email', ['class' => 'control-label' ]) }}
-                            {{ Form::text('test_email', '', [
+                            {{ Form::email('test_email', '', [
                                     'class' => 'form-control',
-                                    'placeholder' => 'info@robustitconcepts.com'
+                                    'placeholder' => 'info@robustitconcepts.com',
                                 ]) }}
+                            <a href="#" class="primary-btn dynamic-elem__btn test-email__send" data-url="{{route('api.send.test-email')}}">
+                                 <i class="material-icons">send</i>
+                            </a>
                         </div>
-                         <a href="#" class="primary-btn"><i class="material-icons dynamic-elem__btn test-email__send">send</i></a>
+                        <div class="col s4 input-field">
+                            <p class="test-email_result">
+
+                            </p>
+                        </div>
                     </div>
+
                 </fieldset>
             </div>
         </div>

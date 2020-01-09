@@ -312,6 +312,13 @@ class DataPull extends RetsCommands
                             }
                         }
                     }
+                    //generate name
+                    $name = '';
+                    $name = ucfirst($listing_data['address_number']);
+                    $name .= ', ' .$listing_data['city'];
+                    $name .= ', ' .$listing_data['zip'];
+                    $listing_data['name'] = $name;
+                    $listing_data['slug'] = Str::slug($name);
                     //check for integer fields and convert
                     foreach ($this->integer_fields as $field){
                         if(isset($listing_data[$field])){
