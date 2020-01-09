@@ -45,9 +45,9 @@ class FileUploadController extends Controller
 
         foreach($files as $i => $file){
             $fileName = $file->getClientOriginalName();
-            $uploadedFile = $request->file($file);
+            $uploadedFile = $request->file($i);
             $newFileName = Carbon::now()->format('YmdHs') . "-" . $fileName;
-            
+
             $newMedia = $this->model->store(
                 [
                     'name' => $fileName,
@@ -59,14 +59,14 @@ class FileUploadController extends Controller
             );
 
             $filePath = "medias/" . $newMedia->id . "/" . $newFileName;
-            Storage::disk('local')->put($filePath, $uploadedFile);  
-            $ids[] = $newMedia->id;               
+            Storage::disk('local')->put($filePath, file_get_contents($uploadedFile));
+            $ids[] = $newMedia->id;
         }
 
         return response()->json(['data' => [
                 'status' => 'success',
                 'message' => 'Successfully Uploaded',
                 'media_ids' => implode(',', $ids)
-        ]]); 
+        ]]);
     }
 }
