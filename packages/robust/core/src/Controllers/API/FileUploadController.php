@@ -42,6 +42,7 @@ class FileUploadController extends Controller
         $files = $request->all();
         $return_status = [];
         $ids = [];
+        $medias = collect();
 
         foreach($files as $i => $file){
             $fileName = $file->getClientOriginalName();
@@ -58,15 +59,21 @@ class FileUploadController extends Controller
                 ]
             );
 
-            $filePath = "medias/" . $newMedia->id . "/" . $newFileName;
-            Storage::disk('local')->put($filePath, file_get_contents($uploadedFile));
+
+            $filePath = storage_path("app/medias/" . $newMedia->id);
+            $file->move($filePath, $newFileName);
             $ids[] = $newMedia->id;
+            $medias->push([
+                'name' => $fileName,
+                'url' => url("/medias/{$newMedia->id}/" . $newFileName)
+            ]);
         }
 
         return response()->json(['data' => [
                 'status' => 'success',
                 'message' => 'Successfully Uploaded',
-                'media_ids' => implode(',', $ids)
+                'media_ids' => implode(',', $ids),
+                'medias' => json_encode($medias)
         ]]);
     }
 }

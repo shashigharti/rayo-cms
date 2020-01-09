@@ -15,12 +15,12 @@
             $properties->location ?? [],
             [
                 'data-url' => route('api.locations'),
-                'data-selected' => implode(",", $properties->location ?? []),
+                'data-selected' => implode(",", $properties->locations ?? []),
                 'class'=>'browser-default multi-select ad-search-field',
-                'multiple'                        
+                'multiple'
             ])
         }}
-    </div>    
+    </div>
 </div>
 <div class="row">
     <div class="input-field col s12">

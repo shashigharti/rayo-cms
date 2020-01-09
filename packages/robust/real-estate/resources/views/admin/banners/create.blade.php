@@ -2,6 +2,7 @@
 
 @section('form')
     @set('ui', new $ui)
+    @set('properties', json_decode($model->properties))
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
         <div id="{{ $title }}" class="col s12">
             <div class="row">
@@ -18,6 +19,33 @@
                     {{ Form::label('slug', 'Slug', ['class' => 'required' ]) }}
                     {{ Form::text('slug', null, [
                             'placeholder' => 'Slug i.e. \'slug\''
+                        ])
+                    }}
+                </div>
+            </div>
+            <div class="form-group form-material row">
+                <div class="col s12 file-uploader">
+                    {{ Form::label('properties[image]', 'Banner Image') }}
+                    @set('files', explode(',', $properties->image ?? ''))
+                    <div class="col s12 file-uploader__preview">
+                        @foreach($files as $file)
+                            <div class="file-uploader__file">
+                                <img height="80" src="{{ getMedia($file) ?? ''}}"/>
+                            </div>
+                        @endforeach
+                    </div>
+
+                    <div class="col s12">(Image Size: 200 x 200)</div>
+                    <div class="col s12">
+                        {{ Form::file('files[]', [
+                                'class' =>'col s6 file-uploader__input',
+                                'multiple' => 'multiple'
+                            ])
+                        }}
+                        <button type="button" data-dest=".file-uploader_files" data-path="{{route('api.file-uploader.image.upload')}}" class="btn theme-btn file-uploader__upload-btn">Upload Logo</button>
+                    </div>
+                    {{ Form::hidden('properties[image]', $properties->image ?? '', [
+                            'class' => 'file-uploader_files'
                         ])
                     }}
                 </div>
@@ -44,7 +72,6 @@
                 </div>
             </div>
             <div class="container sub--block">
-                @set('properties', json_decode($model->properties))
                 @set('template', request()->query('template') ?? $model->template)
                 @if($template)
                      @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])

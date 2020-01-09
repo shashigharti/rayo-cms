@@ -12,7 +12,7 @@ use Illuminate\Support\Arr;
  */
 trait ListingTrait
 {
-    
+
    /**
      * @param $id
      * @return mixed
@@ -29,9 +29,9 @@ trait ListingTrait
      * @return  QueryBuilder this
      */
     public function getListings($params = [], $fields = [])
-    {        
+    {
         $additional_fields = array_diff( $fields, IListings::LISTING_FIELDS['index'] );
-        $select_fields = array_merge( $additional_fields, IListings::LISTING_FIELDS['index'] );        
+        $select_fields = array_merge( $additional_fields, IListings::LISTING_FIELDS['index'] );
         $qBuilder = $this->model->select( $select_fields );
 
         // Remove all params that are null
@@ -47,7 +47,7 @@ trait ListingTrait
                 IListings::FIELDS_QUERY_MAP[$key]['condition'],
                 "$param");
         }
-
+        
         $this->model = $qBuilder;
         return $this;
     }
@@ -59,7 +59,7 @@ trait ListingTrait
         if(count($params) > 0){
             $this->model = $this->model->whereBetween('system_price', $params);
         }
-       
+
        return $this;
     }
 
@@ -88,5 +88,5 @@ trait ListingTrait
         }
         return $this;
     }
-  
+
 }

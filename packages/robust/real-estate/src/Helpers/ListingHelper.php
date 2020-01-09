@@ -58,7 +58,7 @@ class ListingHelper
      */
     public function getListingsByType($type, $id, $limit)
     {
-        $column = ListingHelper::FIELDS_MAPPING[$type];
+        $column = ListingHelper::Class_Mapping[$type];
         return $this->model->getListings([$column => $id])->limit($limit)->get();
     }
 

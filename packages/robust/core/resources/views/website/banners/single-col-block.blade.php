@@ -27,7 +27,7 @@
                                         @endforeach
                                     @endif
                                 </div>
-                                @if($properties['tabs_data'] && is_array($properties['tabs']))
+                                @if(isset($properties['tabs_data']) && is_array($properties['tabs']))
                                     <div class="subdivs--list__block">
                                         @foreach($properties['tabs_data'] as $key => $tabs)
                                             <div class="subdivs--list__btn">
