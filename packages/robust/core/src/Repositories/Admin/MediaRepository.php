@@ -3,7 +3,6 @@
 namespace Robust\Core\Repositories\Admin;
 
 use Illuminate\Database\Eloquent\Collection;
-use Intervention\Image\Facades\Image;
 use Robust\Core\Models\Media;
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;

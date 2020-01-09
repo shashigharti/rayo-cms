@@ -60,10 +60,9 @@ if (!function_exists('getMedia')) {
      */
     function getMedia($media_id)
     {
-        if ($media_id) {
-            $media = (new \Robust\Core\Models\Media)->find($media_id);
-            return asset('/uploads/' . $media->id . '/' . $media->file);
-        }
+        $media = (new \Robust\Core\Models\Media)->find($media_id);
+        if($media)
+            return asset('/medias/' . $media->id . '/' . $media->file);
 
         return null;
     }

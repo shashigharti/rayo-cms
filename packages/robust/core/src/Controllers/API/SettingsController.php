@@ -4,7 +4,7 @@ namespace Robust\Core\Controllers\API;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Mail;
 use Robust\Core\Mail\TestEmail;
-use Robust\Core\Repositories\API\SettingsRepository;
+use Robust\Core\Repositories\API\SettingRepository;
 
 
 /**
@@ -22,9 +22,9 @@ class SettingsController extends Controller
 
     /**
      * SettingsController constructor.
-     * @param SettingsRepository $model
+     * @param SettingRepository $model
      */
-    public function __construct(SettingsRepository $model)
+    public function __construct(SettingRepository $model)
     {
         $this->model = $model;
     }

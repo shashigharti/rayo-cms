@@ -1,9 +1,9 @@
 <div class="system-settings__email">
     {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
     {{ Form::hidden('slug', $slug, [
-                'class' => 'form-control'
-            ]) }}
-
+            'class' => 'form-control'
+        ]) 
+    }}
     <div class="nav-tabs-vertical">
         <ul class="nav nav-tabs lang-nav">
             <li class="active"><a data-toggle="tab" href="#english">English</a></li>
@@ -31,9 +31,7 @@
                         {{ Form::label('gmap', 'Google Map Embed Code', ['class' => 'control-label' ]) }}
                     </div>
                 </div>
-
             </div>
-
             <div id="nepali" class="tab-pane fade">
                 <div class="form-group form-material row">
                     <div class="col s12 input-field">                        
