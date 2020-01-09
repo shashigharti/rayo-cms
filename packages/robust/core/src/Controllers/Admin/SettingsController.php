@@ -37,7 +37,6 @@ class SettingsController extends Controller
         })->first();
 
         $all_settings = Setting::all();
-
         return $this->display('core::admin.settings.index',
             [
                 'settings' => ($settings) ? json_decode($settings->values, true) : [],
