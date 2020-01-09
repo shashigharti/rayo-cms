@@ -4,11 +4,13 @@
     FRW.FileUploader = {
         init: function () {
             $('.file-uploader .file-uploader__input').filer();
+            let uploader = $('.file-uploader'),
+                dest = uploader.data('dest'),
+                store_url = uploader.data("upload-path"),
+                delete_url = uploader.data("base-path");
 
             $('.file-uploader__upload-btn').on('click', function () {
-                let url = $(this).data("upload-path"),
-                    data = new FormData(),
-                    dest = $(this).data('dest');
+                let data = new FormData();
 
                 $.each($('.file-uploader .file-uploader__input')[0].files, function (i, file) {
                     data.append('file-' + i, file);
@@ -16,12 +18,13 @@
 
                 $.ajax({
                     data: data,
-                    url: url,
+                    url: store_url,
                     method: "POST",
                     cache: false,
                     contentType: false,
                     processData: false
                 }).done(function (response) {
+
                     let medias = JSON.parse(response.data.medias);
                     $(dest).val(response.data.media_ids);
                     $('.file-uploader .file-uploader__input').val('');
@@ -35,31 +38,35 @@
                         $('.file-uploader .file-uploader__preview').append(template);
                     });
                     FRW.FileUploader.updateField();
+
                 });
 
             });
             $(document.body).on('click', '.file-uploader__delete-btn', function () {
-                let delete_url = $('.btn theme-btn file-uploader__upload-btn').data("delete-path");
-
+                let id = $(this).parent().data('id'),
+                    _token = $("input[name='_token']").val(),
+                    parent = $(this).parent().parent();
                 $.ajax({
-                    data: {id: 10},
-                    url: delete_url,
-                    method: "POST",
-                    _method: "DELETE"
+                    url: delete_url, 
+                    data: {id: id, _token: _token, _method: "DELETE"},
+                    method: "POST"
                 }).done(function (response) {
-                    console.log(response);
-                    $(this).parent().parent().remove();
-                    FRW.FileUploader.updateField();
-                });                
+                    if (response.data.status == "success"){
+                        parent.remove();
+                        FRW.FileUploader.updateField();
+                    }                   
+                });
             });
             $('.file-uploader .file-uploader__input').prop('jFiler').reset();
         },
         updateField: function () {
+            let uploader = $('.file-uploader'),
+                dest = uploader.data('dest');
+
             let ids = [],
-                dest = $('.file-uploader__upload-btn').data('dest'),
                 images = $('.file-uploader__file');
 
-            $.each(images, function (index, image) { 
+            $.each(images, function (index, image) {
                 ids.push($(image).data('id'));
             });
 

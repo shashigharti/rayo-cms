@@ -78,14 +78,15 @@ class FileUploadController extends Controller
                 'medias' => json_encode($medias)
         ]]);
     }
+
     /**
      * @param MediaRepository $model
-     * @param string $id
+     * @param Request $request
      * @return JsonResponse
      */
-    public function destroy(MediaRepository $model, $id)
+    public function delete(Request $request, MediaRepository $model)
     {
-        $i = $request->get('id');
+        $id = $request->get('id');
         $model->find($id)->delete();
         return response()->json(['data' => [
                 'status' => 'success',

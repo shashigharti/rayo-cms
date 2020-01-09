@@ -8,9 +8,9 @@ function () {
         'as' => 'image.upload',
         'uses' => '\Robust\Core\Controllers\API\FileUploadController@store'
     ]);
-    Route::delete('file-uploader/image/$id', [
+    Route::delete('file-uploader/image', [
         'name' =>'Delete Image File',
         'as' => 'image.destroy',
-        'uses' => '\Robust\Core\Controllers\API\FileUploadController@destory'
+        'uses' => '\Robust\Core\Controllers\API\FileUploadController@delete'
     ]);
 });

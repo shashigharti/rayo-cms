@@ -4,18 +4,26 @@
                 'class' => 'form-control'
     ]) }}
     <div class="form-group form-material row">
-        <div class="col s12 file-uploader">
+        <div class="col s12 file-uploader" data-base-path="{{url('api/file-uploader/image/')}}"  
+            data-dest=".file-uploader_files" 
+            data-upload-path="{{route('api.file-uploader.image.upload')}}" 
+        >
+            @csrf
             {{ Form::label('logo', 'Logo') }}
             @set('files', ($settings['logo'] != '') ?  explode(',', $settings['logo']): [])
             <div class="col s12 file-uploader__preview">
                 @foreach($files as $file)
                     <div data-id="{{ $file }}" class="file-uploader__file">
                         <img height="80" src="{{ getMedia($file) ?? '' }}"/>
-                        <a href="#" class="file-uploader__delete-btn"> <i class="material-icons"> delete </i> </a>
+                        <a  data-delete-path="{{url('file-uploader/image/' . $file)}}" 
+                            href="javascript:void(0)" 
+                            class="file-uploader__delete-btn"
+                        > 
+                            <i class="material-icons"> delete </i> 
+                        </a>
                     </div>
                 @endforeach                
             </div>
-
             <div class="col s12">(Image Size: 200 x 200)</div>
             <div class="col s12">                
                 {{ Form::file('files[]', [
@@ -23,10 +31,7 @@
                         'multiple' => 'multiple'
                     ])
                 }}      
-                <button type="button" 
-                    data-dest=".file-uploader_files" 
-                    data-upload-path="{{route('api.file-uploader.image.upload')}}" 
-                    data-delete-path="{{route('api.file-uploader.image.destroy')}}"
+                <button type="button"                                        
                     class="btn theme-btn file-uploader__upload-btn"
                 >
                     Upload Logo
