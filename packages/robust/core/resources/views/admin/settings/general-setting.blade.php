@@ -23,7 +23,14 @@
                         'multiple' => 'multiple'
                     ])
                 }}      
-                <button type="button" data-dest=".file-uploader_files" data-path="{{route('api.file-uploader.image.upload')}}" class="btn theme-btn file-uploader__upload-btn">Upload Logo</button>
+                <button type="button" 
+                    data-dest=".file-uploader_files" 
+                    data-upload-path="{{route('api.file-uploader.image.upload')}}" 
+                    data-delete-path="{{route('api.file-uploader.image.destroy')}}"
+                    class="btn theme-btn file-uploader__upload-btn"
+                >
+                    Upload Logo
+                </button>
             </div>  
             {{ Form::hidden('logo', $settings['logo'] ?? null, [
                     'class' => 'file-uploader_files'

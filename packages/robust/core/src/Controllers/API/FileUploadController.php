@@ -35,7 +35,8 @@ class FileUploadController extends Controller
 
     /**
      * @param MediaRepository $model
-     * @return string
+     * @param Request $request
+     * @return JsonResponse
      */
     public function store(Request $request, MediaRepository $model)
     {
@@ -75,6 +76,21 @@ class FileUploadController extends Controller
                 'message' => 'Successfully Uploaded',
                 'media_ids' => implode(',', $ids),
                 'medias' => json_encode($medias)
+        ]]);
+    }
+    /**
+     * @param MediaRepository $model
+     * @param string $id
+     * @return JsonResponse
+     */
+    public function destroy(MediaRepository $model, $id)
+    {
+        $i = $request->get('id');
+        $model->find($id)->delete();
+        return response()->json(['data' => [
+                'status' => 'success',
+                'message' => 'Successfully Deleted',
+                'deleted_id' => $id
         ]]);
     }
 }
