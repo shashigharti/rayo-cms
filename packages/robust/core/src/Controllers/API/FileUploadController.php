@@ -64,6 +64,7 @@ class FileUploadController extends Controller
             $file->move($filePath, $newFileName);
             $ids[] = $newMedia->id;
             $medias->push([
+                'id' => $newMedia->id,
                 'name' => $fileName,
                 'url' => url("/medias/{$newMedia->id}/" . $newFileName)
             ]);

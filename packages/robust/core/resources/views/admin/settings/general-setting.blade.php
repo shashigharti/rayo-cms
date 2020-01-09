@@ -6,11 +6,12 @@
     <div class="form-group form-material row">
         <div class="col s12 file-uploader">
             {{ Form::label('logo', 'Logo') }}
-            @set('files', explode(',', $settings['logo']))
+            @set('files', ($settings['logo'] != '') ?  explode(',', $settings['logo']): [])
             <div class="col s12 file-uploader__preview">
                 @foreach($files as $file)
-                    <div class="file-uploader__file">
-                        <img height="80" src="{{ getMedia($file) ?? ''}}"/>
+                    <div data-id="{{ $file }}" class="file-uploader__file">
+                        <img height="80" src="{{ getMedia($file) ?? '' }}"/>
+                        <a href="#" class="file-uploader__delete-btn"> <i class="material-icons"> delete </i> </a>
                     </div>
                 @endforeach                
             </div>
@@ -24,7 +25,7 @@
                 }}      
                 <button type="button" data-dest=".file-uploader_files" data-path="{{route('api.file-uploader.image.upload')}}" class="btn theme-btn file-uploader__upload-btn">Upload Logo</button>
             </div>  
-            {{ Form::hidden('logo', $settings['logo'] ?? '', [
+            {{ Form::hidden('logo', $settings['logo'] ?? null, [
                     'class' => 'file-uploader_files'
                 ]) 
             }}         
