@@ -48,7 +48,6 @@
         "sass-loader": "^7.1.0"
     },
     "dependencies": {
-        "dropzone": "^5.5.1",
         "leaflet": "^1.6.0",
         "leaflet.gridlayer.googlemutant": "^0.8.0",
         "leaflet.markercluster": "^1.4.1",
