@@ -26,7 +26,7 @@
                     $('.file-uploader .file-uploader__input').val('');
                     $.each(medias, function (index, media) {
                         let template = `
-                            <div id="${media.id}" class="file-uploader__file">
+                            <div data-id="${media.id}" class="file-uploader__file">
                                 <img height="80" src="${media.url}"/>
                                 <a href="#" class="file-uploader__delete-btn"> <i class="material-icons"> delete </i> </a>
                             </div>
@@ -45,16 +45,16 @@
         },
         updateField: function () {
             let ids = [],
-                dest = $('.file-uploader__upload-btn').data('dest');
-
-            $.each($('.file-uploader__file'), function (index, image) {
+                dest = $('.file-uploader__upload-btn').data('dest'),
+                images = $('.file-uploader__file');
+                
+            $.each(images, function (index, image) { 
                 ids.push($(image).data('id'));
             });
 
             if (ids.length > 0) {
                 ids = ids.join();
             }
-
             $(dest).val(ids);
         }
     };
