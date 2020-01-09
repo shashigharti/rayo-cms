@@ -313,7 +313,6 @@ class DataPull extends RetsCommands
                         }
                     }
                     //generate name
-                    $name = '';
                     $name = ucfirst($listing_data['address_number']);
                     $name .= ', ' .$listing_data['city'];
                     $name .= ', ' .$listing_data['zip'];

@@ -3,6 +3,8 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
+use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Repositories\Admin\BannerRepository;
 use Robust\RealEstate\Models\Subdivision;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
@@ -64,60 +66,84 @@ class BannerPropertyCount extends Command
       ],
     ];
 
+    protected const Class_Mapping = [
+        'Robust\RealEstate\Models\City' => 'city_id',
+        'Robust\RealEstate\Models\County' => 'county_id',
+        'Robust\RealEstate\Models\Area' => 'area_id' ,
+        'Robust\RealEstate\Models\ElementarySchool' => 'elementary_school_id',
+        'Robust\RealEstate\Models\MiddleSchool' => 'middle_school_id' ,
+        'Robust\RealEstate\Models\HighSchool' => 'high_school_id',
+        'Robust\RealEstate\Models\Zip' => 'zip_id' ,
+        'Robust\RealEstate\Models\Subdivision' => 'subdivision_id',
+        'Robust\RealEstate\Models\SchoolDistrict' => 'school_district_id',
+    ];
+
     public function handle()
     {
         $blocks = $this->model->where('template', 'single-col-block')->get();
+        $settings = settings('real-estate');
+        //in case of empty data
+        $data = isset($settings['data']) ? $settings['data']['prices'] : [];
+        //in case we dont have price range set
+        $prices = generate_price_ranges(isset($data[0]) ? $data[0] : null, isset($data[1]) ? $data[1] : null);
         foreach ($blocks as $block) {
             $properties = json_decode($block->properties, true);
-            $location = $properties['location'];
-            $type = $properties['location_type'];
-            if ($location != '') {
-                $properties['property_counts'] = [];
-                $field = $this->maps[$type];
-                $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location");
-                $prices = generate_price_ranges($result[0]->min, $result[0]->max);
-                $properties['prices'] = $prices;
-                foreach ($prices as $key => $price) {
-                    $system_price = explode('-', $price);
-                    if(count( $system_price ) > 1){
-                        $properties['property_counts'][$price] = $this->listing
-                        ->getListings()
-                        ->whereLocation([ $type => $location ])
-                        ->wherePriceBetween($system_price)
-                        ->count();
+            $slug = isset($properties['locations'][0]) ? $properties['locations'][0] : null;
+            if($slug){
+                $location = Location::where('slug',$slug)->first();
+                $query =  $this->listing->getListings()
+                          ->where(self::Class_Mapping[$location->locationable_type] , $location->id);
+                foreach ($prices as $price)
+                {
+                    $price_range = explode('-',$price);
+                    if(count($price_range) > 1){
+                        $properties['prices'][$price] = $query->wherePriceBetween($price_range)->count();
                     }else{
-                        $system_price = explode('>', $price);
-                        $properties['property_counts'][$price] = $this->listing
-                        ->getListings()
-                        ->whereLocation([ $type => $location ])
-                        ->where('system_price', '>', $system_price[0])
-                        ->count();
-                    }
-
-                }
-                $block->update(['properties' => json_encode($properties)]);
-
-            }
-            $tabs = $properties['sub_areas'];
-            $properties['tabs'] = [];
-            foreach ($tabs as $tab) {
-                $properties['tabs'][$tab] = [];
-                if (isset($this->tabs_maps[$tab])) {
-                    $result = \DB::select("select min(system_price) as min, max(system_price) as max from real_estate_listings where $field = $location");
-                    $prices = generate_price_ranges($result[0]->min, $result[0]->max);
-                    foreach ($prices as $price) {
-                        $field = $this->maps[$type];
-                        $system_price = explode('-', $price);
-                        $properties['tabs'][$tab][$price] = $this->listing->getListings()
-                            ->whereLocation([ $type => $location ])
-                            ->whereHas('property', function ($query) use ($tab){
-                                $query->where('type', $this->tabs_maps[$tab])
-                                    ->where('value', $this->tabs_maps[$tab]);
-                            })->count();
+                        $price_range = explode('>', $price);
+                        $properties['prices'][$price] = $query->where('system_price', '>', $price_range[0])->count();
                     }
                 }
+                foreach ($properties['tabs'] as $tab) {
+                    $properties['tabs_data'][$tab] = [];
+                    if (isset($this->tabs_maps[$tab])) {
+                        foreach ($prices as $price) {
+                            $properties['tabs_data'][$tab][$price] = $query
+                                ->whereHas('property', function ($query) use ($tab){
+                                    $query->where('type', $this->tabs_maps[$tab])
+                                        ->where('value', $this->tabs_maps[$tab]);
+                                })->count();
+                        }
+                    }else if($tab === 'neighbourhood'){
+                        //for subdivisions/neighbourhood
+                        $subdivisions = Subdivision::where(self::Class_Mapping[$location->locationable_type],$location->id)
+                                        ->get();
+                        foreach ($subdivisions as $subdivision){
+                            //get location id
+                            $location = Location::where('locationable_type','Robust\RealEstate\Models\Subdivision')
+                                        ->where('locationable_id',$subdivision->id)
+                                        ->first();
+
+                            if($location){
+                                $properties['tabs_data'][$tab][$location->slug] = Listing::where('subdivision_id',$location->id)
+                                            ->count();
+                            }
+                        }
+
+                    }else if($tab === 'acreages'){
+                        $acres_range = ['0-5','6-10','11-15','16-20'];
+
+                        foreach ($acres_range as $acre){
+                            $acres = explode('-',$acre);
+                            $properties['tabs_data'][$tab][$acre] = $query
+                                ->whereHas('property', function ($query) use ($acres){
+                                    $query->where('type', 'acres')
+                                        ->whereBetween('value', $acres);
+                                })->count();
+                        }
+                    }
+                }
             }
-            $block->update(['properties' => json_encode($properties)]);
+            $block->update(['properties' => $properties]);
         }
     }
 }
