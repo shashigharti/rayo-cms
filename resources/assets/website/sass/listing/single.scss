@@ -39,18 +39,18 @@
 }
 
 .available-prices {
-  a {
-    color: $white;
-    font-size: 11px;
-    width: 38%;
-    display: inline-block;
-    background: rgba(141, 141, 141, 0.7);
-    padding: 5px;
-    margin: 3px;
-    text-decoration:none;
-  }
+    a {
+        color: $white;
+        font-size: 11px;
+        width: 38%;
+        display: inline-block;
+        background: rgb(134, 133, 133);
+        padding: 5px;
+        margin: 3px;
+        text-decoration: none;
+    }
 
-  margin-top: 230px;
+    margin-top: 230px;
 }
 
 section.main-content {
