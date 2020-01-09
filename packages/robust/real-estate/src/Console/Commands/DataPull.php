@@ -319,7 +319,6 @@ class DataPull extends RetsCommands
                     $name .= ', ' .$listing_data['zip'];
                     $listing_data['name'] = $name;
                     $listing_data['slug'] = Str::slug($name);
-                    dd($listing_data);
                     //check for integer fields and convert
                     foreach ($this->integer_fields as $field){
                         if(isset($listing_data[$field])){
