@@ -56,17 +56,6 @@ class SettingsController extends Controller
         $slug = $request->get('slug');
         $all_data = $request->all();
         $data = $request->except('_token', 'slug', 'files');
-
-
-        if (isset($all_data['files'])) {
-            foreach ($all_data['files'] as $key => $file) {
-                $name = str_replace(' ', '-', strtolower($file->getClientOriginalName()));
-                $imageName = $name;
-                $file->move(public_path('uploads'), $imageName);
-                $data[$key] = url('/uploads') . "/" . $imageName;
-            }
-        }
-
         $setting->store($slug, $data);
         return redirect()->route('admin.settings.edit', [$slug])->with('message',
             'You have sucessfully updated setting.');
