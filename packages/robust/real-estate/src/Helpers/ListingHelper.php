@@ -89,7 +89,7 @@ class ListingHelper
             $src =  getMedia($image);
         }else{
             $listing = $this->model
-                    ->whereType(self::Class_Mapping[$location->locationable_type],$location->locationable_id)
+                    ->whereType(self::Class_Mapping[$location->locationable_type],$location->id)
                     ->where('picture_status',1)->first();
             if($listing && $listing->images() && $listing->images()->first()){
                 $src = $listing->images()->first()->url;

@@ -45,14 +45,6 @@ class Banner extends Model
      */
     public function setPropertiesAttribute($value)
     {
-        if($this->attributes['template'] === 'single-col-block'){
-            $settings = settings('real-estate');
-            //in case of empty data
-            $prices = isset($settings['data']) ? $settings['data']['prices'] : [];
-            //in case we dont have price range set
-            $price_range = generate_price_ranges(isset($prices[0]) ? $prices[0] : null, isset($prices[1]) ? $prices[1] : null);
-            $value['prices'] = $price_range;
-        }
         $this->attributes['properties'] = json_encode($value);
     }
 

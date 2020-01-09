@@ -73,6 +73,12 @@ class PropertiesPull extends RetsCommands
                                     $properties[$key] = $property;
                                 }
                             }
+                            //generate acres from lot size
+                            $acres = 0;
+                            if(isset($properties['lot_size'])){
+                                $acres = floatval($properties['lot_size']) / 43560;
+                                $properties['acres'] = round($acres,3);
+                            }
                             $properties_array = [];
                             foreach ($properties as $key => $property){
                                 array_push($properties_array,[
