@@ -1137,6 +1137,8 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 #main .input-field [type="checkbox"]:not(:checked),#main .input-field [type="checkbox"]:checked{margin-bottom:0;margin-left:0}
 #main .input-field [type="checkbox"]:not(:checked)+label,#main .input-field [type="checkbox"]:checked+label{display:inline-block;position:relative;vertical-align:middle;margin:0;-webkit-transform:translateY(0);transform:translateY(0)}
 .image-upload{display:block}.select-wrapper input.select-dropdown{color:#9e9e9e}.select2-container--default .select2-selection--multiple .select2-selection__rendered li{font-size:11px}
+.input-field-btn{font-size:12px;line-height:30px;height:30px;width:30px;text-align:center;padding:0}
+.form--links{font-size:12px;font-weight:600}.form--links i{vertical-align:bottom;font-size:20px}
 .theme--pagination{margin-top:-2px;margin-bottom:0}.theme--pagination li{height:24px;line-height:24px}
 .theme--pagination li.active{background-color:#6b4994}.theme--pagination li a{font-size:12px;line-height:24px}
 .pagination--top{display:inline}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}

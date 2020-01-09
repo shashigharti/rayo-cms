@@ -166,3 +166,20 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
 .select2-container--default .select2-selection--multiple .select2-selection__rendered li{
     font-size:11px;
 }
+.input-field-btn {
+    font-size: 12px;
+    line-height: 30px;
+    height: 30px;
+    width: 30px;
+    text-align: center;
+    padding: 0;
+}
+.form--links {
+    font-size: 12px;
+    font-weight: 600;
+
+    i {
+        vertical-align: bottom;
+        font-size: 20px;
+    }
+}
