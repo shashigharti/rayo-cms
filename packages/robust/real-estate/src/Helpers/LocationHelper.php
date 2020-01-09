@@ -47,12 +47,12 @@ class LocationHelper
         return $this->location->getById($id);
     }
     /**
-     * @param $type
-     * @param $slug
+     * @param $location
      * @return mixed
      */
-    public function getLocation($type, $slug)
+    public function getLocation($location)
     {
-        return $this->location->getLocation($type,$slug);
+        //in case we want to make multiple change here
+        return $this->location->getLocation($location[0] ?? '');
     }
 }

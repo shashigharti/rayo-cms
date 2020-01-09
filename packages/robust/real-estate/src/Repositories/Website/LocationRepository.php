@@ -29,12 +29,12 @@ class LocationRepository
      *
      */
     protected const RELATION_MAP = [
-        'cities' => ['class' => '\Robust\RealEstate\Models\City'],
-        'zips' => ['class' => '\Robust\RealEstate\Models\Zip'],
-        'counties' => ['class' => '\Robust\RealEstate\Models\County'],
-        'high_schools' => ['class' => '\Robust\RealEstate\Models\HighSchool'],
-        'elementary_schools' => ['class' => '\Robust\RealEstate\Models\ElementarySchool'],
-        'middle_schools' => ['class' => '\Robust\RealEstate\Models\MiddleSchool']
+        'cities' => ['class' => 'Robust\RealEstate\Models\City'],
+        'zips' => ['class' => 'Robust\RealEstate\Models\Zip'],
+        'counties' => ['class' => 'Robust\RealEstate\Models\County'],
+        'high_schools' => ['class' => 'Robust\RealEstate\Models\HighSchool'],
+        'elementary_schools' => ['class' => 'Robust\RealEstate\Models\ElementarySchool'],
+        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool']
     ];
 
     /**
@@ -95,10 +95,9 @@ class LocationRepository
      * @param $slug
      * @return mixed
      */
-    public function getLocation($type, $slug)
+    public function getLocation($slug)
     {
         return $this->model
-            ->where('locationable_type',LocationRepository::RELATION_MAP[$type]['class'])
             ->where('slug',$slug)
             ->first();
     }
