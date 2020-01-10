@@ -66,7 +66,7 @@ class DataPull extends RetsCommands
             $this->min_price = $config['min_price'];
             $this->limit = $config['limit'];
             $this->input = $config['input'];
-            $resources = config('real-estate.' .env('APP_CLIENT').'.data-map.property.listing');
+            $resources = config('real-estate.' .$slug.'.data-map.property.listing');
             //we have to make it configurable dynamically
             foreach ($resources as $class => $resource)
             {

@@ -41,10 +41,11 @@ class ListingController extends Controller
      */
     public function active($location_type = null,  $location = null,  $price_range = [])
     {
+        $status = settings('real-estate','active');
         $query_params = request()->all();
         $results  = $this->model->getListings(
             [
-                'status' => 'Active'
+                'status' => $status
             ])
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
@@ -60,11 +61,12 @@ class ListingController extends Controller
      */
     public function sold($location_type = null,  $location = null,  $price_range = [])
     {
+        $status = settings('real-estate','sold');
         $query_params = request()->all();
         $data_timeframe = config('rws.data.timeframe');
         $results  = $this->model->getListings(
             [
-                'status' => 'Closed' // this should be configurable.
+                'status' => $status // this should be configurable.
             ])
             ->whereLocation([ $location_type => $location ])
             ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
