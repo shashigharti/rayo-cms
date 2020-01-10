@@ -1,4 +1,4 @@
-<div class="system-settings__real-estate">
+<div class="system-settings__data-mapping">
     <div class="row">
          <div class="col s3 accordian__left--block">
             <ul class="menu--lists card">
@@ -42,6 +42,7 @@
                             <tr>
                                 <td class="property-name">Property II</td>
                                 <td class="input-box"><input type="text" placeholder="Text Box"></td>
+                                <td class="action"><a href="#"><i class="material-icons">delete</i></a></td>
                             </tr>
                           </table>
                      </div>

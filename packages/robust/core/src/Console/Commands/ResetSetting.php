@@ -44,8 +44,8 @@ class ResetSetting extends Command
         $this->info("=============================================");
         $packages = CoreHelper::names();
 
-        $executeSeeds = $this->confirm("Would you like to execute settings table seeder? [y|N]", false);
-        if ($executeSeeds) {
+        $execute = $this->confirm("Would you like to execute settings table seeder? [y|N]", false);
+        if ($execute) {
             foreach ($packages as $key => $package) {
                 $this->info("Entering {$package}");
                 $settings = config("{$key}.settings");

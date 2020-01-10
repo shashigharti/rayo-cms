@@ -22,9 +22,6 @@
         <div class="col m4 s12">
             <h3>info & services</h3>
             <a href="#">
-                <p>RENTALS</p>
-            </a>
-            <a href="#">
                 <p>SOLD HOMES</p>
             </a>
             <a href="#">
@@ -39,7 +36,7 @@
 <div class="footer-bottom container-fluid">
     <div class="row">
         <div class="col s12 center-align">
-            <p>Copyright © 2018. ALL Rights Preserved.</p>
+            <p>{!!  settings('app-setting', 'copyright_text')  !!}</p>
         </div>
     </div>
 </div>

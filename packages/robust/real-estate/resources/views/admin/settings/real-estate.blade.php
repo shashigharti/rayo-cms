@@ -45,42 +45,61 @@
                             {{ Form::label("data[prices][]", 'Price >=', ['class' => 'control-label' ]) }}
                             {{ Form::text("data[prices][]", $price, [
                                     'class' => 'form-control'
-                                ]) 
+                                ])
                             }}
                         </div>
                         <div class="col s3 input-field">
                             {{ Form::label("data[increments][]", 'Increment', ['class' => 'control-label' ]) }}
                             {{ Form::text("data[increments][]", $settings['data']['increments'][$key], [
                                     'class' => 'form-control'
-                                ]) 
+                                ])
                             }}
                         </div>
                         <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                         <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete hide"> delete </i></a>
                     </div>
-                @endforeach    
+                @endforeach
             @else
             <div class="form-group form-material row dynamic-elem">
                 <div class="col s3 input-field">
                     {{ Form::label("data[prices][]", 'Price >=', ['class' => 'control-label' ]) }}
                     {{ Form::text("data[prices][]", '', [
                             'class' => 'form-control'
-                        ]) 
+                        ])
                     }}
                 </div>
                 <div class="col s3 input-field">
                     {{ Form::label("data[increments][]", 'Increment', ['class' => 'control-label' ]) }}
                     {{ Form::text("data[increments][]", '', [
                             'class' => 'form-control'
-                        ]) 
+                        ])
                     }}
                 </div>
-               
+
                 <a href="#"><i class="material-icons btn cyan input-field-btn btn-add mt-3 dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 <a href="#"><i class="material-icons btn amber input-field-btn btn-add mt-3  hide dynamic-elem__btn dynamic-elem__delete "> delete </i></a>
             </div>
-            @endif          
-            
+            @endif
+
+        </fieldset>
+        <fieldset class="mt-2">
+            <legend>Market Reports</legend>
+            <div class="form-group form-material row">
+                <div class="col s6">
+                    {{ Form::label('data[market-report][report-type][]', 'Report Types', ['class' => 'control-label' ]) }}
+                    {{ Form::select('data[market-report][report-types][]', [
+                             'cities' => 'City',
+                             'zips' => 'Zip Code',
+                             'school_districts' => 'School District'
+                        ],
+                        $settings['data']['market-report']['report-types'] ?? [],
+                        [
+                        'class'=>'browser-default multi-select',
+                        'multiple'
+                        ])
+                    }}
+                </div>
+            </div>
         </fieldset>
         <fieldset class="mt-2">
             <legend>Data Pull Settings for Server</legend>
@@ -90,7 +109,7 @@
                     {{ Form::text("data[cities]", isset($settings['data']['cities']) ? $settings['data']['cities']:'', [
                             'class' => 'form-control',
                             'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
-                        ]) 
+                        ])
                     }}
                 </div>
                 <div class="col s6 input-field">
@@ -98,7 +117,7 @@
                     {{ Form::text("data[zips]", isset($settings['data']['zips']) ? $settings['data']['zips']:'', [
                             'class' => 'form-control',
                             'placeholder' => 'Comma separated values E.g \'33418, 33419\''
-                        ]) 
+                        ])
                     }}
                 </div>
                 <div class="col s6 input-field">
@@ -106,7 +125,7 @@
                     {{ Form::text("data[counties]", isset($settings['data']['counties']) ? $settings['data']['counties']:'', [
                             'class' => 'form-control',
                             'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
-                        ]) 
+                        ])
                     }}
                 </div>
                 <div class="col s6 input-field">
@@ -114,44 +133,66 @@
                     {{ Form::text("data[min]", isset($settings['data']['min']) ? $settings['data']['min']:'10000', [
                             'class' => 'form-control',
                             'placeholder' => 'numeric Value E.g \'10000\''
-                        ]) 
+                        ])
                     }}
                 </div>
             </div>
             <div class="form-group form-material row">
                 <div class="col s6 input-field form--links">
-                   <a href="#""> <i class="material-icons"> settings </i> Get Sample Data  </a>
+                   <a href="#"> <i class="material-icons"> settings </i> Get Sample Data  </a>
                 </div>
             </div>
         </fieldset>
         {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
         {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
-            <fieldset class="mt-2">
-                <legend>Data Server (RETS) </legend>
-                <div class="form-group form-material row">
-                    <div class="col s6 input-field">
-                        {{ Form::label('user_id', 'User ID', ['class' => 'control-label' ]) }}
-                        {{ Form::text('user_id', isset($settings['user_id'])?$settings['user_id']:'', [
-                                'class' => 'form-control'
-                            ]) 
-                        }}
+                <fieldset class="mt-2">
+                    <legend>Data Server (RETS) </legend>
+                    <div class="form-group form-material row">
+                        <div class="col s6 input-field">
+                            {{ Form::label('client_name', 'Client Name', ['class' => 'control-label' ]) }}
+                            {{ Form::text('client_name', isset($settings['client_name'])?$settings['client_name']:'', [
+                                    'class' => 'form-control'
+                                ])
+                            }}
+                        </div>
+                        <div class="col s6 input-field">
+                            {{ Form::label('client_slug', 'Slug', ['class' => 'control-label' ]) }}
+                            {{ Form::text('client_slug', isset($settings['client_slug'])?$settings['client_slug']:'', [
+                                    'class' => 'form-control'
+                                ])
+                            }}
+                        </div>
                     </div>
-                    <div class="col s6 input-field">
-                        {{ Form::label('password', 'Password', ['class' => 'control-label' ]) }}
-                        {{ Form::text('password', isset($settings['password'])?$settings['password']:'', [
-                                'class' => 'form-control'
-                            ]) 
-                        }}
+                    <div class="form-group form-material row">
+                        <div class="col s12 input-field">
+                            {{ Form::label('url', 'Url', ['class' => 'control-label' ]) }}
+                            {{ Form::text('url', isset($settings['url'])?$settings['url']:'', [
+                                    'class' => 'form-control'
+                                ])
+                            }}
+                        </div>
+                    </div>
+                    <div class="form-group form-material row">
+                        <div class="col s6 input-field">
+                            {{ Form::label('username', 'UserName', ['class' => 'control-label' ]) }}
+                            {{ Form::text('username', isset($settings['username'])?$settings['username']:'', [
+                                    'class' => 'form-control'
+                                ])
+                            }}
+                        </div>
+                        <div class="col s6 input-field">
+                            {{ Form::label('password', 'Password', ['class' => 'control-label' ]) }}
+                            {{ Form::text('password', isset($settings['password'])?$settings['password']:'', [
+                                    'class' => 'form-control'
+                                ])
+                            }}
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="form-group form-material row mt-3">
+                    <div class="col s12">
+                        {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
                     </div>
                 </div>
-            </fieldset>    
-          
-        {{Form::close()}}
-        
-        <div class="form-group form-material row mt-3">
-            <div class="col s12">
-                {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
-            </div>
-        </div>
     {{Form::close()}}
 </div>

@@ -37,17 +37,20 @@ class SitemapGenerate extends Command
         $this->info("\n=============================================");
         $this->info("============ Generating Sitemap =============");
         $this->info("=============================================");
-        $packages = CoreHelper::names();
-        foreach ($packages as $key => $package) {
-            $this->info("Entering {$package}");
-            if ($filesystem->exists(base_path() . "/packages/robust/{$key}/src/Helpers/SitemapHelper.php")) {
-                $class = "Robust\\{$package}\\Helpers\\SitemapHelper";
-                $helper = new $class();
-                $helper->generate();
-                $map = $helper->addToIndex($map);
+        $execute = $this->confirm("Would you like to execute permission table seeder? [y|N]", false);
+        if ($execute) {
+            $packages = CoreHelper::names();
+            foreach ($packages as $key => $package) {
+                $this->info("Entering {$package}");
+                if ($filesystem->exists(base_path() . "/packages/robust/{$key}/src/Helpers/SitemapHelper.php")) {
+                    $class = "Robust\\{$package}\\Helpers\\SitemapHelper";
+                    $helper = new $class();
+                    $helper->generate();
+                    $map = $helper->addToIndex($map);
 
+                }
             }
+            Storage::disk('local')->put('sitemaps/sitemap.xml', $map->xmlIndex());
         }
-        Storage::disk('local')->put('sitemaps/sitemap.xml', $map->xmlIndex());
     }
 }

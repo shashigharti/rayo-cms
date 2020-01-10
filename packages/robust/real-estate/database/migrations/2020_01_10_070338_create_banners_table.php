@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBackupsTable extends Migration {
+class CreateBannersTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,15 +12,16 @@ class CreateBackupsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('backups', function(Blueprint $table)
+		Schema::create('banners', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
+			$table->string('title');
 			$table->string('slug');
-			$table->string('size');
-			$table->string('path');
+			$table->string('template', 20)->nullable();
+			$table->text('properties', 65535)->nullable();
+			$table->integer('order')->nullable();
+			$table->boolean('status')->nullable();
 			$table->timestamps();
-			$table->softDeletes();
 		});
 	}
 
@@ -32,7 +33,7 @@ class CreateBackupsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('backups');
+		Schema::drop('banners');
 	}
 
 }

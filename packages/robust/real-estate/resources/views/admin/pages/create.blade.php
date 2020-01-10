@@ -23,6 +23,18 @@
                     }}
                 </div>
             </div>
+            <div class="row editor">                
+                <div class="input-field col s12">
+                    {{ Form::label('content', 'body', ['class' => 'required' ]) }}
+                    {{ Form::textarea('content', null, [
+                            'placeholder' => 'Email body',
+                            'required'  => 'required',
+                            'id' => 'editor__body',
+                            'class' => 'editor'
+                        ]) 
+                    }}
+                </div>
+            </div>
 
             <div class="row">
                 <div class="input-field col s12">

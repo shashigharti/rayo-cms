@@ -39,12 +39,11 @@ class ResetMenu extends Command
     public function handle()
     {
         $this->info("\n=============================================");
-        $this->info("== Migrating");
-        $this->info("=============================================");
-        $packages = CoreHelper::names();
-
-        $executeSeeds = $this->confirm("Would you like to execute menu table  seeder? [y|N]", false);
-        if ($executeSeeds) {
+        $this->info("============= Reset Menu Table ================");
+        $this->info("===============================================");
+        $execute = $this->confirm("Would you like to execute menu table  seeder? [y|N]", false);
+        $packages = CoreHelper::names();       
+        if ($execute) {
             DB::table('menus')->truncate();
             foreach ($packages as $key => $package) {
                 $this->info("/packages/robust/{$key}/database/seeds/{$package}MenuTableSeeder.php");
