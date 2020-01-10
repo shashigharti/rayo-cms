@@ -23,12 +23,12 @@ class LocationRepository
     ];
 
      protected const RELATION_MAP = [
-        'cities' => ['class' => '\Robust\RealEstate\Models\City'],
-        'zips' => ['class' => '\Robust\RealEstate\Models\Zip'],
-        'counties' => ['class' => '\Robust\RealEstate\Models\County'],
-        'high_schools' => ['class' => '\Robust\RealEstate\Models\HighSchool'],
-        'elementary_schools' => ['class' => '\Robust\RealEstate\Models\ElementarySchool'],
-        'middle_schools' => ['class' => '\Robust\RealEstate\Models\MiddleSchool']
+        'cities' => ['class' => 'Robust\RealEstate\Models\City'],
+        'zips' => ['class' => 'Robust\RealEstate\Models\Zip'],
+        'counties' => ['class' => 'Robust\RealEstate\Models\County'],
+        'high_schools' => ['class' => 'Robust\RealEstate\Models\HighSchool'],
+        'elementary_schools' => ['class' => 'Robust\RealEstate\Models\ElementarySchool'],
+        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool']
     ];
 
     /**
@@ -50,7 +50,7 @@ class LocationRepository
 
         // Get mapping locationable object for type
         $params = collect($params)->map(function ($value, $key) {
-            if($key == 'type'){                
+            if($key == 'type'){
                 return LocationRepository::RELATION_MAP[$value]['class'];
             }
             return $param;
@@ -61,9 +61,9 @@ class LocationRepository
         if(count($fields) > 0){
             $qBuilder = $qBuilder->select($fields);
         }
-        
+
         foreach($params as $key => $param){
-            $qBuilder = $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'], 
+            $qBuilder = $qBuilder->where(LocationRepository::FIELDS_QUERY_MAP[$key]['name'],
             LocationRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
