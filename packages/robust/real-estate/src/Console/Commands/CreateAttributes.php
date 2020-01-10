@@ -32,6 +32,7 @@ class CreateAttributes extends Command
         $location_properties = \DB::table('real_estate_listing_properties')
             ->whereNotIn('type',['public_remarks'])
             ->distinct('type')
+            ->limit(10000)
             ->get();
 
         $all_properties = [];
