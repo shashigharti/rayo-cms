@@ -14,15 +14,14 @@ class CreateRealEstateEmailTemplatesTable extends Migration {
 	{
 		Schema::create('real_estate_email_templates', function(Blueprint $table)
 		{
-			$table->bigInteger('id', true)->unsigned();
-			$table->string('title');
-			$table->integer('group');
-			$table->integer('template');
-			$table->integer('status')->default(0);
-			$table->string('subject', 200);
-			$table->integer('frequency');
-			$table->dateTime('starts_at')->nullable();
-			$table->dateTime('ends_at')->nullable();
+			$table->integer('id')->unsigned()->primary();
+			$table->integer('user_id')->nullable();
+			$table->string('name', 64);
+			$table->string('type', 64);
+			$table->string('subject', 128)->nullable();
+			$table->text('body', 65535)->nullable();
+			$table->boolean('editable')->default(1);
+			$table->boolean('removable')->default(1);
 			$table->timestamps();
 		});
 	}

@@ -179,7 +179,7 @@ return [
         Laravolt\Avatar\ServiceProvider::class,
         \Robust\Core\Providers\RobustMailServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
-        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class,
+        Biscolab\ReCaptcha\ReCaptchaServiceProvider::class
 
     ], Robust\Core\Helpers\CoreHelper::service_providers()),
         [

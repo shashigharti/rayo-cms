@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateCommandsTable extends Migration {
+class CreateReportsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,10 +12,14 @@ class CreateCommandsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('commands', function(Blueprint $table)
+		Schema::create('reports', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name')->unique();
+			$table->string('name', 100)->unique();
+			$table->string('slug', 100);
+			$table->string('file_name', 100);
+			$table->text('description');
+			$table->string('package_name', 50);
 			$table->timestamps();
 			$table->softDeletes();
 		});
@@ -29,7 +33,7 @@ class CreateCommandsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('commands');
+		Schema::drop('reports');
 	}
 
 }
