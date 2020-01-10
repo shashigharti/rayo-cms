@@ -13,9 +13,9 @@ class RetsCommands extends Command
     public function __construct()
     {
         parent::__construct();
-        $url = 'http://retsgw.flexmls.com:80/rets2_3/Login';
-        $username = 'fl.rets.802025';
-        $password = 'scopa-tropy71';
+        $url = env('LOGIN_URL');
+        $username = env('LOGIN_USERNAME');
+        $password = env('LOGIN_PASSWORD');
         $config = new \PHRETS\Configuration;
         $config->setLoginUrl($url)
             ->setUsername($username)

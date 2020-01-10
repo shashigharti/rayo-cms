@@ -39,9 +39,25 @@ class RetsPullAll extends Command
     public function handle()
     {
        $days = $this->argument('days');
+       $this->info('Starting to Pull Data');
        Artisan::call('rws:data-pull',['days' => $days]);
+       $this->info('Ending of Pull Data');
+       $this->info('Starting to Pull Properties');
        Artisan::call('rws:properties-pull');
+       $this->info('Ending of Pull Properties');
+       $this->info('Starting to Pull images');
        Artisan::call('rws:images-pull');
+       $this->info('Ending of Pull images');
+
+       //call location update command
+
+        $this->info('Updating Locations');
+        Artisan::call('rws:update-locations-count');
+        $this->info('Updating Locations Finished');
+
+        $this->info('Creating Attributes');
+        Artisan::call('rws:create-attributes');
+        $this->info('Creating Attributes Finished');
     }
 
 }

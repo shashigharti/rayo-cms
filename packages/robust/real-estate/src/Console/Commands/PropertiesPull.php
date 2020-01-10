@@ -42,7 +42,7 @@ class PropertiesPull extends RetsCommands
 
     public function handle()
     {
-        $resources = config('real-estate.data-map.property.properties');
+        $resources = config('real-estate.'. env('APP_CLIENT') .'.data-map.property.properties');
         foreach ($resources as $class => $resource){
             $query = Listing::where('class',$this->property_class[$class])
                    ->whereNull('properties_status');

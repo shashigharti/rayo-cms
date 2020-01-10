@@ -320,7 +320,8 @@
                     <h3 class="title-more-detail">More Property Details </h3>
                 </div>
                 <div class="more-property-detail-content">
-                    @foreach($details as $title => $detail)
+                    @if(isset($details))
+                        @foreach($details as $title => $detail)
                         <div class="col s4">
                             <div class="more-inner">
                                 <div class="detail-block">
@@ -344,6 +345,7 @@
                             </div>
                         </div>
                     @endforeach
+                    @endif
                         <div class="col s4">
                             <div class="more-inner">
                                 <div class="detail-block">
