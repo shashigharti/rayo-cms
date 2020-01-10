@@ -44,6 +44,7 @@ class CreateAttributes extends Command
         foreach ($properties_types as $properties_type)
         {
             $type = $properties_type->type;
+            $this->info($type);
             if(!isset($all_properties[$type])){
                 $all_properties[$type] = [];
             }
