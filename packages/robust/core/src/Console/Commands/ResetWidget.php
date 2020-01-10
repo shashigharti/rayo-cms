@@ -43,9 +43,8 @@ class ResetWidget extends Command
         $this->info("\n=============================================");
         $this->info("========== Resetting Widgets Table ============");
         $this->info("===============================================");
-        $execute = $this->confirm("Would you like to reset widgets table seeder? [y|N]", false);
+        $execute = $this->confirm("Would you like to reset widgets table seeder? [y|N]", false);        
         
-        $packages = CoreHelper::names();        
         if ($execute) {
             $packages = CoreHelper::names();
             DB::table('widgets')->truncate();

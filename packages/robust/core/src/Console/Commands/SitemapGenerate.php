@@ -33,11 +33,11 @@ class SitemapGenerate extends Command
      */
     public function handle(Filesystem $filesystem, Sitemap $map)
     {
-
         $this->info("\n=============================================");
         $this->info("============ Generating Sitemap =============");
         $this->info("=============================================");
-        $execute = $this->confirm("Would you like to execute permission table seeder? [y|N]", false);
+        $execute = $this->confirm("Would you like to execute sitemap generator? [y|N]", false);
+
         if ($execute) {
             $packages = CoreHelper::names();
             foreach ($packages as $key => $package) {

@@ -34,12 +34,19 @@ class Restore extends Command
     public function handle()
     {
 
-        $user = $this->argument('user');
-        $schema = $this->argument('schema');
-        $password = $this->argument('password');
-        $file = $this->argument('file');
+        $this->info("\n=============================================");
+        $this->info("========== Restoring Database ============");
+        $this->info("===============================================");
+        $execute = $this->confirm("Would you like to run restore command? [y|N]", false);  
 
-        $command = sprintf('mysql -u %s  -p%s \'%s\' < %s',$user, $password,$schema, $file);
-        exec($command);
+        if ($execute) {
+            $user = $this->argument('user');
+            $schema = $this->argument('schema');
+            $password = $this->argument('password');
+            $file = $this->argument('file');
+
+            $command = sprintf('mysql -u %s  -p%s \'%s\' < %s',$user, $password,$schema, $file);
+            exec($command);
+        }
     }
 }
