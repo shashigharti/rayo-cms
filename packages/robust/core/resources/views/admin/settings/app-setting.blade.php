@@ -27,10 +27,11 @@
                 {{ Form::label('google_api_key', 'Google API Key', ['class' => 'control-label' ]) }}
             </div>
         </div>
-        <div class="form-group form-material row">
+        <div class="form-group form-material row editor">
             <div class="col s12 input-field">
                 {{ Form::textarea('footer_content', isset($settings['footer_content'])?$settings['footer_content']:'', [
                         'class' => 'form-control editor',
+                        'id' => 'editor_footer_content'
                     ])
                 }}
                 {{ Form::label('footer_content', 'Footer Content', ['class' => 'control-label' ]) }}
