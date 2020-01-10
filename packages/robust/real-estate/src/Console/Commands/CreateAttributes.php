@@ -28,13 +28,6 @@ class CreateAttributes extends Command
      */
     public function handle()
     {
-        // Get all listings
-//        $location_properties = \DB::table('real_estate_listing_properties')
-
-//            ->distinct('type')
-//            ->limit(50000)
-//            ->get();
-
         $properties_types = \DB::table('real_estate_listing_properties')
             ->whereNotIn('type',['public_remarks','virtual_tour','directions','modification_date','modified'])
             ->select('type')
