@@ -22,9 +22,6 @@
         <div class="col m4 s12">
             <h3>info & services</h3>
             <a href="#">
-                <p>RENTALS</p>
-            </a>
-            <a href="#">
                 <p>SOLD HOMES</p>
             </a>
             <a href="#">
