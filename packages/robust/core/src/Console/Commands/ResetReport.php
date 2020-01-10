@@ -45,7 +45,6 @@ class ResetReport extends Command
         $this->info("===============================================");
         $execute = $this->confirm("Would you like to execute permission table seeder? [y|N]", false);
         if ($execute) {
-
             $packages = CoreHelper::names();
             DB::table('reports')->truncate();
             foreach ($packages as $key => $package) {
