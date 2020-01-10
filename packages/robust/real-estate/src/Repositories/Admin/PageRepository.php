@@ -2,14 +2,23 @@
 namespace Robust\RealEstate\Repositories\Admin;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
+use Robust\Core\Repositories\Common\Traits\CrudRepositoryTrait;
 use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 use Robust\RealEstate\Models\Page;
 
+/**
+ * Class PageRepository
+ * @package Robust\RealEstate\Repositories\Admin
+ */
 class PageRepository
 {
-    use SearchRepositoryTrait, CommonRepositoryTrait;
+    use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
-   
+
+    /**
+     * PageRepository constructor.
+     * @param Page $model
+     */
     public function __construct(Page $model)
     {
         $this->model = $model;

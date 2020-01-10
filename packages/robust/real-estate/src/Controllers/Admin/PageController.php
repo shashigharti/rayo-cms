@@ -8,12 +8,23 @@ use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\RealEstate\Repositories\Admin\PageRepository;
 
 
+/**
+ * Class PageController
+ * @package Robust\RealEstate\Controllers\Admin
+ */
 class PageController extends Controller
 {
     use CrudTrait, ViewTrait;
 
+    /**
+     * @var PageRepository
+     */
     protected $model;
 
+    /**
+     * PageController constructor.
+     * @param PageRepository $model
+     */
     public function __construct(PageRepository $model)
     {
         $this->model = $model;
