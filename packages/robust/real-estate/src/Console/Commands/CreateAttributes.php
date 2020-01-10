@@ -36,7 +36,7 @@ class CreateAttributes extends Command
 //            ->get();
 
         $properties_types = \DB::table('real_estate_listing_properties')
-            ->whereNotIn('type',['public_remarks','virtual_tour','directions'])
+            ->whereNotIn('type',['public_remarks','virtual_tour','directions','modification_date','modified'])
             ->select('type')
             ->groupBy('type')
             ->get();
@@ -50,7 +50,7 @@ class CreateAttributes extends Command
             }
             $properties = \DB::table('real_estate_listing_properties')
                         ->where('type',$type)
-                        ->limit(5000)
+                        ->limit(1000)
                         ->get();
             foreach ($properties as $property)
             {
