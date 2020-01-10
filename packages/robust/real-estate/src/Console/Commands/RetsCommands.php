@@ -13,16 +13,18 @@ class RetsCommands extends Command
     public function __construct()
     {
         parent::__construct();
-        $url = env('LOGIN_URL');
-        $username = env('LOGIN_USERNAME');
-        $password = env('LOGIN_PASSWORD');
-        $config = new \PHRETS\Configuration;
-        $config->setLoginUrl($url)
-            ->setUsername($username)
-            ->setPassword($password)
-            ->setRetsVersion('1.7.2');
+        $url = env('LOGIN_URL') ?? null;
+        $username = env('LOGIN_USERNAME') ?? null;
+        $password = env('LOGIN_PASSWORD') ?? null;
+        if($url && $username && $password){
+            $config = new \PHRETS\Configuration;
+            $config->setLoginUrl($url)
+                ->setUsername($username)
+                ->setPassword($password)
+                ->setRetsVersion('1.7.2');
 
-        $this->rets = new \PHRETS\Session($config);
-        $connect = $this->rets->Login();
+            $this->rets = new \PHRETS\Session($config);
+            $connect = $this->rets->Login();
+        }
     }
 }
