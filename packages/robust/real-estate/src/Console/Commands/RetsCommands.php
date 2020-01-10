@@ -12,10 +12,11 @@ class RetsCommands extends Command
 
     public function __construct()
     {
+        $settings = settings('data-mapping');
         parent::__construct();
-        $url = env('LOGIN_URL') ?? null;
-        $username = env('LOGIN_USERNAME') ?? null;
-        $password = env('LOGIN_PASSWORD') ?? null;
+        $url = $settings['url'] ?? null;
+        $username = $settings['username'] ?? null;
+        $password = $settings['password'] ?? null;
         if($url && $username && $password){
             $config = new \PHRETS\Configuration;
             $config->setLoginUrl($url)
