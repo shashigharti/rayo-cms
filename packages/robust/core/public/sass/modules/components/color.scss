@@ -1,22 +1,23 @@
+$theme-color: #126692 ;
+
 .gradient-45deg-purple-deep-orange {
-    background: #9c27b0 !important;
-    box-shadow: 3px 3px 4px 0 rgb(78, 51, 113);
+    background: #126692 !important;
+    box-shadow: 3px 3px 4px 0 #01579B;
 
     &:hover, &:focus {
-        background: #6b4994;
+        background: #0a405d;
     }
 
     &.gradient-shadow {
-        -webkit-box-shadow: 0 6px 20px 0 rgba(255, 110, 64, 0.5) !important;
-        box-shadow: 0 6px 20px 0 rgba(255, 110, 64, 0.5) !important;
+        box-shadow: 0 6px 20px 0 #01579B !important;
     }
 }
 .theme-btn {
-    background: #9c27b0 !important;
-    box-shadow: 3px 3px 4px 0 rgb(78, 51, 113);
+    background: #126692 !important;
+    box-shadow: 3px 3px 4px 0 #01579B;
 
     &:hover, &:focus {
-        background: #6b4994;
+        background: #0a405d;
     }
 }
 .purple {

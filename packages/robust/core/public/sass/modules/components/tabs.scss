@@ -1,21 +1,21 @@
 .tabs {
     .tab {
         a {
-            color: rgb(87, 87, 88);
+            color: #126692;
             text-transform: none;
 
             &:hover, &.active, &:focus {
-                background-color:transparent;
-                color: #9c27b0;
+                background-color: transparent;
+                color: #126692;
 
                 &.active {
-                    background-color:transparent;
+                    background-color: transparent;
                 }
             }
         }
     }
 
     .indicator {
-        background-color: #9c27b0;
+        background-color:$theme-color;
     }
 }

@@ -1,29 +1,53 @@
 <div class="system-settings__real-estate">
-    {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
-    {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
-        <fieldset>
-            <legend>Data Server (RETS) </legend>
-            <div class="form-group form-material row">
-                <div class="col s6 input-field">
-                    {{ Form::label('user_id', 'User ID', ['class' => 'control-label' ]) }}
-                    {{ Form::text('user_id', isset($settings['user_id'])?$settings['user_id']:'', [
-                            'class' => 'form-control'
-                        ]) 
-                    }}
-                </div>
-                <div class="col s6 input-field">
-                    {{ Form::label('password', 'Password', ['class' => 'control-label' ]) }}
-                    {{ Form::text('password', isset($settings['password'])?$settings['password']:'', [
-                            'class' => 'form-control'
-                        ]) 
-                    }}
-                </div>
-            </div>
-        </fieldset>        
-        <div class="form-group form-material row mt-3">
-            <div class="col s12">
-                {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
-            </div>
-        </div>
-    {{Form::close()}}
+    <div class="row">
+         <div class="col s3 accordian__left--block">
+            <ul class="menu--lists card">
+                <li>Property I</li>
+                <li>Property II</li>
+                <li>Property III</li>
+                <li>Property IV</li>
+                <li>Property V</li>
+            </ul>
+         </div>
+         <div class="col s9 accordian__right--block">
+           <ul class="collapsible" data-collapsible="accordion">
+               <li class="active">
+                    <div class="collapsible-header gradient-45deg-purple-deep-orange">Heading I</div>
+                    <div class="collapsible-body">
+                       <div class="s12">
+                          <table>
+                            <tr>
+                                <th class="property-name">Property Name</th>
+                                <th>Display Name</th>
+                                <th></th>
+                            </tr>
+                            <tr>
+                                <td class="property-name">Property II</td>
+                                <td class="input-box"><input type="text" placeholder="Text Box"></td>
+                                <td class="action"><a href="#"><i class="material-icons">delete</i></a></td>
+                            </tr>
+                          </table>
+                       </div>
+                    </div>
+               </li>
+               <li>
+                  <div class="collapsible-header gradient-45deg-purple-deep-orange">Heading II</div>
+                  <div class="collapsible-body">
+                     <div class="s12">
+                          <table>
+                            <tr>
+                                <th class="property-name">Property Name</th>
+                                <th>Display Name</th>
+                            </tr>
+                            <tr>
+                                <td class="property-name">Property II</td>
+                                <td class="input-box"><input type="text" placeholder="Text Box"></td>
+                            </tr>
+                          </table>
+                     </div>
+                  </div>
+               </li> 
+            </ul>
+         </div>
+    </div>
 </div>

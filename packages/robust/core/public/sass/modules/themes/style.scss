@@ -1472,3 +1472,100 @@ input{
     font-size:14px !important;
 }
 
+.accordian__left--block {
+    .menu--lists {
+        padding:0px;
+        height: 400px;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        overflow-y: auto;
+
+        li {
+            font-size: 12px;
+            font-weight: 600;
+            padding: 10px;
+            background: #f3eeee;
+
+            &:nth-child(even) {
+                background: #fff;
+                ;
+            }
+        }
+    }
+}
+.accordian__right--block {
+    .collapsible {
+        margin: 0 0px 1rem 15px;
+    }
+
+    h5 {
+        font-size: 22px !important;
+    }
+
+    .btn-delete {
+        color: #9c27b0;
+    }
+
+    .collapsible-header {
+        display: block;
+    }
+
+    .collapsible-body {
+        padding: 15px;
+    }
+
+    table {
+        border: 1px solid #ddd;
+        background: #fff;
+
+        th {
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-right: 1px solid #ccc;
+            background: #f3eeee;
+        }
+
+        td {
+            border-right: 1px solid #ccc;
+        }
+
+        .property-name {
+            width: 20%;
+        }
+
+        .input-box {
+            padding: 5px 5px 0;
+            font-size: 12px;
+
+            input {
+                height: auto;
+                border-bottom: 0px;
+                margin-bottom: 0px;
+
+                &:focus {
+                    border-bottom: 0px !important;
+                }
+            }
+        }
+
+        input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]) {
+            border-bottom: 0px !important;
+            box-shadow: none !important;
+        }
+
+        .action {
+            width: 40px;
+            padding: 5px;
+
+            i {
+                color: #ffc107;
+            }
+        }
+    }
+}
+.system-settings__real-estate {
+    .row .col {
+        padding: 0 0px;
+    }
+}
