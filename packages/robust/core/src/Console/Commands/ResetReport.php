@@ -40,50 +40,54 @@ class ResetReport extends Command
      */
     public function handle(Filesystem $filesystem, Report $report)
     {
-        $packages = CoreHelper::names();
-        DB::table('reports')->truncate();
+        $this->info("\n=============================================");
+        $this->info("============= Reset Reports Table ===============");
+        $this->info("===============================================");
+        $execute = $this->confirm("Would you like to execute permission table seeder? [y|N]", false);
+        if ($execute) {
 
-        foreach ($packages as $key => $package) {
-            $this->info("Entering {$package}");
+            $packages = CoreHelper::names();
+            DB::table('reports')->truncate();
+            foreach ($packages as $key => $package) {
+                $this->info("Entering {$package}");
+                $package_reports = config("{$key}.reports");
+                if (is_array($package_reports)) {
+                    foreach ($package_reports as $package_report) {
+                        if ($filesystem->exists(base_path() . "/packages/robust/{$key}/resources/views/admin/reports/{$package_report['file_name']}.blade.php")) {
+                            $report_data = [
+                                'name' => $package_report['display_name'],
+                                'slug' => str_slug($package_report['display_name']),
+                                'description' => $package_report['description'],
+                                'package_name' => $key,
+                                'file_name' => $package_report['file_name'],
+                                'permission' => $package_report['permission']
+                            ];
+                            $report->create($report_data);
+                        }
 
-            $package_reports = config("{$key}.reports");
-
-            if (is_array($package_reports)) {
-                foreach ($package_reports as $package_report) {
-                    if ($filesystem->exists(base_path() . "/packages/robust/{$key}/resources/views/admin/reports/{$package_report['file_name']}.blade.php")) {
-                        $report_data = [
-                            'name' => $package_report['display_name'],
-                            'slug' => str_slug($package_report['display_name']),
-                            'description' => $package_report['description'],
-                            'package_name' => $key,
-                            'file_name' => $package_report['file_name'],
-                            'permission' => $package_report['permission']
-                        ];
-                        $report->create($report_data);
                     }
-
                 }
-            }
-            if (is_array(config("reports.{$key}"))) {
-                $custom_reports = config("reports.{$key}");
-                foreach ($custom_reports as $custom_report) {
-                    print_r($filesystem->exists(resource_path() . "/views/packages/robust/{$key}/admin/reports/{$custom_report['file_name']}.blade.php"));
+                if (is_array(config("reports.{$key}"))) {
+                    $custom_reports = config("reports.{$key}");
+                    foreach ($custom_reports as $custom_report) {
+                        print_r($filesystem->exists(resource_path() . "/views/packages/robust/{$key}/admin/reports/{$custom_report['file_name']}.blade.php"));
 
-                    if ($filesystem->exists(resource_path() . "/views/packages/robust/{$key}/admin/reports/{$custom_report['file_name']}.blade.php")) {
-                        $report_data = [
-                            'name' => $custom_report['display_name'],
-                            'slug' => str_slug($custom_report['display_name']),
-                            'description' => $custom_report['description'],
-                            'package_name' => $key,
-                            'file_name' => $custom_report['file_name'],
-                            'permission' => $custom_report['permission']
-                        ];
-                        $report->create($report_data);
+                        if ($filesystem->exists(resource_path() . "/views/packages/robust/{$key}/admin/reports/{$custom_report['file_name']}.blade.php")) {
+                            $report_data = [
+                                'name' => $custom_report['display_name'],
+                                'slug' => str_slug($custom_report['display_name']),
+                                'description' => $custom_report['description'],
+                                'package_name' => $key,
+                                'file_name' => $custom_report['file_name'],
+                                'permission' => $custom_report['permission']
+                            ];
+                            $report->create($report_data);
+                        }
+
                     }
-
                 }
-            }
 
+            }
         }
     }
 }
