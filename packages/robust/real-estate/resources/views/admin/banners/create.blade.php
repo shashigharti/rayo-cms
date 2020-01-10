@@ -57,7 +57,7 @@
                             Upload Logo
                         </button>
                     </div>
-                    {{ Form::hidden('properties[image]', $properties['image'] ?? null, [
+                    {{ Form::hidden('properties[image]', $properties->image ?? null, [
                             'class' => 'file-uploader_files'
                         ])
                     }}
