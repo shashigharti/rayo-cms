@@ -4,6 +4,7 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\Schema;
 use Robust\Core\Models\Command as Task;
 
 class Kernel extends ConsoleKernel
@@ -31,12 +32,14 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $commands = Task::where('status', 1)->get();
-        foreach($commands as $cmd){
-            $frequency = $cmd->frequency;
-            $schedule->command($cmd->command)->$frequency()->at($cmd->at ?? '24:10');
-            \Log::info($cmd->command . " " . $frequency . "() at " . $cmd->at);
-        }   
+       if(Schema::hasTable('commands')){
+           $commands = Task::where('status', 1)->get();
+           foreach($commands as $cmd){
+               $frequency = $cmd->frequency;
+               $schedule->command($cmd->command)->$frequency()->at($cmd->at ?? '24:10');
+               \Log::info($cmd->command . " " . $frequency . "() at " . $cmd->at);
+           }
+       }
     }
 
     /**
