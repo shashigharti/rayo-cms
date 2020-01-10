@@ -36,7 +36,7 @@ class CreateAttributes extends Command
 //            ->get();
 
         $properties_types = \DB::table('real_estate_listing_properties')
-            ->whereNotIn('type',['public_remarks','virtual_tour'])
+            ->whereNotIn('type',['public_remarks','virtual_tour','directions'])
             ->select('type')
             ->groupBy('type')
             ->get();

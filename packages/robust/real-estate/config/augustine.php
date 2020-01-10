@@ -250,7 +250,7 @@ return [
             'properties' => [
                 'A' => [
                     //property descriptions
-
+                    'property_type' => 'LIST_9',
                     //interior
                     'interior' => 'GF20030226223927789385000000',
                     'amenities' => 'GF20030226223927789385000000',
@@ -387,7 +387,7 @@ return [
                 ],
                 'C' => [
                     //property descriptions
-
+                    'property_type' => 'LIST_9',
                     //features
                     'complex_features' => 'GF20030310024242393113000000',
 
@@ -461,7 +461,7 @@ return [
                 ],
                 'D' => [
                     //property descriptions
-
+                    'property_type' => 'LIST_9',
                     //interior
                     'interior' => 'GF20030326015006456699000000',
                     'amenities' => 'GF20030326015006456699000000',
@@ -584,7 +584,7 @@ return [
                 ],
                 'E' => [
                     //property descriptions
-
+                    'property_type' => 'LIST_9',
                     //interior
                     'interior' => 'GF20030320035137787542000000',
                     'amenities' => 'GF20030320035137787542000000',
