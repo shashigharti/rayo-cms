@@ -154,10 +154,10 @@ class DataPull extends RetsCommands
 
                     if($subdivision){
                         Subdivision::where('id',$subdivision)->update([
-                            'city_id' => $listing_data['city_id'],
-                            'county_id' => $listing_data['county_id'],
-                            'zip_id' => $listing_data['zip_id'],
-                            'area_id' => $listing_data['area_id'],
+                            'city_id' => $listing_data['city_id'] ?? null,
+                            'county_id' => $listing_data['county_id'] ?? null,
+                            'zip_id' => $listing_data['zip_id'] ?? null,
+                            'area_id' => $listing_data['area_id'] ?? null,
                             'school_district_id' => $listing_data['school_district_id'] ?? null,
                             'status' => 1
                         ]);

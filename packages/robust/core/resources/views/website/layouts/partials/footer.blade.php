@@ -39,7 +39,7 @@
 <div class="footer-bottom container-fluid">
     <div class="row">
         <div class="col s12 center-align">
-            <p>Copyright © 2018. ALL Rights Preserved.</p>
+            <p>{!!  settings('app-setting', 'copyright_text')  !!}</p>
         </div>
     </div>
 </div>
