@@ -29,30 +29,40 @@ class CreateAttributes extends Command
     public function handle()
     {
         // Get all listings
-        $location_properties = \DB::table('real_estate_listing_properties')
-            ->whereNotIn('type',['public_remarks'])
-            ->distinct('type')
-            ->limit(10000)
+//        $location_properties = \DB::table('real_estate_listing_properties')
+
+//            ->distinct('type')
+//            ->limit(50000)
+//            ->get();
+
+        $properties_types = \DB::table('real_estate_listing_properties')
+            ->whereNotIn('type',['public_remarks','virtual_tour'])
+            ->select('type')
+            ->groupBy('type')
             ->get();
-
         $all_properties = [];
-
-        foreach($location_properties as $property){
-            if(!isset($all_properties[$property->type])){
-                $all_properties[$property->type] = [];
+        foreach ($properties_types as $properties_type)
+        {
+            $type = $properties_type->type;
+            if(!isset($all_properties[$type])){
+                $all_properties[$type] = [];
             }
-
-            $new_values = explode(',', $property->value);
-            $values = array_diff($new_values, $all_properties[$property->type]);
-            foreach($values as $value){
-                // Numeric fields that can take any value are excluded
-                if(is_numeric($value)){
-                    continue;
+            $properties = \DB::table('real_estate_listing_properties')
+                        ->where('type',$type)
+                        ->limit(5000)
+                        ->get();
+            foreach ($properties as $property)
+            {
+                $new_values = explode(',',$property->value);
+                $values = array_diff($new_values, $all_properties[$property->type]);
+                foreach($values as $value){
+                    if(is_numeric($value)){
+                        continue;
+                    }
+                    $all_properties[$type][] = $value;
                 }
-                $all_properties[$property->type][] = $value;
             }
         }
-
         foreach($all_properties as $key => $values){
             \DB::table('real_estate_attributes')->insert([
                 'property_name' => $key,
