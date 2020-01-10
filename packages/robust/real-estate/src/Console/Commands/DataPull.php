@@ -312,7 +312,7 @@ class DataPull extends RetsCommands
                                     'locationable_type' => $this->mapping[$key]
                                 ])->id;
                                 if($key === 'subdivision'){
-                                    $subdivision = $listing_data[$this->maps[$key]];
+                                    $subdivision = $map_id;
                                 }
                             }
                         }
