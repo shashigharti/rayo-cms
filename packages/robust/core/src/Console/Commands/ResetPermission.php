@@ -41,10 +41,10 @@ class ResetPermission extends Command
     public function handle()
     {
         $this->info("\n=============================================");
-        $this->info("============ Reset Permission for Admin ===========");
-        $this->info("=============================================");
-        $executePermissions = $this->confirm("Would you like to reset permissions ? [y|N]", false);
-        if ($executePermissions) {
+        $this->info("============= Reset Permissions Table ================");
+        $this->info("===============================================");
+        $execute = $this->confirm("Would you like to execute permission table seeder? [y|N]", false);
+        if ($execute) {
             // truncate permissions and role_permission table
             Permission::query()->truncate();
             DB::table('permissions')->truncate();
