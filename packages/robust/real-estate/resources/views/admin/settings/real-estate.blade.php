@@ -2,6 +2,35 @@
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
         <fieldset class="mt-2">
+            <legend>Client Settings</legend>
+            <div class="form-group form-material row">
+                <div class="col s6 input-field">
+                    {{ Form::label('client[name]', 'Client Name', ['class' => 'control-label' ]) }}
+                    {{ Form::text('client[name]', isset($settings['client']['name'])? $settings['client']['name']:'', [
+                            'class' => 'form-control'
+                        ])
+                    }}
+                </div>
+                <div class="col s6 input-field">
+                    {{ Form::label('client[slug]', 'Slug', ['class' => 'control-label' ]) }}
+                    {{ Form::text('client[slug]', isset($settings['client']['slug'])? $settings['client']['slug']:'', [
+                           'class' => 'form-control'
+                       ])
+                   }}
+                </div>
+            </div>
+            <div class="form-group form-material row">
+                <div class="col s6 input-field">
+                    {{ Form::label('client[state]', 'State', ['class' => 'control-label' ]) }}
+                    {{ Form::text('client[state]', $settings['client']['state'] ?? '',
+                        [
+                        'class'=>'form-control'
+                        ])
+                    }}
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="mt-2">
             <legend>Front Page</legend>
             <div class="form-group form-material row">
                 <div class="col s6">
@@ -36,13 +65,13 @@
             <div class="form-group form-material row">
                 <div class="col s3 input-field">
                     {{ Form::label('active', 'Active', ['class' => 'control-label' ]) }}
-                    {{ Form::text('active', isset($settings['active'])?$settings['active']:'Active', [
+                    {{ Form::text('active', isset($settings['active'])? $settings['active']:'Active', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
                 <div class="col s3">
                     {{ Form::label('sold', 'Sold', ['class' => 'control-label' ]) }}
-                    {{ Form::text('sold', isset($settings['sold'])?$settings['sold']:'Closed', [
+                    {{ Form::text('sold', isset($settings['sold'])? $settings['sold']:'Closed', [
                             'class' => 'form-control'
                         ]) }}
                 </div>
@@ -158,22 +187,6 @@
         {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
                 <fieldset class="mt-2">
                     <legend>Data Server (RETS) </legend>
-                    <div class="form-group form-material row">
-                        <div class="col s6 input-field">
-                            {{ Form::label('client_name', 'Client Name', ['class' => 'control-label' ]) }}
-                            {{ Form::text('client_name', isset($settings['client_name'])?$settings['client_name']:'', [
-                                    'class' => 'form-control'
-                                ])
-                            }}
-                        </div>
-                        <div class="col s6 input-field">
-                            {{ Form::label('client_slug', 'Slug', ['class' => 'control-label' ]) }}
-                            {{ Form::text('client_slug', isset($settings['client_slug'])?$settings['client_slug']:'', [
-                                    'class' => 'form-control'
-                                ])
-                            }}
-                        </div>
-                    </div>
                     <div class="form-group form-material row">
                         <div class="col s12 input-field">
                             {{ Form::label('url', 'Url', ['class' => 'control-label' ]) }}
