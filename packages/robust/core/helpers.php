@@ -90,14 +90,10 @@ if (!function_exists('seo')) {
     function seo($segments)
     {
         $page = [];
-        $partial_url = [];
-        foreach($segments as $segment){
-            $partial_url[] = $segment;
-            $partial_url_str = implode("/", $partial_url);
+        for($i = count($segments) - 1; $i >= 0; $i--){
+            $partial_url_str = implode("/", $segments);
             $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-            if($page){
-                dd($page);
-            }
+            unset($segments[$i]);
         }
         return $page;
     }
