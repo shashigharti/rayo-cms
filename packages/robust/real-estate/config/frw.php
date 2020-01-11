@@ -14,8 +14,6 @@ return [
     */
     'single' => 'realestate',
     'website' => '',
-    'sold' => 'sold-homes',
-    'active' => 'homes-for-sale',
     'frequency' => [
         'hourly' => 'Hourly',
         'daily' => 'Daily',
@@ -38,6 +36,24 @@ return [
             'status' => 1,
             'frequency' => 'daily',
             'at' => '10:30'
+        ]
+    ],
+    'settings' => [
+        'advance-search' => [
+            'property_types' => [
+                'Single Family Detached',
+                'Condominium',
+                'Townhomes',
+                'Land and Lots',
+                'Gated',
+                '55+'
+            ],
+            'property_statuses' => [
+                'Homes For sale',
+                'Sold homes',
+                'Pending',
+                'Contingent'
+            ]
         ]
     ]
 

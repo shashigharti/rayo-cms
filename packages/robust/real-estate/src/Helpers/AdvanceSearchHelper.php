@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Repositories\Website\AttributeRepository;
+use Illuminate\Support\Arr;
 
 /**
  * Class AdvanceSearchHelper
@@ -41,11 +42,24 @@ class AdvanceSearchHelper
     }
 
     /**
+     * @param $params
+     * @return array
+     */
+    public function getAugmentedAttributesListByPropertyName($property_name)
+    {
+        $values = Arr::pluck($this->getAttributesListByPropertyName($property_name), 'name', 'name');
+        $types = config('real-estate.frw.settings.advance-search')['property_types'];
+        $types = array_combine($types, $types);
+        $merged_types = array_unique(array_merge($values, $types));
+        return  $merged_types;
+    }
+
+    /**
      * @return array
      */
     public function getAdvanceSearchFilters(){
         $filters = config('rws.advance-search');
-        $processed_filterst = [];
+        $processed_filters = [];
         foreach($filters as $filter_attribute => $filter){
             $processed_filters[$filter_attribute] = $filter['display_name'];
         }

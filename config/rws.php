@@ -8,59 +8,8 @@ return [
             'increment' => 150000
         ]
     ],
-    'emails' => [
-        'templates' => [
-            'Lead Registration',
-            'Lead import',
-            'Get more property Info',
-            'MLS report',
-            'Schedule viewing',
-            'Lead registration to email',
-            'Discuss with realtor',
-            'Property multiple views notification',
-            'Notification that lead has returned to website',
-            'Email if property sells',
-            'Email price changes',
-            'Blank email',
-            'Custom email',
-            'Blank with signature'
-        ],
-        'subjects' => [
-            'Lead Registration' => 'Welcome to RWS',
-            'Lead import' => '',
-            'Get more property Info' => '',
-            'MLS report' => '',
-            'Schedule viewing' => '',
-            'Lead registration to email' => '',
-            'Discuss with realtor' => '',
-            'Property multiple views notification' => '',
-            'Notification that lead has returned to website' => '',
-            'Email if property sells' => '',
-            'Email price changes' => '',
-            'Blank email' => '',
-            'Custom email' => '',
-            'Blank with signature' => ''
-        ]
-    ],  
     'override_event_notifications' => [
         'user_created' => 'Robust\RealEstate\Events\LeadCreatingEvent'
-    ],
-    'client' => [
-        'name' => 'Alaska',
-        'email' => [
-            'default' => 'support@realwebsystems.com',
-            'support' => 'support@realwebsystems.com',
-        ],
-        'settings' => [
-            'email-template' => [
-                'header-background' => '#101f2d',
-                'header-logo' => '',
-                'header-image' => '',
-                'header-width' => '124',
-                'header-height' => '34'
-            ]
-
-        ]
     ],
     'advance-search-filters' => [
         'price' => [
@@ -76,13 +25,13 @@ return [
                 'min' => 25000,
                 'max' => 1000000,
                 'increment' => 25000
-            ]            
+            ]
         ],
         'market-survey-tools' => [
             'search-filters' => [
                 'sold' => [
-                    'display' => 'Sold', 
-                    'values' => [     
+                    'display' => 'Sold',
+                    'values' => [
                         ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days'],
                         ['display' => 'Recently Sold 60 Days', 'value' => 'sold_date-60_days'],
                         ['display' => 'Recently Sold 3 Months', 'value' => 'sold_date-3_months'],
@@ -91,25 +40,21 @@ return [
                     ]
                 ]
             ]
-        ]        
-    ],
-    'data-field-mapping' => [
-        'sold' => 'Closed',
-        'active' => 'Active'                
+        ]
     ],
     'market-report' => [
         'report-type' => [
-            'cities' => 'City', 
-            'zips' => 'Zip Code', 
+            'cities' => 'City',
+            'zips' => 'Zip Code',
             'school_districts' => 'School District'
         ],
         'price-range' => [
-            'min' => 0, 
-            'max' => 44500000, 
+            'min' => 0,
+            'max' => 44500000,
             'increment' => 1500000,
             'default' => ['average' => '3010000'],
             'field-to-compare' => 'median_price_active'
-        ]        
+        ]
     ],
     'sorting' => [
         ['display' => 'Recently Added', 'value' => 'input_date-desc'],
@@ -121,8 +66,8 @@ return [
     ],
     'data' => [
         'listings-price' => [
-            'min' => 10000, 
-            'condition' => '>=', 
+            'min' => 10000,
+            'condition' => '>=',
             'field-to-compare' => 'system_price'
         ],
         'timeframe' => "- 365 day"
