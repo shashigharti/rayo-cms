@@ -85,7 +85,7 @@ if (!function_exists('emails')) {
 }
 if (!function_exists('seo')) {
     /**
-     * @return string
+     * @return eloquent
      */
     function seo($segments)
     {
