@@ -12,7 +12,7 @@ class Banner extends Model
     /**
      * @var string
      */
-    protected $table = 'banners';
+    protected $table = 'real_estate_banners';
 
     /**
      * @var boolean

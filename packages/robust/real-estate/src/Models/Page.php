@@ -9,7 +9,7 @@ class Page extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'pages';
+    protected $table = 'real_estate_pages';
 
     /**
      * @var boolean
@@ -23,44 +23,23 @@ class Page extends BaseModel
     /**
      * @var string
      */
-    protected $namespace = 'Robust\Pages\Models\Page';
+    protected $namespace = 'Robust\RealEstate\Models\Page';
 
     /**
      * @var string
      */
 
     protected $fillable = [
-        'title',
-        'content',
+        'title',        
+        'url',
         'slug',
-        'excerpt',
-        'category_id',
-        'excerpt_ne',
-        'content_ne',
-        'name_ne',
-        'thumbnail',
-        'created_at',
-        'updated_at',
+        'content',        
         'status',
         'meta_title',
         'meta_description',
-        'meta_keywords'
+        'meta_keywords',        
+        'created_at',
+        'updated_at'
     ];
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
-     */
-    public function downloads()
-    {
-        return $this->hasMany('Robust\Pages\Models\PageDownload', 'page_id');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function category()
-    {
-        return $this->belongsTo('Robust\Pages\Models\Category', 'category_id');
-    }
 
 }

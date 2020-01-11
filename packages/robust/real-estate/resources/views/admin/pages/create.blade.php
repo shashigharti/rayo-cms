@@ -23,6 +23,16 @@
                     }}
                 </div>
             </div>
+             <div class="row">
+                <div class="input-field col s12">
+                    {{ Form::label('url', 'URL', ['class' => 'required' ]) }}
+                    {{ Form::text('url', null, [
+                            'placeholder' => 'URL i.e. \'homes-for-sale/cities/ponte-vedra-beach\'',
+                            'required'  => 'required'
+                        ]) 
+                    }}
+                </div>
+            </div>
             <div class="row editor">                
                 <div class="input-field col s12">
                     {{ Form::label('content', 'body', ['class' => 'required' ]) }}

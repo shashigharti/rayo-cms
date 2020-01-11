@@ -45,6 +45,7 @@ class FrontendHelperComposer {
     public function compose(View $view)
     {        
         $query_params = request()->all();
+        $page = seo(request()->segments());
 
         $view->with('banner_helper', $this->banner_helper);
         $view->with('listing_helper', $this->listing_helper);
@@ -52,7 +53,7 @@ class FrontendHelperComposer {
         $view->with('location_helper', $this->location_helper);
         $view->with('advancesearch_helper', $this->advancesearch_helper);
         $view->with('query_params', $query_params);
-
+        $view->with('page', $page);
     }
 
 }

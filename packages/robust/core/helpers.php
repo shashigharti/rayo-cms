@@ -83,3 +83,22 @@ if (!function_exists('emails')) {
         return null;
     }
 }
+if (!function_exists('seo')) {
+    /**
+     * @return string
+     */
+    function seo($segments)
+    {
+        $page = [];
+        $partial_url = [];
+        foreach($segments as $segment){
+            $partial_url[] = $segment;
+            $partial_url_str = implode("/", $partial_url);
+            $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
+            if($page){
+                dd($page);
+            }
+        }
+        return $page;
+    }
+}
