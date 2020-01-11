@@ -1,3 +1,4 @@
+@set('market_report', settings('real-estate', 'market_report') != "" ? settings('real-estate', 'market_report') : [])
 <div class="row">
     <div class="col s12">
         <div class="inner--title text-center">
@@ -8,11 +9,9 @@
                 <b>Buyers-</b> Find and Research neighborhoods in your price range. &nbsp;
                 <b>Research by-</b> City , Zip Code , School District.
             </p>
-            @set('real_estate_data',settings('real-estate','data'))
-            @set('reportTypes',$real_estate_data['market-report']['report-types'] ?? [])
             <div class="market--right__display--radio">
                 <div class="block--container">
-                    @foreach($reportTypes as $key => $option)
+                    @foreach($market_report['tabs'] as $key => $option)
                       <span class="single--block right-align">
                         <label>
                           <input class="market-report__type" name="market-report__type"

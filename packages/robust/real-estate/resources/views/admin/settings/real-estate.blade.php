@@ -5,12 +5,27 @@
             <legend>Front Page</legend>
             <div class="form-group form-material row">
                 <div class="col s6">
-                    {{ Form::label('menus', 'Menus', ['class' => 'control-label' ]) }}
+                    {{ Form::label('menus[]', 'Menus', ['class' => 'control-label' ]) }}
                     {{ Form::select('menus[]', config('real-estate.frw.locations'),
                         $settings['menus'] ?? [],
                         [
                         'class'=>'browser-default multi-select',
                         'multiple'
+                        ])
+                    }}
+                </div>
+            </div>
+        </fieldset>
+        <fieldset class="mt-2">
+            <legend>Market Reports</legend>
+            <div class="form-group form-material row">
+                <div class="col s6">
+                    {{ Form::label('market_report[tabs][]', 'Tabs', ['class' => 'control-label' ]) }}
+                    {{ Form::select('market_report[tabs][]', config('real-estate.frw.locations'),
+                        $settings['market_report']['tabs'] ?? [],
+                        [
+                            'class'=>'browser-default multi-select',
+                            'multiple'
                         ])
                     }}
                 </div>
@@ -96,25 +111,6 @@
             </div>
             @endif
 
-        </fieldset>
-        <fieldset class="mt-2">
-            <legend>Market Reports</legend>
-            <div class="form-group form-material row">
-                <div class="col s6">
-                    {{ Form::label('data[market-report][report-type][]', 'Report Types', ['class' => 'control-label' ]) }}
-                    {{ Form::select('data[market-report][report-types][]', [
-                             'cities' => 'City',
-                             'zips' => 'Zip Code',
-                             'school_districts' => 'School District'
-                        ],
-                        $settings['data']['market-report']['report-types'] ?? [],
-                        [
-                        'class'=>'browser-default multi-select',
-                        'multiple'
-                        ])
-                    }}
-                </div>
-            </div>
         </fieldset>
         <fieldset class="mt-2">
             <legend>Data Pull Settings for Server</legend>
