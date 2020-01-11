@@ -1,4 +1,5 @@
 @inject('advancesearch_helper', '\Robust\RealEstate\Helpers\AdvanceSearchHelper')
+@set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name', 'name'))
 <div class="system-settings__advance-search">
     {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
@@ -48,7 +49,34 @@
                     }}
                 </div>
             </div>
+            <fieldset class="mt-3">
+                <legend>Type of Properties & Property Status</legend>
+                <div class="col s6">
+                    {{ Form::label('property_types', 'Property Types', ['class' => 'control-label' ]) }}
+                    {{ Form::select('property_types[]', $property_types,
+                         $settings['property_types'] ?? [],
+                        [
+                            'class'=>'browser-default multi-select',
+                            'multiple'
+                        ])
+                    }}
+                </div>
+                <div class="col s6">
+                    {{ Form::label("property_statuses", 'Property Statuses', ['class' => 'control-label' ]) }}
+                    {{ Form::select("property_statuses[]",  [
+                            'Properties for sale' => 'Properties for Sale',
+                            'Sold' => 'Sold'
+                        ],
+                        $settings['property_statuses'] ?? [],
+                        [
+                            'class'=>'browser-default multi-select',
+                            'multiple'
+                        ])
+                    }}
+                </div>
+            </fieldset>
         </fieldset>
+
         <fieldset class="mt-3">
             <legend>Default Values For Filters</legend>
              <div class="col s4">
@@ -59,12 +87,11 @@
                         'data-url' => route('api.locations.type', ['cities']),
                         'data-selected' => implode(",", $settings['default_values']['cities'] ?? []),
                         'class'=>'browser-default multi-select ad-search-field',
-                        'multiple'                        
+                        'multiple'
                     ])
                 }}
             </div>
             <div class="col s4">
-                @set('property_types', Arr::pluck($advancesearch_helper->getAttributesListByPropertyName('property_type'), 'name', 'name'))
                 {{ Form::label("default_values[property_type]", 'Property Type', ['class' => 'control-label' ]) }}
                 {{ Form::select("default_values[property_type][]", $property_types,
                      $settings['default_values']['property_type'] ?? [],
