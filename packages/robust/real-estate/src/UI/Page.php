@@ -53,35 +53,18 @@ class Page extends BaseUI
      */
     public $addrules = [
         'title' => 'required',
-        'slug' => 'required| unique:pages'
+        'slug' => 'required| unique:real_estate_pages'
     ];
     /**
      * @var array
      */
     public $editrules = [];
-    /**
-     * @param $category
-     * @return array
-     */
-    public function getRoute($category)
-    {
-        return $category->exists ? ['admin.pages.update', $category->id] : ['admin.pages.store'];
-    }
+
     /**
      * @return string
      */
     public function getModel()
     {
         return 'Robust\RealEstate\Models\Page';
-    }
-    /**
-     * @param $model
-     * @return array
-     */
-    public function getTabs($model)
-    {
-        return [
-            'Page' => ['url' => route('admin.pages.edit', [$model->id]), 'permission' => 'real-estate.pages.manage']
-        ];
     }
 }

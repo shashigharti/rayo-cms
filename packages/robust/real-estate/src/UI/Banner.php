@@ -54,7 +54,7 @@ class Banner
      */
     public $addrules = [
         'title' => 'required',
-        'slug' => 'required| unique:banners'
+        'slug' => 'required| unique:real_estate_banners'
     ];
 
     /**

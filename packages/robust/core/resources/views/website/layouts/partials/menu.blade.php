@@ -23,8 +23,9 @@
                                 @if(isset($locations['cities']))
                                     @foreach($locations['cities'] as $location)
                                         <li data-active ="{{ $location->active_count }}"
-                                            data-active-url="homes-for-sale"
-                                            data-sold-url="sold-homes"
+                                            data-active-url= "{{ settings('real-estate', 'url_active') }}"
+                                            data-sold-url="{{ settings('real-estate', 'url_sold') }}"
+                                            data-all-url="{{ settings('real-estate', 'url_active') }}"
                                             data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
                                             <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[

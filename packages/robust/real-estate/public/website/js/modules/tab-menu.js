@@ -12,8 +12,11 @@
                         '',
                         elem.getAttribute(`data-${this.value}-url`)
                     ];
-                    let string_to_search = (string_to_replace == 'homes-for-sale') ? 'sold-homes' : 'homes-for-sale';
+                    let string_to_search = elem.getAttribute(`data-active-url`);
 
+                    if(this.value === 'active'){
+                        string_to_search = elem.getAttribute(`data-sold-url`);
+                    }
                     url = elem.querySelector("a").getAttribute("href");
                     url = url.replace(new RegExp(string_to_search), `${string_to_replace}`);
                     elem.querySelector("a").setAttribute("href", url);

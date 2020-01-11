@@ -14,27 +14,27 @@ return [
     */
     'single' => 'realestate',
     'website' => '',
-    'sold' => 'sold',
+    'sold' => 'sold-homes',
     'active' => 'homes-for-sale',
     'frequency' => [
-        'hourly' => 'Hourly',  
+        'hourly' => 'Hourly',
         'daily' => 'Daily',
         'monday' => 'Monday',
         'tuesday' => 'Tuesday'
     ],
     'commands' => [
         [
-            'name' => 'Robust\RealEstate\Console\Commands\UpdateListingNames', 
+            'name' => 'Robust\RealEstate\Console\Commands\UpdateListingNames',
             'description' => '',
-            'command' => 'rws:update-listing-names', 
+            'command' => 'rws:update-listing-names',
             'status' => 1,
             'frequency' => 'hourly',
             'at' => '10:30'
         ],
         [
-            'name' => 'Robust\RealEstate\Console\Commands\CreateAttributes', 
+            'name' => 'Robust\RealEstate\Console\Commands\CreateAttributes',
             'description' => '',
-            'command' => 'rws:create-attributes', 
+            'command' => 'rws:create-attributes',
             'status' => 1,
             'frequency' => 'daily',
             'at' => '10:30'

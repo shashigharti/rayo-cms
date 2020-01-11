@@ -31,9 +31,7 @@ class CoreServiceProvider extends ServiceProvider
         'Robust\Core\Console\Commands\Backup',
         'Robust\Core\Console\Commands\Restore',
         'Robust\Core\Console\Commands\SitemapGenerate',
-        'Robust\Core\Console\Commands\ResetSetting',
-        //'Robust\Core\Console\Commands\SendEmailMinute',
-        //'Robust\Core\Console\Commands\SendEmailWeekly',
+        'Robust\Core\Console\Commands\ResetSetting'
     ];
 
 
@@ -80,11 +78,11 @@ class CoreServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/widgets.php', 'core.widgets');
         $this->mergeConfigFrom(__DIR__ . '/../../config/reports.php', 'core.reports');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'core.settings');
-       
+
         $packages = CoreHelper::names();
         foreach ($packages as $key => $package) {
             if (file_exists(base_path() . "/packages/robust/{$key}/helpers.php")) {
-                include base_path() . "/packages/robust/{$key}/helpers.php";      
+                include base_path() . "/packages/robust/{$key}/helpers.php";
             }
         }
 

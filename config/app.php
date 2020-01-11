@@ -174,7 +174,6 @@ return [
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
         //Webwizo\Shortcodes\ShortcodesServiceProvider::class,
-        Unisharp\Laravelfilemanager\LaravelFilemanagerServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         \Robust\Core\Providers\RobustMailServiceProvider::class,
