@@ -58,7 +58,7 @@ return [
     ],
     'locations' => [
         'cities' => 'Cities',
-        'zips' => 'Zips',
+        'zips' => 'Zip Codes',
         'counties' => 'Counties',
         'school_districts' => 'School Districts'
     ]

@@ -1,6 +1,21 @@
 <div class="system-settings__real-estate">
-    {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
+    {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
+        <fieldset class="mt-2">
+            <legend>Front Page</legend>
+            <div class="form-group form-material row">
+                <div class="col s6">
+                    {{ Form::label('menus', 'Menus', ['class' => 'control-label' ]) }}
+                    {{ Form::select('menus[]', config('real-estate.frw.locations'),
+                        $settings['menus'] ?? [],
+                        [
+                        'class'=>'browser-default multi-select',
+                        'multiple'
+                        ])
+                    }}
+                </div>
+            </div>
+        </fieldset>
         <fieldset>
             <legend>Site Data Mapping</legend>
             <div class="form-group form-material row">
@@ -143,7 +158,7 @@
                 </div>
             </div>
         </fieldset>
-        {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
+        {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
         {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
                 <fieldset class="mt-2">
                     <legend>Data Server (RETS) </legend>
