@@ -55,6 +55,12 @@ return [
                 'Contingent'
             ]
         ]
+    ],
+    'locations' => [
+        'cities' => 'Cities',
+        'zips' => 'Zips',
+        'counties' => 'Counties',
+        'school_districts' => 'School Districts'
     ]
 
 ];

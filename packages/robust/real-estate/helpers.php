@@ -79,14 +79,14 @@ if (!function_exists('geocode')) {
     }
 
 
-    
+
     if (!function_exists('email_template')) {
         /**
          * @param string $name
          * @return string
          */
         function email_template($name){
-            return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();            
+            return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();
         }
     }
 
@@ -98,7 +98,7 @@ if (!function_exists('geocode')) {
         function replace_variables($content, $member, $data){
             $type = 'agent';
             if(get_class($member) == 'Robust\RealEstate\Models\Lead'){
-               $type = 'lead'; 
+               $type = 'lead';
             }
 
             $replacements = [
@@ -109,7 +109,6 @@ if (!function_exists('geocode')) {
                     '*|LEAD_MAIL|*' => $member->user->email,
                     '*|LEAD_PHONE|*' => $member->phone_number,
                     '*|SITE_NAME|*' => config('rws.client.email.name'),
-                    //'*|PASSWORD|*' => $lead->user->password,
                     '*|VERIFICATION_LINK|*' => $data['verification_url'],
                     '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
                 ],
@@ -135,7 +134,7 @@ if (!function_exists('geocode')) {
                     '*|SELLING_AGENT|*' => '',
                     '*|LOCATION_TYPE|*' => '',
                     '*|COUNT_LOCATION|*' => ''
-                ]                
+                ]
             ];
 
             $common = [
@@ -143,7 +142,8 @@ if (!function_exists('geocode')) {
                 '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
                 '*|FOOTER_TEXT|*' => '',
                 '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
-                '*|LOCATION|*' => config('rws.client.email.name')    
+                '*|LOCATION|*' => settings('real-esate', 'client_name'),
+                '*|CLIENT_NAME|*' => settings('real-esate', 'client_name')
             ];
 
             $all_replacements = array_merge($replacements[$type], $common);
@@ -171,7 +171,7 @@ if (!function_exists('geocode')) {
             }
             $i = $config['min'];
             $max = $config['max'];
-            
+
             $priceArr = [];
             for (; $i <= $max; $i = $i + $config['increment']) {
                 $priceArr[] = $i;
@@ -183,7 +183,7 @@ if (!function_exists('geocode')) {
             for ($j = 0; $j <= $max_array_count; $j += 2) {
                 if($j + 1 <= $max_array_count){
                     $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
-                }  
+                }
 
                 if(!isset($priceArr[$j]))
                     $ranges[] = $priceArr[$max_array_count - 1] . " > ";

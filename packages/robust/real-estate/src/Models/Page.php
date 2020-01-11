@@ -30,14 +30,15 @@ class Page extends BaseModel
      */
 
     protected $fillable = [
-        'title',        
+        'title',
+        'page_title',
         'url',
         'slug',
-        'content',        
+        'content',
         'status',
         'meta_title',
         'meta_description',
-        'meta_keywords',        
+        'meta_keywords',
         'created_at',
         'updated_at'
     ];
