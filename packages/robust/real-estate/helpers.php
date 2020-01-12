@@ -10,7 +10,8 @@ if (!function_exists('price_format')) {
 
     // Converts a number into a short version, eg: 1000 -> 1k
     // Reference: https://gist.github.com/RadGH/84edff0cc81e6326029c
-    function price_format( $n, $precision = 1 ) {
+    function price_format($n, $precision = 1)
+    {
         if ($n < 900) {
             // 0 - 900
             $n_format = number_format($n, $precision);
@@ -35,9 +36,9 @@ if (!function_exists('price_format')) {
 
         // Remove unecessary zeroes after decimal. "1.0" -> "1"; "1.00" -> "1"
         // Intentionally does not affect partials, eg "1.50" -> "1.50"
-        if ( $precision > 0 ) {
-            $dotzero = '.' . str_repeat( '0', $precision );
-            $n_format = str_replace( $dotzero, '', $n_format );
+        if ($precision > 0) {
+            $dotzero = '.' . str_repeat('0', $precision);
+            $n_format = str_replace($dotzero, '', $n_format);
         }
         return $n_format . $suffix;
     }
@@ -50,7 +51,8 @@ if (!function_exists('geocode')) {
      * @param integer $limit
      * @return array
      */
-    function geocode( $address, $limit = 3 ) {
+    function geocode($address, $limit = 3)
+    {
         if ($limit == 0) {
             return false;
         }
@@ -79,13 +81,13 @@ if (!function_exists('geocode')) {
     }
 
 
-
     if (!function_exists('email_template')) {
         /**
          * @param string $name
          * @return string
          */
-        function email_template($name){
+        function email_template($name)
+        {
             return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();
         }
     }
@@ -93,12 +95,15 @@ if (!function_exists('geocode')) {
     if (!function_exists('replace_variables')) {
         /**
          * @param string $content
+         * @param eloquent $member
+         * @param array $data
          * @return string
          */
-        function replace_variables($content, $member, $data){
+        function replace_variables($content, $member, $data)
+        {
             $type = 'agent';
-            if(get_class($member) == 'Robust\RealEstate\Models\Lead'){
-               $type = 'lead';
+            if (get_class($member) == 'Robust\RealEstate\Models\Lead') {
+                $type = 'lead';
             }
 
             $replacements = [
@@ -120,7 +125,7 @@ if (!function_exists('geocode')) {
                     '*|AGENT_PHONE|*' => $member->phone,
 
                     '*|LISTING_STREET|*' => '',
-                    '*|LISTING_NUMBER|*' =>  '',
+                    '*|LISTING_NUMBER|*' => '',
                     '*|LISTING_SYSTEM_PRICE|*' => '',
                     '*|LISTING_NAME|*' => '',
                     '*|URL|*' => '',
@@ -137,38 +142,83 @@ if (!function_exists('geocode')) {
                 ]
             ];
 
-            $common = [
+            $all_replacements = $replacements[$type];//array_merge($replacements[$type], $common);
+            foreach ($all_replacements as $search => $replace) {
+                $content = str_replace($search, $replace, $content);
+            }
+
+            $content = replace_global_variables($content);
+            return $content;
+        }
+    }
+
+    if (!function_exists('replace_global_variables')) {
+
+        /**
+         * @param string $content
+         * @return string
+         */
+        function replace_global_variables($content)
+        {
+            $replacements = [
                 '*|WEBSITE|*' => '<a href="' . \URL::to('/') . '">' . preg_replace('#^https?://#', '', \URL::to('/')) . '</a>',
                 '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
                 '*|FOOTER_TEXT|*' => '',
                 '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
                 '*|LOCATION|*' => settings('real-esate', 'client_name'),
-                '*|CLIENT_NAME|*' => settings('real-esate', 'client_name')
+                '*|CLIENT_NAME|*' => settings('real-esate', 'client_name'),
+                '*|STATE|*' => settings('real-esate', 'state')
             ];
 
-            $all_replacements = array_merge($replacements[$type], $common);
-            foreach ($all_replacements as $search => $replace) {
+            foreach ($replacements as $search => $replace) {
                 $content = str_replace($search, $replace, $content);
             }
 
             return $content;
         }
+
     }
 
-     if (!function_exists('generate_price_ranges')) {
+    if (!function_exists('replace_seo_variables')) {
+
+        /**
+         * @param string $content
+         * @param array $segments
+         * @return string
+         */
+        function replace_seo_variables($content, $segments)
+        {
+            $replacements = [
+                '*|PRICE_RANGE|*' => $segments[5] ?? '',
+                '*|NAME|*' => isset($segments[3]) ?  ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
+            ];
+
+            foreach ($replacements as $search => $replace) {
+                $content = str_replace($search, $replace, $content);
+            }
+
+            $content = replace_global_variables($content);
+
+            return $content;
+        }
+
+    }
+
+    if (!function_exists('generate_price_ranges')) {
         /**
          * Generates price ranges
          * @return string
          */
-        function generate_price_ranges($min_price = null, $max_price = null){
+        function generate_price_ranges($min_price = null, $max_price = null)
+        {
             $ranges = [];
             $config = config('rws.application.price');
             $i = $config['min'];
             $max = $config['max'];
-            if(($min_price != null) && $min_price > $config['min']){
+            if (($min_price != null) && $min_price > $config['min']) {
                 $i = $min_price;
             }
-            if(($max_price != null) && $max_price < $config['max']){
+            if (($max_price != null) && $max_price < $config['max']) {
                 $max = $max_price;
             }
 
@@ -182,15 +232,57 @@ if (!function_exists('geocode')) {
             }
             $max_array_count = count($priceArr);
             for ($j = 0; $j <= $max_array_count; $j += 2) {
-                if($j + 1 <= $max_array_count){
+                if ($j + 1 <= $max_array_count) {
                     $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
                 }
 
-                if(!isset($priceArr[$j]))
+                if (!isset($priceArr[$j]))
                     $ranges[] = $priceArr[$max_array_count - 1] . " > ";
             }
 
             return $ranges;
         }
+    }
+}
+
+
+if (!function_exists('seo')) {
+    /**
+     * @return eloquent
+     */
+    function seo($segments)
+    {
+        $page = null;
+        $additional_route_params =  [
+            'price' => 'price',
+        ];
+        $segments_temp = $segments;
+
+        for($i = count($segments_temp) - 1; $i >= 0; $i--){
+            $partial_url_str = implode("/", $segments_temp );
+            $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
+            if($page){
+                break;
+            }
+            unset($segments_temp[$i]);
+        }
+
+        if(!$page){
+            foreach ($additional_route_params as $param) {
+                if (in_array($param, $segments)) {
+                    $partial_url_str = $param;
+                    print_r($partial_url_str);
+                    $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
+                    break;
+                }
+            }
+        }
+
+        if($page){
+            $page->meta_description = replace_seo_variables($page->meta_description, $segments);
+            $page->meta_title = replace_seo_variables($page->meta_title, $segments);
+            $page->meta_keywords = replace_seo_variables($page->meta_keywords, $segments);
+        }
+        return ( $page == null ) ? [] : $page;
     }
 }

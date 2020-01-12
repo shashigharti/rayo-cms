@@ -31,7 +31,6 @@ class Page extends BaseModel
 
     protected $fillable = [
         'title',
-        'page_title',
         'url',
         'slug',
         'content',

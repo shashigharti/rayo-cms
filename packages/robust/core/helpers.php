@@ -83,37 +83,3 @@ if (!function_exists('emails')) {
         return null;
     }
 }
-if (!function_exists('seo')) {
-    /**
-     * @return eloquent
-     */
-    function seo($segments)
-    {
-        $page = null;
-        $additional_route_params =  [
-            'price' => 'price',
-        ];
-        $segments_temp = $segments;
-
-        for($i = count($segments_temp) - 1; $i >= 0; $i--){
-            $partial_url_str = implode("/", $segments_temp );
-            $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-            if($page){
-                break;
-            }
-            unset($segments_temp[$i]);
-        }
-
-        if(!$page){
-            foreach ($additional_route_params as $param) {
-                if (in_array($param, $segments)) {
-                    $partial_url_str = $param;
-                    print_r($partial_url_str);
-                    $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-                    break;
-                }
-            }
-        }
-        return ( $page == null ) ? [] : $page;
-    }
-}
