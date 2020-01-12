@@ -49,9 +49,9 @@
             <legend>Market Reports</legend>
             <div class="form-group form-material row">
                 <div class="col s6">
-                    {{ Form::label('market_report[tabs][]', 'Tabs', ['class' => 'control-label' ]) }}
-                    {{ Form::select('market_report[tabs][]', config('real-estate.frw.locations'),
-                        $settings['market_report']['tabs'] ?? [],
+                    {{ Form::label('market_report[report_options][]', 'Report Options', ['class' => 'control-label' ]) }}
+                    {{ Form::select('market_report[report_options][]', config('real-estate.frw.locations'),
+                        $settings['market_report']['report_options'] ?? [],
                         [
                             'class'=>'browser-default multi-select',
                             'multiple'

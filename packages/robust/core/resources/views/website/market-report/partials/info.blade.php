@@ -11,7 +11,7 @@
             </p>
             <div class="market--right__display--radio">
                 <div class="block--container">
-                    @foreach($market_report['tabs'] as $key => $option)
+                    @foreach($market_report['report_options'] as $key => $option)
                       <span class="single--block right-align">
                         <label>
                           <input class="market-report__type" name="market-report__type"
