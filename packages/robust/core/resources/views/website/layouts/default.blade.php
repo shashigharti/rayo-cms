@@ -7,8 +7,9 @@
         <!-- CSRF Token -->
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
-        <title>RealWebSystem.Real estate websites with advanced IDX handling.</title>
-        <meta name="description" content="Real estate websites with advanced IDX handling.">
+        <title> {{ $page->meta_title ?? '' }} </title>
+        <meta name="description" content="{{ $page->meta_description ?? '' }}">
+        <meta name="keywords" content=" {{ $page->meta_keywords ?? '' }} ">
 
         {{--FAVICONS--}}
         <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/apple-touch-icon-57x57.png') }}">
@@ -26,7 +27,7 @@
         <link rel="icon" type="image/png" href="{{ asset('/favicon-16x16.png') }}" sizes="16x16">
         <link rel="icon" type="image/png" href="{{ asset('/favicon-32x32.png') }}" sizes="32x32">
         {{--END FAVICONS--}}
-        
+
         <script type='application/ld+json'>
             {
               "@context": "http://www.schema.org",
@@ -38,7 +39,7 @@
 
             }
         </script>
-        <link href="{{ URL::asset('assets/website/css/landing.min.css') }}" rel="stylesheet">        
+        <link href="{{ URL::asset('assets/website/css/landing.min.css') }}" rel="stylesheet">
 
         <!--[if lt IE 9]>
         <script src="bower_components/html5shiv/dist/html5shiv.min.js"></script>
@@ -65,6 +66,6 @@
         <link href="{{ URL::asset('assets/website/css/app-1.min.css') }}" rel="stylesheet">
         <script src="{{ url('assets/website/js/app.min.js') }}"></script>
         <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
-       
+
     </body>
 </html>

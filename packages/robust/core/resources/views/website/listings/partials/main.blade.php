@@ -7,7 +7,7 @@
             <div class="col s12">
                 <div class="inner--main--title center-align">
                     @if($location)
-                        <h1>{{$location->name}}  Homes for sale</h1>
+                        <h1>{{$location->name}} Homes for sale</h1>
                     @else
                         <h1>Homes for sale</h1>
                     @endif
@@ -74,24 +74,27 @@
 
                                                 <span>
                                                 @if(isset($properties['total_square_feet']))
-                                                    {{' | '. $properties['total_square_feet'] .' sq.ft'}}
-                                                @endif
+                                                        {{' | '. $properties['total_square_feet'] .' sq.ft'}}
+                                                    @endif
                                             </span>
                                                 <div class="details">
                                                 <span>
                                                     @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
-                                                        <img src="/assets/website/images/bed.png" alt="Bed">{{ $result->bedrooms}}
+                                                        <img src="/assets/website/images/bed.png" alt="Bed">
+                                                        {{ $result->bedrooms}}
                                                     @endif
                                                 </span>
                                                     <span class="center-align">
                                                     @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
-                                                            <img src="/assets/website/images/bathtub.png" alt="Bathtub">{{ $result->baths_full}}
+                                                            <img src="/assets/website/images/bathtub.png"
+                                                                 alt="Bathtub">{{ $result->baths_full}}
                                                         @endif
                                                 </span>
                                                     <span class="right-align">
                                                     @if(isset($result->picture_count) && !in_array($result->picture_count,['none','None','0']))
-                                                            <img src="/assets/website/images/camera.png" alt="Picture">{{ $result->picture_count}}
-                                                        @endif
+                                                        <img src="/assets/website/images/camera.png" alt="Picture">
+                                                        {{ $result->picture_count}}
+                                                    @endif
                                                 </span>
                                                 </div>
                                             </div>
@@ -101,7 +104,6 @@
                             </a>
                         @empty
                         @endforelse
-
                     </div>
                 </div>
 
@@ -149,9 +151,11 @@
                 <div class="comment--section">
                     <div class="row">
                         <div class="col s12">
-                            <p>With subdivision Info being few and far between on the Internet, our members are encouraged to share useful information.</br>
+                            <p>With subdivision Info being few and far between on the Internet, our members are
+                                encouraged to share useful information.</br>
 
-                                If you live in Bellaire Heights Ph 5 or have information that will help others make home buying or selling decisions here, please share it with us!</p>
+                                If you live in Bellaire Heights Ph 5 or have information that will help others make home
+                                buying or selling decisions here, please share it with us!</p>
                             <textarea class="text-left">Write your comment here..
         							</textarea>
                             <div>
@@ -277,9 +281,13 @@
                     </div>
                     <div class="row">
                         <div class="col s12 bottom-text">
-                            <p>Search homes for sale in the Greater Anchorage Area. Real Estate Listings include large photos, virtual tours, Google Maps and more.This website includes all the MLS Property Listings in Anchorage, Eagle River, Chugiak/Peters Creek, Girdwood, Palmer, Wasilla.</p>
+                            <p>Search homes for sale in the Greater Anchorage Area. Real Estate Listings include large
+                                photos, virtual tours, Google Maps and more.This website includes all the MLS Property
+                                Listings in Anchorage, Eagle River, Chugiak/Peters Creek, Girdwood, Palmer, Wasilla.</p>
                             <p>
-                                If you currently own real estate and are looking to research the Anchorage Area Real Estate Market, this site contains information about Anchorage Sold Property Listings giving you the
+                                If you currently own real estate and are looking to research the Anchorage Area Real
+                                Estate Market, this site contains information about Anchorage Sold Property Listings
+                                giving you the
                                 actual prices that homes and real estate sold for.
                             </p>
                         </div>

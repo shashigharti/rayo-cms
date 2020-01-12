@@ -51,18 +51,10 @@
             <div class="row">
                 <div class="col s12">
                     <ul class="tabs">
-                        <li class="tab col s3"><a class="active" href="#pageTitle">Page Title</a></li>
                         <li class="tab col s3"><a href="#metaTitle">Meta Title</a></li>
                         <li class="tab col s3 "><a href="#metaKeywords">Meta Keywords</a></li>
                         <li class="tab col s3"><a href="#metaDescription">Meta Description</a></li>
                     </ul>
-                </div>
-                <div id="pageTitle" class="col s12">
-                    <div class="row">
-                        <div class="input-field col s12">
-                            {{ Form::text('page_title', null) }}
-                        </div>
-                    </div>
                 </div>
                 <div id="metaTitle" class="col s12">
                     <div class="input-field col s12">
