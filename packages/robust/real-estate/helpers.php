@@ -163,14 +163,15 @@ if (!function_exists('geocode')) {
         function generate_price_ranges($min_price = null, $max_price = null){
             $ranges = [];
             $config = config('rws.application.price');
+            $i = $config['min'];
+            $max = $config['max'];
             if(($min_price != null) && $min_price > $config['min']){
                 $i = $min_price;
             }
             if(($max_price != null) && $max_price < $config['max']){
                 $max = $max_price;
             }
-            $i = $config['min'];
-            $max = $config['max'];
+
 
             $priceArr = [];
             for (; $i <= $max; $i = $i + $config['increment']) {

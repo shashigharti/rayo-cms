@@ -4,23 +4,31 @@ Route::group([
     'as' => 'website.realestate.',
     'group' => 'Listing'],
     function () {
-
-        //added prefix as it was affecting others routes
         Route::get('/real-estate/{slug}', [
-            'name' =>'Single Listing',
+            'name' => 'Single Listing',
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
 
-        Route::get('/' . settings('real-estate', 'url_active')  . '/{location_type?}/{location?}/{price?}',[
-            'name' =>'Homes for sale in',
+        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}', [
+            'name' => 'Homes for sale in',
             'as' => 'homes-for-sale',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
         ]);
+        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}/price/{price?}', [
+            'name' => 'Homes for sale in',
+            'as' => 'homes-for-sale.location&price',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
+        ]);
 
-         Route::get('/' . settings('real-estate', 'url_sold') . '/{location_type?}/{location?}/{price?}',[
-            'name' =>'Homes for sale in',
+        Route::get('/' . settings('real-estate', 'url_sold') . '/{location_type?}/{location?}', [
+            'name' => 'Homes for sale in',
             'as' => 'sold-homes',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
+        ]);
+        Route::get('/' . settings('real-estate', 'url_sold') . '/{location_type?}/{location?}/price/{price?}', [
+            'name' => 'Homes for sale in',
+            'as' => 'sold-homes.location&price',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
 
@@ -45,4 +53,4 @@ Route::group([
 //            'as' => 'print',
 //            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
 //        ]);
-});
+    });

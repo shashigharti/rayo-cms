@@ -89,12 +89,31 @@ if (!function_exists('seo')) {
      */
     function seo($segments)
     {
-        $page = [];
-        for($i = count($segments) - 1; $i >= 0; $i--){
-            $partial_url_str = implode("/", $segments);
+        $page = null;
+        $additional_route_params =  [
+            'price' => 'price',
+        ];
+        $segments_temp = $segments;
+
+        for($i = count($segments_temp) - 1; $i >= 0; $i--){
+            $partial_url_str = implode("/", $segments_temp );
             $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-            unset($segments[$i]);
+            if($page){
+                break;
+            }
+            unset($segments_temp[$i]);
         }
-        return $page;
+
+        if(!$page){
+            foreach ($additional_route_params as $param) {
+                if (in_array($param, $segments)) {
+                    $partial_url_str = $param;
+                    print_r($partial_url_str);
+                    $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
+                    break;
+                }
+            }
+        }
+        return ( $page == null ) ? [] : $page;
     }
 }

@@ -76,7 +76,6 @@
                 </div>
                 <div id="metaDescription" class="col s12">
                     <div class="input-field col s12">
-                        {{ Form::label('meta_description', 'Meta Description', ['class' => 'required' ]) }}
                         {{ Form::textarea('meta_description', null) }}
                     </div>
                 </div>
