@@ -10,7 +10,7 @@
             <h3>useful links</h3>
             @if(isset($links))
                 @foreach($links as $links)
-                    <a href="#">
+                    <a href="{{route('website.realestate.pages.details',['slug'=>$links->slug])}}">
                         <p>{{ $links->title }}</p>
                     </a>
                 @endforeach
