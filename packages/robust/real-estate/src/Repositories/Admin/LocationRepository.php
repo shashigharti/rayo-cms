@@ -15,7 +15,7 @@ class LocationRepository
      */
     protected $model;
 
-    
+
     protected const FIELDS_QUERY_MAP = [
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'slug' => ['name' => 'slug', 'condition' => 'LIKE'],
@@ -69,11 +69,6 @@ class LocationRepository
             LocationRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
-
-        $qBuilder = $qBuilder->where(function($q) {
-         $q->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
-        });
-
         return $qBuilder->get();
     }
 
@@ -81,9 +76,11 @@ class LocationRepository
      * @param $id
      * @return mixed
      */
-    public function getById($id)
+    public function getLocationById($id)
     {
-        return $this->model->where('id', $id)->first();
+        return $this->model->where('id', $id)
+            ->orWhere('slug', $id)
+            ->first();
     }
 
     /**
@@ -95,7 +92,7 @@ class LocationRepository
     {
         return $this->model
             ->where('locationable_type', LocationRepository::RELATION_MAP[$type]['class'])
-            ->where('slug',$slug)
+            ->where('slug', $slug)
             ->first();
     }
 }
