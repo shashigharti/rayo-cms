@@ -144,13 +144,16 @@
                         ])
                     }}
                 </div>
-
-                <a href="#"><i
-                            class="material-icons btn cyan input-field-btn btn-add mt-3 dynamic-elem__btn dynamic-elem__add">
-                        add </i></a>
-                <a href="#"><i
-                            class="material-icons btn amber input-field-btn btn-add mt-3  hide dynamic-elem__btn dynamic-elem__delete ">
-                        delete </i></a>
+                <a href="#">
+                    <i class="material-icons btn cyan input-field-btn btn-add mt-3 dynamic-elem__btn dynamic-elem__add">
+                        add
+                    </i>
+                </a>
+                <a href="#">
+                    <i class="material-icons btn amber input-field-btn btn-add mt-3  hide dynamic-elem__btn dynamic-elem__delete ">
+                        delete
+                    </i>
+                </a>
             </div>
         @endif
 

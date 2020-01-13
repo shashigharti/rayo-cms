@@ -54,26 +54,33 @@
             <a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">
                 Homes For Sale
                 <i class="material-icons">arrow_drop_down</i>
-                @set('menus', $banner_helper->getBannersByType(['active-menu']))
-                @set('properties', json_decode($menus->properties))
-                <div class="child-menu">
-                    @foreach($menus as $menu)
-                        <a class="dropdown-item" href="{{ $menu->url }}">{{ $menu->title }}</a>
-                    @endforeach
-                </div>
+                @set('menus', $banner_helper->getBannersBySlug('home-for-sale'))
+                @if($menus)
+                    @set('properties', json_decode($menus->properties))
+                    @set('titles', $properties->titles)
+                    @set('urls', $properties->urls)
+                    <div class="child-menu">
+                        @foreach($titles as $key => $title)
+                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
+                        @endforeach
+                    </div>
+                @endif
             </a>
         </li>
         <li class="parent-menu">
             <a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">
                 Sold Homes
-                <i class="material-icons">arrow_drop_down</i>
-                <div class="child-menu">
-                    <a class="dropdown-item" href="#">ST Augustine City Beach Homes</a>
-                    <a class="dropdown-item" href="#">ST Augustine Beach Condominiums</a>
-                    <a class="dropdown-item" href="#">ST Augustine Beachfront Homes</a>
-                    <a class="dropdown-item" href="#">ST Augustine Homes</a>
-                    <a class="dropdown-item" href="#">Land for Sale Sold</a>
-                </div>
+                @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
+                @if($menus)
+                    @set('properties', json_decode($menus->properties))
+                    @set('titles', $properties->titles)
+                    @set('urls', $properties->urls)
+                    <div class="child-menu">
+                        @foreach($titles as $key => $title)
+                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
+                        @endforeach
+                    </div>
+                @endif
             </a>
         </li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
