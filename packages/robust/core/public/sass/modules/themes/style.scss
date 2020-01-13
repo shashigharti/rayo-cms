@@ -1569,3 +1569,38 @@ input{
         padding: 0 0px;
     }
 }
+.modal {
+    background-color: #ffffff;
+
+    .modal-content {
+        padding: 0px;
+
+        .modal-header {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+
+            h1, h2, h3, h4 {
+                margin-bottom: 0px;
+                font-size: 20px;
+            }
+
+            .modal-close {
+                background: transparent;
+                border: 0;
+            }
+        }
+
+        .modal-body {
+            padding: 10px;
+        }
+
+        .modal-footer {
+            padding: 4px 10px;
+            a {
+                color: $white;
+                font-weight: 600;
+                font-size:12px;
+            }
+        }
+    }
+}

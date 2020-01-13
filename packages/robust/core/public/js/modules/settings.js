@@ -28,4 +28,5 @@
         FRW.TestEmail.init(selectObj);
     });
 
+
 }(jQuery, FRW, window, document));
