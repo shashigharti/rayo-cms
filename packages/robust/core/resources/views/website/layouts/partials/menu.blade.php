@@ -51,7 +51,7 @@
             </div>
         </li>
         <li class="parent-menu">
-            <a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">
+            <a class="nav-link" href="#">
                 Homes For Sale
                 <i class="material-icons">arrow_drop_down</i>
                 @set('menus', $banner_helper->getBannersBySlug('home-for-sale'))
@@ -68,7 +68,7 @@
             </a>
         </li>
         <li class="parent-menu">
-            <a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">
+            <a class="nav-link" href="#">
                 Sold Homes
                 <i class="material-icons">arrow_drop_down</i>
                 @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
