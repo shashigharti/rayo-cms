@@ -54,16 +54,11 @@
                  Homes For Sale
                  <i class="material-icons">arrow_drop_down</i>
                  <div class="child-menu">
-                    <a class="dropdown-item" href="#">Panama City Beach Homes</a>
-                    <a class="dropdown-item" href="#">Panama City Beach Condominiums</a>
-                    <a class="dropdown-item" href="#">Panama City Beachfront Homes</a>
-                    <a class="dropdown-item" href="#">Panama City Homes</a>
+                    <a class="dropdown-item" href="#">ST Augustine City Beach Homes</a>
+                    <a class="dropdown-item" href="#">ST Augustine Beach Condominiums</a>
+                    <a class="dropdown-item" href="#">ST Augustine Beachfront Homes</a>
+                    <a class="dropdown-item" href="#">ST Augustine Homes</a>
                     <a class="dropdown-item" href="#">Land for Sale</a>
-                    <a class="dropdown-item" href="#">Bay County Central</a>
-                    <a class="dropdown-item" href="#">Bay County North</a>
-                    <a class="dropdown-item" href="#">Bay County East</a>
-                    <a class="dropdown-item" href="#">Washington County</a>
-                    <a class="dropdown-item" href="#">Lynn haven</a>
                  </div>
             </a>
         </li>
@@ -72,16 +67,11 @@
                 Sold Homes
                 <i class="material-icons">arrow_drop_down</i>
                 <div class="child-menu">
-                    <a class="dropdown-item" href="#">Panama City Beach Homes</a>
-                    <a class="dropdown-item" href="#">Panama City Beach Condominiums</a>
-                    <a class="dropdown-item" href="#">Panama City Beachfront Homes</a>
-                    <a class="dropdown-item" href="#">Panama City Homes</a>
-                    <a class="dropdown-item" href="#">Land for Sale</a>
-                    <a class="dropdown-item" href="#">Bay County Central</a>
-                    <a class="dropdown-item" href="#">Bay County North</a>
-                    <a class="dropdown-item" href="#">Bay County East</a>
-                    <a class="dropdown-item" href="#">Washington County</a>
-                    <a class="dropdown-item" href="#">Lynn haven</a>
+                    <a class="dropdown-item" href="#">ST Augustine City Beach Homes</a>
+                    <a class="dropdown-item" href="#">ST Augustine Beach Condominiums</a>
+                    <a class="dropdown-item" href="#">ST Augustine Beachfront Homes</a>
+                    <a class="dropdown-item" href="#">ST Augustine Homes</a>
+                    <a class="dropdown-item" href="#">Land for Sale Sold</a>
                  </div>
             </a>
         </li>

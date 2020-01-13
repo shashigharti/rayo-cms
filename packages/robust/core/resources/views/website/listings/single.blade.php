@@ -10,7 +10,6 @@
 @section('body_section')
     @include(Site::templateResolver('core::website.listings.partials.details'))
 @endsection
-
 @section('footer')
     @include(Site::templateResolver('core::website.layouts.partials.footer'))
 @endsection
