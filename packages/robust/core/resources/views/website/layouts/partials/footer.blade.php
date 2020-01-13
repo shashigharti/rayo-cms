@@ -1,3 +1,4 @@
+@inject('page_helper, 'Robust\RealEstate\Helpers\PageHelper')
 @set('links',$page_helper->getLinksByType('useful-links'))
 <div class="container-fluid">
     <div class="row">

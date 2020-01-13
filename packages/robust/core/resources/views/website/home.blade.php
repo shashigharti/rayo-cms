@@ -1,6 +1,5 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
 @set('locations', $location_helper->getLocations(['cities','counties','zips']))
-@inject('page_helper, 'Robust\RealEstate\Helpers\PageHelper')
 @section('header')
     <div class="banner">
         <div class="slider">
