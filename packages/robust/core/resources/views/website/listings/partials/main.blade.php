@@ -1,13 +1,16 @@
 @set('params',request()->route()->parameters())
-@set('location',isset($params['location']) ? $location_helper->getLocation($params['location_type'], $params['location']) : null)
-@set('report',isset($location) ? $report_helper->getMarketReportByLocation($location->location_id, $location->locationable_type) : null)
+{{--
+@set('location', isset($params['location']) ? $location_helper->getLocation($params['location_type'], $params['location']) : null)
+@set('report',  isset($location) ? $report_helper->getMarketReportByLocation($location->location_id, $location->locationable_type) : null)
+--}}
+
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <div class="inner--main--title center-align">
                     @if($location)
-                        <h1>{{$location->name}} Homes for sale</h1>
+                        <h1> {{ $location->name }} Homes for sale</h1>
                     @else
                         <h1>Homes for sale</h1>
                     @endif
@@ -23,6 +26,7 @@
                     <span>/</span>
                     <span><a href="#">486 Subdivisions</a></span>
                 </div>
+
                 @include(Site::templateResolver('core::website.listings.partials.search'))
             </div>
         </div>

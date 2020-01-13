@@ -41,7 +41,8 @@
                 </select>
                 <a href="{{route('website.realestate.sold-homes')}}" class="btn cyan">SOLD</a>
                 <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
-                @if($location != null)
+
+                @if($location)
                     <a href="{{route('website.realestate.homes-for-sale')}}" class="btn blue">Research Tools for {{ $location->name }}</a>
                 @endif
 
