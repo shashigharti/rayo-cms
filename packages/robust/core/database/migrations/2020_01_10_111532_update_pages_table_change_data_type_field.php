@@ -13,7 +13,7 @@ class UpdatePagesTableChangeDataTypeField extends Migration
      */
     public function up()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('real_estate_pages', function (Blueprint $table) {
             $table->increments('id')->change();
             $table->string('url')->nullable()->change();
         });
@@ -26,7 +26,7 @@ class UpdatePagesTableChangeDataTypeField extends Migration
      */
     public function down()
     {
-        Schema::table('pages', function (Blueprint $table) {
+        Schema::table('real_estate_pages', function (Blueprint $table) {
             $table->integer('id')->unsigned()->primary()->change();
             $table->string('url')->change();
         });
