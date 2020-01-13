@@ -42,7 +42,8 @@ class PropertiesPull extends RetsCommands
 
     public function handle()
     {
-        $slug = settings('data-mapping','client_slug');
+        $setting = settings('real-estate','client');
+        $slug = $setting['slug'] ?? null;
         if($slug){
             $resources = config('real-estate.'. $slug .'.data-map.property.properties');
             foreach ($resources as $class => $resource){
