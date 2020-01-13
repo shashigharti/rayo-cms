@@ -13,7 +13,7 @@
                         <ul class="tabs">
                             @foreach($menus as $menu)
                                 <li class="tab"><a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                  ({{$locations['cities'] ? count($locations['cities']): '0'}})</a>
+                                  ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
                                 </li>
                             @endforeach
                             <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
