@@ -43,6 +43,16 @@
                         ])
                     }}
                 </div>
+                <div class="col s6">
+                    {{ Form::label('rt_pages[]', 'Display Research Tools In', ['class' => 'control-label' ]) }}
+                    {{ Form::select('rt_pages[]', config('real-estate.frw.locations'),
+                        $settings['rt_pages'] ?? [],
+                        [
+                        'class'=>'browser-default multi-select',
+                        'multiple'
+                        ])
+                    }}
+                </div>
             </div>
         </fieldset>
         <fieldset class="mt-2">

@@ -13,78 +13,116 @@ use Illuminate\Support\Arr;
 trait ListingTrait
 {
 
-   /**
-     * @param $id
+
+    /**
+     * @param $slug
      * @return mixed
      */
     public function getSingle($slug)
     {
         return $this->model->where('slug', $slug)
-        ->with('property')
-        ->with('images')->first();
+            ->with('property')
+            ->with('images')->first();
     }
 
+
     /**
-     * @param $params
-     * @return  QueryBuilder this
+     * @param array $params
+     * @param array $fields
+     * @return $this
      */
     public function getListings($params = [], $fields = [])
     {
-        $additional_fields = array_diff( $fields, IListings::LISTING_FIELDS['index'] );
-        $select_fields = array_merge( $additional_fields, IListings::LISTING_FIELDS['index'] );
-        $qBuilder = $this->model->select( $select_fields );
+        $additional_fields = array_diff($fields, IListings::LISTING_FIELDS['index']);
+        $select_fields = array_merge($additional_fields, IListings::LISTING_FIELDS['index']);
+        $qBuilder = $this->model->select($select_fields);
 
         // Remove all params that are null
-        foreach($params as $key => $param){
-            if($params == null){
+        foreach ($params as $key => $param) {
+            if ($params == null) {
                 Arr::forget($params, $key);
             }
         }
 
         // Add dynamic where conditions using passed params
-        foreach($params as $key => $param){
+        foreach ($params as $key => $param) {
             $qBuilder = $qBuilder->where(IListings::FIELDS_QUERY_MAP[$key]['name'],
                 IListings::FIELDS_QUERY_MAP[$key]['condition'],
                 "$param");
         }
-        
+
         $this->model = $qBuilder;
         return $this;
     }
 
+
     /**
-     * @return QueryBuilder this
+     * @param $params
+     * @return $this
      */
-    public function wherePriceBetween($params){
-        if(count($params) > 0){
+    public function wherePriceBetween($params)
+    {
+        if (count($params) > 0) {
             $this->model = $this->model->whereBetween('system_price', $params);
         }
 
-       return $this;
+        return $this;
     }
 
+
     /**
-     * @return QueryBuilder this
+     * @param $params
+     * @return $this
      */
-    public function whereDateBetween($params){
+    public function whereDateBetween($params)
+    {
         $this->model = $this->model->whereBetween('input_date', $params);
         return $this;
     }
 
 
     /**
-     * @return QueryBuilder this
+     * @param $params
+     * @return $this
      */
-    public function whereLocation($params){
+    public function whereLocation($params)
+    {
         $key = key($params);
-        if($params[$key] != null){
+        if ($params[$key] != null) {
             $value = $params[$key];
-            // This is a temporary fix; we will use locationable_id / polymorphic relation later
             $location = $this->location->where('slug', '=', $value)->first();
-            if(!$location){
+            if (!$location) {
                 $location = $this->location->where('id', '=', $value)->first();
             }
             $this->model = $this->model->where(IListings::LOCATION_TYPE_MAP[$key], '=', $location->id);
+        }
+        return $this;
+    }
+
+    /**
+     * @param $params
+     * @return $this
+     */
+    public function wherePropertyTypes($params)
+    {
+
+        return $this;
+    }
+
+    /**
+     * @param $params
+     * @return $this
+     */
+    public function whereLocations($params)
+    {
+        $key = key($params);
+        if ($params[$key] != null) {
+            $locations = $params[$key];
+            $locations = $this->location->whereIn('slug', $locations)->pluck('id');
+            if (!$locations) {
+                $locations = $this->location->whereIn('slug', $locations)->pluck('id');
+            }
+            $this->model = $this->model->whereIn(IListings::LOCATION_TYPE_MAP[$key], $locations);
         }
         return $this;
     }
