@@ -70,6 +70,7 @@
         <li class="parent-menu">
             <a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">
                 Sold Homes
+                <i class="material-icons">arrow_drop_down</i>
                 @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
                 @if($menus)
                     @set('properties', json_decode($menus->properties))
