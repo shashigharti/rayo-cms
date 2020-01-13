@@ -1,9 +1,4 @@
 @set('params',request()->route()->parameters())
-{{--
-@set('location', isset($params['location']) ? $location_helper->getLocation($params['location_type'], $params['location']) : null)
-@set('report',  isset($location) ? $report_helper->getMarketReportByLocation($location->location_id, $location->locationable_type) : null)
---}}
-
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">

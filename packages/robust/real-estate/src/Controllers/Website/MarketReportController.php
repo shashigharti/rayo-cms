@@ -60,7 +60,7 @@ class MarketReportController extends Controller
      * @param $slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getInsights(Request $request, $location_type, $slug){        
+    public function getInsights(Request $request, $location_type, $slug){
         $response = $this->model->getInsights($location_type, $slug);
         return view('core::website.market-report.insight', [
             'data' => $response,
@@ -77,8 +77,8 @@ class MarketReportController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function compareLocations(Request $request){     
-        $data = $request->all();   
+    public function compareLocations(Request $request){
+        $data = $request->all();
         $response = $this->model->compareLocations($data);
         return view('core::website.market-report.compare', [
             'records' => $response,
@@ -90,7 +90,7 @@ class MarketReportController extends Controller
      * @param Request $request
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function showInMap(Request $request){     
+    public function showInMap(Request $request){
         $data = $request->all();
         $response = $this->model->compareLocations($data);
         return view('core::website.market-report.map', [
