@@ -34,7 +34,8 @@ class LocationRepository
         'counties' => ['class' => 'Robust\RealEstate\Models\County'],
         'high_schools' => ['class' => 'Robust\RealEstate\Models\HighSchool'],
         'elementary_schools' => ['class' => 'Robust\RealEstate\Models\ElementarySchool'],
-        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool']
+        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool'],
+        'subdivisions' => ['class' => 'Robust\RealEstate\Models\Subdivision']
     ];
 
     /**

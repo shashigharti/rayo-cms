@@ -104,11 +104,11 @@ return [
         ],
         'waterfront_details' => [
             'blade' => 'attributes-select-remote',
-            'display_name' => 'Waterfront'
+            'display_name' => 'Waterfront Details'
         ],
         'waterfront' => [
             'blade' => 'attributes-select-remote',
-            'display_name' => 'waterfront'
+            'display_name' => 'Waterfront'
         ],
         'garage' => [
             'blade' => 'attributes-select-remote',
