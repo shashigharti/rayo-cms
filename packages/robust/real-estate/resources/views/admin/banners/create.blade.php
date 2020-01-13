@@ -24,7 +24,7 @@
                 </div>
             </div>
             <div class="form-group form-material row">
-                <div class="col s6 file-uploader" data-base-path="{{url('api/file-uploader/image/')}}"
+                <div class="col s12 file-uploader" data-base-path="{{url('api/file-uploader/image/')}}"
                      data-dest=".file-uploader_files"
                      data-upload-path="{{route('api.file-uploader.image.upload')}}"
                 >
@@ -64,7 +64,9 @@
                             'class' => 'file-uploader_files'
                         ])
                     }}
-                </div>
+                </div>                
+            </div>
+            <div class="form-group form-material row mt-2">
                 <div class="input-field col s6">
                     {{ Form::select('template', [
                             'Choose template' => 'Choose template',
@@ -85,7 +87,7 @@
                     {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
                 </div>
             </div>
-            <div class="container sub--block mt-3">
+            <div class="container sub--block mt-1">
                 @set('template', request()->query('template') ?? $model->template)
                 @if($template)
                      @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])

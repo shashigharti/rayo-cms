@@ -194,4 +194,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
     .sub--block {
         margin: 10px 5px 30px;
     }
+
+    .jFiler {
+        display: inline-block;
+        vertical-align: middle;
+
+        &.jFiler-theme-default .jFiler-input {
+            margin: 0 0 0px 0;
+        }
+    }
+
+    .file-uploader__upload-btn {
+        display: inline-block;
+        width: 80px;
+        vertical-align: middle;
+        height: 33px;
+        line-height: 33px;
+    }
 }

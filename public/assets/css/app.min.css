@@ -1155,10 +1155,11 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .input-field-btn{font-size:12px;line-height:30px;height:30px;width:30px;text-align:center;padding:0}
 .form--links{font-size:12px;font-weight:600}.form--links i{vertical-align:bottom;font-size:20px}
 .input-field>label.control-label{position:absolute;display:block;-webkit-transform:translateY(-30px) scale(0.8);transform:translateY(-30px) scale(0.8)}
-.Banners .sub--block{margin:10px 5px 30px}.theme--pagination{margin-top:-2px;margin-bottom:0}
-.theme--pagination li{height:24px;line-height:24px}.theme--pagination li.active{background-color:#6b4994}
-.theme--pagination li a{font-size:12px;line-height:24px}.pagination--top{display:inline}
-.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
+.Banners .sub--block{margin:10px 5px 30px}.Banners .jFiler{display:inline-block;vertical-align:middle}
+.Banners .jFiler.jFiler-theme-default .jFiler-input{margin:0}.Banners .file-uploader__upload-btn{display:inline-block;width:80px;vertical-align:middle;height:33px;line-height:33px}
+.theme--pagination{margin-top:-2px;margin-bottom:0}.theme--pagination li{height:24px;line-height:24px}
+.theme--pagination li.active{background-color:#6b4994}.theme--pagination li a{font-size:12px;line-height:24px}
+.pagination--top{display:inline}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
 .col-sub-heading{display:inline-block;position:relative}.sortable-icon{color:#bababa}
 .sortMenu{position:absolute;background:#fff;-webkit-box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);padding:10px;min-width:100px;z-index:1;color:#999;display:none}
 .leads-table th{font-size:.75rem;color:gray}.col-sub-heading:hover .sortMenu{display:block}
