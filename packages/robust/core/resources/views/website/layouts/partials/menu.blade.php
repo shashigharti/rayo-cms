@@ -49,8 +49,42 @@
                 </div>
             </div>
         </li>
-        <li><a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">Homes For Sale</a></li>
-        <li><a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">Sold Homes</a></li>
+        <li class="parent-menu">
+            <a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">
+                 Homes For Sale
+                 <i class="material-icons">arrow_drop_down</i>
+                 <div class="child-menu">
+                    <a class="dropdown-item" href="#">Panama City Beach Homes</a>
+                    <a class="dropdown-item" href="#">Panama City Beach Condominiums</a>
+                    <a class="dropdown-item" href="#">Panama City Beachfront Homes</a>
+                    <a class="dropdown-item" href="#">Panama City Homes</a>
+                    <a class="dropdown-item" href="#">Land for Sale</a>
+                    <a class="dropdown-item" href="#">Bay County Central</a>
+                    <a class="dropdown-item" href="#">Bay County North</a>
+                    <a class="dropdown-item" href="#">Bay County East</a>
+                    <a class="dropdown-item" href="#">Washington County</a>
+                    <a class="dropdown-item" href="#">Lynn haven</a>
+                 </div>
+            </a>
+        </li>
+        <li class="parent-menu">
+            <a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">
+                Sold Homes
+                <i class="material-icons">arrow_drop_down</i>
+                <div class="child-menu">
+                    <a class="dropdown-item" href="#">Panama City Beach Homes</a>
+                    <a class="dropdown-item" href="#">Panama City Beach Condominiums</a>
+                    <a class="dropdown-item" href="#">Panama City Beachfront Homes</a>
+                    <a class="dropdown-item" href="#">Panama City Homes</a>
+                    <a class="dropdown-item" href="#">Land for Sale</a>
+                    <a class="dropdown-item" href="#">Bay County Central</a>
+                    <a class="dropdown-item" href="#">Bay County North</a>
+                    <a class="dropdown-item" href="#">Bay County East</a>
+                    <a class="dropdown-item" href="#">Washington County</a>
+                    <a class="dropdown-item" href="#">Lynn haven</a>
+                 </div>
+            </a>
+        </li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
                 Stats</a></li>
         <li class="nav-btn">

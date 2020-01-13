@@ -887,7 +887,10 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .multi-select-container .select2-container--default .select2-selection--multiple .select2-selection__choice__remove{color:#fff}
 .multi-select-container input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:0;-webkit-box-shadow:none;box-shadow:none}
 .modal-content{border:0}.msg-info{color:#0b568c}.msg-error{color:#ab2012}.msg-info,.msg-error{background:#fff;padding:9px 20px;height:auto;line-height:20px;border:0;font-weight:500;font-size:12px;text-transform:none}
-.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.parent-menu{position:relative}.parent-menu i{display:inline-block !important;vertical-align:middle}
+.parent-menu:hover .child-menu{display:block}.child-menu{background-color:#002349 !important;position:absolute;margin-top:0;left:0;display:none}
+.child-menu .dropdown-item{display:block;width:100%;padding:0 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
+.child-menu .dropdown-item:hover{background:#04122d}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
@@ -961,7 +964,7 @@ section.main-content{padding-top:100px}.inner--main--title h1{font-size:30px;col
 .listing--search .range-bar .slider-container{margin:22px auto;width:200px !important}
 .listing--search .range-bar .slider-container .back-bar .pointer-label{color:#555}
 .listing--search .range-bar .theme-green .scale ins{color:#555}.listing--btn--block label{font-weight:bold;color:#555}
-.listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0;width:100px;font-weight:600}
+.listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0 10px;width:auto;font-weight:600}
 a.single--listing--button_back{font-size:12px;vertical-align:middle;display:inline-block;padding:0 10px;background-color:#002349;text-transform:initial}
 a.single--listing--button_back i.material-icons{vertical-align:middle;margin-right:5px}
 a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total--records{font-size:12px;display:inline-block;font-weight:500;color:#555}
@@ -969,7 +972,7 @@ a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total-
 .listing--pagination span{height:30px;width:30px;border:1px solid #555;border-radius:3px;display:inline-block;text-align:center;line-height:30px;color:#555;font-size:14px;font-weight:600}
 .listing--pagination span.active{color:#fff;background:#002349;border-color:#002349}
 .listing--tags{margin:5px 0}.listing--tags span{font-size:10px;display:inline-block;font-weight:500;color:#555;border:1px solid #908d8d;padding:2px 7px;border-radius:3px}
-.listing--tags a.btn,.listing--tags a.btn-large,.listing--tags a.btn-small{font-size:11px;height:20px;line-height:20px;padding:0;margin-top:0;margin-left:0}
+.listing--tags a.btn,.listing--tags a.btn-large,.listing--tags a.btn-small{font-size:11px;height:20px;line-height:20px;padding:0 10px;margin-top:0;margin-left:0}
 .single--list--block{height:270px;position:relative;overflow:hidden;background:#ccc;margin-bottom:30px}
 .single--list--block img{width:100%;height:100%;-o-object-fit:cover;object-fit:cover}
 .list--overlay{position:absolute;top:0;left:0;width:100%;height:100%;padding:5px 0}
