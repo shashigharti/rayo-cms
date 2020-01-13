@@ -31,6 +31,8 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\UpdateGeoLocations',
         'Robust\RealEstate\Console\Commands\UpdateLocationsCount',
         'Robust\RealEstate\Console\Commands\RegisterCommands',
+
+        'Robust\RealEstate\Console\Commands\Installation\ResetSinglePageDetail'
     ];
 
 
@@ -51,9 +53,7 @@ class RealEstateServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'real-estate.permissions');
         $this->mergeConfigFrom(__DIR__ . '/../../config/frw.php', 'real-estate.frw');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'real-estate.settings');
-        //$this->mergeConfigFrom(__DIR__ . '/../../config/advance-search.php', 'real-estate.search');
-        //$this->mergeConfigFrom(__DIR__ . '/../../config/listing-detail.php', 'real-estate.detail');
-        $this->mergeConfigFrom(__DIR__ . '/../../config/glenn.php', 'real-estate.glenn');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/single-page-detail.php', 'real-estate.single-page-detail');
         $this->mergeConfigFrom(__DIR__ . '/../../config/augustine.php', 'real-estate.augustine');
         $this->commands($this->commands);
     }

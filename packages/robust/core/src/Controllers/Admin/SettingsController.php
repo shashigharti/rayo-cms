@@ -53,7 +53,6 @@ class SettingsController extends Controller
     public function store(Request $request, SettingRepository $setting)
     {
         $slug = $request->get('slug');
-        $all_data = $request->all();
         $data = $request->except('_token', 'slug', 'files');
         $setting->store($slug, $data);
         return redirect()->route('admin.settings.edit', [$slug])->with('message',
