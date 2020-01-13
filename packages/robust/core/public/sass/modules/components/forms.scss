@@ -183,3 +183,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
         font-size: 20px;
     }
 }
+.input-field {
+    > label.control-label {
+        position: absolute;
+        display: block;
+        transform: translateY(-30px) scale(0.8);
+    }
+}
+.Banners {
+    .sub--block {
+        margin: 10px 5px 30px;
+    }
+}

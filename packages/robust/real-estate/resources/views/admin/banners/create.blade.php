@@ -31,6 +31,9 @@
                     @csrf
                     {{ Form::label('properties[image]', 'Banner Image') }}
                     @set('files', (isset($properties->image) && $properties->image != '') ?  explode(',', $properties->image): [])
+                    <div>
+                        <small>(Image Size: 200 x 200)</small>
+                    </div>
                     <div class="file-uploader__preview">
                         @foreach($files as $file)
                             <div data-id="{{ $file }}" class="file-uploader__file">
@@ -56,9 +59,7 @@
                             Upload Image
                         </button>
                     </div>
-                    <div>
-                        <small>(Image Size: 200 x 200)</small>
-                    </div>
+                    
                     {{ Form::hidden('properties[image]', $properties->image ?? null, [
                             'class' => 'file-uploader_files'
                         ])
@@ -84,7 +85,7 @@
                     {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
                 </div>
             </div>
-            <div class="container sub--block mt-2">
+            <div class="container sub--block mt-3">
                 @set('template', request()->query('template') ?? $model->template)
                 @if($template)
                      @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])
