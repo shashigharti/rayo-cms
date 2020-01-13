@@ -8,7 +8,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s12 mt-2">
         {{ Form::label('properties[locations]', 'Locations', ['class' => 'control-label' ]) }}
         {{ Form::select("properties[locations][]", [],
             $properties->locations ?? [],
@@ -23,7 +23,7 @@
 </div>
 
 <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s12 mt-3">
         {{ Form::label('tabs', 'Tabs', ['class' => 'control-label' ]) }}
         {{ Form::select('properties[tabs][]',
             [
