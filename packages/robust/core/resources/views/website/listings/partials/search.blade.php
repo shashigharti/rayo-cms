@@ -43,7 +43,12 @@
                 <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
 
                 @if($location)
-                    <a href="{{route('website.realestate.homes-for-sale')}}" class="btn blue">Research Tools for {{ $location->name }}</a>
+                    <a href="javascript:void(0)"
+                       class="waves-effect waves-light btn modal-trigger"
+                       href="#researchToolModal">
+                        Research Tools for {{ $location->name }}
+                    </a>
+                    @include('core::website.partials.modal.research-tool')
                 @endif
 
             </div>

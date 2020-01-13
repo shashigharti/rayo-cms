@@ -1,9 +1,7 @@
-<div class="modal fade" tabindex="-1" role="dialog" id="save-research-modal">
+<div class="modal fade" tabindex="-1" role="dialog" id="researchToolModal">
     <div class="modal-dialog" role="document">
         <form action="#" method="Post">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
-            {{--<input type="hidden" name="location_type" value="{{$location->type}}">--}}
-            {{--<input type="hidden" name="location_name" value="{{$location_name}}">--}}
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
