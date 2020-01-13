@@ -1,6 +1,7 @@
 /node_modules
 /public/hot
 /public/files
+/public/medias
 /public/storage
 /storage/*.key
 /storage/app
