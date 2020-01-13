@@ -12,7 +12,7 @@ class CreatePagesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('pages', function(Blueprint $table)
+		Schema::create('real_estate_pages', function(Blueprint $table)
 		{
 			$table->integer('id')->unsigned()->primary();
 			$table->string('title');
@@ -38,7 +38,7 @@ class CreatePagesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('pages');
+		Schema::drop('real_estate_pages');
 	}
 
 }
