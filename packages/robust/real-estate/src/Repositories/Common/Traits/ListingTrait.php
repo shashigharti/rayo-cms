@@ -103,7 +103,7 @@ trait ListingTrait
      * @param $params
      * @return $this
      */
-    public function wherePropertyTypes($params)
+    public function wherePropertyType($params)
     {
 
         return $this;
