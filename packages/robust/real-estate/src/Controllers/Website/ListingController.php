@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Controllers\Website;
 
 
@@ -37,44 +38,69 @@ class ListingController extends Controller
 
 
     /**
+     * @param null $location_type
+     * @param null $location
+     * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active($location_type = null,  $location = null,  $price_range = [])
+    public function active($location_type = null, $location = null, $price_range = [])
     {
-        $status = settings('real-estate','active');
-        $query_params = request()->all();
-        $results  = $this->model->getListings(
+        $status = settings('real-estate', 'active');
+        $results = $this->model->getListings(
             [
                 'status' => $status
             ])
-            ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
+            ->whereLocation([$location_type => $location])
+            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results'=>$results]);
+        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
     }
 
 
     /**
+     * @param null $location_type
+     * @param null $location
+     * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sold($location_type = null,  $location = null,  $price_range = [])
+    public function sold($location_type = null, $location = null, $price_range = [])
     {
-        $status = settings('real-estate','sold');
-        $query_params = request()->all();
+        $status = settings('real-estate', 'sold');
         $data_timeframe = config('rws.data.timeframe');
-        $results  = $this->model->getListings(
+        $results = $this->model->getListings(
             [
                 'status' => $status // this should be configurable.
             ])
-            ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween($price_range != null? explode('-', $price_range) : $price_range)
+            ->whereLocation([$location_type => $location])
+            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
+        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+    }
+
+
+    /**
+     * @param $status
+     * @param $property_type
+     * @param $property_value
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getListingsByPropertyType($status, $property_type, $property_value)
+    {
+        $params = request()->all();
+        $price_range = isset($params['price_range']) ? $params['price_range'] : null;
+        $location_type = isset($params['location_type']) ? $params['location_type'] : null;
+        $locations = isset($params['locations']) ? explode(',', $params['locations']) : null;
+
+        $results = $this->model->getListings()
+            ->whereLocations([$location_type => $locations])
+            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            ->paginate($this->pagination);
+        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
     }
 
     /**
@@ -85,7 +111,7 @@ class ListingController extends Controller
     public function single($slug)
     {
         $result = $this->model->getSingle($slug);
-        return view(Site::templateResolver('core::website.listings.single'),['result'=>$result]);
+        return view(Site::templateResolver('core::website.listings.single'), ['result' => $result]);
     }
 
     /**
@@ -97,11 +123,11 @@ class ListingController extends Controller
     public function getSimilarProperty($type, $value, $id)
     {
         $price = $this->model->find($id)->system_price;
-        $results = $this->model->getCountByType($type,$value)
-                ->where('system_price', '>' ,$price - 50000)
-                ->where('system_price', '<', $price + 50000)
-                ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'),['results'=>$results]);
+        $results = $this->model->getCountByType($type, $value)
+            ->where('system_price', '>', $price - 50000)
+            ->where('system_price', '<', $price + 50000)
+            ->paginate($this->pagination);
+        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
     }
 
     /**
@@ -113,18 +139,17 @@ class ListingController extends Controller
      */
     public function subArea($location_type, $location, $price_range, $sub_area)
     {
-        $query_params = request()->all();
-        $results  = $this->model->getListings(
+        $results = $this->model->getListings(
             [
                 'status' => 'Active'
             ])
-            ->whereLocation([ $location_type => $location ])
-            ->wherePriceBetween($price_range != null? explode('-', $price_range) : [])
+            ->whereLocation([$location_type => $location])
+            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : [])
             ->whereSubArea($sub_area)
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), [ 'results' => $results ]);
+        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
     }
 
     /**
@@ -135,9 +160,9 @@ class ListingController extends Controller
     public function print($slug)
     {
         $result = $this->model->getSingle($slug);
-        $html = view('core::website.layouts.partials.print',['result'=>$result])->render();
+        $html = view('core::website.layouts.partials.print', ['result' => $result])->render();
         return PDF::loadHTML($html)->setPaper('a4', 'portrait')
-            ->setWarnings(false)->stream( $result->name .'.pdf');
+            ->setWarnings(false)->stream($result->name . '.pdf');
     }
 
 }

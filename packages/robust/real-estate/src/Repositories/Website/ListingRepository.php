@@ -12,11 +12,12 @@ use Robust\RealEstate\Models\Location;
 
 /**
  * Class ListingRepository
+ *
  * @package Robust\RealEstate\Repositories\Website
  */
 class ListingRepository implements IListings
 {
-    use CommonRepositoryTrait, ListingTrait, SearchRepositoryTrait;  
+    use CommonRepositoryTrait, ListingTrait, SearchRepositoryTrait;
 
     /**
      * @var Listing
@@ -39,7 +40,7 @@ class ListingRepository implements IListings
         $this->location = $location;
     }
 
-    
+
 
     public function whereSubArea($type)
     {
