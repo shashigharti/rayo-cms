@@ -18,8 +18,8 @@ class Group extends BaseUI
      * @var array
      */
     public $columns = [
-        'first_name' => 'First Name',
-        'last_name' => 'Last Name',
+        'name' => 'Group Name',
+        'color' => 'Color',
         'options' => [
             'edit' => [
                 'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">edit</i> ',
@@ -52,8 +52,8 @@ class Group extends BaseUI
      * @var array
      */
     public $addrules = [
-        'first_name' => 'required',
-        'last_name' => 'required'
+        'name' => 'required',
+        'color' => 'required'
     ];
     /**
      * @var array
