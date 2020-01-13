@@ -890,7 +890,9 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .parent-menu{position:relative}.parent-menu i{display:inline-block !important;vertical-align:middle}
 .parent-menu:hover .child-menu{display:block}.child-menu{background-color:#002349 !important;position:absolute;margin-top:0;left:0;display:none;z-index:9}
 .child-menu .dropdown-item{display:block;width:100%;padding:5px 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
-.child-menu .dropdown-item:hover{background:#04122d}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.child-menu .dropdown-item:hover{background:#04122d}.modal [type="radio"]:not(:checked),.modal [type="radio"]:checked{position:relative;opacity:1;pointer-events:inherit;display:inline-block;width:20px !important;vertical-align:text-bottom;margin-right:5px}
+div#researchToolModal{border-radius:7px;-webkit-transform:translate(-50%,-50%) !important;transform:translate(-50%,-50%) !important;left:50% !important;top:50% !important;max-height:-webkit-min-content;max-height:-moz-min-content;max-height:min-content}
+.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
