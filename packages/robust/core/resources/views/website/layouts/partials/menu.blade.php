@@ -31,10 +31,10 @@
                                             data-all-url="{{ settings('real-estate', 'url_active') }}"
                                             data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
-                                            <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
+                                            <a class="tab__location" href="{{settings('real-estate', 'url_active'),[
                                                     'location_type' => $menu,
                                                     'location' => $location->slug
-                                                    ])}}">
+                                                    ]}}">
                                                 {{ $location->name }}
                                                 <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                             </a>
@@ -47,8 +47,8 @@
                 </div>
             </div>
         </li>
-        <li><a class="nav-link" href="{{route('website.realestate.homes-for-sale')}}">Homes For Sale</a></li>
-        <li><a class="nav-link" href="{{route('website.realestate.sold-homes')}}">Sold Homes</a></li>
+        <li><a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">Homes For Sale</a></li>
+        <li><a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">Sold Homes</a></li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
                 Stats</a></li>
         <li class="nav-btn">

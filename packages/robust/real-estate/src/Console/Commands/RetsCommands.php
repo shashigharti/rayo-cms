@@ -5,6 +5,7 @@ namespace Robust\RealEstate\Console\Commands;
 
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\Schema;
 
 class RetsCommands extends Command
 {
@@ -12,20 +13,22 @@ class RetsCommands extends Command
 
     public function __construct()
     {
-        $settings = settings('data-mapping');
         parent::__construct();
-        $url = $settings['url'] ?? null;
-        $username = $settings['username'] ?? null;
-        $password = $settings['password'] ?? null;
-        if($url && $username && $password){
-            $config = new \PHRETS\Configuration;
-            $config->setLoginUrl($url)
-                ->setUsername($username)
-                ->setPassword($password)
-                ->setRetsVersion('1.7.2');
+        if(Schema::hasTable('settings')){
+            $settings = settings('real-estate');
+            $url = $settings['url'] ?? null;
+            $username = $settings['username'] ?? null;
+            $password = $settings['password'] ?? null;
+            if($url && $username && $password){
+                $config = new \PHRETS\Configuration;
+                $config->setLoginUrl($url)
+                    ->setUsername($username)
+                    ->setPassword($password)
+                    ->setRetsVersion('1.7.2');
 
-            $this->rets = new \PHRETS\Session($config);
-            $connect = $this->rets->Login();
+                $this->rets = new \PHRETS\Session($config);
+                $connect = $this->rets->Login();
+            }
         }
     }
 }
