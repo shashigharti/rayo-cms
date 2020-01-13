@@ -27,6 +27,9 @@
             modalObj.find('.modal-footer #confirm').on('click', function () {
                 $(this).data('form').submit();
             });
+        },
+        modal:function(){
+
         }
     }
     $(document).ready(function ($) {
@@ -41,6 +44,7 @@
             FRW.Utility.confirmDelete(modalObj);
         }
 
+        FRW.Utility.modal();
     });
 
 }(jQuery, FRW, window, document));

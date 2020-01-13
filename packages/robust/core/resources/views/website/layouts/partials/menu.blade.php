@@ -13,7 +13,8 @@
                         <ul class="tabs">
                             @foreach($menus as $menu)
                                 <li class="tab"><a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                        ({{$locations['cities'] ? count($locations['cities']): '0'}})</a></li>
+                                  ({{$locations['cities'] ? count($locations['cities']): '0'}})</a>
+                                </li>
                             @endforeach
                             <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
                             <span><input type="radio" name="status_filter" value='sold'>Sold Homes</span>
@@ -31,10 +32,11 @@
                                             data-all-url="{{ settings('real-estate', 'url_active') }}"
                                             data-sold="{{ $location->sold_count }}"
                                             data-all="{{ $location->sold_count + $location->active_count }}">
-                                            <a class="tab__location" href="{{settings('real-estate', 'url_active'),[
+                                            <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
                                                     'location_type' => $menu,
                                                     'location' => $location->slug
-                                                    ]}}">
+                                                    ])}}"
+                                            >
                                                 {{ $location->name }}
                                                 <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                             </a>
