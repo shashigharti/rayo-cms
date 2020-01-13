@@ -889,7 +889,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .modal-content{border:0}.msg-info{color:#0b568c}.msg-error{color:#ab2012}.msg-info,.msg-error{background:#fff;padding:9px 20px;height:auto;line-height:20px;border:0;font-weight:500;font-size:12px;text-transform:none}
 .parent-menu{position:relative}.parent-menu i{display:inline-block !important;vertical-align:middle}
 .parent-menu:hover .child-menu{display:block}.child-menu{background-color:#002349 !important;position:absolute;margin-top:0;left:0;display:none}
-.child-menu .dropdown-item{display:block;width:100%;padding:0 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
+.child-menu .dropdown-item{display:block;width:100%;padding:5px 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
 .child-menu .dropdown-item:hover{background:#04122d}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
