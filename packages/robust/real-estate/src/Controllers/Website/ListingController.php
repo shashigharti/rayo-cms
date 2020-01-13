@@ -2,11 +2,11 @@
 
 namespace Robust\RealEstate\Controllers\Website;
 
-
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
 use Robust\Core\Helpage\Site;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
+use Robust\RealEstate\Helpers\LocationHelper;
 
 /**
  * Class ListingController
@@ -43,7 +43,7 @@ class ListingController extends Controller
      * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active($location_type = null, $location = null, $price_range = [])
+    public function active(LocationHelper $locationHelper, $location_type = null, $location = null, $price_range = [])
     {
         $status = settings('real-estate', 'active');
         $results = $this->model->getListings(
@@ -55,7 +55,9 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+        return view(Site::templateResolver('core::website.listings.index'), [
+            'results' => $results
+        ]);
     }
 
 
@@ -79,7 +81,9 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+        return view(Site::templateResolver('core::website.listings.index'), [
+            'results' => $results
+        ]);
     }
 
 
