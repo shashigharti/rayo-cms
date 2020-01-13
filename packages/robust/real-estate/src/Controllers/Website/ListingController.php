@@ -92,14 +92,12 @@ class ListingController extends Controller
     public function getListingsByPropertyType($status, $property_type, $property_value)
     {
         $params = request()->all();
-        $price_range = isset($params['price_range']) ? $params['price_range'] : null;
-        $location_type = isset($params['location_type']) ? $params['location_type'] : null;
+        $property_types = isset($property_type) ? explode(',', $property_type) : null;
+        $property_values = isset($property_value) ? explode(',', $property_value) : null;
         $locations = isset($params['locations']) ? explode(',', $params['locations']) : null;
-
+        //use case of multiple locations
         $results = $this->model->getListings()
-            ->wherePropertyType($params)
-            ->whereLocations([$location_type => $locations])
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            ->wherePropertyType($property_types,$property_values)
             ->paginate($this->pagination);
         return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
     }

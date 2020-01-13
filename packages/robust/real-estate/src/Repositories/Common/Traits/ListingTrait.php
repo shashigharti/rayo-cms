@@ -99,13 +99,30 @@ trait ListingTrait
         return $this;
     }
 
-    /**
-     * @param $params
-     * @return $this
-     */
-    public function wherePropertyType($params)
-    {
 
+    /**
+     * @param $property_types
+     * @param $property_values
+     */
+    public function wherePropertyType($property_types, $property_values)
+    {
+        $this->model = $this->model->whereNotNull('properties_status');
+        $this->model = $this->model->whereIn('real_estate_listings.id', function($query) use ($property_types,$property_values) {
+            $query->from('real_estate_listing_properties')
+                ->select('real_estate_listing_properties.listing_id')
+                ->where('real_estate_listing_properties.listing_id','real_estate_listings.id');
+                foreach ($property_types as $key => $type){
+                    if(isset($property_values[$key]) && $property_values[$key]){
+                        $query->where('real_estate_listing_properties.type', $type);
+                        $values = explode(',',$property_values[$key]);
+                        foreach ($values as $value){
+                            $query->where('real_estate_listing_properties.value',$value);
+                        }
+
+                    }
+                }
+
+        });
         return $this;
     }
 
