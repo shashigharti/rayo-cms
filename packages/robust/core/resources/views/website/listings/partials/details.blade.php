@@ -1,6 +1,6 @@
 @set('properties',$result->property->pluck('value','type'))
-@set('city',$location_helper->byId($result->city_id))
-@set('subdivision',$location_helper->byId($result->subdivision_id))
+@set('city',$location_helper->getLocation($result->city_id))
+@set('subdivision',$location_helper->getLocation($result->subdivision_id))
 @set('image',$result->images ? $result->images->first() : null)
 <section class="main-content">
     <div class="container-fluid">
@@ -354,21 +354,21 @@
                                         <table class="table table-striped">
                                             <tbody>
                                             @if(isset($result->elementary_school_id))
-                                                @set('school_name',$location_helper->byId($result->elementary_school_id))
+                                                @set('school_name',$location_helper->getLocation($result->elementary_school_id))
                                                 <tr>
                                                     <td>Elementary</td>
                                                     <td>{{$school_name->name}}</td>
                                                 </tr>
                                             @endif
                                             @if(isset($result->middle_school_id))
-                                                @set('school_name',$location_helper->byId($result->middle_school_id))
+                                                @set('school_name',$location_helper->getLocation($result->middle_school_id))
                                                 <tr>
                                                     <td>Middle</td>
                                                     <td>{{$school_name->name}}</td>
                                                 </tr>
                                             @endif
                                             @if(isset($result->high_school_id))
-                                                @set('school_name',$location_helper->byId($result->high_school_id))
+                                                @set('school_name',$location_helper->getLocation($result->high_school_id))
                                                 <tr>
                                                     <td>High</td>
                                                     <td>{{$school_name->name}}</td>
