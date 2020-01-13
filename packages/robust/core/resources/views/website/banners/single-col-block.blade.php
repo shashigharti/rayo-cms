@@ -7,7 +7,6 @@
                 @set('location',$location_helper->getLocation($properties['locations']))
                 @set('image',$listing_helper->getImageByLocation($location,$properties['image'] ?? ''))
                 @if($properties && $location)
-
                     <div class="col m4 s12">
                         <div class="single-block">
                             <img src="{{$image}}" alt="{{$location->name}}">
@@ -19,7 +18,7 @@
                                             @set('property_count',$properties->property_counts->$price ?? 0)
                                             <a href="{{route('website.realestate.homes-for-sale',
                                                 [
-                                                    'location_type' => 'cities',
+                                                    'location_type' => get_location_route_by_type($location->locationable_type),
                                                     'location' => $location->slug,
                                                     'price' => $price,
                                                 ]
