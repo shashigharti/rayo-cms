@@ -1,3 +1,4 @@
+//import("materialize.js")
 //import("../../../../../node_modules/jquery.filer/js/jquery.filer.js")
 //import("modules/ckeditor.js")
 //import("modules/vendors.min.js")

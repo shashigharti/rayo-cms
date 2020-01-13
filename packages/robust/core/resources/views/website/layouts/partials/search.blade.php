@@ -1,5 +1,7 @@
+@set('mainBanner', $banner_helper->getBannersByType(['main-banner']))
+@set('properties', isset($mainBanner[0]) ? json_decode($mainBanner[0]->properties) : null)
 <div class="banner-caption">
-   <h1>Find Your Dream House With Us</h1>
+   <h1>{{ ($properties != null) ? $properties->header : 'Find Your Dream House With Us' }}</h1>
    <div id="search-section" class="search-section">
       <div class="row">
          <div class="col s3">

@@ -3,7 +3,7 @@
     [
     'type' => 'button',
     'class'=> "btn btn-small btn-delete amber waves-effect waves-light modal-trigger",
-    'data-target' => '#confirmDelete',
+    'href' => '#confirmDelete',
     'data-title' => isset($option['data_title'])?$option['data_title']:'Delete Row',
     'data-message' =>  isset($option['data_message'])?$option['data_message']:'Are you sure you want to delete?'
     ] ) !!}
