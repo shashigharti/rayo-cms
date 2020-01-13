@@ -54,7 +54,7 @@
             <a class="nav-link" href="#">
                 Homes For Sale
                 <i class="material-icons">arrow_drop_down</i>
-                @set('menus', $banner_helper->getBannersBySlug('home-for-sale'))
+                @set('menus', $banner_helper->getBannersBySlug('homes-for-sale'))
                 @if($menus)
                     @set('properties', json_decode($menus->properties))
                     @set('titles', $properties->titles)
