@@ -48,7 +48,7 @@
                        href="#researchToolModal">
                         Research Tools for {{ $location->name }}
                     </a>
-                    @include('real-estate::website.partials.modal.research-tool')
+                    @include('core::website.partials.modal.research-tool')
                 @endif
 
             </div>
