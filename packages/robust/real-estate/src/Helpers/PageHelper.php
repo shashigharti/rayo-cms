@@ -28,8 +28,8 @@ class PageHelper
      * @param $slug
      * @return mixed
      */
-    public function getPageBySlug($slug){
-        $page = $this->pages->where('slug', $slug)->first();
+    public function getLinksByType($slug){
+        $page = $this->pages->where('page_type', $slug)->get();
         return $page;
     }
 

@@ -1,3 +1,4 @@
+@set('links',$page_helper->getLinksByType('useful-links'))
 <div class="container-fluid">
     <div class="row">
         <div class="col m4 s12">
@@ -6,21 +7,19 @@
         </div>
         <div class="col m4 s12">
             <h3>useful links</h3>
-            <a href="#">
-                <p>HELP & FAQS</p>
-            </a>
-            <a href="#">
-                <p>PRICES</p>
-            </a>
-            <a href="#">
-                <p>PRIVACY POLICY</p>
-            </a>
-            <a href="#">
-                <p>GUIDELINES</p>
-            </a>
+            @if(isset($links))
+                @foreach($links as $links)
+                    <a href="#">
+                        <p>{{ $links->title }}</p>
+                    </a>
+                @endforeach
+            @endif
         </div>
         <div class="col m4 s12">
             <h3>info & services</h3>
+            <a href="#">
+                <p>HOMES FOR SALE</p>
+            </a>
             <a href="#">
                 <p>SOLD HOMES</p>
             </a>
