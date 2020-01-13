@@ -35,25 +35,25 @@ Route::group([
         }
 
 
-//        Route::get('/' . config('real-estate.frw.active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
-//            'name' =>'Homes for sale in',
-//            'as' => 'homes-for-sale.sub_area',
-//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
-//        ]);
-//
-//        Route::post('/' . config('real-estate.frw.active') . '/map',[
-//            'name' =>'Map Data',
-//            'as' => 'map-data',
-//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
-//        ]);
-//        Route::get('/' . config('real-estate.frw.active') . '/{type}/{value}/{id}',[
-//            'name' =>'Similar Listing',
-//            'as' => 'listings.similar',
-//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
-//        ]);
-//        Route::get('/' . config('real-estate.frw.active') . '/{slug}/print', [
-//            'name' =>'print Listing',
-//            'as' => 'print',
-//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
-//        ]);
+        Route::get('/' . config('real-estate.frw.active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
+            'name' =>'Homes for sale in',
+            'as' => 'homes-for-sale.sub_area',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
+        ]);
+
+        Route::post('/' . config('real-estate.frw.active') . '/map',[
+            'name' =>'Map Data',
+            'as' => 'map-data',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
+        ]);
+        Route::get('/' . config('real-estate.frw.active') . '/{type}/{value}/{id}',[
+            'name' =>'Similar Listing',
+            'as' => 'listings.similar',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getSimilarProperty'
+        ]);
+        Route::get('/' . config('real-estate.frw.active') . '/{slug}/print', [
+            'name' =>'print Listing',
+            'as' => 'print',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
+        ]);
     });
