@@ -86,7 +86,7 @@ class ListingController extends Controller
     /**
      * @param $status
      * @param $property_type
-     * @param $property_value
+     * @param $property_values
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getListingsByPropertyType($status, $property_type, $property_value)
@@ -97,6 +97,7 @@ class ListingController extends Controller
         $locations = isset($params['locations']) ? explode(',', $params['locations']) : null;
 
         $results = $this->model->getListings()
+            ->wherePropertyType($params)
             ->whereLocations([$location_type => $locations])
             ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->paginate($this->pagination);
