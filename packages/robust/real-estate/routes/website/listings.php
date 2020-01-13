@@ -54,4 +54,10 @@ Route::group([
             'as' => 'print',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
         ]);
+
+        Route::get('/' . settings('real-estate', 'url_active') . '/{property_type}/{property_value}', [
+            'name' =>'Property Types',
+            'as' => 'property_type',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getListingsByPropertyType'
+        ]);
     });

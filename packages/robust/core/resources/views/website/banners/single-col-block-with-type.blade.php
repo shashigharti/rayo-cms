@@ -6,7 +6,7 @@
         <div class="single-block">
             <img src="{{$image}}" alt="{{$properties['header']}}">
             <div class="figcaption center-align">
-                <h2><a href="{{route('website.realestate.homes-for-sale.property_type',[
+                <h2><a href="{{route('website.realestate.property_type',[
                     'status' => 'Active',
                     'property_type' => implode(',',$properties['property_type']),
                     'property_value' => implode(',',$properties['property_value']),
