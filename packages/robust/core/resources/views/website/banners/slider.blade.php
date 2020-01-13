@@ -2,7 +2,7 @@
 @if(!empty($sliders))
     @foreach($sliders as $slider)
         @set('properties', json_decode($slider->properties))
-        @set('location',$location_helper->getLocation($properties->locations))
+        @set('location', $location_helper->getLocation($properties->locations[0] ?? ''))
         <section class="advertisement">
             <div class="container-fluid">
                 <div class="row">

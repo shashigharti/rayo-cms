@@ -34,7 +34,8 @@ class LocationRepository
         'counties' => ['class' => 'Robust\RealEstate\Models\County'],
         'high_schools' => ['class' => 'Robust\RealEstate\Models\HighSchool'],
         'elementary_schools' => ['class' => 'Robust\RealEstate\Models\ElementarySchool'],
-        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool']
+        'middle_schools' => ['class' => 'Robust\RealEstate\Models\MiddleSchool'],
+        'subdivisions' => ['class' => 'Robust\RealEstate\Models\Subdivision']
     ];
 
     /**
@@ -85,20 +86,10 @@ class LocationRepository
      * @param $id
      * @return mixed
      */
-    public function getById($id)
+    public function getLocation($id)
     {
-        return $this->model->where('id', $id)->first();
-    }
-
-    /**
-     * @param $type
-     * @param $slug
-     * @return mixed
-     */
-    public function getLocation($slug)
-    {
-        return $this->model
-            ->where('slug',$slug)
+        return $this->model->where('id', $id)
+            ->orWhere('slug', $id)
             ->first();
     }
 }

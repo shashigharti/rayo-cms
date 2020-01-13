@@ -98,13 +98,21 @@ return [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Architectural Style'
         ],
-        'waterfront_details' => [
-            'blade' => 'attributes-select-remote',
-            'display_name' => 'Lot Water Features'
-        ],
         'interior' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Interior'
+        ],
+        'waterfront_details' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Waterfront Details'
+        ],
+        'waterfront' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Waterfront'
+        ],
+        'garage' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Garage'
         ],
         'exterior' => [
             'blade' => 'attributes-select-remote',
@@ -117,6 +125,10 @@ return [
         'counties' => [
             'blade' => 'locations-select-remote',
             'display_name' => 'Counties'
+        ],
+        'subdivisions' => [
+            'blade' => 'locations-select-remote',
+            'display_name' => 'Subdivisions'
         ],
         'cities' => [
             'blade' => 'locations-select-remote',
@@ -137,6 +149,30 @@ return [
         'high_schools' => [
             'blade' => 'locations-select-remote',
             'display_name' => 'High School'
+        ],
+        'year_built' => [
+            'blade' => 'year_built',
+            'display_name' => 'Year Built(min-max)'
+        ],
+        'stories' => [
+            'blade' => 'stories',
+            'display_name' => 'Stories'
+        ],
+        'square_feet' => [
+            'blade' => 'square_feet',
+            'display_name' => 'Lot Square Feet (min - max)'
+        ],
+        'beds' => [
+            'blade' => 'beds',
+            'display_name' => 'Beds (min - max)'
+        ],
+        'price' => [
+            'blade' => 'price',
+            'display_name' => 'Price (min - max)'
+        ],
+        'bathrooms' => [
+            'blade' => 'bathrooms',
+            'display_name' => 'Bathrooms (min - max)'
         ]
 
     ]

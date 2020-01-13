@@ -39,20 +39,11 @@ class LocationHelper
     }
 
     /**
-     * @param $id
-     * @return mixed
-     */
-    public function byId($id)
-    {
-        return $this->location->getById($id);
-    }
-    /**
      * @param $location
      * @return mixed
      */
     public function getLocation($location)
     {
-        //in case we want to make multiple change here
-        return $this->location->getLocation($location[0] ?? '');
+        return $this->location->getLocation($location);
     }
 }

@@ -7,7 +7,7 @@
         }}
     </div>
 </div>
-<div class='row'>
+<div class='row mt-1'>
     <div class='input-field col s12'>
         {{ Form::label('properties[locations]', 'Locations', ['class' => 'control-label' ]) }}
         {{ Form::select('properties[locations][]', [],
@@ -21,7 +21,7 @@
         }}
     </div>
 </div>
-<div class='row'>    
+<div class='row mt-1'>    
    <div class='input-field col s6'>
         {{ Form::label('property_count', 'Property Count', ['class' => 'required' ]) }}
         {{ Form::text('properties[property_count]', $properties->property_count ?? '', [

@@ -1,13 +1,11 @@
 @set('params',request()->route()->parameters())
-@set('location',isset($params['location']) ? $location_helper->getLocation($params['location_type'], $params['location']) : null)
-@set('report',isset($location) ? $report_helper->getMarketReportByLocation($location->location_id, $location->locationable_type) : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
             <div class="col s12">
                 <div class="inner--main--title center-align">
                     @if($location)
-                        <h1>{{$location->name}} Homes for sale</h1>
+                        <h1> {{ $location->name }} Homes for sale</h1>
                     @else
                         <h1>Homes for sale</h1>
                     @endif
@@ -23,6 +21,7 @@
                     <span>/</span>
                     <span><a href="#">486 Subdivisions</a></span>
                 </div>
+
                 @include(Site::templateResolver('core::website.listings.partials.search'))
             </div>
         </div>
@@ -36,7 +35,7 @@
                             <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
                                 <div class="col m3 s12">
                                     <div class="single--list--block">
-                                        <img src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->byId($result->city_id)->name}}">
+                                        <img src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->getLocation($result->city_id)->name}}">
                                         <div class="list--overlay">
         									<span class="tag active">
         										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
@@ -57,13 +56,13 @@
                                                         {{$result->address_street}}
                                                     @endif
                                                     @if(isset($result->city_id))
-                                                        {{$location_helper->byId($result->city_id)->name}}
+                                                        {{$location_helper->getLocation($result->city_id)->name}}
                                                     @endif
                                                     @if(isset($result->state) && !in_array($result->state,['none','None','0']))
                                                         {{ ' | '.$result->state}}
                                                     @endif
                                                     @if(isset($result->county_id))
-                                                        {{ ' | '. $location_helper->byId($result->county_id)->name}}
+                                                        {{ ' | '. $location_helper->getLocation($result->county_id)->name}}
                                                     @endif
                                                 </p>
                                                 <span>

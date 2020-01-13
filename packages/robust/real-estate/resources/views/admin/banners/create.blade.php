@@ -31,7 +31,10 @@
                     @csrf
                     {{ Form::label('properties[image]', 'Banner Image') }}
                     @set('files', (isset($properties->image) && $properties->image != '') ?  explode(',', $properties->image): [])
-                    <div class="col s12 file-uploader__preview">
+                    <div>
+                        <small>(Image Size: 200 x 200)</small>
+                    </div>
+                    <div class="file-uploader__preview">
                         @foreach($files as $file)
                             <div data-id="{{ $file }}" class="file-uploader__file">
                                 <img height="80" src="{{ getMedia($file) ?? '' }}"/>
@@ -44,26 +47,26 @@
                             </div>
                         @endforeach
                     </div>
-                    <div class="col s12">(Image Size: 200 x 200)</div>
-                    <div class="col s12">
+                    <div>
                         {{ Form::file('files[]', [
                                 'class' =>'col s6 file-uploader__input',
                                 'multiple' => 'multiple'
                             ])
                         }}
                         <button type="button"
-                                class="btn theme-btn file-uploader__upload-btn"
+                                class="btn cyan btn-small file-uploader__upload-btn"
                         >
-                            Upload Logo
+                            Upload Image
                         </button>
                     </div>
+                    
                     {{ Form::hidden('properties[image]', $properties->image ?? null, [
                             'class' => 'file-uploader_files'
                         ])
                     }}
-                </div>
+                </div>                
             </div>
-            <div class="row">
+            <div class="form-group form-material row mt-2">
                 <div class="input-field col s6">
                     {{ Form::select('template', [
                             'Choose template' => 'Choose template',
@@ -84,7 +87,7 @@
                     {{ Form::label('template', 'Template', ['class' => 'required' ]) }}
                 </div>
             </div>
-            <div class="container sub--block">
+            <div class="container sub--block mt-1">
                 @set('template', request()->query('template') ?? $model->template)
                 @if($template)
                      @include("real-estate::admin.banners.partials.{$template}", ['properties' => $properties])

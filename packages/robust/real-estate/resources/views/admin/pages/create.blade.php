@@ -5,6 +5,15 @@
 
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
     <div id="{{ $title }}" class="col s12">
+        <div class="form-group form-material row">
+            <div class="">
+                <div class="col-sm-12">
+                    {!! Form::label('page_type', 'Type', ['class' => 'control-label required' ])  !!}
+                    {{ Form::select('page_type', ['select','useful-links'=>'Useful Links','info-services'=>'Info & services'], null, ['class' => 'form-control']) }}
+
+                </div>
+            </div>
+        </div>
         <div class="row">
             <div class="input-field col s6">
                 {{ Form::label('title', 'Page Name', ['class' => 'required' ]) }}

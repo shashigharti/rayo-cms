@@ -183,3 +183,34 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
         font-size: 20px;
     }
 }
+
+.Banners {
+    .sub--block {
+        margin: 10px 5px 30px;
+
+        .input-field {
+            > label.control-label {
+                position: absolute;
+                display: block;
+                transform: translateY(-30px) scale(0.8);
+            }
+        }
+    }
+
+
+}
+.jFiler {
+    display: inline-block;
+    vertical-align: middle;
+
+    &.jFiler-theme-default .jFiler-input {
+        margin: 0 0 0px 0;
+    }
+}
+
+.file-uploader__upload-btn {
+    display: inline-block;
+    vertical-align: middle;
+    height: 33px;
+    line-height: 33px;
+}
