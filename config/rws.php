@@ -98,21 +98,17 @@ return [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Architectural Style'
         ],
-        'waterfront_details' => [
-            'blade' => 'attributes-select-remote',
-            'display_name' => 'Lot Water Features'
-        ],
         'interior' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Interior'
         ],
-        'waterfront' => [
+        'waterfront_details' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Waterfront'
         ],
-        'waterview' => [
+        'waterfront' => [
             'blade' => 'attributes-select-remote',
-            'display_name' => 'Waterview'
+            'display_name' => 'waterfront'
         ],
         'garage' => [
             'blade' => 'attributes-select-remote',
