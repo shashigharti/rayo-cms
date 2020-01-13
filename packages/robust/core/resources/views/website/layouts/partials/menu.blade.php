@@ -13,7 +13,7 @@
                         <ul class="tabs">
                             @foreach($menus as $menu)
                                 <li class="tab"><a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                  ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
+                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
                                 </li>
                             @endforeach
                             <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
@@ -38,7 +38,8 @@
                                                     ])}}"
                                             >
                                                 {{ $location->name }}
-                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
+                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }}
+                                                    )</span>
                                             </a>
                                         </li>
                                     @endforeach
@@ -51,15 +52,15 @@
         </li>
         <li class="parent-menu">
             <a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">
-                 Homes For Sale
-                 <i class="material-icons">arrow_drop_down</i>
-                 <div class="child-menu">
-                    <a class="dropdown-item" href="#">ST Augustine City Beach Homes</a>
-                    <a class="dropdown-item" href="#">ST Augustine Beach Condominiums</a>
-                    <a class="dropdown-item" href="#">ST Augustine Beachfront Homes</a>
-                    <a class="dropdown-item" href="#">ST Augustine Homes</a>
-                    <a class="dropdown-item" href="#">Land for Sale</a>
-                 </div>
+                Homes For Sale
+                <i class="material-icons">arrow_drop_down</i>
+                @set('menus', $banner_helper->getBannersByType(['active-menu']))
+                @set('properties', json_decode($menus->properties))
+                <div class="child-menu">
+                    @foreach($menus as $menu)
+                        <a class="dropdown-item" href="{{ $menu->url }}">{{ $menu->title }}</a>
+                    @endforeach
+                </div>
             </a>
         </li>
         <li class="parent-menu">
@@ -72,7 +73,7 @@
                     <a class="dropdown-item" href="#">ST Augustine Beachfront Homes</a>
                     <a class="dropdown-item" href="#">ST Augustine Homes</a>
                     <a class="dropdown-item" href="#">Land for Sale Sold</a>
-                 </div>
+                </div>
             </a>
         </li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
