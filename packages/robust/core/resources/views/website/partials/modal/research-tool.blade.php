@@ -11,7 +11,7 @@
                     </h6>
                 </div>
                 <div class="modal-body" style="font-size: 1.4em;">
-                    <div class="form-group row">
+                    <div class="form-group mr-t-20 row">
                         <div class="col s12">
                             <input id="seller" type="radio" name="lead_type[]" value="0" checked/>
                             <label for="seller">Local Home Owners - View Recent Home Sales & Prices in your Neighborhood
