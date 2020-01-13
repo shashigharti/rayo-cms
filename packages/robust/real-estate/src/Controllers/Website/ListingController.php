@@ -2,11 +2,11 @@
 
 namespace Robust\RealEstate\Controllers\Website;
 
-
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
 use Robust\Core\Helpage\Site;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
+use Robust\RealEstate\Helpers\LocationHelper;
 
 /**
  * Class ListingController
@@ -38,12 +38,13 @@ class ListingController extends Controller
 
 
     /**
+     * @param LocationHelper $locationHelper
      * @param null $location_type
      * @param null $location
      * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active($location_type = null, $location = null, $price_range = [])
+    public function active(LocationHelper $locationHelper, $location_type = null, $location = null, $price_range = [])
     {
         $status = settings('real-estate', 'active');
         $results = $this->model->getListings(
@@ -55,23 +56,28 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+
+        return view(Site::templateResolver('core::website.listings.index'), [
+            'results' => $results,
+            'location' => ($location != null) ? $locationHelper->getLocation($location): null
+        ]);
     }
 
 
     /**
+     * @param LocationHelper $locationHelper
      * @param null $location_type
      * @param null $location
      * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sold($location_type = null, $location = null, $price_range = [])
+    public function sold(LocationHelper $locationHelper, $location_type = null, $location = null, $price_range = [])
     {
         $status = settings('real-estate', 'sold');
         $data_timeframe = config('rws.data.timeframe');
         $results = $this->model->getListings(
             [
-                'status' => $status // this should be configurable.
+                'status' => $status
             ])
             ->whereLocation([$location_type => $location])
             ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
@@ -79,7 +85,11 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+
+        return view(Site::templateResolver('core::website.listings.index'), [
+            'results' => $results,
+            'location' => ($location != null) ? $locationHelper->getLocation($location): null
+        ]);
     }
 
 

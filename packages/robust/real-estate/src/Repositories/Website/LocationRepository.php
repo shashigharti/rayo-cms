@@ -85,20 +85,10 @@ class LocationRepository
      * @param $id
      * @return mixed
      */
-    public function getById($id)
+    public function getLocation($id)
     {
-        return $this->model->where('id', $id)->first();
-    }
-
-    /**
-     * @param $type
-     * @param $slug
-     * @return mixed
-     */
-    public function getLocation($slug)
-    {
-        return $this->model
-            ->where('slug',$slug)
+        return $this->model->where('id', $id)
+            ->orWhere('slug', $id)
             ->first();
     }
 }
