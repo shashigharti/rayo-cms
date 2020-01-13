@@ -286,3 +286,21 @@ if (!function_exists('seo')) {
         return ( $page == null ) ? [] : $page;
     }
 }
+
+if (!function_exists('get_location_by_type')) {
+    /**
+     * @return string
+     */
+    function get_location_route_by_type($location_type)
+    {
+        $location_maps = [
+            '\Robust\RealEstate\Models\City' => 'cities',
+            '\Robust\RealEstate\Models\Zip' => 'zips',
+            '\Robust\RealEstate\Models\County' => 'counties',
+            '\Robust\RealEstate\Models\HighSchool' => 'high_schools',
+            '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
+            '\Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
+        ];
+        return $location_maps[$location_type] ?? '';
+    }
+}
