@@ -10,6 +10,11 @@ if (!function_exists('price_format')) {
 
     // Converts a number into a short version, eg: 1000 -> 1k
     // Reference: https://gist.github.com/RadGH/84edff0cc81e6326029c
+    /**
+     * @param int $n
+     * @param int $precision
+     * @return string
+     */
     function price_format($n, $precision = 1)
     {
         if ($n < 900) {
@@ -205,26 +210,24 @@ if (!function_exists('geocode')) {
     }
 
     if (!function_exists('generate_price_ranges')) {
+
         /**
-         * Generates price ranges
-         * @return string
+         * @param null $min_price
+         * @param null $max_price
+         * @param null $increment
+         * @return array
          */
-        function generate_price_ranges($min_price = null, $max_price = null)
+        function generate_price_ranges($min_price = null, $max_price = null, $increment= null)
         {
             $ranges = [];
             $config = config('rws.application.price');
-            $i = $config['min'];
-            $max = $config['max'];
-            if (($min_price != null) && $min_price > $config['min']) {
-                $i = $min_price;
-            }
-            if (($max_price != null) && $max_price < $config['max']) {
-                $max = $max_price;
-            }
-
+            //was overwriting the value sent
+            $increment = $increment ?? $config['increment'];
+            $i = $min_price ?? $config['min'];
+            $max = $max_price ?? $config['max'];
 
             $priceArr = [];
-            for (; $i <= $max; $i = $i + $config['increment']) {
+            for (; $i <= $max; $i = $i + $increment) {
                 $priceArr[] = $i;
             }
             if (array_search($max, $priceArr) < 0) {

@@ -24,15 +24,15 @@
         <legend>Price Settings</legend>
         <div class="input-field col s4">
             {{ Form::label('properties[price_settings][min]', 'Min') }}
-            {{ Form::text('properties[price_settings][min]', '')}}
+            {{ Form::text('properties[price_settings][min]', $properties->price_settings->min)}}
         </div>
         <div class="input-field col s4">
             {{ Form::label('properties[price_settings][max]', 'Max') }}
-            {{ Form::text('properties[price_settings][max]', '')}}
+            {{ Form::text('properties[price_settings][max]', $properties->price_settings->max)}}
         </div>
         <div class="input-field col s4">
             {{ Form::label('properties[price_settings][increment]', 'Increment') }}
-            {{ Form::text('properties[price_settings][increment]', '')}}
+            {{ Form::text('properties[price_settings][increment]', $properties->price_settings->increment)}}
         </div>
     </fieldset>
 </div>
