@@ -1,4 +1,4 @@
-<div id="confirmDelete" class="modal">
+<div id="confirm-delete" class="modal">
     <div class="modal-content">
         <div class="modal-header">
             <button type="button" class="modal-close right" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -9,7 +9,8 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close cyan waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#!" id="confirm" class="modal-close amber waves-effect waves-green btn-flat">Delete</a>
+            {{--<button type="button" id="confirm" class="modal-close amber waves-effect waves-green btn-flat">Delete</button>--}}
+            <a href="javascript:void(0)" id="confirm" class="modal-close amber waves-effect waves-green btn-flat">Delete</a>
         </div>
     </div>
    
