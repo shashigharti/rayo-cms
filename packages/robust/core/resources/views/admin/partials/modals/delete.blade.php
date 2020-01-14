@@ -9,7 +9,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close cyan waves-effect waves-green btn-flat">Cancel</a>
-            <a href="#!"  id="confirm" class="modal-close amber waves-effect waves-green btn-flat">Delete</a>
+            <a href="#!" id="confirm" class="modal-close amber waves-effect waves-green btn-flat">Delete</a>
         </div>
     </div>
    
