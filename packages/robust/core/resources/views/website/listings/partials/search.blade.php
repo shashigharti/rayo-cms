@@ -43,7 +43,7 @@
                 <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
                 @if($location)
                     @set('market_reports_settings', settings('real-estate', 'market_report'))
-                    @set('location_type', get_location_route_by_type($location->locationable_type))
+                    @set('location_type', get_location_type_by_class($location->locationable_type))
 
                     @if(isset($market_reports_settings['report_options']) && in_array($location_type, $market_reports_settings['report_options']))
                         <a class="waves-effect waves-light btn modal-trigger"

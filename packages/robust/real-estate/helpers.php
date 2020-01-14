@@ -195,7 +195,7 @@ if (!function_exists('geocode')) {
         {
             $replacements = [
                 '*|PRICE_RANGE|*' => $segments[5] ?? '',
-                '*|NAME|*' => isset($segments[3]) ?  ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
+                '*|NAME|*' => isset($segments[3]) ? ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
             ];
 
             foreach ($replacements as $search => $replace) {
@@ -217,7 +217,7 @@ if (!function_exists('geocode')) {
          * @param null $increment
          * @return array
          */
-        function generate_price_ranges($min_price = null, $max_price = null, $increment= null)
+        function generate_price_ranges($min_price = null, $max_price = null, $increment = null)
         {
             $ranges = [];
             $config = config('rws.application.price');
@@ -256,21 +256,21 @@ if (!function_exists('seo')) {
     function seo($segments)
     {
         $page = null;
-        $additional_route_params =  [
+        $additional_route_params = [
             'price' => 'price',
         ];
         $segments_temp = $segments;
 
-        for($i = count($segments_temp) - 1; $i >= 0; $i--){
-            $partial_url_str = implode("/", $segments_temp );
+        for ($i = count($segments_temp) - 1; $i >= 0; $i--) {
+            $partial_url_str = implode("/", $segments_temp);
             $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-            if($page){
+            if ($page) {
                 break;
             }
             unset($segments_temp[$i]);
         }
 
-        if(!$page){
+        if (!$page) {
             foreach ($additional_route_params as $param) {
                 if (in_array($param, $segments)) {
                     $partial_url_str = $param;
@@ -281,40 +281,56 @@ if (!function_exists('seo')) {
             }
         }
 
-        if($page){
+        if ($page) {
             $page->meta_description = replace_seo_variables($page->meta_description, $segments);
             $page->meta_title = replace_seo_variables($page->meta_title, $segments);
             $page->meta_keywords = replace_seo_variables($page->meta_keywords, $segments);
         }
-        return ( $page == null ) ? [] : $page;
+        return ($page == null) ? [] : $page;
     }
 }
 
-if (!function_exists('get_location_route_by_type')) {
+if (!function_exists('get_location_type_by_class')) {
+
     /**
-     * @return string
+     * @param $location_type
+     * @return mixed|null
      */
-    function get_location_route_by_type($location_type)
+    function get_location_type_by_class($location_type)
     {
         $location_maps = config('real-estate.frw.location_maps');
-        return $location_maps[$location_type] ?? '';
+        return $location_maps[$location_type] ?? null;
     }
 }
 
-if (!function_exists('get_type_by_location')) {
+if (!function_exists('get_class_by_location_type')) {
+
     /**
-     * @return string
+     * @param $location_type_param
+     * @return mixed|string|null
      */
-    function get_type_by_location($location)
+    function get_class_by_location_type($location_type_param)
     {
         $location_maps = config('real-estate.frw.location_maps');
-        foreach($location_maps as $key => $location_type){
-            if($key == $location){
-                return $location_type;
+        foreach ($location_maps as $key => $location_type) {
+            if ($location_type_param == $location_type) {
+                return $key;
             }
-
         }
         return null;
+    }
+}
+
+if (!function_exists('get_ids_by_location_type')) {
+
+    /**
+     * @param $location_type
+     * @return mixed|null
+     */
+    function get_ids_by_location_type($location_type)
+    {
+        $location_id_maps = config('real-estate.frw.locations_id_maps');
+        return $location_id_maps[$location_type] ?? null;
     }
 }
 
