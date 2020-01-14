@@ -91,7 +91,8 @@ class RealEstateMenuTableSeeder extends Seeder
                 'icon' => 'group_work'
             ]
         ]);
-        DB::table('menus')->insert([
+        // It will be deleted after some time; Its commented just to see for some time if its not being used
+        /*DB::table('menus')->insert([
             [
                 'display_name' => 'Locations',
                 'name' => 'real-estate.locations',
@@ -114,6 +115,6 @@ class RealEstateMenuTableSeeder extends Seeder
                 'type' => 'child',
                 'icon' => 'dns'
             ]
-        ]);
+        ]);*/
     }
 }
