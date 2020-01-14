@@ -1,6 +1,6 @@
 <div class="modal fade" id="researchToolModal">
     <div class="modal-dialog">
-        @set('location_type', get_location_route_by_type('\\'. $location->locationable_type))
+        @set('location_type', get_location_route_by_type($location->locationable_type))
         <form action="{{ route('website.realestate.market.survey', [ $location_type, $location->slug ]) }}" method="POST">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
             <div class="modal-content">
