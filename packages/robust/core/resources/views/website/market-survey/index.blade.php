@@ -62,7 +62,8 @@
                              class="market-survey__listings"
                              data-url="{{route('api.market.survey.listings', [
                                 'location_type' => $location['type'],
-                                'location' => $location['slug']
+                                'location' => $location['slug'],
+                                'price' => '25000-100000'
                             ])
                         }}">
                             @include(Site::templateResolver('core::website.market-survey.partials.listings'))

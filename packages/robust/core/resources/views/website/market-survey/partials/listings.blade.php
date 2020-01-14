@@ -15,18 +15,16 @@
                 <select class="search-filter search-filter__price-min"
                     name="price_min"
                 >
-                    <option value="" selected disabled>Min</option>
                     @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increment'])
-                        <option value="{{$price}}">${{$price}}</option>
+                        <option value="{{ $price }}" {{ ($price == 25000) ? 'selected':'' }}> ${{ $price }} </option>
                     @endfor
                 </select>
                 <span>to</span>
                 <select class="search-filter search-filter__price-max"
                     name="price_max"
                 >
-                    <option value="" selected disabled>Max</option>
                     @for($price = $price_settings['min']; $price <= $price_settings['max']; $price += $price_settings['increment'])
-                        <option value="{{$price}}">${{$price}}</option>
+                        <option value="{{ $price }}" {{ ($price == 100000) ? 'selected':'' }}> ${{ $price }} </option>
                     @endfor
                 </select>
             </div>
