@@ -262,3 +262,10 @@ input {
 .services__status--red {
     color: #c10b0b;
 }
+.email-field {
+    input {
+        width: 80% !important;
+        vertical-align: bottom;
+        margin-bottom: 0 !important;
+    }
+}
