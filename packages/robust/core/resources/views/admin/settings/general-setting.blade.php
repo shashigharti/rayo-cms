@@ -34,7 +34,7 @@
                     ])
                 }}
                 <button type="button"
-                    class="btn theme-btn file-uploader__upload-btn"
+                    class="btn cyan file-uploader__upload-btn"
                 >
                     Upload Logo
                 </button>
