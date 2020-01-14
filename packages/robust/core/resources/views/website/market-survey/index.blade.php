@@ -12,7 +12,7 @@
             <div class="col s12">
                 <h1>Alaska Real State</h1>
             </div>
-            <div class="col s7">
+            <div class="col s6">
                 <div class="market-survey__left-container">
                     <div class="col s12 market-survey__right-container--tabs">
                         <ul class="tabs">
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s5">
+            <div class="col s6">
                 <div class="market-survey__right-container">
                     <div class="market-survey__right-container--tabs">
                         <div class="market-survey__right-container--header">

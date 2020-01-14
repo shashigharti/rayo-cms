@@ -10,7 +10,7 @@
     </div>
     <div class="filter--bar">
         <div class="row">
-            <div class="col s7">
+            <div class="col s6">
                 <label>Price</label>
                 <select class="search-filter search-filter__price-min"
                     name="price_min"
@@ -31,7 +31,7 @@
                 </select>
             </div>
             @if(isset($filters['sold_status']))
-                <div class="col s5 sold-select-wrapper">
+                <div class="col s6 sold-select-wrapper right-align">
                     <label>{{$filters['sold_status']['display']}}</label>
                     <select class="search-filter search-filter__status" name="sold_status">
                         @foreach($filters['sold_status']['values'] as $value)

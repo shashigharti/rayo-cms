@@ -891,7 +891,7 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .parent-menu{position:relative}.parent-menu i{display:inline-block !important;vertical-align:middle}
 .parent-menu:hover .child-menu{display:block}.child-menu{background-color:#002349 !important;position:absolute;margin-top:0;left:0;display:none;z-index:9}
 .child-menu .dropdown-item{display:block;width:100%;padding:5px 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
-.child-menu .dropdown-item:hover{background:#04122d}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.child-menu .dropdown-item:hover{background:#04122d}.mr-t-10{margin-top:10px}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
 .slider-container .back-bar .pointer.last-active{z-index:3}.slider-container .back-bar .pointer-label{position:absolute;top:-17px;font-size:8px;background:white;white-space:nowrap;line-height:1}
@@ -1078,7 +1078,8 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .market-survey__right-container--tabs .tabs .indicator{display:none}.market-survey__right-container--tabs .tabs li a.active,.market-survey__right-container--tabs .tabs li a:hover,.market-survey__right-container--tabs .tabs li a:focus{color:#002349;font-weight:600;background:transparent;background-color:transparent}
 .market-survey__right-container--header{z-index:15;background-color:#fff}.market-survey__listings{padding:20px}
 .market-survey__listings .filter--bar{margin:15px 0;background:#f5f5f5;padding:20px}
-.market-survey__listings .search--bar{width:100%}.market-survey__listings .select-wrapper{width:100px;background:#fff}
+.market-survey__listings .search--bar{width:100%}.market-survey__listings .select-wrapper{width:70px;background:#fff}
+.market-survey__listings .select-wrapper .dropdown-content li>a,.market-survey__listings .select-wrapper .dropdown-content li>span{padding:14px 4px}
 .market-survey__listings .select-wrapper input.select-dropdown{width:85px}.market-survey__listings .sold-select-wrapper .select-wrapper{width:auto}
 .market-survey__listings .sold-select-wrapper .select-wrapper .caret{right:0 !important}
 .market-survey__listings--reset-btn{border:0;width:100px}.market-survey__listings--details{margin:30px 0}

@@ -13,7 +13,7 @@
             </div>
             <div class="modal-content">
                 <div class="modal-body">
-                    <div class="form-group row">
+                    <div class="form-group row mr-t-10">
                         <div class="col s12">
                             <input type="radio" name="search_type" value="market-survey" checked/>
                             <label for="lead_type">Local Home Owners - View Recent Home Sales & Prices in your Neighborhood</label>
