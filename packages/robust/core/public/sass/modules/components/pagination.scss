@@ -1,6 +1,6 @@
 /*pagination */
 
-.theme--pagination {
+.pagination {
     margin-top: -2px;
     margin-bottom: 0px;
 
@@ -10,15 +10,28 @@
 
         &.active {
             background-color: #6b4994;
+            span{
+                color:$white;
+            }
         }
 
         a {
             font-size: 12px;
             line-height: 24px;
         }
+
+        span {
+            width: 24px;
+            display: inline-block;
+        }
     }
 }
 
 .pagination--top {
     display: inline;
+}
+.panel{
+    .pagination{
+        margin:20px 0px;
+    }
 }
