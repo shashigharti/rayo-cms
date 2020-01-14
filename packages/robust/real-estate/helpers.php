@@ -287,20 +287,31 @@ if (!function_exists('seo')) {
     }
 }
 
-if (!function_exists('get_location_by_type')) {
+if (!function_exists('get_location_route_by_type')) {
     /**
      * @return string
      */
     function get_location_route_by_type($location_type)
     {
-        $location_maps = [
-            '\Robust\RealEstate\Models\City' => 'cities',
-            '\Robust\RealEstate\Models\Zip' => 'zips',
-            '\Robust\RealEstate\Models\County' => 'counties',
-            '\Robust\RealEstate\Models\HighSchool' => 'high_schools',
-            '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
-            '\Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
-        ];
+        $location_maps = config('real-estate.frw.location_maps');
         return $location_maps[$location_type] ?? '';
     }
 }
+
+if (!function_exists('get_type_by_location')) {
+    /**
+     * @return string
+     */
+    function get_type_by_location($location)
+    {
+        $location_maps = config('real-estate.frw.location_maps');
+        foreach($location_maps as $key => $location_type){
+            if($key == $location){
+                return $location_type;
+            }
+
+        }
+        return null;
+    }
+}
+

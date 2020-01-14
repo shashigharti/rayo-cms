@@ -47,7 +47,8 @@
                 'neighbourhood' => 'neighbourhood',
                 'communities' => 'communities',
                 'acreages' => 'acreages',
-                'waterfront' => 'waterfront'
+                'waterfront' => 'waterfront',
+                '55plus' => '55+'
             ],
             $properties->tabs ?? [],
             [

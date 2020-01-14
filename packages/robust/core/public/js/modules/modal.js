@@ -1,22 +1,31 @@
 ;
 (function ($, FRW, window, document, undefined) {
     'use strict';
+    FRW.DeleteForm = {
+        confirmDelete: function(modalObj,buttonObj){
+            buttonObj.on('click', function (e) {
+                modalObj.find('.modal-body p').text(message);
+                let message = buttonObj.attr('data-message');
+                modalObj.find('.modal-body p').text(message);
+                let title = buttonObj.attr('data-title');
+                modalObj.find('.modal-title').text(title);
+                // Pass form reference to modal for submission on yes/ok
+                let form = buttonObj.closest('form');
+                modalObj.find('.modal-footer #confirm').data('form', form);
+            });
+            modalObj.find('.modal-footer #confirm').on('click', function () {
+                $(this).data('form').submit();
+            });
+        },
+        modal:function(){
+        }
+    }
     $(document).ready(function ($) {
-        $('#confirmDelete').on('show.bs.modal', function (e) {
-            var message = $(e.relatedTarget).attr('data-message');
-            $(this).find('.modal-body p').text(message);
-            var title = $(e.relatedTarget).attr('data-title');
-            $(this).find('.modal-title').text(title);
-
-            // Pass form reference to modal for submission on yes/ok
-            var form = $(e.relatedTarget).closest('form');
-            $(this).find('.modal-footer #confirm').data('form', form);
-        });
-
-
-        $('#confirmDelete').find('.modal-footer #confirm').on('click', function () {
-            $(this).data('form').submit();
-        });
-
+        if ($('#confirmDelete').length > 0){
+            let modalObj = $('#confirmDelete');
+            let buttonObj = $('button[href="#confirmDelete"]');
+            FRW.DeleteForm.confirmDelete(modalObj,buttonObj);
+        }
+        FRW.DeleteForm.modal();
     });
 }(jQuery, FRW, window, document));

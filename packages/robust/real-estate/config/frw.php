@@ -61,6 +61,48 @@ return [
         'zips' => 'Zip Codes',
         'counties' => 'Counties',
         'school_districts' => 'School Districts'
-    ]
+    ],
+    'location_maps' => [
+        '\Robust\RealEstate\Models\City' => 'cities',
+        '\Robust\RealEstate\Models\Zip' => 'zips',
+        '\Robust\RealEstate\Models\County' => 'counties',
+        '\Robust\RealEstate\Models\HighSchool' => 'high_schools',
+        '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
+        '\Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
+    ],
+    'banner_tabs' => [
+        'waterfront' => [
+            'type' => 'waterfront',
+            'value' => 'Yes'
+        ],
+        'condos' => [
+            'type' => 'property_type',
+            'value' => 'Condo/Coop'
+        ],
+        'hopa' => [
+            'type' => 'hopa',
+            'value' => 'Yes-Verified'
+        ],
+        'communities' => [
+            'type' => 'communities',
+            'value' => 'Yes'
+        ],
+        'neighborhoods' => [
+            //'type' => 'communities',
+            //'value' => 'Yes'
+        ],
+        '55+' => [
+            //'type' => 'property_type',
+            //'value' => 'Yes'
+        ],
+        'acerages' => [
 
+        ],
+        'homes_with_land' => [
+
+        ],
+        'pool_homes' => [
+
+        ]
+    ]
 ];

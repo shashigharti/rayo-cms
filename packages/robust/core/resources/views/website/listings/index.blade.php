@@ -1,7 +1,4 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
-@inject('location_helper','Robust\RealEstate\Helpers\LocationHelper')
-@inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
-@inject('report_helper','Robust\RealEstate\Helpers\MarketReportHelper')
 @section('header')
     @include(Site::templateResolver('core::website.layouts.partials.header'))
 @endsection

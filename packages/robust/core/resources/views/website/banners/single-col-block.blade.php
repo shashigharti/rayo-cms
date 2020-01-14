@@ -16,7 +16,8 @@
                                                     'location' => $location->slug,
                                                     'price' => $price,
                                                 ]
-                                                )}}"> {{$price}} ({{$count}})</a>
+                                                )}}"> {{$price}} ({{$count}})
+                            </a>
                         @endforeach
                     @endif
                 </div>
@@ -38,8 +39,9 @@
                                                                         'location' =>  $location->slug,
                                                                         'price' => $tab,
                                                                         'sub_area' => $key
-                                                                     ]
-                                                                     )}}">
+                                                                     ])
+                                                          }}"
+                                                >
                                                     {{$tab}} ({{$count}})
                                                 </a>
                                             </li>
