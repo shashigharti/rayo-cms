@@ -214,3 +214,42 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
     height: 33px;
     line-height: 33px;
 }
+.input-field > label {
+    color:$dark-greyish;
+    font-size: .8rem;
+    font-weight: 600;
+}
+label {
+    color: $dark-greyish;
+    font-size: .8rem;
+    font-weight: 600;
+}
+.input-field > label:not(.label-icon).active {
+    -webkit-transform: translateY(-14px) scale(1);
+}
+input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: 1px solid $theme-color !important;
+    box-shadow: 0 1px 0 0 $theme-color !important;
+}
+textarea {
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    margin-top: 12px;
+    padding: 10px;
+    font-size: .8rem;
+    font-weight: 600;
+    color: $dark-greyish;
+}
+
+input {
+    font-size: .8rem !important;
+    color: $dark-greyish;
+    font-weight: 600;
+}
+.input-field.col label {
+    left: .9rem;
+}
+.cke {
+    margin-top: 12px !important;
+}

@@ -11,7 +11,7 @@ return [
     | running in. This may determine how you prefer to configure various
     | services your application utilizes. Set this in your ".env" file.
     |
-    */  
+    */
     [
         'display_name' => 'Data Mapping',
         'slug' => 'data-mapping',
@@ -38,8 +38,8 @@ return [
                 ]
             ],
            'market-report' => [
-                'report-type' => ['cities', 'zips','school_districts']                    
-           ]           
+               'report-type' => ['cities', 'zips','school_districts']
+           ]
         ])
     ],
     [
@@ -50,7 +50,7 @@ return [
                 'status' => 'red, green',
                 'last_executed_on' => '',
                 'data_pulled' => '20',
-            ]          
+            ]
         ])
     ]
 ];

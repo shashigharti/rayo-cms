@@ -1023,8 +1023,7 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .content__table .select-wrapper .dropdown-content{min-width:80px}.content__table .select-wrapper .dropdown-content li{min-height:30px}
 .content__table .select-wrapper .dropdown-content li>span{padding:6px 10px}.content__table .input-group input[type=text]{height:21px;border:1px solid #ccc;font-size:12px;padding:5px;margin:0 2px 8px -3px;width:300px}
 .content__table .input-group .input-group-btn .btn,.content__table .input-group .input-group-btn .btn-large,.content__table .input-group .input-group-btn .btn-small{background-color:#9c27b0;height:32px;line-height:33px;padding:0 10px;font-size:12px;margin-left:5px}
-textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:14px}
-input{font-size:14px !important}.accordian__left--block .menu--lists{padding:0;height:400px;margin-top:0;margin-bottom:0;overflow-y:auto}
+.accordian__left--block .menu--lists{padding:0;height:400px;margin-top:0;margin-bottom:0;overflow-y:auto}
 .accordian__left--block .menu--lists li{font-size:12px;font-weight:600;padding:10px;background:#f3eeee}
 .accordian__left--block .menu--lists li:nth-child(even){background:#fff}.accordian__right--block .collapsible{margin:0 0 1rem 15px}
 .accordian__right--block h5{font-size:22px !important}.accordian__right--block .btn-delete{color:#9c27b0}
@@ -1157,9 +1156,15 @@ textarea.materialize-textarea:focus.valid ~ label{color:#6b4994}table.dataTable.
 .Banners .sub--block{margin:10px 5px 30px}.Banners .sub--block .input-field>label.control-label{position:absolute;display:block;-webkit-transform:translateY(-30px) scale(0.8);transform:translateY(-30px) scale(0.8)}
 .jFiler{display:inline-block;vertical-align:middle}.jFiler.jFiler-theme-default .jFiler-input{margin:0}
 .file-uploader__upload-btn{display:inline-block;vertical-align:middle;height:33px;line-height:33px}
-.theme--pagination{margin-top:-2px;margin-bottom:0}.theme--pagination li{height:24px;line-height:24px}
-.theme--pagination li.active{background-color:#6b4994}.theme--pagination li a{font-size:12px;line-height:24px}
-.pagination--top{display:inline}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
+.input-field>label{color:#656060;font-size:.8rem;font-weight:600}label{color:#656060;font-size:.8rem;font-weight:600}
+.input-field>label:not(.label-icon).active{-webkit-transform:translateY(-14px) scale(1)}
+input:not([type]):focus:not([readonly]),input[type=text]:not(.browser-default):focus:not([readonly]),input[type=password]:not(.browser-default):focus:not([readonly]),input[type=email]:not(.browser-default):focus:not([readonly]),input[type=url]:not(.browser-default):focus:not([readonly]),input[type=time]:not(.browser-default):focus:not([readonly]),input[type=date]:not(.browser-default):focus:not([readonly]),input[type=datetime]:not(.browser-default):focus:not([readonly]),input[type=datetime-local]:not(.browser-default):focus:not([readonly]),input[type=tel]:not(.browser-default):focus:not([readonly]),input[type=number]:not(.browser-default):focus:not([readonly]),input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:1px solid #126692 !important;-webkit-box-shadow:0 1px 0 0 #126692 !important;box-shadow:0 1px 0 0 #126692 !important}
+textarea{width:100%;height:auto;background-color:transparent;margin-top:12px;padding:10px;font-size:.8rem;font-weight:600;color:#656060}
+input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col label{left:.9rem}
+.cke{margin-top:12px !important}.theme--pagination{margin-top:-2px;margin-bottom:0}
+.theme--pagination li{height:24px;line-height:24px}.theme--pagination li.active{background-color:#6b4994}
+.theme--pagination li a{font-size:12px;line-height:24px}.pagination--top{display:inline}
+.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
 .col-sub-heading{display:inline-block;position:relative}.sortable-icon{color:#bababa}
 .sortMenu{position:absolute;background:#fff;-webkit-box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);padding:10px;min-width:100px;z-index:1;color:#999;display:none}
 .leads-table th{font-size:.75rem;color:gray}.col-sub-heading:hover .sortMenu{display:block}
