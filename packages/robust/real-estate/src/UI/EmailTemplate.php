@@ -70,8 +70,24 @@ class EmailTemplate extends BaseUI
     /**
      * @return string
      */
-    // public function getModel()
-    // {
-    //     return 'Robust\RealEstate\Models\Lead';
-    // }
+     public function getModel()
+     {
+         return 'Robust\RealEstate\Models\EmailTemplate';
+     }
+
+    /**
+     * @param $model
+     * @return array
+     */
+    public function getTabs($model)
+    {
+        return [
+            'Email Template' => ['url' => route('admin.email-templates.edit', [$model->id]), 'permission' => 'real-estate.email-templates.edit'],
+            'Preview' => [
+                'url' => route('admin.email-templates.preview', [$model->id]),
+                'permission' => 'real-estate.email-templates.edit'
+            ],
+        ];
+
+    }
 }

@@ -15,6 +15,8 @@ class EmailTemplate extends BaseModel
      * @var string
      */
     protected $table = 'real_estate_email_templates';
+
+    public $searchable = ['name'];
     /**
      * @var array
      */

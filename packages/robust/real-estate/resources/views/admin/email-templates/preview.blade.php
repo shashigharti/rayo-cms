@@ -1,0 +1,1 @@
+{{ Form::textarea('body', $model->body, ['class' => 'editor'])  }}
