@@ -3,7 +3,8 @@
     <div class="col s12">
         <div class="inner--title text-center">
             <h1>Market Reports</h1>
-            <p>Serious about real Estate? Size up the market like a retalor using real MLS data! Research the properties that have recently sold</p>
+            <p>Serious about real Estate? Size up the market like a retalor using real MLS data! Research the properties
+                that have recently sold</p>
             <p class="sub--inner">
                 <b>Sellers-</b> this information can help you to list your home for the right price.&nbsp;
                 <b>Buyers-</b> Find and Research neighborhoods in your price range. &nbsp;
@@ -12,12 +13,14 @@
             <div class="market--right__display--radio">
                 <div class="block--container">
                     @foreach($market_report['report_options'] as $key => $option)
-                      <span class="single--block right-align">
+                        <span class="single--block right-align">
                         <label>
-                          <input class="market-report__type" name="market-report__type"
-                            value="{{ $option }}" type="radio"
-                            data-href={{ route("website.realestate.market.reports", ['location_type' => $key]) }}
-                            {{ ($page_type == $key) ? 'checked': ''}}
+                          <input class="market-report__type"
+                                 name="market-report__type"
+                                 value="{{ $option }}"
+                                 type="radio"
+                                 data-href={{ route("website.realestate.market.reports", ['location_type' => $option]) }}
+                              {{ ($page_type == $key) ? 'checked': ''}}
                           />
                           <span>{{ $option }}</span>
                         </label>
