@@ -3,17 +3,17 @@
         @set('location_type', get_location_route_by_type($location->locationable_type))
         <form action="{{ route('website.realestate.market.survey', [ $location_type, $location->slug ]) }}" method="POST">
             <input type="hidden" name="_token" value="{{csrf_token()}}">
+            <div class="modal-header">
+                <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">
+                    Home Sales Activity
+                </h4>
+            </div>
             <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    <h4 class="modal-title>
-                        Home Sales Activity
-                    </h4>
-                </div>
                 <div class="modal-body">
-                    <div class="form-group mr-t-20 row">
+                    <div class="form-group row">
                         <div class="col s12">
                             <input type="radio" name="search_type" value="market-survey" checked/>
                             <label for="lead_type">Local Home Owners - View Recent Home Sales & Prices in your Neighborhood</label>
@@ -28,13 +28,13 @@
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <span>
-                        <button type="submit" class="btn btn-primary">
+            </div>
+            <div class="modal-footer">
+                <span>
+                    <button type="submit" class="btn btn-primary">
                         Explore the market
-                        </button>
-                    </span>
-                </div>
+                    </button>
+                </span>
             </div>
         </form>
     </div>
