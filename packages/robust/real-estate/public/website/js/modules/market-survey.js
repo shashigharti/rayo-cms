@@ -1,20 +1,20 @@
 ;
 (function ($, FRW, window, document, undefined) {
-    "use strict"
+    "use strict";
     let properties = [];
     let selectedProperties = [];
     let comparePropertiesRows = {
-        '_asking': { display: 'Asking Price' },
-        '_sold': { display: 'Sold Price' },
-        '_address': { display: 'Address' },
-        '_days_on_market': { display: 'Days on market' },
-        '_bedrooms': { display: 'Bedrooms' },
-        '_bath': { display: 'Baths' },
-        '_square_footage': { display: 'Square Footage' },
-        '_year_built': { display: 'Year Built' },
-        '_lot_size': { display: 'Lot Size' },
-        '_acres': { display: 'Acres' },
-        '_stories': { display: 'stories' }
+        '_asking': {display: 'Asking Price'},
+        '_sold': {display: 'Sold Price'},
+        '_address': {display: 'Address'},
+        '_days_on_market': {display: 'Days on market'},
+        '_bedrooms': {display: 'Bedrooms'},
+        '_bath': {display: 'Baths'},
+        '_square_footage': {display: 'Square Footage'},
+        '_year_built': {display: 'Year Built'},
+        '_lot_size': {display: 'Lot Size'},
+        '_acres': {display: 'Acres'},
+        '_stories': {display: 'stories'}
     };
 
     class MarketSurveyMap extends LMap {
@@ -117,6 +117,7 @@
         `;
 
     }
+
     function renderCompareTable(selectedProperties) {
         let template = 'No property is selected to compare';
         if (Object.keys(selectedProperties).length > 0) {
@@ -124,29 +125,26 @@
             $('.tabs').tabs('select', 'leaflet__compare-container');
 
             template = `
-            <table>
-            <thead>
-            <tr>
-            <th>Properties</th>
-            ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
-            }).join(" ")}
-            </tr>
-            </thead>
-            <tbody>
-
-            ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
-                return `
-                <tr>
-                <td>${comparePropertiesRows[attrIndex].display}</td>
-                ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                    return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
-                }).join(" ")}
-                </tr>
-                `;
-            }).join(" ")}
-
-            </tbody>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Properties</th>
+                            ${Object.keys(selectedProperties).map(function (propertyIndex) {
+                                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
+                            }).join(" ")}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
+                            return `
+                                <tr>
+                                    <td>${comparePropertiesRows[attrIndex].display}</td>
+                                    ${Object.keys(selectedProperties).map(function (propertyIndex) {
+                                        return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
+                                    }).join(" ")}
+                                </tr>`;
+                        }).join(" ")}
+                    </tbody>
             </table>
             `;
 
@@ -157,11 +155,13 @@
 
     function loadProperties(query_string = '') {
         const listingContainer = document.getElementById('market-survey__listings');
-        let url = listingContainer.getAttribute("data-url");
+        let url = listingContainer.getAttribute("data-url"),
+            property_url = listingContainer.getAttribute("data-property-url"),
+            price_min = document.querySelector('.search-filter__price-min').selectedOptions[0].value,
+            price_max = document.querySelector('.search-filter__price-max').selectedOptions[0].value;
 
-        if (query_string != '') {
-            //url += "?" + query_string;
-        }
+        // Append Price
+        url += `&price=${price_min}-${price_max}`;
 
         // Get data from the server and load properties array
         $.ajax({
@@ -169,16 +169,18 @@
             url: url
         }).done(function (response) {
             response.forEach((property) => {
-                properties.push(new Property(
-                    property.id,
-                    property.name,
-                    property.slug,
-                    new Location(property.latitude, property.longitude),
-                    'website/images/banner.jpg',
-                    '#',
-                    property.system_price,
-                    property.system_price
-                ));
+                if(property.latitude !== null || property.longitude !== null){
+                    properties.push(new Property(
+                        property.id,
+                        property.name,
+                        property.slug,
+                        new Location(property.latitude, property.longitude),
+                        'website/images/banner.jpg',
+                        property_url.replace('slug', property.slug),
+                        property.system_price,
+                        property.system_price
+                    ));
+                }
             });
             renderProperties();
             $(listingContainer).trigger('loaded');
@@ -199,15 +201,16 @@
         let search = new Search();
 
         $('.search-filter').on('change', function (e) {
-            loadProperties(search.getQueryString());
+            //loadProperties(search.getQueryString());
         });
+
         $(document).on('click', '.market-survey__listings--details-card :input[name="property"]', function (e) {
             let value_to_search = $(this).val();
             let elem = findObjInArray(properties, '_slug', value_to_search);
 
-            if ($(this).prop("checked") == true) {
+            if ($(this).prop("checked") === true) {
                 // Add property
-                if (elem != -1) {
+                if (elem !== -1) {
                     if (!selectedProperties[elem._slug]) {
                         selectedProperties[elem._slug] = '';
                     }
@@ -225,7 +228,7 @@
 
 
     $(function () {
-        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0) ? true : false,
+        let isMarketSurvey = (document.getElementsByClassName('market-survey').length > 0),
             listingContainer = document.getElementById('market-survey__listings');
         if (!isMarketSurvey) {
             return;
@@ -238,6 +241,7 @@
 
         // Get Data from the Server
         loadProperties();
+
 
         // Declare and initialize map container
         let mapContainer = document.getElementById('leaflet__map-container');

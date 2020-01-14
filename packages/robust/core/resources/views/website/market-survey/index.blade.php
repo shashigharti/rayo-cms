@@ -60,12 +60,13 @@
                         </div>
                         <div id="market-survey__listings"
                              class="market-survey__listings"
+                             data-property-url="{{url('market/survey/' . $location['type'] . '/slug')}}"
                              data-url="{{route('api.market.survey.listings', [
-                                'location_type' => $location['type'],
-                                'location' => $location['slug'],
-                                'price' => '25000-100000'
-                            ])
-                        }}">
+                                            'location_type' => $location['type'],
+                                            'location' => $location['slug']
+                                            ])
+                                        }}"
+                        >
                             @include(Site::templateResolver('core::website.market-survey.partials.listings'))
                         </div>
                         <div id="market-survey__insights" class="market-survey__insights">
