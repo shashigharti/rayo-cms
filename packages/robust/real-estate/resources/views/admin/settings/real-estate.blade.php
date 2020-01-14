@@ -60,12 +60,6 @@
                 {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
             </div>
             <div class="col s2">
-                {{ Form::label('price_min', 'Price', ['class' => 'control-label' ]) }}
-                Min: {{ Form::text('price_min', $settings['price_min'] ?? '') }}
-                Max: {{ Form::text('price_max', $settings['price_max'] ?? '') }}
-                Increment: {{ Form::text('price_increment', $settings['price_increment'] ?? '') }}
-            </div>
-            <div class="col s2">
                 {{ Form::label('year_built', 'Year Built', ['class' => 'control-label' ]) }}
                 Min: {{ Form::text('year_built_min', $settings['year_built_min'] ?? '') }}
                 Max: {{ Form::text('year_built_max', $settings['year_built_max'] ?? '') }}
