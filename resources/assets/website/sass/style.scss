@@ -1383,3 +1383,10 @@ button{
 .mr-t-10{
     margin-top:10px;
 }
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: transparent;
+    outline: 0;
+}
+.body--content{
+    min-height:100vh;
+}
