@@ -70,7 +70,7 @@
                 Max: {{ Form::text('sq_feet_max', $settings['sq_feet_max'] ?? '') }}
             </div>
             <div class="col s2">
-                {{ Form::label('sq_feet', 'Square Feet', ['class' => 'control-label' ]) }}
+                {{ Form::label('sq_feet', 'Beds', ['class' => 'control-label' ]) }}
                 Min: {{ Form::text('beds_min', $settings['beds_min'] ?? '') }}
                 Max: {{ Form::text('beds_max', $settings['beds_max'] ?? '') }}
             </div>

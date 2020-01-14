@@ -1,8 +1,6 @@
-@set('price_settings', config('rws.advance-search-filters.price') )
-@set('price_min', $price_settings['min'] ?? 2500)
-@set('price_max', $price_settings['max'] ?? 1000000)
-@set('price_increase', $price_settings['increase'] ?? 2500)
-
+@set('price_min',$search_settings['data']['prices'][0] ?? 2500)
+@set('price_max', $search_settings['data']['prices'][1] ?? 100000)
+@set('price_increase',$search_settings['data']['increments'][0] ?? 2500)
 <div class="mb-20">
     <div class="input-field col s6">
         <select name="price_min" class="ad-search-field" data-selected="{{$query_params['price_min'] ?? ''}}">
