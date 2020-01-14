@@ -15,7 +15,7 @@
                       <span class="single--block right-align">
                         <label>
                           <input class="market-report__type" name="market-report__type"
-                            value="{{ $key }}" type="radio"
+                            value="{{ $option }}" type="radio"
                             data-href={{ route("website.realestate.market.reports", ['location_type' => $key]) }}
                             {{ ($page_type == $key) ? 'checked': ''}}
                           />

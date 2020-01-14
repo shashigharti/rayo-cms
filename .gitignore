@@ -16,4 +16,5 @@ yarn-error.log
 .cache/
 dist/
 coverage/
+/config/client.php
 

@@ -13,7 +13,7 @@
                         <ul class="tabs">
                             @foreach($menus as $menu)
                                 <li class="tab"><a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                  ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
+                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
                                 </li>
                             @endforeach
                             <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
@@ -38,7 +38,8 @@
                                                     ])}}"
                                             >
                                                 {{ $location->name }}
-                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
+                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }}
+                                                    )</span>
                                             </a>
                                         </li>
                                     @endforeach
@@ -49,8 +50,40 @@
                 </div>
             </div>
         </li>
-        <li><a class="nav-link" href="{{url()->to(settings('real-estate','url_active'))}}">Homes For Sale</a></li>
-        <li><a class="nav-link" href="{{url()->to(settings('real-estate','url_sold'))}}">Sold Homes</a></li>
+        <li class="parent-menu">
+            <a class="nav-link" href="#">
+                Homes For Sale
+                <i class="material-icons">arrow_drop_down</i>
+                @set('menus', $banner_helper->getBannersBySlug('homes-for-sale'))
+                @if($menus)
+                    @set('properties', json_decode($menus->properties))
+                    @set('titles', $properties->titles)
+                    @set('urls', $properties->urls)
+                    <div class="child-menu">
+                        @foreach($titles as $key => $title)
+                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
+                        @endforeach
+                    </div>
+                @endif
+            </a>
+        </li>
+        <li class="parent-menu">
+            <a class="nav-link" href="#">
+                Sold Homes
+                <i class="material-icons">arrow_drop_down</i>
+                @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
+                @if($menus)
+                    @set('properties', json_decode($menus->properties))
+                    @set('titles', $properties->titles)
+                    @set('urls', $properties->urls)
+                    <div class="child-menu">
+                        @foreach($titles as $key => $title)
+                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
+                        @endforeach
+                    </div>
+                @endif
+            </a>
+        </li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
                 Stats</a></li>
         <li class="nav-btn">
@@ -74,4 +107,3 @@
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 </nav>
-

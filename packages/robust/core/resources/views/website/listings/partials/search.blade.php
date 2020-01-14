@@ -43,8 +43,7 @@
                 <a href="{{route('website.realestate.homes-for-sale')}}" class="btn green">ACTIVE</a>
 
                 @if($location)
-                    <a href="javascript:void(0)"
-                       class="waves-effect waves-light btn modal-trigger"
+                    <a class="waves-effect waves-light btn modal-trigger"
                        href="#researchToolModal">
                         Research Tools for {{ $location->name }}
                     </a>

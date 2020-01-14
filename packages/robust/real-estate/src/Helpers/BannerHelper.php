@@ -10,6 +10,9 @@ use Robust\RealEstate\Repositories\Website\BannerRepository;
  */
 class BannerHelper
 {
+    /**
+     * @var mixed
+     */
     private $banners;
 
     /**
@@ -21,16 +24,19 @@ class BannerHelper
         $this->banners = $banner->get();
     }
 
+
     /**
-     * @return collection
+     * @return mixed
      */
     public function all()
     {
         return $this->banners;
     }
 
+
     /**
-     * @return collection
+     * @param $types
+     * @return mixed
      */
     public function getBannersByType($types){
         return $this->banners->whereIn('template', $types)
@@ -39,8 +45,20 @@ class BannerHelper
         ->all();
     }
 
+
     /**
-     * @return collection
+     * @param $slug
+     * @return mixed
+     */
+    public function getBannersBySlug($slug){
+        return $this->banners->where('slug', $slug)
+            ->first();
+    }
+
+
+    /**
+     * @param $types
+     * @return mixed
      */
     public function getBannersNotInType($types){
         return $this->banners->whereNotIn('template', $types)

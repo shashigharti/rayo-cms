@@ -1,6 +1,7 @@
 <?php
 namespace Robust\RealEstate\Helpers;
 
+use Robust\RealEstate\Models\Page;
 use Robust\RealEstate\Repositories\Admin\PageRepository;
 
 
@@ -10,6 +11,7 @@ use Robust\RealEstate\Repositories\Admin\PageRepository;
  */
 class PageHelper
 {
+
     /**
      * @var PageRepository
      */
@@ -25,11 +27,11 @@ class PageHelper
     }
 
     /**
-     * @param $slug
+     * @param $page_type
      * @return mixed
      */
-    public function getLinksByType($slug){
-        $page = $this->pages->where('page_type', $slug)->get();
+    public function getLinksByType($page_type){
+        $page = Page::where('page_type', $page_type)->get();
         return $page;
     }
 

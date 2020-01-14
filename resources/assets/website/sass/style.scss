@@ -1336,3 +1336,62 @@ button{
     font-size: 12px;
     text-transform:none;
 }
+.parent-menu {
+    position: relative;
+
+    i {
+        display: inline-block !important;
+        vertical-align: middle;
+    }
+
+    &:hover {
+        .child-menu {
+            display: block;
+        }
+    }
+}
+.child-menu {
+    background-color:$theme_color !important;
+    position: absolute;
+    margin-top:0px;
+    left: 0px;
+    display: none;
+    z-index:9;
+
+    .dropdown-item {
+        display: block;
+        width: 100%;
+        padding: 5px 10px;
+        clear: both;
+        font-weight: 400;
+        color:$white;
+        text-align: inherit;
+        white-space: nowrap;
+        background-color: transparent;
+        border: 0;
+        line-height: 30px;
+        font-size: 14px;
+        text-transform: initial;
+        &:hover{
+            background:$dark_theme_color;
+        }
+    }
+}
+.modal{
+    [type="radio"]:not(:checked), [type="radio"]:checked {
+    position: relative;
+    opacity: 1;
+    pointer-events: inherit;
+    display: inline-block;
+    width: 20px !important;
+    vertical-align: text-bottom;
+    margin-right: 5px;
+    }
+}
+div#researchToolModal {
+    border-radius: 7px;
+    transform: translate(-50%, -50%) !important;
+    left: 50% !important;
+    top: 50% !important;
+    max-height: min-content;
+}

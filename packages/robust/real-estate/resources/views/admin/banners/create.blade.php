@@ -59,12 +59,12 @@
                             Upload Image
                         </button>
                     </div>
-                    
+
                     {{ Form::hidden('properties[image]', $properties->image ?? null, [
                             'class' => 'file-uploader_files'
                         ])
                     }}
-                </div>                
+                </div>
             </div>
             <div class="form-group form-material row mt-2">
                 <div class="input-field col s6">
@@ -75,7 +75,8 @@
                             'full-screen-ad' => 'Full Screen Ad',
                             'single-col-block' => 'Single Column Block',
                             'slider' => 'Slider',
-                            'banner-slider' => 'Banner Slider'
+                            'banner-slider' => 'Banner Slider',
+                            'menu' => 'Dropdown Menu'
                         ],
                         request()->query('template') ?? $model->template ?? 'Choose template',
                         [
