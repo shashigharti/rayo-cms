@@ -31,9 +31,7 @@
                     @csrf
                     {{ Form::label('properties[image]', 'Banner Image') }}
                     @set('files', (isset($properties->image) && $properties->image != '') ?  explode(',', $properties->image): [])
-                    <div>
-                        <small>(Image Size: 200 x 200)</small>
-                    </div>
+                   
                     <div class="file-uploader__preview">
                         @foreach($files as $file)
                             <div data-id="{{ $file }}" class="file-uploader__file">
@@ -46,6 +44,9 @@
                                 </a>
                             </div>
                         @endforeach
+                    </div>
+                    <div>
+                        <small>(Image Size: 200 x 200)</small>
                     </div>
                     <div>
                         {{ Form::file('files[]', [
