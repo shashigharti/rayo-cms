@@ -43,7 +43,7 @@ class FrontendHelperComposer {
      * @return void
      */
     public function compose(View $view)
-    {        
+    {
         $query_params = request()->all();
         $page = seo(request()->segments());
 

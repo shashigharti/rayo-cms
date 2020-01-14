@@ -57,7 +57,6 @@ class ListingController extends Controller
             ->with('images')
             ->paginate($this->pagination);
 
-
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
             'location' => ($location) ? $locationHelper->getLocation($location): null
