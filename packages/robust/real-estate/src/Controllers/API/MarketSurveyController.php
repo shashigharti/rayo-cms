@@ -4,6 +4,7 @@ namespace Robust\RealEstate\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Repositories\API\ListingRepository;
 
 /**
@@ -38,10 +39,14 @@ class MarketSurveyController extends Controller
         $price_range = $request->has('price') ? explode('-', $request->get('price')) : [];
         $data = $request->except('price');
 
+        $location = Location::where('slug', $data['location'])
+            ->where('locationable_type', get_class_by_location_type($data['location_type']))->first();
+        $data = [
+            get_ids_by_location_type($data['location_type']) => $location->id
+        ];
         $additional_fields = ["real_estate_listings.latitude", "real_estate_listings.longitude"];
         $records = $this->model->getListings($data, $additional_fields)
             ->wherePriceBetween($price_range)
-            ->limit(6)
             ->get();
         return response()->json($records);
     }

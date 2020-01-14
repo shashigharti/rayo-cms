@@ -5,9 +5,9 @@
             <div class="col s12">
                 <div class="inner--main--title center-align">
                     @if($location)
-                        <h1> {{ $location->name }} Homes for sale </h1>
+                        <h1> {{ $location->name }} Homes For Sale </h1>
                     @else
-                        <h1>{{ settings('real-estate', 'client')['name'] }} Homes for sale</h1>
+                        <h1>{{ settings('real-estate', 'client')['name'] }} Homes For Sale</h1>
                     @endif
                 </div>
                 <div class="top--breadcrumb center-align">

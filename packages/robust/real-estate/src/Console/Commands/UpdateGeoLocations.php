@@ -30,27 +30,26 @@ class UpdateGeoLocations extends Command
         $listings = Listing::select("real_estate_listings.id", "real_estate_listings.name")
             ->get();
 
+        $count = 0;
         foreach($listings as $listing){
-            $properties = $listing->property()
-            
-            ->where(function($query) use ($listing){
-                $query->where('type', 'latitude')
-                ->where('value', '!=', '')
-                ->where('listing_id', $listing->id);
-            })
-            ->orWhere(function($query) use ($listing){
-                $query->where('type', 'longitude')
-                ->where('value', '!=', '')
-                ->where('listing_id', $listing->id);
-            })            
-            ->get();
-            foreach( $properties as $property ){                
-                $listing->update(
-                    [ $property->type => $property->value ]
-                );
-                $this->info($property->type . "," . $property->value);
+            $address = geocode($listing->name . "FL");
+
+            if($count > 10){
+                sleep(5);
             }
+            // geocode not found
+            if($address['geometry']['location']){
+                $listing->update(
+                    [
+                        'latitude' => $address['geometry']['location']['lat'],
+                        'longitude' => $address['geometry']['location']['lng']
+                    ]
+
+                );
+            }
+            $this->info($listing->latitude . "," . $listing->longitude);
+            $count++;
         }
     }
-       
+
 }

@@ -16,10 +16,18 @@
                 <div class="market-survey__left-container">
                     <div class="col s12 market-survey__right-container--tabs">
                         <ul class="tabs">
-                            <li class="tab col s3"><a class="leaflet__map-container active"
-                                                      href="#leaflet__map-container">Map View</a></li>
-                            <li class="tab col s3"><a class="leaflet__compare-container"
-                                                      href="#leaflet__compare-container">Compare</a></li>
+                            <li class="tab col s3">
+                                <a class="leaflet__map-container active"
+                                   href="#leaflet__map-container">
+                                    Map View
+                                </a>
+                            </li>
+                            <li class="tab col s3">
+                                <a class="leaflet__compare-container"
+                                   href="#leaflet__compare-container">
+                                    Compare
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <div id="leaflet__map-container" data-zoom="10"
@@ -37,15 +45,24 @@
                     <div class="market-survey__right-container--tabs">
                         <div class="market-survey__right-container--header">
                             <ul class="tabs">
-                                <li class="tab"><a class="market-survey__listings active"
-                                                   href="#market-survey__listings">Listings</a></li>
-                                <li class="tab"><a class="market-survey__insights" href="#market-survey__insights">Market
-                                        Insights</a></li>
+                                <li class="tab">
+                                    <a class="market-survey__listings active"
+                                       href="#market-survey__listings">
+                                        Listings
+                                    </a>
+                                </li>
+                                <li class="tab">
+                                    <a class="market-survey__insights" href="#market-survey__insights">
+                                        Market Insights
+                                    </a>
+                                </li>
                             </ul>
                         </div>
-                        <div id="market-survey__listings" class="market-survey__listings" data-url="{{route('api.market.survey.listings', [
-                                'locationable_type' => 'cities',
-                                'locationable_id' => '1'
+                        <div id="market-survey__listings"
+                             class="market-survey__listings"
+                             data-url="{{route('api.market.survey.listings', [
+                                'location_type' => $location['type'],
+                                'location' => $location['slug']
                             ])
                         }}">
                             @include(Site::templateResolver('core::website.market-survey.partials.listings'))
