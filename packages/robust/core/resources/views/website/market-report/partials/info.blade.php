@@ -20,7 +20,7 @@
                                  value="{{ $option }}"
                                  type="radio"
                                  data-href={{ route("website.realestate.market.reports", ['location_type' => $option]) }}
-                              {{ ($page_type == $key) ? 'checked': ''}}
+                              {{ ($page_type == $option) ? 'checked': ''}}
                           />
                           <span>{{ $option }}</span>
                         </label>
