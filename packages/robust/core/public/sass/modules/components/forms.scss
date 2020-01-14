@@ -300,3 +300,11 @@ input {
 [type="checkbox"] + span:not(.lever) {
     padding-left: 10px;
 }
+.select2-container--default .select2-selection--multiple .select2-selection__choice {
+    background-color: #7b7979;
+    color:#fff;
+}
+.select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
+    margin-right: 5px;
+    color:#fff;
+}
