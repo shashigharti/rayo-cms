@@ -1,4 +1,4 @@
-@set('image',$properties['image'] ?? '')
+@set('image',$properties['image'] ? getMedia($properties['image')  : '')
 @if($properties)
     <div class="col m{{$col}} s12">
         <div class="single-block">
