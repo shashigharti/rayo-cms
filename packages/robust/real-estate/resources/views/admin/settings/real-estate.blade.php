@@ -54,6 +54,33 @@
                 }}
             </div>
         </div>
+        <div class="form-group form-material row">
+            <div class="col s2">
+                {{ Form::label('banner_per_row', 'Banner Per Row', ['class' => 'control-label' ]) }}
+                {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
+            </div>
+            <div class="col s2">
+                {{ Form::label('price_min', 'Price', ['class' => 'control-label' ]) }}
+                Min: {{ Form::text('price_min', $settings['price_min'] ?? '') }}
+                Max: {{ Form::text('price_max', $settings['price_max'] ?? '') }}
+                Increment: {{ Form::text('price_increment', $settings['price_increment'] ?? '') }}
+            </div>
+            <div class="col s2">
+                {{ Form::label('year_built', 'Year Built', ['class' => 'control-label' ]) }}
+                Min: {{ Form::text('year_built_min', $settings['year_built_min'] ?? '') }}
+                Max: {{ Form::text('year_built_max', $settings['year_built_max'] ?? '') }}
+            </div>
+            <div class="col s2">
+                {{ Form::label('sq_feet', 'Square Feet', ['class' => 'control-label' ]) }}
+                Min: {{ Form::text('sq_feet_min', $settings['sq_feet_min'] ?? '') }}
+                Max: {{ Form::text('sq_feet_max', $settings['sq_feet_max'] ?? '') }}
+            </div>
+            <div class="col s2">
+                {{ Form::label('sq_feet', 'Square Feet', ['class' => 'control-label' ]) }}
+                Min: {{ Form::text('beds_min', $settings['beds_min'] ?? '') }}
+                Max: {{ Form::text('beds_max', $settings['beds_max'] ?? '') }}
+            </div>
+        </div>
     </fieldset>
     <fieldset class="mt-2">
         <legend>Market Reports</legend>
