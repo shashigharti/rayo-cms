@@ -2,7 +2,7 @@
 <section class="search-lists">
     <div class="container-fluid">
         <div class="row">
-            @set('col',count($singleColBanners) > 9 ? 3 : 4)
+            @set('col',settings('real-estate','banner_per_row') ? 12/settings('real-estate','banner_per_row') : 4)
             @foreach($singleColBanners as $singleColBanner)
                 @set('properties',json_decode($singleColBanner->properties,true))
                 @if(isset($properties['property_type']) && count($properties['property_type']) > 0)
