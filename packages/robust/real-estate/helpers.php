@@ -62,7 +62,7 @@ if (!function_exists('geocode')) {
             return false;
         }
         $addressLatLong = [];
-        $api_key = env('GOOGLE_API_KEY');
+        $api_key = settings('app-setting','google_api_key');
         try {
             $response = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . urlencode($api_key));
             $response = json_decode($response, true);
