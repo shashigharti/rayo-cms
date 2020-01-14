@@ -70,14 +70,14 @@
                         ]) 
                     }}
                 </div>
-                <div class="editor__variables">                 
+                <div class="col s12 editor__variables">                 
                     *|LEAD_FIRSTNAME|* | *|LOGO|* | *|WEBSITE|* | *|VERIFICATION_LINK|*
                 </div>
             </div>
             
-            <div class="row">
+            <div class="row mt-3">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}           
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}           
                 </div>
             </div>
         </div>
