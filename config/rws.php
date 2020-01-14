@@ -29,7 +29,7 @@ return [
         ],
         'market-survey-tools' => [
             'search-filters' => [
-                'sold' => [
+                'sold_status' => [
                     'display' => 'Sold',
                     'values' => [
                         ['display' => 'Recently Sold 30 Days', 'value' => 'sold_date-30_days'],

@@ -12,8 +12,6 @@ use Illuminate\Support\Arr;
  */
 trait ListingTrait
 {
-
-
     /**
      * @param $slug
      * @return mixed
@@ -103,6 +101,7 @@ trait ListingTrait
     /**
      * @param $property_types
      * @param $property_values
+     * @return $this
      */
     public function wherePropertyType($property_types, $property_values)
     {
@@ -123,24 +122,6 @@ trait ListingTrait
                 }
 
         });
-        return $this;
-    }
-
-    /**
-     * @param $params
-     * @return $this
-     */
-    public function whereLocations($params)
-    {
-        $key = key($params);
-        if ($params[$key] != null) {
-            $locations = $params[$key];
-            $locations = $this->location->whereIn('slug', $locations)->pluck('id');
-            if (!$locations) {
-                $locations = $this->location->whereIn('slug', $locations)->pluck('id');
-            }
-            $this->model = $this->model->whereIn(IListings::LOCATION_TYPE_MAP[$key], $locations);
-        }
         return $this;
     }
 

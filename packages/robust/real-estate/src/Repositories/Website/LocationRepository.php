@@ -63,7 +63,6 @@ class LocationRepository
             return $value;
         });
 
-
         // Limit the number of fields based on the params
         if(count($fields) > 0){
             $qBuilder = $qBuilder->select($fields);
@@ -75,9 +74,10 @@ class LocationRepository
             $param);
         }
 
-        $qBuilder = $qBuilder->where(function($q) {
-         $q->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
-        });
+        // This will be removed
+        //$qBuilder = $qBuilder->where(function($q) {
+        // $q->where('active_count', '>', 0)->orWhere('sold_count', '>', 0);
+        //});
 
         return $qBuilder->get();
     }
