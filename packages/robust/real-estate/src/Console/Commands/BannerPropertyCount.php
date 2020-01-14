@@ -68,7 +68,8 @@ class BannerPropertyCount extends Command
                 $other_queries = array_diff_key($queries,array_flip(['location','location_type']));
                 foreach ($prices as $price){
                     $this->info($price);
-                    $query = Listing::where($this->maps[$queries['location_type']],$location->id);
+                    $query = Listing::where($this->maps[$queries['location_type']],$location->id)
+                            ->where('status',settings('real-estate','active'));
                     $price_range = explode('-',$price);
                     if(count($price_range) > 1){
                         $query = $query->whereBetween('system_price',$price_range);
@@ -80,15 +81,16 @@ class BannerPropertyCount extends Command
                         $properties['prices'][$price] = $query->count();
                     }
 
-                    foreach ($other_queries as $tab => $value){
-                        $properties['tabs_data'][$tab][$price] = $query
-                            ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
-                                $q->from('real_estate_listing_properties')
-                                    ->select('real_estate_listing_properties.listing_id')
-                                    ->where('type',$tab)
-                                    ->where('value',$value);
-                            })->count();
-                    }
+                    //need to refactor this taking too long
+//                    foreach ($other_queries as $tab => $value){
+//                        $properties['tabs_data'][$tab][$price] = $query
+//                            ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
+//                                $q->from('real_estate_listing_properties')
+//                                    ->select('real_estate_listing_properties.listing_id')
+//                                    ->where('type',$tab)
+//                                    ->where('value',$value);
+//                            })->count();
+//                    }
                 }
             }
             $this->info('Ending ' . $properties['header']);
