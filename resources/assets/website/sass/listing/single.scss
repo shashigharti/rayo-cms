@@ -63,6 +63,7 @@ section.main-content {
   font-size: 30px;
   color: $theme_color;
   position: relative;
+  text-transform:uppercase;
 
   &:after {
     content: "";
