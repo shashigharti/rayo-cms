@@ -10,5 +10,6 @@
 //import("modules/file-uploader.js")
 //import("modules/utilities.js")
 //import("modules/dynamic-attr.js")
+//import("modules/modal.js")
 
 
