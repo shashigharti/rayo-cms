@@ -153,7 +153,7 @@
 
     }
 
-    function loadProperties(query_string = '') {
+    function loadProperties() {
         const listingContainer = document.getElementById('market-survey__listings');
         let url = listingContainer.getAttribute("data-url"),
             property_url = listingContainer.getAttribute("data-property-url"),
@@ -201,7 +201,7 @@
         let search = new Search();
 
         $('.search-filter').on('change', function (e) {
-            //loadProperties(search.getQueryString());
+            loadProperties();
         });
 
         $(document).on('click', '.market-survey__listings--details-card :input[name="property"]', function (e) {
