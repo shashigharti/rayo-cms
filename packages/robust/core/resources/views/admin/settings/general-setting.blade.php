@@ -11,7 +11,7 @@
             @csrf
             {{ Form::label('logo', 'Logo') }}
             @set('files', (isset($settings['logo']) && $settings['logo'] != '') ?  explode(',', $settings['logo']): [])
-            <div class="col s12 file-uploader__preview">
+            <div class="file-uploader__preview">
                 @foreach($files as $file)
                     <div data-id="{{ $file }}" class="file-uploader__file">
                         <img height="80" src="{{ getMedia($file) ?? '' }}"/>
@@ -24,8 +24,10 @@
                     </div>
                 @endforeach
             </div>
-            <div class="col s12">(Image Size: 200 x 200)</div>
-            <div class="col s12">
+            <div>
+                <small>(Image Size: 200 x 200)</small>
+            </div>
+            <div>
                 {{ Form::file('files[]', [
                         'class' =>'col s6 file-uploader__input',
                         'multiple' => 'multiple'
@@ -43,7 +45,7 @@
             }}
         </div>
     </div>
-    <div class="form-group form-material row">
+    <div class="form-group form-material mt-3 row">
         <div class="col s12 input-field">
             {{ Form::label('company_name', 'Company Name', ['class' => 'control-label' ]) }}
             {{ Form::text('company_name', isset($settings['company_name'])?$settings['company_name']:'', [
