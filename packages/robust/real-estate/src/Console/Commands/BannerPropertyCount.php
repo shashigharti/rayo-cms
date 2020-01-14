@@ -57,8 +57,9 @@ class BannerPropertyCount extends Command
             $properties = json_decode($block->properties, true);
             $this->info('Starting ' . $properties['header']);
             $price_settings = $properties['price_settings'] ?? [];
-            $url = $properties['url'];
-            if($url){
+
+            if(isset($properties['url'])){
+                $url = $properties['url'];
                 $prices = $this->getPriceRange($price_settings);
                 $parsed_url = parse_url($url,PHP_URL_QUERY);
                 parse_str($parsed_url,$queries);
