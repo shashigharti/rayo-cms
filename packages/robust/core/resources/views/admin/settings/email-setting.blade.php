@@ -69,14 +69,14 @@
                 <fieldset>
                     <legend>Test Email</legend>
                     <div class="form-group form-material row">
-                        <div class="col s6 input-field">
+                        <div class="col s6 input-field email-field">
                             {{ Form::label('test_email', 'Send Test Email', ['class' => 'control-label' ]) }}
                             {{ Form::email('test_email', '', [
                                     'class' => 'form-control',
                                     'placeholder' => 'info@robustitconcepts.com',
                                 ]) }}
-                            <a href="#" class="primary-btn test-email__send" data-url="{{route('api.send.test-email')}}">
-                                 <i class="material-icons">send</i>
+                            <a href="#" class="cyan btn btn-small test-email__send" data-url="{{route('api.send.test-email')}}">
+                                 <i class="material-icons">send</i>Send
                             </a>
                         </div>
                         <div class="col s4 input-field">

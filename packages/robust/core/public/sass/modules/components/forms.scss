@@ -192,7 +192,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
             > label.control-label {
                 position: absolute;
                 display: block;
-                transform: translateY(-30px) scale(0.8);
+                transform: translateY(-30px) scale(1);
             }
         }
     }
@@ -261,4 +261,42 @@ input {
 }
 .services__status--red {
     color: #c10b0b;
+}
+.email-field {
+    input {
+        width: 80% !important;
+        vertical-align: bottom;
+        margin-bottom: 0 !important;
+    }
+}
+.file-uploader__file {
+    width: 100px;
+    height: 100px;
+    border: 1px solid #ccc;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 100%;
+    }
+
+    .file-uploader__delete-btn {
+        position: absolute;
+        right: -8px;
+        top: -10px;
+        color: #FFC107;
+
+        i{
+            font-size: 20px;
+        }
+    }
+}
+[type="checkbox"] + span:not(.lever):before, [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+    display:none;
+}
+[type="checkbox"]:checked + span:not(.lever):before {
+    display:none;
+}
+[type="checkbox"] + span:not(.lever) {
+    padding-left: 10px;
 }

@@ -37,9 +37,9 @@
                     }}
                 </div>
             </div>
-            <div class="row">
+            <div class="row mt-1">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}           
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}           
                 </div>
             </div>
         </div>

@@ -50,7 +50,7 @@
                     }}
                 </div>
             </div>
-            <fieldset class="mt-3">
+            <fieldset class="mt-2">
                 <legend>Type of Properties & Property Status</legend>
                 <div class="col s6">
                     {{ Form::label('property_types', 'Property Types', ['class' => 'control-label' ]) }}

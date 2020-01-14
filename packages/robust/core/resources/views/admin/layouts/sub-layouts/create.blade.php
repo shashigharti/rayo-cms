@@ -14,10 +14,12 @@
                 <div class="container">
                     <div class="row">
                         <div class="col s12">
+                            @include("core::admin.partials.tabs.tabs")
                             <ul class="tabs">
                                 <li class="tab"><a class="active" href="#pages"> {{ $title }} </a></li>
                             </ul>
                         </div>
+
                         <div class="col s12">
                             <div class="panel card tab--content">
                                 @yield('form')
