@@ -55,6 +55,7 @@ class BannerPropertyCount extends Command
         $blocks = $this->model->where('template', 'single-col-block')->get();
         foreach ($blocks as $block) {
             $properties = json_decode($block->properties, true);
+            $this->info('Starting ' . $properties['header']);
             $price_settings = $properties['price_settings'] ?? [];
             $prices = $this->getPriceRange($price_settings);
             $url = $properties['url'];
@@ -66,6 +67,7 @@ class BannerPropertyCount extends Command
                     ->first();
                 $other_queries = array_diff_key($queries,array_flip(['location','location_type']));
                 foreach ($prices as $price){
+                    $this->info($price);
                     $query = Listing::where($this->maps[$queries['location_type']],$location->id);
                     $price_range = explode('-',$price);
                     if(count($price_range) > 1){
@@ -89,7 +91,7 @@ class BannerPropertyCount extends Command
                     }
                 }
             }
-
+            $this->info('Ending ' . $properties['header']);
             $block->update(['properties' => $properties]);
         }
     }
