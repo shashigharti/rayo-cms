@@ -1595,3 +1595,20 @@ table {
     }
 }
 
+.system-settings__data-mapping {
+    .collapsible {
+        box-shadow: none;
+        margin-top: 0px;
+        border: 0;
+
+        li {
+            margin-bottom: 2px;
+            border: 1px solid #e6e5e5;
+
+            .collapsible-header {
+                color: #fff;
+                background: #eee;
+            }
+        }
+    }
+}

@@ -34,11 +34,10 @@
                     </div>
                 </li>
             @endforeach
-        </ul>
-        <div class="form-group form-material row mt-3">
-            <div class="col s12">
+            <div class="form-group form-material mt-3">
                 {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
             </div>
-        </div>
+        </ul>
+        
     {{Form::close()}}
 </div>
