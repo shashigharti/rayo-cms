@@ -98,3 +98,20 @@ button.modal-close {
     line-height: 32px;
     margin-left: 5px !important;
 }
+.modal {
+    [type="radio"]:not(:checked), [type="radio"]:checked {
+        position: relative;
+        opacity: 1;
+        pointer-events: inherit;
+        display: inline-block;
+        width: 20px !important;
+        vertical-align: text-bottom;
+        margin-right: 5px;
+    }
+}
+
+div#researchToolModal {
+    border-radius: 7px;
+    top: 20% !important;
+    max-height: min-content;
+}

@@ -8,9 +8,9 @@
                     <button type="button" class="modal-close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    <h6>
+                    <h4 class="modal-title>
                         Home Sales Activity
-                    </h6>
+                    </h4>
                 </div>
                 <div class="modal-body">
                     <div class="form-group mr-t-20 row">
