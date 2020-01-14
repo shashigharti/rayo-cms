@@ -2,7 +2,7 @@
 (function ($, FRW, window, document, undefined) {
     'use strict';
     $(document).ready(function ($) {
-        $('#confirm-delete').on('show.bs.modal', function (e) {
+        $('#confirmDelete').on('click', function (e) {
             var message = $(e.relatedTarget).attr('data-message');
             $(this).find('.modal-body p').text(message);
 
@@ -24,7 +24,7 @@
             $(this).find('.modal-footer #confirm').data('form', form);
         });
 
-        $('#confirm-delete').find('.modal-footer #confirm').on('click', function () {
+        $('#confirmDelete').find('.modal-footer #confirm').on('click', function () {
             $(this).data('form').submit();
         });
 
