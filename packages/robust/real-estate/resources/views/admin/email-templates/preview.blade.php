@@ -1,1 +1,1 @@
-{{ Form::textarea('body', $model->body, ['class' => 'editor'])  }}
+{!! html_entity_decode($model->body) !!}
