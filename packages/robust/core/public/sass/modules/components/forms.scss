@@ -291,3 +291,12 @@ input {
         }
     }
 }
+[type="checkbox"] + span:not(.lever):before, [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
+    display:none;
+}
+[type="checkbox"]:checked + span:not(.lever):before {
+    display:none;
+}
+[type="checkbox"] + span:not(.lever) {
+    padding-left: 10px;
+}
