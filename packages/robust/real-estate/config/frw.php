@@ -63,12 +63,12 @@ return [
         'school_districts' => 'School Districts'
     ],
     'location_maps' => [
-        '\Robust\RealEstate\Models\City' => 'cities',
-        '\Robust\RealEstate\Models\Zip' => 'zips',
-        '\Robust\RealEstate\Models\County' => 'counties',
-        '\Robust\RealEstate\Models\HighSchool' => 'high_schools',
-        '\Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
-        '\Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
+        'Robust\RealEstate\Models\City' => 'cities',
+        'Robust\RealEstate\Models\Zip' => 'zips',
+        'Robust\RealEstate\Models\County' => 'counties',
+        'Robust\RealEstate\Models\HighSchool' => 'high_schools',
+        'Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
+        'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
     ],
     'banner_tabs' => [
         'waterfront' => [

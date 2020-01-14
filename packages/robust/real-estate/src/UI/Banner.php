@@ -1,6 +1,7 @@
 <?php
 namespace Robust\RealEstate\UI;
 
+use Robust\Core\UI\Core\BaseUI;
 use Robust\Core\UI\Traits\RouteTrait;
 use Robust\RealEstate\Models\Banner as Model;
 
@@ -8,7 +9,7 @@ use Robust\RealEstate\Models\Banner as Model;
  * Class Banner
  * @package Robust\RealEstate\UI
  */
-class Banner
+class Banner extends BaseUI
 {
     use RouteTrait;
 
