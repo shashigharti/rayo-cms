@@ -91,7 +91,7 @@
             </div>
         </div>
     </fieldset>
-    <fieldset>
+    <fieldset class="mt-2">
         <legend>Site Data Mapping</legend>
         <div class="form-group form-material row">
             <div class="col s3 input-field">

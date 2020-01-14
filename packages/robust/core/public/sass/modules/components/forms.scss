@@ -253,3 +253,12 @@ input {
 .cke {
     margin-top: 12px !important;
 }
+.status{
+    font-size:12px;
+}
+.services__status--green {
+    color: green;
+}
+.services__status--red {
+    color: #c10b0b;
+}
