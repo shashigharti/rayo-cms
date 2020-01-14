@@ -49,8 +49,8 @@
                 </div>
             </div>
         </li>
-        <li><a class="nav-link" href="{{ settings('real-estate', 'url_active') }}">Homes For Sale</a></li>
-        <li><a class="nav-link" href="{{ settings('real-estate', 'url_sold') }}">Sold Homes</a></li>
+        <li><a class="nav-link" href="{{url()->to(settings('real-estate','url_active'))}}">Homes For Sale</a></li>
+        <li><a class="nav-link" href="{{url()->to(settings('real-estate','url_sold'))}}">Sold Homes</a></li>
         <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
                 Stats</a></li>
         <li class="nav-btn">

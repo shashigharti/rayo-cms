@@ -34,7 +34,7 @@ class FavouritesController extends Controller
     public function store($id)
     {
         $data = [
-            'lead_id' => Auth::user()->member->id,
+            'lead_id' => Auth::user()->memberable->id,
             'listings_id' => $id
         ];
         $this->model->store($data);
