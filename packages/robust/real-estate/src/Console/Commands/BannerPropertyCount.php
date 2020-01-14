@@ -58,35 +58,38 @@ class BannerPropertyCount extends Command
             $price_settings = $properties['price_settings'] ?? [];
             $prices = $this->getPriceRange($price_settings);
             $url = $properties['url'];
-            $parsed_url = parse_url($url,PHP_URL_QUERY);
-            parse_str($parsed_url,$queries);
-            $location = Location::where('slug',$queries['location'])
-                        ->where('locationable_type',$location_maps[$queries['location_type']])
-                        ->first();
-            $other_queries = array_diff_key($queries,array_flip(['location','location_type']));
-            foreach ($prices as $price){
-                $query = Listing::where($this->maps[$queries['location_type']],$location->id);
-                $price_range = explode('-',$price);
-                if(count($price_range) > 1){
-                    $query = $query->whereBetween('system_price',$price_range);
-                    $properties['prices'][$price] = $query->count();
+            if($url){
+                $parsed_url = parse_url($url,PHP_URL_QUERY);
+                parse_str($parsed_url,$queries);
+                $location = Location::where('slug',$queries['location'])
+                    ->where('locationable_type',$location_maps[$queries['location_type']])
+                    ->first();
+                $other_queries = array_diff_key($queries,array_flip(['location','location_type']));
+                foreach ($prices as $price){
+                    $query = Listing::where($this->maps[$queries['location_type']],$location->id);
+                    $price_range = explode('-',$price);
+                    if(count($price_range) > 1){
+                        $query = $query->whereBetween('system_price',$price_range);
+                        $properties['prices'][$price] = $query->count();
 
-                }else {
-                    $price_range = explode('>', $price_range[0]);
-                    $query = $query->where('system_price', '<', $price_range[0]);
-                    $properties['prices'][$price] = $query->count();
-                }
+                    }else {
+                        $price_range = explode('>', $price_range[0]);
+                        $query = $query->where('system_price', '<', $price_range[0]);
+                        $properties['prices'][$price] = $query->count();
+                    }
 
-                foreach ($other_queries as $tab => $value){
-                    $properties['tabs_data'][$tab][$price] = $query
-                        ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
-                            $q->from('real_estate_listing_properties')
-                                ->select('real_estate_listing_properties.listing_id')
-                                ->where('type',$tab)
-                                ->where('value',$value);
-                        })->count();
+                    foreach ($other_queries as $tab => $value){
+                        $properties['tabs_data'][$tab][$price] = $query
+                            ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
+                                $q->from('real_estate_listing_properties')
+                                    ->select('real_estate_listing_properties.listing_id')
+                                    ->where('type',$tab)
+                                    ->where('value',$value);
+                            })->count();
+                    }
                 }
             }
+
             $block->update(['properties' => $properties]);
         }
     }
