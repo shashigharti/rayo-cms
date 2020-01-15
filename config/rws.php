@@ -102,14 +102,6 @@ return [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Interior'
         ],
-        'waterfront_details' => [
-            'blade' => 'attributes-select-remote',
-            'display_name' => 'Waterfront Details'
-        ],
-        'waterfront' => [
-            'blade' => 'attributes-select-remote',
-            'display_name' => 'Waterfront'
-        ],
         'garage' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Garage'
@@ -118,25 +110,9 @@ return [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Exterior'
         ],
-        'subdivisions' => [
-            'blade' => 'locations-select-remote',
-            'display_name' => 'Subdivisions'
-        ],
-        'pool' => [
-            'blade' => 'attributes-select-remote',
-            'display_name' => 'Pool'
-        ],
         'counties' => [
             'blade' => 'locations-select-remote',
             'display_name' => 'Counties'
-        ],
-        'cities' => [
-            'blade' => 'locations-select-remote',
-            'display_name' => 'City'
-        ],
-        'zips' => [
-            'blade' => 'locations-select-remote',
-            'display_name' => 'Zip'
         ],
         'elementary_schools' => [
             'blade' => 'locations-select-remote',
@@ -162,18 +138,43 @@ return [
             'blade' => 'square_feet',
             'display_name' => 'Lot Square Feet (min - max)'
         ],
-        'beds' => [
-            'blade' => 'beds',
-            'display_name' => 'Beds (min - max)'
-        ],
+
         'price' => [
             'blade' => 'price',
             'display_name' => 'Price (min - max)'
         ],
+        'beds' => [
+            'blade' => 'beds',
+            'display_name' => 'Beds (min - max)'
+        ],
         'bathrooms' => [
             'blade' => 'bathrooms',
             'display_name' => 'Bathrooms (min - max)'
-        ]
+        ],
+        'cities' => [
+            'blade' => 'locations-select-remote',
+            'display_name' => 'City'
+        ],
+        'zips' => [
+            'blade' => 'locations-select-remote',
+            'display_name' => 'Zip'
+        ],
+        'subdivisions' => [
+            'blade' => 'locations-select-remote',
+            'display_name' => 'Subdivisions'
+        ],
+        'waterfront' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Waterfront'
+        ],
+        'waterfront_details' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Waterfront Details'
+        ],
+        'pool' => [
+            'blade' => 'attributes-select-remote',
+            'display_name' => 'Pool'
+        ],
 
     ]
 
