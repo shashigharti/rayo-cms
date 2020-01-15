@@ -130,20 +130,20 @@
                         <tr>
                             <th>Properties</th>
                             ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
-                            }).join(" ")}
+                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
+            }).join(" ")}
                         </tr>
                     </thead>
                     <tbody>
                         ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
-                            return `
+                return `
                                 <tr>
                                     <td>${comparePropertiesRows[attrIndex].display}</td>
                                     ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                                        return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
-                                    }).join(" ")}
+                    return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
+                }).join(" ")}
                                 </tr>`;
-                        }).join(" ")}
+            }).join(" ")}
                     </tbody>
             </table>
             `;
@@ -153,16 +153,28 @@
 
     }
 
-    function loadProperties() {
+    function loadProperties(search_by = 'search') {
         const listingContainer = document.getElementById('market-survey__listings');
         let url = listingContainer.getAttribute("data-url"),
             property_url = listingContainer.getAttribute("data-property-url"),
-            price_min = document.querySelector('.search-filter__price-min').selectedOptions[0].value,
-            price_max = document.querySelector('.search-filter__price-max').selectedOptions[0].value,
-            sold_status = document.querySelector('.search-filter__status').selectedOptions[0].value;
+            price_min, price_max, sold_status, lat, lng, address;
 
-        // Append Price
-        url += `&price=${price_min}-${price_max}&sold_status=${sold_status}`;
+        if (search_by === 'address') {
+            let elem = $('[name=address]');
+            url = elem.data("url");
+            address = '';
+            lat = '';
+            lng = '';
+            console.log(elem);
+            url += `address=${address}&lat=${lat}&lng=${lng}`;
+        } else {
+            // Append Price
+            price_min = document.querySelector('.search-filter__price-min').selectedOptions[0].value;
+            price_max = document.querySelector('.search-filter__price-max').selectedOptions[0].value;
+            sold_status = document.querySelector('.search-filter__status').selectedOptions[0].value;
+            url += `&price=${price_min}-${price_max}&sold_status=${sold_status}`;
+        }
+
 
         // Get data from the server and load properties array
         $.ajax({
@@ -170,7 +182,7 @@
             url: url
         }).done(function (response) {
             response.forEach((property) => {
-                if(property.latitude !== null || property.longitude !== null){
+                if (property.latitude !== null || property.longitude !== null) {
                     properties.push(new Property(
                         property.id,
                         property.name,
@@ -202,7 +214,8 @@
         let search = new Search();
 
         $('.search-filter').on('change', function (e) {
-            loadProperties();
+            let search_by = $(this).attr('name');
+            loadProperties(search_by);
         });
 
         $(document).on('click', '.market-survey__listings--details-card :input[name="property"]', function (e) {
@@ -238,18 +251,19 @@
         console.log('Market Survey');
 
         // Initialize Event Handlers
-        init();
+        //init();
 
         // Get Data from the Server
-        loadProperties();
-
+        //loadProperties();
 
         // Declare and initialize map container
-        let mapContainer = document.getElementById('leaflet__map-container');
-        let map = new MarketSurveyMap(mapContainer);
+        // let mapContainer = document.getElementById('leaflet__map-container');
+        // let map = new MarketSurveyMap(mapContainer);
+        //
+        // $(listingContainer).on('loaded', function () {
+        //     map.render(properties);
+        // });
 
-        $(listingContainer).on('loaded', function () {
-            map.render(properties);
-        });
+
     });
 }(jQuery, FRW, window, document));
