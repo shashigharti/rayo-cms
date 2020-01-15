@@ -68,7 +68,16 @@ return [
         'Robust\RealEstate\Models\County' => 'counties',
         'Robust\RealEstate\Models\HighSchool' => 'high_schools',
         'Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
-        'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools'
+        'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools',
+        'Robust\RealEstate\Models\Subdivision' => 'subdivisions',
+    ],
+    'min_acreage' => 0.5,
+    'max_acreage' => 20,
+    'acreage_increment' => 3,
+    'location_id_map' => [
+      'cities' => 'city_id',
+      'zips' => 'zip_id',
+      'county' => 'county_id',
     ],
     'banner_tabs' => [
         'waterfront' => [

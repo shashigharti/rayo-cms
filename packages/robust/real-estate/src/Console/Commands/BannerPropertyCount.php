@@ -66,7 +66,7 @@ class BannerPropertyCount extends Command
                 $location = Location::where('slug',$queries['location'])
                     ->where('locationable_type',$location_maps[$queries['location_type']])
                     ->first();
-                $other_queries = array_diff_key($queries,array_flip(['location','location_type']));
+                $other_queries = array_diff_key($queries,array_flip(['location','location_type','subdivisions']));
                 foreach ($prices as $price){
                     $this->info($price);
                     $query = Listing::where($this->maps[$queries['location_type']],$location->id)
@@ -82,18 +82,42 @@ class BannerPropertyCount extends Command
                         $properties['prices'][$price] = $query->count();
                     }
 
-                    //need to refactor this taking too long
-//                    foreach ($other_queries as $tab => $value){
-//                        $properties['tabs_data'][$tab][$price] = $query
-//                            ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
-//                                $q->from('real_estate_listing_properties')
-//                                    ->select('real_estate_listing_properties.listing_id')
-//                                    ->where('type',$tab)
-//                                    ->where('value',$value);
-//                            })->count();
-//                    }
+                    foreach ($other_queries as $tab => $value){
+                        if($tab === 'acres') {
+                            $properties['tabs_data'][$tab][$price] = $query
+                                ->whereIn('real_estate_listings.id', function ($q) use ($tab, $value) {
+                                    $q->from('real_estate_listing_properties')
+                                        ->select('real_estate_listing_properties.listing_id')
+                                        ->where('type', $tab)
+                                        ->where('value', '<=', $value);
+                                })->count();
+                        }else{
+                            $properties['tabs_data'][$tab][$price] = $query
+                                ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
+                                    $q->from('real_estate_listing_properties')
+                                        ->select('real_estate_listing_properties.listing_id')
+                                        ->where('type',$tab)
+                                        ->where('value',$value);
+                                })->count();
+                        }
+
+                    }
+                }
+                if(isset($queries['subdivisions'])){
+                    $subdivisions = Subdivision::where($configs['location_id_map'][$queries['location_type']],$location->id)
+                        ->get();
+                    foreach ($subdivisions as $subdivision){
+                        $subdiv = Location::where('locationable_type',$location_maps['subdivisions'])
+                            ->where('locationable_id',$subdivision->id)
+                            ->first();
+                        if($subdiv){
+                            $properties['tabs_data']['subdivisions'][$subdiv->slug] = Listing::where('subdivision_id',$subdiv->id)->count();
+                        }
+                    }
                 }
             }
+
+
             $this->info('Ending ' . $properties['header']);
             $block->update(['properties' => $properties]);
         }
