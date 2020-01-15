@@ -1,10 +1,10 @@
 <?php
+
 namespace Robust\RealEstate\Controllers\Website;
 
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-
+use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
  * Class MarketSurveyController
@@ -12,17 +12,39 @@ use Illuminate\Http\Request;
  */
 class MarketSurveyController extends Controller
 {
-
     /**
-     * @var
+     * @var ListingRepository
      */
     protected $model;
 
     /**
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * MarketSurveyController constructor.
+     * @param ListingRepository $model
      */
-    public function index()
+    public function __construct(ListingRepository $model)
     {
-        return view('core::website.market-survey.index');
+        $this->model = $model;
+    }
+
+
+    /**
+     * @param $location_type
+     * @param $location
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function index($location_type, $location)
+    {
+        $data = [
+            'type' => $location_type,
+            'slug' => $location
+        ];
+        $request_type = request()->get('search_type');
+        if ($request_type == 'market-survey') {
+            return view('core::website.market-survey.index', [
+                    'location' => $data
+                ]
+            );
+        }
+        return redirect()->route('website.realestate.market.reports', [$location_type]);
     }
 }

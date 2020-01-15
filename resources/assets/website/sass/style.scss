@@ -810,8 +810,9 @@ a.view-all {
 }
 
 h4.sub-title {
-  font-size: 22px;
+  font-size: 20px;
   font-weight: 500;
+  margin-bottom:20px;
 }
 
 .adv-single-text {
@@ -855,6 +856,7 @@ a.buy-now-btn {
   h4 {
     font-size: 20px !important;
     font-weight: 500 !important;
+    margin-bottom:20px;
   }
 }
 
@@ -1377,21 +1379,14 @@ button{
         }
     }
 }
-.modal{
-    [type="radio"]:not(:checked), [type="radio"]:checked {
-    position: relative;
-    opacity: 1;
-    pointer-events: inherit;
-    display: inline-block;
-    width: 20px !important;
-    vertical-align: text-bottom;
-    margin-right: 5px;
-    }
+
+.mr-t-10{
+    margin-top:10px;
 }
-div#researchToolModal {
-    border-radius: 7px;
-    transform: translate(-50%, -50%) !important;
-    left: 50% !important;
-    top: 50% !important;
-    max-height: min-content;
+.tabs .tab a:focus, .tabs .tab a:focus.active {
+    background-color: transparent;
+    outline: 0;
+}
+.body--content{
+    min-height:100vh;
 }

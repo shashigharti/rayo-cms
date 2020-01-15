@@ -90,8 +90,12 @@
     }
 
     .select-wrapper {
-        width: 100px;
+        width: 70px;
         background: $white;
+
+        .dropdown-content li > a, .dropdown-content li > span {
+            padding: 14px 4px;
+        }
 
         input.select-dropdown {
             width: 85px;
@@ -101,8 +105,9 @@
     .sold-select-wrapper {
         .select-wrapper {
             width: auto;
-            .caret{
-                right:0px !important;
+
+            .caret {
+                right: 0px !important;
             }
         }
     }

@@ -4,7 +4,6 @@
     @set('ui', new $ui)
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
         <div id="{{ $title }}" class="col s12">
-            <h4>Edit Group</h4>
             <div class="row">
                 <div class="input-field col s6">
                     {{ Form::label('name', 'Group Name', ['class' => 'required control-label' ]) }}
@@ -20,9 +19,9 @@
                 </div>
             </div>
             {{ Form::hidden('status',0) }}
-            <div class="row">
+            <div class="row mt-1">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}           
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}           
                 </div>
             </div>
         </div>

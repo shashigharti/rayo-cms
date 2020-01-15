@@ -62,6 +62,12 @@ return [
         'counties' => 'Counties',
         'school_districts' => 'School Districts'
     ],
+    'locations_id_maps' => [
+        'cities' => 'city_id',
+        'zips' => 'zip_id',
+        'counties' => 'counties_id',
+        'school_districts' => 'school_districts_id'
+    ],
     'location_maps' => [
         'Robust\RealEstate\Models\City' => 'cities',
         'Robust\RealEstate\Models\Zip' => 'zips',
