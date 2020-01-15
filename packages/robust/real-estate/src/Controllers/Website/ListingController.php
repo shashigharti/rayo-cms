@@ -105,7 +105,6 @@ class ListingController extends Controller
         $property_types = isset($property_type) ? explode(',', $property_type) : null;
         $property_values = isset($property_value) ? explode(',', $property_value) : null;
         $locations = isset($params['locations']) ? explode(',', $params['locations']) : null;
-        //use case of multiple locations
         $results = $this->model->getListings()
             ->wherePropertyType($property_types,$property_values)
             ->paginate($this->pagination);

@@ -38,6 +38,8 @@ class MarketSurveyController extends Controller
     {
         $price_range = $request->has('price') ? explode('-', $request->get('price')) : [];
         $data = $request->except('price');
+        $date_string = get_date_string($data['sold_status']);
+        $prev_date = date('Y-m-d', strtotime("- $date_string"));
 
         $location = Location::where('slug', $data['location'])
             ->where('locationable_type', get_class_by_location_type($data['location_type']))->first();
@@ -47,6 +49,7 @@ class MarketSurveyController extends Controller
         $additional_fields = ["real_estate_listings.latitude", "real_estate_listings.longitude"];
         $records = $this->model->getListings($data, $additional_fields)
             ->wherePriceBetween($price_range)
+            ->whereDateBetween([$prev_date, date("Y-m-d H:i:s")])
             ->get();
         return response()->json($records);
     }

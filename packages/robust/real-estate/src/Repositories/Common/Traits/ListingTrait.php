@@ -70,11 +70,12 @@ trait ListingTrait
 
     /**
      * @param $params
+     * @param string $field
      * @return $this
      */
-    public function whereDateBetween($params)
+    public function whereDateBetween($params, $field = 'input_date')
     {
-        $this->model = $this->model->whereBetween('input_date', $params);
+        $this->model = $this->model->whereBetween($field, $params);
         return $this;
     }
 

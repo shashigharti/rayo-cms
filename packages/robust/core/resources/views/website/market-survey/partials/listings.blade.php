@@ -33,7 +33,7 @@
                     <label>{{$filters['sold_status']['display']}}</label>
                     <select class="search-filter search-filter__status" name="sold_status">
                         @foreach($filters['sold_status']['values'] as $value)
-                            <option value="{{ $value['value'] }}">{{ $value['display'] }}</option>
+                            <option value="{{ $value['value'] }}" {{ ($value['value']  == 'sold_date-12_months') ? 'selected':'' }} >{{ $value['display'] }}</option>
                         @endforeach
                     </select>
                 </div>

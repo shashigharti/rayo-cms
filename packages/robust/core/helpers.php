@@ -83,3 +83,15 @@ if (!function_exists('emails')) {
         return null;
     }
 }
+
+if (!function_exists('get_date_string')) {
+    /**
+     * @return string
+     */
+    function get_date_string($param)
+    {
+        $sort = explode("-", $param);
+        $sort_value =  explode("_", $sort[1]);
+        return "{$sort_value[0]} {$sort_value[1]}";
+    }
+}
