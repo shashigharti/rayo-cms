@@ -93,7 +93,6 @@ class DataPull extends RetsCommands
                     }
                     //query for system price above 10000
                     $query .= ',(' . $this->conditions_map['system_price'] . '=' . $this->min_price . '+)';
-
                     $results = $this->rets->Search('Property', $class, $query, ['Select' => ['LIST_1'], 'Limit' => 1]);
                     $total = $results->getTotalResultsCount();
                     $this->info($total);

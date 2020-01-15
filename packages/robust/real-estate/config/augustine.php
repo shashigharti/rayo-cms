@@ -35,6 +35,8 @@ return [
             'baths_full',
             'bedrooms',
             'status',
+            'latitude',
+            'longitude'
         ],
         'integer_fields' => [
             'total_finished_area',
@@ -69,50 +71,145 @@ return [
             'school_district' =>  'Robust\RealEstate\Models\SchoolDistrict',
         ],
         'conditions' => [
+            'counties' => [
+               'A' => [
+                   'CLAY' => 'B7PP207O2E5',
+                   'DUVAL' => '1ASQNTXHIOV7',
+                   'ST. JOHNS' => 'B7PP21BGB5F',
+                   'FLAGLER' => 'B7PP26CMDN4',
+                   'VOLUSIA' => 'B80C188Z1ZV',
+                   'NASSAU' => 'B7PP257ORAI'
+               ],
+               'C' => [
+                    'CLAY' => '1AM3EAC5VK2Y',
+                    'DUVAL' => '1AM3EAC77AIC',
+                    'ST. JOHNS' => '1AM3EACBWSFM',
+                    'FLAGLER' => '1AM3EACA4UD4',
+                    'VOLUSIA' => '1AM3EACCXR21',
+                    'NASSAU' => '1AM3EACAYOGS'
+               ],
+               'D' => [
+                    'CLAY' => '1AM3EBCOOBNI',
+                    'DUVAL' => '1AM3EBCPVPO6',
+                    'ST. JOHNS' => '1AM3EBCUVSDD',
+                    'FLAGLER' => '1AM3EBCSM008',
+                    'VOLUSIA' => '1AM3EBCVX8UK',
+                    'NASSAU' => '1AM3EBCTNGJH'
+               ],
+                'E' => [
+                    'CLAY' => '1AM3E6HNLP06',
+                    'DUVAL' => '1AM3E6HO255P',
+                    'ST. JOHNS' => '1AOZ8ZMLMSRB',
+                    'FLAGLER' => '1AM3E6HOCK4Z',
+                    'VOLUSIA' => '1AM3E6HRDQ49',
+                    'NASSAU' => '1AM3E6HP8R6L'
+                ]
+            ],
             'cities' => [
                 'A' => [
+                    'FLEMING ISLAND' => 'RJJL57CMG34',
+                    'GREEN COVE SPRINGS' => 'B7ZMH3X3P7G',
+                    'ORANGE PARK' => 'B7ZMH3Y0R8R',
+                    'MIDDLEBURG' => 'B7ZMH3XV861',
+
+                    'JACKSONVILLE' => 'B7ZMH3XB4Y5',
+                    'JACKSONVILLE BEACH' => 'B7ZMH3XC516',
+                    'ATLANTIC BEACH' => 'B7ZMH3W18SM',
+                    'NEPTUNE BEACH' => 'B7ZMH3XYP6M',
+
                     'ST AUGUSTINE' => 'B7ZMH3YQVOS',
                     'PONTE VEDRA' => 'M2T9W4VXLSH',
-                    'JACKSONVILLE' => 'B7ZMH3XB4Y5',
                     'PONTE VEDRA BEACH' => 'B7ZMH3YFU6G',
                     'ST JOHNS' => 'ORC56AS2RHG',
-                    'JACKSONVILLE BEACH' => 'B7ZMH3XC516',
-                    'FLEMING ISLAND' => 'RJJL57CMG34',
+                    'ELKTON' => 'B7ZMH3WQSIZ',
+
+                    'PALM COAST' => 'B7ZMH3Y8JIQ',
+                    'FLAGLER BEACH' => 'B7ZMH3WV4FO',
+                    'BUNNELL' => 'JA6X3HW0TSA',
+                    'ORMOND BEACH' => 'J9AOM8KMVXW',
+
                     'AMELIA ISLAND' => 'B7ZMH3W2G52',
                     'FERNANDINA BEACH' => 'B7ZMH3WSTGZ',
+                    'YULEE' => 'B7ZMH3Z3TLO',
                 ],
                 'C' => [
+                    'FLEMING ISLAND' => 'RJJL57IDA2D',
+                    'GREEN COVE SPRINGS' => '1DGA31G55TV1',
+                    'ORANGE PARK' => 'DRDEXVGCJTJ',
+                    'MIDDLEBURG' => 'DRDEXVG8AAP',
+
+                    'JACKSONVILLE' => 'DZ9DY4L70GC',
+                    'JACKSONVILLE BEACH' => 'ZS4XHGCN3W5',
+                    'ATLANTIC BEACH' => 'DRDEXVEVCNQ',
+                    'NEPTUNE BEACH' => 'DRDEXVGB0NK',
+
+
                     'ST AUGUSTINE' => 'DRDEXVGWAKV',
                     'PONTE VEDRA' => 'M2T9W523W24',
-                    'JACKSONVILLE' => 'DZ9DY4L70GC',
                     'PONTE VEDRA BEACH' => 'ZS4XHGCVWD4',
                     'ST JOHNS' => 'OY9BRS63545',
-                    'JACKSONVILLE BEACH' => 'ZS4XHGCN3W5',
-                    'FLEMING ISLAND' => 'RJJL57IDA2D',
+                    'ELKTON' => 'DRDEXVFE3QC',
+
+                    'PALM COAST' => 'DRDEXVGIGVC',
+                    'FLAGLER BEACH' => 'DRDEXVFHFAK',
+                    'BUNNELL' => 'JA6X3I1J7BX',
+                    'ORMOND BEACH' => 'J9AOM8TLW8X',
+
                     'AMELIA ISLAND' => 'DRDEXVEW4DO',
                     'FERNANDINA BEACH' => 'E08U7P7PNFQ',
+                    'YULEE' => 'DRDEXVH5SRW',
                 ],
                 'D' => [
+                    'FLEMING ISLAND' => 'RJJL57IE4CD',
+                    'GREEN COVE SPRINGS' => '1DGA31G566YE',
+                    'ORANGE PARK' => 'DRJ2ZTTA84M',
+                    'MIDDLEBURG' => 'DRJ2ZTT6CVX',
+
+                    'JACKSONVILLE' => 'DZ9DY4LWIUL',
+                    'JACKSONVILLE BEACH' => 'ZS4XHGD7365',
+                    'ATLANTIC BEACH' => 'DRJ2ZTRSAY3',
+                    'NEPTUNE BEACH' => 'DRJ2ZTT8OTX',
+
                     'ST AUGUSTINE' => 'DRJ2ZTTTS5B',
                     'PONTE VEDRA' => 'M2T9W524PD2',
-                    'JACKSONVILLE' => 'DZ9DY4LWIUL',
                     'PONTE VEDRA BEACH' => 'ZS4XHGDEMJU',
                     'ST JOHNS' => 'OY9BRS64O1Z',
-                    'JACKSONVILLE BEACH' => 'ZS4XHGD7365',
-                    'FLEMING ISLAND' => 'RJJL57IE4CD',
+                    'ELKTON' => 'DRJ2ZTSB4EF',
+
+                    'PALM COAST' => 'DRJ2ZTTFX37',
+                    'FLAGLER BEACH' => 'DRJ2ZTSED1K',
+                    'BUNNELL' => 'JA6X3I1KJP0',
+                    'ORMOND BEACH' => 'J9AOM8TNOKH',
+
                     'AMELIA ISLAND' => 'DRJ2ZTRT6XG',
                     'FERNANDINA BEACH' => 'E08U7P83YYA',
+                    'YULEE' => 'DRJ2ZTU3EF0',
                 ],
                 'E' => [
+                    'FLEMING ISLAND' => 'RJJL57IFEMZ',
+                    'GREEN COVE SPRINGS' => '1DGA31G56F8R',
+                    'ORANGE PARK' => 'DRGOCB3GZJ8',
+                    'MIDDLEBURG' => 'DRGOCB3CWQ7',
+
+                    'JACKSONVILLE' => 'DZ9DY4MIOCO',
+                    'JACKSONVILLE BEACH' => 'ZS4XHGDPNEV',
+                    'ATLANTIC BEACH' => 'DRGOCB1YN5P',
+                    'NEPTUNE BEACH' => 'DRGOCB3FBIW',
+
                     'ST AUGUSTINE' => 'DRGOCB41DYV',
                     'PONTE VEDRA' => 'M2T9W525GI6',
-                    'JACKSONVILLE' => 'DZ9DY4MIOCO',
                     'PONTE VEDRA BEACH' => 'ZS4XHGDYBN0',
                     'ST JOHNS' => 'OY9BRS65TDA',
-                    'JACKSONVILLE BEACH' => 'ZS4XHGDPNEV',
-                    'FLEMING ISLAND' => 'RJJL57IFEMZ',
+                    'ELKTON' => 'DRGOCB2HS5T',
+
+                    'PALM COAST' => 'DRGOCB3MZG8',
+                    'FLAGLER BEACH' => 'DRGOCB2L3Y9',
+                    'BUNNELL' => 'JA6X3I1M30A',
+                    'ORMOND BEACH' => 'J9AOM8TTPFE',
+
                     'AMELIA ISLAND' => 'DRGOCB1ZIST',
                     'FERNANDINA BEACH' => 'E08U7P8LDQA',
+                    'YULEE' => 'DRGOCB4B8W1',
                 ],
             ],
             'status' => [
