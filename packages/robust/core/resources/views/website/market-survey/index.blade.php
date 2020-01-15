@@ -51,11 +51,6 @@
                                         Listings
                                     </a>
                                 </li>
-                                <li class="tab">
-                                    <a class="market-survey__insights" href="#market-survey__insights">
-                                        Market Insights
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                         <div id="market-survey__listings"
@@ -68,9 +63,6 @@
                                         }}"
                         >
                             @include(Site::templateResolver('core::website.market-survey.partials.listings'))
-                        </div>
-                        <div id="market-survey__insights" class="market-survey__insights">
-                            @include(Site::templateResolver('core::website.market-survey.partials.insights'))
                         </div>
                     </div>
                 </div>

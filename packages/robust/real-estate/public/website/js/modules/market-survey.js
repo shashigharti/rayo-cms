@@ -158,10 +158,11 @@
         let url = listingContainer.getAttribute("data-url"),
             property_url = listingContainer.getAttribute("data-property-url"),
             price_min = document.querySelector('.search-filter__price-min').selectedOptions[0].value,
-            price_max = document.querySelector('.search-filter__price-max').selectedOptions[0].value;
+            price_max = document.querySelector('.search-filter__price-max').selectedOptions[0].value,
+            sold_status = document.querySelector('.search-filter__status').selectedOptions[0].value;
 
         // Append Price
-        url += `&price=${price_min}-${price_max}`;
+        url += `&price=${price_min}-${price_max}&sold_status=${sold_status}`;
 
         // Get data from the server and load properties array
         $.ajax({
