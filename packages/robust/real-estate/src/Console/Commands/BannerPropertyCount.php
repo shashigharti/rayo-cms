@@ -83,24 +83,20 @@ class BannerPropertyCount extends Command
                     }
 
                     foreach ($other_queries as $tab => $value){
+                        $operator = '=';
                         if($tab === 'acres') {
-                            $properties['tabs_data'][$tab][$price] = $query
-                                ->whereIn('real_estate_listings.id', function ($q) use ($tab, $value) {
-                                    $q->from('real_estate_listing_properties')
-                                        ->select('real_estate_listing_properties.listing_id')
-                                        ->where('type', $tab)
-                                        ->where('value', '<=', $value);
-                                })->count();
-                        }else{
-                            $properties['tabs_data'][$tab][$price] = $query
-                                ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value){
-                                    $q->from('real_estate_listing_properties')
-                                        ->select('real_estate_listing_properties.listing_id')
-                                        ->where('type',$tab)
-                                        ->where('value',$value);
-                                })->count();
+                           $operator = '<=';
                         }
-
+                        if($tab === 'pool'){
+                            $operator = '!=';
+                        }
+                        $properties['tabs_data'][$tab][$price] = $query
+                            ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value,$operator){
+                                $q->from('real_estate_listing_properties')
+                                    ->select('real_estate_listing_properties.listing_id')
+                                    ->where('type',$tab)
+                                    ->where('value',$operator,$value);
+                            })->count();
                     }
                 }
                 if(isset($queries['subdivisions'])){
