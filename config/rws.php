@@ -118,6 +118,10 @@ return [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Exterior'
         ],
+        'subdivisions' => [
+            'blade' => 'locations-select-remote',
+            'display_name' => 'Subdivisions'
+        ],
         'pool' => [
             'blade' => 'attributes-select-remote',
             'display_name' => 'Pool'
@@ -125,10 +129,6 @@ return [
         'counties' => [
             'blade' => 'locations-select-remote',
             'display_name' => 'Counties'
-        ],
-        'subdivisions' => [
-            'blade' => 'locations-select-remote',
-            'display_name' => 'Subdivisions'
         ],
         'cities' => [
             'blade' => 'locations-select-remote',
