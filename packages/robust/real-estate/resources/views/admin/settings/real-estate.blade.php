@@ -55,24 +55,29 @@
             </div>
         </div>
         <div class="form-group form-material row">
-            <div class="col s2">
-                {{ Form::label('banner_per_row', 'Banner Per Row', ['class' => 'control-label' ]) }}
+            <div class="col s1">
+                {{ Form::label('banner_per_row', 'Banner Per Row') }}
                 {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
             </div>
-            <div class="col s2">
-                {{ Form::label('year_built', 'Year Built', ['class' => 'control-label' ]) }}
+            <div class="col s1">
+                {{ Form::label('year_built', 'Year Built') }}
                 Min: {{ Form::text('year_built_min', $settings['year_built_min'] ?? '') }}
                 Max: {{ Form::text('year_built_max', $settings['year_built_max'] ?? '') }}
             </div>
-            <div class="col s2">
-                {{ Form::label('sq_feet', 'Square Feet', ['class' => 'control-label' ]) }}
+            <div class="col s1">
+                {{ Form::label('sq_feet', 'Square Feet') }}
                 Min: {{ Form::text('sq_feet_min', $settings['sq_feet_min'] ?? '') }}
                 Max: {{ Form::text('sq_feet_max', $settings['sq_feet_max'] ?? '') }}
             </div>
-            <div class="col s2">
-                {{ Form::label('sq_feet', 'Beds', ['class' => 'control-label' ]) }}
+            <div class="col s1">
+                {{ Form::label('beds', 'Beds') }}
                 Min: {{ Form::text('beds_min', $settings['beds_min'] ?? '') }}
                 Max: {{ Form::text('beds_max', $settings['beds_max'] ?? '') }}
+            </div>
+            <div class="col s1">
+                {{ Form::label('zip_code', 'Zip') }}
+                Max(Character): {{ Form::text('zip_code_character_count', $settings['zip_code_character_count'] ?? '') }} Or
+                Value(<=): {{ Form::text('zip_code_max', $settings['zip_code_max'] ?? '') }}
             </div>
         </div>
     </fieldset>

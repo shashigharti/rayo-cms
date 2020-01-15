@@ -37,27 +37,6 @@ class MenuHelper
         return Menu::where('name', $name)->first();
     }
 
-    /**
-     * Return all the parent menus with children menus
-     * @return mixed
-     */
-    public function getAllMenus()
-    {
-        //children.children is used to retrieve children of childrens
-        $menus = Menu::where('parent_id', 0)->with('children', 'children.children')->get();
-        return isset($menus) ? $menus->toArray() : [];
-    }
-
-    /**
-     * Return all the parent menus with children menus
-     * @return mixed
-     */
-    public function getAllMenusByPackage($package_name)
-    {
-        //children.children is used to retrieve children of childrens
-        $menus = Menu::where('parent_id', 0)->where('package_name', '=', $package_name)->with('children', 'children.children')->get();
-        return isset($menus) ? $menus : [];
-    }
 
     /**
      * @param $package_name
@@ -68,16 +47,5 @@ class MenuHelper
         return Menu::where('parent_id', 0)
             ->where('package_name', $package_name)->first();
     }
-
-    /**
-     * Test purpose only
-     * @param \Robust\DynamicForms\Models\Form $form
-     * @return mixed
-     */
-    public function getAllForms()
-    {
-        return Form::select('title', 'slug')->get();
-    }
-
 
 }

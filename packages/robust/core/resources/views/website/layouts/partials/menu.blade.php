@@ -1,4 +1,6 @@
 @set('menus', settings('real-estate', 'menus') != ""? settings('real-estate', 'menus') : [])
+@inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
+
 <nav class="navbar navbar-expand-lg navbar-light">
     <ul class="right hide-on-med-and-down">
         <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>
@@ -12,8 +14,10 @@
                     <div class="col s12">
                         <ul class="tabs">
                             @foreach($menus as $menu)
-                                <li class="tab"><a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})</a>
+                                <li class="tab">
+                                    <a class="active" href="#{{$menu}}">{{ucwords($menu)}}
+                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})
+                                    </a>
                                 </li>
                             @endforeach
                             <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
@@ -25,7 +29,8 @@
                         <div id="{{ $menu }}" class="tab-filter tab--content col s12">
                             <ul>
                                 @if(isset($locations[$menu]))
-                                    @foreach($locations[$menu] as $location)
+                                    @set('items', $menu_helper->filterMenu($menu, $locations[$menu]))
+                                    @foreach($items as $location)
                                         <li data-active="{{ $location->active_count }}"
                                             data-active-url="{{ settings('real-estate', 'url_active') }}"
                                             data-sold-url="{{ settings('real-estate', 'url_sold') }}"
@@ -38,8 +43,7 @@
                                                     ])}}"
                                             >
                                                 {{ $location->name }}
-                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }}
-                                                    )</span>
+                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
                                             </a>
                                         </li>
                                     @endforeach
