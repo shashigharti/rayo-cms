@@ -107,7 +107,9 @@ class BannerPropertyCount extends Command
                             ->where('locationable_id',$subdivision->id)
                             ->first();
                         if($subdiv){
-                            $properties['tabs_data']['subdivisions'][$subdiv->slug] = Listing::where('subdivision_id',$subdiv->id)->count();
+                            $properties['tabs_data']['subdivisions'][$subdiv->slug] = Listing::where('subdivision_id',$subdiv->id)
+                                ->where($this->maps[$queries['location_type']],$location->id)
+                                ->count();
                         }
                     }
                 }
