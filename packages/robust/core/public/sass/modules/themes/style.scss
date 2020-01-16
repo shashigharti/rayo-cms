@@ -1612,3 +1612,65 @@ table {
         }
     }
 }
+.btn-default {
+    background-color: #777;
+}
+
+.search--block i {
+    vertical-align: middle;
+    margin-right: 4px;
+}
+
+.search--block input[type=text] {
+    vertical-align: middle !important;
+    margin-right: 4px !important;
+    width: 92% !important;
+    border-bottom: 0 !important;
+    height: auto !important;
+    margin-bottom: 0px !important;
+    vertical-align: text-bottom;
+}
+
+.search--block {
+    border: 1px solid #d4cdcd;
+    padding: 5px 10px;
+}
+
+.search--block input[type=text]:not(.browser-default):focus:not([readonly]) {
+    border-bottom: none !important;
+    box-shadow: none !important;
+}
+
+.media-image {
+    min-height: 115px;
+    line-height: 115px;
+    max-height: 115px;
+    width: 115px;
+    height: 115px;
+    border: 1px solid #ccc;
+    margin-top: 15px;
+    display: inline-block;
+    margin-right: 8px;
+}
+
+.media-image.selected {
+    border: 1px solid #6b4994;
+}
+
+.media-image img {
+    width: auto;
+    height: auto;
+    max-width: 100%;
+    max-height: 100%;
+    display: inline-block !important;
+    vertical-align: middle;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: -o-crisp-edges;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+    -ms-interpolation-mode: nearest-neighbor;
+}
+
+.media-image.selected img {
+    opacity: 0.8;
+}
