@@ -33,20 +33,17 @@ class Lead extends BaseUI
             ]
         ]
     ];
-     /**
+    /**
      * @var array
      */
     public $left_menu = [
-        
+
     ];
 
     /**
      * @var array
      */
     public $right_menu = [
-        // 'add' => [
-        //     'display_name' => 'Add', 'url' => 'admin.leads.create', 'permission' => 'real-estate.leads.add', 'icon' => 'add'
-        // ]
     ];
     /**
      * @var array
@@ -59,6 +56,7 @@ class Lead extends BaseUI
      * @var array
      */
     public $editrules = [];
+
     /**
      * @param $category
      * @return array
@@ -67,11 +65,72 @@ class Lead extends BaseUI
     {
         return $category->exists ? ['admin.leads.update', $category->id] : ['admin.leads.store'];
     }
+
     /**
-     * @return string
+     * @param $model
+     * @return array
      */
-    // public function getModel()
-    // {
-    //     return 'Robust\RealEstate\Models\Lead';
-    // }
+    public function getTabs($model)
+    {
+        return [
+            'Overview' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'overview'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Communications' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'communications'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Notes' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'notes'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Views/Favs' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'views-favs'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Searches' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'searches'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Bookmarks' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'bookmarks'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Reports' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'reports'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
+            'Alerts' => [
+                'url' => route('admin.leads.details', [
+                    'id' => $model->id,
+                    'type' => 'alerts'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ]
+
+        ];
+
+    }
 }

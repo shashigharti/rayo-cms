@@ -56,7 +56,7 @@
                                                     <div class="row">
                                                         <div class="col s12">
                                                             <span class="name lead">
-                                                                <a href="#" class="">Buyer</a>
+                                                                <a href="{{route('admin.leads.edit', 1)}}" class="">Buyer</a>
                                                             </span>
                                                             <div>
                                                                 <small>{{$lead->phone}}</small>
