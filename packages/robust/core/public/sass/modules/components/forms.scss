@@ -308,3 +308,16 @@ input {
     margin-right: 5px;
     color:#fff;
 }
+.split--block {
+    span {
+        width: 48%;
+        display: inline-block;
+        font-size: 11px;
+        margin-top: 26px;
+    }
+
+    input {
+        width: 66% !important;
+        height: 20px !important;
+    }
+}

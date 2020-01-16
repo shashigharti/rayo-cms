@@ -1,5 +1,5 @@
 @extends('core::admin.layouts.sub-layouts.blank')
-@section('custom_title')
+<!-- @section('custom_title')
     <div class="page-title">
 
         <span class="create-btn">
@@ -17,11 +17,11 @@
             {{ Form::close() }}
         </span>
     </div>
-@endsection
+@endsection -->
 
 @section('custom_design')
     <div class="media">
-        <div class="panel-body bg-white">
+        <!-- <div class="panel-body bg-white">
             <!-- Media Sidebar -->
             <div class="page-aside">
                 @include('core::admin.partials.medias.left')
@@ -70,6 +70,6 @@
                     {!! $records->links() !!}
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 @endsection
