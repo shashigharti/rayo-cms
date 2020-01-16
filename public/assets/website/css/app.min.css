@@ -927,7 +927,7 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .modal [type="radio"]:not(:checked),.modal [type="radio"]:checked{position:relative;opacity:1;pointer-events:inherit;display:inline-block;width:20px !important;vertical-align:text-bottom;margin-right:5px}
 div#researchToolModal{border-radius:7px;top:20% !important;max-height:-webkit-min-content;max-height:-moz-min-content;max-height:min-content}
 header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none;padding-left:0;padding-right:30px}
-.site-menu .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
+.site-menu .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px;padding:0}
 .site-menu li.active>.nav-link{color:rgba(255,255,255,0.8)}.site-menu .nav-link.active,.site-menu .nav-link.show{color:rgba(255,255,255,0.8)}
 .site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}.mobile-menu-btn{display:none}
 .site-menu nav{background-color:transparent;-webkit-box-shadow:none;box-shadow:none}
