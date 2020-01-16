@@ -4,7 +4,7 @@
         @foreach($tabs as $title => $tab)
             @can($tab['permission'])
                 <li class="tab {{is_active($tab['url'])}}">
-                    <a href="{{$tab['url']}}">{{$title}}</a>
+                    <a target="_blank" href="{{$tab['url']}}">{{$title}}</a>
                 </li>
             @endcan
         @endforeach

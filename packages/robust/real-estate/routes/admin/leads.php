@@ -5,7 +5,7 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
     ]);
     Route::get('leads/{id}/{type}', [
         'name' =>'Lead Details Page',
-        'as' => 'leads.details',
+        'as' => 'leads.details.edit',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@getDetailsPage'
     ]);
 });

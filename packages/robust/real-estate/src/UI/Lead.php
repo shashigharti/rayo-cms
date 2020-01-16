@@ -74,56 +74,55 @@ class Lead extends BaseUI
     {
         return [
             'Overview' => [
-                'url' => route('admin.leads.details', [
-                    'id' => $model->id,
-                    'type' => 'overview'
+                'url' => route('admin.leads.edit', [
+                    'id' => $model->id
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Communications' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'communications'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Notes' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'notes'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Views/Favs' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'views-favs'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Searches' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'searches'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Bookmarks' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'bookmarks'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Reports' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'reports'
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
             'Alerts' => [
-                'url' => route('admin.leads.details', [
+                'url' => route('admin.leads.details.edit', [
                     'id' => $model->id,
                     'type' => 'alerts'
                 ]),
