@@ -44,9 +44,7 @@ class LeadController extends Controller
         return $this->display("real-estate::admin.leads.create",
             [
                 'model' => $this->model->find($id),
-                'primary_menu' => (new MenuHelper())->getPrimaryMenu($this->package_name),
-                'title' => (isset($this->title)) ? $this->title : '',
-                'package' => $this->package_name,
+                'type'  => $type
             ]
         );
     }
