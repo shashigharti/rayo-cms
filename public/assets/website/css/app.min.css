@@ -889,9 +889,9 @@ button:focus{outline:0;background-color:transparent !important}#calculator .radi
 .multi-select-container input[type=search]:not(.browser-default):focus:not([readonly]){border-bottom:0;-webkit-box-shadow:none;box-shadow:none}
 .modal-content{border:0}.msg-info{color:#0b568c}.msg-error{color:#ab2012}.msg-info,.msg-error{background:#fff;padding:9px 20px;height:auto;line-height:20px;border:0;font-weight:500;font-size:12px;text-transform:none}
 .parent-menu{position:relative}.parent-menu i{display:inline-block !important;vertical-align:middle}
-.parent-menu:hover .child-menu{display:block}.child-menu{background-color:#002349 !important;position:absolute;margin-top:0;left:0;display:none;z-index:9}
-.child-menu .dropdown-item{display:block;width:100%;padding:5px 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;white-space:nowrap;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
-.child-menu .dropdown-item:hover{background:#04122d}.mr-t-10{margin-top:10px}.tabs .tab a:focus,.tabs .tab a:focus.active{background-color:transparent;outline:0}
+.parent-menu:hover .child-menu{display:block}.child-menu{background-color:#04122d !important;position:absolute;margin-top:0;left:0;display:none;z-index:9;width:280px;top:48px}
+.child-menu .dropdown-item{display:block;width:100%;padding:5px 10px;clear:both;font-weight:400;color:#fff;text-align:inherit;background-color:transparent;border:0;line-height:30px;font-size:14px;text-transform:initial}
+.child-menu .dropdown-item:hover{background:#002349}.mr-t-10{margin-top:10px}.tabs .tab a:focus,.tabs .tab a:focus.active{background-color:transparent;outline:0}
 .body--content{min-height:100vh}.slider-container{width:300px;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
 .slider-container .back-bar{height:10px;position:relative}.slider-container .back-bar .selected-bar{position:absolute;height:100%}
 .slider-container .back-bar .pointer{position:absolute;width:10px;height:10px;background-color:red;cursor:col-resize;opacity:1;z-index:2}
@@ -926,7 +926,7 @@ button.modal-close{background:transparent;border:0;float:right;font-weight:500;c
 .modal-footer .btn-default{font-size:13px;color:#333;background-color:#fff;display:inline-block;margin-bottom:0;font-weight:normal;text-align:center;vertical-align:middle;-ms-touch-action:manipulation;touch-action:manipulation;cursor:pointer;background-image:none;border:1px solid #ccc;white-space:nowrap;border-radius:4px;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;-webkit-box-shadow:none;box-shadow:none;text-transform:inherit;line-height:32px;margin-left:5px !important}
 .modal [type="radio"]:not(:checked),.modal [type="radio"]:checked{position:relative;opacity:1;pointer-events:inherit;display:inline-block;width:20px !important;vertical-align:text-bottom;margin-right:5px}
 div#researchToolModal{border-radius:7px;top:20% !important;max-height:-webkit-min-content;max-height:-moz-min-content;max-height:min-content}
-header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none}
+header{background:#002349}.site-menu{width:100%;padding:10px 0}.site-menu .nav-link{color:white;font-size:14px;text-transform:uppercase;font-weight:400;text-decoration:none;padding-left:0;padding-right:30px}
 .site-menu .nav-btn .nav-link{font-size:12px !important;vertical-align:middle;border:1px solid #fff;width:110px;text-align:center;border-radius:4px;margin-left:10px;margin-right:0 !important;height:41px;line-height:41px;margin-top:10px}
 .site-menu li.active>.nav-link{color:rgba(255,255,255,0.8)}.site-menu .nav-link.active,.site-menu .nav-link.show{color:rgba(255,255,255,0.8)}
 .site-menu li.show>.nav-link{color:rgba(255,255,255,0.8)}.mobile-menu-btn{display:none}
