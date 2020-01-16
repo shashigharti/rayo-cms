@@ -4,45 +4,48 @@ header {
 }
 
 .site-menu {
-  width: 100%;
-  padding: 10px 0px;
+    width: 100%;
+    padding: 10px 0px;
 
-  .nav-link {
-    color: rgba(255, 255, 255, 1);
-    font-size: 14px;
-    text-transform: uppercase;
-    font-weight: 400;
-    text-decoration: none;    
-  }
-  .nav-btn{
     .nav-link {
-      font-size: 12px !important;
-      vertical-align: middle;
-      border: 1px solid $white;
-      width: 110px;
-      text-align: center;
-      border-radius: 4px;
-      margin-left: 10px;
-      margin-right: 0px !important;
-      height: 41px;
-      line-height: 41px;
-      margin-top: 10px;
+        color: rgba(255, 255, 255, 1);
+        font-size: 14px;
+        text-transform: uppercase;
+        font-weight: 400;
+        text-decoration: none;
+        padding-left: 0px;
+        padding-right: 30px;
     }
-  }
 
-  li.active > .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-  }
-
-  .nav-link {
-    &.active, &.show {
-      color: rgba(255, 255, 255, 0.8);
+    .nav-btn {
+        .nav-link {
+            font-size: 12px !important;
+            vertical-align: middle;
+            border: 1px solid $white;
+            width: 110px;
+            text-align: center;
+            border-radius: 4px;
+            margin-left: 10px;
+            margin-right: 0px !important;
+            height: 41px;
+            line-height: 41px;
+            margin-top: 10px;
+        }
     }
-  }
 
-  li.show > .nav-link {
-    color: rgba(255, 255, 255, 0.8);
-  }
+    li.active > .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+    }
+
+    .nav-link {
+        &.active, &.show {
+            color: rgba(255, 255, 255, 0.8);
+        }
+    }
+
+    li.show > .nav-link {
+        color: rgba(255, 255, 255, 0.8);
+    }
 }
 
 .mobile-menu-btn {

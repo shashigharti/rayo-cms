@@ -1353,12 +1353,14 @@ button{
     }
 }
 .child-menu {
-    background-color:$theme_color !important;
+    background-color: $dark_theme_color !important;
     position: absolute;
-    margin-top:0px;
+    margin-top: 0px;
     left: 0px;
     display: none;
-    z-index:9;
+    z-index: 9;
+    width: 280px;
+    top: 48px;
 
     .dropdown-item {
         display: block;
@@ -1366,16 +1368,16 @@ button{
         padding: 5px 10px;
         clear: both;
         font-weight: 400;
-        color:$white;
+        color: $white;
         text-align: inherit;
-        white-space: nowrap;
         background-color: transparent;
         border: 0;
         line-height: 30px;
         font-size: 14px;
         text-transform: initial;
-        &:hover{
-            background:$dark_theme_color;
+
+        &:hover {
+            background: $theme_color;
         }
     }
 }
