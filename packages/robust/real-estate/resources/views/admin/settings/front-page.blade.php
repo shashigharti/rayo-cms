@@ -8,7 +8,7 @@
             <div class="form-group form-material row">
                 <div class="col s2 input-field">
                     {{ Form::label("{$menu}_sort_order_desc", 'Sort Descending') }}
-                    {{ Form::checkbox("{$menu}_sort_order_desc", $settings["{$menu}_sort_order_desc"] ?? '', [
+                    {{ Form::checkbox("{$menu}_sort_order_desc", true, $settings["{$menu}_sort_order_desc"] ?? '', [
                             'class' => 'form-control'
                         ])
                     }}
