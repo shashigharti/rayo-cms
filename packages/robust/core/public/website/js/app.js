@@ -10,11 +10,16 @@ $(function () {
     $.when(loadGoogleMaps(3, key, 'en', false, ['geometry', 'places']))
         .then(function () { // or .done(...)
             !!google.maps // true
-            function gInitialize() {
-                var input = document.getElementById('autocomplete_address');
-                new google.maps.places.Autocomplete(input);
+
+            // Trigger Map Loaded Event
+            $(document).trigger("map-loaded");
+
+            // Initialize auto complete
+            function autoCompleteInitialization() {
+                let autoCompleteElem = new google.maps.places.Autocomplete(document.getElementById('autocomplete_address'));
+                $(document).trigger("auto-complete-loaded", [autoCompleteElem]);
             }
-            google.maps.event.addDomListener(window, 'load', gInitialize);
+            google.maps.event.addDomListener(window, 'load', autoCompleteInitialization);
         });
 
 });

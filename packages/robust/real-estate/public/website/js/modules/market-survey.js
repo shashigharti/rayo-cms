@@ -16,6 +16,7 @@
         '_acres': {display: 'Acres'},
         '_stories': {display: 'stories'}
     };
+    let autoCompleteElem = null;
 
     class MarketSurveyMap extends LMap {
         render(properties) {
@@ -130,20 +131,22 @@
                         <tr>
                             <th>Properties</th>
                             ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
-            }).join(" ")}
+                                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
+                                }).join(" ")
+                            }
                         </tr>
                     </thead>
                     <tbody>
                         ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
-                return `
+                            return `
                                 <tr>
                                     <td>${comparePropertiesRows[attrIndex].display}</td>
                                     ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                    return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
-                }).join(" ")}
+                                        return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
+                                        }).join(" ")
+                                    }
                                 </tr>`;
-            }).join(" ")}
+                        }).join(" ")}
                     </tbody>
             </table>
             `;
@@ -160,13 +163,13 @@
             price_min, price_max, sold_status, lat, lng, address;
 
         if (search_by === 'address') {
-            let elem = $('[name=address]');
+            let elem = $('#autocomplete_address');
             url = elem.data("url");
-            address = '';
-            lat = '';
-            lng = '';
-            console.log(elem);
-            url += `address=${address}&lat=${lat}&lng=${lng}`;
+            lat = autoCompleteElem.getPlace().geometry.location.lat();
+            lng = autoCompleteElem.getPlace().geometry.location.lng();
+            $('.market-survey__heading h1').html(autoCompleteElem.getPlace().formatted_address);
+
+            url += `?lat=${lat}&lng=${lng}`;
         } else {
             // Append Price
             price_min = document.querySelector('.search-filter__price-min').selectedOptions[0].value;
@@ -214,8 +217,7 @@
         let search = new Search();
 
         $('.search-filter').on('change', function (e) {
-            let search_by = $(this).attr('name');
-            loadProperties(search_by);
+            loadProperties();
         });
 
         $(document).on('click', '.market-survey__listings--details-card :input[name="property"]', function (e) {
@@ -238,6 +240,17 @@
 
             renderCompareTable(selectedProperties);
         });
+
+        $(document).on("map-loaded", function(e){
+            let elem = $('[name=address]');
+        });
+
+        $(document).on("auto-complete-loaded", function(e, elem){
+            autoCompleteElem = elem;
+            google.maps.event.addListener(autoCompleteElem, 'place_changed', function () {
+                loadProperties('address');
+            });
+        });
     }
 
 
@@ -251,18 +264,18 @@
         console.log('Market Survey');
 
         // Initialize Event Handlers
-        //init();
+        init();
 
         // Get Data from the Server
-        //loadProperties();
+        loadProperties();
 
         // Declare and initialize map container
-        // let mapContainer = document.getElementById('leaflet__map-container');
-        // let map = new MarketSurveyMap(mapContainer);
-        //
-        // $(listingContainer).on('loaded', function () {
-        //     map.render(properties);
-        // });
+        let mapContainer = document.getElementById('leaflet__map-container');
+        let map = new MarketSurveyMap(mapContainer);
+
+        $(listingContainer).on('loaded', function () {
+            map.render(properties);
+        });
 
 
     });

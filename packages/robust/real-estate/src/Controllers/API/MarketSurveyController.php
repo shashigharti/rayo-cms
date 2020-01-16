@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Repositories\API\ListingRepository;
+use Robust\RealEstate\Models\Listing;
 
 /**
  * Class MarketSurveyController
@@ -63,24 +64,7 @@ class MarketSurveyController extends Controller
     public function getListingsByDistance(Request $request)
     {
         $params = $request->all();
-        $lat = $params['lat'];
-        $lng = $params['lng'];
-        $records = $this->model
-            ->select(\DB::raw("*,
-                                (
-                                   3959 *
-                                   acos(cos(radians($lat)) *
-                                   cos(radians(`latitude`)) *
-                                   cos(radians(`longitude`) -
-                                   radians($lng)) +
-                                   sin(radians($lat)) *
-                                   sin(radians(latitude )))
-                                ) AS distance
-                            "))
-            ->having('distance', '<', '.5')
-            ->orderBy('distance')
-            ->limit(100)->get();
-
+        $records = $this->model->getListingsByDistance($params);
         return response()->json($records);
     }
 }

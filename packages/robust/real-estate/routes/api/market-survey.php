@@ -12,9 +12,9 @@ Route::group([
         ]);
 
 
-        Route::post('survey/listings-by-distance', [
+        Route::get('survey/listings-by-distance', [
             'name' => 'Market Survey',
             'as' => 'survey.distance',
-            'uses' => '\Robust\RealEstate\Controllers\Website\MarketSurveyController@getListingsByDistance'
+            'uses' => '\Robust\RealEstate\Controllers\API\MarketSurveyController@getListingsByDistance'
         ]);
     });

@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Repositories\Common\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Repositories\Interfaces\IListings;
 use Illuminate\Support\Arr;
 
@@ -107,23 +108,49 @@ trait ListingTrait
     public function wherePropertyType($property_types, $property_values)
     {
         $this->model = $this->model->whereNotNull('properties_status');
-        $this->model = $this->model->whereIn('real_estate_listings.id', function($query) use ($property_types,$property_values) {
+        $this->model = $this->model->whereIn('real_estate_listings.id', function ($query) use ($property_types, $property_values) {
             $query->from('real_estate_listing_properties')
                 ->select('real_estate_listing_properties.listing_id')
-                ->where('real_estate_listing_properties.listing_id','real_estate_listings.id');
-                foreach ($property_types as $key => $type){
-                    if(isset($property_values[$key]) && $property_values[$key]){
-                        $query->where('real_estate_listing_properties.type', $type);
-                        $values = explode(',',$property_values[$key]);
-                        foreach ($values as $value){
-                            $query->where('real_estate_listing_properties.value',$value);
-                        }
-
+                ->where('real_estate_listing_properties.listing_id', 'real_estate_listings.id');
+            foreach ($property_types as $key => $type) {
+                if (isset($property_values[$key]) && $property_values[$key]) {
+                    $query->where('real_estate_listing_properties.type', $type);
+                    $values = explode(',', $property_values[$key]);
+                    foreach ($values as $value) {
+                        $query->where('real_estate_listing_properties.value', $value);
                     }
+
                 }
+            }
 
         });
         return $this;
     }
 
+
+    /**
+     * @param $location
+     * @param int $limit
+     * @return mixed
+     */
+    public function getListingsByDistance($location, $limit = 100)
+    {
+        $lat = $location['lat'];
+        $lng = $location['lng'];
+        $records = $this->model->select(\DB::raw("*,
+                                (
+                                   3959 *
+                                   acos(cos(radians($lat)) *
+                                   cos(radians(`latitude`)) *
+                                   cos(radians(`longitude`) -
+                                   radians($lng)) +
+                                   sin(radians($lat)) *
+                                   sin(radians(latitude )))
+                                ) AS distance
+                            "))
+            ->having('distance', '<', '.5')
+            ->orderBy('distance')
+            ->limit($limit)->get();
+        return $records;
+    }
 }

@@ -9,8 +9,8 @@
 @section('body_section')
     <section class="market market-survey main-content">
         <div class="row">
-            <div class="col s12">
-                <h1>Alaska Real State</h1>
+            <div class="col s12 market-survey__heading">
+                <h1>{{ ucwords(str_replace('-', ' ', $location['slug'])) }}</h1>
             </div>
             <div class="col s6">
                 <div class="market-survey__left-container">
