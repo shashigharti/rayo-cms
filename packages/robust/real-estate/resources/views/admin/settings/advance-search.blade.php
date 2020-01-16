@@ -2,7 +2,7 @@
 @set('property_types', $advancesearch_helper->getAugmentedAttributesListByPropertyName('property_type'))
 @set('property_statuses', config('real-estate.frw.settings.advance-search')['property_statuses'])
 <div class="system-settings__advance-search">
-    {{Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()])}}
+    {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
         <fieldset>
             <legend>Advance Search Filters</legend>
@@ -114,5 +114,5 @@
                 {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
             </div>
         </div>
-    {{Form::close()}}
+    {{ Form::close() }}
 </div>

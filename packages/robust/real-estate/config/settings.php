@@ -52,5 +52,9 @@ return [
                 'data_pulled' => '20',
             ]
         ])
+    ],
+    [
+        'display_name' => 'Menu',
+        'slug' => 'menus'
     ]
 ];
