@@ -14,10 +14,10 @@
                     }}
                 </div>
                 <div class="col s10 input-field">
-                    {{ Form::label("{$menu}_order", "{$menu} to skip default sort", ['class' => 'control-label' ]) }}
+                    {{ Form::label("{$menu}_order", ucwords($menu). " to skip default sort", ['class' => 'control-label' ]) }}
                     {{ Form::text("{$menu}_order", $settings["{$menu}_order"] ?? '', [
                             'class' => 'form-control',
-                            'placeholder' => 'Add counties Example: \'st-johns,st-joseph\' '
+                            'placeholder' => "Add {$menu} Example: \'st-johns,st-joseph\' "
                         ])
                     }}
                 </div>

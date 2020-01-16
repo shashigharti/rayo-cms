@@ -54,7 +54,7 @@ return [
         ])
     ],
     [
-        'display_name' => 'Menu',
-        'slug' => 'menus'
+        'display_name' => 'Front Page',
+        'slug' => 'front-page'
     ]
 ];
