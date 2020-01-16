@@ -1079,9 +1079,10 @@ a.btn-green{background:#009700;color:#fff;border:1px solid #009700}a.btn-blue{ba
 .market-survey__right-container--tabs .tabs .indicator{display:none}.market-survey__right-container--tabs .tabs li a.active,.market-survey__right-container--tabs .tabs li a:hover,.market-survey__right-container--tabs .tabs li a:focus{color:#002349;font-weight:600;background:transparent;background-color:transparent}
 .market-survey__right-container--header{z-index:15;background-color:#fff}.market-survey__listings{padding:20px}
 .market-survey__listings .filter--bar{margin:15px 0;background:#f5f5f5;padding:20px}
-.market-survey__listings .search--bar{width:100%}.market-survey__listings .select-wrapper{width:70px;background:#fff}
-.market-survey__listings .select-wrapper .dropdown-content li>a,.market-survey__listings .select-wrapper .dropdown-content li>span{padding:14px 4px}
-.market-survey__listings .select-wrapper input.select-dropdown{width:85px}.market-survey__listings .sold-select-wrapper .select-wrapper{width:auto}
+.market-survey__listings .search--bar{width:100%}.market-survey__listings .select-wrapper{width:80px;background:#fff}
+.market-survey__listings .select-wrapper .dropdown-content li{min-height:auto;line-height:20px}
+.market-survey__listings .select-wrapper .dropdown-content li>a,.market-survey__listings .select-wrapper .dropdown-content li>span{padding:4px 4px;font-size:12px;color:#454646;display:block;line-height:20px}
+.market-survey__listings .select-wrapper input.select-dropdown{width:85px}.market-survey__listings .sold-select-wrapper .select-wrapper{width:200px}
 .market-survey__listings .sold-select-wrapper .select-wrapper .caret{right:0 !important}
 .market-survey__listings--reset-btn{border:0;width:100px}.market-survey__listings--details{margin:30px 0}
 .market-survey__listings--details label{color:#777}.market-survey__listings--details button{border:0;width:100px;margin-left:5px}

@@ -75,6 +75,10 @@
             <a class="nav-link" href="#">
                 Sold Homes
                 <i class="material-icons">arrow_drop_down</i>
+                <div class="child-menu"><a class="nav-link" href="#">
+                                                    </a><a class="dropdown-item" href="sold-homes">St. Augustine Sold</a>
+                                                    <a class="dropdown-item" href="sold-homes">St. John's Sold</a>
+                                            </div>
                 @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
                 @if($menus)
                     @set('properties', json_decode($menus->properties))
