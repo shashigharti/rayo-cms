@@ -98,19 +98,19 @@
                                                             </td>
                                                             <td>
                                                                 <div class="info-unit has-tooltip">
-                                                                    @include('real-estate::admin.leads.partials.popups.favorite')
+                                                                    @include('real-estate::admin.leads.partials.popups.favorites')
                                                                 </div>
                                                             </td>
                                                         </tr>
                                                         <tr>
                                                             <td>
                                                                 <div class="info-unit has-tooltip">
-                                                                    @include('real-estate::admin.leads.partials.popups.neighborhood')
+                                                                    @include('real-estate::admin.leads.partials.popups.neighborhoods')
                                                                 </div>
                                                             </td>
                                                             <td>
                                                                 <div class="info-unit has-tooltip">
-                                                                    @include('real-estate::admin.leads.partials.popups.market-report')
+                                                                    @include('real-estate::admin.leads.partials.popups.market-reports')
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -128,6 +128,46 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                </td>
+                                                <td>
+                                                    <table class="table-custom">
+                                                        <tbody>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="info-unit">
+                                                                    @include('real-estate::admin.leads.partials.popups.communications')
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="info-unit">
+                                                                    @include('real-estate::admin.leads.partials.popups.notes')
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="info-unit">
+                                                                    @include('real-estate::admin.leads.partials.popups.phones')
+                                                                </div>
+                                                            </td>
+                                                            <td>
+                                                                <div class="info-unit">
+                                                                    @include('real-estate::admin.leads.partials.popups.replies')
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <div class="info-unit">
+                                                                    @include('real-estate::admin.leads.partials.popups.ratings')
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </td>
+                                                <td>
+                                                    <a href="#">Add</a>
                                                 </td>
                                             </tr>
                                         @endforeach
