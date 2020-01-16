@@ -71,7 +71,7 @@
                                         <i aria-hidden="true" class="fa fa-plus-circle"></i> Add
                                     </button>
                                     <button id="filter_leads_btn" class="btn btn-sm">
-                                        <i class="fa fa-refresh fa-fw fa-lg"></i>Refresh
+                                        <i class="fa fa-refresh fa-lg"></i>Refresh
                                     </button>
                                     <div class="right-align pagination--top">
                                         <ul class="pagination theme--pagination right">
@@ -151,17 +151,17 @@
                                                         <i aria-hidden="true" class="fa fa-sort sortable-icon"></i>
                                                         <div class="sortMenu">
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-eye fa-fw mr-4 aSortable"></i>
+                                                                <i aria-hidden="true" class="fa fa-eye mr-4 aSortable"></i>
                                                                 <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-bullhorn fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-bullhorn mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-heart-o fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-heart-o mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-car fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-car mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -172,23 +172,23 @@
                                                         <i aria-hidden="true" class="fa fa-sort sortable-icon"></i>
                                                         <div class="sortMenu" style="">
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-envelope-o fa-fw mr-4 aSortable"></i>
+                                                                <i aria-hidden="true" class="fa fa-envelope-o mr-4 aSortable"></i>
                                                                 <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-phone fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-phone mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-commenting-o fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-commenting-o mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-sticky-note-o fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-sticky-note-o mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-reply fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-reply mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                             <div>
-                                                                <i aria-hidden="true" class="fa fa-star fa-fw mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
+                                                                <i aria-hidden="true" class="fa fa-star mr-4 aSortable"></i> <i aria-hidden="true" class="fa fa-sort-alpha-asc order"></i> <i aria-hidden="true" class="fa fa-sort-alpha-desc order"></i>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -245,14 +245,14 @@
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a href="#" title="Click for Properties Viewed"><i aria-hidden="true" class="fa fa-eye fa-fw"></i> <small><sub>3</sub></small></a>
+                                                                            <a href="#" title="Click for Properties Viewed"><i aria-hidden="true" class="fa fa-eye"></i> <small><sub>3</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a href="#" title="Favorite Properties"><i aria-hidden="true" class="fa fa-heart-o fa-fw"></i> <small><sub>0</sub></small></a>
+                                                                            <a href="#" title="Favorite Properties"><i aria-hidden="true" class="fa fa-heart-o"></i> <small><sub>0</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -289,7 +289,7 @@
                                                                     <div class="info-unit">
                                                                         <div>
                                                                             <a href="#" title="Distance / Drivetime">
-                                                                                <i aria-hidden="true" class="fa fa-car fa-fw"></i> <small><sub> 0</sub></small>
+                                                                                <i aria-hidden="true" class="fa fa-car"></i> <small><sub> 0</sub></small>
                                                                             </a> <!---->
                                                                         </div>
                                                                     </div>
@@ -305,14 +305,14 @@
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a title="Click to see communications"><i aria-hidden="true" class="fa fa-envelope-o fa-fw"></i> <small><sub>1</sub></small></a>
+                                                                            <a title="Click to see communications"><i aria-hidden="true" class="fa fa-envelope-o"></i> <small><sub>1</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a href="#" title="Click to see notes"><i aria-hidden="true" class="fa fa-sticky-note-o fa-fw"></i> <small><sub>0</sub></small></a>
+                                                                            <a href="#" title="Click to see notes"><i aria-hidden="true" class="fa fa-sticky-note-o"></i> <small><sub>0</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
@@ -321,14 +321,14 @@
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a href="#" title="Click to see calls detail"><i aria-hidden="true" class="fa fa-phone fa-fw"></i> <small><sub>0</sub></small></a>
+                                                                            <a href="#" title="Click to see calls detail"><i aria-hidden="true" class="fa fa-phone"></i> <small><sub>0</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
                                                                 <td>
                                                                     <div class="info-unit">
                                                                         <div>
-                                                                            <a title="Click to see replies"><i aria-hidden="true" class="fa fa-mail-reply fa-fw"></i> <small><sub>0</sub></small></a>
+                                                                            <a title="Click to see replies"><i aria-hidden="true" class="fa fa-mail-reply"></i> <small><sub>0</sub></small></a>
                                                                         </div>
                                                                     </div>
                                                                 </td>
