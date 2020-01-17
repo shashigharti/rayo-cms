@@ -52,7 +52,6 @@
                     @if(isset($settings['single_col_banner_order']) && ($settings['single_col_banner_order'] !== ''))
                         @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $settings['single_col_banner_order'] ?? "")))
                     @endif
-
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
                         <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">

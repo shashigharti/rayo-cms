@@ -12,14 +12,18 @@
             });
 
             elem.on('change', function(e) {
-                let itemsElem = $(elem).find('.sort-container__item');
-                let items = [];
-                $.each(itemsElem, function(index, item){
-                    items.push($(item).data('id'));
-                });
-                $(':input[name=single_col_banner_order]').val(items.join(","));
-                console.log(items.join(","));
+                FRW.Sortable.update(elem);
             });
+
+            FRW.Sortable.update(elem);
+        },
+        update: function(elem){
+            let itemsElem = $(elem).find('.sort-container__item');
+            let items = [];
+            $.each(itemsElem, function(index, item){
+                items.push($(item).data('id'));
+            });
+            $(':input[name=single_col_banner_order]').val(items.join(","));
         }
     };
 
