@@ -24,6 +24,18 @@
                             </div>                           
                         </div>
                 </div>
+                <div class="row viewed-lead">
+                        <div class="col s12">
+                            <div class="vw-lead-name">
+                                6903 Lagoon, Panama City Beach 32408
+                            </div>
+                            <div class="vw-lead-price">
+                                Sent: September 20th 2019, 10:37 am
+                                <br>
+                               Sending alerts: Daily
+                            </div>                           
+                        </div>
+                </div>
                 <div class="row vw-view-more">
                     <a href="#" class="center-align">
                         <div class="col s12">
