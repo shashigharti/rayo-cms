@@ -11,11 +11,7 @@
             </ul>
         </div>
         <div class="input-field theme--select col s2">
-            <select>
-                <option value="" disabled selected>All Agents</option>
-                <option value="1">John C</option>
-                <option value="2">Sam Mazor</option>
-            </select>
+            {{ Form::select('agent_id',$agent_helper->getAgentList(), null, ['class' => 'form-control']) }}
         </div>
         <div class="col s12 btn--bar">
             <button class="btn btn-sm"><i aria-hidden="true" class="fa fa-check-square"></i>

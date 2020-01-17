@@ -1,5 +1,6 @@
 @extends('core::admin.layouts.default')
-
+@inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
+@inject('agent_helper','Robust\RealEstate\Helpers\AgentHelper')
 @section('content')
     @set('ui', new $ui)
     <div class="page leads">
