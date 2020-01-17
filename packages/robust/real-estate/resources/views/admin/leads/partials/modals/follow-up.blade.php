@@ -5,13 +5,20 @@
     </div>
     <div class="box-content">
         <div class="row viewed-lead">
-            Buyer
-            <p>{{ Form::text('date',null,['placeholder'=>'Select Date']) }}</p>
-            <p>{{ Form::Select('type',['Select Followuup Type','Follow Up','To Do','Call Reminder'],null,['class'=>'form-control']) }}</p>
-            <p>{{ Form::Select('agent',['Select Agent','Test']) }}</p>
-            <p>{{ Form::textarea('notes',null,['placeholder'=>'notes']) }}</p>
             <div class="col s12">
-                {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}
+                {{ Form::text('date',null,['placeholder'=>'Select Date']) }}
+            </div>
+            <div class="col s12 mt-3">
+                {{ Form::Select('type',['Select Followuup Type','Follow Up','To Do','Call Reminder'],null,['class'=>'form-control']) }}
+            </div>
+            <div class="col s12 mt-3">
+                {{ Form::Select('agent',['Select Agent','Test']) }}
+            </div>
+            <div class="col s12">
+                {{ Form::textarea('notes',null,['placeholder'=>'notes']) }}
+            </div>
+            <div class="col s12 right-align mt-5">
+                {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}
             </div>
         </div>
     </div>

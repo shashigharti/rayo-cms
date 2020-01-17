@@ -168,10 +168,12 @@
                                                     </table>
                                                 </td>
                                                 <td>
-                                                    <a href="#" class='dropdown-trigger' data-target='add-followup'>Add</a>
-                                                    <ul id='add-followup' class='dropdown-content'>
-                                                        @include('real-estate::admin.leads.partials.modals.follow-up')
-                                                    </ul>
+                                                    <div class="add--followup">
+                                                        <a href="#" class='dropdown-trigger' data-target='add-followup'>Add</a>
+                                                        <ul id='add-followup' class='dropdown-content'>
+                                                            @include('real-estate::admin.leads.partials.modals.follow-up')
+                                                        </ul>
+                                                    </div>
                                                 </td>
                                             </tr>
                                         @endforeach
