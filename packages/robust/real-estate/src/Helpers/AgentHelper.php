@@ -26,7 +26,7 @@ class AgentHelper
     /**
      * @return mixed
      */
-    public function getAgentList()
+    public function getAgentsForDropdown()
     {
         $agents = $this->agent->all();
         return $agents->pluck('first_name','id');

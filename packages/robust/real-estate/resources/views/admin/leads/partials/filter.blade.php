@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="input-field theme--select col s2">
-            {{ Form::select('agent_id',$agent_helper->getAgentList(), null, ['class' => 'form-control']) }}
+            {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), null, ['class' => 'form-control']) }}
         </div>
         <div class="col s12 btn--bar">
             <button class="btn btn-sm"><i aria-hidden="true" class="fa fa-check-square"></i>
