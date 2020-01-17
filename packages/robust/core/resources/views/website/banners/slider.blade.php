@@ -20,7 +20,7 @@
                     <div class="col s12">
                         <div class="adv-slider2 owl-carousel owl-theme" id="adv--slider">
                             @set('properties_count', ($properties->property_count > 5)?$properties->property_count: 5)
-                            @set('listings',$listing_helper->getListingsByType($location->locationable_type, $location->id, $properties_count))
+                            @set('listings', $listing_helper->getListingsByType($location->locationable_type, $location->id, $properties_count))
                             @foreach($listings as $listing)
                                 @set('first_image', $listing->images()->first())
                                 <a href="{{route('website.realestate.single',['slug' => $listing->slug])}}">

@@ -1,3 +1,7 @@
+@inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
+<style>
+    .dd-placeholder { display: block; position: relative; margin: 0; padding: 0; min-height: 20px; font-size: 13px; line-height: 20px; }
+</style>
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
@@ -39,19 +43,22 @@
             @endforeach
         </div>
     </fieldset>
-    <fieldset class="mt-2">
-        <legend>Sort Single Col Banners</legend>
-        <div class="form-group form-material row">
-            <div class="col s6 input-field">
-                {{ Form::label("hide_{$menu}", ucwords($menu)) }}
-                {{ Form::text("hide_{$menu}", $settings["hide_{$menu}"] ?? '', [
-                        'class' => 'form-control',
-                        'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
-                    ])
-                }}
-            </div>
+    <div class="row">
+        <div class="col s12 m6 dd">
+            <fieldset class="mt-2">
+                <legend>Sort Banners</legend>
+                <ul class="collection dd-item">
+                    @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
+                    @foreach($singleColBlocks as $key => $banner)
+                        @set('properties',json_decode($banner->properties))
+                        <li class="dd-item collection-item" data-id="{{$key}}">
+                            <i class="dd-handle material-icons">zoom_out_map</i> {{ $properties->header }}
+                        </li>
+                    @endforeach
+                </ul>
+            </fieldset>
         </div>
-    </fieldset>
+    </div>
     <div class="form-group form-material mt-3 row">
         <div class="col s12">
             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}

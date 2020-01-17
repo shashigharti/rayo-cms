@@ -18,7 +18,7 @@
 
     $(function () {
         let marketReportMapViewContainer = document.getElementsByClassName('market-map-view'),
-            isMarketReportMapView = (marketReportMapViewContainer.length > 0) ? true : false;
+            isMarketReportMapView = (marketReportMapViewContainer.length > 0);
 
         if (!isMarketReportMapView) {
             return;
