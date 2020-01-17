@@ -18,8 +18,10 @@
                                 PT-Mon, Nov 25,2019
                                 <br>
                                 7:38 A.M
-                                <br>
-                                <br>
+                            </div>                           
+                        </div>
+                        <div class="col s12 mt-4">
+                            <div class="vw-lead-price">                                
                                 not in TL-Thu,Oct 3,2019
                                 <br>
                                 10:28 A.M
