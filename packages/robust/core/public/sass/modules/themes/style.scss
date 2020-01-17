@@ -1674,3 +1674,15 @@ table {
 .media-image.selected img {
     opacity: 0.8;
 }
+.modal-header {
+    span {
+        font-size: 18px;
+        font-weight: 600;
+    }
+
+    i.material-icons {
+        color: #111 !important;
+        font-size: 15px !important;
+        font-weight: 600 !important;
+    }
+}

@@ -118,6 +118,8 @@ span.badge-secondary {
 .Leads {
     .tab--content {
         padding: 0px 0px 0px;
+        background: transparent;
+        box-shadow: none;
     }
 }
 .info-dialog {
@@ -186,5 +188,10 @@ span.badge-secondary {
     .dropdown-content {
         width: 270px !important;
         height: auto !important;
+    }
+}
+.modal-body {
+    .status a {
+        margin: 6px 0 10px 15px;
     }
 }
