@@ -167,7 +167,10 @@
                                                     </table>
                                                 </td>
                                                 <td>
-                                                    <a href="#">Add</a>
+                                                    <a href="#" class='dropdown-trigger' data-target='add-followup'>Add</a>
+                                                    <ul id='add-followup' class='dropdown-content'>
+                                                        @include('real-estate::admin.leads.partials.modals.follow-up')
+                                                    </ul>
                                                 </td>
                                             </tr>
                                         @endforeach

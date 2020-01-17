@@ -16,19 +16,18 @@
             modalObj.find('.modal-footer #confirm').on('click', function () {
                 $(this).data('form').submit();
             });
-        },
-        modal:function(){
         }
-    }
+    };
+    FRW.Modal = {
+        init:function(){
+        }
+    };
     $(document).ready(function ($) {
         if ($('#confirmDelete').length > 0){
             let modalObj = $('#confirmDelete');
             let buttonObj = $('button[href="#confirmDelete"]');
             FRW.DeleteForm.confirmDelete(modalObj,buttonObj);
         }
-        FRW.DeleteForm.modal();
-    });
-    $(document).ready(function () {
-        $('.modal').modal();
+
     });
 }(jQuery, FRW, window, document));
