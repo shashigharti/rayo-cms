@@ -10,9 +10,6 @@
             @else
                 @include("real-estate::admin.leads.partials.details.overview")
             @endif
-            <div class="col s12">
-                {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn']) }}
-            </div>
         </div>
     </div>
     {{ Form::close() }}

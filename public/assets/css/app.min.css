@@ -1132,8 +1132,7 @@ nav.display-none.search-sm .nav-wrapper form .input-field input.search-box-sm:no
 .navbar #notifications-dropdown li>a>span{font-size:1.2rem;position:relative;top:4px;display:inline-block;margin-right:5px}
 .navbar #notifications-dropdown li>time{font-size:.8rem;font-weight:400;margin-left:38px}
 .navbar #notifications-dropdown li.divider{padding:0}#notifications-dropdown.dropdown-content{width:310px !important;right:58px !important;left:auto !important;top:64px !important}
-.fixed--bar{position:fixed;padding:10px;height:100vh;width:20%;font-size:12px}.fixed--bar .title{font-size:20px}
-.fixed--bar .title i.material-icons{font-size:17px;vertical-align:text-bottom;float:right}
+.fixed--bar{font-size:12px}.fixed--bar .title{font-size:20px}.fixed--bar .title i.material-icons{font-size:17px;vertical-align:text-bottom;float:right}
 .fixed--bar .btn i,.fixed--bar .btn-large i,.fixed--bar .btn-small i{margin-right:4px;vertical-align:bottom}
 .tags .chip{color:#fff;font-size:11px;height:24px;line-height:24px;margin:10px 0}
 .tags .chip .close{font-size:11px;line-height:25px;float:right;padding-left:8px;cursor:pointer}
@@ -1180,7 +1179,7 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .split--block span{width:48%;display:inline-block;font-size:11px;margin-top:26px}
 .split--block input{width:66% !important;height:20px !important}.pagination{margin-top:-2px;margin-bottom:0}
 .pagination li{height:24px;line-height:24px}.pagination li.active{background-color:#6b4994}
-.pagination li.active span{color:#fff}.pagination li a{font-size:12px;line-height:24px}
+.pagination li.active span{color:#126692}.pagination li a{font-size:12px;line-height:24px}
 .pagination li span{width:24px;display:inline-block}.pagination--top{display:inline}
 .panel .pagination{margin:20px 0}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
 .col-sub-heading{display:inline-block;position:relative}.sortable-icon{color:#bababa}
@@ -1205,7 +1204,15 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .btn--bar .btn i,.btn--bar .btn-large i,.btn--bar .btn-small i{font-size:12px}.theme--btn{background-color:#6b4994 !important}
 .theme--btn:hover{background-color:#8d62c1 !important}span.badge-secondary{color:#333;font-size:11px;font-weight:bold}
 .theme--select{margin-top:10px}.filter--bar .theme__tabs .tab a{font-size:11px;font-weight:bold}
-.leads-table small{font-size:10px}.info-unit{width:30px}.statistics__block{padding:15px}
+.leads-table small{font-size:10px}.info-unit{width:30px}.Leads .tab--content{padding:0}
+.info-dialog{background:#fafafa;-webkit-box-shadow:0 2px 15px rgba(0,0,0,0.3);box-shadow:0 2px 15px rgba(0,0,0,0.3);border:1px solid #ccc;font-family:"Roboto Condensed",sans-serif;color:rgba(0,0,0,0.87);z-index:1}
+.info-dialog .box-title{padding:5px 15px 2px 10px;border-bottom:1px solid #ccc;background:#e8e8e8;font-size:.9rem;font-weight:700}
+.info-dialog .box-content{margin-top:15px;font-size:.9rem;font-family:"Open Sans",Arial,sans-serif}
+.info-dialog .viewed-lead{margin:0;padding:5px 2px;font-size:.7rem}.info-dialog .viewed-lead img{width:85px;height:70px;padding:0;overflow:hidden;-o-object-fit:cover;object-fit:cover;padding:0 10px 10px 10px}
+.info-dialog .viewed-lead .vw-lead-name{font-weight:600}.info-dialog .viewed-lead .vw-lead-price,.info-dialog .viewed-lead .vw-lead-address{font-weight:200}
+.info-dialog .vw-view-more{font-size:.7rem;padding-right:20px;margin:10px 0 15px 20px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
+.info-dialog .vw-view-more a{color:#038cb8 !important}.view-box{width:270px}.leads-table{position:inherit}
+.info-unit .dropdown-content{width:270px !important;height:auto !important}.statistics__block{padding:15px}
 .statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
 .statistics__block .statistics__block-single h6.title{font-size:16px;margin-top:15px}
 .statistics__block .statistics__block-single p{margin:2px 0;font-size:12px}.statistics__block .statistics__block-single p.count{font-size:35px;color:#0277bd}
