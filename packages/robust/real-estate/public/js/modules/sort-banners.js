@@ -3,11 +3,15 @@
     "use strict";
 
     $(function () {
-        if($(".dd").length === 0){
+        if($(".banners").length === 0){
             return;
         }
-        $('.dd').nestable({
-            placeClass: 'blue lighten-5'
+        $('.banners').nestable({
+            placeClass: 'dd-placeholder',
+            rootClass: 'banners',
+            listClass: 'banners-list',
+            itemClass: 'banner-item',
+            handleClass: 'banner-handle'
         });
 
     });

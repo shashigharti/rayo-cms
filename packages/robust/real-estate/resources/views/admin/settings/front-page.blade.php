@@ -1,6 +1,6 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
 <style>
-    .dd-placeholder { display: block; position: relative; margin: 0; padding: 0; min-height: 20px; font-size: 13px; line-height: 20px; }
+    .dd-placeholder { border: 1px dashed #0a0a0a ; background-color: #00bcd4}
 </style>
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
@@ -44,15 +44,15 @@
         </div>
     </fieldset>
     <div class="row">
-        <div class="col s12 m6 dd">
+        <div class="col s12 m6 banners">
             <fieldset class="mt-2">
                 <legend>Sort Banners</legend>
-                <ul class="collection dd-item">
+                <ul class="collection banners-list">
                     @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
-                        <li class="dd-item collection-item" data-id="{{$key}}">
-                            <i class="dd-handle material-icons">zoom_out_map</i> {{ $properties->header }}
+                        <li class="banner-item collection-item" data-id="{{$key}}">
+                            <i class="banner-handle material-icons">zoom_out_map</i> {{ $properties->header }}
                         </li>
                     @endforeach
                 </ul>
