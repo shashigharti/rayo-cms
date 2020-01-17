@@ -1,6 +1,6 @@
 <div class="column-action__notes">
     <a href="#" title="Click to see communications" class='dropdown-trigger' href='#' data-target='dd-notes'>
-        <i aria-hidden="true" class="fa fa-envelope-o"></i>
+        <i aria-hidden="true" class="fa fa-sticky-note-o"></i>
         <small>
             <sub>1</sub>
         </small>
@@ -8,38 +8,37 @@
     <ul id='dd-notes' class='dropdown-content'>
         <div class="info-dialog view-box">
             <div class="box-title">
-                Buyer
+                Ron-Turner(Notes)
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
-                    <a href="//scottingraham.com/real-estate/692712/6903-lagoon-panama-city-beach-32408" target="_blank">
-                        <div class="col s4">
-                            <img src="http://cdn.photos.sparkplatform.com/bc/20200111182524426985000000-o.jpg" alt="6903 Lagoon, Panama City Beach 32408" class="img-responsive">
-                        </div>
-                        <div class="col s8">
-                            <div class="vw-lead-name">
-                                6903 Lagoon, Panama City Beach 32408
-                            </div>
+                        <div class="col s12">
                             <div class="vw-lead-price">
-                                Price:$250k
+                                PT-Mon, Nov 25,2019
                                 <br>
-                                Baths Full: 2
+                                7:38 A.M
                                 <br>
-                                Beds
-                            </div>
-                            <div class="vw-lead-address">
-                                Address: 6903 Lagoon
-                            </div>
+                                <br>
+                                not in TL-Thu,Oct 3,2019
+                                <br>
+                                10:28 A.M
+                            </div>                           
                         </div>
-                    </a>
                 </div>
                 <div class="row vw-view-more">
-                    <a href="#" class="">
-                        <div class="col s12">
-                            View more
+                    <div class="row">
+                        <div class="col s6">
+                            <a href="#">
+                                <i aria-hidden="true" class="fa fa-plus-circle"></i>Add Notes
+                            </a>
                         </div>
-                    </a>
+                        <div class="col s6 right-align">
+                            <a href="#">
+                                <i aria-hidden="true" class="fa fa-external-link"></i>View More
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
