@@ -1046,7 +1046,9 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .search--block{border:1px solid #d4cdcd;padding:5px 10px}.search--block input[type=text]:not(.browser-default):focus:not([readonly]){border-bottom:none !important;-webkit-box-shadow:none !important;box-shadow:none !important}
 .media-image{min-height:115px;line-height:115px;max-height:115px;width:115px;height:115px;border:1px solid #ccc;margin-top:15px;display:inline-block;margin-right:8px}
 .media-image.selected{border:1px solid #6b4994}.media-image img{width:auto;height:auto;max-width:100%;max-height:100%;display:inline-block !important;vertical-align:middle;image-rendering:-moz-crisp-edges;image-rendering:-o-crisp-edges;image-rendering:-webkit-optimize-contrast;image-rendering:crisp-edges;-ms-interpolation-mode:nearest-neighbor}
-.media-image.selected img{opacity:.8}.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
+.media-image.selected img{opacity:.8}.modal-header span{font-size:18px;font-weight:600}
+.modal-header i.material-icons{color:#111 !important;font-size:15px !important;font-weight:600 !important}
+.sidenav-main{position:fixed;z-index:999;top:0;width:214px;height:100%;background:#575758;-webkit-transition:.3s ease all;transition:.3s ease all}
 .sidenav-main span.badge.new{line-height:20px;margin-top:11px;background-color:#6b4994}
 .brand-sidebar{position:fixed;top:0;left:0;width:inherit;height:64px;background:#575758;-webkit-box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);box-shadow:0 4px 7px 0 rgba(0,0,0,0.2);-webkit-backface-visibility:hidden;backface-visibility:hidden}
 .brand-sidebar .logo-wrapper{font-size:22px;line-height:17px !important;margin:0;white-space:nowrap}
@@ -1204,7 +1206,7 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .btn--bar .btn i,.btn--bar .btn-large i,.btn--bar .btn-small i{font-size:12px}.theme--btn{background-color:#6b4994 !important}
 .theme--btn:hover{background-color:#8d62c1 !important}span.badge-secondary{color:#333;font-size:11px;font-weight:bold}
 .theme--select{margin-top:10px}.filter--bar .theme__tabs .tab a{font-size:11px;font-weight:bold}
-.leads-table small{font-size:10px}.info-unit{width:30px}.Leads .tab--content{padding:0}
+.leads-table small{font-size:10px}.info-unit{width:30px}.Leads .tab--content{padding:0;background:transparent;-webkit-box-shadow:none;box-shadow:none}
 .info-dialog{background:#fafafa;-webkit-box-shadow:0 2px 15px rgba(0,0,0,0.3);box-shadow:0 2px 15px rgba(0,0,0,0.3);border:1px solid #ccc;font-family:"Roboto Condensed",sans-serif;color:rgba(0,0,0,0.87);z-index:1}
 .info-dialog .box-title{padding:5px 15px 2px 10px;border-bottom:1px solid #ccc;background:#e8e8e8;font-size:.9rem;font-weight:700}
 .info-dialog .box-content{margin-top:15px;font-size:.9rem;font-family:"Open Sans",Arial,sans-serif}
@@ -1212,8 +1214,8 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .info-dialog .viewed-lead .vw-lead-name{font-weight:600}.info-dialog .viewed-lead .vw-lead-price,.info-dialog .viewed-lead .vw-lead-address{font-weight:200}
 .info-dialog .vw-view-more{font-size:.7rem;padding-right:20px;margin:10px 0 15px 20px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
 .info-dialog .vw-view-more a{color:#038cb8 !important}.view-box{width:270px}.leads-table{position:inherit}
-.info-unit .dropdown-content{width:270px !important;height:auto !important}.statistics__block{padding:15px}
-.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
+.info-unit .dropdown-content{width:270px !important;height:auto !important}.modal-body .status a{margin:6px 0 10px 15px}
+.statistics__block{padding:15px}.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
 .statistics__block .statistics__block-single h6.title{font-size:16px;margin-top:15px}
 .statistics__block .statistics__block-single p{margin:2px 0;font-size:12px}.statistics__block .statistics__block-single p.count{font-size:35px;color:#0277bd}
 .statistics__block .statistics__block-single p.price{font-weight:bold}.statistics__block .statistics__block-single a{font-size:13px;font-weight:bold;margin:4px 0 10px;display:block}
