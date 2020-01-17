@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\Banner;
@@ -38,11 +39,12 @@ class BannerHelper
      * @param $types
      * @return mixed
      */
-    public function getBannersByType($types){
+    public function getBannersByType($types)
+    {
         return $this->banners->whereIn('template', $types)
-        ->sortBy('order')
-        ->values()
-        ->all();
+            ->sortBy('order')
+            ->values()
+            ->all();
     }
 
 
@@ -50,7 +52,8 @@ class BannerHelper
      * @param $slug
      * @return mixed
      */
-    public function getBannersBySlug($slug){
+    public function getBannersBySlug($slug)
+    {
         return $this->banners->where('slug', $slug)
             ->first();
     }
@@ -60,10 +63,37 @@ class BannerHelper
      * @param $types
      * @return mixed
      */
-    public function getBannersNotInType($types){
+    public function getBannersNotInType($types)
+    {
         return $this->banners->whereNotIn('template', $types)
-        ->sortBy('order')
-        ->values()
-        ->all();
+            ->sortBy('order')
+            ->values()
+            ->all();
+    }
+
+
+    /**
+     * @param \Illuminate\Support\Collection $banners
+     * @param array $sort_by
+     * @return \Illuminate\Support\Collection
+     */
+    public function sortBannersByArray($banners, $sort_by_array)
+    {
+        $banners_new = $banners;
+
+        if(count($sort_by_array) > 0){
+            $banners_new = [];
+            foreach ($banners as $banner) {
+                if (in_array($banner->id, $sort_by_array)) {
+                    $id = array_search($banner->id, $sort_by_array);
+                    $banners_new[$id] = $banner;
+                }
+            }
+            ksort($banners_new);
+            $banners_new = collect($banners_new);
+        }
+
+
+        return $banners_new;
     }
 }

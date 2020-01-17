@@ -1,6 +1,6 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
 <style>
-    .dd-placeholder { border: 1px dashed #0a0a0a ; background-color: #00bcd4}
+    .sort-container__placeholder { border: 1px dashed #0a0a0a ; background-color: #00bcd4}
 </style>
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
@@ -44,18 +44,23 @@
         </div>
     </fieldset>
     <div class="row">
-        <div class="col s12 m6 banners">
+        <div class="col s12 m6 sort-container__root">
             <fieldset class="mt-2">
                 <legend>Sort Banners</legend>
-                <ul class="collection banners-list">
+                <ul class="collection sort-container__list">
                     @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
+                    @if(isset($settings['single_col_banner_order']) && ($settings['single_col_banner_order'] !== ''))
+                        @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $settings['single_col_banner_order'] ?? "")))
+                    @endif
+
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
-                        <li class="banner-item collection-item" data-id="{{$key}}">
-                            <i class="banner-handle material-icons">zoom_out_map</i> {{ $properties->header }}
+                        <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">
+                            <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $properties->header }}
                         </li>
                     @endforeach
                 </ul>
+                {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '')}}
             </fieldset>
         </div>
     </div>
