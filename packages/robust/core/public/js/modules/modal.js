@@ -19,7 +19,8 @@
         }
     };
     FRW.Modal = {
-        init:function(){
+        init: function () {
+            $('.modal').modal();
         }
     };
     $(document).ready(function ($) {
@@ -28,6 +29,7 @@
             let buttonObj = $('button[href="#confirmDelete"]');
             FRW.DeleteForm.confirmDelete(modalObj,buttonObj);
         }
+        FRW.Modal.init();
 
     });
 }(jQuery, FRW, window, document));
