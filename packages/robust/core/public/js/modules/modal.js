@@ -28,4 +28,7 @@
         }
         FRW.DeleteForm.modal();
     });
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
 }(jQuery, FRW, window, document));
