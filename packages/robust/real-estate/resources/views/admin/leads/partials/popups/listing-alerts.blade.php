@@ -13,29 +13,19 @@
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
-                    <a href="//scottingraham.com/real-estate/692712/6903-lagoon-panama-city-beach-32408" target="_blank">
-                        <div class="col s4">
-                            <img src="http://cdn.photos.sparkplatform.com/bc/20200111182524426985000000-o.jpg" alt="6903 Lagoon, Panama City Beach 32408" class="img-responsive">
-                        </div>
-                        <div class="col s8">
+                        <div class="col s12">
                             <div class="vw-lead-name">
                                 6903 Lagoon, Panama City Beach 32408
                             </div>
                             <div class="vw-lead-price">
-                                Price:$250k
+                                Sent: September 20th 2019, 10:37 am
                                 <br>
-                                Baths Full: 2
-                                <br>
-                                Beds
-                            </div>
-                            <div class="vw-lead-address">
-                                Address: 6903 Lagoon
-                            </div>
+                               Sending alerts: Daily
+                            </div>                           
                         </div>
-                    </a>
                 </div>
                 <div class="row vw-view-more">
-                    <a href="#" class="">
+                    <a href="#" class="center-align">
                         <div class="col s12">
                             View more
                         </div>
