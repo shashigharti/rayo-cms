@@ -17,11 +17,11 @@
                 $(this).data('form').submit();
             });
         }
-    }
+    };
     FRW.Modal = {
         init:function(){
         }
-    }
+    };
     $(document).ready(function ($) {
         if ($('#confirmDelete').length > 0){
             let modalObj = $('#confirmDelete');
