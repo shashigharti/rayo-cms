@@ -39,6 +39,19 @@
             @endforeach
         </div>
     </fieldset>
+    <fieldset class="mt-2">
+        <legend>Sort Single Col Banners</legend>
+        <div class="form-group form-material row">
+            <div class="col s6 input-field">
+                {{ Form::label("hide_{$menu}", ucwords($menu)) }}
+                {{ Form::text("hide_{$menu}", $settings["hide_{$menu}"] ?? '', [
+                        'class' => 'form-control',
+                        'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
+                    ])
+                }}
+            </div>
+        </div>
+    </fieldset>
     <div class="form-group form-material mt-3 row">
         <div class="col s12">
             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
