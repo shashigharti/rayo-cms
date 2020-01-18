@@ -9,32 +9,35 @@ Route::group([
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
-
+        Route::get('/ct/' . settings('real-estate', 'url_active') . '/{banner_slug}/price/{price}', [
+            'name' => 'Homes for sale',
+            'as' => 'ct.homes-for-sale-banner',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@customActive'
+        ]);
         Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}', [
-            'name' => 'Homes for sale in',
+            'name' => 'Homes for sale',
             'as' => 'homes-for-sale',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
         ]);
-        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}/price/{price?}', [
-            'name' => 'Homes for sale in',
+        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type}/{location}/price/{price}', [
+            'name' => 'Homes for sale',
             'as' => 'homes-for-sale.location&price',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@active'
         ]);
-
         Route::get('/' . settings('real-estate', 'url_sold') . '/{location_type?}/{location?}', [
-            'name' => 'Homes for sale in',
+            'name' => 'Homes for sale',
             'as' => 'sold-homes',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
         Route::get('/' . settings('real-estate', 'url_sold') . '/{location_type?}/{location?}/price/{price?}', [
-            'name' => 'Homes for sale in',
+            'name' => 'Homes for sale',
             'as' => 'sold-homes.location&price',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@sold'
         ]);
 
 
         Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
-            'name' =>'Homes for sale in',
+            'name' =>'Homes for sale',
             'as' => 'homes-for-sale.sub_area',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
         ]);

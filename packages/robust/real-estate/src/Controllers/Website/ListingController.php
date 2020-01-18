@@ -5,6 +5,7 @@ namespace Robust\RealEstate\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
 use Robust\Core\Helpage\Site;
+use Robust\RealEstate\Repositories\Website\BannerRepository;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 use Robust\RealEstate\Helpers\LocationHelper;
 
@@ -64,6 +65,30 @@ class ListingController extends Controller
     }
 
 
+    public function customActive(BannerRepository $banner, $slug)
+    {
+        $banner = $banner->where('slug', $slug)->first();
+        $url = $banner->url;
+
+
+//        $status = settings('real-estate', 'active');
+//        $results = $this->model->getListings(
+//            [
+//                'status' => $status
+//            ])
+//            ->whereLocation([$location_type => $location])
+//            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+//            ->with('property')
+//            ->with('images')
+//            ->paginate($this->pagination);
+//
+//        return view(Site::templateResolver('core::website.listings.index'), [
+//            'results' => $results,
+//            'location' => ($location) ? $locationHelper->getLocation($location): null
+//        ]);
+    }
+
+
     /**
      * @param LocationHelper $locationHelper
      * @param null $location_type
@@ -101,10 +126,8 @@ class ListingController extends Controller
      */
     public function getListingsByPropertyType($status, $property_type, $property_value)
     {
-        $params = request()->all();
         $property_types = isset($property_type) ? explode(',', $property_type) : null;
         $property_values = isset($property_value) ? explode(',', $property_value) : null;
-        $locations = isset($params['locations']) ? explode(',', $params['locations']) : null;
         $results = $this->model->getListings()
             ->wherePropertyType($property_types,$property_values)
             ->paginate($this->pagination);
