@@ -9,10 +9,9 @@
                     @if(isset($properties['prices']) && is_array($properties['prices']))
                         @foreach($properties['prices'] as  $price => $count)
                             @set('property_count',$properties->property_counts->$price ?? 0)
-                            <a href="{{route('website.realestate.homes-for-sale',
+                            <a href="{{route('website.realestate.ct.homes-for-sale-banner',
                                                 [
-                                                    'location_type' => '',
-                                                    'location' => '',
+                                                    'slug' => $singleColBlock->slug,
                                                     'price' => $price,
                                                 ]
                                                 )}}"> {{$price}} ({{$count}})

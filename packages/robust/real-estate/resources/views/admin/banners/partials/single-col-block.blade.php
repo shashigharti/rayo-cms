@@ -66,11 +66,11 @@
             <legend>Attributes</legend>
             @foreach( $properties->attribute_types as $key => $attribute )
                 <div class="input-field col s12">
-                    {{ Form::label("properties[attributes][$key][]", $attribute) }}
-                    {{ Form::select("properties[attributes][$key][]", [], null, [
+                    {{ Form::label("properties[attributes][$attribute][]", $attribute) }}
+                    {{ Form::select("properties[attributes][$attribute][]", [], null, [
                             'class'=>'browser-default multi-select',
                             'data-url' => route('api.listings.attributes.property_name', [$attribute]),
-                            'data-selected' => implode(",", $attribute->attributes->{$key} ?? []),
+                            'data-selected' => implode(",", $properties->attributes->{$attribute} ?? []),
                             'multiple'
                        ])
                     }}
@@ -96,7 +96,6 @@
         </div>
     </fieldset>
 </div>
-
 <div class="row mt-5">
     <div class="input-field col s12">
         {{ Form::label('properties[tabs][]', 'Tabs') }}

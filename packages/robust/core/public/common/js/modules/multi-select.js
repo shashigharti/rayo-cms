@@ -16,7 +16,6 @@
 
                     // get data from remote server when url is set
                     if (URL) {
-                        console.log(URL);
                         let selectedElements = [];
 
                         // if it has properties data-selected read the values
@@ -26,7 +25,6 @@
 
                         $.get(URL).then(response => {
                             const options = response.data;
-
                             if (options) {
                                 options.forEach(option => {
                                     let inArray = -1;
@@ -37,15 +35,22 @@
                                         inArray = selectedElements.findIndex(selectedElem => (selectedElem === option.name) || (selectedElem === option.slug));
                                         if (inArray >= 0) {
                                             selected = 'selected';
+                                            selectedElements.splice(inArray, 1)
                                         }
+
                                     }
 
                                     child = `<option value="${option.slug || option.name}" ${selected} >${option.name}</option>`;
                                     $(elem).append(child);
                                 });
                             }
+                            selectedElements.forEach(option => {
+                                let child = `<option value="${option}" selected>${option}</option>`;
+                                $(elem).append(child);
+                            });
 
                         });
+
 
                     }
                 });

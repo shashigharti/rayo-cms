@@ -68,7 +68,8 @@ class ListingController extends Controller
     public function customActive(BannerRepository $banner, $slug)
     {
         $banner = $banner->where('slug', $slug)->first();
-        $url = $banner->url;
+        $properties = json_decode($banner->properties);
+        dd($properties);
 
 
 //        $status = settings('real-estate', 'active');
