@@ -99,21 +99,6 @@ trait ListingTrait
         return $this;
     }
 
-    /**
-     * @param $params
-     * @return $this
-     */
-    public function whereLocations($params)
-    {
-        $key = key($params);
-        if ($params[$key] != null) {
-            $value = $params[$key];
-            $location = $this->location->where('slug', '=', $value)->first();
-            $this->model = $this->model->where(IListings::LOCATION_TYPE_MAP[$key], '=', $location->id);
-        }
-        return $this;
-    }
-
 
     /**
      * @param $property_types

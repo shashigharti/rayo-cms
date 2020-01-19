@@ -79,9 +79,13 @@ class ListingController extends Controller
             [
                 'status' => $status
             ]);
+        foreach((array)$properties->locations as $key => $location){
+            $params[$key] = implode(',', $location);
+        }
+        dd($qBuilder);
 
         if ($locations_count > 0) {
-            //$qBuilder = $qBuilder->whereLocations([$location_type => $location]);
+            $qBuilder = $qBuilder->getLocations($params);
         }
 
         if ($attributes_count > 0) {
