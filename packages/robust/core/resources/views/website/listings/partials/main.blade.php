@@ -18,8 +18,6 @@
                     </span>
                     <span>/</span>
                     <span><a href="{{route('website.realestate.sold-homes')}}">{{$location->sold_count ?? ''}} Sold Homes</a></span>
-                    <span>/</span>
-                    <span><a href="#">486 Subdivisions</a></span>
                 </div>
 
                 @include(Site::templateResolver('core::website.listings.partials.search'))

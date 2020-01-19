@@ -47,11 +47,11 @@
             <legend>Locations</legend>
             @foreach( $properties->location_types as $key => $location )
                 <div class="input-field col s12">
-                    {{ Form::label("properties[locations][$key][]", $location) }}
-                    {{ Form::select("properties[locations][$key][]", [], null, [
+                    {{ Form::label("properties[locations][$location][]", $location) }}
+                    {{ Form::select("properties[locations][$location][]", [], null, [
                             'class'=>'browser-default multi-select',
-                            'data-url' => route('api.listings.attributes'),
-                            'data-selected' => implode(",", $properties->locations->{$key} ?? []),
+                            'data-url' => route('api.locations.type', [$location]),
+                            'data-selected' => implode(",", $properties->locations->{$location} ?? []),
                             'multiple'
                        ])
                     }}

@@ -8,13 +8,13 @@ use Robust\RealEstate\Helpers\AdvanceSearchHelper;
 use Robust\Core\Helpers\SettingsHelper;
 
 /**
- * Class FrontendHelperComposer
+ * Class FrontendComposer
  * @package App\Http\ViewComposers
  */
-class FrontendHelperComposer {
+class FrontendComposer {
 
     /**
-     * ProfileComposer constructor.
+     * FrontendComposer constructor.
      * @param BannerHelper $banner_helper
      * @param ListingHelper $listing_helper
      * @param SettingsHelper $setting_helper

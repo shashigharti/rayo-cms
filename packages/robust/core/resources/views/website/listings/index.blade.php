@@ -8,3 +8,4 @@
 @section('footer')
     @include(Site::templateResolver('core::website.layouts.partials.footer'))
 @endsection
+

@@ -19,7 +19,7 @@ class ComposerServiceProvider extends ServiceProvider
         View::composer([
             '*::website.*',
             '*::website.home'
-        ], 'Robust\Core\Composers\FrontendHelperComposer');
+        ], 'Robust\Core\Composers\FrontendComposer');
 
     }
 

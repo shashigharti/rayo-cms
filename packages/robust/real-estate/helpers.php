@@ -250,8 +250,10 @@ if (!function_exists('geocode')) {
 
 
 if (!function_exists('seo')) {
+
     /**
-     * @return eloquent
+     * @param $segments
+     * @return array|null
      */
     function seo($segments)
     {
@@ -274,7 +276,6 @@ if (!function_exists('seo')) {
             foreach ($additional_route_params as $param) {
                 if (in_array($param, $segments)) {
                     $partial_url_str = $param;
-                    print_r($partial_url_str);
                     $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
                     break;
                 }
