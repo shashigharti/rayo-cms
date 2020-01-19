@@ -221,7 +221,6 @@ if (!function_exists('geocode')) {
         {
             $ranges = [];
             $config = config('rws.application.price');
-            //was overwriting the value sent
             $increment = $increment ?? $config['increment'];
             $i = $min_price ?? $config['min'];
             $max = $max_price ?? $config['max'];
