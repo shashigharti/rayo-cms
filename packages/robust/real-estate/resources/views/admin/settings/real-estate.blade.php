@@ -54,7 +54,7 @@
                 }}
             </div>
         </div>
-        <div class="form-group form-material row">            
+        <div class="form-group form-material row">
             <div class="col s4 input-field split--block">
                 {{ Form::label('year_built', 'Year Built') }}
                 <span>
@@ -203,30 +203,6 @@
     <fieldset class="mt-2">
         <legend>Data Pull Settings for Server</legend>
         <div class="form-group form-material row">
-            <div class="col s6 input-field">
-                {{ Form::label("data[cities]", 'Cities(only)', ['class' => 'control-label' ]) }}
-                {{ Form::text("data[cities]", isset($settings['data']['cities']) ? $settings['data']['cities']:'', [
-                        'class' => 'form-control',
-                        'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
-                    ])
-                }}
-            </div>
-            <div class="col s6 input-field">
-                {{ Form::label("data[zips]", 'Zips(only)', ['class' => 'control-label' ]) }}
-                {{ Form::text("data[zips]", isset($settings['data']['zips']) ? $settings['data']['zips']:'', [
-                        'class' => 'form-control',
-                        'placeholder' => 'Comma separated values E.g \'33418, 33419\''
-                    ])
-                }}
-            </div>
-            <div class="col s6 input-field">
-                {{ Form::label("data[counties]", 'Counties(only)', ['class' => 'control-label' ]) }}
-                {{ Form::text("data[counties]", isset($settings['data']['counties']) ? $settings['data']['counties']:'', [
-                        'class' => 'form-control',
-                        'placeholder' => 'Comma separated values E.g \'boca rotan, west palm beach\''
-                    ])
-                }}
-            </div>
             <div class="col s6 input-field">
                 {{ Form::label("data[min]", 'Listings Greater Than (Price)', ['class' => 'control-label' ]) }}
                 {{ Form::text("data[min]", isset($settings['data']['min']) ? $settings['data']['min']:'10000', [

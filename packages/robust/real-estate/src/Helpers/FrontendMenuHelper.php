@@ -21,25 +21,26 @@ class FrontendMenuHelper
 
         $items_new = $items;
 
-        if($location_type === 'zips' && $character_count != ''){
+        if ($location_type === 'zips' && $character_count != '') {
             $items_new = [];
-            foreach($items as $item){
-                if(strlen($item->name) <= $character_count){
+            foreach ($items as $item) {
+                if (strlen($item->name) <= $character_count) {
                     $items_new[] = $item;
                 }
             }
         }
 
-        if($location_type === 'zips' && $zip_max_value != ''){
+        if ($location_type === 'zips' && $zip_max_value != '') {
             $items_new = [];
-            foreach($items as $item){
-                if((int)$item->name <= $zip_max_value){
+            foreach ($items as $item) {
+                if ((int)$item->name <= $zip_max_value) {
                     $items_new[] = $item;
                 }
             }
         }
 
         $items_new = $this->sort($location_type, $items_new);
+        $items_new = $this->hide_items($location_type, $items_new);
 
         return $items_new;
     }
@@ -48,34 +49,57 @@ class FrontendMenuHelper
     /**
      * @param $location_type
      * @param $items
-     * @return array
+     * @return mixed
      */
-    public function sort($location_type, $items){
+    public function hide_items($location_type, $items){
+        $settings = settings('front-page');
+        if(isset($settings["hide_{$location_type}"]) && $settings["hide_{$location_type}"] != ''){
+            $cities_to_hide = explode(',', $settings["hide_{$location_type}"]);
+            foreach($items as $key => $item){
+                if(in_array($item->slug, $cities_to_hide)){
+                    $items->forget($key);
+                }
+            }
+        }
+        return $items;
+    }
+
+
+    /**
+     * @param $location_type
+     * @param $items
+     * @return \Illuminate\Support\Collection
+     */
+    public function sort($location_type, $items)
+    {
         $settings = settings('front-page');
         $items_with_different_order = [];
         $items_with_default_order = collect();
+        $items = collect($items);
 
-        if(isset($settings["{$location_type}_order"])){
+        $items = $items->sortBy('slug');
+
+        if (isset($settings["{$location_type}_sort_order_desc"]) && $settings["{$location_type}_sort_order_desc"]) {
+            $items = $items->sortByDesc('slug');
+        }
+
+        if (isset($settings["{$location_type}_order"])) {
             $items_to_skip = explode(',', $settings["{$location_type}_order"]);
-            if($items_to_skip !== ''){
-                foreach($items as $key => $item){
-                    if(in_array($item->slug, $items_to_skip)){
+            if ($items_to_skip !== '') {
+                foreach ($items as $key => $item) {
+                    if (in_array($item->slug, $items_to_skip)) {
                         $index = array_search($item->slug, $items_to_skip);
                         $items_with_different_order[$index] = $item;
-                    }else{
+                    } else {
                         $items_with_default_order->push($item);
                     }
                 }
             }
-        }
-        ksort($items_with_different_order);
-        $items_with_default_order = $items_with_default_order->sortBy('slug');
-
-        if(isset($settings["{$location_type}_sort_order_desc"]) && $settings["{$location_type}_sort_order_desc"]){
-            $items_with_default_order = $items_with_default_order->sortByDesc('slug');
+            ksort($items_with_different_order);
+            $items_with_different_order = collect($items_with_different_order);
+            return $items_with_different_order->merge($items_with_default_order);
         }
 
-        $items_with_different_order = collect($items_with_different_order);
-        return $items_with_different_order->merge($items_with_default_order);
+       return $items;
     }
 }
