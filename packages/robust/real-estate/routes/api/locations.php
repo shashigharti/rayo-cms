@@ -1,17 +1,17 @@
 <?php
 
-Route::group(['prefix' => config('core.frw.api'), 
-'as' => 'api.', 
-'group' => 'Locations'], 
+Route::group(['prefix' => config('core.frw.api'),
+'as' => 'api.locations.',
+'group' => 'Locations'],
 function () {
     Route::get('locations', [
         'name' =>'Locations',
-        'as' => 'locations',
+        'as' => 'index',
         'uses' => '\Robust\RealEstate\Controllers\API\LocationController@index'
     ]);
     Route::get('locations/{type}', [
         'name' =>'Locations By Type',
-        'as' => 'locations.type',
+        'as' => 'type',
         'uses' => '\Robust\RealEstate\Controllers\API\LocationController@getLocationByType'
     ]);
 

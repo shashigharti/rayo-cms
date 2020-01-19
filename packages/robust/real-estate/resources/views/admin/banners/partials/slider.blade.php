@@ -13,15 +13,15 @@
         {{ Form::select('properties[locations][]', [],
             $properties->locations ?? [],
             [
-                'data-url' => route('api.locations'),
+                'data-url' => route('api.locations.index'),
                 'data-selected' => implode(',', $properties->locations ?? []),
                 'class'=>'browser-default multi-select ad-search-field',
-                'multiple'                        
+                'multiple'
             ])
         }}
     </div>
 </div>
-<div class='row mt-1'>    
+<div class='row mt-1'>
    <div class='input-field col s6'>
         {{ Form::label('property_count', 'Property Count', ['class' => 'required' ]) }}
         {{ Form::text('properties[property_count]', $properties->property_count ?? '', [

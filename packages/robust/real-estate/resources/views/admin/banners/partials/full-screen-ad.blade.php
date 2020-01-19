@@ -14,10 +14,10 @@
         {{ Form::select("properties[locations][]", [],
             $properties->locations ?? [],
             [
-                'data-url' => route('api.locations'),
+                'data-url' => route('api.locations.index'),
                 'data-selected' => implode(",", $properties->locations ?? []),
                 'class'=>'browser-default multi-select ad-search-field',
-                'multiple'                        
+                'multiple'
             ])
         }}
     </div>

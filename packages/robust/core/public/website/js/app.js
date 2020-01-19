@@ -1,6 +1,6 @@
 //import("modules/modal.js")
 //import("modules/social.js")
-//import("modules/multi-select.js")
+//import("../../common/js/modules/multi-select.js")
 //import("modules/load-google-maps.js")
 
 

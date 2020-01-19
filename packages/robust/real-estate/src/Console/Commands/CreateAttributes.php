@@ -2,6 +2,7 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
+use Illuminate\Support\Facades\DB;
 
 /**
  * Class CreateAttributes
@@ -28,6 +29,7 @@ class CreateAttributes extends Command
      */
     public function handle()
     {
+        DB::table('real_estate_attributes')->truncate();
         $properties_types = \DB::table('real_estate_listing_properties')
             ->whereNotIn('type',['public_remarks','virtual_tour','directions','modification_date','modified'])
             ->select('type')

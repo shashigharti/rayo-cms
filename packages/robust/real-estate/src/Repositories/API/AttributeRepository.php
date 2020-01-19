@@ -14,12 +14,16 @@ class AttributeRepository
      */
     protected $model;
 
+    /**
+     *
+     */
     protected const FIELDS_QUERY_MAP = [
         'property_name' => ['name' => 'property_name', 'condition' => 'LIKE'],
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'id' => ['name' => 'id', 'condition' => '='],
         'status' => ['name' => 'status', 'condition' => '=']
     ];
+
 
     /**
      * AttributeRepository constructor.
@@ -30,19 +34,26 @@ class AttributeRepository
         $this->model = $model;
     }
 
+
     /**
-     * @param $params
-     * @return Eloquent Collection
+     * @param array $params
+     * @return mixed
      */
     public function getAttributes($params = [])
     {
-        $qBuilder = $this->model;
-        
+        $qBuilder = $this->model->select([
+            'property_name AS slug',
+            'name',
+            'id',
+            'values'
+        ]);
+
         foreach($params as $key => $param){
-            $qBuilder = $qBuilder->where(AttributeRepository::FIELDS_QUERY_MAP[$key]['name'], 
+            $qBuilder = $qBuilder->where(AttributeRepository::FIELDS_QUERY_MAP[$key]['name'],
             AttributeRepository::FIELDS_QUERY_MAP[$key]['condition'],
             $param);
         }
         return $qBuilder->get();
     }
+
 }

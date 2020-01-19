@@ -15,7 +15,7 @@ class AttributeController extends Controller
     /**
      * @var AttributeRepository
      */
-    protected $model;   
+    protected $model;
 
 
     /**
@@ -26,19 +26,21 @@ class AttributeController extends Controller
     {
         $this->model = $model;
     }
-    
+
+
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function getAttributes($type)
+    public function getAttributes()
     {
         $records = $this->model->getAttributes();
         return response()->json(['data' => $records]);
-    }    
+    }
+
 
     /**
-     * @param $params
-     * @return Eloquent Collection
+     * @param $property_name
+     * @return \Illuminate\Http\JsonResponse
      */
     public function getAttributesListByPropertyName($property_name)
     {
