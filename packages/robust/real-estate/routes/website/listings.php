@@ -36,17 +36,17 @@ Route::group([
         ]);
 
 
-        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
-            'name' =>'Homes for sale',
-            'as' => 'homes-for-sale.sub_area',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
-        ]);
+//        Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}/{price?}/{sub_area}',[
+//            'name' =>'Homes for sale',
+//            'as' => 'homes-for-sale.sub_area',
+//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@subArea'
+//        ]);
 
-        Route::post('/' . settings('real-estate', 'url_active') . '/map',[
-            'name' =>'Map Data',
-            'as' => 'map-data',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
-        ]);
+//        Route::post('/' . settings('real-estate', 'url_active') . '/map',[
+//            'name' =>'Map Data',
+//            'as' => 'map-data',
+//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@mapData'
+//        ]);
         Route::get('/' . settings('real-estate', 'url_active') . '/{type}/{value}/{id}',[
             'name' =>'Similar Listing',
             'as' => 'listings.similar',
@@ -58,9 +58,9 @@ Route::group([
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@print'
         ]);
 
-        Route::get('/' . settings('real-estate', 'url_active') . '/{property_type}/{property_value}', [
-            'name' =>'Property Types',
-            'as' => 'property_type',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getListingsByPropertyType'
-        ]);
+//        Route::get('/' . settings('real-estate', 'url_active') . '/{property_type}/{property_value}', [
+//            'name' =>'Property Types',
+//            'as' => 'property_type',
+//            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getListingsByPropertyType'
+//        ]);
     });

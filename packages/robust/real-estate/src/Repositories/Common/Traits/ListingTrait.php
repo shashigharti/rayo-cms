@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Builder;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Repositories\Interfaces\IListings;
 use Illuminate\Support\Arr;
+use Robust\RealEstate\Repositories\Website\LocationRepository;
 
 /**
  * Class ListingTrait
@@ -87,43 +88,37 @@ trait ListingTrait
      */
     public function whereLocation($params)
     {
-        $key = key($params);
-        if ($params[$key] != null) {
-            $value = $params[$key];
-            $location = $this->location->where('slug', '=', $value)->first();
-            if (!$location) {
-                $location = $this->location->where('id', '=', $value)->first();
-            }
-            $this->model = $this->model->where(IListings::LOCATION_TYPE_MAP[$key], '=', $location->id);
+        $qBuilder = $this->model;
+        foreach ($params as $key => $param) {
+            $values = explode(",", $param);
+            $location_ids = $this->location
+                ->whereIn('slug', $values)
+                ->where('locationable_type', IListings::LOCATION_TYPE_CLASS_MAP[$key])
+                ->pluck('id');
+            $qBuilder = $qBuilder->whereIn(IListings::LOCATION_TYPE_MAP[$key], $location_ids);
         }
+        $this->model = $qBuilder;
         return $this;
     }
 
 
     /**
-     * @param $property_types
-     * @param $property_values
+     * @param $params
      * @return $this
      */
-    public function wherePropertyType($property_types, $property_values)
+    public function wherePropertyType($params)
     {
-        $this->model = $this->model->whereNotNull('properties_status');
-        $this->model = $this->model->whereIn('real_estate_listings.id', function ($query) use ($property_types, $property_values) {
-            $query->from('real_estate_listing_properties')
-                ->select('real_estate_listing_properties.listing_id')
-                ->where('real_estate_listing_properties.listing_id', 'real_estate_listings.id');
-            foreach ($property_types as $key => $type) {
-                if (isset($property_values[$key]) && $property_values[$key]) {
-                    $query->where('real_estate_listing_properties.type', $type);
-                    $values = explode(',', $property_values[$key]);
-                    foreach ($values as $value) {
-                        $query->where('real_estate_listing_properties.value', $value);
-                    }
+        $qBuilder = $this->model
+            ->leftJoin('real_estate_listing_properties', 'real_estate_listing_properties.listing_id', '=', 'real_estate_listings.id');
 
-                }
-            }
-
-        });
+        foreach ($params as $key => $param) {
+            $values = explode(",", $param);
+            $qBuilder = $qBuilder->where(function ($query) use ($key, $values) {
+                $query->where('real_estate_listing_properties.type', '=', $key)
+                    ->whereIn('real_estate_listing_properties.value', $values);
+            });
+        }
+        $this->model = $qBuilder;
         return $this;
     }
 

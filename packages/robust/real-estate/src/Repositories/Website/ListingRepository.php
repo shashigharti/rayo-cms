@@ -36,7 +36,6 @@ class ListingRepository implements IListings
     public function __construct(Listing $model, Location $location)
     {
         $this->model = $model;
-        // This is a temporary fix; we will use locationable_id / polymorphic relation later
         $this->location = $location;
     }
 

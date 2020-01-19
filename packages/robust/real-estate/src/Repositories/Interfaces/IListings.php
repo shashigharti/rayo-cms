@@ -44,4 +44,17 @@ Interface IListings {
         'elementary_schools' => 'elementary_school_id',
         'middle_schools' => 'middle_school_id'
     ];
+
+    /**
+     * @var const LOCATION_TYPE_CLASS_MAP
+     */
+    public const LOCATION_TYPE_CLASS_MAP = [
+        'cities' => 'Robust\RealEstate\Models\City',
+        'zips' => 'Robust\RealEstate\Models\Zip',
+        'counties' => 'Robust\RealEstate\Models\County',
+        'high_schools' => 'Robust\RealEstate\Models\HighSchool',
+        'elementary_schools' => 'Robust\RealEstate\Models\ElementarySchool',
+        'middle_schools' => 'Robust\RealEstate\Models\MiddleSchool',
+        'subdivisions' => 'Robust\RealEstate\Models\Subdivision'
+    ];
 }

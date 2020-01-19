@@ -65,10 +65,16 @@ class ListingController extends Controller
     }
 
 
+    /**
+     * @param BannerRepository $banner
+     * @param LocationHelper $locationHelper
+     * @param $slug
+     * @param $price_range
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function customActive(BannerRepository $banner, LocationHelper $locationHelper, $slug, $price_range)
     {
         $location = null;
-
         $banner = $banner->where('slug', $slug)->first();
         $properties = json_decode($banner->properties);
         $locations_count = count((array)$properties->locations);
@@ -79,17 +85,22 @@ class ListingController extends Controller
             [
                 'status' => $status
             ]);
-        foreach((array)$properties->locations as $key => $location){
+
+        $params = [];
+        foreach ((array)$properties->locations as $key => $location) {
             $params[$key] = implode(',', $location);
         }
-        dd($qBuilder);
 
         if ($locations_count > 0) {
-            $qBuilder = $qBuilder->getLocations($params);
+            $qBuilder = $qBuilder->whereLocation($params);
         }
 
+        $params = [];
+        foreach ((array)$properties->attributes as $key => $attribute) {
+            $params[$key] = implode(',', $attribute);
+        }
         if ($attributes_count > 0) {
-            //$qBuilder = $qBuilder;
+            $qBuilder = $qBuilder->wherePropertyType($params);
         }
         $results = $qBuilder
             ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
@@ -99,7 +110,7 @@ class ListingController extends Controller
 
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
-            'location' => ($location) ? $locationHelper->getLocation($location): null
+            'location' => ($location) ? $locationHelper->getLocation($location) : null
         ]);
     }
 
@@ -139,15 +150,15 @@ class ListingController extends Controller
      * @param $property_values
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getListingsByPropertyType($status, $property_type, $property_value)
-    {
-        $property_types = isset($property_type) ? explode(',', $property_type) : null;
-        $property_values = isset($property_value) ? explode(',', $property_value) : null;
-        $results = $this->model->getListings()
-            ->wherePropertyType($property_types, $property_values)
-            ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
-    }
+//    public function getListingsByPropertyType($status, $property_type, $property_value)
+//    {
+//        $property_types = isset($property_type) ? explode(',', $property_type) : null;
+//        $property_values = isset($property_value) ? explode(',', $property_value) : null;
+//        $results = $this->model->getListings()
+//            ->wherePropertyType($property_types, $property_values)
+//            ->paginate($this->pagination);
+//        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+//    }
 
     /**
      * @param $id
@@ -183,20 +194,20 @@ class ListingController extends Controller
      * @param $sub_area
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function subArea($location_type, $location, $price_range, $sub_area)
-    {
-        $results = $this->model->getListings(
-            [
-                'status' => 'Active'
-            ])
-            ->whereLocation([$location_type => $location])
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : [])
-            ->whereSubArea($sub_area)
-            ->with('property')
-            ->with('images')
-            ->paginate($this->pagination);
-        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
-    }
+//    public function subArea($location_type, $location, $price_range, $sub_area)
+//    {
+//        $results = $this->model->getListings(
+//            [
+//                'status' => 'Active'
+//            ])
+//            ->whereLocation([$location_type => $location])
+//            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : [])
+//            ->whereSubArea($sub_area)
+//            ->with('property')
+//            ->with('images')
+//            ->paginate($this->pagination);
+//        return view(Site::templateResolver('core::website.listings.index'), ['results' => $results]);
+//    }
 
     /**
      * @param $slug
