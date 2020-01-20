@@ -169,10 +169,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="add--followup">
-                                                        <a href="#" class='dropdown-trigger' data-target='add-followup'>Add</a>
-                                                        <ul id='add-followup' class='dropdown-content'>
+                                                        <a href="#add-followup" class="modal-trigger">Add</a>
+                                                        <div id="add-followup" class="modal">
                                                             @include('real-estate::admin.leads.partials.modals.follow-up')
-                                                        </ul>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>
