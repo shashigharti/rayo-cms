@@ -30,20 +30,22 @@
                                 <div class="subdivs--list">
                                     <p><label>{{$key}}:</label></p>
                                     <ul>
-                                        @foreach($tabs as $tab => $count)
-                                            <li>
+                                        @foreach($tabs as $index => $tab)
+                                            @if(isset($tab['min']))
+                                                <li>
                                                 <a href="{{route('website.realestate.homes-for-sale',
                                                                     [
                                                                         'location_type'=>'cities',
                                                                         'location' =>  '',
-                                                                        'price' => $tab,
-                                                                        'sub_area' => $key
+                                                                        'price' => "{$tab['min']}-{$tab['max']}",
+                                                                        'sub_area' => $index
                                                                      ])
                                                           }}"
                                                 >
-                                                    {{$tab}} ({{$count}})
+                                                    {{ price_range_format("{$tab['min']}-{$tab['max']}")}} ({{$tab['count']}})
                                                 </a>
                                             </li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>

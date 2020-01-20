@@ -58,13 +58,18 @@ if (!function_exists('price_range_format')) {
     function price_range_format($price_range)
     {
         $prices = explode('-', $price_range);
+        if(count($prices) < 1){
+            $prices = explode('>',$prices[0]);
+        }
         $count = count_chars($prices[0]);
-        if ($count > 6 && is_numeric($prices[1])) {
+        if ($count > 6 && isset($prices[1]) &&  is_numeric($prices[1])) {
             $prices[0] = number_format($prices[0]);
             $prices[1] = number_format($prices[1]);
             return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
         } else {
-            return "Above " . price_format($prices[0]);
+            if(isset($prices[0]) && is_numeric($prices[0])){
+                return "Above " . price_format($prices[0]);
+            }
         }
         return $price_range;
     }
