@@ -5,12 +5,6 @@
 
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
     <div id="{{ $title }}" class="col s12">
-        <div class="form-group form-material row">
-            <div class="input-field col s12">                
-                {{ Form::select('page_type', ['select','useful-links'=>'Useful Links','info-services'=>'Info & services'], null, ['class' => 'form-control']) }}
-                {!! Form::label('page_type', 'Type', ['class' => 'control-label required' ])  !!}
-            </div>
-        </div>
         <div class="row">
             <div class="input-field col s6">
                 {{ Form::label('title', 'Page Name', ['class' => 'required' ]) }}
@@ -79,6 +73,12 @@
                 </div>
             </div>
         </fieldset>
+        <div class="row">
+            <div class="input-field col s12">
+                {{ Form::select('page_type', ['Select','page'=>'Page','seo'=>'Seo'], null, ['class' => 'form-control']) }}
+                {{ Form::label('page_type', 'Type', ['class' => 'control-label required' ])  }}
+            </div>
+        </div>
         <div class="row mt-3">
             <div class="col s12">
                 {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light btn theme-btn']) }}
