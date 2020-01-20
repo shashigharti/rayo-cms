@@ -22,7 +22,7 @@
                                  data-href={{ route("website.realestate.market.reports", ['location_type' => $option]) }}
                               {{ ($page_type == $option) ? 'checked': ''}}
                           />
-                          <span>{{ $option }}</span>
+                          <span>{{ ucwords(str_replace('_', ' ', $option)) }}</span>
                         </label>
                       </span>
                     @endforeach

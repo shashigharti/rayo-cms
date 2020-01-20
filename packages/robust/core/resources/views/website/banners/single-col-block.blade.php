@@ -23,7 +23,7 @@
                     <div class="subdivs--list__block">
                         @foreach($properties['tabs_data'] as $key => $tabs)
                             <div class="subdivs--list__btn">
-                                <i class="material-icons">redo</i>{{ ucwords(str_replace('_', ' ', $key))}}
+                                <i class="material-icons">redo</i>{{ ucwords(str_replace('_', ' ', $key)) }}
                                 @set('tab_fields',[])
                                 <div class="subdivs--list">
                                     <p><label>{{$key}}:</label></p>
