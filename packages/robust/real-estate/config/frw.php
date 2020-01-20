@@ -77,6 +77,15 @@ return [
         'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools',
         'Robust\RealEstate\Models\Subdivision' => 'subdivisions',
     ],
+    'default_pricing_ranges' => [
+        ['min' => '10000', 'max' => '110000', 'count' => '0'],
+        ['min' => '21000', 'max' => '31000', 'count' => '0'],
+        ['min' => '41000', 'max' => '51000', 'count' => '0'],
+        ['min' => '61000', 'max' => '71000', 'count' => '0'],
+        ['min' => '71000', 'max' => '81000', 'count' => '0'],
+        ['min' => '81000', 'max' => '91000', 'count' => '0'],
+        ['min' => '91000', 'max' => '', 'count' => '0']
+    ],
     'min_acreage' => 0.5,
     'max_acreage' => 20,
     'acreage_increment' => 3,
