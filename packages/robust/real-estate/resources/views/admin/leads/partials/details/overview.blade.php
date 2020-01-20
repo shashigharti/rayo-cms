@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col s3 card panel">
         <div class="fixed--bar">
-            <h3 class="title">Vega Norma <a href="#edit" class="modal-trigger"><i class="material-icons">edit</i></a></h3>
+            <h3 class="title">{{ $model->first_name }} {{ $model->last_name }} <a href="#edit" class="modal-trigger"><i class="material-icons">edit</i></a></h3>
             <div id="edit" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -11,11 +11,11 @@
                         <form>
                             <div>
                                 <div class="input-field">
-                                    <input type="text">
+                                    {{ Form::text('first_name',null) }}
                                     <label class="">First Name</label>
                                 </div>
                                 <div class="input-field">
-                                    <input type="text">
+                                    {{ Form::text('last_name',null) }}
                                     <label>Last Name</label>
                                 </div>                                
                             </div>

@@ -57,7 +57,7 @@
                                                     <div class="row">
                                                         <div class="col s12">
                                                             <span class="name lead">
-                                                                <a href="{{route('admin.leads.edit', 1)}}" class="">Buyer</a>
+                                                                <a href="{{route('admin.leads.edit', 1)}}" class="">{{ $lead->first_name }} {{ $lead->last_name }}</a>
                                                             </span>
                                                             <div>
                                                                 <small>{{$lead->phone}}</small>
@@ -169,10 +169,10 @@
                                                 </td>
                                                 <td>
                                                     <div class="add--followup">
-                                                        <a href="#" class='dropdown-trigger' data-target='add-followup'>Add</a>
-                                                        <ul id='add-followup' class='dropdown-content'>
+                                                        <a href="#add-followup" class="modal-trigger">Add</a>
+                                                        <div id="add-followup" class="modal">
                                                             @include('real-estate::admin.leads.partials.modals.follow-up')
-                                                        </ul>
+                                                        </div>
                                                     </div>
                                                 </td>
                                             </tr>

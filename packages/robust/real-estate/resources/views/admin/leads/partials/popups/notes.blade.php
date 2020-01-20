@@ -8,7 +8,7 @@
     <ul id='dd-notes' class='dropdown-content'>
         <div class="info-dialog view-box">
             <div class="box-title">
-                Ron-Turner(Notes)
+                {{ $lead->first_name }} {{ $lead->last_name }} (Notes)
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">

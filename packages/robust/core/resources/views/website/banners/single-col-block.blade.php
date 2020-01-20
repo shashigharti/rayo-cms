@@ -7,14 +7,16 @@
                 <h2>{{$properties['header']}}</h2>
                 <div class="available-prices">
                     @if(isset($properties['prices']) && is_array($properties['prices']))
-                        @foreach($properties['prices'] as  $price => $count)
-                            @set('property_count',$properties->property_counts->$price ?? 0)
-                            <a href="{{route('website.realestate.ct.homes-for-sale-banner',
-                                                [
-                                                    'slug' => $singleColBlock->slug,
-                                                    'price' => $price,
-                                                ]
-                                                )}}"> {{$price}} ({{$count}})
+                        @foreach($properties['prices'] as  $key => $price)
+                            <a  href="{{
+                                route('website.realestate.ct.homes-for-sale-banner',
+                                    [
+                                        'slug' => $singleColBlock->slug,
+                                        'price' => "{$price['min']}-{$price['max']}",
+                                    ])
+                                }}"
+                            >
+                                {{ price_range_format("{$price['min']}-{$price['max']}")}} ({{$price['count']}})
                             </a>
                         @endforeach
                     @endif

@@ -8,5 +8,11 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'as' => 'leads.details.edit',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@getDetailsPage'
     ]);
+
+    Route::post('leads/{id}/follow-up', [
+        'name' =>'Leads Follow Up',
+        'as' => 'leads.follow-up.store',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@addLeadsFollowUp'
+    ]);
 });
 
