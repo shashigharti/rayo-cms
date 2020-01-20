@@ -79,23 +79,32 @@
         </fieldset>
     </div>
 @endif
-<div class="row">
-    <fieldset class="mt-1">
-        <legend>Price Settings</legend>
-        <div class="input-field col s4">
-            {{ Form::label('properties[price_settings][min]', 'Min') }}
-            {{ Form::text('properties[price_settings][min]', $properties->price_settings->min ?? '')}}
+
+<fieldset class="mt-1">
+    <legend>Price Settings</legend>
+    @foreach($properties->prices as $key => $price)
+        <div class="row dynamic-elem">
+            <div class="input-field col s4">
+                {{ Form::label("properties[prices][$key][min]", 'Min') }}
+                {{ Form::text("properties[prices][$key][min]", $price->min ?? '')}}
+            </div>
+            <div class="input-field col s4">
+                {{ Form::label("properties[prices][$key][max]", 'Max') }}
+                {{ Form::text("properties[prices][$key][max]", $price->max ?? '')}}
+            </div>
+            <div class="input-field col s2">
+                {{ Form::label("properties[prices][$key][count]", 'Count') }}
+                {{ Form::text("properties[prices][$key][count]", $price->count ?? '' )}}
+            </div>
+            @if( $price->max === "*" )
+                <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
+            @else
+                <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
+            @endif
         </div>
-        <div class="input-field col s4">
-            {{ Form::label('properties[price_settings][max]', 'Max') }}
-            {{ Form::text('properties[price_settings][max]', $properties->price_settings->max ?? '')}}
-        </div>
-        <div class="input-field col s4">
-            {{ Form::label('properties[price_settings][increment]', 'Increment') }}
-            {{ Form::text('properties[price_settings][increment]', $properties->price_settings->increment ?? '')}}
-        </div>
-    </fieldset>
-</div>
+    @endforeach
+</fieldset>
+
 <div class="row mt-5">
     <div class="input-field col s12">
         {{ Form::label('properties[tabs][]', 'Tabs') }}
