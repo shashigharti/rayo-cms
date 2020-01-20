@@ -96,7 +96,7 @@
                 {{ Form::label("properties[prices][$key][count]", 'Count') }}
                 {{ Form::text("properties[prices][$key][count]", $price->count ?? '' )}}
             </div>
-            @if( $price->max === "*" )
+            @if( $price->max == "" )
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
             @else
                 <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
