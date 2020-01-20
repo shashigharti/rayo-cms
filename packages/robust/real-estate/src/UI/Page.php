@@ -20,6 +20,7 @@ class Page extends BaseUI
     public $columns = [
         'title' => 'Title',
         'slug' => 'Slug',
+        'page_type' => 'Type',
         'options' => [
             'edit' => [
                 'display_name' => '<i aria-hidden="true" class="site-menu-icon material-icons">edit</i> ',
