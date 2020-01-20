@@ -67,6 +67,8 @@ class BannerPropertyCount extends Command
                     ->where('locationable_type',$location_maps[$queries['location_type']])
                     ->first();
                 $other_queries = array_diff_key($queries,array_flip(['location','location_type','subdivisions']));
+                $properties['prices'] = [];
+                $properties['tabs_data'] = [];
                 foreach ($prices as $price){
                     $this->info($price);
                     $query = Listing::where($this->maps[$queries['location_type']],$location->id)
@@ -74,15 +76,28 @@ class BannerPropertyCount extends Command
                     $price_range = explode('-',$price);
                     if(count($price_range) > 1){
                         $query = $query->whereBetween('system_price',$price_range);
-                        $properties['prices'][$price] = $query->count();
+                        $data = [
+                            'min' => $price_range[0],
+                            'max' => $price_range[1],
+                            'count' => $query->count()
+                        ];
+                        array_push($properties['prices'],$data);
 
                     }else {
                         $price_range = explode('>', $price_range[0]);
                         $query = $query->where('system_price', '<', $price_range[0]);
-                        $properties['prices'][$price] = $query->count();
+                        $data = [
+                            'min' => $price_range[0],
+                            'max' => '',
+                            'count' => $query->count()
+                        ];
+                        array_push($properties['prices'],$data);
                     }
-
                     foreach ($other_queries as $tab => $value){
+                        if(!isset($properties['tabs_data'][$tab])){
+                            $properties['tabs_data'][$tab] = [];
+                        }
+
                         $operator = '=';
                         if($tab === 'acres') {
                            $operator = '<=';
@@ -90,13 +105,14 @@ class BannerPropertyCount extends Command
                         if($tab === 'pool'){
                             $operator = '!=';
                         }
-                        $properties['tabs_data'][$tab][$price] = $query
+                        $data['count'] = $query
                             ->whereIn('real_estate_listings.id',function ($q) use ($tab,$value,$operator){
                                 $q->from('real_estate_listing_properties')
                                     ->select('real_estate_listing_properties.listing_id')
                                     ->where('type',$tab)
                                     ->where('value',$operator,$value);
                             })->count();
+                        array_push($properties['tabs_data'][$tab],$data);
                     }
                 }
                 if(isset($queries['subdivisions'])){
@@ -114,7 +130,6 @@ class BannerPropertyCount extends Command
                     }
                 }
             }
-
 
             $this->info('Ending ' . $properties['header']);
             $block->update(['properties' => $properties]);

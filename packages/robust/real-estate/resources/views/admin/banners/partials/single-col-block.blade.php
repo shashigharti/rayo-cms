@@ -104,6 +104,35 @@
         </div>
     @endforeach
 </fieldset>
+<fieldset class="mt-1">
+    <legend>Tabs Settings</legend>
+    @foreach($properties->tabs_data as $key => $tabs)
+        <h5>{{strtoupper($key)}}</h5>
+        @foreach($tabs as $index => $tab)
+            @if(isset($tab->min) || isset($tab->max))
+                <div class="row dynamic-elem">
+                <div class="input-field col s4">
+                    {{ Form::label("properties[tabs_data][$key][$index][min]", 'Min') }}
+                    {{ Form::text("properties[tabs_data][$key][min]", $tab->min ?? '')}}
+                </div>
+                <div class="input-field col s4">
+                    {{ Form::label("properties[prices][$key][$index][max]", 'Max') }}
+                    {{ Form::text("properties[tabs_data][$key][max]", $tab->max ?? '')}}
+                </div>
+                <div class="input-field col s2">
+                    {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
+                    {{ Form::text("properties[tabs_data][$key][$index][count]", $tab->count ?? '' )}}
+                </div>
+                @if( $price->max == "" )
+                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
+                @else
+                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
+                @endif
+            </div>
+            @endif
+        @endforeach
+    @endforeach
+</fieldset>
 
 <div class="row mt-5">
     <div class="input-field col s12">
