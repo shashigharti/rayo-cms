@@ -30,7 +30,7 @@
             }}
         </div>
         <div class="col s6">
-            {{ Form::label('properties[attribute_types][]', 'Properties',['class'=>'control-label']) }}
+            {{ Form::label('properties[attribute_types][]', 'Properties(tabs)',['class'=>'control-label']) }}
             {{ Form::select('properties[attribute_types][]', [], null, [
                     'class'=>'browser-default multi-select',
                     'data-url' => route('api.listings.attributes'),
