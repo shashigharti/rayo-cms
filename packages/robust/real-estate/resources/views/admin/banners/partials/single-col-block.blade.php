@@ -21,16 +21,16 @@
 <div class="row">
     <fieldset class="mt-1">
         <legend>Filters</legend>
-        <div class="input-field col s6">
-            {{ Form::label('properties[location_types][]', 'Locations') }}
+        <div class="col s6">
+            {{ Form::label('properties[location_types][]', 'Locations',['class'=>'control-label']) }}
             {{ Form::select('properties[location_types][]', config('real-estate.frw.locations'), $properties->location_types ?? [], [
                     'class'=>'browser-default multi-select',
                     'multiple'
                ])
             }}
         </div>
-        <div class="input-field col s6">
-            {{ Form::label('properties[attribute_types][]', 'Properties') }}
+        <div class="col s6">
+            {{ Form::label('properties[attribute_types][]', 'Properties',['class'=>'control-label']) }}
             {{ Form::select('properties[attribute_types][]', [], null, [
                     'class'=>'browser-default multi-select',
                     'data-url' => route('api.listings.attributes'),
@@ -46,8 +46,8 @@
         <fieldset class="mt-1">
             <legend>Locations</legend>
             @foreach( $properties->location_types as $key => $location )
-                <div class="input-field col s12">
-                    {{ Form::label("properties[locations][$location][]", $location) }}
+                <div class="col s12">
+                    {{ Form::label("properties[locations][$location][]", $location,['class'=>'control-label']) }}
                     {{ Form::select("properties[locations][$location][]", [], null, [
                             'class'=>'browser-default multi-select',
                             'data-url' => route('api.locations.type', [$location]),
@@ -65,8 +65,8 @@
         <fieldset class="mt-1">
             <legend>Attributes</legend>
             @foreach( $properties->attribute_types as $key => $attribute )
-                <div class="input-field col s12">
-                    {{ Form::label("properties[attributes][$attribute][]", $attribute) }}
+                <div class="col s12">
+                    {{ Form::label("properties[attributes][$attribute][]", $attribute,['class'=>'control-label']) }}
                     {{ Form::select("properties[attributes][$attribute][]", [], null, [
                             'class'=>'browser-default multi-select',
                             'data-url' => route('api.listings.attributes.property_name', [$attribute]),
