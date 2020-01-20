@@ -10,12 +10,12 @@
         <fieldset>
             <legend>{{ucwords($menu)}} (Ordering)</legend>
             <div class="form-group form-material row">
-                <div class="col s2 input-field">
-                    {{ Form::label("{$menu}_sort_order_desc", 'Sort Descending') }}
+                <div class="col s2 input-field">                    
                     {{ Form::checkbox("{$menu}_sort_order_desc", true, $settings["{$menu}_sort_order_desc"] ?? '', [
                             'class' => 'form-control'
                         ])
                     }}
+                    {{ Form::label("{$menu}_sort_order_desc", 'Sort Descending') }}
                 </div>
                 <div class="col s10 input-field">
                     {{ Form::label("{$menu}_order", ucwords($menu). " to skip default sort", ['class' => 'control-label' ]) }}

@@ -309,15 +309,24 @@ input {
     color:#fff;
 }
 .split--block {
-    span {
-        width: 48%;
-        display: inline-block;
-        font-size: 11px;
-        margin-top: 26px;
+    &.input-field > label {
+        position: relative;
+        left:0px;
+        }
+
+        span {
+            width:100%;
+            display: inline-block;
+            font-size: 11px;
+            margin-top:5px;
+        }
+
+        input {
+            width: 66% !important;
+            height: 20px !important;
+        }
     }
 
-    input {
-        width: 66% !important;
-        height: 20px !important;
+    .dynamic-elem__btn {
+        margin-top: 25px;
     }
-}

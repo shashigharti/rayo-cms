@@ -55,7 +55,7 @@
             </div>
         </div>
         <div class="form-group form-material row">
-            <div class="col s4 input-field split--block">
+            <div class="col s3 input-field split--block">
                 {{ Form::label('year_built', 'Year Built') }}
                 <span>
                     Min: {{ Form::text('year_built_min', $settings['year_built_min'] ?? '') }}
@@ -64,7 +64,7 @@
                     Max: {{ Form::text('year_built_max', $settings['year_built_max'] ?? '') }}
                 </span>
             </div>
-            <div class="col s4 input-field split--block">
+            <div class="col s3 input-field split--block">
                 {{ Form::label('sq_feet', 'Square Feet') }}
                <span>
                    Min: {{ Form::text('sq_feet_min', $settings['sq_feet_min'] ?? '') }}
@@ -73,7 +73,7 @@
                    Max: {{ Form::text('sq_feet_max', $settings['sq_feet_max'] ?? '') }}
                </span>
             </div>
-            <div class="col s4 input-field split--block">
+            <div class="col s3 input-field split--block">
                 {{ Form::label('beds', 'Beds') }}
                 <span>
                     Min: {{ Form::text('beds_min', $settings['beds_min'] ?? '') }}
@@ -82,11 +82,7 @@
                     Max: {{ Form::text('beds_max', $settings['beds_max'] ?? '') }}
                 </span>
             </div>
-            <div class="col s2 input-field">
-                {{ Form::label('banner_per_row', 'Banner Per Row') }}
-                {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
-            </div>
-            <div class="col s8 input-field split--block">
+            <div class="col s3 input-field split--block">
                 {{ Form::label('zip_code', 'Zip') }}
                 <span>
                     Max(Char): {{ Form::text('zip_code_character_count', $settings['zip_code_character_count'] ?? '') }}
@@ -95,6 +91,11 @@
                     Or Value(<=): {{ Form::text('zip_code_max', $settings['zip_code_max'] ?? '') }}
                 </span>
             </div>
+            <div class="col s2 input-field">
+                {{ Form::label('banner_per_row', 'Banner Per Row') }}
+                {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
+            </div>
+            
         </div>
     </fieldset>
     <fieldset class="mt-2">
