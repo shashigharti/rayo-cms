@@ -82,7 +82,12 @@
 
 <fieldset class="mt-1">
     <legend>Price Settings</legend>
-    @foreach($properties->prices as $key => $price)
+    @set('prices', $properties->prices ?? [])
+    @if(count($prices) <= 0)
+        @set('prices', json_decode(json_encode(config('real-estate.frw.default_pricing_ranges'))))
+    @endif
+
+    @foreach($prices as $key => $price)
         <div class="row dynamic-elem">
             <div class="input-field col s4">
                 {{ Form::label("properties[prices][$key][min]", 'Min') }}
