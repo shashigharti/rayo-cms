@@ -152,11 +152,10 @@
                             {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
                             {{ Form::text("properties[tabs_data][$key][$index][count]", $tab->count ?? '' )}}
                         </div>
-                        @if( $price->max == "" )
+                        @if( $tab->max == "" )
                             <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                         @else
-                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete">
-                                    delete </i></a>
+                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
                         @endif
                     </div>
                 @endforeach
