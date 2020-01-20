@@ -64,6 +64,15 @@ class FrontendMenuHelper
         return $items;
     }
 
+    /**
+     * @param $array
+     * @return mixed
+     */
+    public function sort_tabs($tabs){
+        ksort($tabs);
+        return $tabs;
+    }
+
 
     /**
      * @param $location_type
