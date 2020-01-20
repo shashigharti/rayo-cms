@@ -1,6 +1,6 @@
 <div class="info-dialog view-box">
     <div class="box-title">
-        Buyer
+        {{ $lead->first_name }} {{ $lead->last_name }}
         <i class="fa fa-times pull-right clickable"></i>
     </div>
     <div class="box-content">
