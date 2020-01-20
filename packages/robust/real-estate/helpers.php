@@ -59,12 +59,12 @@ if (!function_exists('price_range_format')) {
     {
         $prices = explode('-', $price_range);
         $count = count_chars($prices[0]);
-        if($count > 6 && is_numeric($prices[1])){
+        if ($count > 6 && is_numeric($prices[1])) {
             $prices[0] = number_format($prices[0]);
             $prices[1] = number_format($prices[1]);
-            return "$" . "{$prices[0]}-{$prices[1]}";
-        }else{
-            return "Above" . "{$prices[0]}}";
+            return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
+        } else {
+            return "Above " . price_format($prices[0]);
         }
         return $price_range;
     }
@@ -83,7 +83,7 @@ if (!function_exists('geocode')) {
             return false;
         }
         $addressLatLong = [];
-        $api_key = settings('app-setting','google_api_key');
+        $api_key = settings('app-setting', 'google_api_key');
         try {
             $response = file_get_contents('https://maps.googleapis.com/maps/api/geocode/json?address=' . urlencode($address) . '&key=' . urlencode($api_key));
             $response = json_decode($response, true);
