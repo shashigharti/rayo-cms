@@ -230,7 +230,7 @@ class CreateMarketReport extends Command
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
 
-            $this->info("Adding Report for {$model->name}");
+            //$this->info("Adding Report for {$model->name}");
 
         }
 
