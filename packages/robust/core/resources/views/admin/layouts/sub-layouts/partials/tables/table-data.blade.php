@@ -27,7 +27,7 @@
                             @foreach($ui->columns as $key => $header)
                                 @if($key == 'options')
                                     @set('options', $header)
-                                    <td class="text action--btns right-align">
+                                    <td class="text action--btns">
                                         @foreach($options as $key => $option)
                                             @can($option['permission'])
                                                 @if($package != '' && View::exists("{$package}::{$current_view}.tables.{$key}"))
