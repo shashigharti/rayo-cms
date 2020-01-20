@@ -8,7 +8,7 @@
                 <div class="available-prices">
                     @if(isset($properties['prices']) && is_array($properties['prices']))
                         @foreach($properties['prices'] as  $key => $price)
-                            <a  href="{{
+                            <a href="{{
                                 route('website.realestate.ct.homes-for-sale-banner',
                                     [
                                         'slug' => $singleColBlock->slug,
@@ -33,18 +33,19 @@
                                         @foreach($tabs as $index => $tab)
                                             @if(isset($tab['min']))
                                                 <li>
-                                                <a href="{{route('website.realestate.homes-for-sale',
-                                                                    [
-                                                                        'location_type'=>'cities',
-                                                                        'location' =>  '',
-                                                                        'price' => "{$tab['min']}-{$tab['max']}",
-                                                                        'sub_area' => $index
-                                                                     ])
-                                                          }}"
-                                                >
-                                                    {{ price_range_format("{$tab['min']}-{$tab['max']}")}} ({{$tab['count']}})
-                                                </a>
-                                            </li>
+                                                    <a href="{{
+                                                        route('website.realestate.homes-for-sale',
+                                                             [
+                                                                 'location_type'=>'cities',
+                                                                 'location' =>  '',
+                                                                 'price' => "{$tab['min']}-{$tab['max']}",
+                                                                 'sub_area' => $index
+                                                             ])
+                                                        }}"
+                                                    >
+                                                        {{ price_range_format("{$tab['min']}-{$tab['max']}")}}({{$tab['count']}})
+                                                    </a>
+                                                </li>
                                             @endif
                                         @endforeach
                                     </ul>
