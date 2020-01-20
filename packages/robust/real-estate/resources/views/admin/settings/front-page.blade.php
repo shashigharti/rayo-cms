@@ -29,7 +29,7 @@
         </fieldset>
     @endforeach
     <fieldset class="mt-2">
-        <legend>Hide Locations</legend>
+        <legend>Hide Locations From Dropdown Menu</legend>
         <div class="form-group form-material row">
             @foreach($menus as $menu)
                 <div class="col s6 input-field">
