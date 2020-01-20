@@ -6,8 +6,6 @@
             <div class="figcaption center-align">
                 <h2>{{$properties['header']}}</h2>
                 <div class="available-prices">
-                    {{dd($properties['prices'])}}
-                    {{dd('')}}
                     @if(isset($properties['prices']) && is_array($properties['prices']))
                         @foreach($properties['prices'] as  $key => $price)
                             <a  href="{{
