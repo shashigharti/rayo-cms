@@ -62,7 +62,7 @@ if (!function_exists('price_range_format')) {
             $prices = explode('>',$prices[0]);
         }
         $count = count_chars($prices[0]);
-        if ($count > 6 && isset($prices[1]) &&  is_numeric($prices[1])) {
+        if ($count > 6 && is_numeric($prices[1])) {
             $prices[0] = number_format($prices[0]);
             $prices[1] = number_format($prices[1]);
             return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
