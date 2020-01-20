@@ -113,11 +113,11 @@
                 <div class="row dynamic-elem">
                 <div class="input-field col s4">
                     {{ Form::label("properties[tabs_data][$key][$index][min]", 'Min') }}
-                    {{ Form::text("properties[tabs_data][$key][min]", $tab->min ?? '')}}
+                    {{ Form::text("properties[tabs_data][$key][$index][min]", $tab->min ?? '')}}
                 </div>
                 <div class="input-field col s4">
                     {{ Form::label("properties[prices][$key][$index][max]", 'Max') }}
-                    {{ Form::text("properties[tabs_data][$key][max]", $tab->max ?? '')}}
+                    {{ Form::text("properties[tabs_data][$key][$index][max]", $tab->max ?? '')}}
                 </div>
                 <div class="input-field col s2">
                     {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
