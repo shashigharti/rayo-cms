@@ -132,34 +132,37 @@
         }}
     </div>
 </div>
-@if(isset($properties->tabs_data))
-    <fieldset class="mt-1">
-        <legend>Tabs Settings</legend>
-        @foreach($properties->tabs_data as $key => $tabs)
-            <h5>{{strtoupper($key)}}</h5>
-            @foreach($tabs as $index => $tab)
-                <div class="row dynamic-elem">
-                    <div class="input-field col s4">
-                        {{ Form::label("properties[tabs_data][$key][$index][min]", 'Min') }}
-                        {{ Form::text("properties[tabs_data][$key][$index][min]", $tab->min ?? '')}}
+<div class="row">
+    @if(isset($properties->tabs_data))
+        <fieldset class="mt-1">
+            <legend>Tabs Settings</legend>
+            @foreach($properties->tabs_data as $key => $tabs)
+                <h5>{{strtoupper($key)}}</h5>
+                @foreach($tabs as $index => $tab)
+                    <div class="row dynamic-elem">
+                        <div class="input-field col s4">
+                            {{ Form::label("properties[tabs_data][$key][$index][min]", 'Min') }}
+                            {{ Form::text("properties[tabs_data][$key][$index][min]", $tab->min ?? '')}}
+                        </div>
+                        <div class="input-field col s4">
+                            {{ Form::label("properties[tabs_data][$key][$index][max]", 'Max') }}
+                            {{ Form::text("properties[tabs_data][$key][$index][max]", $tab->max ?? '')}}
+                        </div>
+                        <div class="input-field col s2">
+                            {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
+                            {{ Form::text("properties[tabs_data][$key][$index][count]", $tab->count ?? '' )}}
+                        </div>
+                        @if( $price->max == "" )
+                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
+                        @else
+                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete">
+                                    delete </i></a>
+                        @endif
                     </div>
-                    <div class="input-field col s4">
-                        {{ Form::label("properties[tabs_data][$key][$index][max]", 'Max') }}
-                        {{ Form::text("properties[tabs_data][$key][$index][max]", $tab->max ?? '')}}
-                    </div>
-                    <div class="input-field col s2">
-                        {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
-                        {{ Form::text("properties[tabs_data][$key][$index][count]", $tab->count ?? '' )}}
-                    </div>
-                    @if( $price->max == "" )
-                        <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
-                    @else
-                        <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                    @endif
-                </div>
+                @endforeach
             @endforeach
-        @endforeach
-    </fieldset>
-@endif
+        </fieldset>
+    @endif
+</div>
 
 
