@@ -116,17 +116,21 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
         width: 100%;
     }
 }
+
 .file-upload {
-    margin-bottom:10px;
+    margin-bottom: 10px;
+
     .theme-btn {
         margin: 10px 0px 5px;
     }
 }
+
 .sub--block {
     padding: 20px 20px 5px;
     border: 1px dashed #ccc;
     margin: 10px 0px 30px;
 }
+
 #main {
     [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
         position: relative;
@@ -160,12 +164,15 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
 .image-upload {
     display: block;
 }
-.select-wrapper input.select-dropdown{
-    color:#9e9e9e;
+
+.select-wrapper input.select-dropdown {
+    color: #9e9e9e;
 }
-.select2-container--default .select2-selection--multiple .select2-selection__rendered li{
-    font-size:11px;
+
+.select2-container--default .select2-selection--multiple .select2-selection__rendered li {
+    font-size: 11px;
 }
+
 .input-field-btn {
     font-size: 12px;
     line-height: 30px;
@@ -174,6 +181,7 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
     text-align: center;
     padding: 0;
 }
+
 .form--links {
     font-size: 12px;
     font-weight: 600;
@@ -196,9 +204,8 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
             }
         }
     }
-
-
 }
+
 .jFiler {
     display: inline-block;
     vertical-align: middle;
@@ -214,23 +221,28 @@ table.dataTable.dtr-inline.collapsed > tbody > tr[role='row'] > {
     height: 33px;
     line-height: 33px;
 }
+
 .input-field > label {
-    color:$dark-greyish;
+    color: $dark-greyish;
     font-size: .8rem;
     font-weight: 600;
 }
+
 label {
     color: $dark-greyish;
     font-size: .8rem;
     font-weight: 600;
 }
+
 .input-field > label:not(.label-icon).active {
     -webkit-transform: translateY(-14px) scale(1);
 }
+
 input:not([type]):focus:not([readonly]), input[type=text]:not(.browser-default):focus:not([readonly]), input[type=password]:not(.browser-default):focus:not([readonly]), input[type=email]:not(.browser-default):focus:not([readonly]), input[type=url]:not(.browser-default):focus:not([readonly]), input[type=time]:not(.browser-default):focus:not([readonly]), input[type=date]:not(.browser-default):focus:not([readonly]), input[type=datetime]:not(.browser-default):focus:not([readonly]), input[type=datetime-local]:not(.browser-default):focus:not([readonly]), input[type=tel]:not(.browser-default):focus:not([readonly]), input[type=number]:not(.browser-default):focus:not([readonly]), input[type=search]:not(.browser-default):focus:not([readonly]) {
     border-bottom: 1px solid $theme-color !important;
     box-shadow: 0 1px 0 0 $theme-color !important;
 }
+
 textarea {
     width: 100%;
     height: auto;
@@ -247,21 +259,27 @@ input {
     color: $dark-greyish;
     font-weight: 600;
 }
+
 .input-field.col label {
     left: .9rem;
 }
+
 .cke {
     margin-top: 12px !important;
 }
-.status{
-    font-size:12px;
+
+.status {
+    font-size: 12px;
 }
+
 .services__status--green {
     color: green;
 }
+
 .services__status--red {
     color: #c10b0b;
 }
+
 .email-field {
     input {
         width: 80% !important;
@@ -269,6 +287,7 @@ input {
         margin-bottom: 0 !important;
     }
 }
+
 .file-uploader__file {
     width: 100px;
     height: 100px;
@@ -286,38 +305,57 @@ input {
         top: -10px;
         color: #FFC107;
 
-        i{
+        i {
             font-size: 20px;
         }
     }
 }
+
 [type="checkbox"] + span:not(.lever):before, [type="checkbox"]:not(.filled-in) + span:not(.lever):after {
-    display:none;
+    display: none;
 }
+
 [type="checkbox"]:checked + span:not(.lever):before {
-    display:none;
+    display: none;
 }
+
 [type="checkbox"] + span:not(.lever) {
     padding-left: 10px;
 }
+
 .select2-container--default .select2-selection--multiple .select2-selection__choice {
     background-color: #7b7979;
-    color:#fff;
+    color: #fff;
 }
+
 .select2-container--default .select2-selection--multiple .select2-selection__choice__remove {
     margin-right: 5px;
-    color:#fff;
+    color: #fff;
 }
+
 .split--block {
+    &.input-field > label {
+        position: relative;
+        left: 0px;
+    }
+
     span {
-        width: 48%;
+        width: 100%;
         display: inline-block;
         font-size: 11px;
-        margin-top: 26px;
+        margin-top: 5px;
     }
 
     input {
         width: 66% !important;
         height: 20px !important;
     }
+}
+
+.dynamic-elem__btn {
+    margin-top: 25px;
+}
+
+.sort-container__handle {
+    vertical-align: middle;
 }

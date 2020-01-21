@@ -1,8 +1,12 @@
 .tabs {
+
     .tab {
         a {
             color: #126692;
             text-transform: none;
+            padding: 0px 10px;
+            font-weight: 600;
+            font-size: 13px;
 
             &:hover, &.active, &:focus {
                 background-color: transparent;
@@ -16,6 +20,6 @@
     }
 
     .indicator {
-        background-color:$theme-color;
+        background-color: $theme-color;
     }
 }

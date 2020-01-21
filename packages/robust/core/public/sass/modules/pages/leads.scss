@@ -229,3 +229,66 @@ span.badge-secondary {
     .delete {
         color: #ffc107 !important;
     }
+.single-search-item {
+    padding: 10px !important;
+
+    img {
+        width: 100%;
+    }
+
+    h5 {
+        font-size: 14px;
+        margin-top: 0px;
+        font-weight: 600;
+    }
+
+    font-size: 12px;
+    border-top: 1px solid #eee;
+    margin: 10px;
+}
+
+.modal-body .s3 .select-wrapper input.select-dropdown {
+    font-size: 12px;
+    height: 20px;
+}
+
+.tag-block .chip {
+    border: 1px solid #d8d8d8;
+    border-radius: 5px;
+    padding: 3px 10px;
+    display: inline-block;
+    margin-bottom: 7px;
+    display: inline-block;
+    background: transparent;
+    line-height: 24px;
+    margin-right: 4px;
+}
+
+.single--note {
+    h5 {
+        font-size: 20px;
+    }
+
+    p {
+        font-size: 12px;
+        line-height: 20px;
+    }
+}
+
+.communication--block {
+    .collapsible {
+        box-shadow: none;
+        border-top: 0;
+        border-right: 0;
+        border-left: 0;
+    }
+
+    .collapsible-header {
+        color: #232121;
+        padding: 10px 0px;
+    }
+}
+.sub--title {
+    margin: 0px;
+    font-size: 12px;
+}
