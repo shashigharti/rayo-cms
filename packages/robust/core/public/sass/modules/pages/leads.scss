@@ -311,3 +311,16 @@ span.badge-secondary {
         right: 29px;
     }
 }
+
+.bookmark--single {
+    font-size: 13px;
+
+    strong {
+        font-weight: 800;
+        color: #111;
+    }
+
+    time {
+        font-size: 12px;
+    }
+}
