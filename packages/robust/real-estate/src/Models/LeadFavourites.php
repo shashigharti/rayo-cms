@@ -39,4 +39,12 @@ class LeadFavourites extends BaseModel
     {
         return $this->belongsTo(Lead::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function listings()
+    {
+        return $this->belongsTo(Listing::class);
+    }
 }
