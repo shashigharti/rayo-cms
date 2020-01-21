@@ -30,6 +30,6 @@
             FRW.DeleteForm.confirmDelete(modalObj,buttonObj);
         }
         FRW.Modal.init();
-
+        $('.modal').modal();
     });
 }(jQuery, FRW, window, document));

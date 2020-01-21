@@ -1,11 +1,11 @@
 <div class="column-action__properties-viewed">
-    <a title="Click for Properties Viewed" class='dropdown-trigger' href='#' data-target='dd-properties-viewed'>
+    <a title="Click for Properties Viewed" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-eye"></i>
         <small>
             <sub>3</sub>
         </small>
     </a>
-    <ul id='dd-properties-viewed' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}
@@ -39,7 +39,7 @@
                         <div class="col s12">
                             View more
                         </div>
-                   </a>                    
+                   </a>
                 </div>
             </div>
         </div>

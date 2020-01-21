@@ -1215,8 +1215,8 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .info-dialog .viewed-lead{margin:0;padding:5px 2px;font-size:.7rem}.info-dialog .viewed-lead img{width:85px;height:70px;padding:0;overflow:hidden;-o-object-fit:cover;object-fit:cover;padding:0 10px 10px 10px}
 .info-dialog .viewed-lead .vw-lead-name{font-weight:600}.info-dialog .viewed-lead .vw-lead-price,.info-dialog .viewed-lead .vw-lead-address{font-weight:200}
 .info-dialog .vw-view-more{font-size:.7rem;padding-right:20px;margin:10px 0 15px 20px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}
-.info-dialog .vw-view-more a{color:#038cb8 !important}.view-box{width:270px}.leads-table{position:inherit}
-.info-unit .dropdown-content,.add--followup .dropdown-content{width:270px !important;height:auto !important}
+.info-dialog .vw-view-more a{color:#038cb8 !important}.view-box{width:270px;position:absolute;right:150px}
+.leads-table{position:inherit}.info-unit .dropdown-content,.add--followup .dropdown-content{width:270px !important;height:auto !important}
 .add--followup input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;height:27px !important;width:91% !important}
 .add--followup .select-wrapper input.select-dropdown{width:91% !important}.modal-body .status a{margin:6px 0 10px 15px}
 .leads--notes p{font-size:12px;line-height:24px;font-weight:500}.leads--notes .single--note h5{font-size:20px !important;margin-top:0 !important}

@@ -1,11 +1,11 @@
 <div class="column-action__neighborhood">
-    <a href="#" title="Neighborhood Camps" class='dropdown-trigger' href='#' data-target='dd-neighborhood'>
+    <a href="#" title="Neighborhood Camps" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-home"></i>
         <small>
             <sub>0</sub>
         </small>
     </a>
-    <ul id='dd-neighborhood' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}

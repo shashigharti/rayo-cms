@@ -1,11 +1,11 @@
 <div class="column-action__market-report">
-    <a href="#" title="Market Reports" class='dropdown-trigger' href='#' data-target='dd-market-report'>
+    <a href="#" title="Market Reports" class='popup-trigger' href='#'>
         <small>MR</small>
         <small>
             <sub> 0</sub>
         </small>
     </a>
-    <ul id='dd-market-report' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}
