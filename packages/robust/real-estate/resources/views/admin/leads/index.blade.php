@@ -168,11 +168,8 @@
                                                     </table>
                                                 </td>
                                                 <td>
-                                                    <div class="add--followup">
-                                                        <a href="#add-followup" class="modal-trigger">Add</a>
-                                                        <div id="add-followup" class="modal">
-                                                            @include('real-estate::admin.leads.partials.modals.follow-up')
-                                                        </div>
+                                                    <div class="info-unit">
+                                                        @include('real-estate::admin.leads.partials.popups.followups')
                                                     </div>
                                                 </td>
                                             </tr>
