@@ -1227,7 +1227,8 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .single--note h5{font-size:20px}.single--note p{font-size:12px;line-height:20px}.communication--block tr{border-bottom:0}
 .communication--block .collapsible{-webkit-box-shadow:none;box-shadow:none;border-top:0;border-right:0;border-left:0}
 .communication--block .collapsible-header{color:#232121;padding:10px 0}.sub--title{margin:0;font-size:12px}
-.column-action__followups .view-box{right:29px}.statistics__block{padding:15px}.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
+.column-action__followups .view-box{right:29px}.bookmark--single{font-size:13px}.bookmark--single strong{font-weight:800;color:#111}
+.bookmark--single time{font-size:12px}.statistics__block{padding:15px}.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
 .statistics__block .statistics__block-single h6.title{font-size:16px;margin-top:15px}
 .statistics__block .statistics__block-single p{margin:2px 0;font-size:12px}.statistics__block .statistics__block-single p.count{font-size:35px;color:#0277bd}
 .statistics__block .statistics__block-single p.price{font-weight:bold}.statistics__block .statistics__block-single a{font-size:13px;font-weight:bold;margin:4px 0 10px;display:block}
