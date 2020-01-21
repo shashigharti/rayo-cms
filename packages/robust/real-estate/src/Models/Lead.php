@@ -69,4 +69,5 @@ class Lead extends Authenticatable
     {
         return $this->hasOne('Robust\RealEstate\Models\LeadNote','lead_id');
     }
+
 }
