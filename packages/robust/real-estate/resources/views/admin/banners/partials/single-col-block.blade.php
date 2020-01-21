@@ -61,26 +61,6 @@
         </fieldset>
     </div>
 @endif
-@if(isset($properties->attribute_types))
-    <div class="row s6">
-        <fieldset class="mt-1">
-            <legend>Attributes</legend>
-            @foreach( $properties->attribute_types as $key => $attribute )
-                <div class="col s12">
-                    {{ Form::label("properties[attributes][$attribute][]", $attribute,['class'=>'control-label']) }}
-                    {{ Form::select("properties[attributes][$attribute][]", [], null, [
-                            'class'=>'browser-default multi-select',
-                            'data-url' => route('api.listings.attributes.property_name', [$attribute]),
-                            'data-selected' => implode(",", $properties->attributes->{$attribute} ?? []),
-                            'multiple'
-                       ])
-                    }}
-                </div>
-            @endforeach
-        </fieldset>
-    </div>
-@endif
-
 <div class="row">
     <fieldset class="mt-1">
         <legend>Price Settings</legend>
@@ -112,56 +92,38 @@
         @endforeach
     </fieldset>
 </div>
-<div class="row mt-5">
-    <div class="input-field col s12">
-        {{ Form::label('properties[tabs][]', 'Tabs') }}
-        {{ Form::select('properties[tabs][]',
-            [
-                'condos' =>'condos',
-                'neighbourhood' => 'neighbourhood',
-                'communities' => 'communities',
-                'acreages' => 'acreages',
-                'waterfront' => 'waterfront',
-                '55plus' => '55+'
-            ],
-            $properties->tabs ?? [],
-            [
-                'class'=>'browser-default multi-select',
-                'multiple'
-            ])
-        }}
-    </div>
-</div>
 <div class="row">
-    @if(isset($properties->tabs_data))
-        <fieldset class="mt-1">
-            <legend>Tabs Settings</legend>
-            @foreach($properties->tabs_data as $key => $tabs)
-                <h5>{{strtoupper($key)}}</h5>
-                @foreach($tabs as $index => $tab)
-                    <div class="row dynamic-elem">
-                        <div class="input-field col s4">
-                            {{ Form::label("properties[tabs_data][$key][$index][min]", 'Min') }}
-                            {{ Form::text("properties[tabs_data][$key][$index][min]", $tab->min ?? '')}}
-                        </div>
-                        <div class="input-field col s4">
-                            {{ Form::label("properties[tabs_data][$key][$index][max]", 'Max') }}
-                            {{ Form::text("properties[tabs_data][$key][$index][max]", $tab->max ?? '')}}
-                        </div>
-                        <div class="input-field col s2">
-                            {{ Form::label("properties[tabs_data][$key][$index][count]", 'Count') }}
-                            {{ Form::text("properties[tabs_data][$key][$index][count]", $tab->count ?? '' )}}
-                        </div>
-                        @if( $tab->max == "" )
-                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
-                        @else
-                            <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                        @endif
-                    </div>
+    <fieldset>
+        <legend>Tabs Settings</legend>
+        <div class="row mt-5">
+            @set('tabs_config', config('real-estate.frw.single_banner_tabs_properties_filter'))
+            @set('tabs', array_combine(array_keys($tabs_config), array_keys($tabs_config)))
+            <div class="input-field col s12">
+                {{ Form::label('properties[tabs_to_display][]', 'Tabs', ['class'=>'control-label']) }}
+                {{ Form::select('properties[tabs_to_display][]', $tabs,
+                    $properties->tabs_to_display ?? [],
+                    [
+                        'class'=>'browser-default multi-select',
+                        'multiple'
+                    ])
+                }}
+            </div>
+        </div>
+        @if(isset($properties->tabs_to_display))
+            <div class="row">
+                <div class="col s12">
+                    <ul class="tabs">
+                        @foreach($properties->tabs_to_display as $key => $tab)
+                            <li class="tab col s3" @if($key == 0) selected @endif>
+                                <a href="#{{ $key }}">{{ $tabs_config[$tab]['display_name'] }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+                @foreach($properties->tabs_to_display as $key => $tab)
+                    @include("real-estate::admin.banners.partials.single-col-block.common.{$tabs_config[$tab]['type']}")
                 @endforeach
-            @endforeach
-        </fieldset>
-    @endif
+            </div>
+        @endif
+    </fieldset>
 </div>
-
-

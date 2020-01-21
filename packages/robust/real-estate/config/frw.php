@@ -78,7 +78,7 @@ return [
         'Robust\RealEstate\Models\Subdivision' => 'subdivisions',
     ],
     'default_pricing_ranges' => [
-        ['min' => '10000', 'max' => '110000', 'count' => '0'],
+        ['min' => '10000', 'max' => '11000', 'count' => '0'],
         ['min' => '21000', 'max' => '31000', 'count' => '0'],
         ['min' => '41000', 'max' => '51000', 'count' => '0'],
         ['min' => '61000', 'max' => '71000', 'count' => '0'],
@@ -90,43 +90,42 @@ return [
     'max_acreage' => 20,
     'acreage_increment' => 3,
     'location_id_map' => [
-      'cities' => 'city_id',
-      'zips' => 'zip_id',
-      'county' => 'county_id',
+        'cities' => 'city_id',
+        'zips' => 'zip_id',
+        'county' => 'county_id',
     ],
-    'banner_tabs' => [
+    'single_banner_tabs_properties_filter' => [
         'waterfront' => [
-            'type' => 'waterfront',
-            'value' => 'Yes'
+            'display_name' => 'Waterfront',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'waterfront', 'condition' => 'LIKE', 'values' => '']
+            ]
         ],
-        'condos' => [
-            'type' => 'property_type',
-            'value' => 'Condo/Coop'
-        ],
-        'hopa' => [
-            'type' => 'hopa',
-            'value' => 'Yes-Verified'
-        ],
-        'communities' => [
-            'type' => 'communities',
-            'value' => 'Yes'
-        ],
-        'neighborhoods' => [
-            //'type' => 'communities',
-            //'value' => 'Yes'
-        ],
-        '55+' => [
-            //'type' => 'property_type',
-            //'value' => 'Yes'
-        ],
-        'acerages' => [
-
+        '55_plus' => [
+            'display_name' => '55+',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'public_remarks', 'condition' => 'LIKE', 'values' => ''],
+            ]
         ],
         'homes_with_land' => [
-
+            'display_name' => 'Homes with Land',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'zoning', 'condition' => 'LIKE', 'values' => '']
+            ]
         ],
         'pool_homes' => [
-
+            'display_name' => 'Pool Homes',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'pool', 'condition' => 'LIKE', 'values' => '']
+            ]
+        ],
+        'neighborhoods' => [
+            'display_name' => 'Neighborhoods',
+            'type' => 'neighborhoods'
         ]
     ]
 ];
