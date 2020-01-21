@@ -413,11 +413,11 @@
                             <span>6</span>
                         </div>
                         <div class="col s6">
-                            <label>Last Login:</label>
+                            <label>Logins past month:</label>
                             <span>1 day ago</span>
                         </div>
                         <div class="col s6">
-                            <label>Logins this month:</label>
+                            <label>Logins this year:</label>
                             <span>6</span>
                         </div>
                     </div>
