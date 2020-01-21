@@ -13,7 +13,7 @@
                 <div class="bookmark--single box-content">
                     <div class="mt-2 mb-2">
                         <div class="mb-2 fs09">
-                            <strong>Lynne &amp; Jones</strong> bookmarked
+                            <strong>{{ $model->first_name.' '.$model->last_name }}</strong> bookmarked
                             <a href="#" target="_blank">4114 HOLIDAY , Panama City Beach 32408 FL
                                 <i data-v-13ad319a="" aria-hidden="true" class="fa fa-external-link"></i>
                             </a>.
