@@ -367,7 +367,7 @@
                             </select>
                           </div>
                         </div>
-                        <div class="col s3">              
+                        <div class="col s3">
                           <p class="mt-10">Interior</p>
                           <div class="input-field">
                             <select>
@@ -465,9 +465,9 @@
             </div>
         </div>
         <div class="form-element">
-            @include('real-estate::admin.leads.partials.info.default',['type' => 'email'])
-            @include('real-estate::admin.leads.partials.info.default',['type' => 'phone'])
-            @include('real-estate::admin.leads.partials.info.default',['type' => 'address'])
+            @include('real-estate::admin.leads.partials.info.default',['type' => 'email','input_type' => 'email'])
+            @include('real-estate::admin.leads.partials.info.default',['type' => 'phone','input_type' => 'text'])
+            @include('real-estate::admin.leads.partials.info.default',['type' => 'address','input_type' => 'text'])
             @include('real-estate::admin.leads.partials.info.price')
         </div>
     </div>

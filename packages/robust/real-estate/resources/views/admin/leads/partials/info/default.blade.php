@@ -48,7 +48,7 @@
                             <div class="modal-body">
                                 <div>
                                     <div class="input-field">
-                                        <input type="text" value="{{$property->value}}" name="{{$property->type}}">
+                                        <input type="{{$input_type}}" value="{{$property->value}}" name="{{$property->type}}">
                                         <label>{{ucfirst($type)}}</label>
                                     </div>
                                 </div>
