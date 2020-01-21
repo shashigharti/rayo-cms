@@ -61,4 +61,12 @@ class Lead extends Authenticatable
     {
         return $this->belongsTo(Agent::class,'agent_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function notes()
+    {
+        return $this->hasOne('Robust\RealEstate\Models\LeadNote','lead_id');
+    }
 }

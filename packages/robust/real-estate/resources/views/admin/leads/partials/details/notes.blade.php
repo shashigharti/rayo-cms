@@ -1,7 +1,7 @@
 <div class="row leads--notes">
     <div class="col s3 card panel">
         <div class="fixed--bar">
-            <h3 class="title">Vega Norma <a href="#edit" class="modal-trigger"><i class="material-icons">edit</i></a></h3>
+            <h3 class="title">{{ $model->first_name }} {{ $model->last_name }} <a href="#edit" class="modal-trigger"><i class="material-icons">edit</i></a></h3>
             <div id="edit" class="modal">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -411,13 +411,13 @@
             <div class="col s12">
                 <div class="row">
                     <div class="col s12">
-                        <p><strong>Vega Norma</strong> viewed 1 item(s)</p>
+                        <p><strong>{{ $model->first_name }} {{ $model->last_name }}</strong> viewed 1 item(s)</p>
                     </div>                      
                 </div>
                 <div class="row">
                     <div class="col s12 single--note">
-                        <h5>Sent home search link (09/09/19)</h5>
-                        <p>When you’re ready to leave the “just looking stage” and turn your attention to focusing in-on homes meeting your needs and requirements, <4AlaskaRealEstate> is uniquely designed to assist you. It is designed to offer you more than just pretty pictures and scant information. A customized home search designed specifically for you automatically matched you up with homes meeting your requirements. I promise - no annoying, high pressure phone calls. No more guessing, no more wondering if you’re missing something! Let me illustrate how 4AlaskaRealEstate is uniquely designed to assist you in your home search. Here is your personalized home search link <Vega’s home search link>. I’m guessing just a little on some of your search criteria, so let me know if we need to make any adjustments. From this point on you will receive a notice of all new listings matching your search criteria. Remember, when you’re ready to view any of these homes in person, I would count it a privilege to set this up for you. I welcome the opportunity to assist you further! Your personalized link is safe, secure, and for your eyes only!</p>
+                        <h5>{{ $model->notes->title }} (09/09/19)</h5>
+                        <p>{{ $model->notes->note }}</p>
                         <label>2 days ago</label>
                         <div class="right-align mt-4">
                             <a href="#note-edit" class="modal-trigger mr-2">
