@@ -16,8 +16,8 @@ class FrontendMenuHelper
     public function filterMenu($location_type, $items)
     {
         $menu_settings = settings('real-estate');
-        $character_count = $menu_settings['zip_code_character_count'];
-        $zip_max_value = $menu_settings['zip_code_max'];
+        $character_count = $menu_settings['zip_code_character_count'] ?? '';
+        $zip_max_value = $menu_settings['zip_code_max'] ?? '';
 
         $items_new = $items;
 
@@ -62,6 +62,15 @@ class FrontendMenuHelper
             }
         }
         return $items;
+    }
+
+    /**
+     * @param $array
+     * @return mixed
+     */
+    public function sort_tabs($tabs){
+        ksort($tabs);
+        return $tabs;
     }
 
 

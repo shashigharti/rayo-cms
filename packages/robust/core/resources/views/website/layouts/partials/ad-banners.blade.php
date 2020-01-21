@@ -1,5 +1,6 @@
 @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
 @set('bannerSortOrderArr', settings('front-page', 'single_col_banner_order'))
+@inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
 
 @if($bannerSortOrderArr !== '')
     @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $bannerSortOrderArr)))

@@ -53,7 +53,7 @@ class ListingController extends Controller
                 'status' => $status
             ])
             ->whereLocation([$location_type => $location])
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            //->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);

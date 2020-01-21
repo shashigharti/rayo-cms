@@ -63,16 +63,18 @@
                 });
                 markers.push(marker);
             });
-            this.markerClusters.addLayers(markers);
-            this.map.fitBounds(this.markerClusters.getBounds());
-            this.map.addLayer(this.markerClusters);
-            this.map.setZoom(zoom);
+            if (markers.length > 0) {
+                this.markerClusters.addLayers(markers);
+                this.map.fitBounds(this.markerClusters.getBounds());
+                this.map.addLayer(this.markerClusters);
+                this.map.setZoom(zoom);
+            }
         }
     };
     $(function () {
         const map = document.getElementById('listingMap');
         if (map) {
-            FRW.Map.init();
+            //FRW.Map.init();
         }
 
     });

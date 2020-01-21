@@ -8,7 +8,7 @@
                 <div class="available-prices">
                     @if(isset($properties['prices']) && is_array($properties['prices']))
                         @foreach($properties['prices'] as  $key => $price)
-                            <a  href="{{
+                            <a href="{{
                                 route('website.realestate.ct.homes-for-sale-banner',
                                     [
                                         'slug' => $singleColBlock->slug,
@@ -23,27 +23,30 @@
                 </div>
                 @if(isset($properties['tabs_data']) && is_array($properties['tabs_data']))
                     <div class="subdivs--list__block">
-                        @foreach($properties['tabs_data'] as $key => $tabs)
+                        @foreach( $menu_helper->sort_tabs($properties['tabs_data']) as $key => $tabs )
                             <div class="subdivs--list__btn">
-                                <i class="material-icons">redo</i>{{ ucwords(str_replace('_', ' ', $key)) }}
+                                <i class="material-icons">redo</i>{{ strtoupper(str_replace('_', ' ', $key)) }}
                                 @set('tab_fields',[])
                                 <div class="subdivs--list">
                                     <p><label>{{$key}}:</label></p>
                                     <ul>
-                                        @foreach($tabs as $tab => $count)
-                                            <li>
-                                                <a href="{{route('website.realestate.homes-for-sale',
-                                                                    [
-                                                                        'location_type'=>'cities',
-                                                                        'location' =>  '',
-                                                                        'price' => $tab,
-                                                                        'sub_area' => $key
-                                                                     ])
-                                                          }}"
-                                                >
-                                                    {{$tab}} ({{$count}})
-                                                </a>
-                                            </li>
+                                        @foreach($tabs as $index => $tab)
+                                            @if(isset($tab['min']))
+                                                <li>
+                                                    <a href="{{
+                                                        route('website.realestate.homes-for-sale',
+                                                             [
+                                                                 'location_type'=>'cities',
+                                                                 'location' =>  '',
+                                                                 'price' => "{$tab['min']}-{$tab['max']}",
+                                                                 'sub_area' => $index
+                                                             ])
+                                                        }}"
+                                                    >
+                                                        {{ price_range_format("{$tab['min']}-{$tab['max']}")}}({{$tab['count']}})
+                                                    </a>
+                                                </li>
+                                            @endif
                                         @endforeach
                                     </ul>
                                 </div>

@@ -11,12 +11,14 @@
 
     function getParams() {
 
-        let response = {}, queries, url;
+        let response = {}, queries = [], url;
 
         url = window.location.search.substring(1);
 
-        // Split into key/value pairs
-        queries = url.split("&");
+        if(url != ''){
+            // Split into key/value pairs
+            queries = url.split("&");
+        }
 
         // Convert the array of strings into an object
         $.each(queries, function (index, value) {
@@ -57,7 +59,14 @@
 
             }
         });
-        tagContainer.html(template);
+
+        if(template.length > 0){
+            tagContainer.html(template);
+            $('.search-section__tags-action').show();
+        }else{
+            $('.search-section__tags-action').hide();
+        }
+
     }
 
     $(function () {
@@ -79,7 +88,7 @@
             });
         }
 
-        // Check if it has search form 
+        // Check if it has search form
         // Set search params on value change
         if (searchSection.length > 0) {
             let params = {}, qParams;
