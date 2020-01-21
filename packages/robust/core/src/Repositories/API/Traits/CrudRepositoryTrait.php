@@ -22,7 +22,7 @@ trait CrudRepositoryTrait
 
     /**
      * Update a row
-     * 
+     *
      * @param $id
      * @param $data
      * @return mixed

@@ -1,6 +1,7 @@
 <?php
 namespace Robust\RealEstate\Helpers;
 
+use Robust\Admin\Models\User;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 
 /**
@@ -23,5 +24,4 @@ class LeadHelper
     {
         $this->leads = $lead->get();
     }
-
 }

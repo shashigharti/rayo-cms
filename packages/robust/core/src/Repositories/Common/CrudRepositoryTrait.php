@@ -3,7 +3,7 @@
 namespace Robust\Core\Repositories\Common\Traits;
 
 trait CrudRepositoryTrait
-{   
+{
 
      /**
      * Create a new row
@@ -16,10 +16,20 @@ trait CrudRepositoryTrait
         return $this->model->create($data);
     }
 
+    /**
+     * if exits update or create a new row
+     * @param $prev
+     * @param $data
+     * @return mixed
+     */
+    public function updateOrCreate($prev, $data)
+    {
+        return $this->model->updateOrCreate($prev,$data);
+    }
 
     /**
      * Update a row
-     * 
+     *
      * @param $id
      * @param $data
      * @return mixed
