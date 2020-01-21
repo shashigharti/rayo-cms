@@ -70,4 +70,13 @@ class Lead extends Authenticatable
         return $this->hasOne('Robust\RealEstate\Models\LeadNote','lead_id');
     }
 
+    /**
+     * @return $this
+     */
+    public function favouriteListings()
+    {
+        return $this->belongsToMany(Listing::class, 'real_estate_lead_favourites', 'lead_id',
+            'listings_id')->withoutGlobalScopes()->withPivot(['created_at', 'updated_at']);
+    }
+
 }
