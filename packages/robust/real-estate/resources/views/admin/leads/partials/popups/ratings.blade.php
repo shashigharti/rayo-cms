@@ -1,11 +1,11 @@
 <div class="column-action__ratings">
-    <a href="#" title="Click to see calls detail" class='dropdown-trigger' href='#' data-target='dd-ratings'>
+    <a href="#" title="Click to see calls detail" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-star-o"></i>
         <small>
             <sub>1</sub>
         </small>
     </a>
-    <ul id='dd-ratings' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}

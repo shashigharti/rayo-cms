@@ -1,8 +1,8 @@
 <div class="column-action__followups">
-    <a href="#" title="Click to add followups" class='dropdown-trigger' href='#' data-target='dd-followups'>
+    <a href="#" title="Click to add followups" class='popup-trigger' href='#'>
        Add
     </a>
-    <ul id='dd-followups' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}

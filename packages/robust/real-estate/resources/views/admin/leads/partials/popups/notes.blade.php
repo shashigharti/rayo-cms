@@ -1,11 +1,11 @@
 <div class="column-action__notes">
-    <a href="#" title="Click to see communications" class='dropdown-trigger' href='#' data-target='dd-notes'>
+    <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-sticky-note-o"></i>
         <small>
             <sub>1</sub>
         </small>
     </a>
-    <ul id='dd-notes' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }} (Notes)
@@ -18,14 +18,14 @@
                                 PT-Mon, Nov 25,2019
                                 <br>
                                 7:38 A.M
-                            </div>                           
+                            </div>
                         </div>
                         <div class="col s12 mt-4">
-                            <div class="vw-lead-price">                                
+                            <div class="vw-lead-price">
                                 not in TL-Thu,Oct 3,2019
                                 <br>
                                 10:28 A.M
-                            </div>                           
+                            </div>
                         </div>
                 </div>
                 <div class="row vw-view-more">

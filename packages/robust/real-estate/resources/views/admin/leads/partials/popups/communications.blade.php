@@ -1,11 +1,11 @@
 <div class="column-action__communications">
-    <a href="#" title="Click to see communications" class='dropdown-trigger' href='#' data-target='dd-communications'>
+    <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-envelope-o"></i>
         <small>
             <sub>1</sub>
         </small>
     </a>
-    <ul id='dd-communications' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}
@@ -21,7 +21,7 @@
                               Update - Thu , Jan 16,2020
                               <br>
                               8:08 A.M
-                            </div>                           
+                            </div>
                        </div>
                    </a>
                    <a href="#">
@@ -32,7 +32,7 @@
                               Update - Thu , Jan 16,2020
                               <br>
                               8:08 A.M
-                            </div>                           
+                            </div>
                        </div>
                    </a>
                 </div>
@@ -43,7 +43,7 @@
                                 View more
                             </a>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </div>
         </div>

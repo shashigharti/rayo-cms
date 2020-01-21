@@ -1,11 +1,11 @@
 <div class="column-action__replies">
-    <a href="#" title="Click to see calls detail" class='dropdown-trigger' href='#' data-target='dd-replies'>
+    <a href="#" title="Click to see calls detail" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-mail-reply"></i>
         <small>
             <sub>1</sub>
         </small>
     </a>
-    <ul id='dd-replies' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}

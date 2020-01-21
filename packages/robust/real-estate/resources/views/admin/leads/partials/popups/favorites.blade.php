@@ -1,11 +1,11 @@
 <div class="column-action__favorite">
-    <a href="#" title="Favorite Properties" class='dropdown-trigger' href='#' data-target='dd-favorite'>
+    <a href="#" title="Favorite Properties" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-heart-o"></i>
         <small>
             <sub>0</sub>
         </small>
     </a>
-    <ul id='dd-favorite' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}

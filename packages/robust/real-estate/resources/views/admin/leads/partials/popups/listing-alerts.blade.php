@@ -1,11 +1,11 @@
 <div class="column-action__listing-alerts">
-    <a href="#" title="Listings / Alerts" class='dropdown-trigger' href='#' data-target='dd-listing-alerts'>
+    <a href="#" title="Listings / Alerts" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-bullhorn" style="color: red !important;"></i>
         <small>
             <sub>1</sub>
         </small>
     </a>
-    <ul id='dd-listing-alerts' class='dropdown-content'>
+    <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
                 {{ $lead->first_name }} {{ $lead->last_name }}
@@ -21,7 +21,7 @@
                                 Sent: September 20th 2019, 10:37 am
                                 <br>
                                Sending alerts: Daily
-                            </div>                           
+                            </div>
                         </div>
                 </div>
                 <div class="row viewed-lead">
@@ -33,7 +33,7 @@
                                 Sent: September 20th 2019, 10:37 am
                                 <br>
                                Sending alerts: Daily
-                            </div>                           
+                            </div>
                         </div>
                 </div>
                 <div class="row vw-view-more">
