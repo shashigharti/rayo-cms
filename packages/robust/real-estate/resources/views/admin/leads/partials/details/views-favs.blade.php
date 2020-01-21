@@ -1,3 +1,5 @@
+@inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
+@set('lead_favs',$lead_helper->getLeadsFav($model->id))
 <div class="row">
     @include("real-estate::admin.leads.partials.details.overview-info")
     <div class="col s9">
@@ -24,87 +26,36 @@
                    <p><strong>Vega Norma</strong> viewed 1 item(s)</p>
              </div>                      
           </div>
-          <div class="row">
-             <div class="single-search-item col s12">
-                <div class="img col s2">
-                   <img src="../../../app-assets/images/cards/cameras.png">
-                </div>
-                <div class="text col s10">
-                   <div class="col s12">
-                      <h5>2419 Glenkerry,Anchorage 99504</h5>
-                   </div>
-                   <div class="col s6">
-                      <label>Address:</label>2419 Glenkerry
-                   </div>
-                   <div class="col s6">
-                      <label>Seen:</label>5 days ago
-                   </div>
-                   <div class="col s6">
-                      <label>Bedrooms:</label>3
-                   </div>
-                   <div class="col s6">
-                      <label>Full Bathrooms:</label>2
-                   </div>
-                   <div class="col s6">
-                      <label>Half Bathrooms:</label>2
-                   </div>
-                </div>
-             </div>                      
-          </div>
-          <div class="row">
-             <div class="single-search-item col s12">
-                <div class="img col s2">
-                   <img src="../../../app-assets/images/cards/cameras.png">
-                </div>
-                <div class="text col s10">
-                   <div class="col s12">
-                      <h5>2419 Glenkerry,Anchorage 99504</h5>
-                   </div>
-                   <div class="col s6">
-                      <label>Address:</label>2419 Glenkerry
-                   </div>
-                   <div class="col s6">
-                      <label>Seen:</label>5 days ago
-                   </div>
-                   <div class="col s6">
-                      <label>Bedrooms:</label>3
-                          </div>
-                   <div class="col s6">
-                      <label>Full Bathrooms:</label>2
-                   </div>
-                   <div class="col s6">
-                      <label>Half Bathrooms:</label>2
+          @foreach($lead_favs as $lead_fav)
+                <div class="row">
+                   <div class="single-search-item col s12">
+                      <div class="img col s2">
+                         <img src="../../../app-assets/images/cards/cameras.png">
+                      </div>
+                      <div class="text col s10">
+                         <div class="col s12">
+                            <h5>{{ $lead_fav->listings->name??$lead_fav->listings->name }}</h5>
+                         </div>
+                         <div class="col s6">
+                            <label>Address:</label>2419 Glenkerry
+                         </div>
+                         <div class="col s6">
+                            <label>Seen:</label>5 days ago
+                         </div>
+                         <div class="col s6">
+                            <label>Bedrooms:</label>3
+                         </div>
+                         <div class="col s6">
+                            <label>Full Bathrooms:</label>2
+                         </div>
+                         <div class="col s6">
+                            <label>Half Bathrooms:</label>2
+                         </div>
+                      </div>
                    </div>
                 </div>
-             </div>                      
-          </div>
-          <div class="row">
-             <div class="single-search-item col s12">
-                <div class="img col s2">
-                   <img src="../../../app-assets/images/cards/cameras.png">
-                </div>
-                <div class="text col s10">
-                   <div class="col s12">
-                      <h5>2419 Glenkerry,Anchorage 99504</h5>
-                   </div>
-                   <div class="col s6">
-                      <label>Address:</label>2419 Glenkerry
-                   </div>
-                   <div class="col s6">
-                      <label>Seen:</label>5 days ago
-                   </div>
-                   <div class="col s6">
-                      <label>Bedrooms:</label>3
-                   </div>
-                   <div class="col s6">
-                      <label>Full Bathrooms:</label>2
-                   </div>
-                   <div class="col s6">
-                      <label>Half Bathrooms:</label>2
-                   </div>
-                </div>
-             </div>                      
-          </div>
+          @endforeach
        </div>
     </div> 
+</div>
 </div>

@@ -56,10 +56,10 @@ class LeadController extends Controller
      * @param $id
      * @return $this
      */
-    public function addLeadsFollowUp(Request $request , $id)
+    public function addLeadsFollowUp(Request $request,LeadFollowup $leadFollowup , $id)
     {
         $data = $request->all();
-        LeadFollowup::create($data);
-        return redirect()->back()->with('message', 'Record was successfully saved!!');
+        $leadFollowup->insert($data);
+        return response()->json(['success'=>true,'message'=> 'Data Inserted Successfully','data'=>$data]);
     }
 }
