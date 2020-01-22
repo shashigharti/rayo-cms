@@ -29,7 +29,7 @@
             }}
         </div>
         <div class="col s6">
-            {{ Form::label('properties[attribute_types][]', 'Properties(tabs)',['class'=>'control-label']) }}
+            {{ Form::label('properties[attribute_types][]', 'Attributes',['class'=>'control-label']) }}
             {{ Form::select('properties[attribute_types][]', [], null, [
                     'class'=>'browser-default multi-select',
                     'data-url' => route('api.listings.attributes'),
@@ -38,28 +38,47 @@
                ])
             }}
         </div>
+        @if(isset($properties->location_types))
+            <div class="row">
+                <fieldset class="mt-1">
+                    <legend>Locations</legend>
+                    @foreach( $properties->location_types as $key => $location )
+                        <div class="col s12">
+                            {{ Form::label("properties[locations][$location][]", $location,['class'=>'control-label']) }}
+                            {{ Form::select("properties[locations][$location][]", [], null, [
+                                    'class'=>'browser-default multi-select',
+                                    'data-url' => route('api.locations.type', [$location]),
+                                    'data-selected' => implode(",", $properties->locations->{$location} ?? []),
+                                    'multiple'
+                               ])
+                            }}
+                        </div>
+                    @endforeach
+                </fieldset>
+            </div>
+        @endif
+        @if(isset($properties->attribute_types))
+            <div class="row">
+                <fieldset class="mt-1">
+                    <legend>Attributes</legend>
+                    @foreach( $properties->attribute_types as $key => $attribute )
+                        <div class="col s12">
+                            {{ Form::label("properties[attributes][$attribute][]", $attribute,['class'=>'control-label']) }}
+                            {{ Form::select("properties[attributes][$attribute][]", [], null, [
+                                    'class'=>'browser-default multi-select',
+                                    'data-url' => route('api.listings.attributes.property_name', [$attribute]),
+                                    'data-selected' => implode(",", $properties->attributes->{$attribute} ?? []),
+                                    'multiple'
+                               ])
+                            }}
+                        </div>
+                    @endforeach
+                </fieldset>
+            </div>
+        @endif
     </fieldset>
 </div>
 
-@if(isset($properties->location_types))
-    <div class="row">
-        <fieldset class="mt-1">
-            <legend>Locations</legend>
-            @foreach( $properties->location_types as $key => $location )
-                <div class="col s12">
-                    {{ Form::label("properties[locations][$location][]", $location,['class'=>'control-label']) }}
-                    {{ Form::select("properties[locations][$location][]", [], null, [
-                            'class'=>'browser-default multi-select',
-                            'data-url' => route('api.locations.type', [$location]),
-                            'data-selected' => implode(",", $properties->locations->{$location} ?? []),
-                            'multiple'
-                       ])
-                    }}
-                </div>
-            @endforeach
-        </fieldset>
-    </div>
-@endif
 <div class="row">
     <fieldset class="mt-1">
         <legend>Price Settings</legend>

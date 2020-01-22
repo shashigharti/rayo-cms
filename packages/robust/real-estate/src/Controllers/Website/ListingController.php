@@ -72,46 +72,47 @@ class ListingController extends Controller
      * @param $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function customActive(BannerRepository $banner, LocationHelper $locationHelper, $slug, $price_range)
+    public function getCustomListingsForBanner(BannerRepository $banner, LocationHelper $locationHelper, $slug, $price_range)
     {
-        $location = null;
-        $banner = $banner->where('slug', $slug)->first();
-        $properties = json_decode($banner->properties);
-        $locations_count = count((array)$properties->locations);
-        $attributes_count = count((array)$properties->attributes);
-
-        $status = settings('real-estate', 'active');
-        $qBuilder = $this->model->getListings(
-            [
-                'status' => $status
-            ]);
-
-        $params = [];
-        foreach ((array)$properties->locations as $key => $location) {
-            $params[$key] = implode(',', $location);
-        }
-
-        if ($locations_count > 0) {
-            $qBuilder = $qBuilder->whereLocation($params);
-        }
-
-        $params = [];
-        foreach ((array)$properties->attributes as $key => $attribute) {
-            $params[$key] = implode(',', $attribute);
-        }
-        if ($attributes_count > 0) {
-            $qBuilder = $qBuilder->wherePropertyType($params);
-        }
-        $results = $qBuilder
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
-            ->with('property')
-            ->with('images')
-            ->paginate($this->pagination);
-
-        return view(Site::templateResolver('core::website.listings.index'), [
-            'results' => $results,
-            'location' => ($location) ? $locationHelper->getLocation($location) : null
-        ]);
+        dd(request());
+//        $location = null;
+//        $banner = $banner->where('slug', $slug)->first();
+//        $properties = json_decode($banner->properties);
+//        $locations_count = count((array)$properties->locations);
+//        $attributes_count = count((array)$properties->attributes);
+//
+//        $status = settings('real-estate', 'active');
+//        $qBuilder = $this->model->getListings(
+//            [
+//                'status' => $status
+//            ]);
+//
+//        $params = [];
+//        foreach ((array)$properties->locations as $key => $location) {
+//            $params[$key] = implode(',', $location);
+//        }
+//
+//        if ($locations_count > 0) {
+//            $qBuilder = $qBuilder->whereLocation($params);
+//        }
+//
+//        $params = [];
+//        foreach ((array)$properties->attributes as $key => $attribute) {
+//            $params[$key] = implode(',', $attribute);
+//        }
+//        if ($attributes_count > 0) {
+//            $qBuilder = $qBuilder->wherePropertyType($params);
+//        }
+//        $results = $qBuilder
+//            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+//            ->with('property')
+//            ->with('images')
+//            ->paginate($this->pagination);
+//
+//        return view(Site::templateResolver('core::website.listings.index'), [
+//            'results' => $results,
+//            'location' => ($location) ? $locationHelper->getLocation($location) : null
+//        ]);
     }
 
 
