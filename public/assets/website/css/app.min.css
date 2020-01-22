@@ -840,8 +840,8 @@ a.buy-now-btn{color:#fff;display:inline-block;background:#002349;padding:10px 43
 .adv--block h4{font-size:20px !important;font-weight:500 !important;margin-bottom:20px}
 .figcaption{position:absolute;left:0;right:0;bottom:0;width:100%;color:#fff;padding:50px 10px 0}
 .single-block .figcaption h2{color:#fff;font-size:21px;margin-top:20px;font-weight:500;text-shadow:0 0 5px #0a0a0a}
-.figcaption .available-prices{width:100%;padding-bottom:14px;max-height:0;opacity:0;margin-top:0;overflow:hidden;-webkit-transition:max-height 1.4s,opacity .9s;transition:max-height 1.4s,opacity .9s}
-.single-block:hover .available-prices{max-height:1000px;opacity:1}.search-section input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;width:90%}
+.figcaption .available-prices{width:100%;padding-bottom:14px;max-height:1000px;opacity:1;margin-top:0;overflow:hidden;-webkit-transition:max-height 1.4s,opacity .9s;transition:max-height 1.4s,opacity .9s}
+.search-section input[type="text"]{border:1px solid #ccc !important;padding:0 10px !important;width:90%}
 .inner--title{margin-top:0}.inner--title h1{margin-top:0}p.sub--inner{font-size:12px}
 .side-tab-content .form-group label{vertical-align:middle;float:left;margin-top:7px;margin-right:10px;width:20%;padding:0;font-size:12px !important;text-align:left !important}
 .side-tab-content .form-group input{width:76% !important;float:left !important;height:21px !important;border:1px solid #ccc !important;font-size:12px !important;padding:5px 15px !important;margin-bottom:10px !important}
