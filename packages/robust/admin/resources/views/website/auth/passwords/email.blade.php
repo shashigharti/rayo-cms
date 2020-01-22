@@ -1,5 +1,7 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
-
+@section('header')
+    @include(Site::templateResolver('core::website.layouts.partials.header'))
+@endsection
 @section('body_section')
     <div class="container">
         <div class="row justify-content-center">
@@ -14,7 +16,7 @@
                             </div>
                         @endif
 
-                        <form method="POST" action="{{ route('password.email') }}">
+                        <form method="POST" action="{{ route('website.auth.password.email') }}">
                             @csrf
 
                             <div class="form-group row">
