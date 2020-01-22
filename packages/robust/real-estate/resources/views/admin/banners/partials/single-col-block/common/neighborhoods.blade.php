@@ -1,7 +1,6 @@
 @inject('tabs_helper', 'Robust\RealEstate\Helpers\TabsHelper')
 @if(isset($properties->locations))
     @set('subdivisions', $tabs_helper->neighborhoods('cities', $properties->locations->cities))
-    @set('subdivisions', $tabs_helper->neighborhoods('cities', $properties->locations->cities))
     <div class="row">
         <div id="{{ $tab }}" class="col s12">
             <div class="form-group form-material row">
