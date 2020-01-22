@@ -1,10 +1,10 @@
 @set('image',$properties['image'] ? getMedia($properties['image'])  : '')
 @if($properties)
-    <div class="col m{{$col}} s12">
+    <div class="col m{{ $col }} s12">
         <div class="single-block">
-            <img src="{{$image}}" alt="{{$properties['header']}}">
+            <img src="{{ $image }}" alt="{{ $properties['header'] }}">
             <div class="figcaption center-align">
-                <h2>{{$properties['header']}}</h2>
+                <h2>{{ $properties['header'] }}</h2>
                 <div class="available-prices">
                     @if(isset($properties['prices']) && is_array($properties['prices']))
                         @foreach($properties['prices'] as  $key => $price)
@@ -16,7 +16,7 @@
                                     ])
                                 }}"
                             >
-                                {{ price_range_format("{$price['min']}-{$price['max']}")}} ({{$price['count']}})
+                                {{ price_range_format("{$price['min']}-{$price['max']}")}} ({{ $price['count'] }})
                             </a>
                         @endforeach
                     @endif
@@ -28,7 +28,7 @@
                                 <i class="material-icons">redo</i>{{ strtoupper(str_replace('_', ' ', $key)) }}
                                 @set('tab_fields',[])
                                 <div class="subdivs--list">
-                                    <p><label>{{$key}}:</label></p>
+                                    <p><label>{{ $key }}:</label></p>
                                     <ul>
                                         @foreach($tabs as $index => $tab)
                                             @if(isset($tab['min']))
@@ -43,7 +43,7 @@
                                                              ])
                                                         }}"
                                                     >
-                                                        {{ price_range_format("{$tab['min']}-{$tab['max']}")}}({{$tab['count']}})
+                                                        {{ price_range_format("{$tab['min']}-{$tab['max']}")}}({{ $tab['count'] }})
                                                     </a>
                                                 </li>
                                             @endif

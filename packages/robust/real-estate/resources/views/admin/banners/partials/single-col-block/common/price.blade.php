@@ -1,19 +1,14 @@
 <div class="row">
-    <div id="{{ $key }}" class="col s12">
+    <div id="{{ $tab }}" class="col s12">
         <fieldset class="mt-1">
             <legend>Conditions</legend>
             @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
-                @if(isset($properties->tabs))
-                    @set('tabs', json_decode(json_encode($properties->tabs), true))
-                @else
-                    @set('tabs', $tabs_config[$tab])
-                @endif
                 <div class="col s12">
-                    {{ Form::label("properties[tabs][$key][conditions][$ckey][values]", $condition['property_type'], ['class'=>'control-label']) }}
-                    {{ Form::select("properties[tabs][$key][conditions][$ckey][values]", [], null, [
+                    {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", $condition['property_type'], ['class'=>'control-label']) }}
+                    {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
                             'class'=>'browser-default multi-select',
                             'data-url' => route('api.listings.attributes.property_name', $condition['property_type']),
-                            'data-selected' => $tabs[$key]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
+                            'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
                             'multiple'
                         ])
                     }}
@@ -22,24 +17,24 @@
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>
-            @if(isset($properties->tabs))
-                @set('prices', $tabs[$key]['prices'])
+            @if(isset($properties->tabs->{$tab}))
+                @set('prices', $tabs[$tab]['prices'])
             @else
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))
             @endif
             @foreach($prices as $pkey => $price)
                 <div class="row dynamic-elem">
                     <div class="input-field col s4">
-                        {{ Form::label("properties[tabs][$key][prices][$pkey][min]", 'Min') }}
-                        {{ Form::text("properties[tabs][$key][prices][$pkey][min]", $tabs[$key]['prices'][$pkey]['min'] ?? $prices[$pkey]['min'] ?? '') }}
+                        {{ Form::label("properties[tabs][$tab][prices][$pkey][min]", 'Min') }}
+                        {{ Form::text("properties[tabs][$tab][prices][$pkey][min]", $tabs[$tab]['prices'][$pkey]['min'] ?? $prices[$pkey]['min'] ?? '') }}
                     </div>
                     <div class="input-field col s4">
-                        {{ Form::label("properties[tabs][$key][prices][$pkey][max]", 'Max') }}
-                        {{ Form::text("properties[tabs][$key][prices][$pkey][max]", $tabs[$key]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
+                        {{ Form::label("properties[tabs][$tab][prices][$pkey][max]", 'Max') }}
+                        {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
                     </div>
                     <div class="input-field col s2">
-                        {{ Form::label("properties[tabs][$key][prices][$pkey][count]", 'Count') }}
-                        {{ Form::text("properties[tabs][$key][prices][$pkey][count]", $tabs[$key]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
+                        {{ Form::label("properties[tabs][$tab][prices][$pkey][count]", 'Count') }}
+                        {{ Form::text("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
                     </div>
                     @if( $prices[$pkey]['max'] == "" )
                         <a href="#">
