@@ -96,10 +96,10 @@
         <legend>Tabs Settings</legend>
         <div class="row mt-5">
             @set('tabs_config', config('real-estate.frw.single_banner_tabs_properties_filter'))
-            @set('tabs', array_combine(array_keys($tabs_config), array_keys($tabs_config)))
+            @set('selected_tabs', array_combine(array_keys($tabs_config), array_keys($tabs_config)))
             <div class="input-field col s12">
                 {{ Form::label('properties[tabs_to_display][]', 'Tabs', ['class'=>'control-label']) }}
-                {{ Form::select('properties[tabs_to_display][]', $tabs,
+                {{ Form::select('properties[tabs_to_display][]', $selected_tabs,
                     $properties->tabs_to_display ?? [],
                     [
                         'class'=>'browser-default multi-select',
@@ -113,14 +113,19 @@
                 <div class="col s12">
                     <ul class="tabs">
                         @foreach($properties->tabs_to_display as $key => $tab)
-                            <li class="tab" @if($key == 0) selected @endif>
-                                <a href="#{{ $key }}">{{ $tabs_config[$tab]['display_name'] }}</a>
+                            <li class="tab col s3" @if($key == 0) selected @endif>
+                                <a href="#{{ $tab }}">{{ $tabs_config[$tab]['display_name'] }}</a>
                             </li>
                         @endforeach
                     </ul>
                 </div>
                 <div class="col s12">
                     <div class="card tab-content pl-2 pr-2 pt-2 pb-3">
+                        @if(isset($properties->tabs->{$tab}))
+                            @set('tabs', json_decode(json_encode($properties->tabs), true))
+                        @else
+                            @set('tabs', $tabs_config)
+                        @endif
                         @foreach($properties->tabs_to_display as $key => $tab)
                             @include("real-estate::admin.banners.partials.single-col-block.common.{$tabs_config[$tab]['type']}")
                         @endforeach
