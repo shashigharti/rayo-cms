@@ -5,6 +5,10 @@ namespace Robust\Admin\Controllers\Website\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
+/**
+ * Class ForgotPasswordController
+ * @package Robust\Admin\Controllers\Website\Auth
+ */
 class ForgotPasswordController extends Controller
 {
     /*
@@ -19,4 +23,12 @@ class ForgotPasswordController extends Controller
     */
 
     use SendsPasswordResetEmails;
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showLinkRequestForm()
+    {
+        return view('admin::website.auth.passwords.email');
+    }
 }
