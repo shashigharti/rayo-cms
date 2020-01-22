@@ -359,3 +359,16 @@ input {
 .sort-container__handle {
     vertical-align: middle;
 }
+
+.tab-content {
+    fieldset {
+        legend {
+            font-size: 12px;
+            font-weight: 600;
+        }
+    }
+}
+
+.select2-container {
+    width: 100% !important;
+}

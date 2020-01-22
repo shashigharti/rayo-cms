@@ -114,15 +114,19 @@
                 <div class="col s12">
                     <ul class="tabs">
                         @foreach($properties->tabs_to_display as $key => $tab)
-                            <li class="tab col s3" @if($key == 0) selected @endif>
+                            <li class="tab" @if($key == 0) selected @endif>
                                 <a href="#{{ $key }}">{{ $tabs_config[$tab]['display_name'] }}</a>
                             </li>
                         @endforeach
                     </ul>
                 </div>
-                @foreach($properties->tabs_to_display as $key => $tab)
-                    @include("real-estate::admin.banners.partials.single-col-block.common.{$tabs_config[$tab]['type']}")
-                @endforeach
+                <div class="col s12">
+                    <div class="card tab-content pl-2 pr-2 pt-2 pb-3">
+                        @foreach($properties->tabs_to_display as $key => $tab)
+                            @include("real-estate::admin.banners.partials.single-col-block.common.{$tabs_config[$tab]['type']}")
+                        @endforeach
+                    </div>
+                </div>
             </div>
         @endif
     </fieldset>

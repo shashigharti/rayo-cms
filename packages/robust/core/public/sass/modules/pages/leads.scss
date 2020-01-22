@@ -122,6 +122,12 @@ span.badge-secondary {
         padding: 0px 0px 0px;
         background: transparent;
         box-shadow: none;
+
+        .card {
+            h5 {
+                font-size: 22px;
+            }
+        }
     }
 }
 
@@ -322,5 +328,22 @@ span.badge-secondary {
 
     time {
         font-size: 12px;
+    }
+}
+
+.modal-body {
+    .row {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    [type="checkbox"] + span:not(.lever) {
+        font-size: 12px;
+        width: 84%;
+        vertical-align: initial;
+    }
+
+    [type="checkbox"]:not(:checked), #main [type="checkbox"]:checked {
+        margin-bottom: 4px;
     }
 }

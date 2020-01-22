@@ -40,7 +40,7 @@
                       <span>Add Search</span><a href="#!" class="modal-action modal-close right "><i class="material-icons">clear</i></a>
                     </div>
                     <div class="modal-body">
-                      <div class="row mt-5">
+                      <div class="row">
                         <div class="col s6">
                           <div class="input-field">
                             <input type="text">
@@ -435,7 +435,7 @@
                       </div>
                       <div class="row">
                         <div class="col s12 right-align">
-                          <a href="#search" class="btn purple">
+                          <a href="#search" class="btn theme-btn">
                                   Save
                                 </a>
                         </div>
