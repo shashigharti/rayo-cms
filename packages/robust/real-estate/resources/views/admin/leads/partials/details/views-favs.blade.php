@@ -1,5 +1,3 @@
-@inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
-@set('lead_favs',$lead_helper->getLeadsFav($model->id))
 <div class="row">
     @include("real-estate::admin.leads.partials.details.overview-info")
     <div class="col s9">
@@ -26,7 +24,7 @@
                    <p><strong>Vega Norma</strong> viewed 1 item(s)</p>
              </div>                      
           </div>
-          @foreach($lead_favs as $lead_fav)
+          @foreach($model->favouriteListings as $favouriteListing)
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
@@ -34,22 +32,19 @@
                       </div>
                       <div class="text col s10">
                          <div class="col s12">
-                            <h5>{{ $lead_fav->listings->name??$lead_fav->listings->name }}</h5>
+                            <h5>{{ $favouriteListing->name }}</h5>
                          </div>
                          <div class="col s6">
-                            <label>Address:</label>2419 Glenkerry
+                            <label>Address:</label> {{ $favouriteListing->address_street }} {{ $favouriteListing->state }}
                          </div>
                          <div class="col s6">
                             <label>Seen:</label>5 days ago
                          </div>
                          <div class="col s6">
-                            <label>Bedrooms:</label>3
+                            <label>Bedrooms:</label>{{ $favouriteListing->bedrooms }}
                          </div>
                          <div class="col s6">
-                            <label>Full Bathrooms:</label>2
-                         </div>
-                         <div class="col s6">
-                            <label>Half Bathrooms:</label>2
+                            <label>Full Bathrooms:</label>{{ $favouriteListing->baths_full }}
                          </div>
                       </div>
                    </div>

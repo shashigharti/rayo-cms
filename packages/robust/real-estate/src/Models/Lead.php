@@ -86,4 +86,21 @@ class Lead extends Authenticatable
             'listings_id')->withoutGlobalScopes()->withPivot(['created_at', 'updated_at']);
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function bookmarks()
+    {
+        return $this->hasMany('Robust\RealEstate\Models\LeadBookMark');
+    }
+
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function listingViewed()
+    {
+        return $this->hasMany(LeadView::class);
+    }
+
 }
