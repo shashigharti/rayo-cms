@@ -23,7 +23,7 @@
                                     <tr>
                                         <td style="border: none; border-bottom: 1px solid lightgrey;background-color: #F9F9F9;">
                                             <p style="padding: 10px 20px;">
-                                                <span style="font-size: 15px;">Hi Vega,</span>
+                                                <span style="font-size: 15px;">Hi {{ $model->first_name }},</span>
                                             </p>
                                             <p style="padding: 5px 20px;"> Here are your latest property updates :
                                                 <br> 1 properties for sale in the areas you requested.
