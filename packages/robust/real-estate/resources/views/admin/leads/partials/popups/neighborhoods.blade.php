@@ -8,7 +8,7 @@
     <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
-                {{ $lead->first_name }} {{ $lead->last_name }}
+                {{ $lead->first_name }} {{ $lead->last_name }} - Neighborhoods
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">

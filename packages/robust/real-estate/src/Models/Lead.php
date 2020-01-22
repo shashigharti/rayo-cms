@@ -94,4 +94,21 @@ class Lead extends Authenticatable
         return $this->hasMany('Robust\RealEstate\Models\LeadBookMark');
     }
 
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function listingViewed()
+    {
+        return $this->hasMany(LeadView::class);
+    }
+
+    /**
+     * @return $this
+     */
+    public function emails()
+    {
+        return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
+    }
+
 }

@@ -86,14 +86,6 @@ return [
         ['min' => '81000', 'max' => '91000', 'count' => '0'],
         ['min' => '91000', 'max' => '', 'count' => '0']
     ],
-    'min_acreage' => 0.5,
-    'max_acreage' => 20,
-    'acreage_increment' => 3,
-    'location_id_map' => [
-        'cities' => 'city_id',
-        'zips' => 'zip_id',
-        'county' => 'county_id',
-    ],
     'single_banner_tabs_properties_filter' => [
         'waterfront' => [
             'display_name' => 'Waterfront',
