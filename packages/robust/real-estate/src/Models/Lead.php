@@ -74,7 +74,7 @@ class Lead extends Authenticatable
      */
     public function notes()
     {
-        return $this->hasOne('Robust\RealEstate\Models\LeadNote','lead_id');
+        return $this->hasMany('Robust\RealEstate\Models\LeadNote');
     }
 
     /**

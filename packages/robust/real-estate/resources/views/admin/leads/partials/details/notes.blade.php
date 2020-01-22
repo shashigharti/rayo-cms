@@ -20,19 +20,21 @@
                     </div>                      
                 </div>
                 <div class="row">
-                    <div class="col s12 single--note">
-                        <h5>{{ $model->notes->title }} (09/09/19)</h5>
-                        <p>{{ $model->notes->note }}</p>
-                        <label>{{ $model->notes->created_at->diffForHumans() }}</label>
-                        <div class="right-align mt-4">
-                            <a href="#note-edit" class="modal-trigger mr-2">
-                                <i class="material-icons">edit</i>                     
-                            </a>
-                            <a href="#" class="right">
-                                <i class="material-icons delete">delete</i>
-                            </a>
+                    @foreach($model->notes as $note)
+                        <div class="col s12 single--note">
+                            <h5>{{ $note->title }} {{ $note->created_at->format('(d/m/Y)') }}</h5>
+                            <p>{{ $note->note }}</p>
+                            <label>{{ $note->created_at->diffForHumans() }}</label>
+                            <div class="right-align mt-4">
+                                <a href="#note-edit" class="modal-trigger mr-2">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                                <a href="#" class="right">
+                                    <i class="material-icons delete">delete</i>
+                                </a>
+                            </div>
                         </div>
-                    </div>
+                    @endforeach
                 </div>
             </div>
         </div>              
