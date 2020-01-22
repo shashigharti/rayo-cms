@@ -1,6 +1,5 @@
 <div class="row">
     @include("real-estate::admin.leads.partials.details.overview-info")
-
     <div class="col s9">
         <div class="row">
             <div class="col s6">
@@ -11,11 +10,11 @@
                     <div class="details">
                         <div class="col s6">
                             <label>Last Login:</label>
-                            <span>1 day ago</span>
+                            <span>{{ \Carbon\Carbon::parse( $model->last_active)->diffForHumans() }}</span>
                         </div>
                         <div class="col s6">
                             <label>Logins this month:</label>
-                            <span>6</span>
+                            <span>13</span>
                         </div>
                         <div class="col s6">
                             <label>Logins past month:</label>
