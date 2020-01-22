@@ -127,6 +127,11 @@ span.badge-secondary {
             h5 {
                 font-size: 22px;
             }
+            .fixed--bar{
+                .form-element h5 {
+                    font-size: 12px;
+                }
+            }
         }
     }
 }

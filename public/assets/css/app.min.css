@@ -1210,7 +1210,8 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .theme--btn:hover{background-color:#8d62c1 !important}span.badge-secondary{color:#333;font-size:11px;font-weight:bold}
 .theme--select{margin-top:10px}.filter--bar .theme__tabs .tab a{font-size:11px;font-weight:bold}
 .leads-table small{font-size:10px}.info-unit{width:30px}.Leads .tab--content{padding:0;background:transparent;-webkit-box-shadow:none;box-shadow:none}
-.Leads .tab--content .card h5{font-size:22px}.info-dialog{background:#fafafa;-webkit-box-shadow:0 2px 15px rgba(0,0,0,0.3);box-shadow:0 2px 15px rgba(0,0,0,0.3);border:1px solid #ccc;font-family:"Roboto Condensed",sans-serif;color:rgba(0,0,0,0.87);z-index:1}
+.Leads .tab--content .card h5{font-size:22px}.Leads .tab--content .card .fixed--bar .form-element h5{font-size:12px}
+.info-dialog{background:#fafafa;-webkit-box-shadow:0 2px 15px rgba(0,0,0,0.3);box-shadow:0 2px 15px rgba(0,0,0,0.3);border:1px solid #ccc;font-family:"Roboto Condensed",sans-serif;color:rgba(0,0,0,0.87);z-index:1}
 .info-dialog .box-title{padding:5px 15px 2px 10px;border-bottom:1px solid #ccc;background:#e8e8e8;font-size:.9rem;font-weight:700}
 .info-dialog .box-content{margin-top:15px;font-size:.9rem;font-family:"Open Sans",Arial,sans-serif}
 .info-dialog .viewed-lead{margin:0;padding:5px 2px;font-size:.7rem}.info-dialog .viewed-lead img{width:85px;height:70px;padding:0;overflow:hidden;-o-object-fit:cover;object-fit:cover;padding:0 10px 10px 10px}
