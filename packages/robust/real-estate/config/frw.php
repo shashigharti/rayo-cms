@@ -97,6 +97,7 @@ return [
         '55_plus' => [
             'display_name' => '55+',
             'type' => 'price',
+            'input_type' => 'search_text',
             'conditions' => [
                 ['property_type' => 'public_remarks', 'condition' => 'LIKE', 'values' => ''],
             ]

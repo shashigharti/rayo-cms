@@ -7,25 +7,45 @@
             </div>
             {{ Form::hidden("properties[tabs][$tab][type]", $tabs[$tab]['type'] ?? $tabs_config[$tab]['type']) }}
         </div>
+        <div class="form-group form-material row">
+            <div class="col s6">
+                {{ Form::label("properties[tabs][$tab][page_title]", 'Page Title', ['class' => 'control-label' ]) }}
+                {{ Form::text("properties[tabs][$tab][page_title]", $tabs[$tab]['page_title'] ?? '') }}
+            </div>
+        </div>
         <fieldset class="mt-1">
             <legend>Conditions</legend>
-            @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
-                <div class="col s12">
-                    {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", $condition['property_type'], ['class'=>'control-label']) }}
-                    {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
-                            'class'=>'browser-default multi-select',
-                            'data-url' => route('api.listings.attributes.property_name', $condition['property_type']),
-                            'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
-                            'multiple'
-                        ])
-                    }}
-                </div>
-            @endforeach
+            @if(isset($tabs_config[$tab]['input_type']) && ($tabs_config[$tab]['input_type'] === 'search_text'))
+                @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
+                    <div class="col s12">
+                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", "Add search text for " . $condition['property_type'], ['class'=>'control-label']) }}
+                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
+                                'class'=>'browser-default multi-select',
+                                'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
+                                'multiple'
+                            ])
+                        }}
+                    </div>
+                @endforeach
+            @else
+                @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
+                    <div class="col s12">
+                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", $condition['property_type'], ['class'=>'control-label']) }}
+                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
+                                'class'=>'browser-default multi-select',
+                                'data-url' => route('api.listings.attributes.property_name', $condition['property_type']),
+                                'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
+                                'multiple'
+                            ])
+                        }}
+                    </div>
+                @endforeach
+            @endif
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>
             @if(isset($properties->tabs->{$tab}))
-                @set('prices', $tabs[$tab]['prices'])
+                @set('prices', json_decode(json_encode($properties->tabs->{$tab}->prices),true))
             @else
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))
             @endif
