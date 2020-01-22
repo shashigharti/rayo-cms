@@ -17,23 +17,20 @@
                 </div>
             </div>
             <div class="row">
-                @foreach ($subdivisions as $pkey => $subdivision)
-                    <div class="col s12">
-                        <div class="input-field inline__input-field col s5">
-                            {{ Form::label('Slug', 'Slug') }}
-                            {{ Form::text("properties[tabs][$tab][subdivisions][$pkey][slug]", $tabs[$tab]['subdivisions'][$pkey]['slug'] ?? $subdivision->slug ?? '') }}
+                <fieldset>
+                    <legend>Select to hide subdivisions</legend>
+                    @foreach ($subdivisions as $pkey => $subdivision)
+                        <div class="col s3">
+                            @set('c_title', ($tabs[$tab]['subdivisions'][$pkey]['slug'] ?? $subdivision->slug))
+                            <div class="input-field">
+                                {{ Form::checkbox("properties[tabs][$tab][subdivisions][$pkey][hide]", true, $tabs[$tab]['subdivisions'][$pkey]['hide'] ?? false) }}
+                                {{ Form::label('Hide', "$c_title") }}
+                            </div>
+                            {{ Form::hidden("properties[tabs][$tab][subdivisions][$pkey][slug]", $tabs[$tab]['subdivisions'][$pkey]['slug'] ?? $subdivision->slug ?? '') }}
+                            {{ Form::hidden("properties[tabs][$tab][subdivisions][$pkey][count]", $tabs[$tab]['subdivisions'][$pkey]['count'] ?? 0) }}
                         </div>
-                        <div class="input-field inline__input-field col s5">
-                            {{ Form::label('Count', 'Count') }}
-                            {{ Form::text("properties[tabs][$tab][subdivisions][$pkey][count]", $tabs[$tab]['subdivisions'][$pkey]['count'] ?? 0) }}
-                        </div>
-                        <div class="input-field col s2 mt-4">
-                            {{ Form::checkbox("properties[tabs][$tab][subdivisions][$pkey][hide]", true, $tabs[$tab]['subdivisions'][$pkey]['hide'] ?? false) }}
-                            {{ Form::label('Hide', 'Hide') }}
-                        </div>
-
-                    </div>
-                @endforeach
+                    @endforeach
+                </fieldset>
             </div>
         </div>
     </div>
