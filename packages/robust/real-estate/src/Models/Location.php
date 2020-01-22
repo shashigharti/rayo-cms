@@ -35,4 +35,5 @@ class Location extends BaseModel
     {
         return $this->morphTo();
     }
+
 }

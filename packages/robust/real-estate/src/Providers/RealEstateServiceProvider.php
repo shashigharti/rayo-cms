@@ -6,6 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Robust\RealEstate\Events\SendEmailToFriend;
 use Robust\RealEstate\Helpers\CoreSettingHelper;
 use Robust\RealEstate\Helpers\AdvanceSearchHelper;
+use Robust\RealEstate\Helpers\TabsHelper;
 use Robust\RealEstate\Listeners\SendEmailToFriendListener;
 use Robust\RealEstate\Console\Kernel;
 
@@ -44,6 +45,10 @@ class RealEstateServiceProvider extends ServiceProvider
 
         $this->app->bind(AdvanceSearchHelper::class, function ($app) {
             return new AdvanceSearchHelper($app->make('Robust\RealEstate\Repositories\Website\AttributeRepository'));
+        });
+
+        $this->app->bind(TabsHelper::class, function ($app) {
+            return new TabsHelper($app->make('Robust\RealEstate\Repositories\Admin\LocationRepository'));
         });
         $this->loadViewsFrom(__DIR__ . '/../../resources/views', 'real-estate');
         $this->register_includes();
