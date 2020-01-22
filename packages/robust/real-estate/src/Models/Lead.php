@@ -103,4 +103,12 @@ class Lead extends Authenticatable
         return $this->hasMany(LeadView::class);
     }
 
+    /**
+     * @return $this
+     */
+    public function emails()
+    {
+        return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
+    }
+
 }
