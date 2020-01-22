@@ -2,10 +2,10 @@
     <div id="{{ $tab }}" class="col s12">
         <div class="form-group form-material row">
             <div class="col s6">
-                {{ Form::label('display_name', 'Display Name', ['class' => 'control-label' ]) }}
-                {{ Form::text('display_name', $tabs[$tab]['display_name'] ?? $tabs_config[$tab]['display_name']) }}
+                {{ Form::label("properties[tabs][$tab][display_name]", 'Display Name', ['class' => 'control-label' ]) }}
+                {{ Form::text("properties[tabs][$tab][display_name]", $tabs[$tab]['display_name'] ?? $tabs_config[$tab]['display_name']) }}
             </div>
-            {{ Form::hidden('type', $tabs[$tab]['type'] ?? $tabs_config[$tab]['type']) }}
+            {{ Form::hidden("properties[tabs][$tab][type]", $tabs[$tab]['type'] ?? $tabs_config[$tab]['type']) }}
         </div>
         <fieldset class="mt-1">
             <legend>Conditions</legend>

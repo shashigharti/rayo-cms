@@ -23,12 +23,11 @@
                 </div>
                 @if(isset($properties['tabs']) && is_array($properties['tabs']))
                     <div class="subdivs--list__block">
-                        @foreach( $menu_helper->sort_tabs($properties['tabs']) as $key => $tabs )
+                        @foreach( $menu_helper->sort_tabs($properties['tabs']) as $key => $tab )
                             <div class="subdivs--list__btn">
                                 <i class="material-icons">redo</i>{{ strtoupper(str_replace('_', ' ', $key)) }}
-                                @set('tab_fields',[])
                                 <div class="subdivs--list">
-                                   @include("core::website.banners.single-col-block.tabs.{}")
+                                   @include("core::website.banners.single-col-block.tabs.{$tab['type']}")
                                 </div>
                             </div>
                         @endforeach

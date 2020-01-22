@@ -1,7 +1,7 @@
 <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }}</label></p>
 <ul>
-    @if(isset($tabs['prices']))
-        @foreach($tabs['prices'] as $price)
+    @if(isset($tab['prices']))
+        @foreach($tab['prices'] as $price)
             @if(isset($price['min']))
                 <li>
                     <a href="{{
