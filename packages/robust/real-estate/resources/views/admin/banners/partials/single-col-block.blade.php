@@ -113,7 +113,7 @@
                 <div class="col s12">
                     <ul class="tabs">
                         @foreach($properties->tabs_to_display as $key => $tab)
-                            <li class="tab col s3" @if($key == 0) selected @endif>
+                            <li class="tab" @if($key == 0) selected @endif>
                                 <a href="#{{ $tab }}">{{ $tabs_config[$tab]['display_name'] }}</a>
                             </li>
                         @endforeach
