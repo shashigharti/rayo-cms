@@ -10,6 +10,12 @@
                 </div>
                 {{ Form::hidden("properties[tabs][$tab][type]", $tabs[$tab]['type'] ?? $tabs_config[$tab]['type']) }}
             </div>
+            <div class="form-group form-material row">
+                <div class="col s12">
+                    {{ Form::label("properties[tabs][$tab][page_title]", 'Page Title', ['class' => 'control-label' ]) }}
+                    {{ Form::text("properties[tabs][$tab][page_title]", $tabs[$tab]['page_title'] ?? '') }}
+                </div>
+            </div>
             <div class="row">
                 @foreach ($subdivisions as $pkey => $subdivision)
                     <div class="col s12">
@@ -25,8 +31,9 @@
                             {{ Form::checkbox("properties[tabs][$tab][subdivisions][$pkey][hide]", true, $tabs[$tab]['subdivisions'][$pkey]['hide'] ?? false) }}
                             {{ Form::label('Hide', 'Hide') }}
                         </div>
-                        @endforeach
+
                     </div>
+                @endforeach
             </div>
         </div>
     </div>
