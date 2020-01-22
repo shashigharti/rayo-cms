@@ -1232,7 +1232,10 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .column-action__followups .view-box{right:29px}.bookmark--single{font-size:13px}.bookmark--single strong{font-weight:800;color:#111}
 .bookmark--single time{font-size:12px}.modal-body .row{margin-left:auto !important;margin-right:auto !important}
 .modal-body [type="checkbox"]+span:not(.lever){font-size:12px;width:84%;vertical-align:initial}
-.modal-body [type="checkbox"]:not(:checked),.modal-body #main [type="checkbox"]:checked{margin-bottom:4px}
+.modal--search p{margin-top:0}.modal--search .select2-container--default{margin-top:5px;margin-bottom:20px}
+.modal--search .select2-container--default .select2-selection--multiple .select2-selection__rendered li{font-size:11px;height:20px}
+.modal--search [type="checkbox"]:not(:checked),.modal--search [type="checkbox"]:checked{margin-bottom:0 !important;margin-top:6px !important;vertical-align:top !important}
+.modal--search .input-field .select-wrapper+label{width:130px !important;top:-31px}
 .statistics__block{padding:15px}.statistics__block .statistics__block-single{width:30%;display:inline-block;margin:10px 10px 20px}
 .statistics__block .statistics__block-single h6.title{font-size:16px;margin-top:15px}
 .statistics__block .statistics__block-single p{margin:2px 0;font-size:12px}.statistics__block .statistics__block-single p.count{font-size:35px;color:#0277bd}

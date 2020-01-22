@@ -348,7 +348,28 @@ span.badge-secondary {
         vertical-align: initial;
     }
 
-    [type="checkbox"]:not(:checked), #main [type="checkbox"]:checked {
-        margin-bottom: 4px;
+}
+.modal--search{
+    p {
+        margin-top: 0px;
+    }
+    .select2-container--default{
+        margin-top: 5px;
+        margin-bottom: 20px;
+        .select2-selection--multiple .select2-selection__rendered li {
+            font-size: 11px;
+            height: 20px;
+        }
+    }
+    [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        margin-bottom: 0px !important;
+        margin-top: 6px !important;
+        vertical-align:top !important;
+    }
+    .input-field{
+        .select-wrapper + label{
+            width:130px !important;
+            top:-31px;
+        }
     }
 }

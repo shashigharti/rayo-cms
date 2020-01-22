@@ -1,7 +1,7 @@
 <a href="#search" class="btn btn-small cyan modal-trigger">
     <i class="material-icons">search</i>Add Search
 </a>
-<div id="search" class="modal modal-fixed-footer">
+<div id="search" class="modal modal-fixed-footer modal--search">
     <div class="modal-content">
         <div class="modal-header">
             <span>Add Search</span><a href="#!" class="modal-action modal-close right "><i class="material-icons">clear</i></a>
@@ -14,7 +14,7 @@
                 <form id="frm-search" method="get" action="">
                     <div id='adv-search-dropdown'>
                         <div class="inner">
-                            <div class="row mt-5">
+                            <div class="row">
                                 <div class="col s6">
                                     <div class="input-field">
                                         <input type="text">
@@ -48,8 +48,8 @@
                                 @endif
                             </div>
                             <div class="row">
-                                <div class="col s3 mb-20 right">
-                                    <button href="#" class="theme-btn" type="submit">search</button>
+                                <div class="col s3 mb-20 right right-align mr-2">
+                                    <button href="#" class="btn theme-btn" type="submit">search</button>
                                 </div>
                             </div>
                         </div>
