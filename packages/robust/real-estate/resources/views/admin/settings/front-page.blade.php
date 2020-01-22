@@ -1,7 +1,5 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
-<style>
-    .sort-container__placeholder { border: 1px dashed #0a0a0a ; background-color: #00bcd4}
-</style>
+
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}

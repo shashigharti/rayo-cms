@@ -1181,11 +1181,12 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .split--block.input-field>label{position:relative;left:0}.split--block span{width:100%;display:inline-block;font-size:11px;margin-top:5px}
 .split--block input{width:66% !important;height:20px !important}.dynamic-elem__btn{margin-top:25px}
 .sort-container__handle{vertical-align:middle}.tab-content fieldset legend{font-size:12px;font-weight:600}
-.select2-container{width:100% !important}.pagination{margin-top:-2px;margin-bottom:0}
-.pagination li{height:24px;line-height:24px}.pagination li.active{background-color:#6b4994}
-.pagination li.active span{color:#126692}.pagination li a{font-size:12px;line-height:24px}
-.pagination li span{width:24px;display:inline-block}.pagination--top{display:inline}
-.panel .pagination{margin:20px 0}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
+.select2-container{width:100% !important}.sort-container__placeholder{border:1px dashed #0a0a0a;background-color:#00bcd4}
+.inline__input-field label{position:relative !important;left:0 !important}.inline__input-field input{width:70% !important;display:inline-block !important;margin-left:10px !important}
+.pagination{margin-top:-2px;margin-bottom:0}.pagination li{height:24px;line-height:24px}
+.pagination li.active{background-color:#6b4994}.pagination li.active span{color:#126692}
+.pagination li a{font-size:12px;line-height:24px}.pagination li span{width:24px;display:inline-block}
+.pagination--top{display:inline}.panel .pagination{margin:20px 0}.table thead th{vertical-align:middle;border-bottom:1px solid #d5d6d7 !important;padding:.4rem .6rem}
 .col-sub-heading{display:inline-block;position:relative}.sortable-icon{color:#bababa}
 .sortMenu{position:absolute;background:#fff;-webkit-box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);box-shadow:0 0 0 0 transparent,0 0 0 0 transparent,0 2px 15px rgba(0,0,0,0.3);padding:10px;min-width:100px;z-index:1;color:#999;display:none}
 .leads-table th{font-size:.75rem;color:gray}.col-sub-heading:hover .sortMenu{display:block}

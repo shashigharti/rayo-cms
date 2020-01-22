@@ -24,15 +24,15 @@
             @endif
             @foreach($prices as $pkey => $price)
                 <div class="row dynamic-elem">
-                    <div class="input-field col s4">
+                    <div class="input-field col s4 inline__input-field">
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][min]", 'Min') }}
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][min]", $tabs[$tab]['prices'][$pkey]['min'] ?? $prices[$pkey]['min'] ?? '') }}
                     </div>
-                    <div class="input-field col s4">
+                    <div class="input-field col s4 inline__input-field">
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][max]", 'Max') }}
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
                     </div>
-                    <div class="input-field col s2">
+                    <div class="input-field col s3 inline__input-field">
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][count]", 'Count') }}
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
                     </div>
