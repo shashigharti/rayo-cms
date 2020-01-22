@@ -14,5 +14,11 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'as' => 'leads.follow-up.store',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@addLeadsFollowUp'
     ]);
+
+    Route::post('leads/send/emails', [
+        'name' =>'Leads Follow Up',
+        'as' => 'leads.send.email',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@sendEmail'
+    ]);
 });
 

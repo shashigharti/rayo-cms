@@ -62,4 +62,9 @@ class LeadController extends Controller
         $leadFollowup->insert($data);
         return response()->json(['success'=>true,'message'=> 'Data Inserted Successfully','data'=>$data]);
     }
+
+    public function sendEmail(Request $request)
+    {
+        dd($request);
+    }
 }

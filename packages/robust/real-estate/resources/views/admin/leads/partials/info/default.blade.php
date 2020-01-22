@@ -15,7 +15,7 @@
                         </div>
                         <div class="modal-body">
                             <div class="input-field">
-                                <input type="email" name="{{$type}}">
+                                <input type="{{$input_type}}" name="{{$type}}">
                                 <label>{{ucfirst($type)}}</label>
                             </div>
                         </div>
@@ -28,7 +28,7 @@
         </h5>
         @foreach($properties as $property)
             <div>
-                <i class="grey material-icons">close</i>{{$property->value}}
+                <i class="material-icons">{{$icon}}</i>{{$property->value}}
                 <a href="{{route('admin.leads.properties.delete',['id' => $property->id])}}" class="right">
                     <i class="material-icons">delete</i>
                 </a>
