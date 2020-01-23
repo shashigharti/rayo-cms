@@ -9,9 +9,9 @@
         line-height: 24px;
 
         &.active {
-            background-color: #6b4994;
+            background-color:$theme-color;
             span{
-                color:$theme_color;
+                color:$white;
             }
         }
 
