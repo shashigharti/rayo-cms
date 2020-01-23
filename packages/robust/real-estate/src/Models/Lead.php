@@ -114,7 +114,7 @@ class Lead extends Authenticatable
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function emails()
+    public function communications()
     {
         return $this->hasMany(SentEmails::class, 'lead_id', 'id');
     }

@@ -14,6 +14,11 @@ Route::group([
             'as' => 'ct.listings.banner',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForBanner'
         ]);
+        Route::get('/ct/{banner_slug}/{tab?}/{tab_slug?}', [
+            'name' => 'Banner Custom Listings Without Price',
+            'as' => 'ct.listings.tabs.without-price',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForTabsWithoutPrice'
+        ]);
         Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}', [
             'name' => 'Homes for sale',
             'as' => 'homes-for-sale',
