@@ -3,6 +3,12 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
     Route::resources([
 		'leads' => 'Robust\RealEstate\Controllers\Admin\LeadController'
     ]);
+    //temp
+    Route::post('update/leads/{id}',[
+        'name' =>'Lead Details Page',
+        'as' => 'update.leads',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@update'
+    ]);
     Route::get('leads/{id}/{type}', [
         'name' =>'Lead Details Page',
         'as' => 'leads.details.edit',
@@ -31,6 +37,12 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'name' =>'Leads Delete Group',
         'as' => 'leads.delete.groups',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@deleteGroup'
+    ]);
+
+    Route::post('leads/modals', [
+        'name' =>'Leads Delete Group',
+        'as' => 'leads.modal',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@getModal'
     ]);
 });
 

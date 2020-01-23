@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Robust\Core\Helpers\MenuHelper;
 use Robust\RealEstate\Events\SendEmailToLead;
 use Robust\RealEstate\Helpers\LeadGroupHelper;
+use Robust\RealEstate\Helpers\LeadHelper;
 use Robust\RealEstate\Models\LeadFollowup;
 use Robust\RealEstate\Repositories\Admin\LeadFollowUpRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
@@ -46,7 +47,7 @@ class LeadController extends Controller
      */
     public function getDetailsPage($id, $type)
     {
-        return $this->display("real-estate::admin.leads.create",
+        return $this->display("real-estate::admin.leads.show",
             [
                 'model' => $this->model->find($id),
                 'type'  => $type
@@ -105,6 +106,22 @@ class LeadController extends Controller
             event(new SendEmailToLead($to,$data['subject'],$data['body']));
         }
         return redirect()->back();
+    }
+
+    public function getModal(Request $request,LeadHelper $helper)
+    {
+        $data = $request->all();
+        return view('real-estate::admin.leads.partials.modals.'.$data['view'],
+            [
+                'lead' => $this->model->find($data['lead']),
+                'mode' => $data['mode'] .'-' . $data['view'],
+                'value' => $data['value'],
+                'action' => $data['action'],
+                'type' => $data['type'],
+                'relation' => $data['relation_id'],
+                'id' => $data['view'] . '-' . $data['type'],
+                'lead_helper' => $helper
+            ]);
     }
 }
 

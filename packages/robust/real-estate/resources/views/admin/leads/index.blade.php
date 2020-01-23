@@ -72,7 +72,15 @@
                                                 <td class="center-align"><small>unknown</small></td>
                                                 <td>
                                                     <div>
-                                                        <a href="#">{{$lead->agent->first_name ?? 'Not Assigned'}}</a>
+                                                        <a href="#"
+                                                           data-lead="{{$lead->id}}"
+                                                           data-url="{{route('admin.leads.modal')}}"
+                                                           data-type="assign"
+                                                           data-action="{{route('admin.update.leads',['id'=>$lead->id])}}"
+                                                           data-mode="Edit"
+                                                           data-view="agents"
+                                                           data-value="{{$lead->agent->id ?? ''}}"
+                                                           class="lead-modal_trigger">{{$lead->agent->first_name ?? 'Not Assigned'}}</a>
                                                     </div>
                                                     <div class="status-dlg">
                                                         <a href="#">[+ Set Status]</a>
