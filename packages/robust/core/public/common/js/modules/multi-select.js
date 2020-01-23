@@ -4,10 +4,17 @@
     FRW.Select = {
         init: function () {
             const elements = $('.multi-select');
+
             if (elements.length > 0) {
                 elements.each((index, elem) => {
                     const URL = $(elem).data('url'),
                         dest = $(elem).data('dest');
+                    let selectedElements = [];
+
+                    // if it has properties data-selected read the values
+                    if ($(elem).data('selected')) {
+                        selectedElements = $(elem).data('selected').toString().split(",");
+                    }
 
                     // Add onchange event
                     if (dest) {
@@ -16,13 +23,6 @@
 
                     // get data from remote server when url is set
                     if (URL) {
-                        let selectedElements = [];
-
-                        // if it has properties data-selected read the values
-                        if ($(elem).data('selected')) {
-                            selectedElements = $(elem).data('selected').toString().split(",");
-                        }
-
                         $.get(URL).then(response => {
                             const options = response.data;
                             if (options) {
@@ -50,8 +50,11 @@
                             });
 
                         });
-
-
+                    }else{
+                        selectedElements.forEach(option => {
+                            let child = `<option value="${option}" selected>${option}</option>`;
+                            $(elem).append(child);
+                        });
                     }
                 });
             }

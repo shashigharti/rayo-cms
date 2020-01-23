@@ -8,6 +8,7 @@ use Robust\Core\Helpers\MenuHelper;
 use Robust\RealEstate\Events\SendEmailToLead;
 use Robust\RealEstate\Helpers\LeadGroupHelper;
 use Robust\RealEstate\Models\LeadFollowup;
+use Robust\RealEstate\Repositories\Admin\LeadFollowUpRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
@@ -58,11 +59,11 @@ class LeadController extends Controller
      * @param $id
      * @return $this
      */
-    public function addLeadsFollowUp(Request $request,LeadFollowup $leadFollowup , $id)
+    public function addLeadsFollowUp(Request $request,LeadFollowUpRepository $model , $id)
     {
         $data = $request->all();
-        $leadFollowup->insert($data);
-        return response()->json(['success'=>true,'message'=> 'Data Inserted Successfully','data'=>$data]);
+        $model->store($data);
+        return response()->json(['data'=>$data]);
     }
 
     /**

@@ -95,7 +95,7 @@
                 {{ Form::label('banner_per_row', 'Banner Per Row') }}
                 {{ Form::text('banner_per_row', $settings['banner_per_row'] ?? '') }}
             </div>
-            
+
         </div>
     </fieldset>
     <fieldset class="mt-2">
@@ -120,13 +120,15 @@
                 {{ Form::label('active', 'Active', ['class' => 'control-label' ]) }}
                 {{ Form::text('active', isset($settings['active'])? $settings['active']:'Active', [
                         'class' => 'form-control'
-                    ]) }}
+                    ])
+                }}
             </div>
             <div class="col s3">
                 {{ Form::label('sold', 'Sold', ['class' => 'control-label' ]) }}
                 {{ Form::text('sold', isset($settings['sold'])? $settings['sold']:'Closed', [
                         'class' => 'form-control'
-                    ]) }}
+                    ])
+                }}
             </div>
             <div class="col s3">
                 {{ Form::label("data_age]", 'Data Age (in days)') }}
@@ -151,7 +153,8 @@
                 {{ Form::label('url_sold', 'URL for sold', ['class' => 'control-label' ]) }}
                 {{ Form::text('url_sold', isset($settings['url_sold'])?$settings['url_sold']:'sold', [
                         'class' => 'form-control'
-                    ]) }}
+                    ])
+                }}
             </div>
         </div>
     </fieldset>
@@ -203,5 +206,5 @@
             {{ Form::submit($ui->getSubmitText(), ['class' => 'btn btn-primary theme-btn']) }}
         </div>
     </div>
-    {{Form::close()}}
+    {{ Form::close() }}
 </div>

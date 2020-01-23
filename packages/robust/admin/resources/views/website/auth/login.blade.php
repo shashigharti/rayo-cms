@@ -18,8 +18,8 @@
             </div>
         </div>
         <div class="modal-footer">
-            <a href="" id="register--link" type="text" class="btn btn-default pull-left load-register-form"> Not yet registered ? Register here </a>
-            <a href="https://scottingraham.com/user/password/reset" class="pull-left btn btn-default"> Password recovery </a>
+            <a href="" data-target="modal__register"  id="register--link" type="text" class="btn modal-trigger btn-default pull-left load-register-form"> Not yet registered ? Register here </a>
+            <a href="{{ route('website.auth.password.request') }}" class="pull-left btn btn-default"> Password recovery </a>
             <button type="submit" class="btn btn-primary">
                 <div class="loader-01"></div> Login </button>
         </div>

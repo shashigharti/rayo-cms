@@ -122,6 +122,17 @@ span.badge-secondary {
         padding: 0px 0px 0px;
         background: transparent;
         box-shadow: none;
+
+        .card {
+            h5 {
+                font-size: 22px;
+            }
+            .fixed--bar{
+                .form-element h5 {
+                    font-size: 12px;
+                }
+            }
+        }
     }
 }
 
@@ -322,5 +333,43 @@ span.badge-secondary {
 
     time {
         font-size: 12px;
+    }
+}
+
+.modal-body {
+    .row {
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    [type="checkbox"] + span:not(.lever) {
+        font-size: 12px;
+        width: 84%;
+        vertical-align: initial;
+    }
+
+}
+.modal--search{
+    p {
+        margin-top: 0px;
+    }
+    .select2-container--default{
+        margin-top: 5px;
+        margin-bottom: 20px;
+        .select2-selection--multiple .select2-selection__rendered li {
+            font-size: 11px;
+            height: 20px;
+        }
+    }
+    [type="checkbox"]:not(:checked), [type="checkbox"]:checked {
+        margin-bottom: 0px !important;
+        margin-top: 6px !important;
+        vertical-align:top !important;
+    }
+    .input-field{
+        .select-wrapper + label{
+            width:130px !important;
+            top:-31px;
+        }
     }
 }

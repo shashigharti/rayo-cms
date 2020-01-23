@@ -21,7 +21,7 @@
           <div class="col s12">
              <div class="row">
                 <div class="col s12 sub--title">
-                   <p><strong>Vega Norma</strong> viewed 1 item(s)</p>
+                   <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $model->favouriteListings->count() }} item(s)</p>
              </div>                      
           </div>
           @foreach($model->favouriteListings as $favouriteListing)

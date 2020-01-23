@@ -881,17 +881,12 @@ a.buy-now-btn {
 .figcaption .available-prices {
   width: 100%;
   padding-bottom: 14px;
-  max-height: 0;
-  opacity: 0;
+  max-height: 1000px;
+  opacity: 1;
   margin-top: 0px;
   overflow: hidden;
   -webkit-transition: max-height 1.4s,opacity .9s;
   transition: max-height 1.4s,opacity .9s;
-}
-
-.single-block:hover .available-prices {
-  max-height: 1000px;
-  opacity: 1;
 }
 
 .search-section input[type="text"] {

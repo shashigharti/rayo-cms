@@ -2,39 +2,30 @@
     <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-envelope-o"></i>
         <small>
-            <sub>1</sub>
+            <sub>{{$lead->emails()->count()}}</sub>
         </small>
     </a>
     <ul class='popup-content hide'>
         <div class="info-dialog view-box">
             <div class="box-title">
-                {{ $lead->first_name }} {{ $lead->last_name }}
+                {{ $lead->first_name }} {{ $lead->last_name }} - Communication(s)
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
-                   <a href="#">
-                       <div class="col s12">
-                           <div class="vw-lead-price">
-                              Thursday's Property
-                              <br>
-                              Update - Thu , Jan 16,2020
-                              <br>
-                              8:08 A.M
-                            </div>
-                       </div>
-                   </a>
-                   <a href="#">
-                       <div class="col s12 mt-4">
-                           <div class="vw-lead-price">
-                              Thursday's Property
-                              <br>
-                              Update - Thu , Jan 16,2020
-                              <br>
-                              8:08 A.M
-                            </div>
-                       </div>
-                   </a>
+                    @foreach($lead->emails as $email)
+                       <a href="#">
+                           <div class="col s12">
+                               <div class="vw-lead-price">
+                                  {{  $email->created_at->format('l') }} Property
+                                  <br>
+                                  Update - {{  $email->created_at->format('D, F d, Y') }}
+                                  <br>
+                                   {{ $email->created_at->format('g:i A') }}
+                                </div>
+                           </div>
+                       </a>
+                    @endforeach
                 </div>
                 <div class="row vw-view-more">
                     <div class="row">

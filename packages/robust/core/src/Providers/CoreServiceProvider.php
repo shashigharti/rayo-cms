@@ -9,8 +9,6 @@ use Robust\Core\Events\Registration;
 use Robust\Core\Extensions\BladeExtensions;
 use Robust\Core\Helpers\CoreHelper;
 use Webwizo\Shortcodes\Facades\Shortcode;
-use Illuminate\Support\Facades\Input;
-use Illuminate\Support\Facades\Validator;
 
 /**
  * Class CoreServiceProvider

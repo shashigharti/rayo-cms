@@ -74,7 +74,7 @@ class Lead extends Authenticatable
      */
     public function notes()
     {
-        return $this->hasOne('Robust\RealEstate\Models\LeadNote','lead_id');
+        return $this->hasMany('Robust\RealEstate\Models\LeadNote');
     }
 
     /**
@@ -108,7 +108,15 @@ class Lead extends Authenticatable
      */
     public function groups()
     {
-        return $this->hasManyThrough(LeadGroup::class,GroupLead::class,'lead_id','id','id','group_id');
+        return $this->hasManyThrough(LeadGroup::class, GroupLead::class, 'lead_id', 'id', 'id', 'group_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function emails()
+    {
+        return $this->hasMany(SentEmails::class, 'lead_id', 'id');
     }
 
 }

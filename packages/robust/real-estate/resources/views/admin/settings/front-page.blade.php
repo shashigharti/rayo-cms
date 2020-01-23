@@ -1,7 +1,5 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
-<style>
-    .sort-container__placeholder { border: 1px dashed #0a0a0a ; background-color: #00bcd4}
-</style>
+
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
@@ -10,7 +8,7 @@
         <fieldset>
             <legend>{{ucwords($menu)}} (Ordering)</legend>
             <div class="form-group form-material row">
-                <div class="col s2 input-field">                    
+                <div class="col s2 input-field">
                     {{ Form::checkbox("{$menu}_sort_order_desc", true, $settings["{$menu}_sort_order_desc"] ?? '', [
                             'class' => 'form-control'
                         ])
@@ -60,6 +58,15 @@
                     @endforeach
                 </ul>
                 {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '')}}
+            </fieldset>
+        </div>
+        <div class="col s12 m6">
+            <fieldset class="mt-2">
+                <legend>Banner Tabs Settings</legend>
+                <div class="col s12 input-field">
+                    {{ Form::checkbox('banner_tabs_all_caps', true, $settings['banner_tabs_all_caps'] ?? false) }}
+                    {{ Form::label('banner_tabs_all_caps', 'All Capital') }}
+                </div>
             </fieldset>
         </div>
     </div>

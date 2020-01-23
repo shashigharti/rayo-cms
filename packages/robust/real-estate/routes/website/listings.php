@@ -9,10 +9,10 @@ Route::group([
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
-        Route::get('/ct/' . settings('real-estate', 'url_active') . '/{banner_slug}/price/{price}', [
-            'name' => 'Homes for sale',
-            'as' => 'ct.homes-for-sale-banner',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@customActive'
+        Route::get('/ct/{banner_slug}/price/{price}/{tab?}/{tab_slug?}', [
+            'name' => 'Banner Custom Listings',
+            'as' => 'ct.listings.banner',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForBanner'
         ]);
         Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}', [
             'name' => 'Homes for sale',
