@@ -4,10 +4,14 @@
         <div class="row">
             <div class="col s12">
                 <div class="inner--main--title center-align">
-                    @if($location)
-                        <h1> {{ $location->name }} Homes For Sale </h1>
+                    @if(isset($title) && ($title !== ''))
+                        <h1> {{ $title }} </h1>
+                    @elseif(isset($page) && ($page->title != '') && isset($location))
+                        <h1> {{ $location->name . " "  . $page->title }} </h1>
+                    @elseif(isset($page) && ($page->title != '') )
+                        <h1> {{  settings('real-estate', 'client')['name'] . " " . $page->title }} </h1>
                     @else
-                        <h1>{{ settings('real-estate', 'client')['name'] }} Homes For Sale</h1>
+                        <h1> {{ settings('real-estate', 'client')['name'] }} Homes For Sale </h1>
                     @endif
                 </div>
                 <div class="top--breadcrumb center-align">
@@ -33,7 +37,8 @@
                             <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
                                 <div class="col m3 s12">
                                     <div class="single--list--block">
-                                        <img src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->getLocation($result->city_id)->name}}">
+                                        <img
+                                            src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->getLocation($result->city_id)->name}}">
                                         <div class="list--overlay">
         									<span class="tag active">
         										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
@@ -89,9 +94,9 @@
                                                 </span>
                                                     <span class="right-align">
                                                     @if(isset($result->picture_count) && !in_array($result->picture_count,['none','None','0']))
-                                                        <img src="/assets/website/images/camera.png" alt="Picture">
-                                                        {{ $result->picture_count}}
-                                                    @endif
+                                                            <img src="/assets/website/images/camera.png" alt="Picture">
+                                                            {{ $result->picture_count}}
+                                                        @endif
                                                 </span>
                                                 </div>
                                             </div>

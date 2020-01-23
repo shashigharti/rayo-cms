@@ -53,20 +53,11 @@
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
                         <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">
-                            <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $properties->header }}
+                            <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $banner->title ?? ''}}
                         </li>
                     @endforeach
                 </ul>
                 {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '')}}
-            </fieldset>
-        </div>
-        <div class="col s12 m6">
-            <fieldset class="mt-2">
-                <legend>Banner Tabs Settings</legend>
-                <div class="col s12 input-field">
-                    {{ Form::checkbox('banner_tabs_all_caps', true, $settings['banner_tabs_all_caps'] ?? false) }}
-                    {{ Form::label('banner_tabs_all_caps', 'All Capital') }}
-                </div>
             </fieldset>
         </div>
     </div>

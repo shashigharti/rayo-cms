@@ -8,15 +8,15 @@
         }}
     </div>
 </div>
-<div class="row">
-    <div class="input-field col s12">
-        {{ Form::label('properties[url]', 'Url') }}
-        {{ Form::text('properties[url]', $properties->url ?? '', [
-                'placeholder' => 'Url'
-           ])
-        }}
-    </div>
-</div>
+{{--<div class="row">--}}
+{{--    <div class="input-field col s12">--}}
+{{--        {{ Form::label('properties[url]', 'Url') }}--}}
+{{--        {{ Form::text('properties[url]', $properties->url ?? '', [--}}
+{{--                'placeholder' => 'Url'--}}
+{{--           ])--}}
+{{--        }}--}}
+{{--    </div>--}}
+{{--</div>--}}
 <div class="row">
     <fieldset class="mt-1">
         <legend>Filters</legend>
@@ -39,8 +39,8 @@
             }}
         </div>
         @if(isset($properties->location_types))
-            <div class="row">
-                <fieldset class="mt-1">
+            <div class="col s12">
+                <fieldset class="mt-1 mb-2">
                     <legend>Locations</legend>
                     @foreach( $properties->location_types as $key => $location )
                         <div class="col s12">
@@ -97,10 +97,7 @@
                     {{ Form::label("properties[prices][$key][max]", 'Max') }}
                     {{ Form::text("properties[prices][$key][max]", $price->max ?? '')}}
                 </div>
-                <div class="input-field col s2">
-                    {{ Form::label("properties[prices][$key][count]", 'Count') }}
-                    {{ Form::text("properties[prices][$key][count]", $price->count ?? '' )}}
-                </div>
+                {{ Form::hidden("properties[prices][$key][count]", $price->count ?? '' )}}
                 @if( $price->max == "" )
                     <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 @else

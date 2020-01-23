@@ -1,7 +1,6 @@
 <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }}</label></p>
 <ul>
     @if(isset($tab['subdivisions']))
-
         @foreach($tab['subdivisions'] as $subdivision)
             @if(!(isset($subdivision['hide']) && $subdivision['hide']))
                 <li>
@@ -10,7 +9,8 @@
                                     [
                                         'slug' => $singleColBlock->slug,
                                         'tab' => 'sd',
-                                        'tab_slug' =>$subdivision['slug']
+                                        'tab_slug' => str_replace('_', '-', $key),
+                                        'location_slug' => $subdivision['slug']
                                     ])
                             }}"
                     >

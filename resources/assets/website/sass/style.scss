@@ -1195,7 +1195,7 @@ button{
     padding: 5px 10px;
     border-radius: 2px;
     border: 1px solid $lighter_grey;
-    margin: 0 auto;
+    margin: 5px auto 0px;
     cursor: pointer;
     top: -2px;
     z-index: 3;
@@ -1213,7 +1213,7 @@ button{
     width: 100%;
     border-top: 1px solid $lighter_grey;
     transition: all .5s ease;
-    max-height: 475px;
+    height:300px;
     overflow-y: scroll;
     font-size: 11px;
     z-index: 2;
@@ -1227,6 +1227,7 @@ button{
 }
 .subdivs--list ul li{
     font-size: 10px;
+    margin-bottom:8px;
 }
 .subdivs--list ul li a{
     color:$white;

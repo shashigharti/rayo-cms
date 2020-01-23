@@ -63,10 +63,12 @@ trait ListingTrait
     {
         $qBuilder = $this->model;
         $values = explode(",", $subdivisions);
+
         $location_ids = $this->location
             ->where('locationable_type', IListings::LOCATION_TYPE_CLASS_MAP['subdivisions'])
             ->whereIn('slug', $values)
             ->pluck('id');
+
         $qBuilder = $qBuilder->whereIn(IListings::LOCATION_TYPE_MAP['subdivisions'], $location_ids);
 
         $this->model = $qBuilder;
@@ -107,6 +109,7 @@ trait ListingTrait
     public function whereLocation($params)
     {
         $qBuilder = $this->model;
+
         foreach ($params as $key => $param) {
             $values = explode(",", $param);
             $location_ids = $this->location
@@ -130,10 +133,9 @@ trait ListingTrait
             ->leftJoin('real_estate_listing_properties', 'real_estate_listing_properties.listing_id', '=', 'real_estate_listings.id');
 
         foreach ($params as $key => $param) {
-            $values = explode(",", $param);
-            $qBuilder = $qBuilder->where(function ($query) use ($key, $values) {
+            $qBuilder = $qBuilder->where(function ($query) use ($key, $param) {
                 $query->where('real_estate_listing_properties.type', '=', $key)
-                    ->whereIn('real_estate_listing_properties.value', $values);
+                    ->whereIn('real_estate_listing_properties.value', $param);
             });
         }
         $this->model = $qBuilder;
