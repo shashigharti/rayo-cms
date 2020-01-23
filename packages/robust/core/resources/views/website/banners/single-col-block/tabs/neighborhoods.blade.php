@@ -1,7 +1,6 @@
 <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }}</label></p>
 <ul>
     @if(isset($tab['subdivisions']))
-
         @foreach($tab['subdivisions'] as $subdivision)
             @if(!(isset($subdivision['hide']) && $subdivision['hide']))
                 <li>

@@ -18,31 +18,34 @@
             @if(isset($tabs_config[$tab]['input_type']) && ($tabs_config[$tab]['input_type'] === 'search_text'))
                 @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
                     <div class="col s12">
-                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", "Add search text for " . $condition['property_type'], ['class'=>'control-label']) }}
-                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
+                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values][]", "Add search text for " . $condition['property_type'], ['class'=>'control-label']) }}
+                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values][]", [], null, [
                                 'class'=>'browser-default multi-select',
-                                'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
+                                'data-selected' => implode(',', $tabs[$tab]['conditions'][$ckey]['values'] ?? []),
                                 'multiple'
                             ])
                         }}
                     </div>
+                    {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][property_type]",$tabs_config[$tab]['conditions'][$ckey]['property_type']) }}
+                    {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][condition]",$tabs_config[$tab]['conditions'][$ckey]['condition']) }}
                 @endforeach
             @else
                 @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
                     <div class="col s12">
-                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values]", $condition['property_type'], ['class'=>'control-label']) }}
-                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values]", [], null, [
+                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values][]", $condition['property_type'], ['class'=>'control-label']) }}
+                        {{ Form::select("properties[tabs][$tab][conditions][$ckey][values][]", [], null, [
                                 'class'=>'browser-default multi-select',
                                 'data-url' => route('api.listings.attributes.property_name', $condition['property_type']),
-                                'data-selected' => $tabs[$tab]['conditions'][$ckey]['values'] ?? $tabs_config[$tab]['conditions'][$ckey]['values'] ?? '',
+                                'data-selected' => implode(',', $tabs[$tab]['conditions'][$ckey]['values'] ?? []),
                                 'multiple'
                             ])
                         }}
                     </div>
+                    {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][property_type]",$tabs_config[$tab]['conditions'][$ckey]['property_type']) }}
+                    {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][condition]",$tabs_config[$tab]['conditions'][$ckey]['condition']) }}
                 @endforeach
             @endif
-            {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][property_type]",$tabs_config[$tab]['conditions'][$ckey]['property_type']) }}
-            {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][condition]",$tabs_config[$tab]['conditions'][$ckey]['condition']) }}
+
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>
@@ -61,10 +64,7 @@
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][max]", 'Max') }}
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
                     </div>
-                    <div class="input-field col s3 inline__input-field">
-                        {{ Form::label("properties[tabs][$tab][prices][$pkey][count]", 'Count') }}
-                        {{ Form::text("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
-                    </div>
+                    {{ Form::hidden("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
                     @if( $prices[$pkey]['max'] == "" )
                         <a href="#">
                             <i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i>

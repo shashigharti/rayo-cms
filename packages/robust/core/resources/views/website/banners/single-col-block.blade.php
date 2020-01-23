@@ -25,7 +25,7 @@
                     <div class="subdivs--list__block">
                         @foreach( $menu_helper->sort_tabs($properties['tabs']) as $key => $tab )
                             <div class="subdivs--list__btn">
-                                <i class="material-icons">redo</i>{{ strtoupper(str_replace('_', ' ', $key)) }}
+                                <i class="material-icons">redo</i>{{ $tab['display_name'] ?? strtoupper(str_replace('_', ' ', $key)) }}
                                 <div class="subdivs--list">
                                    @include("core::website.banners.single-col-block.tabs.{$tab['type']}")
                                 </div>
