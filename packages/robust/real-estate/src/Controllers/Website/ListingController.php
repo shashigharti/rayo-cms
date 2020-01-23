@@ -86,7 +86,7 @@ class ListingController extends Controller
         $location = null;
         $title = null;
 
-        if ($tab_type !== '') {
+        if ($tab_type !== null) {
             $tab_slug = str_replace('-', '_', $tab_slug);
             $properties = json_decode($banner->properties);
             $title = $properties->tabs->{$tab_slug}->page_title;
@@ -116,8 +116,7 @@ class ListingController extends Controller
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function getCustomListingsForTabsWithoutPrice(BannerRepository $banner, LocationHelper $locationHelper,
-                                                         $banner_slug, $tab_type = null,
-                                                         $tab_slug = null)
+                                                         $banner_slug, $tab_type, $tab_slug, $location_slug)
     {
         $settings = settings('real-estate');
         $banner = $banner->where('slug', $banner_slug)->first();
@@ -132,7 +131,7 @@ class ListingController extends Controller
         }
 
         // Process conditions for tabs
-        $qBuilder = $qBuilder->getTabsQuery($tab_type, $tab_slug);
+        $qBuilder = $qBuilder->getTabsQuery($tab_type, $location_slug);
 
         $results = $qBuilder
             ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])

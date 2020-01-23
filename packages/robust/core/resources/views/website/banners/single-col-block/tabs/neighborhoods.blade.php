@@ -10,7 +10,8 @@
                                     [
                                         'slug' => $singleColBlock->slug,
                                         'tab' => 'sd',
-                                        'tab_slug' =>$subdivision['slug']
+                                        'tab_slug' => str_replace('_', '-', $key),
+                                        'location_slug' => $subdivision['slug']
                                     ])
                             }}"
                     >

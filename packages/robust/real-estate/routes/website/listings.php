@@ -14,7 +14,7 @@ Route::group([
             'as' => 'ct.listings.banner',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForBanner'
         ]);
-        Route::get('/ct/{banner_slug}/{tab?}/{tab_slug?}', [
+        Route::get('/ct/{banner_slug}/{tab?}/{tab_slug?}/{location_slug?}', [
             'name' => 'Banner Custom Listings Without Price',
             'as' => 'ct.listings.tabs.without-price',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForTabsWithoutPrice'
