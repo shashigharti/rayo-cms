@@ -104,11 +104,19 @@ class Lead extends Authenticatable
     }
 
     /**
-     * @return $this
+     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function emails()
+    public function groups()
     {
-        return $this->hasMany(SentEmails::class, 'lead_id', 'id')->latest();
+        return $this->hasManyThrough(LeadGroup::class, GroupLead::class, 'lead_id', 'id', 'id', 'group_id');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function communications()
+    {
+        return $this->hasMany(SentEmails::class, 'lead_id', 'id');
     }
 
 }

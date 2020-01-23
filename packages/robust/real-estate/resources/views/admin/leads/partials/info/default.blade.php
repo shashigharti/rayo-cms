@@ -1,4 +1,4 @@
-@set('properties',$model->properties()->where('type',$type)->get())
+@set('properties',$properties_helper->byType($model,[$type]))
 <div class="row">
     <div class="col s12">
         <h5> {{ucfirst($type)}}

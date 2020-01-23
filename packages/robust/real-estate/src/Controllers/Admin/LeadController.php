@@ -5,6 +5,8 @@ namespace Robust\RealEstate\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Robust\Core\Helpers\MenuHelper;
+use Robust\RealEstate\Events\SendEmailToLead;
+use Robust\RealEstate\Helpers\LeadGroupHelper;
 use Robust\RealEstate\Models\LeadFollowup;
 use Robust\RealEstate\Repositories\Admin\LeadFollowUpRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
@@ -64,8 +66,45 @@ class LeadController extends Controller
         return response()->json(['data'=>$data]);
     }
 
+    /**
+     * @param $id
+     * @param Request $request
+     * @param LeadGroupHelper $groupHelper
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function updateGroup($id, Request $request, LeadGroupHelper $groupHelper)
+    {
+        $data = $request->all();
+        $groupHelper->update($data['id'],$id);
+        $groups = $this->model->where('id',$id)->first()->groups()->get();
+        return response()->json($groups);
+    }
+
+    /**
+     * @param $id
+     * @param $group
+     * @param LeadGroupHelper $groupHelper
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function deleteGroup($id, $group, LeadGroupHelper $groupHelper)
+    {
+        $groupHelper->delete($id,$group);
+        return response()->json('Successfully deleted',200);
+    }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function sendEmail(Request $request)
     {
-        dd($request);
+        $data = $request->all();
+        //filter message before sending
+        foreach ($data['to'] as $to)
+        {
+            event(new SendEmailToLead($to,$data['subject'],$data['body']));
+        }
+        return redirect()->back();
     }
 }
+

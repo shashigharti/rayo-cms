@@ -16,9 +16,21 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
     ]);
 
     Route::post('leads/send/emails', [
-        'name' =>'Leads Follow Up',
+        'name' =>'Leads Send Email',
         'as' => 'leads.send.email',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@sendEmail'
+    ]);
+
+    Route::post('leads/update/groups/{id}', [
+        'name' =>'Leads Update Group',
+        'as' => 'leads.update.groups',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@updateGroup'
+    ]);
+
+    Route::get('leads/delete/groups/{id}/{group?}', [
+        'name' =>'Leads Delete Group',
+        'as' => 'leads.delete.groups',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@deleteGroup'
     ]);
 });
 

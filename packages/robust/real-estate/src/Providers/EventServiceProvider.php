@@ -18,7 +18,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         \Robust\RealEstate\Events\LeadCreatingEvent::class => [
             \Robust\RealEstate\Listeners\LeadCreatingListener::class
-        ]
+        ],
+        \Robust\RealEstate\Events\SendEmailToLead::class => [
+            \Robust\RealEstate\Listeners\SendEmailToLeadListener::class
+        ],
     ];
 
     /**

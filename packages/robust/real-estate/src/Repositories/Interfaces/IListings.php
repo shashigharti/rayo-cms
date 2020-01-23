@@ -42,7 +42,8 @@ Interface IListings {
         'counties' => 'county_id',
         'high_schools' => 'high_school_id',
         'elementary_schools' => 'elementary_school_id',
-        'middle_schools' => 'middle_school_id'
+        'middle_schools' => 'middle_school_id',
+        'subdivisions' => 'subdivision_id'
     ];
 
     /**
