@@ -312,7 +312,7 @@ if (!function_exists('seo')) {
             $page->meta_title = replace_seo_variables($page->meta_title, $segments);
             $page->meta_keywords = replace_seo_variables($page->meta_keywords, $segments);
         }
-        return ($page == null) ? [] : $page;
+        return $page;
     }
 }
 

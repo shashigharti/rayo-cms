@@ -42,21 +42,22 @@ class ListingController extends Controller
      * @param LocationHelper $locationHelper
      * @param null $location_type
      * @param null $location
-     * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function active(LocationHelper $locationHelper, $location_type = null, $location = null)
     {
-        $status = settings('real-estate', 'active');
+        $settings = settings('real-estate');
         $qBuilder = $this->model->getListings(
             [
-                'status' => $status
+                'status' => $settings['active']
             ]);
         if ($location_type != null) {
             $qBuilder = $qBuilder->whereLocation([$location_type => $location]);
         }
 
-        $results = $qBuilder->with('property')
+        $results = $qBuilder
+            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            ->with('property')
             ->with('images')
             ->paginate($this->pagination);
 
@@ -68,6 +69,7 @@ class ListingController extends Controller
 
 
     /**
+     * @param BannerRepository $banner
      * @param LocationHelper $locationHelper
      * @param $banner_slug
      * @param $price_range
@@ -75,48 +77,72 @@ class ListingController extends Controller
      * @param null $tab_slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getCustomListingsForBanner(LocationHelper $locationHelper,
+    public function getCustomListingsForBanner(BannerRepository $banner, LocationHelper $locationHelper,
                                                $banner_slug, $price_range, $tab_type = null, $tab_slug = null)
     {
-        $qBuilder = $this->model->processBannerParams($banner_slug, $tab_type = null, $tab_slug = null);
+        $settings = settings('real-estate');
+        $banner = $banner->where('slug', $banner_slug)->first();
+        $qBuilder = $this->model->processBannerParams($banner, $tab_type, $tab_slug);
         $location = null;
+        $title = null;
+
+        if ($tab_type !== '') {
+            $tab_slug = str_replace('-', '_', $tab_slug);
+            $properties = json_decode($banner->properties);
+            $title = $properties->tabs->{$tab_slug}->page_title;
+        }
 
         $results = $qBuilder
             ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
 
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
+            'title' => $title,
             'location' => ($location) ? $locationHelper->getLocation($location) : null
         ]);
     }
 
+
     /**
+     * @param BannerHelper $banner
      * @param LocationHelper $locationHelper
      * @param $banner_slug
      * @param null $tab_type
      * @param null $tab_slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getCustomListingsForTabsWithoutPrice(LocationHelper $locationHelper,
+    public function getCustomListingsForTabsWithoutPrice(BannerRepository $banner, LocationHelper $locationHelper,
                                                          $banner_slug, $tab_type = null,
                                                          $tab_slug = null)
     {
-        $qBuilder = $this->model->processBannerParams($banner_slug);
+        $settings = settings('real-estate');
+        $banner = $banner->where('slug', $banner_slug)->first();
+        $qBuilder = $this->model->processBannerParams($banner);
         $location = null;
+        $title = null;
+
+        if ($tab_type !== '') {
+            $tab_slug = str_replace('-', '_', $tab_slug);
+            $properties = json_decode($banner->properties);
+            $title = $properties->tabs->{$tab_slug}->display_name;
+        }
 
         // Process conditions for tabs
         $qBuilder = $qBuilder->getTabsQuery($tab_type, $tab_slug);
 
         $results = $qBuilder
+            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
 
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
+            'title' => $title,
             'location' => ($location) ? $locationHelper->getLocation($location) : null
         ]);
     }
@@ -126,24 +152,22 @@ class ListingController extends Controller
      * @param LocationHelper $locationHelper
      * @param null $location_type
      * @param null $location
-     * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function sold(LocationHelper $locationHelper, $location_type = null, $location = null, $price_range = [])
+    public function sold(LocationHelper $locationHelper, $location_type = null, $location = null)
     {
-        $status = settings('real-estate', 'sold');
-        $data_timeframe = config('rws.data.timeframe');
+        $settings = settings('real-estate');
         $qBuilder = $this->model->getListings(
             [
-                'status' => $status
+                'status' => $settings['sold']
             ]);
 
         if ($location_type != null) {
             $qBuilder = $qBuilder->whereLocation([$location_type => $location]);
         }
 
-        $results = $qBuilder->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
-            ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
+        $results = $qBuilder
+            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
