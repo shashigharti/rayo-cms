@@ -2,7 +2,7 @@
     <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-envelope-o"></i>
         <small>
-            <sub>{{$lead->emails()->count()}}</sub>
+            <sub>{{$lead->communications()->count()}}</sub>
         </small>
     </a>
     <ul class='popup-content hide'>
@@ -13,15 +13,15 @@
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
-                    @foreach($lead->emails as $email)
+                    @foreach($lead->communications as $communication)
                        <a href="#">
                            <div class="col s12">
                                <div class="vw-lead-price">
-                                  {{  $email->created_at->format('l') }} Property
+                                  {{  $communication->created_at->format('l') }} Property
                                   <br>
-                                  Update - {{  $email->created_at->format('D, F d, Y') }}
+                                  Update - {{  $communication->created_at->format('D, F d, Y') }}
                                   <br>
-                                   {{ $email->created_at->format('g:i A') }}
+                                   {{ $communication->created_at->format('g:i A') }}
                                 </div>
                            </div>
                        </a>
