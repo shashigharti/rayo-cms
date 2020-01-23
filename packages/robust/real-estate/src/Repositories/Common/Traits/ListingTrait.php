@@ -133,10 +133,9 @@ trait ListingTrait
             ->leftJoin('real_estate_listing_properties', 'real_estate_listing_properties.listing_id', '=', 'real_estate_listings.id');
 
         foreach ($params as $key => $param) {
-            $values = explode(",", $param);
-            $qBuilder = $qBuilder->where(function ($query) use ($key, $values) {
+            $qBuilder = $qBuilder->where(function ($query) use ($key, $param) {
                 $query->where('real_estate_listing_properties.type', '=', $key)
-                    ->whereIn('real_estate_listing_properties.value', $values);
+                    ->whereIn('real_estate_listing_properties.value', $param);
             });
         }
         $this->model = $qBuilder;
