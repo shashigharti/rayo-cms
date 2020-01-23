@@ -9,11 +9,11 @@
             font-size: 13px;
 
             &:hover, &.active, &:focus {
-                background-color: transparent;
-                color: #126692;
+                background-color:$theme-color;
+                color:#ffffff;
 
                 &.active {
-                    background-color: transparent;
+                    background-color:$theme-color;
                 }
             }
         }
