@@ -68,6 +68,12 @@ class ListingRepository implements IListings
     }
 
 
+    /**
+     * @param $banner_slug
+     * @param null $tab_type
+     * @param null $tab_slug
+     * @return ListingRepository
+     */
     public function processBannerParams($banner_slug, $tab_type = null, $tab_slug = null)
     {
         $banner = $this->banner->where('slug', $banner_slug)->first();
