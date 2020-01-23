@@ -8,15 +8,15 @@
         }}
     </div>
 </div>
-<div class="row">
-    <div class="input-field col s12">
-        {{ Form::label('properties[url]', 'Url') }}
-        {{ Form::text('properties[url]', $properties->url ?? '', [
-                'placeholder' => 'Url'
-           ])
-        }}
-    </div>
-</div>
+{{--<div class="row">--}}
+{{--    <div class="input-field col s12">--}}
+{{--        {{ Form::label('properties[url]', 'Url') }}--}}
+{{--        {{ Form::text('properties[url]', $properties->url ?? '', [--}}
+{{--                'placeholder' => 'Url'--}}
+{{--           ])--}}
+{{--        }}--}}
+{{--    </div>--}}
+{{--</div>--}}
 <div class="row">
     <fieldset class="mt-1">
         <legend>Filters</legend>
