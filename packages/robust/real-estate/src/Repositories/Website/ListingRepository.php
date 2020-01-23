@@ -74,9 +74,8 @@ class ListingRepository implements IListings
      * @param null $tab_slug
      * @return ListingRepository
      */
-    public function processBannerParams($banner_slug, $tab_type = null, $tab_slug = null)
+    public function processBannerParams($banner, $tab_type = null, $tab_slug = null)
     {
-        $banner = $this->banner->where('slug', $banner_slug)->first();
         $properties = json_decode($banner->properties);
         $locations_count = (isset($properties->locations)) ? count((array)$properties->locations) : 0;
         $attributes_count = (isset($properties->attributes)) ? count((array)$properties->attributes) : 0;

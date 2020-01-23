@@ -131,8 +131,8 @@
                 }}
             </div>
             <div class="col s3">
-                {{ Form::label("data_age]", 'Data Age (in days)') }}
-                {{ Form::text("data_age]", $settings['data_age'] ?? '365', [
+                {{ Form::label("data_age", 'Data Age (in days)') }}
+                {{ Form::text("data_age", $settings['data_age'] ?? '365', [
                         'class' => 'form-control',
                         'placeholder' => 'numeric Value E.g \'365\''
                     ])

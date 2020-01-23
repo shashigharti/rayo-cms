@@ -53,7 +53,7 @@
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
                         <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">
-                            <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $properties->header }}
+                            <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $banner->title ?? ''}}
                         </li>
                     @endforeach
                 </ul>

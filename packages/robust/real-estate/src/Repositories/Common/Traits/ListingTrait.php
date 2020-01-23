@@ -109,6 +109,7 @@ trait ListingTrait
     public function whereLocation($params)
     {
         $qBuilder = $this->model;
+
         foreach ($params as $key => $param) {
             $values = explode(",", $param);
             $location_ids = $this->location
