@@ -45,16 +45,18 @@ class ListingController extends Controller
      * @param array $price_range
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function active(LocationHelper $locationHelper, $location_type = null, $location = null, $price_range = [])
+    public function active(LocationHelper $locationHelper, $location_type = null, $location = null)
     {
         $status = settings('real-estate', 'active');
-        $results = $this->model->getListings(
+        $qBuilder = $this->model->getListings(
             [
                 'status' => $status
-            ])
-            ->whereLocation([$location_type => $location])
-            //->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
-            ->with('property')
+            ]);
+        if ($location_type != null) {
+            $qBuilder = $qBuilder->whereLocation([$location_type => $location]);
+        }
+
+        $results = $qBuilder->with('property')
             ->with('images')
             ->paginate($this->pagination);
 
@@ -131,12 +133,16 @@ class ListingController extends Controller
     {
         $status = settings('real-estate', 'sold');
         $data_timeframe = config('rws.data.timeframe');
-        $results = $this->model->getListings(
+        $qBuilder = $this->model->getListings(
             [
                 'status' => $status
-            ])
-            ->whereLocation([$location_type => $location])
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            ]);
+
+        if ($location_type != null) {
+            $qBuilder = $qBuilder->whereLocation([$location_type => $location]);
+        }
+
+        $results = $qBuilder->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->whereDateBetween([date('Y-m-d', strtotime($data_timeframe)), date('Y-m-d')])
             ->with('property')
             ->with('images')
