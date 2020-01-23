@@ -51,6 +51,7 @@
 
     .right--single--block {
         overflow-x: hidden;
+        display:none;
         [type="checkbox"]+span:not(.lever) {
             line-height:14px;
         }
@@ -112,6 +113,11 @@
                 box-shadow: 1px 1px 4px 1px$dark_grey;
             }
         }
+    }
+    &.fix{
+       .right--single--block{
+        display:block;
+       } 
     }
 
 }
