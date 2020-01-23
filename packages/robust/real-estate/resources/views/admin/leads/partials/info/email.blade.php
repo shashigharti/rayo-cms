@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="input-field col s12 multi-select-container">
                         {{ Form::label('subject', 'Subject', ['class' => 'required' ]) }}
-                        {{ Form::text('to','', ['class' => 'required' ]) }}
+                        {{ Form::text('subject','', ['class' => 'required' ]) }}
                     </div>
                 </div>
                 <div class="row editor">

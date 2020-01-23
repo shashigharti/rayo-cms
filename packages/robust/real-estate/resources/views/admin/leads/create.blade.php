@@ -1,5 +1,6 @@
 @extends('core::admin.layouts.sub-layouts.create')
 @inject('properties_helper','Robust\RealEstate\Helpers\LeadPropertiesHelper')
+@inject('group_helper','Robust\RealEstate\Helpers\LeadGroupHelper')
 @section('form')
     @set('ui', new $ui)
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}

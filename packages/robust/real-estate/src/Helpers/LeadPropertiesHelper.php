@@ -21,4 +21,22 @@ class LeadPropertiesHelper
         return $emails;
     }
 
+    /**
+     * @param $lead
+     * @return mixed
+     */
+    public function getProperties($lead)
+    {
+        return $lead->properties()->get()->pluck('value','type')->toArray();
+    }
+
+    /**
+     * @param $lead
+     * @param $types
+     * @return mixed
+     */
+    public function byType($lead, $types)
+    {
+        return $lead->properties()->whereIn('type',$types)->get();
+    }
 }

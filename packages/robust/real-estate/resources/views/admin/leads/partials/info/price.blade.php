@@ -1,4 +1,4 @@
-@set('properties',$model->properties()->whereIn('type',['min_price','max_price','median_price','avg_price','note'])->get()->pluck('value','type')->toArray())
+@set('properties',$properties_helper->byType($model,['min_price','max_price','median_price','avg_price','note'])->pluck('value','type')->toArray())
 <div class="row">
     <div class="col s12">
         <h5> Price

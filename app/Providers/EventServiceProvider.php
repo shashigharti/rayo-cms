@@ -8,8 +8,10 @@ use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 use Robust\RealEstate\Events\SendEmailToAgent;
 use Robust\RealEstate\Events\SendEmailToFriend;
+use Robust\RealEstate\Events\SendEmailToLead;
 use Robust\RealEstate\Listeners\SendEmailToAgentListener;
 use Robust\RealEstate\Listeners\SendEmailToFriendListener;
+use Robust\RealEstate\Listeners\SendEmailToLeadListener;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,9 @@ class EventServiceProvider extends ServiceProvider
         ],
         SendEmailToAgent::class => [
             SendEmailToAgentListener::class
+        ],
+        SendEmailToLead::class => [
+            SendEmailToLeadListener::class
         ]
     ];
 
