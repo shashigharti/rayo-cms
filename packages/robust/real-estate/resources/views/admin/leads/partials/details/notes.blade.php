@@ -9,7 +9,38 @@
                         <h5>Notes</h5>
                     </div>
                     <div class="col s3 right-align">
-                       <a class="mt-3 btn btn-floating waves-effect waves-light theme-btn breadcrumbs-btn right" href="#!"><i class="material-icons">add</i></a>
+                        <a href="#add-notes" class="mt-3 btn btn-floating waves-effect waves-light theme-btn breadcrumbs-btn right modal-trigger" href="#!">
+                            <i class="material-icons">add</i>
+                        </a>
+                    </div>
+                    <div id="add-notes" class="modal">
+                        <div class="modal-content">
+                            <form action="{{route('admin.notes.store')}}" method="POST">
+                                @csrf
+                                <div class="modal-header">
+                                    <span>Add Notes</span>
+                                    <a href="#!" class="modal-action modal-close right">
+                                        <i class="material-icons">clear</i>
+                                    </a>
+                                </div>
+                                <div class="modal-body">
+                                    {{ form::hidden('lead_id',$model->id) }}
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            {{ Form::text('title',null,['class'=>'form-control','placeholder'=>'title']) }}
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            {{ Form::textarea('note','', ['class' => 'form-control','placeholder'=>'Note' ]) }}
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    {{ Form::submit('Save', ['class' => 'btn btn-primary theme-btn']) }}
+                                </div>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
