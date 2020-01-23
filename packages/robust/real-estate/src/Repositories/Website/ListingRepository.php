@@ -64,7 +64,7 @@ class ListingRepository implements IListings
             'sd' => 'whereSubdivisions'
         ];
         $func = $function_map[$tab_type];
-        return $this->model->$func($params);
+        return $this->$func($params);
     }
 
 
@@ -104,7 +104,6 @@ class ListingRepository implements IListings
             }
         }
 
-        // Add additional conditions
         if ($locations_count > 0) {
             $qBuilder = $qBuilder->whereLocation($lParams);
         }
