@@ -24,6 +24,9 @@ class EventServiceProvider extends ServiceProvider
         \Robust\Core\Events\PasswordResetEvent::class => [
             \Robust\Core\Listeners\PasswordResetEventListener::class
         ],
+        \Robust\Admin\Events\UserActivityEvent::class => [
+            \Robust\Admin\Listeners\UserActivityEventListener::class
+        ],
     ];
 
     /**
