@@ -41,6 +41,8 @@
                     </div>
                 @endforeach
             @endif
+            {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][property_type]",$tabs_config[$tab]['conditions'][$ckey]['property_type']) }}
+            {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][condition]",$tabs_config[$tab]['conditions'][$ckey]['condition']) }}
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>

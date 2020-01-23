@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Repositories\Website;
 
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
@@ -7,7 +8,6 @@ use Robust\RealEstate\Repositories\Common\Traits\ListingTrait;
 use Robust\RealEstate\Repositories\Interfaces\IListings;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\Location;
-
 
 
 /**
@@ -33,76 +33,85 @@ class ListingRepository implements IListings
      * ListingRepository constructor.
      * @param Listing $model
      */
-    public function __construct(Listing $model, Location $location)
+    public function __construct(Listing $model, Location $location, BannerRepository $banner)
     {
         $this->model = $model;
         $this->location = $location;
-    }
-
-
-
-    public function whereSubArea($type)
-    {
-        $tabs_map = [
-            'waterfront' => [
-                'type' => 'waterfront',
-                'value' => 'Yes'
-            ],
-            'condos' => [
-                'type' => 'property_type',
-                'value' => 'Condo/Coop'
-            ],
-            'hopa' => [
-                'type' => 'hopa',
-                'value' => 'Yes-Verified'
-            ]
-        ];
-        $tab = $tabs_map[$type];
-        $this->model = $this->model->whereHas('property', function ($query) use ($tab){
-            $query->where('type', $tab['type'])
-                ->where('value', $tab['value']);
-        });
-        return $this;
+        $this->banner = $banner;
     }
 
     /**
      * @param $type
-     * @param $location
+     * @param $value
      * @return mixed
+     *
+     * TBR -- To be removed
      */
-    public function getCommunities($type, $location)
+    public function whereType($type, $value)
     {
-        return $this->model->where($type,$location)
-            ->select('subdivision_id')
-            ->groupBy('subdivision_id')
-            ->get()
-            ->pluck('subdivision_id');
-    }
-
-    /**
-     * @param $community
-     * @return mixed
-     */
-    public function getCommunityPrice($community)
-    {
-        return $this->model->where('subdivision_id',$community)
-            ->where('status','Active')
-            ->where('picture_status',1)
-            ->orderBy('input_date','desc');
+        return $this->model->where($type, $value);
     }
 
 
     /**
-     * @return QueryBuilder this
+     * @param $tab_type
+     * @param $params
+     * @return mixed
      */
-    public function limit($limit){
-        $this->model = $this->model->limit($limit);
-        return $this->model;
-    }
-
-    public function whereType($type,$value)
+    public function getTabsQuery($tab_type, $params)
     {
-        return $this->model->where($type,$value);
+        $function_map = [
+            'sd' => 'whereSubdivisions'
+        ];
+        $func = $function_map[$tab_type];
+        return $this->model->$func($params);
     }
 
+
+    /**
+     * @param $banner_slug
+     * @param null $tab_type
+     * @param null $tab_slug
+     * @return ListingRepository
+     */
+    public function processBannerParams($banner_slug, $tab_type = null, $tab_slug = null)
+    {
+        $banner = $this->banner->where('slug', $banner_slug)->first();
+        $properties = json_decode($banner->properties);
+        $locations_count = (isset($properties->locations)) ? count((array)$properties->locations) : 0;
+        $attributes_count = (isset($properties->attributes)) ? count((array)$properties->attributes) : 0;
+        $lParams = [];
+        $pParams = [];
+
+        // Get Query Builder
+        $qBuilder = $this->getListings();
+
+        // Process conditions for banner
+        foreach ((array)$properties->locations as $key => $location) {
+            $lParams[$key] = implode(',', $location);
+        }
+        if ($attributes_count > 0) {
+            foreach ((array)$properties->attributes as $key => $attribute) {
+                $pParams[$key] = implode(',', $attribute);
+            }
+        }
+
+        // Process conditions for tabs
+        if ($tab_type === 'tb') {
+            $tab_slug = str_replace('-', '_', $tab_slug);
+            foreach ((array)$properties->tabs->{$tab_slug}->conditions as $key => $property) {
+                $pParams[$property->property_type] = $property->values;
+            }
+        }
+
+        // Add additional conditions
+        if ($locations_count > 0) {
+            $qBuilder = $qBuilder->whereLocation($lParams);
+        }
+        if (count($pParams) > 0) {
+            $qBuilder = $qBuilder->wherePropertyType($pParams);
+        }
+
+        return $qBuilder;
+    }
 }

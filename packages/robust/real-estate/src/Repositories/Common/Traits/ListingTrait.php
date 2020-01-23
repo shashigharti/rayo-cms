@@ -55,6 +55,24 @@ trait ListingTrait
         return $this;
     }
 
+    /**
+     * @param $subdivisions
+     * @return $this
+     */
+    public function whereSubdivisions($subdivisions)
+    {
+        $qBuilder = $this->model;
+        $values = explode(",", $subdivisions);
+        $location_ids = $this->location
+            ->where('locationable_type', IListings::LOCATION_TYPE_CLASS_MAP['subdivisions'])
+            ->whereIn('slug', $values)
+            ->pluck('id');
+        $qBuilder = $qBuilder->whereIn(IListings::LOCATION_TYPE_MAP['subdivisions'], $location_ids);
+
+        $this->model = $qBuilder;
+        return $this;
+    }
+
 
     /**
      * @param $params
