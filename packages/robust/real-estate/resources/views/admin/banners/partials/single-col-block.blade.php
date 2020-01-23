@@ -39,8 +39,8 @@
             }}
         </div>
         @if(isset($properties->location_types))
-            <div class="row">
-                <fieldset class="mt-1">
+            <div class="col s12">
+                <fieldset class="mt-1 mb-2">
                     <legend>Locations</legend>
                     @foreach( $properties->location_types as $key => $location )
                         <div class="col s12">
