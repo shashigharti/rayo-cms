@@ -91,7 +91,7 @@ return [
             'display_name' => 'Waterfront',
             'type' => 'price',
             'conditions' => [
-                ['property_type' => 'waterfront', 'condition' => 'LIKE', 'values' => '']
+                ['property_type' => 'waterfront', 'condition' => 'LIKE', 'values' => []]
             ]
         ],
         '55_plus' => [
@@ -99,21 +99,21 @@ return [
             'type' => 'price',
             'input_type' => 'search_text',
             'conditions' => [
-                ['property_type' => 'public_remarks', 'condition' => 'LIKE', 'values' => ''],
+                ['property_type' => 'public_remarks', 'condition' => 'LIKE', 'values' => []],
             ]
         ],
         'homes_with_land' => [
             'display_name' => 'Homes with Land',
             'type' => 'price',
             'conditions' => [
-                ['property_type' => 'zoning', 'condition' => 'LIKE', 'values' => '']
+                ['property_type' => 'zoning', 'condition' => 'LIKE', 'values' => []]
             ]
         ],
         'pool_homes' => [
             'display_name' => 'Pool Homes',
             'type' => 'price',
             'conditions' => [
-                ['property_type' => 'pool', 'condition' => 'LIKE', 'values' => '']
+                ['property_type' => 'pool', 'condition' => 'LIKE', 'values' => []]
             ]
         ],
         'neighborhoods' => [

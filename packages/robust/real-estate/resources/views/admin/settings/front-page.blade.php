@@ -60,15 +60,6 @@
                 {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '')}}
             </fieldset>
         </div>
-        <div class="col s12 m6">
-            <fieldset class="mt-2">
-                <legend>Banner Tabs Settings</legend>
-                <div class="col s12 input-field">
-                    {{ Form::checkbox('banner_tabs_all_caps', true, $settings['banner_tabs_all_caps'] ?? false) }}
-                    {{ Form::label('banner_tabs_all_caps', 'All Capital') }}
-                </div>
-            </fieldset>
-        </div>
     </div>
     <div class="form-group form-material mt-3 row">
         <div class="col s12">

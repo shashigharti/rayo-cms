@@ -97,10 +97,7 @@
                     {{ Form::label("properties[prices][$key][max]", 'Max') }}
                     {{ Form::text("properties[prices][$key][max]", $price->max ?? '')}}
                 </div>
-                <div class="input-field col s2">
-                    {{ Form::label("properties[prices][$key][count]", 'Count') }}
-                    {{ Form::text("properties[prices][$key][count]", $price->count ?? '' )}}
-                </div>
+                {{ Form::hidden("properties[prices][$key][count]", $price->count ?? '' )}}
                 @if( $price->max == "" )
                     <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 @else
