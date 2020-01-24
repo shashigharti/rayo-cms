@@ -39,7 +39,7 @@
                             </a>
                         </div>
                         <div class="col s6 right-align">
-                            <a href="#">
+                            <a href="{{ route('admin.leads.details.edit', ['id' => $lead->id,'type'=>'notes'])}}">
                                 <i aria-hidden="true" class="fa fa-external-link"></i>View More
                             </a>
                         </div>

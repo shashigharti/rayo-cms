@@ -37,11 +37,10 @@
                     </div>
                 @endforeach
                 <div class="row vw-view-more">
-                   <a href="#" class="">
-                        <div class="col s12">
-                            View more
-                        </div>
-                   </a>
+                    <div class="col s12">
+                        <a href="{{ route('admin.leads.details.edit', ['id' => $lead->id,'type'=>'properties-viewed'])}}">View more
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
