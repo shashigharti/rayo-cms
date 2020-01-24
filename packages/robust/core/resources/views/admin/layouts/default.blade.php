@@ -44,10 +44,6 @@
                 </h1>
             </div>
             @include("core::admin.partials.menus.left-menu")
-            <div class="navigation-background"></div>
-            <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out">
-                <i class="material-icons">menu</i>
-            </a>
         </aside>
         @yield('content')
         @include('core::admin.partials.modals.delete')
