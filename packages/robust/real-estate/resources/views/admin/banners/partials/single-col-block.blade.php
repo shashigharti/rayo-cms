@@ -113,7 +113,7 @@
         <div class="row mt-5">
             @set('tabs_config', config('real-estate.frw.single_banner_tabs_properties_filter'))
             @set('selected_tabs', array_combine(array_keys($tabs_config), array_keys($tabs_config)))
-            <div class="input-field col s12">
+            <div class="input-field col s6">
                 {{ Form::label('properties[tabs_to_display][]', 'Tabs', ['class'=>'control-label']) }}
                 {{ Form::select('properties[tabs_to_display][]', $selected_tabs,
                     $properties->tabs_to_display ?? [],
@@ -122,6 +122,10 @@
                         'multiple'
                     ])
                 }}
+            </div>
+            <div class="input-field col s6">
+                {{ Form::label('properties[tabs_order]', 'Tabs Order', ['class'=>'control-label']) }}
+                {{ Form::text('properties[tabs_order]', $properties->tabs_order ?? implode(',', $properties->tabs_to_display)) }}
             </div>
         </div>
         @if(isset($properties->tabs_to_display))

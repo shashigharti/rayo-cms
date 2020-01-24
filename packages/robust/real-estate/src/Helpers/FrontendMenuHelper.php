@@ -51,12 +51,13 @@ class FrontendMenuHelper
      * @param $items
      * @return mixed
      */
-    public function hide_items($location_type, $items){
+    public function hide_items($location_type, $items)
+    {
         $settings = settings('front-page');
-        if(isset($settings["hide_{$location_type}"]) && $settings["hide_{$location_type}"] != ''){
+        if (isset($settings["hide_{$location_type}"]) && $settings["hide_{$location_type}"] != '') {
             $cities_to_hide = explode(',', $settings["hide_{$location_type}"]);
-            foreach($items as $key => $item){
-                if(in_array($item->slug, $cities_to_hide)){
+            foreach ($items as $key => $item) {
+                if (in_array($item->slug, $cities_to_hide)) {
                     $items->forget($key);
                 }
             }
@@ -64,13 +65,25 @@ class FrontendMenuHelper
         return $items;
     }
 
+
     /**
-     * @param $array
+     * @param $tabs
+     * @param $tabs_order
      * @return mixed
      */
-    public function sort_tabs($tabs){
-        ksort($tabs);
-        return $tabs;
+    public function sort_tabs($tabs, $tabs_order)
+    {
+        $tabs_new = [];
+        if ($tabs_order == '') {
+            ksort($tabs);
+            return $tabs;
+        }
+        $tab_order_arr = explode(",", $tabs_order);
+        foreach ($tab_order_arr as $key) {
+            $tabs_new[$key] = $tabs[$key];
+        }
+
+        return $tabs_new;
     }
 
 
@@ -109,6 +122,6 @@ class FrontendMenuHelper
             return $items_with_different_order->merge($items_with_default_order);
         }
 
-       return $items;
+        return $items;
     }
 }

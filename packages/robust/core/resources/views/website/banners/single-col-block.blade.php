@@ -23,7 +23,7 @@
                 </div>
                 @if(isset($properties['tabs']) && is_array($properties['tabs']))
                     <div class="subdivs--list__block">
-                        @foreach( $menu_helper->sort_tabs($properties['tabs']) as $key => $tab )
+                        @foreach( $menu_helper->sort_tabs($properties['tabs'], $properties['tabs_order'] ?? '') as $key => $tab )
                             <div class="subdivs--list__btn">
                                 <i class="material-icons">redo</i>{{ $tab['display_name'] ?? strtoupper(str_replace('_', ' ', $key)) }}
                                 <div class="subdivs--list">
