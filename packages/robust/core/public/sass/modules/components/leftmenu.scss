@@ -8,7 +8,7 @@
     top: 0;
     width: 214px;
     height: 100%;
-    background: #575758;
+    background:$theme-color;
     -webkit-transition: .3s ease all;
     -moz-transition: .3s ease all;
     -o-transition: .3s ease all;
@@ -140,7 +140,7 @@
     overflow: hidden;
     width: inherit;
     height: 100%;
-    background-color: #575758;
+    background-color:$theme-color;
     -webkit-transition: auto !important;
     -moz-transition: auto !important;
     -o-transition: auto !important;
@@ -249,7 +249,7 @@
         }
 
         &.active {
-            background-color: transparent;
+            background:$secondary-color;
 
             > .collapsible-header:after {
                 -webkit-transform: rotate(90deg);
@@ -261,7 +261,7 @@
         }
 
         &.open {
-            background: rgba(0, 0, 0, 0.035);
+            background:$secondary-color;
         }
 
         > a {
