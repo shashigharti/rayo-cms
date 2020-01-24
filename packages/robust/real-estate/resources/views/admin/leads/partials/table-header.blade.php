@@ -184,6 +184,8 @@
                                                style="display: none;"></i>
         </div>
     </th>
-    <th></th>
+    <th class="notes-col">
+        Review/Notes
+    </th>
 </tr>
 </thead>

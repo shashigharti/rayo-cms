@@ -83,15 +83,7 @@
                                                            class="lead-modal_trigger">{{$lead->agent->first_name ?? 'Not Assigned'}}</a>
                                                     </div>
                                                     <div class="status-dlg">
-                                                        <a href="#"
-                                                           data-lead="{{$lead->id}}"
-                                                           data-url="{{route('admin.leads.modal')}}"
-                                                           data-type="Set status"
-                                                           data-action="{{route('admin.update.leads',['id'=>$lead->id])}}"
-                                                           data-mode="Edit"
-                                                           data-view="status"
-                                                           data-value="{{$lead->status_id ?? ''}}"
-                                                           class="lead-modal_trigger">{{$lead->status->value ?? '[+Set Status]'}}</a>
+                                                        <a href="#">[+ Set Status]</a>
                                                     </div>
                                                 </td>
                                                 <td>
@@ -186,6 +178,11 @@
                                                 <td>
                                                     <div class="info-unit">
                                                         @include('real-estate::admin.leads.partials.popups.followups')
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="info-unit">
+                                                        @include('real-estate::admin.leads.partials.popups.review-notes')
                                                     </div>
                                                 </td>
                                             </tr>
