@@ -4,6 +4,7 @@
     @set('ui', new $ui)
 
     {{ Form::model($model, ['route' => $ui->getRoute($model), 'method' => $ui->getMethod($model) ]) }}
+    {{ Form::hidden('user_id',Auth::user()->id) }}
         <div id="{{ $title }}" class="col s12">
             <div class="row">
                 <div class="input-field col s6">
