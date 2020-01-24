@@ -1147,8 +1147,8 @@ span.badge.pill {
 .select-wrapper {
 	input.select-dropdown {
 		&:focus {
-			border-bottom: 1px solid #8d62c1 !important;
-			box-shadow: 0 1px 0 0 #8d62c1 !important;
+			border-bottom: 1px solid $theme-color !important;
+			box-shadow: 0 1px 0 0 $theme-color !important;
 		}
 	}
 }

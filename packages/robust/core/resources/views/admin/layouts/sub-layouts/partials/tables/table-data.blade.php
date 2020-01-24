@@ -35,7 +35,7 @@
                                                 @elseif(View::exists("core::admin.layouts.sub-layouts.partials.tables.{$key}") )
                                                     @include("core::admin.layouts.sub-layouts.partials.tables.{$key}", ['extra_params' => (isset($option['params']))? $option['params'] : []])
                                                 @else
-                                                    <a class='btn btn-small btn-{{$key}} cyan waves-effect waves-light'
+                                                    <a class='btn btn-small btn-{{$key}} cyan waves-effect'
                                                         href="{{$ui->getTableRoute($option,
                                                             [
                                                                     'id' => $row['id'],
