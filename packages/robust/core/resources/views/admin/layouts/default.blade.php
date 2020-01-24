@@ -33,13 +33,9 @@
         {{ settings('g-analytics', 'script-before-head-closing') }}
 
     </head>
-    <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns"
-        data-open="click"
-        data-menu="vertical-menu-nav-dark"
-        data-col="2-columns"
-    >
+    <body>
         @include("core::admin.partials.nav")
-        <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full">
+        <aside class="sidenav-main nav-expanded nav-lock nav-collapsible navbar-full">
             <div class="brand-sidebar">
                 <h1 class="logo-wrapper">
                     <a class="brand-logo darken-1" href="index.html">
