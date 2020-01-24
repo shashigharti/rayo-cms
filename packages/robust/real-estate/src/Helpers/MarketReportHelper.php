@@ -37,6 +37,7 @@ class MarketReportHelper
         })->avg($attr);
     }
 
+
     /**
      * @param $id
      * @param $type
@@ -48,9 +49,11 @@ class MarketReportHelper
         return MarketReport::where('reportable_id',$id)->where('reportable_type',$type)->first();
     }
 
+
     /**
-     * Generates price ranges
-     * @return string
+     * @param null $min
+     * @param null $max
+     * @return array
      */
     public function generatePriceRanges($min = null, $max = null){
         $config = config('rws.market-report.price-range');
@@ -71,14 +74,16 @@ class MarketReportHelper
         return $priceArr;
     }
 
-     /**
-     * Checks if the amount is between the given price range
-     * @return mixed
+    /**
+     * @param $amount
+     * @param $min
+     * @param $max
+     * @return bool|string
      */
     public function isActivePriceRange($amount, $min, $max){
         if(($amount >= $min) && ($amount < $max)){
             return 'active';
-        }       
+        }
         return false;
     }
 }
