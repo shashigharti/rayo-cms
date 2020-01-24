@@ -64,7 +64,7 @@
             <div class="row editor">
                 <div class="input-field col s12">
                     {{ Form::label('body', 'body', ['class' => 'required' ]) }}
-                    {{ Form::textarea('body', $template != '' ? view('real-estate::admin.email-templates.partials.' .$template) : '', [
+                    {{ Form::textarea('body', $template != '' ? view('real-estate::admin.email-templates.partials.' .$template) : $model->body, [
                             'placeholder' => 'Email body',
                             'required'  => 'required',
                             'id' => 'editor__body',
