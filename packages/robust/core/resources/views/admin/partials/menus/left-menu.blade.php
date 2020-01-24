@@ -5,7 +5,7 @@
             @set('sub_menus', $menu_helper->getSubMenus($menu->id))
             @can($menu->permission)
                 @if(count($sub_menus) <= 0)
-                    <li class="bold">
+                    <li class="bold {{is_active($menu->url)}}">
                         <a class="waves-effect" href="{{ $menu->url }}">
                             <i class="material-icons">{{ $menu->icon }}</i>
                             <span class="menu-title" data-i18n="">
@@ -35,7 +35,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </li>                            
+                    </li>
                 @endif
             @endcan
         @endif
