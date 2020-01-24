@@ -260,7 +260,7 @@
             }
         }
 
-        &.open {
+        &.open,&:hover {
             background:$secondary-color;
         }
 

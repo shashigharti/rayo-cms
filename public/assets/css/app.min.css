@@ -1073,7 +1073,7 @@ footer{padding-left:250px}}@media only screen and (max-width:600px){#main .conte
 .sidenav li .collapsible-body a i{font-size:.7rem}.sidenav li a.active{color:#fff;background:#9c27b0 !important;-webkit-box-shadow:1px 1px 3px 0 #7a52af !important;box-shadow:1px 1px 3px 0 #7a52af !important}
 .sidenav li a.active i{color:#fff}.sidenav li:not(.active).open{background-color:rgba(0,0,0,0.035)}
 .sidenav li.active{background:#074f75}.sidenav li.active>.collapsible-header:after{-webkit-transform:rotate(90deg);transform:rotate(90deg)}
-.sidenav li.open{background:#074f75}.sidenav li>a{font-weight:400;line-height:44px;font-size:12px;height:44px;padding:0 16px !important}
+.sidenav li.open,.sidenav li:hover{background:#074f75}.sidenav li>a{font-weight:400;line-height:44px;font-size:12px;height:44px;padding:0 16px !important}
 .sidenav li a.collapsible-header{font-weight:400;line-height:44px;font-size:12px;height:44px;padding:0 16px !important}
 .sidenav li a.collapsible-header>i.material-icons{line-height:44px;color:#fff;height:44px;margin:0 20px 0 0}
 .sidenav li>a>i.material-icons{line-height:44px;color:#fff;height:44px;margin:0 20px 0 0}
