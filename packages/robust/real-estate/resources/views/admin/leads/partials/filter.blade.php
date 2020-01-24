@@ -1,17 +1,20 @@
+@set('statuses',$lead_helper->getStatus())
 <div class="row filter--bar">
     <div class="col s12">
         <div class="col left">
-            <ul class="tabs theme__tabs">
-                <li class="tab"><a class="active" href="#">Active</a></li>
-                <li class="tab"><a href="#">New</a></li>
-                <li class="tab"><a href="#">Unassigned</a></li>
-                <li class="tab"><a href="#">Archived</a></li>
-                <li class="tab"><a href="#">Discarded</a></li>
-                <li class="tab"><a href="#">Unregistered</a></li>
+            <ul class="">
+                @foreach($statuses as $status)
+                    <li class="">
+                        <a class="" href="{{$lead_helper->getActiveUrl()}}">{{$status->value}}</a>
+                    </li>
+                @endforeach
             </ul>
         </div>
         <div class="input-field theme--select col s2">
-            {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), null, ['class' => 'form-control']) }}
+            {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), null, [
+                'class' => 'form-control lead-filter__agent',
+                'data-url' => route('admin.leads.index')
+            ]) }}
         </div>
         <div class="col s12 btn--bar">
             <button class="btn btn-sm"><i aria-hidden="true" class="fa fa-check-square"></i>
