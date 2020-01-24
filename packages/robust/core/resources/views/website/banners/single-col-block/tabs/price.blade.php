@@ -1,3 +1,4 @@
+<span class="right"><i class="material-icons close">clear</i></span>
 <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }}</label></p>
 <ul>
     @if(isset($tab['prices']))

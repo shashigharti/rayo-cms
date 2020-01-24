@@ -1203,6 +1203,12 @@ button{
     font-size: 10px;
     i{
         font-size: 13px;
+        &.close{
+          color:$white;
+          position: absolute;
+          top: 6px;
+          right: 2px;
+        }
     }
 }
 .subdivs--list{
