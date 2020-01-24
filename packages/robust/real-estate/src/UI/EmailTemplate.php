@@ -52,8 +52,7 @@ class EmailTemplate extends BaseUI
      * @var array
      */
     public $addrules = [
-        'first_name' => 'required',
-        'last_name' => 'required'
+        'name' => 'required'
     ];
     /**
      * @var array

@@ -23,6 +23,7 @@ class EmailTemplate extends BaseModel
     protected $fillable = [
         'user_id',
         'name',
+        'template',
         'type',
         'subject',
         'body',
