@@ -76,6 +76,7 @@ return [
         'Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
         'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools',
         'Robust\RealEstate\Models\Subdivision' => 'subdivisions',
+        'Robust\RealEstate\Models\SchoolDistrict' => 'school_districts',
     ],
     'default_pricing_ranges' => [
         ['min' => '10000', 'max' => '11000', 'count' => '0'],

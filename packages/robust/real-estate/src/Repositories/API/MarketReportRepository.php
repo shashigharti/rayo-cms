@@ -5,21 +5,20 @@ use Robust\RealEstate\Models\MarketReport;
 use Robust\Core\Repositories\Common\Traits\CommonRepositoryTrait;
 use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 use Robust\RealEstate\Repositories\Common\Traits\MarketReportTrait;
-use Robust\RealEstate\Repositories\API\MarketReportRepository;
 use Robust\RealEstate\Models\Location;
 
 /**
  * Class MarketReportRepository
  * @package Robust\RealEstate\Repositories\Website
  */
-class MarketReportRepository implements IMarketReport 
+class MarketReportRepository implements IMarketReport
 {
     use CommonRepositoryTrait, MarketReportTrait;
 
     /**
      * @var MarketReport model
      */
-    protected $model;    
+    protected $model;
 
     /**
      * MarketReportRepository constructor.
@@ -30,6 +29,6 @@ class MarketReportRepository implements IMarketReport
     {
         $this->model = $model;
         $this->location = $location;
-    }   
+    }
 
 }

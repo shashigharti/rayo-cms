@@ -1,7 +1,7 @@
 <span class="right"><i class="material-icons close">clear</i></span>
-<p><label>{{ strtoupper(str_replace('_', ' ', $key)) }}</label></p>
-<ul>
-    @if(isset($tab['subdivisions']))
+@if(isset($tab['subdivisions']))
+    <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }} ({{count($tab['subdivisions'])}})</label></p>
+    <ul>
         @foreach($tab['subdivisions'] as $subdivision)
             @if(!(isset($subdivision['hide']) && $subdivision['hide']))
                 <li>
@@ -15,10 +15,10 @@
                                     ])
                             }}"
                     >
-                        {{ $subdivision['slug'] }}({{ $subdivision['count'] ?? 0}})
+                        {{ ucwords(str_replace('-', ' ', $subdivision['slug'])) }}({{ $subdivision['count'] ?? 0}})
                     </a>
                 </li>
             @endif
         @endforeach
-    @endif
-</ul>
+    </ul>
+@endif

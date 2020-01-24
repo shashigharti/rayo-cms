@@ -6,58 +6,58 @@
                 @foreach($ranges as $key => $value)
                     <div class="market__price-range-item">
                         @if(isset($ranges[$key-1]))
-                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}" 
-                                href="{{ route("api.market.reports.in.subdivisions", 
+                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $ranges[$key-1], $value)?? '' }}"
+                                href="{{ route("api.market.reports.in.subdivisions",
                                             [
                                                 'location_type' => $page_type,
                                                 'slug' => $location_name_slug,
                                                 'price' => "{$ranges[$key-1]}-{$value} "
-                                            ]) 
+                                            ])
                                 }}"
                             >
                                 ${{ price_format($ranges[$key-1]) }} - ${{ price_format($value) }}
-                            </a> 
+                            </a>
                         @else
-                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}" 
-                                href="{{ route("api.market.reports.in.subdivisions", 
+                            <a class="{{ $marketreport_helper->isActivePriceRange($settings['price-range']['min'], $settings['price-range']['min'], $value) ?? '' }}"
+                                href="{{ route("api.market.reports.in.subdivisions",
                                             [
                                                 'location_type' => $page_type,
                                                 'slug' => $location_name_slug,
                                                 'price' => "{$settings[ 'price-range'][ 'min']}-{$value} "
-                                            ]) 
+                                            ])
                                 }}"
                             >
                                 ${{ price_format($settings['price-range']['min']) }} - ${{ price_format($value) }}
-                            </a> 
+                            </a>
                         @endif
                     </div>
                 @endforeach
             </div>
         </div>
-    @endif 
+    @endif
     @if($page_content == 'insight')
-        <div id="market__search--lists" 
-        data-page-type="{{$page_type}}" 
+        <div id="market__search--lists"
+        data-page-type="{{$page_type}}"
         class="market__search--lists market--right__search col m10 s12">
-        
+
         </div>
     @elseif(($page_content == 'market-report') )
-        <div id="market__search--lists" data-page-type="{{$page_type}}" 
-            data-insight-url="{{url('market/reports/in')}}" 
+        <div id="market__search--lists" data-page-type="{{$page_type}}"
+            data-insight-url="{{url('market/reports/in')}}"
             class="market__search--lists market--right__search col m10 s12"
         >
             @foreach($records as $report)
                 <div class=" market__search--lists-item--single">
                     <div class="market__search--lists-item card">
-                        <div class="card-content">                            
-                            <p data-id="{{$report->reportable->slug}}" 
-                                data-type="Title" 
-                                data-value="{{$report->reportable->name}}" 
-                                data-url="{{route('website.realestate.market.reports.in', 
+                        <div class="card-content">
+                            <p data-id="{{ $report->reportable->slug }}"
+                                data-type="Title"
+                                data-value="{{$report->reportable->name}}"
+                                data-url="{{route('website.realestate.market.reports.in',
                                 [
-                                    $sub_location_type == '' ? $page_type : $sub_location_type, 
+                                    $sub_location_type == '' ? $page_type : $sub_location_type,
                                     $report->reportable->slug
-                                ])}}" 
+                                ])}}"
                                 data-class=""
                             >
                                 <input type="checkbox" value="{{$report->reportable->name}}">
