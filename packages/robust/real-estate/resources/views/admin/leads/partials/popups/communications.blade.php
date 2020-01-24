@@ -1,5 +1,5 @@
 <div class="column-action__communications">
-    <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
+    <a href="#" title="Click to see communications" class='popup-trigger'>
         <i aria-hidden="true" class="fa fa-envelope-o"></i>
         <small>
             <sub>{{$lead->communications()->count()}}</sub>
@@ -30,7 +30,7 @@
                 <div class="row vw-view-more">
                     <div class="row">
                         <div class="col s12">
-                            <a href="#">
+                            <a href="{{ route('admin.leads.details.edit', ['id' => $lead->id,'type'=>'communications'])}}">
                                 View more
                             </a>
                         </div>

@@ -1,8 +1,8 @@
 <div class="column-action__notes">
-    <a href="#" title="Click to see communications" class='popup-trigger' href='#'>
+    <a href="#" title="Click to see notes" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-sticky-note-o"></i>
         <small>
-            <sub>1</sub>
+            <sub>{{ $lead->notes()->count() }}</sub>
         </small>
     </a>
     <ul class='popup-content hide'>
@@ -13,30 +13,33 @@
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
+                    @foreach($lead->notes as $note)
                         <div class="col s12">
                             <div class="vw-lead-price">
-                                PT-Mon, Nov 25,2019
+                                {{  $note->title}} - {{  $note->created_at->format('D, F d, Y') }}
                                 <br>
-                                7:38 A.M
+                                {{ $note->created_at->format('g:i A') }}
                             </div>
                         </div>
-                        <div class="col s12 mt-4">
-                            <div class="vw-lead-price">
-                                not in TL-Thu,Oct 3,2019
-                                <br>
-                                10:28 A.M
-                            </div>
-                        </div>
+                    @endforeach
                 </div>
                 <div class="row vw-view-more">
                     <div class="row">
                         <div class="col s6">
-                            <a href="#">
-                                <i aria-hidden="true" class="fa fa-plus-circle"></i>Add Notes
+                            <a href="#"
+                               data-lead="{{$lead->id}}"
+                               data-url="{{route('admin.leads.modal')}}"
+                               data-type="notes"
+                               data-action="{{route('admin.notes.store')}}"
+                               data-mode="Edit"
+                               data-view="notes"
+                               data-value="{{$lead->agent->id ?? ''}}"
+                               class="lead-modal_trigger">
+                               <i aria-hidden="true" class="fa fa-plus-circle"></i>Add Notes
                             </a>
                         </div>
                         <div class="col s6 right-align">
-                            <a href="#">
+                            <a href="{{ route('admin.leads.details.edit', ['id' => $lead->id,'type'=>'notes'])}}">
                                 <i aria-hidden="true" class="fa fa-external-link"></i>View More
                             </a>
                         </div>
