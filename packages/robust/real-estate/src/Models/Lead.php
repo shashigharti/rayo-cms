@@ -61,12 +61,13 @@ class Lead extends Authenticatable
     {
         return $this->hasMany(LeadProperty::class);
     }
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function agent()
     {
-        return $this->belongsTo(Agent::class,'agent_id');
+        return $this->belongsTo(Agent::class, 'agent_id');
     }
 
     /**
@@ -117,6 +118,11 @@ class Lead extends Authenticatable
     public function communications()
     {
         return $this->hasMany(SentEmails::class, 'lead_id', 'id');
+    }
+
+    public function status()
+    {
+        return $this->belongsTo(LeadStatus::class);
     }
 
 }

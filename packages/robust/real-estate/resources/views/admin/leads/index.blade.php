@@ -180,6 +180,11 @@
                                                         @include('real-estate::admin.leads.partials.popups.followups')
                                                     </div>
                                                 </td>
+                                                <td>
+                                                    <div class="info-unit">
+                                                        @include('real-estate::admin.leads.partials.popups.review-notes')
+                                                    </div>
+                                                </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -47,7 +47,7 @@ class LeadController extends Controller
      */
     public function getDetailsPage($id, $type)
     {
-        return $this->display("real-estate::admin.leads.show",
+        return $this->display("real-estate::admin.leads.create",
             [
                 'model' => $this->model->find($id),
                 'type'  => $type
@@ -108,7 +108,12 @@ class LeadController extends Controller
         return redirect()->back();
     }
 
-    public function getModal(Request $request,LeadHelper $helper)
+    /**
+     * @param Request $request
+     * @param LeadHelper $helper
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function getModal(Request $request, LeadHelper $helper)
     {
         $data = $request->all();
         return view('real-estate::admin.leads.partials.modals.'.$data['view'],
