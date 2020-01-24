@@ -10,7 +10,7 @@
                 @endcan
             @endforeach
         @else
-            <li class="tab"><a class="active" href="#pages"> {{ $title }} </a></li>
+            <li class="tab active"><a href="#pages"> {{ $title }} </a></li>
         @endif
     </ul>
 @endif
