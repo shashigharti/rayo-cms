@@ -3,14 +3,7 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use DB;
-use Robust\RealEstate\Models\City;
 use Robust\RealEstate\Models\Location;
-use Robust\RealEstate\Models\SchoolDistrict;
-use Robust\RealEstate\Models\County;
-use Robust\RealEstate\Models\Zip;
-use Robust\RealEstate\Models\Area;
-use Robust\RealEstate\Models\HighSchool;
-use Robust\RealEstate\Models\Subdivision;
 
 use Illuminate\Console\Command;
 use Illuminate\Database\Eloquent\Collection;

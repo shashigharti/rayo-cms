@@ -66,10 +66,10 @@
             </div>
             <div class="col s3 input-field split--block">
                 {{ Form::label('sq_feet', 'Square Feet') }}
-               <span>
+                <span>
                    Min: {{ Form::text('sq_feet_min', $settings['sq_feet_min'] ?? '') }}
                </span>
-               <span>
+                <span>
                    Max: {{ Form::text('sq_feet_max', $settings['sq_feet_max'] ?? '') }}
                </span>
             </div>
@@ -110,6 +110,29 @@
                         'multiple'
                     ])
                 }}
+            </div>
+        </div>
+        <div class="form-group form-material row">
+            <div class="col s6">
+                {{ Form::label('market_report[price_range_field][]', 'Generate Price Range By:', ['class' => 'control-label' ]) }}
+                {{ Form::select('market_report[price_range_comparision_field][]',
+                    config('real-estate.frw.market-report.fields_to_compare_list'),
+                    $settings['market_report']['price_range_comparision_field'] ?? [])
+                }}
+            </div>
+            <div class="col s6">
+                {{ Form::label('market_report', 'Price', ['class' => 'control-label' ]) }}
+                <div class="row">
+                    <div class="col s4">
+                        Min:{{ Form::text('market_report[price_min]',  $settings['market_report']['price_min'] ?? '0') }}
+                    </div>
+                    <div class="col s4">
+                        Max: {{ Form::text('market_report[price_max]',  $settings['market_report']['price_max'] ?? '44500000') }}
+                    </div>
+                    <div class="col s4">
+                        Increment: {{ Form::text('market_report[increment]',  $settings['market_report']['increment'] ?? '1500000') }}
+                    </div>
+                </div>
             </div>
         </div>
     </fieldset>
