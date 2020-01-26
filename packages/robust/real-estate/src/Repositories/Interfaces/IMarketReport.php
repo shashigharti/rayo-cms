@@ -18,6 +18,14 @@ Interface IMarketReport
     ];
 
     /**
+     * @var const PARAM_MAP
+     */
+    public const PARAM_MAP = [
+        'cities' => 'city_id'
+    ];
+
+
+    /**
      * @var const LOCATION_TYPES_WITH_SUBLOCATIONS
      */
     public const LOCATION_TYPES_WITH_SUBLOCATIONS = [
@@ -64,6 +72,6 @@ Interface IMarketReport
         " ROUND(AVG(sold_price) / AVG(system_price) * 100, 2) as percent",
         " AVG(sold_price) sold_price_avg",
         " AVG(system_price) system_price_avg",
-        " real_estate_market_reports.name"
+        " name"
     ];
 }

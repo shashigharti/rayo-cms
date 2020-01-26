@@ -115,18 +115,19 @@ trait MarketReportTrait
      * @param $data
      * @return mixed
      */
-//    public function compareLocations($data)
-//    {
-//        $location_type = $data['by'];
-//        $response = $this->model
-//            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS_COMPARE)))
-//            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type])
-//            ->whereIn('real_estate_market_reports.slug', explode(",", $data['ids']))
-//            ->leftJoin('real_estate_listings', "real_estate_market_reports.location_id", '=', "real_estate_listings." . IMarketReport::PARAM_MAP[$data['by']])
-//            ->groupBy('real_estate_market_reports.name')
-//            ->get();
-//
-//        return $response;
-//    }
+    public function compareLocations($data)
+    {
+        $location_type = $data['by'];
+        $response = $this->listing
+            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS_COMPARE)))
+            ->whereHas('locations', function ($query) use ($location_type, $data) {
+                $query->where('locationable_type', IMarketReport::LOCATION_TYPE_MAP[$location_type])
+                    ->whereIn('slug', explode(",", $data['ids']));
+            })
+            ->groupBy('name')
+            ->get();
+
+        return $response;
+    }
 
 }
