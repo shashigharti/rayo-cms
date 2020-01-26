@@ -20,7 +20,7 @@ class MarketReport extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'reportable_id', 'reportable_type', 'slug', 'name', 'total_listings', 'total_listings_active',
+        'location_id', 'location_type', 'slug', 'name', 'total_listings', 'total_listings_active',
         'total_listings_sold', 'total_listings_sold_past_year', 'total_listings_sold_this_year',
         'median_price_active', 'median_price_sold', 'median_price_sold_past_year', 'median_price_sold_this_year',
         'average_price_active', 'average_price_sold', 'average_price_sold_past_year', 'average_price_sold_this_year',
@@ -29,11 +29,11 @@ class MarketReport extends BaseModel
 
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\MorphTo
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function reportable()
+    public function location()
     {
-        return $this->morphTo();
+        return $this->belongsTo('Robust\RealEstate\Models\Location');
     }
 
 }

@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Models;
 
 use Robust\Core\Models\BaseModel;
@@ -14,6 +15,11 @@ class Location extends BaseModel
      * @var string
      */
     protected $table = 'real_estate_locations';
+
+    /**
+     * @var array
+     */
+    protected $hidden = array('pivot');
 
     /**
      * @var array
@@ -34,6 +40,22 @@ class Location extends BaseModel
     public function locationable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function listings()
+    {
+        return $this->belongsToMany('Robust\RealEstate\Models\Listing', 'real_estate_listing_location');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function market_report()
+    {
+        return $this->hasOne('Robust\RealEstate\Models\MarketReport');
     }
 
 }

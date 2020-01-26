@@ -37,8 +37,7 @@ class MarketReportController extends Controller
     public function index(Request $request, $location_type)
     {
         $data = $request->all();
-        $records = $this->model->getReports($location_type, $data)
-            ->get();
+        $records = $this->model->getReports($location_type, $data);
 
         $response_data = [
             'records' => $records,

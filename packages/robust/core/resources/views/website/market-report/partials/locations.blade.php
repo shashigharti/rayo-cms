@@ -1,5 +1,7 @@
 @set('settings', settings('real-estate', 'market_report'))
-@set('ranges',  generate_price_ranges($settings['price_min'], $settings['price_max'], $settings['increment']))
+@if(isset($location_name_slug))
+    @set('ranges',  generate_price_ranges($marketreport_helper->getSubdivisionsMinPrice($page_type, $location_name_slug), $settings['price_max'], $settings['increment']))
+@endif
 <div class="row">
     @if($page_content == 'insight')
         <div class="col m2 s12">
@@ -37,18 +39,18 @@
                 <div class=" market__search--lists-item--single">
                     <div class="market__search--lists-item card">
                         <div class="card-content">
-                            <p data-id="{{ $report->reportable->slug }}"
+                            <p data-id="{{ $report->location->slug }}"
                                data-type="Title"
-                               data-value="{{$report->reportable->name}}"
+                               data-value="{{$report->location->name}}"
                                data-url="{{route('website.realestate.market.reports.in',
                                 [
                                     $sub_location_type == '' ? $page_type : $sub_location_type,
-                                    $report->reportable->slug
+                                    $report->location->slug
                                 ])}}"
                                data-class=""
                             >
-                                <input type="checkbox" value="{{$report->reportable->name}}">
-                                <label><a href="#">{{$report->reportable->name}}</a></label>
+                                <input type="checkbox" value="{{$report->location->name}}">
+                                <label><a href="#">{{$report->location->name}}</a></label>
                             </p>
                             <p data-type="Active" data-value="{{$report->total_listings_active}}"
                                data-class="fa fa-bookmark">

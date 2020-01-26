@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Repositories\Common\Traits;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Facades\DB;
 use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 
 /**
@@ -20,30 +21,7 @@ trait MarketReportTrait
     public function getReports($location_type, $data = [])
     {
         $qBuilder = $this->model
-            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type]);
-
-        if (isset($data['by'])) {
-
-            // Get ids of locations
-            $ids = $this->location
-                ->select('locationable_id')
-                ->where('locationable_type', IMarketReport::REPORTABLE_MAP[$data['by']])
-                ->whereIn('slug', explode(",", $data['ids']))
-                ->pluck('locationable_id')
-                ->toArray();
-
-            $sub_location_type = $data['by'];
-            $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$sub_location_type]['reportable_type'];
-
-            // Additional condition to relation table(morphological)
-            $qBuilder = $qBuilder->whereHasMorph(
-                'reportable',
-                [$reportable_type],
-                function (Builder $query) use ($data, $ids) {
-                    $query->whereIn(IMarketReport::PARAM_MAP[$data['by']], $ids);
-                });
-
-        }
+            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type]);
 
         $this->model = $qBuilder;
         return $this;
@@ -55,10 +33,9 @@ trait MarketReportTrait
      */
     public function wherePriceBetween($params)
     {
-        $settings = config("rws.market-report.price-range");
+        $settings = settings('real-estate', 'market_report');
         if (count($params) > 0) {
-            dd($settings["field-to-compare"], $params);
-            $this->model = $this->model->whereBetween($settings["field-to-compare"], $params);
+            $this->model = $this->model->whereBetween($settings['price_range_comparision_field'], $params);
         }
         return $this;
     }
@@ -72,25 +49,28 @@ trait MarketReportTrait
     {
         $response = [];
         $report = $this->model
-            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type])
-            ->whereHasMorph(
-                'reportable',
-                [IMarketReport::REPORTABLE_MAP[$location_type]],
-                function (Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->first();
+            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type])
+            ->leftJoin('real_estate_locations', 'real_estate_locations.id', 'real_estate_market_reports.location_id')
+            ->where('real_estate_locations.slug', $slug)
+            ->first();
 
         // Get sub locations within this domain if any : example subdivisions for cities
         if (array_key_exists($location_type, IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS)) {
             $response['sub_location_type'] = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['sub_location_type'];
         }
 
-        // Get insights of listing for this domain
-        $response['insights'] = $report->reportable->listings()
+        // Get insights of listing for this domain;
+        $sql = $report->location
+            ->listings()
             ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS)))
             ->groupBy('year')
             ->groupBy('month')
-            ->get();
+            ->toSql();
+
+        // DO NOT USE DB::select any where,
+        // there is a issue of pivot table fields being appended in the query while using get() function by laravel framework,
+        // so DB::select is being used here as an alternative solution
+        $response['insights'] = DB::select($sql, [$report->location->id]);
 
         return $response;
     }
@@ -103,28 +83,27 @@ trait MarketReportTrait
      */
     public function getSubdivisions($location_type, $slug)
     {
-        $report = $this->model
-            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type])
-            ->whereHasMorph(
-                'reportable',
-                [IMarketReport::REPORTABLE_MAP[$location_type]],
-                function (Builder $query) use ($slug) {
-                    $query->where('slug', $slug);
-                })->first();
+        $location = $this->model
+            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type])
+            ->leftJoin('real_estate_locations', 'real_estate_locations.id', 'real_estate_market_reports.location_id')
+            ->where('real_estate_locations.slug', $slug)
+            ->first();
+
 
         // Get sub locations within this domain if any : example subdivisions for cities
         if (array_key_exists($location_type, IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS)) {
             $field = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
-            $reportable_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['reportable_type'];
-
-            $qBuilder = $this->model
-                ->where('reportable_type', $reportable_type)
+            $sub_location_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['location_type'];
+            $location_ids = $this->location->where('locationable_type', $sub_location_type)
                 ->whereHasMorph(
-                    'reportable',
-                    [$reportable_type],
-                    function (Builder $query) use ($field, $report) {
-                        $query->where($field, $report->reportable->id);
-                    });
+                    'locationable',
+                    [$sub_location_type],
+                    function (Builder $query) use ($field, $location) {
+                        $query->where($field, $location->id);
+                    })
+                ->pluck('id');
+
+            $qBuilder = $this->model->whereIn('location_id', $location_ids);
         }
 
         $this->model = $qBuilder;
@@ -136,18 +115,18 @@ trait MarketReportTrait
      * @param $data
      * @return mixed
      */
-    public function compareLocations($data)
-    {
-        $location_type = $data['by'];
-        $response = $this->model
-            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS_COMPARE)))
-            ->where('reportable_type', IMarketReport::REPORTABLE_MAP[$location_type])
-            ->whereIn('real_estate_market_reports.slug', explode(",", $data['ids']))
-            ->leftJoin('real_estate_listings', "real_estate_market_reports.reportable_id", '=', "real_estate_listings." . IMarketReport::PARAM_MAP[$data['by']])
-            ->groupBy('real_estate_market_reports.name')
-            ->get();
-
-        return $response;
-    }
+//    public function compareLocations($data)
+//    {
+//        $location_type = $data['by'];
+//        $response = $this->model
+//            ->select(\DB::raw(implode(',', IMarketReport::INSIGHTS_COMPARE)))
+//            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type])
+//            ->whereIn('real_estate_market_reports.slug', explode(",", $data['ids']))
+//            ->leftJoin('real_estate_listings', "real_estate_market_reports.location_id", '=', "real_estate_listings." . IMarketReport::PARAM_MAP[$data['by']])
+//            ->groupBy('real_estate_market_reports.name')
+//            ->get();
+//
+//        return $response;
+//    }
 
 }

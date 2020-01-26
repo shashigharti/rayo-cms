@@ -15,8 +15,8 @@ class CreateRealEstateMarketReportsTable extends Migration {
 		Schema::create('real_estate_market_reports', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->integer('reportable_id');
-			$table->string('reportable_type');
+			$table->integer('location_id');
+			$table->string('location_type');
 			$table->string('slug');
 			$table->string('name');
 			$table->integer('total_listings')->nullable();

@@ -151,7 +151,7 @@ class CreateMarketReport extends Command
             }
 
             // Delete records for given location type
-            DB::table('real_estate_market_reports')->where('reportable_type', get_class($collection->first()))->delete();
+            DB::table('real_estate_market_reports')->where('location_type', get_class($collection->first()))->delete();
 
             if (get_class($collection->first()) == 'Robust\RealEstate\Models\Subdivision') {
                 $this->subdivisionReport($collection, $location, $model_type);
@@ -203,10 +203,10 @@ class CreateMarketReport extends Command
             $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
 
             \DB::table('real_estate_market_reports')->insert([
-                'reportable_id' => Location::where('id',  $model->id)->first()->locationable->id,
+                'location_id' => $model->id,
                 'slug' => $model->slug,
                 'name' => $model->name,
-                'reportable_type' => $model_type,
+                'location_type' => $model_type,
                 'total_listings' => $totalListings,
                 'total_listings_active' => $totalListingsActive,
                 'total_listings_sold' => $totalListingsSold,
@@ -228,10 +228,10 @@ class CreateMarketReport extends Command
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
             \Log::info([
-                'reportable_id' => Location::where('id',  $model->id)->first()->locationable->id,
+                'location_id' => $model->id,
                 'slug' => $model->slug,
                 'name' => $model->name,
-                'reportable_type' => $model_type,
+                'location_type' => $model_type,
                 'total_listings' => $totalListings,
                 'total_listings_active' => $totalListingsActive,
                 'total_listings_sold' => $totalListingsSold,
@@ -252,7 +252,6 @@ class CreateMarketReport extends Command
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
-
 
 
         }
@@ -306,10 +305,10 @@ class CreateMarketReport extends Command
                 $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
 
                 \DB::table('real_estate_market_reports')->insert([
-                    'reportable_id' => Location::where('id',  $model->id)->first()->locationable->id,
+                    'location_id' => $model->id,
                     'slug' => $model->slug,
                     'name' => $model->name,
-                    'reportable_type' => $model_type,
+                    'location_type' => $model_type,
                     'total_listings' => $totalListings,
                     'total_listings_active' => $totalListingsActive,
                     'total_listings_sold' => $totalListingsSold,
@@ -331,10 +330,10 @@ class CreateMarketReport extends Command
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
                 \Log::info([
-                    'reportable_id' => $model->locationable->id,
+                    'location_id' => $model->id,
                     'slug' => $model->slug,
                     'name' => $model->name,
-                    'reportable_type' => $model_type,
+                    'location_type' => $model_type,
                     'total_listings' => $totalListings,
                     'total_listings_active' => $totalListingsActive,
                     'total_listings_sold' => $totalListingsSold,
