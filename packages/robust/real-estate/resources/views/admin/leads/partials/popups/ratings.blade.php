@@ -15,11 +15,9 @@
                 <div class="row viewed-lead">
                     <div class="col s8">
                         <div>
-                            <i aria-hidden="true" class="fa fa-star-o"></i>
-                            <i aria-hidden="true" class="fa fa-star-o"></i>
-                            <i aria-hidden="true" class="fa fa-star-o"></i>
-                            <i aria-hidden="true" class="fa fa-star-o"></i>
-                            <i aria-hidden="true" class="fa fa-star-o"></i>
+                            @foreach(range(1,5) as $id)
+                                <i aria-hidden="true" class="fa fa-star-o" id="{{ $id }}"></i>
+                            @endforeach
                         </div>
                         <div>
                             No Rating Given
