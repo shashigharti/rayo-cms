@@ -32,7 +32,7 @@
                     <li class="active"><a href="#">1</a></li>
                     <li><a href="#" aria-label="Next"><span aria-hidden="true">»</span></a></li>
                 </ul>
-                <span class="badge badge-secondary">Total Leads: 3 </span>
+                <span class="badge badge-secondary">Total Leads: {{$records->count()}} </span>
             </div>
         </div>
     </div>

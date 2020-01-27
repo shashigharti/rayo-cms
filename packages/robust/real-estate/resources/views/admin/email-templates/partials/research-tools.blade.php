@@ -69,7 +69,7 @@
             </tr>
             <tr>
                 <td style="padding:5px 20px;background-color:white;border-bottom:0px;">
-                    <img src="img/Logo.jpg" style="margin-top: 20px;max-height:200px;">
+                    <img src="{{asset('assets/website/images/Logo.jpg')}}" style="margin-top: 20px;max-height:200px;">
                 </td>
             </tr>
 
