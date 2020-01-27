@@ -89,23 +89,18 @@ trait MarketReportTrait
             ->where('real_estate_locations.slug', $slug)
             ->first();
 
+        $field = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
+        $sub_location_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['location_type'];
+        $location_ids = $this->location->where('locationable_type', $sub_location_type)
+            ->whereHasMorph(
+                'locationable',
+                [$sub_location_type],
+                function (Builder $query) use ($field, $location) {
+                    $query->where($field, $location->id);
+                })
+            ->pluck('real_estate_locations.id');
 
-        // Get sub locations within this domain if any : example subdivisions for cities
-        if (array_key_exists($location_type, IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS)) {
-            $field = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['field'];
-            $sub_location_type = IMarketReport::LOCATION_TYPES_WITH_SUBLOCATIONS[$location_type]['location_type'];
-            $location_ids = $this->location->where('locationable_type', $sub_location_type)
-                ->whereHasMorph(
-                    'locationable',
-                    [$sub_location_type],
-                    function (Builder $query) use ($field, $location) {
-                        $query->where($field, $location->id);
-                    })
-                ->pluck('id');
-
-            $qBuilder = $this->model->whereIn('location_id', $location_ids);
-        }
-
+        $qBuilder = $this->model->whereIn('location_id', $location_ids);
         $this->model = $qBuilder;
         return $this;
     }
