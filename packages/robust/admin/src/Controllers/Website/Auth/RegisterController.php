@@ -26,7 +26,7 @@ class RegisterController extends Controller
     |
     */
     use RegistersUsers;
-    
+
     /**
      * Where to redirect users after registration.
      *
@@ -45,6 +45,7 @@ class RegisterController extends Controller
         $this->dashboard = $dashboard;
         $this->events = [
             'user_created' => 'Robust\Admin\Events\UserCreatedEvent',
+            'user_created_activity' => 'Robust\Admin\Events\UserActivityEvent',
         ];
     }
     /**
@@ -89,14 +90,14 @@ class RegisterController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      */
     protected function create(array $data)
-    {   
+    {
         // create a user account
         $new_user = $this->user->store([
             'user_name' => $data['email'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'token' => md5(uniqid(rand(), true))
-        ]); 
+        ]);
         \Log::info($new_user);
         // create dashboard data for the new user
         $this->dashboard->store([
@@ -111,13 +112,14 @@ class RegisterController extends Controller
             $event = $this->events['user_created'];
             // if overridding events does exists in configuration, raise that event.
             if(isset($config['user_created'])){
-                $event = $config['user_created'];                  
-            } 
-            
+                $event = $config['user_created'];
+            }
+
             // Raise user created event
-            event(new $event($new_user, $data));            
+            event(new $event($new_user, $data));
+            event(new $this->events['user_created_activity']($new_user,'Registered'));
         }
 
-        return $new_user;        
+        return $new_user;
     }
 }

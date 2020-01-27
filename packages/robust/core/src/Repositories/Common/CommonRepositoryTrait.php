@@ -2,6 +2,10 @@
 
 namespace Robust\Core\Repositories\Common\Traits;
 
+/**
+ * Trait CommonRepositoryTrait
+ * @package Robust\Core\Repositories\Common\Traits
+ */
 trait CommonRepositoryTrait
 {
     /**
@@ -88,7 +92,17 @@ trait CommonRepositoryTrait
         $model = $this->model->find($id);
         $model->status = ($model->status == 0) ? 1 : 0;
         $model->save();
+    }
 
+    /**
+     * @param $field
+     * @param string $method
+     * @return $this
+     */
+    public function order($field, $method ='desc')
+    {
+        $this->model = $this->model->orderBy($field,$method);
+        return $this;
     }
 
 

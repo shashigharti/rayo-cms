@@ -1,6 +1,7 @@
 @extends('core::admin.layouts.default')
 @inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
 @inject('agent_helper','Robust\RealEstate\Helpers\AgentHelper')
+@inject('activity_helper','Robust\Admin\Helpers\UserActivityHelper')
 @section('content')
     @set('ui', new $ui)
     <div class="page leads">
@@ -95,8 +96,8 @@
                                                     </div>
                                                 </td>
                                                 <td>
-                                                    <small><span>20 days ago</span></small> <br>
-                                                    <small>19 Total</small> <br>
+                                                    <small><span>{{$activity_helper->getLastLogin($lead->user->id)}}</span></small> <br>
+                                                    <small>{{$activity_helper->getLoginCount($lead->user->id)}} Total</small> <br>
                                                 </td>
                                                 <td>
                                                     <small>
