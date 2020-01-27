@@ -52,10 +52,10 @@
         </div>
         <fieldset class="mt-3">
             <legend>Sort Block Filters</legend>
-            <div class="col s12 m3 sort-container__root">
+            <div class="col s3 sort-container__root">
                 <legend>First Block</legend>
                 <ul class="collection sort-container__list" data-update-item="first_block_order">
-                    @foreach($settings['first_block'] as $key => $first_block_item)
+                    @foreach(sort_array_by_array($settings['first_block'], explode(',', $settings['first_block_order'] ?? '')) as $key => $first_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $first_block_item }}"
                             data-order="{{ $key }}"
@@ -66,10 +66,10 @@
                     {{ Form::hidden('first_block_order', $settings['first_block_order'] ?? '') }}
                 </ul>
             </div>
-            <div class="col s3">
+            <div class="col s3 sort-container__root">
                 <legend>Second Block</legend>
                 <ul class="collection sort-container__list" data-update-item="second_block_order">
-                    @foreach($settings['second_block'] as $key => $second_block_item)
+                    @foreach(sort_array_by_array($settings['second_block'], explode(',', $settings['second_block_order'] ?? '')) as $key => $second_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $second_block_item }}"
                             data-order="{{ $key }}"
@@ -80,10 +80,10 @@
                     {{ Form::hidden('second_block_order', $settings['second_block_order'] ?? '') }}
                 </ul>
             </div>
-            <div class="col s3">
+            <div class="col s3 sort-container__root">
                 <legend>Third Block</legend>
                 <ul class="collection sort-container__list" data-update-item="third_block_order">
-                    @foreach($settings['third_block'] as $key => $third_block_item)
+                    @foreach(sort_array_by_array($settings['third_block'], explode(',', $settings['third_block_order'] ?? '')) as $key => $third_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $third_block_item }}"
                             data-order="{{ $key }}"
@@ -94,10 +94,10 @@
                     {{ Form::hidden('third_block_order', $settings['third_block_order'] ?? '') }}
                 </ul>
             </div>
-            <div class="col s3">
+            <div class="col s3 sort-container__root">
                 <legend>Fourth Block</legend>
                 <ul class="collection sort-container__list" data-update-item="fourth_block_order">
-                    @foreach($settings['fourth_block'] as $key => $fourth_block_item)
+                    @foreach(sort_array_by_array($settings['fourth_block'], explode(',', $settings['fourth_block_order'] ?? '')) as $key => $fourth_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $fourth_block_item }}"
                             data-order="{{ $key }}"
@@ -173,8 +173,8 @@
             <div class="col s12 m6 sort-container__root">
                 <fieldset class="mt-2">
                     <legend>Sort Property Types</legend>
-                    <ul class="collection sort-container__list" data-update-item="property_type_order">
-                        @foreach($settings['property_types'] as $key => $property_type)
+                    <ul class="collection sort-container__list" data-update-item="property_types_order">
+                        @foreach(sort_array_by_array($settings['property_types'], isset($settings['property_types_order']) ? explode(',', $settings['property_types_order']) : []) as $key => $property_type)
                             <li class="sort-container__item collection-item"
                                 data-id="{{ $property_type }}"
                                 data-order="{{ $key }}"
@@ -182,15 +182,15 @@
                                 <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $property_type }}
                             </li>
                         @endforeach
-                        {{ Form::hidden('property_type_order', $settings['property_type_order'] ?? '') }}
+                        {{ Form::hidden('property_types_order', $settings['property_types_order'] ?? '') }}
                     </ul>
                 </fieldset>
             </div>
             <div class="col s12 m6 sort-container__root">
                 <fieldset class="mt-2">
                     <legend>Sort Property Statuses</legend>
-                    <ul class="collection sort-container__list" data-update-item="property_status_order">
-                        @foreach($settings['property_statuses'] as $key => $status)
+                    <ul class="collection sort-container__list" data-update-item="property_statuses_order">
+                        @foreach(sort_array_by_array($settings['property_statuses'], isset($settings['property_statuses_order']) ? explode(',', $settings['property_statuses_order']) : []) as $key => $status)
                             <li class="sort-container__item collection-item"
                                 data-id="{{ $status }}"
                                 data-order="{{ $key }}"
@@ -198,7 +198,7 @@
                                 <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $status }}
                             </li>
                         @endforeach
-                        {{ Form::hidden('property_status_order', $settings['property_status_order'] ?? '') }}
+                        {{ Form::hidden('property_statuses_order', $settings['property_statuses_order'] ?? '') }}
                     </ul>
                 </fieldset>
             </div>

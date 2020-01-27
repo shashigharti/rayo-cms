@@ -88,4 +88,19 @@ class LocationRepository
             ->orWhere('slug', $id)
             ->first();
     }
+
+    /**
+     * @param $location_type
+     * @param $cities
+     * @return mixed
+     */
+    public function getSubdivisions($location_type, $cities){
+        $locations = $this->model->whereIn('slug', $cities)->get();
+        $subdivisions = $this->model
+            ->join('real_estate_subdivisions', 'real_estate_subdivisions.city_id', '=', 'real_estate_locations.id')
+            ->where('locationable_type', get_class_by_location_type($location_type))
+            ->whereIn('real_estate_subdivisions.city_id', $locations)
+            ->get();
+        return $subdivisions;
+    }
 }
