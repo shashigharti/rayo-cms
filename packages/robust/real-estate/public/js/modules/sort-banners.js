@@ -19,11 +19,12 @@
         },
         update: function(elem){
             let itemsElem = $(elem).find('.sort-container__item');
+            let item_to_update = $('.sort-container__list').data('update-item');
             let items = [];
             $.each(itemsElem, function(index, item){
                 items.push($(item).data('id'));
             });
-            $(':input[name=single_col_banner_order]').val(items.join(","));
+            $(`:input[name=${item_to_update}]`).val(items.join(","));
         }
     };
 
