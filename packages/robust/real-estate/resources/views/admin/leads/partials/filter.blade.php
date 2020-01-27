@@ -11,7 +11,7 @@
             </ul>
         </div>
         <div class="input-field theme--select col s2">
-            {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), null, [
+            {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), request()->get('agent'), [
                 'class' => 'form-control lead-filter__agent',
                 'data-url' => route('admin.leads.index')
             ]) }}
