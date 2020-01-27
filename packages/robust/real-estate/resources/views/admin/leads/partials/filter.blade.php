@@ -1,9 +1,9 @@
 @set('statuses',$lead_helper->getStatus())
 <div class="row filter--bar">
     <div class="col s12">
-        <div class="col left">
-            <ul class="">
-                <li class="">
+        <div class="col left tab--block">
+            <ul class="leads--tab">
+                <li class="tab--links">
                     <a class="" href="{{route('admin.leads.index',request()->except(['status']))}}">All</a>
                 </li>
                 @foreach($statuses as $status)
@@ -13,9 +13,9 @@
                 @endforeach
             </ul>
         </div>
-        <div class="input-field theme--select col s2">
+        <div class="input-field theme--select col s2 mt-1">
             {{ Form::select('agent_id',['All Agent List'] + $agent_helper->getAgentsForDropdown()->toArray(), request()->get('agent'), [
-                'class' => 'form-control lead-filter__agent',
+                'class' => 'form-control lead-filter__agent ',
                 'data-url' => route('admin.leads.index')
             ]) }}
         </div>
@@ -25,7 +25,7 @@
             <button class="btn  btn-sm lead-action-btn">
                 <i aria-hidden="true" class="fa fa-plus-circle"></i> Add
             </button>
-            <button id="filter_leads_btn" class="btn btn-sm">
+            <button id="filter_leads_btn" class="btn btn-small lead-action-btn">
                 <a  href="{{route('admin.leads.index')}}"><i class="fa fa-refresh fa-lg"></i>Refresh</a>
             </button>
             <div class="right-align pagination--top">

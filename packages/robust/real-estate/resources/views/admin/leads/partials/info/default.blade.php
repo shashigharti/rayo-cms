@@ -13,20 +13,22 @@
                class="lead-modal_trigger"><i class="material-icons right">add</i></a>
         </h5>
         @foreach($properties as $property)
-            <div>
+            <div class="col s12 fixed__single-block mb-3">
                 <i class="material-icons">{{$icon}}</i>{{$property->value}}
-                <a href="{{route('admin.leads.properties.delete',['id' => $property->id])}}" class="right">
-                    <i class="material-icons">delete</i>
-                </a>
-                <a href="#"
-                   data-lead="{{$model->id}}"
-                   data-url="{{route('admin.leads.modal')}}"
-                   data-type="{{$property->type}}"
-                   data-action="{{route('admin.leads.properties.update',['id'=>$property->id])}}"
-                   data-mode="Edit"
-                   data-value="{{$property->value}}"
-                   data-view="default"
-                   class="lead-modal_trigger"><i class="material-icons right">edit</i></a>
+                <div class="right-align">
+                  <a href="{{route('admin.leads.properties.delete',['id' => $property->id])}}" class="delete">
+                      <i class="material-icons">delete</i>
+                  </a>
+                  <a href="#"
+                     data-lead="{{$model->id}}"
+                     data-url="{{route('admin.leads.modal')}}"
+                     data-type="{{$property->type}}"
+                     data-action="{{route('admin.leads.properties.update',['id'=>$property->id])}}"
+                     data-mode="Edit"
+                     data-value="{{$property->value}}"
+                     data-view="default"
+                     class="lead-modal_trigger edit"><i class="material-icons right">edit</i></a>
+                 </div>
             </div>
         @endforeach
     </div>
