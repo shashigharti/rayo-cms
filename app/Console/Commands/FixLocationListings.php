@@ -30,7 +30,6 @@ class FixLocationListings extends Command
     public function handle()
     {
         $this->info('Update Locations');
-        $listings = DB::table('real_estate_listings')->get();
         $fields = [
             'area_id',
             'sub_area_id',
@@ -43,26 +42,26 @@ class FixLocationListings extends Command
             'high_school_id',
             'middle_school_id',
             'school_district_id'
-
-
         ];
-        foreach ($listings as $listing) {
-            foreach ($fields as $field) {
-                $city = DB::table('real_estate_listing_location')
-                    ->where('listing_id', $listing->id)
-                    ->where('location_id', $listing->{$field})
-                    ->first();
-                if (!$city) {
-                    if ($listing->{$field} != null) {
-                        DB::table('real_estate_listing_location')->insert([
-                            [
-                                'listing_id' => $listing->id,
-                                'location_id' => $listing->{$field}
-                            ]
-                        ]);
+        DB::table('real_estate_listing_location')->truncate();
+        $this->info('truncated');
+        DB::table('real_estate_listings')->orderBy('created_at')->chunk(1000, function ($listings) use ($fields) {
+            $relations = [];
+            foreach ($listings as $listing) {
+                foreach($fields as $field){
+                    if($listing->{$field} != ''){
+                        $relations[] = [
+                            'listing_id' => $listing->id,
+                            'location_id' => $listing->{$field},
+                            'created_at' => now(),
+                            'updated_at' => now(),
+
+                        ];
                     }
                 }
             }
-        }
+            DB::table('real_estate_listing_location')->insert($relations);
+            $this->info('1000 updated');
+        });
     }
 }
