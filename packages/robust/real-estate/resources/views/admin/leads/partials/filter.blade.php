@@ -5,7 +5,7 @@
             <ul class="">
                 @foreach($statuses as $status)
                     <li class="">
-                        <a class="" href="{{$lead_helper->getActiveUrl()}}">{{$status->value}}</a>
+                        <a class="" href="{{route('admin.leads.index',['status'=>$status->id])}}">{{$status->value}}</a>
                     </li>
                 @endforeach
             </ul>
