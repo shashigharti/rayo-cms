@@ -2,8 +2,6 @@
 
 namespace Robust\RealEstate\Models;
 
-use Robust\Admin\Models\User;
-use Robust\Core\Models\BaseModel;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
@@ -120,9 +118,20 @@ class Lead extends Authenticatable
         return $this->hasMany(SentEmails::class, 'lead_id', 'id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
     public function status()
     {
         return $this->belongsTo(LeadStatus::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function ratings()
+    {
+        return $this->hasMany(LeadRating::class,'lead_id');
     }
 
 }
