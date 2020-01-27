@@ -41,6 +41,22 @@ class LeadController extends Controller
     }
 
     /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        $params = $request->all();
+        $qBuilder = $this->model;
+        $qBuilder = $qBuilder->whereStatus(isset($params['status']) ? $params['status'] : null);
+        $qBuilder = $qBuilder->whereAgent(isset($params['agent']) ? $params['agent'] : null);
+        return view('real-estate::admin.leads.index',[
+            'records'=>$qBuilder->paginate(10),
+            'ui' => $this->ui,
+        ]);
+    }
+
+    /**
      * @param $id
      * @param $type
      * @return \Robust\Core\Controllers\Common\Traits\view
@@ -55,12 +71,14 @@ class LeadController extends Controller
         );
     }
 
+
     /**
      * @param Request $request
+     * @param LeadFollowUpRepository $model
      * @param $id
-     * @return $this
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function addLeadsFollowUp(Request $request,LeadFollowUpRepository $model , $id)
+    public function addLeadsFollowUp(Request $request, LeadFollowUpRepository $model , $id)
     {
         $data = $request->all();
         $model->store($data);

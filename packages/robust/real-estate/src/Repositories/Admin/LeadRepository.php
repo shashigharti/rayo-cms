@@ -15,7 +15,10 @@ class LeadRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
-
+    /**
+     * @var Lead
+     */
+    protected $model;
     /**
      * LeadRepository constructor.
      * @param Lead $model
@@ -23,5 +26,30 @@ class LeadRepository
     public function __construct(Lead $model)
     {
         $this->model = $model;
+    }
+
+
+    /**
+     * @param $param
+     * @return $this
+     */
+    public function whereStatus($param)
+    {
+        if($param){
+            $this->model = $this->model->where('status_id',$param);
+        }
+        return $this;
+    }
+
+    /**
+     * @param $param
+     * @return $this
+     */
+    public function whereAgent($param)
+    {
+        if($param){
+            $this->model = $this->model->where('agent_id',$param);
+        }
+        return $this;
     }
 }
