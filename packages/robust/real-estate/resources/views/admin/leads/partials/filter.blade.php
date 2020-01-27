@@ -3,6 +3,9 @@
     <div class="col s12">
         <div class="col left">
             <ul class="">
+                <li class="">
+                    <a class="" href="{{route('admin.leads.index',request()->except(['status']))}}">All</a>
+                </li>
                 @foreach($statuses as $status)
                     <li class="">
                         <a class="" href="{{request()->fullUrlWithQuery(['status'=>$status->id])}}">{{$status->value}}</a>

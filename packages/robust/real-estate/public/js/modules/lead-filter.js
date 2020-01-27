@@ -8,13 +8,23 @@
                 let url = $(this).data('url');
                 const queryString = window.location.search;
                 const urlParams = new URLSearchParams(queryString);
-                if(urlParams.has('agent')){
-                    urlParams.set('agent',$(this).val());
-                    url = url + '?' +  urlParams.toString();
+                if(id === '0'){
+                    if(urlParams.has('agent')){
+                        urlParams.delete('agent');
+                    }
+                    if(urlParams.toString() !== ''){
+                        url = url + '?' +  urlParams.toString();
+                    }
+                    window.location.replace(url);
                 }else{
-                    url = url + '?agent=' + $(this).val();
+                    if(urlParams.has('agent')){
+                        urlParams.set('agent',id);
+                    }else{
+                        urlParams.append('agent',id);
+                    }
+                    url = url + '?' +  urlParams.toString();
+                    window.location.replace(url);
                 }
-                window.location.replace(url)
             })
         },
     };
