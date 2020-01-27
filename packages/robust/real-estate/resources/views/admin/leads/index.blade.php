@@ -3,6 +3,7 @@
 @inject('agent_helper','Robust\RealEstate\Helpers\AgentHelper')
 @inject('activity_helper','Robust\Admin\Helpers\UserActivityHelper')
 @section('content')
+
     @set('ui', new $ui)
     <div class="page leads">
         <div id="main" class="content">
@@ -61,7 +62,7 @@
                                                                 <a href="{{route('admin.leads.edit', $lead->id)}}" class="">{{ $lead->first_name }} {{ $lead->last_name }}</a>
                                                             </span>
                                                             <div>
-                                                                <small>{{$lead->phone}}</small>
+                                                                <small>{{$lead->phone_number ?? '-'}}</small>
                                                             </div>
                                                             <div>
                                                                 <small>{{$lead->user->email}}</small>
@@ -183,6 +184,18 @@
                                                         </tr>
                                                         </tbody>
                                                     </table>
+                                                </td>
+                                                <td>
+
+                                                    <div class="info-unit">
+                                                        <small>
+                                                            {{
+                                                                $lead->communications()->latest()->first() ?
+                                                                $lead->communications()->latest()->first()->created_at->diffForHumans() :
+                                                                '-'
+                                                             }}
+                                                        </small>
+                                                    </div>
                                                 </td>
                                                 <td>
                                                     <div class="info-unit">

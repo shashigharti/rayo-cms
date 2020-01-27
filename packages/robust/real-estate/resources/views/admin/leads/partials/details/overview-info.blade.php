@@ -37,7 +37,7 @@
         <div class="row">
             <div class="tags col s12 lead--chips_container">
                 @foreach($selectedGroups as $chip)
-                    <div class="chip {{$chip->color}}">
+                    <div class="chip blue">
                         {{$chip->name}}
                         <i class="close material-icons lead--chips_delete" data-id="{{$chip->id}}">close</i>
                     </div>

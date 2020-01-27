@@ -174,6 +174,16 @@
             </div>
         </div>
     </th>
+    <th>
+        <div class="sortable-head col-sub-heading">
+            Last Contact
+            <i aria-hidden="true" class="fa fa-sort sortable-icon"></i> <i
+                aria-hidden="true" class="fa fa-sort-desc down-caret"
+                style="display: none;"></i> <i aria-hidden="true"
+                                               class="fa fa-sort-asc up-caret"
+                                               style="display: none;"></i>
+        </div>
+    </th>
     <th id="follow_up">
         <div class="sortable-head col-sub-heading">
             Followup
