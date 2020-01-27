@@ -5,7 +5,16 @@
         init: function(elem){
             elem.on('change',function (e) {
                 const id = $(this).val();
-                window.location.href = $(this).data('url') + '?agent=' + id
+                let url = $(this).data('url');
+                const queryString = window.location.search;
+                const urlParams = new URLSearchParams(queryString);
+                if(urlParams.has('agent')){
+                    urlParams.set('agent',$(this).val());
+                    url = url + '?' +  urlParams.toString();
+                }else{
+                    url = url + '?agent=' + $(this).val();
+                }
+                window.location.replace(url)
             })
         },
     };

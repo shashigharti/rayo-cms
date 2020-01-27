@@ -48,8 +48,12 @@ class LeadHelper
         return $this->agents;
     }
 
+    /**
+     * @return mixed
+     */
     public function getStatus()
     {
         return $this->status;
     }
+
 }

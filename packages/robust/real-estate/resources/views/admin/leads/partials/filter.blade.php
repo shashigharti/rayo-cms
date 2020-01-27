@@ -5,7 +5,7 @@
             <ul class="">
                 @foreach($statuses as $status)
                     <li class="">
-                        <a class="" href="{{route('admin.leads.index',['status'=>$status->id])}}">{{$status->value}}</a>
+                        <a class="" href="{{request()->fullUrlWithQuery(['status'=>$status->id])}}">{{$status->value}}</a>
                     </li>
                 @endforeach
             </ul>
@@ -23,7 +23,7 @@
                 <i aria-hidden="true" class="fa fa-plus-circle"></i> Add
             </button>
             <button id="filter_leads_btn" class="btn btn-sm">
-                <i class="fa fa-refresh fa-lg"></i>Refresh
+                <a  href="{{route('admin.leads.index')}}"><i class="fa fa-refresh fa-lg"></i>Refresh</a>
             </button>
             <div class="right-align pagination--top">
                 <ul class="pagination theme--pagination right">
