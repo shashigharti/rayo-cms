@@ -2,7 +2,7 @@
     <a href="#" title="Favorite Properties" class='popup-trigger' href='#'>
         <i aria-hidden="true" class="fa fa-heart-o"></i>
         <small>
-            <sub>{{$lead->favouriteListings->count()}}</sub>
+            <sub>{{$lead->favourites->count()}}</sub>
         </small>
     </a>
     <ul class='popup-content hide'>
@@ -12,25 +12,25 @@
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">
-                @foreach($lead->favouriteListings as $favouriteListing)
+                @foreach($lead->favourites as $listing)
                     <div class="row viewed-lead">
-                        <a href="//scottingraham.com/real-estate/692712/6903-lagoon-panama-city-beach-32408" target="_blank">
+                        <a href="" target="_blank">
                             <div class="col s4">
-                                <img src="http://cdn.photos.sparkplatform.com/bc/20200111182524426985000000-o.jpg" alt="6903 Lagoon, Panama City Beach 32408" class="img-responsive">
+                                <img src="{{$listing->images()->first()}}" alt="{{$listing->name}}" class="img-responsive">
                             </div>
                             <div class="col s8">
                                 <div class="vw-lead-name">
-                                    {{ $favouriteListing->name }}
+                                    {{ $listing->name }}
                                 </div>
                                 <div class="vw-lead-price">
-                                    Price:${{ $favouriteListing->system_price }}
+                                    Price:${{ $listing->system_price }}
                                     <br>
-                                    Baths Full: {{ $favouriteListing->baths_full }}
+                                    Baths Full: {{ $listing->baths_full }}
                                     <br>
-                                    Beds : {{ $favouriteListing->bedrooms }}
+                                    Beds : {{ $listing->bedrooms }}
                                 </div>
                                 <div class="vw-lead-address">
-                                    Address: {{ $favouriteListing->address_street }} {{ $favouriteListing->state }}
+                                    Address: {{ $listing->address_street }} {{ $listing->state }}
                                 </div>
                             </div>
                         </a>

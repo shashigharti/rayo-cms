@@ -8,10 +8,10 @@
 
         <div class="msg">
             <div class="msg-info">
-            </div> 
+            </div>
             <div class="msg-error">
-            </div>   
-        </div>    
+            </div>
+        </div>
         <div class="modal-content">
             <p class="center-align">To access Advanced MLS Information, you must enter your info below</p>
             <div class="form-group row floating">
@@ -19,21 +19,21 @@
                     'class'       => 'form-control',
                     'required'    => 'required',
                     'placeholder' => 'First Name'])
-                }}                    
+                }}
             </div>
             <div class="form-group row">
                 {{ Form::text('last_name', null, [
                     'class'       => 'form-control',
                     'required'    => 'required',
                     'placeholder' => 'Last Name'])
-                }}   
+                }}
             </div>
             <div class="form-group row">
                 {{ Form::text('email', null, [
                     'class'       => 'form-control',
                     'required'    => 'required',
                     'placeholder' => 'Email'])
-                }}  
+                }}
             </div>
             <div class="form-group row">
                 {{ Form::password('password', null, [
@@ -54,10 +54,10 @@
             </p>
         </div>
         <div class="modal-footer">
-            <a href="" type="text" class="btn btn-default pull-left load-register-form"> Already a member ? Login </a>
+            <a href="#modal__login" class="modal-close modal-trigger btn btn-default pull-left load-register-form"> Already a member ? Login </a>
             {{ Form::submit('Register', [
                 'class' => 'btn btn-primary theme-btn'
-                ]) 
+                ])
             }}
         </div>
     </form>

@@ -11,7 +11,7 @@
                     const container = $('.lead--chips_container');
                     container.empty();
                     response.map(chip => {
-                        const template = ` <div class="chip ${chip.color}">
+                        const template = ` <div class="chip blue">
                                             ${chip.name}
                                             <i class="close material-icons lead--chips_delete" data-id="${chip.id}">close</i>
                                         </div>`;

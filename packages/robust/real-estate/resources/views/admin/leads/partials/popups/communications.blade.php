@@ -14,12 +14,12 @@
             <div class="box-content">
                 <div class="row viewed-lead">
                     @foreach($lead->communications as $communication)
-                       <a href="#">
+                       <a href="{{route('admin.leads.details.edit',['id'=>$lead->id,'type'=>'communications'])}}">
                            <div class="col s12">
                                <div class="vw-lead-price">
-                                  {{  $communication->created_at->format('l') }} Property
+                                  {{  $communication->subject }}
                                   <br>
-                                  Update - {{  $communication->created_at->format('D, F d, Y') }}
+                                  {{  $communication->created_at->format('D, F d, Y') }}
                                   <br>
                                    {{ $communication->created_at->format('g:i A') }}
                                 </div>
