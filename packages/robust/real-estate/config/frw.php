@@ -76,6 +76,7 @@ return [
         'Robust\RealEstate\Models\ElementarySchool' => 'elementary_schools',
         'Robust\RealEstate\Models\MiddleSchool' => 'middle_schools',
         'Robust\RealEstate\Models\Subdivision' => 'subdivisions',
+        'Robust\RealEstate\Models\SchoolDistrict' => 'school_districts',
     ],
     'default_pricing_ranges' => [
         ['min' => '10000', 'max' => '11000', 'count' => '0'],
@@ -85,6 +86,19 @@ return [
         ['min' => '71000', 'max' => '81000', 'count' => '0'],
         ['min' => '81000', 'max' => '91000', 'count' => '0'],
         ['min' => '91000', 'max' => '', 'count' => '0']
+    ],
+    'market-report' => [
+        'price-range' => [
+            'min' => 0,
+            'max' => 44500000,
+            'increment' => 1500000,
+            'field-to-compare' => 'median_price_active'
+        ],
+        'fields_to_compare_list' =>[
+            'median_price_active' => 'Median Price Active',
+            'average_price_active' => 'Average Price Active',
+            'total_listings_active' => 'Total Listings Active'
+        ]
     ],
     'single_banner_tabs_properties_filter' => [
         'waterfront' => [

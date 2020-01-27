@@ -21,15 +21,13 @@ class EmailTemplate extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'title',
-        'group',
+        'user_id',
+        'name',
         'template',
-        'status',
+        'type',
         'subject',
-        'frequency',
-        'starts_at',
-        'ends_at',
-        'created_at',
-        'updated_at'
+        'body',
+        'editable',
+        'removable'
     ];
 }

@@ -29,11 +29,12 @@
                 </div>
                 <div class="row">
                     @foreach($model->notes as $note)
-                        <div class="col s12 single--note">
+                        <div class="col s12 single--note mb-6">
                             <h5>{{ $note->title }} {{ $note->created_at->format('(d/m/Y)') }}</h5>
                             <p>{{ $note->note }}</p>
-                            <label>{{ $note->created_at->diffForHumans() }}</label>
-                            <div class="right-align mt-4">
+                            
+                            <div class="right-align">
+                                <label class="left">{{ $note->created_at->diffForHumans() }}</label>
                                 <a href="#note-edit" class="modal-trigger mr-2">
                                     <i class="material-icons">edit</i>
                                 </a>

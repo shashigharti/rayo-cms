@@ -872,7 +872,8 @@ i.material-icons{display:inline-block;font-size:17px;vertical-align:text-bottom;
 .btn:hover,.btn-large:hover,.btn-small:hover{background-color:#002349 !important;color:#fff !important}
 button:focus{outline:0;background-color:transparent !important}#calculator .radio-inline{margin-bottom:20px}
 .subdivs--list__btn{display:inline-block;background:#fff;padding:5px 10px;border-radius:2px;border:1px solid #ddd;margin:5px auto 0;cursor:pointer;top:-2px;z-index:3;color:#111;font-size:10px}
-.subdivs--list__btn i{font-size:13px}.subdivs--list{position:absolute;bottom:-1000px;background:#54513f;padding:15px;width:100%;border-top:1px solid #ddd;-webkit-transition:all .5s ease;transition:all .5s ease;height:300px;overflow-y:scroll;font-size:11px;z-index:2;left:0}
+.subdivs--list__btn i{font-size:13px}.subdivs--list__btn i.close{color:#fff;position:absolute;top:6px;right:2px}
+.subdivs--list{position:absolute;bottom:-1000px;background:#54513f;padding:15px;width:100%;border-top:1px solid #ddd;-webkit-transition:all .5s ease;transition:all .5s ease;height:300px;overflow-y:scroll;font-size:11px;z-index:2;left:0}
 .subdivs--list ul{padding-left:0;list-style-type:none;text-align:left;-webkit-column-count:2;-moz-column-count:2;column-count:2}
 .subdivs--list ul li{font-size:10px;margin-bottom:8px}.subdivs--list ul li a{color:#fff}
 .subdivs--list label{color:#fff;font-weight:500}.subdivs--list.show{bottom:45px}.range-bar .slider-container .back-bar .pointer-label{top:14px}

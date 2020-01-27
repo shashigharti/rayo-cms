@@ -1,6 +1,6 @@
-<header class="page-topbar" id="header">
+<header>
     <div class="navbar navbar-fixed">
-        <nav class="navbar-main navbar-color nav-collapsible sideNav-lock navbar--theme gradient-shadow">
+        <nav class="navbar--theme">
             <div class="nav-wrapper">
                 <ul class="navbar-list right">
                     <li>

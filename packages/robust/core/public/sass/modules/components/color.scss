@@ -15,11 +15,11 @@ $dark-greyish: #656060;
     }
 }
 .theme-btn {
-    background: #126692 !important;
+    background:$theme-color !important;
     box-shadow: 3px 3px 4px 0 #01579B;
 
     &:hover, &:focus {
-        background: #0a405d;
+        background:$secondary-color !important;
     }
 }
 .purple {

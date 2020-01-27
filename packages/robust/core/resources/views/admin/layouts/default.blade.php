@@ -33,13 +33,9 @@
         {{ settings('g-analytics', 'script-before-head-closing') }}
 
     </head>
-    <body class="vertical-layout page-header-light vertical-menu-collapsible vertical-menu-nav-dark 2-columns"
-        data-open="click"
-        data-menu="vertical-menu-nav-dark"
-        data-col="2-columns"
-    >
+    <body>
         @include("core::admin.partials.nav")
-        <aside class="sidenav-main nav-expanded nav-lock nav-collapsible sidenav-light navbar-full">
+        <aside class="sidenav-main nav-expanded nav-lock nav-collapsible navbar-full">
             <div class="brand-sidebar">
                 <h1 class="logo-wrapper">
                     <a class="brand-logo darken-1" href="index.html">
@@ -48,10 +44,6 @@
                 </h1>
             </div>
             @include("core::admin.partials.menus.left-menu")
-            <div class="navigation-background"></div>
-            <a class="sidenav-trigger btn-sidenav-toggle btn-floating btn-medium waves-effect waves-light hide-on-large-only" href="#" data-target="slide-out">
-                <i class="material-icons">menu</i>
-            </a>
         </aside>
         @yield('content')
         @include('core::admin.partials.modals.delete')

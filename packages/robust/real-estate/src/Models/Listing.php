@@ -14,6 +14,12 @@ class Listing extends BaseModel
      * @var string
      */
     protected $table = 'real_estate_listings';
+
+    /**
+     * @var array
+     */
+    protected $hidden = array('pivot');
+
     /**
      * @var string
      */
@@ -61,43 +67,43 @@ class Listing extends BaseModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeSearch($builder)
-    {
-        $query_params = request()->all();
-
-        if(count($query_params) <= 0){
-            return $builder;
-        }
-
-        $new_properties = [];
-        $empty_values = ['', null];
-
-        // Remove empty and null values
-        foreach($query_params as $property => $values){
-            if(is_array($values) && count($values) >= 0 ){
-                $new_properties[$property] = $values;
-            }
-            elseif(!in_array($values, $empty_values)){
-                $new_properties[$property] = $values;
-            }
-        }
-
-        // Build where condition
-        foreach($new_properties as $property => $values){
-            if(is_array($values)){
-                foreach($values as $value){
-                    $builder = $builder->orWhere(function ($query) use ($property, $value){
-                        $query->where('type', 'LIKE', $property)
-                        ->where('value','LIKE',"%$value%");
-                    });
-                }
-            }else{
-                $builder = $builder->where('type', 'LIKE', $property);
-            }
-        }
-
-        return $builder;
-    }
+//    public function scopeSearch($builder)
+//    {
+//        $query_params = request()->all();
+//
+//        if(count($query_params) <= 0){
+//            return $builder;
+//        }
+//
+//        $new_properties = [];
+//        $empty_values = ['', null];
+//
+//        // Remove empty and null values
+//        foreach($query_params as $property => $values){
+//            if(is_array($values) && count($values) >= 0 ){
+//                $new_properties[$property] = $values;
+//            }
+//            elseif(!in_array($values, $empty_values)){
+//                $new_properties[$property] = $values;
+//            }
+//        }
+//
+//        // Build where condition
+//        foreach($new_properties as $property => $values){
+//            if(is_array($values)){
+//                foreach($values as $value){
+//                    $builder = $builder->orWhere(function ($query) use ($property, $value){
+//                        $query->where('type', 'LIKE', $property)
+//                        ->where('value','LIKE',"%$value%");
+//                    });
+//                }
+//            }else{
+//                $builder = $builder->where('type', 'LIKE', $property);
+//            }
+//        }
+//
+//        return $builder;
+//    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
@@ -105,30 +111,6 @@ class Listing extends BaseModel
     public function images()
     {
         return $this->hasMany(ListingImages::class);
-    }
-
-    /**
-     * City associated with this listing
-     */
-    public function city()
-    {
-        return $this->belongsTo('Robust\RealEstate\Models\City');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function county()
-    {
-        return $this->belongsTo('Robust\RealEstate\Models\County');
-    }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function subdivision()
-    {
-        return $this->belongsTo('Robust\RealEstate\Models\Subdivision');
     }
 
 
@@ -140,28 +122,12 @@ class Listing extends BaseModel
         return $this->hasMany('Robust\RealEstate\Models\ListingProperty');
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function elementary()
-    {
-        return $this->hasOne(ElementarySchool::class,'id','elementary_school_id');
-    }
 
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function middle()
+    public function locations()
     {
-        return $this->hasOne(MiddleSchool::class,'id','middle_school_id');
+        return $this->belongsToMany('Robust\RealEstate\Models\Location', 'real_estate_listing_location');
     }
-
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
-     */
-    public function high()
-    {
-        return $this->hasOne(HighSchool::class,'id','high_school_id');
-    }
-
 }

@@ -3,6 +3,7 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\CoreSetting;
+use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Models\MarketReport;
 
 /**
@@ -13,72 +14,24 @@ class MarketReportHelper
 {
 
     /**
-     * @param Collection $locations
-     * @param string $status
-     * @return integer
+     * @param $location_type
+     * @param $location_slug
+     * @return int
      */
-    public function countActive($locations, $status)
+    public function getSubdivisionsMinPrice($location_type, $location_slug)
     {
-        return $locations->filter(function ($model) use ($status){
-            return ($model->status == $status);
-        })->count();
-    }
+        $settings = settings('real-estate', 'market_report');
+        $location = Location::where('locationable_type', get_class_by_location_type($location_type))
+            ->where('slug', $location_slug)->first();
 
-    /**
-     * @param Collection $locations
-     * @param string $status
-     * @param string $attr
-     * @return integer
-     */
-    public function countAvgActive($locations, $status, $attr)
-    {
-        return $locations->filter(function ($model) use ($status){
-            return ($model->status == $status);
-        })->avg($attr);
-    }
-
-    /**
-     * @param $id
-     * @param $type
-     * @return mixed
-     */
-    public function getMarketReportByLocation($id, $type)
-    {
-        //access through relation need to refactor
-        return MarketReport::where('reportable_id',$id)->where('reportable_type',$type)->first();
-    }
-
-    /**
-     * Generates price ranges
-     * @return string
-     */
-    public function generatePriceRanges($min = null, $max = null){
-        $config = config('rws.market-report.price-range');
-        $i = ($min == null) ?  $config['min']:$min;
-        $max = ($max == null) ?  $config['max']:$max;
-
-        $i = $config['min'];
-        $max = $config['max'];
-        $priceArr = [];
-
-        for (; $i <= $max; $i = $i + $config['increment']) {
-            $priceArr[] = $i;
-        }
-        if (array_search($max, $priceArr) < 0) {
-            $priceArr[] = $max;
-        }
-
-        return $priceArr;
-    }
-
-     /**
-     * Checks if the amount is between the given price range
-     * @return mixed
-     */
-    public function isActivePriceRange($amount, $min, $max){
-        if(($amount >= $min) && ($amount < $max)){
-            return 'active';
-        }       
-        return false;
+        $min = MarketReport::whereIn('location_id', function ($query) use ($location) {
+            $query->select('real_estate_locations.id')
+                ->from('real_estate_locations')
+                ->where('real_estate_subdivisions.city_id', $location->id)
+                ->where('real_estate_locations.locationable_type', 'Robust\\RealEstate\\Models\\Subdivision')
+                ->join('real_estate_subdivisions', 'real_estate_subdivisions.id', 'real_estate_locations.locationable_id')
+                ->get();
+        })->where('location_type', 'Robust\\RealEstate\\Models\\Subdivision')->min($settings['price_range_comparision_field']);
+        return $min ?? 0;
     }
 }

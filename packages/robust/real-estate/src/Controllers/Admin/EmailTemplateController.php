@@ -41,6 +41,12 @@ class EmailTemplateController extends Controller
     public function previewTemplate($id)
     {
         $model = $this->model->findOrFail($id);
-        return view('real-estate::admin.email-templates.preview',['model'=>$model]);
+        return view('real-estate::admin.email-templates.preview',
+            [
+                'model'=>$model,
+                'title'=>'Preview',
+                'ui' => new \Robust\RealEstate\UI\EmailTemplate
+            ]
+        );
     }
 }

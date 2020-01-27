@@ -7,7 +7,7 @@
                     @if(isset($title) && ($title !== ''))
                         <h1> {{ $title }} </h1>
                     @elseif(isset($page) && ($page->title != '') && isset($location))
-                        <h1> {{ $location->name . " "  . $page->title }} </h1>
+                        <h1> {{ ucwords(strtolower($location->name)) . " " . $page->title }} </h1>
                     @elseif(isset($page) && ($page->title != '') )
                         <h1> {{  settings('real-estate', 'client')['name'] . " " . $page->title }} </h1>
                     @else
@@ -16,12 +16,12 @@
                 </div>
                 <div class="top--breadcrumb center-align">
                     <span>
-                        <a href="{{route('website.realestate.homes-for-sale')}}">
+                        <a href="javascript:void(0)">
                             {{$location->active_count ?? $results->total()}} Homes For Sale
                         </a>
                     </span>
                     <span>/</span>
-                    <span><a href="{{route('website.realestate.sold-homes')}}">{{$location->sold_count ?? ''}} Sold Homes</a></span>
+                    <span><a href="javascript:void(0)">{{$location->sold_count ?? ''}} Sold Homes</a></span>
                 </div>
 
                 @include(Site::templateResolver('core::website.listings.partials.search'))

@@ -3,8 +3,7 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
-use Robust\RealEstate\Models\Listing;
-use Robust\RealEstate\Models\Location;
+use Robust\RealEstate\Models\Banner;
 use Robust\RealEstate\Repositories\Admin\BannerRepository;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 use Robust\RealEstate\Repositories\Website\LocationRepository;
@@ -55,141 +54,131 @@ class BannerPropertyCount extends Command
         'subdivisions' => 'subdivision_id'
     ];
 
-    /**
+
+    /*
+     *  Changed it to raw queries because eloquent queries were very slow
+     *  Generate count for price ranges and subdivisions
      *
      */
     public function handle()
     {
         $settings = settings('real-estate');
-        $banners = $this->model->where('template', 'single-col-block')->get();
-
-        foreach ($banners as $banner) {
+        $banners = \DB::select("select * from real_estate_banners where template = 'single-col-block'");
+        foreach ($banners as $index => $banner) {
             $properties = json_decode($banner->properties, true);
-            $this->info('Starting ' . $properties['header']);
 
-            $properties = json_decode($banner->properties, true);
-            $qBuilder = new Location();
-            $qListingBuilder = new Listing();
+            $i = 0;
+            $lsql = "select id from real_estate_locations where";
+            $count = count($properties['locations']) - 1;
+            foreach ($properties['locations'] as $key => $location) {
+                $slugs = "'" . implode("','", $location) . "'";
+                $type = str_replace('\\', "\\\\", get_class_by_location_type($key));
+                if ($i < $count) {
+                    $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs})) and ";
+                } else {
+                    $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs}))";
+                }
+                $i++;
+            }
+            // dd($lsql);
+            // dd(\DB::select($lsql));
 
-            foreach ($properties['locations'] as $key => $location_slugs) {
-                $qBuilder = $qBuilder
-                    ->where('locationable_type', get_class_by_location_type($key))
-                    ->whereIn('slug', $location_slugs);
-                $locations[$key] = $qBuilder->get();
+            $priceSql = "SELECT ";
+            $i = 0;
+            $count = count($properties['prices']) - 1;
+            foreach ($properties['prices'] as $price) {
+                if ($i < $count) {
+                    $priceSql .= " SUM(CASE WHEN system_price between {$price['min']} and {$price['max']} THEN 1 ELSE 0 END) AS '{$price['min']}-{$price['max']}',";
+                } else {
+                    $priceSql .= " SUM(CASE WHEN system_price >= {$price['min']} THEN 1 ELSE 0 END) AS '{$price['min']}-'
+                                   FROM real_estate_listings
+                                   where city_id in ($lsql) and input_date between '" . date('Y-m-d', strtotime("- 365 day")) . "' and '" . date('Y-m-d') . "'";
+                }
+                $i++;
+            }
+            // dd($priceSql);
+            $banner_price_ranges = \DB::select($priceSql);
+            foreach ($banner_price_ranges as $key => $range) {
+                $min = $properties['prices'][$key]['min'];
+                $max = $properties['prices'][$key]['max'];
+                $field = "$min-$max";
+                $properties['prices'][$key]['count'] = $range->{$field};
             }
 
-            foreach ($locations as $location_type => $location) {
-                $ids = $location->pluck('id');
-                $qListingBuilder = $qListingBuilder
-                    ->where($this->maps[$location_type], $ids)
-                    ->leftJoin('real_estate_listing_properties', 'real_estate_listing_properties.listing_id', 'real_estate_listings.id')
-                    ->whereBetween('input_date', [date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')]);
-                if (isset($properties['attributes'])) {
-                    $params = $properties['attributes'];
-                    foreach ($params as $key => $param) {
-                        $qListingBuilder = $qListingBuilder->where(function ($query) use ($key, $param) {
-                            $query->where('real_estate_listing_properties.type', '=', $key)
-                                ->whereIn('real_estate_listing_properties.value', $param);
-                        });
+            if (isset($properties['tabs'])) {
+                // process tabs
+                foreach ($properties['tabs'] as $tab_index => $tab) {
+                    $start_date = date('Y-m-d', strtotime($settings['data_age']));
+                    $end_date = date('Y-m-d');
+                    $propertySql = '';
+
+                    $tabSql = "SELECT ";
+                    $joinSql = '';
+
+                    if (isset($tab['conditions'])) {
+                        $joinSql .= " LEFT JOIN real_estate_listing_properties ON real_estate_listing_properties.listing_id = real_estate_listings.id";
+                        $condition_index = 0;
+                        foreach ($tab['conditions'] as $condition) {
+                            $property_type = $condition['property_type'];
+                            //$property_values = "'" . implode("','", $condition['values']) . "'";
+                            $property_values = implode("|", $condition['values']);
+
+                            if ($condition_index == 0) {
+                                //$propertySql .= " (real_estate_listing_properties.type = '{$property_type}' and real_estate_listing_properties.value in ({$property_values}) )";
+                                $propertySql .= " (real_estate_listing_properties.type LIKE '%{$property_type}%' and real_estate_listing_properties.value REGEXP '{$property_values}' )";
+                            } else {
+                                //$propertySql .= " and (real_estate_listing_properties.type = '{$property_type}' and real_estate_listing_properties.value in ({$property_values}) )";
+                                $propertySql .= " and (real_estate_listing_properties.type LIKE '%{$property_type}%' and real_estate_listing_properties.value REGEXP '{$property_values}' )";
+                            }
+
+                            $condition_index++;
+                        }
+                    }
+
+                    if (isset($tab['prices'])) {
+                        $i = 0;
+                        $count = count($tab['prices']) - 1;
+                        foreach ($tab['prices'] as $price) {
+                            if ($i < $count) {
+                                $tabSql .= " SUM(CASE WHEN system_price between {$price['min']} and {$price['max']} THEN 1 ELSE 0 END) AS '{$price['min']}-{$price['max']}',";
+                            } else {
+                                $tabSql .= " SUM(CASE WHEN system_price >= {$price['min']} THEN 1 ELSE 0 END) AS '{$price['min']}-' FROM real_estate_listings";
+                            }
+                            $i++;
+                        }
+                        $tabSql .= $joinSql . " where " . $propertySql;
+                        $tabSql .= " and input_date between '" . $start_date . "' and '" . $end_date . "' and city_id in ($lsql)";
+                        // dd($tabSql);
+                        $tab_ranges = \DB::select($tabSql);
+                        foreach ($tab_ranges as $key => $range) {
+                            $min = $properties['tabs'][$tab_index]['prices'][$key]['min'];
+                            $max = $properties['tabs'][$tab_index]['prices'][$key]['max'];
+                            $field = "$min-$max";
+                            $properties['tabs'][$tab_index]['prices'][$key]['count'] = $range->{$field};
+                        }
+                    } elseif (isset($tab['subdivisions'])) {
+                        $tabSql .= " real_estate_locations.slug, real_estate_listings.subdivision_id, count(*) as count FROM real_estate_listings";
+                        $joinSql .= " left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id";
+                        $tabSql .= $joinSql . " where " . $propertySql;
+                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql) group by real_estate_listings.subdivision_id";
+                        $tab_ranges = \DB::select($tabSql);
+                        $subdivisions = [];
+                        foreach ($tab_ranges as $range) {
+                            $subdivisions[$range->slug] = $range->count;
+                        }
+                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
+                            $slug = $subdivision['slug'];
+                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
+                        }
                     }
                 }
-                $properties['prices'] = $this->updateBannerPrice($qListingBuilder, $properties['prices']);
-                if(isset($properties['tabs']))
-                    $properties['tabs'] = $this->updateTabsRanges($qListingBuilder, $properties['tabs']);
             }
+
+            // save banner properties field
+            Banner::where('id', $banner->id)->update(['properties' => json_encode($properties)]);
+            $this->info("completed for Banner {$banner->title}");
         }
+        $this->info("completed!");
     }
-
-    /**
-     * @param $qListingBuilder
-     * @param $tabs
-     * @return mixed
-     */
-    public function updateTabsRanges($qListingBuilder, $tabs)
-    {
-        foreach ($tabs as $key => $tab) {
-            if (isset($tab['conditions'])) {
-                $conditions = $tab['conditions'];
-                $qListingBuilder = $qListingBuilder->where(function ($query) use ($key, $conditions) {
-                    foreach ($conditions as $condition) {
-                        $query->orWhere(function ($query) use ($key, $condition) {
-                            $query->where('real_estate_listing_properties.type', '=', $condition['property_type'])
-                                ->whereIn('real_estate_listing_properties.value', $condition);
-                        });
-                    }
-
-                });
-
-            }
-
-            if (isset($tab['prices'])) {
-                $price_ranges = $tab['prices'];
-                foreach ($price_ranges as $price_range_key => $price_range) {
-                    $qBuilder = clone $qListingBuilder;
-                    if ($price_range['max'] != '') {
-                        $count = $qBuilder
-                            ->whereBetween('system_price', [$price_range['min'], $price_range['max']])
-                            ->count();
-                        $price_ranges[$price_range_key]['count'] += $count;
-                    } else {
-                        $count = $qBuilder
-                            ->where('system_price', '>', $price_range['min'])
-                            ->count();
-                        $price_ranges[$price_range_key]['count'] += $count;
-                    }
-
-                    if ($price_ranges[$price_range_key]['count'] > 0)
-                        $this->info(implode(',', [$price_range['min'], $price_range['max'], $price_ranges[$price_range_key]['count']]));
-                }
-                $tabs[$key]['prices'] = $price_ranges;
-            } elseif(isset($tab['subdivisions'])) {
-                $this->info('subdivisions');
-                $subdivisions = $tab['subdivisions'];
-                foreach ($subdivisions as $subdivision_key => $subdivision) {
-                    $qBuilder = clone $qListingBuilder;
-                    $subdivision = Location::where('slug', $subdivision['slug'])->first();
-                    $count = $qBuilder
-                        ->where("real_estate_listings.subdivision_id", $subdivision->id)
-                        ->count();
-                    if (!isset($subdivisions[$subdivision_key]['count'])) {
-                        $subdivisions[$subdivision_key]['count'] = 0;
-                    }
-                    $subdivisions[$subdivision_key]['count'] += $count;
-                    if ($subdivisions[$subdivision_key]['count'] > 0)
-                        $this->info(implode(',', [$subdivisions[$subdivision_key], $subdivisions[$subdivision_key]['count']]));
-                }
-                $tabs[$key]['subdivisions'] = $subdivisions;
-            }
-        }
-        return $tabs;
-    }
-
-    /**
-     * @param $qListingBuilder
-     * @param $property_ranges
-     * @return mixed
-     */
-    public function updateBannerPrice($qListingBuilder, $property_ranges)
-    {
-        foreach ($property_ranges as $key => $property) {
-            $qBuilder = clone $qListingBuilder;
-            if ($property['max'] != '') {
-                $count = $qBuilder
-                    ->whereBetween('system_price', [$property['min'], $property['max']])
-                    ->count();
-                $property_ranges[$key]['count'] += $count;
-            } else {
-                $this->info(implode(',', [$property['min']]));
-                $count = $qBuilder
-                    ->where('system_price', '>', $property['min'])
-                    ->count();
-                $property_ranges[$key]['count'] += $count;
-            }
-            if ($property_ranges[$key]['count'] > 0)
-                $this->info(implode(',', [$property['min'], $property['max'], $property_ranges[$key]['count']]));
-        }
-        return $property_ranges;
-    }
-
 }
 

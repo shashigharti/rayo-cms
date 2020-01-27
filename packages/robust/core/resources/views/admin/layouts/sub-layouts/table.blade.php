@@ -23,9 +23,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row content__table">
-                <div class="content-wrapper-before blue-grey lighten-5"> </div>
-                <div class="content__">
+            <div class="row">
+                <div class="content__table">
                     <div class="container">
                         @include("core::admin.partials.tabs.tabs")
                          @include("core::admin.partials.messages.info")

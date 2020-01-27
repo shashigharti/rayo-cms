@@ -17,6 +17,13 @@
                 }
             }
         }
+        &:hover, &.active, &:focus {
+            background-color:$theme-color;
+            color:$white;
+            a{
+                color:$white;
+            }
+        }
     }
 
     .indicator {

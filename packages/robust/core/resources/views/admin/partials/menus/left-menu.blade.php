@@ -1,12 +1,12 @@
-<ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
+<ul class="sidenav collapsible sidenav-fixed" id="slide-out" data-menu="menu-navigation" data-collapsible="menu-accordion">
     @inject('menu_helper', 'Robust\Core\Helpers\MenuHelper')
     @foreach($menu_helper->getMenus() as $index => $menu)
         @if($menu->type == 'primary')
             @set('sub_menus', $menu_helper->getSubMenus($menu->id))
             @can($menu->permission)
                 @if(count($sub_menus) <= 0)
-                    <li class="bold">
-                        <a class="waves-effect waves-cyan " href="{{ $menu->url }}">
+                    <li class="bold {{is_active($menu->url)}}">
+                        <a class="waves-effect" href="{{ $menu->url }}">
                             <i class="material-icons">{{ $menu->icon }}</i>
                             <span class="menu-title" data-i18n="">
                                 {{ $menu->display_name }}
@@ -15,7 +15,7 @@
                     </li>
                 @else
                     <li class="bold">
-                        <a class="collapsible-header waves-effect waves-cyan " href="#">
+                        <a class="collapsible-header waves-effect" href="#">
                             <i class="material-icons">{{ $menu->icon }}</i>
                             <span class="menu-title" data-i18n="">
                                 {{ $menu->display_name }}
@@ -35,7 +35,7 @@
                                 @endforeach
                             </ul>
                         </div>
-                    </li>                            
+                    </li>
                 @endif
             @endcan
         @endif

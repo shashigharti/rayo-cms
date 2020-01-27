@@ -884,8 +884,8 @@ to{opacity:0}}.slider{position:relative;height:400px;width:100%}.slider.fullscre
 }.gradient-45deg-purple-deep-orange{background:#126692 !important;-webkit-box-shadow:3px 3px 4px 0 #01579b;box-shadow:3px 3px 4px 0 #01579b}
 .gradient-45deg-purple-deep-orange:hover,.gradient-45deg-purple-deep-orange:focus{background:#0a405d}
 .gradient-45deg-purple-deep-orange.gradient-shadow{-webkit-box-shadow:0 6px 20px 0 #01579b !important;box-shadow:0 6px 20px 0 #01579b !important}
-.theme-btn{background:#126692 !important;-webkit-box-shadow:3px 3px 4px 0 #01579b;box-shadow:3px 3px 4px 0 #01579b}
-.theme-btn:hover,.theme-btn:focus{background:#0a405d}.purple{background-color:#9c27b0 !important}
+.theme-btn{background:#093c56 !important;-webkit-box-shadow:3px 3px 4px 0 #01579b;box-shadow:3px 3px 4px 0 #01579b}
+.theme-btn:hover,.theme-btn:focus{background:#074f75 !important}.purple{background-color:#9c27b0 !important}
 .cyan{background-color:#00bcd4 !important}.green{background-color:#4caf50 !important}
 .yellow{background-color:#ffeb3b !important}.amber{background-color:#ffc107 !important}
 .orange{background-color:#ff9800 !important}@font-face{font-family:'Material Icons';font-weight:400;font-style:normal;src:local("Material Icons"),local("MaterialIcons-Regular"),url("../fonts/material-design-icons/MaterialIcons-Regular.ttf") format("truetype"),url("../fonts/material-design-icons/MaterialIcons-Regular.woff2") format("woff2"),url("../fonts/material-design-icons/MaterialIcons-Regular.woff") format("woff"),url("../fonts/material-design-icons/MaterialIcons-Regular.eot")}
@@ -990,7 +990,7 @@ span.badge{color:#fff}span.badge.pill{font-size:.8rem;line-height:20px;min-width
 .delay-3{-webkit-animation-delay:.5s !important;animation-delay:.5s !important}.delay-4{-webkit-animation-delay:.6s !important;animation-delay:.6s !important}
 .delay-5{-webkit-animation-delay:.7s !important;animation-delay:.7s !important}.collapsible-header.cyan{color:#fff}
 .panel--box{min-height:500px;padding:30px}.menu--list li{background:#eee;padding:10px;margin-bottom:4px}
-.menu--list span{color:#333}.right--button a{margin:0 10px}.select-wrapper input.select-dropdown:focus{border-bottom:1px solid #8d62c1 !important;-webkit-box-shadow:0 1px 0 0 #8d62c1 !important;box-shadow:0 1px 0 0 #8d62c1 !important}
+.menu--list span{color:#333}.right--button a{margin:0 10px}.select-wrapper input.select-dropdown:focus{border-bottom:1px solid #093c56 !important;-webkit-box-shadow:0 1px 0 0 #093c56 !important;box-shadow:0 1px 0 0 #093c56 !important}
 .tab--content{padding:30px 30px 60px}.media-image{margin-bottom:10px;height:115px;width:115px;overflow:hidden;line-height:115px}
 .media-image img{width:100%;vertical-align:middle;display:inline-block}.media-image.selected{border:1px solid #6b4994}
 .media-image.selected img{opacity:.8}.permission--box span{margin-right:15px}.collapsible-header{color:#fff}
@@ -1200,10 +1200,11 @@ input{font-size:.8rem !important;color:#656060;font-weight:600}.input-field.col 
 .tabs .tab a{color:#126692;text-transform:none;padding:0 10px;font-weight:600;font-size:13px}
 .tabs .tab a:hover,.tabs .tab a.active,.tabs .tab a:focus{background-color:#093c56;color:#fff}
 .tabs .tab a:hover.active,.tabs .tab a.active.active,.tabs .tab a:focus.active{background-color:#093c56}
-.tabs .indicator{background-color:#093c56}.theme__tabs .tab a{color:#333;font-weight:600;padding:0 10px;font-size:12px}
-.theme__tabs .tab a:hover,.theme__tabs .tab a.active{color:#fff}.theme__tabs .tab a:focus{background-color:transparent}
-.theme__tabs .tab a:focus.active{background-color:transparent}.theme__tabs.tabs{height:40px}
-.theme__tabs .tab{line-height:40px;height:40px}.filter--bar .tabs{background-color:transparent;margin-bottom:15px}
+.tabs .tab:hover,.tabs .tab.active,.tabs .tab:focus{background-color:#093c56;color:#fff}
+.tabs .tab:hover a,.tabs .tab.active a,.tabs .tab:focus a{color:#fff}.tabs .indicator{background-color:#093c56}
+.theme__tabs .tab a{color:#333;font-weight:600;padding:0 10px;font-size:12px}.theme__tabs .tab a:hover,.theme__tabs .tab a.active{color:#fff}
+.theme__tabs .tab a:focus{background-color:transparent}.theme__tabs .tab a:focus.active{background-color:transparent}
+.theme__tabs.tabs{height:40px}.theme__tabs .tab{line-height:40px;height:40px}.filter--bar .tabs{background-color:transparent;margin-bottom:15px}
 .theme--select .select-wrapper input.select-dropdown{height:16px;line-height:21px;font-size:14px;padding:0 0 3px}
 .theme--select .select-wrapper input.select-dropdown:focus{border-bottom:1px solid #6b4994}
 .theme--select .dropdown-content li{min-height:32px}.theme--select .dropdown-content li>a,.theme--select .dropdown-content li>span{color:#6b4994;font-size:12px;line-height:12px;padding:10px 12px}

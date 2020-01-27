@@ -59,8 +59,8 @@ class MarketReportMigrate extends Command
                     ->where('locationable_type',$type)
                     ->where('slug',$report->slug)->first()->id;
                $report = (array) $report;
-               $report['reportable_id'] = $id;
-               $report['reportable_type'] = $type;
+               $report['location_id'] = $id;
+               $report['location_type'] = $type;
                unset($report['model_id']);
                unset($report['model_type']);
                DB::table('real_estate_market_reports')->insert($report);

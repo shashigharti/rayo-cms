@@ -75,6 +75,33 @@ if (!function_exists('price_range_format')) {
     }
 }
 
+
+if (!function_exists('market_report_price_range_format')) {
+
+    /**
+     * @param $price_range
+     * @return string
+     */
+    function market_report_price_range_format($price_range)
+    {
+        $prices = explode('-', $price_range);
+        if(count($prices) <= 1){
+            $prices = explode('>',$prices[0]);
+        }
+        $count = count_chars($prices[0]);
+        if($prices[1] == '') {
+            if(isset($prices[0]) && is_numeric($prices[0])){
+                return "Above " . price_format($prices[0]);
+            }
+        }elseif ($count > 6 && is_numeric($prices[1])) {
+            $prices[0] = price_format($prices[0]);
+            $prices[1] = price_format($prices[1]);
+            return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
+        }
+        return $price_range;
+    }
+}
+
 if (!function_exists('geocode')) {
 
     /**
@@ -265,7 +292,7 @@ if (!function_exists('geocode')) {
                 }
 
                 if (!isset($priceArr[$j]))
-                    $ranges[] = $priceArr[$max_array_count - 1] . " > ";
+                    $ranges[] = $priceArr[$max_array_count - 1] . ">";
             }
 
             return $ranges;
