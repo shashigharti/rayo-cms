@@ -100,7 +100,7 @@
                                                 </td>
                                                 <td>
                                                     <small>
-                                                        1 Months Ago
+                                                        {{$lead->created_at->diffForHumans()}}
                                                     </small> <br>
                                                     <small>-</small> <br>
                                                 </td>
