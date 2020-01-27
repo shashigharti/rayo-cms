@@ -1,6 +1,6 @@
 @set('settings', settings('real-estate', 'market_report'))
 @if(isset($location_name_slug))
-    @set('ranges',  generate_price_ranges($marketreport_helper->getSubdivisionsMinPrice($page_type, $location_name_slug), $settings['price_max'], $settings['increment']))
+    @set('ranges',  generate_price_ranges($marketreport_helper->getSubdivisionsMinPrice($page_type, $location_name_slug), $settings['price_max'] ?? '44500000', $settings['increment'] ?? '100000'))
 @endif
 <div class="row">
     @if($page_content == 'insight')
