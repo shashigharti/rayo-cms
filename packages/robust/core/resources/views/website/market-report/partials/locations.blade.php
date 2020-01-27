@@ -26,14 +26,14 @@
     @endif
     @if($page_content == 'insight')
         <div id="market__search--lists"
-             data-page-type="{{$page_type}}"
-             data-insight-url="{{url('market/reports/in')}}"
+             data-page-type="{{ $sub_location_type ?? $page_type }}"
+             data-insight-url="{{ url('market/reports/in') }}"
              class="market__search--lists market--right__search col m10 s12">
         </div>
     @elseif(($page_content == 'market-report') )
         <div id="market__search--lists"
-             data-page-type="{{$page_type}}"
-             data-insight-url="{{url('market/reports/in')}}"
+             data-page-type="{{ $sub_location_type ?? $page_type }}"
+             data-insight-url="{{ url('market/reports/in') }}"
              class="market__search--lists market--right__search col m10 s12"
         >
             @foreach($records as $report)
@@ -45,7 +45,7 @@
                                data-value="{{ $report->location->name }}"
                                data-url="{{ route('website.realestate.market.reports.in',
                                 [
-                                    $sub_location_type == '' ? $page_type : $sub_location_type,
+                                    $page_type,
                                     $report->location->slug
                                 ]) }}"
                                data-class=""

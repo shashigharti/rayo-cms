@@ -64,6 +64,7 @@ class MarketReportController extends Controller
     public function getInsights(Request $request, $location_type, $slug)
     {
         $response = $this->model->getInsights($location_type, $slug);
+
         return view('core::website.market-report.insight', [
             'data' => $response,
             'isInsight' => true,

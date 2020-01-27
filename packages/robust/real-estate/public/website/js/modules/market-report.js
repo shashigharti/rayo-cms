@@ -37,9 +37,9 @@
             let template = (() => {
                 if (this._type == 'Title') {
                     return `
-                    <p data-id="${this._id}" 
-                    data-type="${this._type}" 
-                    data-value="${this._value}" 
+                    <p data-id="${this._id}"
+                    data-type="${this._type}"
+                    data-value="${this._value}"
                     data-class="${this._icon}">
                         <input type="checkbox" value="${this._value}">
                         <label>
@@ -138,7 +138,7 @@
 
     function renderLocations() {
 
-        // Sort Location 
+        // Sort Location
         sortLocations();
 
         // Render Locations
@@ -210,7 +210,6 @@
             location_type = $('#market__search--lists').data('page-type'),
             base_insight_url = searchContainer.data('insight-url'),
             template = ``;
-
 
         locations.forEach((location) => {
             template += `
