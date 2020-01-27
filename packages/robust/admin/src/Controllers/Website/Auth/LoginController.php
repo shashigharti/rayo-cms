@@ -5,7 +5,13 @@ namespace Robust\Admin\Controllers\Website\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
+use Robust\Admin\Events\UserActivityEvent;
 
+/**
+ * Class LoginController
+ * @package Robust\Admin\Controllers\Website\Auth
+ */
 class LoginController extends Controller
 {
     /*
@@ -38,6 +44,14 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    /**
+     * @param Request $request
+     * @param $user
+     */
+    protected function authenticated(Request $request, $user)
+    {
+       event(new UserActivityEvent($user,'Logged In'));
+    }
     /**
      * Get a validator for an incoming registration request.
      *

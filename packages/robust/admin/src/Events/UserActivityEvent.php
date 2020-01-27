@@ -17,13 +17,32 @@ class UserActivityEvent
      * @var User
      */
     public $user;
+    /**
+     * @var
+     */
+    public $title;
+    /**
+     * @var null
+     */
+    public $url;
+    /**
+     * @var
+     */
+    public $description;
+
 
     /**
      * UserActivityEvent constructor.
      * @param User $user
+     * @param $title
+     * @param null $url
+     * @param null $description
      */
-    public function __construct(User $user)
+    public function __construct(User $user, $title, $url=null, $description=null)
     {
-        $this->user = $user;
+        $this->user = $user->id;
+        $this->title = $title;
+        $this->url = $url;
+        $this->description = $description;
     }
 }

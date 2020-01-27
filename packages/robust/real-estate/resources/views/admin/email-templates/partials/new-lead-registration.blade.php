@@ -1,60 +1,26 @@
-<!DOCTYPE html>
-<html class="loading" lang="en" data-textdirection="ltr">
-<!-- BEGIN: Head-->
+<p>&nbsp;</p>
 
-<head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-    <meta name="description">
-    <title>RealEstate</title>
-    <style>
-        html {
-            font-family: 'Roboto', sans-serif !important;
-            font-weight: normal;
-            line-height: 1.5;
-            color: #6b6f82;
-        }
-    </style>
-</head>
+<p>Hi *|LEAD_FIRSTNAME|*,</p>
 
-<body>
-    <table cellpadding="0" cellspacing="0" width="600" style="border:1px solid #111; margin:10px auto;">
-        <tbody>
-            <tr>
-                <td style="text-align: center; background-color: #315C85; padding: 10px 15px;">
-                    <p>
-                        <a style="text-decoration: none; font-family: verdana; color: white; font-weight: bold; font-size: 18px;" href="#">Welcome To Atlanta Lake Homes                      
-                  </p> 
-              </td> 
-            </tr>
-            <tr>
-                <td style="border: none; border-bottom: 1px solid lightgrey;background-color: #F9F9F9;"> 
-                   	<p style="padding: 10px 20px;"> 
-                       	<span style="font-size: 15px;">Hi Vega,</span>
-                    </p>
+<p>Welcome as a new member of&nbsp;*|WEBSITE|*..</p>
 
-                    <p style="padding: 5px 20px;"> Meghan Porter <br>
-                     Phone :207337652<br>
-                     Email:meghan@fxxx.com
-                    </p> 
-                    <p style="padding: 5px 20px;">Meghan is live looking at properties on the website right now.<br>
-                      This is the first page viewed on the website<br><br>
-                      MESA AZ HOMES FOR SALE $65000 - $800,000<br><br>
-                      <a href="#">http://167.71.244.240/market/reports/cities</a>
-                    </p>
+<p>Our website has many new features that make it the most useful home search experience for buyers &amp; sellers in the *|LOCATION|* area.</p>
 
-                </td>
-            </tr>
+<p>And for sellers who have waited far too long for this -</p>
 
-            <tr>
-                <td style="padding:5px 20px;background-color:white;border-bottom:0px;">
-                    <img src="{{asset('assets/website/images/Logo.jpg')}}" style="margin-top: 20px;max-height:200px;">
-                </td>
-            </tr>
+<p>Most of these Real Estate websites deliver just the basics. Not this one!</p>
 
-        </tbody>
-    </table>
-</body>
+<p>If you would like, one of my team members can contact you shortly to help you harness the power of this website and help answer any questions.</p>
 
-</html>
+<p>Good luck with your home search!</p>
+
+<p>Sincerely,<strong>*|AGENT_NAME|*</strong></p>
+
+<p>&nbsp;*|COMPANY_SLOGAN|*&nbsp;&nbsp;</p>
+
+<p>&nbsp;Real Estate Brokers of *|COMPANY_NAME|*</p>
+
+<p>&nbsp;*|COMPANY_PHONE_NUMBER|*&nbsp;</p>
+
+<p>&nbsp;<strong>*|COMPANY_EMAIL|*</strong></p>
+<p><em>If your plans have changed and you no longer need or want to receive listing/market information, please click on the following link</em>:&nbsp;*|UNSUBSCRIBE_LINK|*</p>

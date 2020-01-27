@@ -2,8 +2,9 @@
 
 namespace Robust\Admin\Listeners;
 
-use Illuminate\Mail\Mailer;
-use Robust\Admin\Events\UserCreatedEvent;
+use Illuminate\Support\Str;
+use Robust\Admin\Events\UserActivityEvent;
+use Robust\Admin\Models\UserActivity;
 
 /**
  * Class UserActivityEventListener
@@ -12,19 +13,32 @@ use Robust\Admin\Events\UserCreatedEvent;
 class UserActivityEventListener
 {
     /**
-     * UserActivityEventListener constructor.
-     * @param Mailer $mailer
+     * @var
      */
-    public function __construct(Mailer $mailer)
-    {
-        $this->mailer = $mailer;
-    }
+    protected $model;
 
     /**
-     * @param UserCreatedEvent $event
+     * UserActivityEventListener constructor.
+     * @param UserActivity $model
      */
-    public function handle(UserCreatedEvent $event)
+    public function __construct(UserActivity $model)
     {
+        $this->model = $model;
+    }
 
+
+    /**
+     * @param UserActivityEvent $event
+     */
+    public function handle(UserActivityEvent $event)
+    {
+        $data = [
+            'user_id' => $event->user,
+            'title' => $event->title,
+            'slug' => Str::slug($event->title),
+            'url' => $event->url,
+            'description' => $event->description
+        ];
+        $this->model->create($data);
     }
 }
