@@ -1,5 +1,5 @@
 <div>
-    <a href="#" class='popup-trigger'>Lead Review</a>
+    <a href="{{route('admin.leads.review',['id'=>$lead->id])}}" target="_blank">Lead Review</a>
 </div>
 <div>
     <a href="#"

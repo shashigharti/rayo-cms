@@ -58,6 +58,15 @@ class LeadController extends Controller
 
     /**
      * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function review($id)
+    {
+        $lead = $this->model->find($id);
+        return view('core::website.user-profile.index',['lead'=>$lead]);
+    }
+    /**
+     * @param $id
      * @param $type
      * @return \Robust\Core\Controllers\Common\Traits\view
      */

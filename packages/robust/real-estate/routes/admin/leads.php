@@ -3,6 +3,12 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
     Route::resources([
 		'leads' => 'Robust\RealEstate\Controllers\Admin\LeadController'
     ]);
+
+    Route::get('leads/review/{id}', [
+        'name' =>'Lead Review Page',
+        'as' => 'leads.review',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@review'
+    ]);
     //temp
     Route::post('update/leads/{id}',[
         'name' =>'Lead Details Page',
