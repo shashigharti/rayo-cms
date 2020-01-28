@@ -12,13 +12,17 @@
                 <i class="fa fa-times pull-right clickable"></i>
             </div>
             <div class="box-content">
-                <div class="row viewed-lead">
+                <div class="row">
                     <div class="col s8">
                         <div>
                             @foreach(range(1,5) as $id)
-                                <i aria-hidden="true" class="fa fa-star-o" id="{{ $id }}"></i>
+                                <a href="#"
+                                   class="rating-star">
+                                    <i aria-hidden="true" class="fa fa-star-o"></i>
+                                </a>
                             @endforeach
                         </div>
+
                         <div>
                             No Rating Given
                         </div>
