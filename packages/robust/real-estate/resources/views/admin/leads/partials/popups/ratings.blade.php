@@ -15,16 +15,9 @@
                 <div class="row">
                     <div class="col s8">
                         <div>
-                            @foreach(range(1,5) as $id)
-                                <a href="#"
-                                   class="rating-star">
-                                    <i aria-hidden="true" class="fa fa-star-o"></i>
-                                </a>
-                            @endforeach
-                        </div>
-
-                        <div>
-                            No Rating Given
+                             @foreach(range(1,5) as $id)
+                                 <a href="#" class="RatingForm" data-id="{{$id}}" data-lead="{{$lead->id}}"><i aria-hidden="true" class="fa fa-star-o"></i> </a>
+                             @endforeach
                         </div>
                     </div>
                 </div>
