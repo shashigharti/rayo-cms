@@ -8,7 +8,6 @@ use Robust\Core\Repositories\Common\Traits\SearchRepositoryTrait;
 
 class BannerRepository
 {
-
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
     /**

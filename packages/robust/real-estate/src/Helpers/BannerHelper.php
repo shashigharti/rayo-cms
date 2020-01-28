@@ -3,7 +3,7 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Models\Banner;
-use Robust\RealEstate\Repositories\Website\BannerRepository;
+use Robust\RealEstate\Repositories\Website\LocationRepository;
 
 /**
  * Class BannerHelper
@@ -16,13 +16,16 @@ class BannerHelper
      */
     private $banners;
 
+
     /**
      * BannerHelper constructor.
-     * @param Banner $model
+     * @param Banner $banner
+     * @param LocationRepository $location
      */
-    public function __construct(BannerRepository $banner)
+    public function __construct(Banner $banner, LocationRepository $location)
     {
-        $this->banners = $banner->get();
+        $this->banners = $banner;
+        $this->location = $location;
     }
 
 
@@ -31,7 +34,7 @@ class BannerHelper
      */
     public function all()
     {
-        return $this->banners;
+        return $this->banners->get();
     }
 
 
@@ -42,6 +45,7 @@ class BannerHelper
     public function getBannersByType($types)
     {
         return $this->banners->whereIn('template', $types)
+            ->get()
             ->sortBy('order')
             ->values()
             ->all();
@@ -60,19 +64,6 @@ class BannerHelper
 
 
     /**
-     * @param $types
-     * @return mixed
-     */
-    public function getBannersNotInType($types)
-    {
-        return $this->banners->whereNotIn('template', $types)
-            ->sortBy('order')
-            ->values()
-            ->all();
-    }
-
-
-    /**
      * @param \Illuminate\Support\Collection $banners
      * @param array $sort_by
      * @return \Illuminate\Support\Collection
@@ -81,7 +72,7 @@ class BannerHelper
     {
         $banners_new = $banners;
 
-        if(count($sort_by_array) > 0){
+        if (count($sort_by_array) > 0) {
             $banners_new = [];
             foreach ($banners as $banner) {
                 if (in_array($banner->id, $sort_by_array)) {
@@ -95,5 +86,17 @@ class BannerHelper
 
 
         return $banners_new;
+    }
+
+
+    /**
+     * @param $location_type
+     * @param $locations
+     * @return mixed
+     */
+    public function neighborhoods($location_type, $locations)
+    {
+        $locations = $this->location->getSubdivisions($location_type, $locations);
+        return $locations;
     }
 }
