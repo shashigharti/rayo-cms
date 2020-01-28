@@ -8,7 +8,7 @@
                 <option value="{{$square}}">{{$square}}</option>
             @endfor
         </select>
-        <label>SquareFeet(min-max)</label>
+        <label>Square Feet(min-max)</label>
     </div>
     <div class="input-field col s6">
         <select name="square_max" class="ad-search-field" data-selected="{{$query_params['square_max'] ?? ''}}">

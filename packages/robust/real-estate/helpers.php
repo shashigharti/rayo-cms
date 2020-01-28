@@ -394,13 +394,15 @@ if (!function_exists('sort_array_by_array')) {
 
         if (count($sort_by_arr) > 0) {
             $arr_new = [];
-            foreach ($arr_to_sort as $elem) {
+            foreach ($arr_to_sort as $index => $elem) {
                 if (in_array($elem, $sort_by_arr)) {
                     $id = array_search($elem, $sort_by_arr);
                     $arr_new[$id] = $elem;
+                    unset($arr_to_sort[$index]);
                 }
             }
         }
+        $arr_new = array_merge($arr_new, $arr_to_sort);
         ksort($arr_new);
         return $arr_new;
     }
