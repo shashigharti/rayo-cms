@@ -23,10 +23,6 @@ Route::group(['prefix' => config('core.frw.auth'), 'as' => 'website.auth.','grou
         'uses' => 'Robust\Admin\Controllers\Website\Auth\ForgotPasswordController@sendResetLinkEmail'
     ]);
 
-    Route::get('password/reset/{token}', [
-        'as' => 'password.reset',
-        'uses' => 'Robust\Admin\Controllers\Website\Auth\ForgotPasswordController@showResetForm'
-    ]);
 
     Route::post('password/reset', [
         'as' => 'password.update',
@@ -50,6 +46,13 @@ Route::group(['prefix' => '', 'as' => 'website.auth.verification.','group' => 'V
         'as' => 'notice',
         'uses' => 'Robust\Admin\Controllers\Website\Auth\VerificationController@show'
     ]);
+
+
+    Route::get('password/reset', [
+        'as' => 'password.reset',
+        'uses' => 'Robust\Admin\Controllers\Website\Auth\ResetPasswordController@showResetForm'
+    ]);
+
 
     Route::get('/email/verify/{id}', [
         'name' => 'verify',

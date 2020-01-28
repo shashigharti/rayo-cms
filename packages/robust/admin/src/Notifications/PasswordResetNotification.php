@@ -4,25 +4,35 @@ namespace Robust\Admin\Notifications;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Notification;
-use Robust\Admin\Models\User;
+use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Notifications\Messages\MailMessage;
 
+
+/**
+ * Class PasswordResetNotification
+ * @package App\Notifications
+ */
 class PasswordResetNotification extends Notification
 {
     use Queueable;
+    /**
+     * @var
+     */
+    protected $token;
 
-    private $user;
-    private $token;
-
-    public function __construct(User $user, $token = null)
+    /**
+     * CustomResetPasswordNotification constructor.
+     * @param $token
+     */
+    public function __construct($token)
     {
-        $this->user = $user;
         $this->token = $token;
     }
 
     /**
      * Get the notification's delivery channels.
      *
-     * @param  mixed $notifiable
+     * @param  mixed  $notifiable
      * @return array
      */
     public function via($notifiable)
@@ -30,7 +40,7 @@ class PasswordResetNotification extends Notification
         return ['mail'];
     }
 
-     /**
+    /**
      * Get the mail representation of the notification.
      *
      * @param  mixed  $notifiable
@@ -38,10 +48,12 @@ class PasswordResetNotification extends Notification
      */
     public function toMail($notifiable)
     {
-        return (new MailMessage)
-            ->from(config('rws.client.email.support'))
-            ->subject("New user create")
-            ->line(Site::templateResolver('admin::website.emails.password-reset'));
+        $link = url( "/password/reset/?token=" . $this->token .'&email='.$notifiable->email);
+        $from = settings('email-setting','email') ?? config('rws.client.email.support');
+        return ( new MailMessage )
+            ->from($from)
+            ->subject( 'Reset your password' )
+            ->view('admin::website.emails.reset-password',['link'=>$link]);
     }
 
     /**
@@ -56,5 +68,4 @@ class PasswordResetNotification extends Notification
             //
         ];
     }
-
 }

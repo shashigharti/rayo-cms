@@ -6,7 +6,7 @@ use App\Notifications\VerifyEmail;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Robust\Core\Events\PasswordResetEvent;
+use Robust\Admin\Notifications\PasswordResetNotification;
 
 
 /**
@@ -83,5 +83,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function memberable()
     {
         return $this->morphTo();
+    }
+
+    /**
+     * @param string $token
+     */
+    public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new PasswordResetNotification($token));
     }
 }

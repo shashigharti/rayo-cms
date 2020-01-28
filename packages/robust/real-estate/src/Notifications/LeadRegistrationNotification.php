@@ -60,11 +60,11 @@ class LeadRegistrationNotification extends Notification
             'logo' => '',
             'verification_url' => $this->verificationUrl($notifiable)
         ];
-
+        $from = settings('email-setting','email') ?? config('rws.client.email.support');
         $body = replace_variables($template->body, $this->lead, $data);
         $subject = replace_variables($template->subject, $this->lead, $data);
         return (new MailMessage)
-            ->from(config('client.email.support'))
+            ->from($from)
             ->subject($subject)
             ->line(new HtmlString($body));
     }

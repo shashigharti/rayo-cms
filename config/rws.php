@@ -1,6 +1,11 @@
 <?php
 
 return [
+    'client' => [
+      'email' => [
+          'support' => 'info@robustitconcepts.com'
+      ]
+    ],
     'application' => [
         'price' => [
             'min' => 25000,
