@@ -20,10 +20,11 @@
           </div>
           @set('favourites',$model->favourites)
           @foreach($model->views as $views)
+                @set('image',$views->listing->images()->first())
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
-                         <img src="{{$views->listing->images()->first()}}">
+                         <img src="{{$image ? $image->url : ''}}">
                       </div>
                       <div class="text col s10">
                          <div class="col s12">
