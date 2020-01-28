@@ -32,7 +32,7 @@
                     title: property.name,
                     icon: icon
                 });
-                const url = `${base_url}/real-estate/${property._slug}`;
+                //const url = $('#market-survey__listings--details-block').data('single-property-url');//`${base_url}/real-estate/${property._slug}`;
                 const content = `
                     <div class="map--content">
                         <p class="map--content_title"><a href="${property._url}">${property._name}</a></p>
@@ -45,7 +45,7 @@
                     this.openPopup();
                 });
                 marker.on('click', function () {
-                    window.open(url, '_blank');
+                    window.open(property._url, '_blank');
                 });
                 markers.push(marker);
             });
@@ -131,22 +131,20 @@
                         <tr>
                             <th>Properties</th>
                             ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
-            }).join(" ")
-            }
+                                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
+                            }).join(" ")}
                         </tr>
                     </thead>
                     <tbody>
                         ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
-                return `
+                            return `
                                 <tr>
                                     <td>${comparePropertiesRows[attrIndex].display}</td>
                                     ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                    return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
-                }).join(" ")
-                }
+                                        return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
+                                    }).join(" ")}
                                 </tr>`;
-            }).join(" ")}
+                        }).join(" ")}
                     </tbody>
             </table>
             `;

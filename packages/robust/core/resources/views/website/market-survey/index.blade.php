@@ -55,8 +55,8 @@
                         </div>
                         <div id="market-survey__listings"
                              class="market-survey__listings"
-                             data-property-url="{{url('market/survey/' . $location['type'] . '/slug')}}"
-                             data-url="{{route('api.market.survey.listings', [
+                             data-property-url="{{ url('real-estate/slug') }}"
+                             data-url="{{ route('api.market.survey.listings', [
                                             'location_type' => $location['type'],
                                             'location' => $location['slug']
                                             ])
