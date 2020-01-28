@@ -33,6 +33,7 @@
                     <div id="leaflet__map-container" data-zoom="10"
                          style="width: 100%; height: 900px"
                          class="leaflet__map-container"
+                         data-geocode="{{ implode(',', $location['geocode']) }}"
                     >
                     </div>
                     <div id="leaflet__compare-container" class="leaflet__compare-container col s12">

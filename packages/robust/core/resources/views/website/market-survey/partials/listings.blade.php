@@ -4,7 +4,7 @@
     <div class="search--bar">
         <input name="address"
                id="autocomplete_address"
-               data-url="{{route('api.market.survey.distance')}}"
+               data-url="{{ route('api.market.survey.distance') }}"
                class="search-filter search-filter__location"
                type="text"
                placeholder="Input your address to go local!"
