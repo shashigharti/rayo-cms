@@ -1,3 +1,7 @@
+@set('notes',null)
+@if($value)
+    @set('notes',$lead_helper->getNotes($value))
+@endif
 <div id="{{$id}}" class="modal">
     <div class="modal-content">
         <form action="{{$action}}" method="POST">
@@ -13,12 +17,12 @@
                 {{ Form::hidden('agent_id',$value) }}
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ Form::text('title',null,['class'=>'form-control','placeholder'=>'title']) }}
+                        {{ Form::text('title',$notes? $notes->title : null,['class'=>'form-control','placeholder'=>'title']) }}
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        {{ Form::textarea('note','', ['class' => 'form-control','placeholder'=>'Note' ]) }}
+                        {{ Form::textarea('note',$notes? $notes->note : null, ['class' => 'form-control','placeholder'=>'Note' ]) }}
                     </div>
                 </div>
             </div>

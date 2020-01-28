@@ -9,6 +9,6 @@
        data-action="{{route('admin.notes.store')}}"
        data-mode="Edit"
        data-view="notes"
-       data-value="{{$lead->agent->id ?? ''}}"
+       data-value=""
        class="lead-modal_trigger">+ Add Notes</a>
 </div>

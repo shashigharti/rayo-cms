@@ -37,7 +37,20 @@ class LeadNotesController extends Controller
     {
         $data = $request->all();
         $this->model->store($data);
-        return redirect(route("admin.leads.index"))->with('message', 'Record was successfully saved!!');
+        return redirect()->back()->with('message', 'Record was successfully saved!!');
+    }
+
+    /**
+     * @param Request $request
+     * @param LeadNoteRepository $model
+     * @param $id
+     * @return $this
+     */
+    public function updateNotes(Request $request, LeadNoteRepository $model , $id)
+    {
+        $data = $request->all();
+        $model->update($id,$data);
+        return  redirect()->back()->with(['message' => 'Successfully Updated Notes']);
     }
 
 }
