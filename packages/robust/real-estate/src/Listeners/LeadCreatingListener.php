@@ -56,6 +56,10 @@ class LeadCreatingListener
 
 
         // notify lead
-        $event->user->notify(new LeadRegistrationNotification($new_lead));
+        try {
+            $event->user->notify(new LeadRegistrationNotification($new_lead));
+        }catch (\Exception $e){
+            \Log::info($e->getMessage());
+        }
     }
 }

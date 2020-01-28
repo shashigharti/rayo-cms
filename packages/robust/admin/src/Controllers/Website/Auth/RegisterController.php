@@ -13,6 +13,10 @@ use Robust\Core\Repositories\Admin\DashboardRepository;
 use Illuminate\Http\Request;
 use Illuminate\Auth\Events\Registered;
 
+/**
+ * Class RegisterController
+ * @package Robust\Admin\Controllers\Website\Auth
+ */
 class RegisterController extends Controller
 {
     /*
@@ -65,11 +69,9 @@ class RegisterController extends Controller
     }
 
 
-     /**
-     * User registration without login
-     *
-     * @param  array  $data
-     * @return \Illuminate\Http\RedirectResponse
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function register(Request $request)
     {
@@ -114,10 +116,12 @@ class RegisterController extends Controller
             if(isset($config['user_created'])){
                 $event = $config['user_created'];
             }
-
+            //
+            $this->guard()->login($new_user);
             // Raise user created event
             event(new $event($new_user, $data));
             event(new $this->events['user_created_activity']($new_user,'Registered'));
+            event(new $this->events['user_created_activity']($new_user,'Logged In'));
         }
 
         return $new_user;
