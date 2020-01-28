@@ -23,11 +23,6 @@
             </div>
             <div class="col s12">
                 <div class="row">
-                    <div class="col s12">
-                        <p><strong>{{ $model->first_name }} {{ $model->last_name }}</strong> viewed {{ $model->notes->count() }} item(s)</p>
-                    </div>                      
-                </div>
-                <div class="row">
                     @foreach($model->notes as $note)
                         <div class="col s12 single--note mb-6">
                             <h5>{{ $note->title }} {{ $note->created_at->format('(d/m/Y)') }}</h5>
