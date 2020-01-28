@@ -2,6 +2,7 @@
 @inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
 @inject('agent_helper','Robust\RealEstate\Helpers\AgentHelper')
 @inject('activity_helper','Robust\Admin\Helpers\UserActivityHelper')
+
 @section('content')
 
     @set('ui', new $ui)
@@ -198,8 +199,33 @@
                                                     </div>
                                                 </td>
                                                 <td>
+                                                    @foreach($lead->followups as $followup)
+                                                        <div class="info-unit">
+                                                            <div class="status-dlg">
+                                                                <a href="#"
+                                                                   data-lead="{{$lead->id}}"
+                                                                   data-url="{{route('admin.leads.modal')}}"
+                                                                   data-type="Edit Followup"
+                                                                   data-action="{{route('admin.leads.follow-up.update',['id'=>$followup->id])}}"
+                                                                   data-mode="Edit"
+                                                                   data-view="followup"
+                                                                   data-value="{{$followup->id}}"
+                                                                   class="lead-modal_trigger">{{$followup->date}}</a>
+                                                            </div>
+                                                        </div>
+                                                    @endforeach
                                                     <div class="info-unit">
-                                                        @include('real-estate::admin.leads.partials.popups.followups')
+                                                        <div class="status-dlg">
+                                                            <a href="#"
+                                                               data-lead="{{$lead->id}}"
+                                                               data-url="{{route('admin.leads.modal')}}"
+                                                               data-type="Add Followup"
+                                                               data-action="{{route('admin.leads.follow-up.store',['id'=>$lead->id])}}"
+                                                               data-mode="Add"
+                                                               data-view="followup"
+                                                               data-value=""
+                                                               class="lead-modal_trigger">{{$lead->status->value ?? 'Add'}}</a>
+                                                        </div>
                                                     </div>
                                                 </td>
                                                 <td>

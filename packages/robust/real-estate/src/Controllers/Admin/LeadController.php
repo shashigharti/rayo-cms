@@ -76,13 +76,27 @@ class LeadController extends Controller
      * @param Request $request
      * @param LeadFollowUpRepository $model
      * @param $id
-     * @return \Illuminate\Http\JsonResponse
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function addLeadsFollowUp(Request $request, LeadFollowUpRepository $model , $id)
+    public function addFollowup(Request $request, LeadFollowUpRepository $model , $id)
     {
         $data = $request->all();
+        $data['lead_id'] = $id;
         $model->store($data);
-        return response()->json(['data'=>$data]);
+        return  redirect()->back()->with(['message' => 'Successfully added Followup']);
+    }
+
+    /**
+     * @param Request $request
+     * @param LeadFollowUpRepository $model
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function updateFollowup(Request $request, LeadFollowUpRepository $model , $id)
+    {
+        $data = $request->all();
+        $model->update($id,$data);
+        return  redirect()->back()->with(['message' => 'Successfully added Followup']);
     }
 
     /**

@@ -4,6 +4,7 @@ namespace Robust\RealEstate\Helpers;
 use Robust\RealEstate\Repositories\Admin\AgentRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 use Robust\RealEstate\Repositories\Admin\LeadStatusRepository;
+use Robust\RealEstate\Repositories\API\LeadFollowUpRepository;
 
 /**
  * Class LeadHelper
@@ -28,16 +29,23 @@ class LeadHelper
     private $status;
 
     /**
+     * @var mixed
+     */
+    private $followup;
+
+    /**
      * LeadHelper constructor.
      * @param LeadRepository $lead
      * @param AgentRepository $agent
      * @param LeadStatusRepository $status
+     * @param LeadFollowUpRepository $followup
      */
-    public function __construct(LeadRepository $lead, AgentRepository $agent, LeadStatusRepository $status)
+    public function __construct(LeadRepository $lead, AgentRepository $agent, LeadStatusRepository $status, LeadFollowUpRepository $followup)
     {
         $this->leads = $lead->get();
         $this->agents = $agent->get();
         $this->status = $status->get();
+        $this->followup = $followup->get();
     }
 
     /**
@@ -54,6 +62,15 @@ class LeadHelper
     public function getStatus()
     {
         return $this->status;
+    }
+
+    /**
+     * @param $value
+     * @return mixed
+     */
+    public function getFollowup($value)
+    {
+        return $this->followup->where('id',$value)->first();
     }
 
 }
