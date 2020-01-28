@@ -44,7 +44,7 @@ class IsAdmin
             return $next($request);
         }elseif(Auth::user() && !isAdmin()){
             \Log::info("is user " . Auth::user());
-            return redirect()->route('website.profile');
+            return redirect()->route('website.user.profile');
         }
 
         return redirect()->route('website.home');
