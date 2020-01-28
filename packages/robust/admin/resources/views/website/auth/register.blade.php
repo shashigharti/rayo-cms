@@ -1,5 +1,5 @@
 <div id="modal__register" class="modal">
-    <form method="post" id="register--form" action="" data-url="{{route('website.auth.register.post')}}">
+    <form method="post" class="auth--form" action="" data-url="{{route('website.auth.register.post')}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>

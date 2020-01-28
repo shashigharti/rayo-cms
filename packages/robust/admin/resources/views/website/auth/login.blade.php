@@ -1,9 +1,15 @@
 <div id="modal__login" class="modal">
-    <form method="post" id="login--form" data-url="{{route('website.auth.login.post')}}">
+    <form method="post" class="auth--form" data-url="{{route('website.auth.login.post')}}">
         @csrf
         <div class="row modal-header">
             <button type="button" class="modal-close"> <span>×</span> </button>
             <h4 class="modal-title">Login</h4>
+        </div>
+        <div class="msg">
+            <div class="msg-info">
+            </div>
+            <div class="msg-error">
+            </div>
         </div>
         <div class="modal-content">
             <p class="center-align">To access Advanced MLS Information, login below</p>

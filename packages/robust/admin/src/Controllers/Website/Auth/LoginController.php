@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
+use Illuminate\Validation\ValidationException;
 use Robust\Admin\Events\UserActivityEvent;
 
 /**
@@ -51,6 +52,22 @@ class LoginController extends Controller
     protected function authenticated(Request $request, $user)
     {
        event(new UserActivityEvent($user,'Logged In'));
+    }
+
+
+    /**
+     * Overridden response function to send json response
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function sendLoginResponse(Request $request)
+    {
+        $request->session()->regenerate();
+
+        $this->clearLoginAttempts($request);
+
+        return $this->authenticated($request, $this->guard()->user())
+            ?: response()->json(['message' => 'Successfully logged In']);
     }
     /**
      * Get a validator for an incoming registration request.
