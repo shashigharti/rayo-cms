@@ -9,5 +9,12 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'as' => 'leads.notes.update',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadNotesController@updateNotes'
     ]);
+
+    Route::get('leads/notes/delete/{id}', [
+        'name' =>'Leads Notes',
+        'as' => 'leads.notes.delete',
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadNotesController@deleteNotes'
+    ]);
+
 });
 

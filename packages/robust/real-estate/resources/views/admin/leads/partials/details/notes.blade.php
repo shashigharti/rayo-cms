@@ -5,6 +5,7 @@
         <div class="panel card">
             <div class="col s12">
                 <div class="row mt-1">
+                    @include("core::admin.partials.messages.info")
                     <div class="col s9">
                         <h5>Notes</h5>
                     </div>
@@ -39,8 +40,8 @@
                                    data-view="notes"
                                    data-value="{{$note->id}}"
                                    class="lead-modal_trigger mr-2"><i class="material-icons">edit</i></a>
-                                <a href="#" class="right">
-                                    <i class="material-icons delete">delete</i>
+                                <a  href="{{url('admin/leads/notes/delete',['id'=>$note->id])}}">
+                                    <i class="material-icons delete"> delete </i>
                                 </a>
                             </div>
                         </div>

@@ -34,17 +34,16 @@ class MarketSurveyController extends Controller
      */
     public function index($location_type, $location)
     {
+        $geolocation = geocode(ucwords(str_replace('-', ' ', $location)));
         $data = [
             'type' => $location_type,
-            'slug' => $location
+            'slug' => $location,
+            'geocode' => $geolocation['geometry']['location']
         ];
-        $request_type = request()->get('search_type');
-        if ($request_type == 'market-survey') {
-            return view('core::website.market-survey.index', [
-                    'location' => $data
-                ]
-            );
-        }
-        return redirect()->route('website.realestate.market.reports', [$location_type]);
+
+        return view('core::website.market-survey.index', [
+                'location' => $data
+            ]
+        );
     }
 }
