@@ -63,13 +63,19 @@
                             <tr>
                                 <th>#</th>
                                 <th>When</th>
-                                <th>Duration</th>
+                                <th>Action</th>
                             </tr>
                             @foreach($activities as $counter => $activity)
                                 <tr>
                                     <td>{{$activity->title}}</td>
                                     <td>{{$activity->created_at->diffForHumans()}}</td>
-                                    <td>-</td>
+                                    <td>
+                                        @if($activity->url)
+                                            <a href="{{$activity->url}}" target="_blank">View</a>
+                                        @else
+                                            {{'-'}}
+                                        @endif
+                                    </td>
                                 </tr>
                             @endforeach
                         </table>

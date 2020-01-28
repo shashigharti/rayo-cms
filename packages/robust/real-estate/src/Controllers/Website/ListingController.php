@@ -26,7 +26,7 @@ class ListingController extends Controller
      */
     protected $pagination;
 
-
+    protected $events;
     /**
      * ListingController constructor.
      * @param ListingRepository $model
@@ -35,6 +35,10 @@ class ListingController extends Controller
     {
         $this->model = $model;
         $this->pagination = settings('app-setting')['pagination'] ?? 20;
+        $this->events = [
+            'single_listing_viewed' => 'Robust\RealEstate\Events\SingleListingPageEvent',
+            'user_activity' => 'Robust\Admin\Events\UserActivityEvent'
+        ];
     }
 
 
@@ -185,6 +189,10 @@ class ListingController extends Controller
     public function single($slug)
     {
         $result = $this->model->getSingle($slug);
+        if(\Auth::check()){
+           event(new $this->events['user_activity'](\Auth::user(),'Listing Viewed',url()->current(),''));
+           event(new $this->events['single_listing_viewed'](\Auth::user(),$result));
+        }
         return view(Site::templateResolver('core::website.listings.single'), ['result' => $result]);
     }
 

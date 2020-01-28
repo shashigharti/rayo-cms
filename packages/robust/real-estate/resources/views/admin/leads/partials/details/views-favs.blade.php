@@ -22,9 +22,9 @@
              <div class="row">
                 <div class="col s12 sub--title">
                    <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $model->favourites->count() }} item(s)</p>
-             </div>                      
+             </div>
           </div>
-          @foreach($model->favourites as $favourite)
+          @foreach($model->views as $favourite)
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
@@ -51,6 +51,6 @@
                 </div>
           @endforeach
        </div>
-    </div> 
+    </div>
 </div>
 </div>
