@@ -22,6 +22,6 @@ class LeadRating extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'lead_id','rating'
+        'lead_id','ratings'
     ];
 }

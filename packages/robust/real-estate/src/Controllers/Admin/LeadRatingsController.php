@@ -2,7 +2,10 @@
 namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
+use Robust\Core\Controllers\Common\Traits\ViewTrait;
+use Robust\RealEstate\Models\LeadRating;
 use Robust\RealEstate\Repositories\Admin\LeadRatingsRepository;
 
 /**
@@ -11,7 +14,7 @@ use Robust\RealEstate\Repositories\Admin\LeadRatingsRepository;
  */
 class LeadRatingsController extends Controller
 {
-    use CrudTrait;
+    use CrudTrait, ViewTrait;
 
     /**
      * @var LeadRatingsRepository
@@ -25,5 +28,18 @@ class LeadRatingsController extends Controller
     public function __construct(LeadRatingsRepository $model)
     {
         $this->model = $model;
+        $this->view = 'admin.leads.partials.popups.ratings';
+    }
+
+    /**
+     * @param Request $request
+     * @param $lead_id
+     * @return \Illuminate\Http\JsonResponse
+     */
+    public function storeLeadRating(Request $request, $lead_id)
+    {
+        $data = $request->all();
+        $this->model->store($data);
+        return response()->json(['data'=>$data]);
     }
 }
