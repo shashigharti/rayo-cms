@@ -37,7 +37,7 @@ class LeadNotesController extends Controller
     {
         $data = $request->all();
         $this->model->store($data);
-        return redirect()->back()->with('message', 'Record was successfully saved!!');
+        return redirect()->back()->with('message', 'Notes added successfully!!');
     }
 
     /**
@@ -51,6 +51,16 @@ class LeadNotesController extends Controller
         $data = $request->all();
         $model->update($id,$data);
         return  redirect()->back()->with(['message' => 'Successfully Updated Notes']);
+    }
+
+    /**
+     * @param $id
+     * @return $this
+     */
+    public function deleteNotes($id)
+    {
+        $this->model->delete($id);
+        return redirect()->back()->with('message', 'Record was successfully deleted!');
     }
 
 }
