@@ -18,13 +18,8 @@
                 </div>
              </div>
           </div>
-          <div class="col s12">
-             <div class="row">
-                <div class="col s12 sub--title">
-                   <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $model->favourites->count() }} item(s)</p>
-             </div>
-          </div>
-          @foreach($model->views as $favourite)
+          @set('favourites',$model->favourites)
+          @foreach($model->views as $views)
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
@@ -32,19 +27,23 @@
                       </div>
                       <div class="text col s10">
                          <div class="col s12">
-                            <h5>{{ $favourite->name }}</h5>
+                             <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $views->count }} time(s)</p>
+                             @if($favourites->where('id',$views->listing_id)->first())
+                                 <i class="right material-icons">favorite</i>
+                             @endif
+                            <h5>{{ $views->listing->name }}</h5>
                          </div>
                          <div class="col s6">
-                            <label>Address:</label> {{ $favourite->address_street }} {{ $favourite->state }}
+                            <label>Address:</label> {{ $views->listing->address_street }} {{ $views->listing->state }}
                          </div>
                          <div class="col s6">
                             <label>Seen:</label>5 days ago
                          </div>
                          <div class="col s6">
-                            <label>Bedrooms:</label>{{ $favourite->bedrooms }}
+                            <label>Bedrooms:</label>{{ $views->listing->bedrooms }}
                          </div>
                          <div class="col s6">
-                            <label>Full Bathrooms:</label>{{ $favourite->baths_full }}
+                            <label>Full Bathrooms:</label>{{ $views->listing->baths_full }}
                          </div>
                       </div>
                    </div>
