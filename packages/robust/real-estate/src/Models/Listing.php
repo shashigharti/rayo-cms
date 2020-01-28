@@ -62,48 +62,6 @@ class Listing extends BaseModel
         'longitude'
     ];
 
-    /**
-     * Add search filters
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
-     */
-//    public function scopeSearch($builder)
-//    {
-//        $query_params = request()->all();
-//
-//        if(count($query_params) <= 0){
-//            return $builder;
-//        }
-//
-//        $new_properties = [];
-//        $empty_values = ['', null];
-//
-//        // Remove empty and null values
-//        foreach($query_params as $property => $values){
-//            if(is_array($values) && count($values) >= 0 ){
-//                $new_properties[$property] = $values;
-//            }
-//            elseif(!in_array($values, $empty_values)){
-//                $new_properties[$property] = $values;
-//            }
-//        }
-//
-//        // Build where condition
-//        foreach($new_properties as $property => $values){
-//            if(is_array($values)){
-//                foreach($values as $value){
-//                    $builder = $builder->orWhere(function ($query) use ($property, $value){
-//                        $query->where('type', 'LIKE', $property)
-//                        ->where('value','LIKE',"%$value%");
-//                    });
-//                }
-//            }else{
-//                $builder = $builder->where('type', 'LIKE', $property);
-//            }
-//        }
-//
-//        return $builder;
-//    }
 
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
