@@ -55,7 +55,7 @@
             <div class="col s3 sort-container__root">
                 <legend>First Block</legend>
                 <ul class="collection sort-container__list" data-update-item="first_block_order">
-                    @foreach(sort_array_by_array($settings['first_block'], explode(',', $settings['first_block_order'] ?? '')) as $key => $first_block_item)
+                    @foreach(sort_array_by_array($settings['first_block'], $settings['first_block_order'] ? explode(',', $settings['first_block_order']) : []) as $key => $first_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $first_block_item }}"
                             data-order="{{ $key }}"
@@ -69,7 +69,7 @@
             <div class="col s3 sort-container__root">
                 <legend>Second Block</legend>
                 <ul class="collection sort-container__list" data-update-item="second_block_order">
-                    @foreach(sort_array_by_array($settings['second_block'], explode(',', $settings['second_block_order'] ?? '')) as $key => $second_block_item)
+                    @foreach(sort_array_by_array($settings['second_block'], $settings['second_block_order'] ? explode(',', $settings['second_block_order']) : []) as $key => $second_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $second_block_item }}"
                             data-order="{{ $key }}"
@@ -97,7 +97,7 @@
             <div class="col s3 sort-container__root">
                 <legend>Fourth Block</legend>
                 <ul class="collection sort-container__list" data-update-item="fourth_block_order">
-                    @foreach(sort_array_by_array($settings['fourth_block'], explode(',', $settings['fourth_block_order'] ?? '')) as $key => $fourth_block_item)
+                    @foreach(sort_array_by_array($settings['fourth_block'], $settings['fourth_block_order'] ? explode(',', $settings['fourth_block_order']) : []) as $key => $fourth_block_item)
                         <li class="sort-container__item collection-item"
                             data-id="{{ $fourth_block_item }}"
                             data-order="{{ $key }}"
