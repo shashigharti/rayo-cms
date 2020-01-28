@@ -23,7 +23,7 @@
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
-                         <img src="{{asset('assets/website/images/camera.png')}}">
+                         <img src="{{$views->listing->images()->first()}}">
                       </div>
                       <div class="text col s10">
                          <div class="col s12">
