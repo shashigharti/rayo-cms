@@ -52,7 +52,10 @@
         </div>
         <div class="row">
             <div class="col s12">
-                <div id="market-survey__listings--details-block" class="market-survey__listings--details-block">
+                <div class="hide progress ajax__loading">
+                    <div class="indeterminate"></div>
+                </div>
+                <div id="market-survey__listings--details-block" class="market-survey__listings--details-block" data-loading-elem=".ajax__loading">
 
                 </div>
             </div>

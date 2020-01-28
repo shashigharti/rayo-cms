@@ -91,7 +91,7 @@
                 <div class="col s6">
                     <div class="market-survey__listings--details-card">
                         <a href="${this._url}">
-                            <img class="${this._image}">
+                            <img src="${this._image}">
                             <div class="card-overlay">
                                 <input name="property" type="checkbox" value=${this._slug}>
                                 <div class="card--details">
@@ -131,22 +131,22 @@
                         <tr>
                             <th>Properties</th>
                             ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
-                                }).join(" ")
-                            }
+                return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
+            }).join(" ")
+            }
                         </tr>
                     </thead>
                     <tbody>
                         ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
-                            return `
+                return `
                                 <tr>
                                     <td>${comparePropertiesRows[attrIndex].display}</td>
                                     ${Object.keys(selectedProperties).map(function (propertyIndex) {
-                                        return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
-                                        }).join(" ")
-                                    }
+                    return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
+                }).join(" ")
+                }
                                 </tr>`;
-                        }).join(" ")}
+            }).join(" ")}
                     </tbody>
             </table>
             `;
@@ -157,7 +157,8 @@
     }
 
     function loadProperties(search_by = 'search') {
-        const listingContainer = document.getElementById('market-survey__listings');
+        const listingContainer = document.getElementById('market-survey__listings'),
+            loadingElem = document.getElementById('market-survey__listings--details-block').getAttribute('data-loading-elem');
         let url = listingContainer.getAttribute("data-url"),
             property_url = listingContainer.getAttribute("data-property-url"),
             price_min, price_max, sold_status, lat, lng, address;
@@ -179,6 +180,9 @@
         }
 
 
+        // Display Loading
+        $(loadingElem).toggleClass('hide');
+
         // Get data from the server and load properties array
         $.ajax({
             method: "GET",
@@ -186,18 +190,27 @@
         }).done(function (response) {
             response.forEach((property) => {
                 if (property.latitude !== null || property.longitude !== null) {
+                    let imageUrl = 'https://via.placeholder.com/150';
+                    if(property.images.length > 0){
+                        imageUrl = property.images[0].url;
+                    }
                     properties.push(new Property(
                         property.id,
                         property.name,
                         property.slug,
                         new Location(property.latitude, property.longitude),
-                        'website/images/banner.jpg',
+                        imageUrl,
                         property_url.replace('slug', property.slug),
                         property.system_price,
                         property.system_price
                     ));
                 }
             });
+            // Hide Loading
+            $(loadingElem).toggleClass('hide');
+
+
+            // Render Properties
             renderProperties();
             $(listingContainer).trigger('loaded');
         });
@@ -241,11 +254,11 @@
             renderCompareTable(selectedProperties);
         });
 
-        $(document).on("map-loaded", function(e){
+        $(document).on("map-loaded", function (e) {
             let elem = $('[name=address]');
         });
 
-        $(document).on("auto-complete-loaded", function(e, elem){
+        $(document).on("auto-complete-loaded", function (e, elem) {
             autoCompleteElem = elem;
             google.maps.event.addListener(autoCompleteElem, 'place_changed', function () {
                 loadProperties('address');
