@@ -1,6 +1,6 @@
 @set('settings', settings('real-estate', 'market_report'))
 @if(isset($location_name_slug))
-    @set('ranges',  generate_price_ranges($marketreport_helper->getSubdivisionsMinPrice($page_type, $location_name_slug), $settings['price_max'], $settings['increment']))
+    @set('ranges',  generate_price_ranges($marketreport_helper->getSubdivisionsMinPrice($page_type, $location_name_slug), $settings['price_max'] ?? '44500000', $settings['increment'] ?? '100000'))
 @endif
 <div class="row">
     @if($page_content == 'insight')
@@ -26,13 +26,14 @@
     @endif
     @if($page_content == 'insight')
         <div id="market__search--lists"
-             data-page-type="{{$page_type}}"
+             data-page-type="{{ $sub_location_type ?? $page_type }}"
+             data-insight-url="{{ url('market/reports/in') }}"
              class="market__search--lists market--right__search col m10 s12">
-
         </div>
     @elseif(($page_content == 'market-report') )
-        <div id="market__search--lists" data-page-type="{{$page_type}}"
-             data-insight-url="{{url('market/reports/in')}}"
+        <div id="market__search--lists"
+             data-page-type="{{ $sub_location_type ?? $page_type }}"
+             data-insight-url="{{ url('market/reports/in') }}"
              class="market__search--lists market--right__search col m10 s12"
         >
             @foreach($records as $report)
@@ -41,12 +42,12 @@
                         <div class="card-content">
                             <p data-id="{{ $report->location->slug }}"
                                data-type="Title"
-                               data-value="{{$report->location->name}}"
-                               data-url="{{route('website.realestate.market.reports.in',
+                               data-value="{{ $report->location->name }}"
+                               data-url="{{ route('website.realestate.market.reports.in',
                                 [
-                                    $sub_location_type == '' ? $page_type : $sub_location_type,
+                                    $page_type,
                                     $report->location->slug
-                                ])}}"
+                                ]) }}"
                                data-class=""
                             >
                                 <input type="checkbox" value="{{$report->location->name}}">

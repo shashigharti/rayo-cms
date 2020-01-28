@@ -13,8 +13,8 @@ class AdvanceSearchHelper
 {
 
     /**
-     * AttributeRepository constructor.
-     * @param AttributeRepository $listing
+     * AdvanceSearchHelper constructor.
+     * @param AttributeRepository $attribute
      */
     public function __construct(AttributeRepository $attribute)
     {
@@ -24,11 +24,12 @@ class AdvanceSearchHelper
     /**
      * @return string
      */
-    public function getSearchURL(){
+    public function getSearchURL()
+    {
         //for route with params
         $params = request()->route()->parameters();
-        $route_name  = request()->route()->getName();
-        return $route_name === 'website.home'?route('website.realestate.homes-for-sale'):route($route_name,$params);
+        $route_name = request()->route()->getName();
+        return $route_name === 'website.home' ? route('website.realestate.homes-for-sale') : route($route_name, $params);
     }
 
     /**
@@ -51,19 +52,21 @@ class AdvanceSearchHelper
         $types = config('real-estate.frw.settings.advance-search')['property_types'];
         $types = array_combine($types, $types);
         $merged_types = array_unique(array_merge($values, $types));
-        return  $merged_types;
+        return $merged_types;
     }
 
     /**
      * @return array
      */
-    public function getAdvanceSearchFilters(){
+    public function getAdvanceSearchFilters()
+    {
         $filters = config('rws.advance-search');
         $processed_filters = [];
-        foreach($filters as $filter_attribute => $filter){
+        foreach ($filters as $filter_attribute => $filter) {
             $processed_filters[$filter_attribute] = $filter['display_name'];
         }
 
-        return  $processed_filters;
+        return $processed_filters;
     }
+
 }

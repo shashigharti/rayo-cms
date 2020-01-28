@@ -180,9 +180,7 @@ class CreateMarketReport extends Command
             ->get()
             ->keyBy($location);
 
-
         foreach ($collection as $model) {
-            $this->info("Adding Report for ${location} : {$model->name}");
             $totalListings = isset($listingArr[$model->id]) ? $listingArr[$model->id]->count : null;
             $totalListingsActive = isset($listingArr[$model->id]) ? $listingArr[$model->id]->active_count : null;
             $totalListingsSold = isset($listingArr[$model->id]) ? $listingArr[$model->id]->sold_count : null;
@@ -202,6 +200,7 @@ class CreateMarketReport extends Command
             $median_price_sold_this_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y'));
             $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
 
+            $this->info("Adding Report for ${location} : {$model->name}");
             \DB::table('real_estate_market_reports')->insert([
                 'location_id' => $model->id,
                 'slug' => $model->slug,
@@ -227,33 +226,6 @@ class CreateMarketReport extends Command
                 'created_at' => date('Y-m-d H:i:s'),
                 'updated_at' => date('Y-m-d H:i:s'),
             ]);
-            \Log::info([
-                'location_id' => $model->id,
-                'slug' => $model->slug,
-                'name' => $model->name,
-                'location_type' => $model_type,
-                'total_listings' => $totalListings,
-                'total_listings_active' => $totalListingsActive,
-                'total_listings_sold' => $totalListingsSold,
-                'total_listings_sold_this_year' => $totalSoldThisYear,
-                'total_listings_sold_past_year' => $totalSoldLastYear,
-                'average_price_active' => $averagePriceActive,
-                'average_price_sold' => $averagePriceSold,
-                'average_price_sold_past_year' => $averagePriceSoldLastYear,
-                'average_price_sold_this_year' => $averagePriceSoldThisYear,
-                'average_dos' => $averageDaysOnMLS,
-                'average_dos_past_year' => $averageDaysOnMLSLastYear,
-                'average_dos_this_year' => $averageDaysOnMLSThisYear,
-                'median_dos' => $median_dos_sold,
-                'median_price_active' => $median_price_active,
-                'median_price_sold' => $median_price_sold,
-                'median_price_sold_past_year' => $median_price_sold_past_year,
-                'median_price_sold_this_year' => $median_price_sold_this_year,
-                'created_at' => date('Y-m-d H:i:s'),
-                'updated_at' => date('Y-m-d H:i:s'),
-            ]);
-
-
         }
 
     }
@@ -303,6 +275,9 @@ class CreateMarketReport extends Command
                 $median_price_sold_past_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y') - 1);
                 $median_price_sold_this_year = $this->getMedian($location, $model->id, 'system_price', $sold, date('Y'));
                 $median_dos_sold = $this->getMedian($location, $model->id, 'days_on_mls', $sold);
+                $location_model = Location::where('locationable_id', $model->id)
+                    ->where('locationable_type', $model_type)
+                    ->first();
 
                 \DB::table('real_estate_market_reports')->insert([
                     'location_id' => $model->id,
@@ -329,32 +304,7 @@ class CreateMarketReport extends Command
                     'created_at' => date('Y-m-d H:i:s'),
                     'updated_at' => date('Y-m-d H:i:s'),
                 ]);
-                \Log::info([
-                    'location_id' => $model->id,
-                    'slug' => $model->slug,
-                    'name' => $model->name,
-                    'location_type' => $model_type,
-                    'total_listings' => $totalListings,
-                    'total_listings_active' => $totalListingsActive,
-                    'total_listings_sold' => $totalListingsSold,
-                    'total_listings_sold_this_year' => $totalSoldThisYear,
-                    'total_listings_sold_past_year' => $totalSoldLastYear,
-                    'average_price_active' => $averagePriceActive,
-                    'average_price_sold' => $averagePriceSold,
-                    'average_price_sold_past_year' => $averagePriceSoldLastYear,
-                    'average_price_sold_this_year' => $averagePriceSoldThisYear,
-                    'average_dos' => $averageDaysOnMLS,
-                    'average_dos_past_year' => $averageDaysOnMLSLastYear,
-                    'average_dos_this_year' => $averageDaysOnMLSThisYear,
-                    'median_dos' => $median_dos_sold,
-                    'median_price_active' => $median_price_active,
-                    'median_price_sold' => $median_price_sold,
-                    'median_price_sold_past_year' => $median_price_sold_past_year,
-                    'median_price_sold_this_year' => $median_price_sold_this_year,
-                    'created_at' => date('Y-m-d H:i:s'),
-                    'updated_at' => date('Y-m-d H:i:s'),
-                ]);
-                $this->info("Adding Report for Subdivision {$model->name}");
+                $this->info("Adding Report for Subdivision {$location_model->name}");
             }
         }
     }

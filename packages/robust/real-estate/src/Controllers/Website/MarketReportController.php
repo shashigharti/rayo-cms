@@ -37,7 +37,7 @@ class MarketReportController extends Controller
     public function index(Request $request, $location_type)
     {
         $data = $request->all();
-        $records = $this->model->getReports($location_type, $data);
+        $records = $this->model->getReports($location_type, $data)->get();
 
         $response_data = [
             'records' => $records,
@@ -64,6 +64,7 @@ class MarketReportController extends Controller
     public function getInsights(Request $request, $location_type, $slug)
     {
         $response = $this->model->getInsights($location_type, $slug);
+
         return view('core::website.market-report.insight', [
             'data' => $response,
             'isInsight' => true,

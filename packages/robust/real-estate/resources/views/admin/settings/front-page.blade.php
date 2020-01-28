@@ -45,7 +45,7 @@
         <div class="col s12 m6 sort-container__root">
             <fieldset class="mt-2">
                 <legend>Sort Banners</legend>
-                <ul class="collection sort-container__list">
+                <ul class="collection sort-container__list" data-update-item="single_col_banner_order">
                     @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
                     @if(isset($settings['single_col_banner_order']) && ($settings['single_col_banner_order'] !== ''))
                         @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $settings['single_col_banner_order'] ?? "")))
@@ -56,8 +56,8 @@
                             <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $banner->title ?? ''}}
                         </li>
                     @endforeach
+                    {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '') }}
                 </ul>
-                {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '')}}
             </fieldset>
         </div>
     </div>

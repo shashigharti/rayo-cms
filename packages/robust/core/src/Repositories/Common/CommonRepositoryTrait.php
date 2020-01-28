@@ -17,7 +17,7 @@ trait CommonRepositoryTrait
         return $this->model->paginate($records);
     }
 
-     /**
+    /**
      * @param $columns
      * @return mixed
      */
@@ -45,7 +45,7 @@ trait CommonRepositoryTrait
         return $this->model;
     }
 
-     /**
+    /**
      * @param $select_string
      * @return $this
      */
@@ -99,9 +99,20 @@ trait CommonRepositoryTrait
      * @param string $method
      * @return $this
      */
-    public function order($field, $method ='desc')
+    public function order($field, $method = 'desc')
     {
-        $this->model = $this->model->orderBy($field,$method);
+        $this->model = $this->model->orderBy($field, $method);
+        return $this;
+    }
+
+
+    /**
+     * @param $field
+     * @return $this
+     */
+    public function sortBy($field)
+    {
+        $this->model = $this->model->sortBy($field);
         return $this;
     }
 

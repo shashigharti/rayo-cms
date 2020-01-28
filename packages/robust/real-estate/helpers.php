@@ -3,14 +3,8 @@
 if (!function_exists('price_format')) {
 
     /**
-     * @param integer $n
-     * @param integer $precision
-     * @return string
-     */
-
-    // Converts a number into a short version, eg: 1000 -> 1k
-    // Reference: https://gist.github.com/RadGH/84edff0cc81e6326029c
-    /**
+     * Converts a number into a short version, eg: 1000 -> 1k
+     * Reference: https://gist.github.com/RadGH/84edff0cc81e6326029c
      * @param int $n
      * @param int $precision
      * @return string
@@ -58,16 +52,16 @@ if (!function_exists('price_range_format')) {
     function price_range_format($price_range)
     {
         $prices = explode('-', $price_range);
-        if(count($prices) < 1){
-            $prices = explode('>',$prices[0]);
+        if (count($prices) < 1) {
+            $prices = explode('>', $prices[0]);
         }
         $count = count_chars($prices[0]);
         if ($count > 6 && is_numeric($prices[1])) {
             $prices[0] = number_format($prices[0]);
             $prices[1] = number_format($prices[1]);
             return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
-        } elseif($prices[1] == '') {
-            if(isset($prices[0]) && is_numeric($prices[0])){
+        } elseif ($prices[1] == '') {
+            if (isset($prices[0]) && is_numeric($prices[0])) {
                 return "Above " . price_format($prices[0]);
             }
         }
@@ -85,15 +79,15 @@ if (!function_exists('market_report_price_range_format')) {
     function market_report_price_range_format($price_range)
     {
         $prices = explode('-', $price_range);
-        if(count($prices) <= 1){
-            $prices = explode('>',$prices[0]);
+        if (count($prices) <= 1) {
+            $prices = explode('>', $prices[0]);
         }
         $count = count_chars($prices[0]);
-        if($prices[1] == '') {
-            if(isset($prices[0]) && is_numeric($prices[0])){
+        if ($prices[1] == '') {
+            if (isset($prices[0]) && is_numeric($prices[0])) {
                 return "Above " . price_format($prices[0]);
             }
-        }elseif ($count > 6 && is_numeric($prices[1])) {
+        } elseif ($count > 6 && is_numeric($prices[1])) {
             $prices[0] = price_format($prices[0]);
             $prices[1] = price_format($prices[1]);
             return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
@@ -138,165 +132,164 @@ if (!function_exists('geocode')) {
         return false;
     }
 
+}
+if (!function_exists('email_template')) {
+    /**
+     * @param string $name
+     * @return string
+     */
+    function email_template($name)
+    {
+        return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();
+    }
+}
 
-    if (!function_exists('email_template')) {
-        /**
-         * @param string $name
-         * @return string
-         */
-        function email_template($name)
-        {
-            return \Robust\RealEstate\Models\EmailTemplate::where('name', $name)->first();
+if (!function_exists('replace_variables')) {
+    /**
+     * @param string $content
+     * @param eloquent $member
+     * @param array $data
+     * @return string
+     */
+    function replace_variables($content, $member, $data)
+    {
+        $type = 'agent';
+        if (get_class($member) == 'Robust\RealEstate\Models\Lead') {
+            $type = 'lead';
         }
+
+        $replacements = [
+            'lead' => [
+                '*|LEAD_FIRSTNAME|*' => $member->first_name,
+                '*|LEAD_LASTNAME|*' => $member->last_name,
+                '*|LEAD_FULLNAME|*' => $member->first_name . " " . $member->last_name,
+                '*|LEAD_MAIL|*' => $member->user->email,
+                '*|LEAD_PHONE|*' => $member->phone_number,
+                '*|SITE_NAME|*' => config('rws.client.email.name'),
+                '*|VERIFICATION_LINK|*' => $data['verification_url'],
+                '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
+            ],
+            'agent' => [
+                '*|AGENT_FIRSTNAME|*' => $member->first_name,
+                '*|AGENT_LASTNAME|*' => $member->last_name,
+                '*|AGENT_FULLNAME|*' => $member->first_name . " " . $member->last_name,
+                '*|AGENT_MAIL|*' => $member->user->email,
+                '*|AGENT_PHONE|*' => $member->phone,
+
+                '*|LISTING_STREET|*' => '',
+                '*|LISTING_NUMBER|*' => '',
+                '*|LISTING_SYSTEM_PRICE|*' => '',
+                '*|LISTING_NAME|*' => '',
+                '*|URL|*' => '',
+                '*|SUBJECT_THIS_EMAIL|*' => $data['subject'],
+                '*|LOGO|*' => $data['logo'],
+
+                '*|FIRST_VIEW|*' => '',
+                '*|VIEW_COUNT|*' => '',
+                '*|LISTING_VIEWER|*' => '',
+                '*|CONTENT|*' => '',
+                '*|SELLING_AGENT|*' => '',
+                '*|LOCATION_TYPE|*' => '',
+                '*|COUNT_LOCATION|*' => ''
+            ]
+        ];
+
+        $all_replacements = $replacements[$type];//array_merge($replacements[$type], $common);
+        foreach ($all_replacements as $search => $replace) {
+            $content = str_replace($search, $replace, $content);
+        }
+
+        $content = replace_global_variables($content);
+        return $content;
+    }
+}
+
+if (!function_exists('replace_global_variables')) {
+
+    /**
+     * @param string $content
+     * @return string
+     */
+    function replace_global_variables($content)
+    {
+        $replacements = [
+            '*|WEBSITE|*' => '<a href="' . \URL::to('/') . '">' . preg_replace('#^https?://#', '', \URL::to('/')) . '</a>',
+            '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
+            '*|FOOTER_TEXT|*' => '',
+            '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
+            '*|LOCATION|*' => settings('real-esate', 'client_name'),
+            '*|CLIENT_NAME|*' => settings('real-esate', 'client_name'),
+            '*|STATE|*' => settings('real-esate', 'state')
+        ];
+
+        foreach ($replacements as $search => $replace) {
+            $content = str_replace($search, $replace, $content);
+        }
+
+        return $content;
     }
 
-    if (!function_exists('replace_variables')) {
-        /**
-         * @param string $content
-         * @param eloquent $member
-         * @param array $data
-         * @return string
-         */
-        function replace_variables($content, $member, $data)
-        {
-            $type = 'agent';
-            if (get_class($member) == 'Robust\RealEstate\Models\Lead') {
-                $type = 'lead';
-            }
+}
 
-            $replacements = [
-                'lead' => [
-                    '*|LEAD_FIRSTNAME|*' => $member->first_name,
-                    '*|LEAD_LASTNAME|*' => $member->last_name,
-                    '*|LEAD_FULLNAME|*' => $member->first_name . " " . $member->last_name,
-                    '*|LEAD_MAIL|*' => $member->user->email,
-                    '*|LEAD_PHONE|*' => $member->phone_number,
-                    '*|SITE_NAME|*' => config('rws.client.email.name'),
-                    '*|VERIFICATION_LINK|*' => $data['verification_url'],
-                    '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
-                ],
-                'agent' => [
-                    '*|AGENT_FIRSTNAME|*' => $member->first_name,
-                    '*|AGENT_LASTNAME|*' => $member->last_name,
-                    '*|AGENT_FULLNAME|*' => $member->first_name . " " . $member->last_name,
-                    '*|AGENT_MAIL|*' => $member->user->email,
-                    '*|AGENT_PHONE|*' => $member->phone,
+if (!function_exists('replace_seo_variables')) {
 
-                    '*|LISTING_STREET|*' => '',
-                    '*|LISTING_NUMBER|*' => '',
-                    '*|LISTING_SYSTEM_PRICE|*' => '',
-                    '*|LISTING_NAME|*' => '',
-                    '*|URL|*' => '',
-                    '*|SUBJECT_THIS_EMAIL|*' => $data['subject'],
-                    '*|LOGO|*' => $data['logo'],
+    /**
+     * @param string $content
+     * @param array $segments
+     * @return string
+     */
+    function replace_seo_variables($content, $segments)
+    {
+        $replacements = [
+            '*|PRICE_RANGE|*' => $segments[5] ?? '',
+            '*|NAME|*' => isset($segments[3]) ? ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
+        ];
 
-                    '*|FIRST_VIEW|*' => '',
-                    '*|VIEW_COUNT|*' => '',
-                    '*|LISTING_VIEWER|*' => '',
-                    '*|CONTENT|*' => '',
-                    '*|SELLING_AGENT|*' => '',
-                    '*|LOCATION_TYPE|*' => '',
-                    '*|COUNT_LOCATION|*' => ''
-                ]
-            ];
-
-            $all_replacements = $replacements[$type];//array_merge($replacements[$type], $common);
-            foreach ($all_replacements as $search => $replace) {
-                $content = str_replace($search, $replace, $content);
-            }
-
-            $content = replace_global_variables($content);
-            return $content;
+        foreach ($replacements as $search => $replace) {
+            $content = str_replace($search, $replace, $content);
         }
+
+        $content = replace_global_variables($content);
+
+        return $content;
     }
 
-    if (!function_exists('replace_global_variables')) {
+}
 
-        /**
-         * @param string $content
-         * @return string
-         */
-        function replace_global_variables($content)
-        {
-            $replacements = [
-                '*|WEBSITE|*' => '<a href="' . \URL::to('/') . '">' . preg_replace('#^https?://#', '', \URL::to('/')) . '</a>',
-                '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
-                '*|FOOTER_TEXT|*' => '',
-                '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
-                '*|LOCATION|*' => settings('real-esate', 'client_name'),
-                '*|CLIENT_NAME|*' => settings('real-esate', 'client_name'),
-                '*|STATE|*' => settings('real-esate', 'state')
-            ];
+if (!function_exists('generate_price_ranges')) {
 
-            foreach ($replacements as $search => $replace) {
-                $content = str_replace($search, $replace, $content);
+    /**
+     * @param null $min_price
+     * @param null $max_price
+     * @param null $increment
+     * @return array
+     */
+    function generate_price_ranges($min_price = null, $max_price = null, $increment = null)
+    {
+        $ranges = [];
+        $config = config('rws.application.price');
+        $increment = $increment ?? $config['increment'];
+        $i = $min_price ?? $config['min'];
+        $max = $max_price ?? $config['max'];
+
+        $priceArr = [];
+        for (; $i <= $max; $i = $i + $increment) {
+            $priceArr[] = $i;
+        }
+        if (array_search($max, $priceArr) < 0) {
+            $priceArr[] = $max;
+        }
+        $max_array_count = count($priceArr);
+        for ($j = 0; $j <= $max_array_count; $j += 2) {
+            if ($j + 1 <= $max_array_count) {
+                $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
             }
 
-            return $content;
+            if (!isset($priceArr[$j]))
+                $ranges[] = $priceArr[$max_array_count - 1] . ">";
         }
 
-    }
-
-    if (!function_exists('replace_seo_variables')) {
-
-        /**
-         * @param string $content
-         * @param array $segments
-         * @return string
-         */
-        function replace_seo_variables($content, $segments)
-        {
-            $replacements = [
-                '*|PRICE_RANGE|*' => $segments[5] ?? '',
-                '*|NAME|*' => isset($segments[3]) ? ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
-            ];
-
-            foreach ($replacements as $search => $replace) {
-                $content = str_replace($search, $replace, $content);
-            }
-
-            $content = replace_global_variables($content);
-
-            return $content;
-        }
-
-    }
-
-    if (!function_exists('generate_price_ranges')) {
-
-        /**
-         * @param null $min_price
-         * @param null $max_price
-         * @param null $increment
-         * @return array
-         */
-        function generate_price_ranges($min_price = null, $max_price = null, $increment = null)
-        {
-            $ranges = [];
-            $config = config('rws.application.price');
-            $increment = $increment ?? $config['increment'];
-            $i = $min_price ?? $config['min'];
-            $max = $max_price ?? $config['max'];
-
-            $priceArr = [];
-            for (; $i <= $max; $i = $i + $increment) {
-                $priceArr[] = $i;
-            }
-            if (array_search($max, $priceArr) < 0) {
-                $priceArr[] = $max;
-            }
-            $max_array_count = count($priceArr);
-            for ($j = 0; $j <= $max_array_count; $j += 2) {
-                if ($j + 1 <= $max_array_count) {
-                    $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
-                }
-
-                if (!isset($priceArr[$j]))
-                    $ranges[] = $priceArr[$max_array_count - 1] . ">";
-            }
-
-            return $ranges;
-        }
+        return $ranges;
     }
 }
 
@@ -385,5 +378,34 @@ if (!function_exists('get_ids_by_location_type')) {
         $location_id_maps = config('real-estate.frw.locations_id_maps');
         return $location_id_maps[$location_type] ?? null;
     }
+}
+
+
+if (!function_exists('sort_array_by_array')) {
+
+    /**
+     * @param $arr_to_sort
+     * @param $sort_by_arr
+     * @return mixed
+     */
+    function sort_array_by_array($arr_to_sort, $sort_by_arr)
+    {
+        $arr_new = $arr_to_sort;
+
+        if (count($sort_by_arr) > 0) {
+            $arr_new = [];
+            foreach ($arr_to_sort as $index => $elem) {
+                if (in_array($elem, $sort_by_arr)) {
+                    $id = array_search($elem, $sort_by_arr);
+                    $arr_new[$id] = $elem;
+                    unset($arr_to_sort[$index]);
+                }
+            }
+        }
+        $arr_new = array_merge($arr_new, $arr_to_sort);
+        ksort($arr_new);
+        return $arr_new;
+    }
+
 }
 

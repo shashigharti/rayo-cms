@@ -21,10 +21,10 @@
           <div class="col s12">
              <div class="row">
                 <div class="col s12 sub--title">
-                   <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $model->favouriteListings->count() }} item(s)</p>
+                   <p><strong>{{ $model->first_name }}{{ $model->last_name }}</strong> viewed {{ $model->favourites->count() }} item(s)</p>
              </div>                      
           </div>
-          @foreach($model->favouriteListings as $favouriteListing)
+          @foreach($model->favourites as $favourite)
                 <div class="row">
                    <div class="single-search-item col s12">
                       <div class="img col s2">
@@ -32,19 +32,19 @@
                       </div>
                       <div class="text col s10">
                          <div class="col s12">
-                            <h5>{{ $favouriteListing->name }}</h5>
+                            <h5>{{ $favourite->name }}</h5>
                          </div>
                          <div class="col s6">
-                            <label>Address:</label> {{ $favouriteListing->address_street }} {{ $favouriteListing->state }}
+                            <label>Address:</label> {{ $favourite->address_street }} {{ $favourite->state }}
                          </div>
                          <div class="col s6">
                             <label>Seen:</label>5 days ago
                          </div>
                          <div class="col s6">
-                            <label>Bedrooms:</label>{{ $favouriteListing->bedrooms }}
+                            <label>Bedrooms:</label>{{ $favourite->bedrooms }}
                          </div>
                          <div class="col s6">
-                            <label>Full Bathrooms:</label>{{ $favouriteListing->baths_full }}
+                            <label>Full Bathrooms:</label>{{ $favourite->baths_full }}
                          </div>
                       </div>
                    </div>
