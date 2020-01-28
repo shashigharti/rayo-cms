@@ -222,7 +222,7 @@
                                                                data-mode="Add"
                                                                data-view="followup"
                                                                data-value=""
-                                                               class="lead-modal_trigger">{{$lead->status->value ?? 'Add'}}</a>
+                                                               class="lead-modal_trigger">Add</a>
                                                         </div>
                                                     </div>
                                                 </td>
