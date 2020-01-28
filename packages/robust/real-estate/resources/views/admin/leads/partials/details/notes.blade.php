@@ -25,7 +25,7 @@
                 <div class="row">
                     @foreach($model->notes as $note)
                         <div class="col s12 single--note mb-6">
-                            <h5>{{ $note->title }} {{ $note->created_at->format('(d/m/Y)') }}</h5>
+                            <h5>{{ $note->title }}</h5>
                             <p>{{ $note->note }}</p>
                             
                             <div class="right-align">
