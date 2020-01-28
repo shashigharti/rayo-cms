@@ -49,6 +49,8 @@ class MarketSurveyController extends Controller
         ];
         $additional_fields = ["real_estate_listings.latitude", "real_estate_listings.longitude"];
         $records = $this->model->getListings($data, $additional_fields)
+            ->with('images')
+            ->with('property')
             ->wherePriceBetween($price_range)
             ->whereDateBetween([$prev_date, date("Y-m-d H:i:s")])
             ->get();
