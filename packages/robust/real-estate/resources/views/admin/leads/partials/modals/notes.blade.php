@@ -14,7 +14,7 @@
             </div>
             <div class="modal-body">
                 {{ Form::hidden('lead_id',$lead['id']) }}
-                {{ Form::hidden('agent_id',$value) }}
+                {{ Form::hidden('agent_id',$lead['agent_id']) }}
                 <div class="row">
                     <div class="input-field col s12">
                         {{ Form::text('title',$notes? $notes->title : null,['class'=>'form-control','placeholder'=>'title']) }}
