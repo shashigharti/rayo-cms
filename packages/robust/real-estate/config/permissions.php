@@ -51,6 +51,11 @@ return [
         'real-estate.groups.edit' => "Group Edit",
         'real-estate.groups.delete' => "Group Delete",
 
+        'real-estate.status.manage' => "Manage Status",
+        'real-estate.status.add' => "Add Status",
+        'real-estate.status.edit' => "Status Edit",
+        'real-estate.status.delete' => "Status",
+
         'real-estate.attributes.manage' => "Attributes",
         'real-estate.attributes.add' => "Attribute Group",
         'real-estate.attributes.edit' => "Attribute Edit",

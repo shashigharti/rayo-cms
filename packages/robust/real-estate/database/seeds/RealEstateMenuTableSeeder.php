@@ -91,6 +91,18 @@ class RealEstateMenuTableSeeder extends Seeder
                 'icon' => 'group_work'
             ]
         ]);
+        DB::table('menus')->insert([
+            [
+                'display_name' => 'Status',
+                'name' => 'real-estate.status',
+                'url' => route('admin.status.index'),
+                'permission' => 'real-estate.status.manage',
+                'package_name' => 'real-estate',
+                'parent_id' => $id,
+                'type' => 'child',
+                'icon' => 'group_work'
+            ]
+        ]);
         // It will be deleted after some time; Its commented just to see for some time if its not being used
         /*DB::table('menus')->insert([
             [
