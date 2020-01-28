@@ -18,10 +18,12 @@
                     <input type="text" name="color" value="#00AABB" class="colorpicker form-control" />
                 </div>
             </div>
-            {{ Form::hidden('status',0) }}
+            {{ Form::select('status',['1' => 'Active','0' => 'Inactive'],null,[
+                    'class' => 'required'
+             ])}}
             <div class="row mt-1">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}           
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}
                 </div>
             </div>
         </div>
