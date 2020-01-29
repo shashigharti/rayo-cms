@@ -77,6 +77,7 @@
         @if(count($prices) <= 0)
             @set('prices', json_decode(json_encode(config('real-estate.frw.default_pricing_ranges'))))
         @endif
+        @set('price_count', count($prices))
 
         @foreach($prices as $key => $price)
             <div class="row dynamic-elem">
@@ -89,10 +90,10 @@
                     {{ Form::text("properties[prices][$key][max]", $price->max ?? '')}}
                 </div>
                 {{ Form::hidden("properties[prices][$key][count]", $price->count ?? '' )}}
-                @if( $price->max == "" )
-                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
-                @else
+                @if( $key < ($price_count - 1) )
                     <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
+                @else
+                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 @endif
             </div>
         @endforeach
