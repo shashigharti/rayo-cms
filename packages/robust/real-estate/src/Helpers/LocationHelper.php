@@ -38,6 +38,12 @@ class LocationHelper
         return $locations;
     }
 
+    public function hideZips($data){
+        // hide zips by counties
+
+
+    }
+
     /**
      * @param $location
      * @return mixed

@@ -81,11 +81,9 @@
 
     $(document).ready(function ($) {
         let $elem = $(".multi-select");
-        console.log($elem.length);
         $elem.select2({
             tags: $elem.data('tags')
         });
-        console.log($elem.data('tags'));
         FRW.Select.init();
     });
 

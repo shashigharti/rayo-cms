@@ -80,7 +80,7 @@
         @set('price_count', count($prices))
 
         @foreach($prices as $key => $price)
-            <div class="row dynamic-elem">
+            <div class="row dynamic-elem" data-count="{{ $key }}">
                 <div class="input-field col s4">
                     {{ Form::label("properties[prices][$key][min]", 'Min') }}
                     {{ Form::text("properties[prices][$key][min]", $price->min ?? '')}}
@@ -93,6 +93,7 @@
                 @if( $key < ($price_count - 1) )
                     <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
                 @else
+                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
                     <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                 @endif
             </div>

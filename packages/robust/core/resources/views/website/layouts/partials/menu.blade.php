@@ -1,4 +1,4 @@
-@set('menus', settings('real-estate', 'menus') != ""? settings('real-estate', 'menus') : [])
+@set('menus', settings('real-estate', 'menus') != "" ? settings('real-estate', 'menus') : [])
 @inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
 
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -16,7 +16,7 @@
                             @foreach($menus as $menu)
                                 <li class="tab">
                                     <a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})
+                                        ({{ $locations[$menu] ? count($locations[$menu]): '0'}})
                                     </a>
                                 </li>
                             @endforeach
