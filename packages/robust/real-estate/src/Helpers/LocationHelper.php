@@ -60,8 +60,8 @@ class LocationHelper
                 $counties_ids = Location::select('real_estate_locations.id')
                     ->whereNotIn('slug', $counties_slugs)
                     ->pluck('id');
-                $zip_ids = Listing::select('real_estate_listings.zip_id')
-                    ->whereIn('county_id', $counties_ids)
+                $zip_ids = Listing::whereIn('county_id', $counties_ids)
+                    ->distinct('real_estate_listings.zip_id')
                     ->pluck('zip_id');
                 return Location::whereIn('id', $zip_ids)->get();
             }
