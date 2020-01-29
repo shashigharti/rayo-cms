@@ -18,7 +18,6 @@
             $(document.body).on('click', '.dynamic-elem__delete', function () {
                 let prev_elem = $(this).parent().parent().prev();
                 $(this).parent().parent().remove();
-                console.log(prev_elem);
                 prev_elem.find('.dynamic-elem__add').toggleClass('hide');
             });
         }
