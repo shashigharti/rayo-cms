@@ -55,7 +55,7 @@ class LocationHelper
 
         $settings = settings('front-page', 'zips_hide');
         if ($type == 'zips') {
-            if (key($settings) == 'counties') {
+            if (is_array($settings) && (key($settings) == 'counties')) {
                 $counties_slugs = collect($settings['counties'])->pluck('slug');
                 $counties_ids = Location::select('real_estate_locations.id')
                     ->whereNotIn('slug', $counties_slugs)
