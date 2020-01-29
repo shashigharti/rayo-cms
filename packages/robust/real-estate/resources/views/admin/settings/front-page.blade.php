@@ -1,4 +1,5 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
+@set('market_report_settings', config('real-estate.frw.market-report'))
 
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
@@ -52,12 +53,25 @@
                     @endif
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties',json_decode($banner->properties))
-                        <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">
+                        <li class="sort-container__item collection-item" data-id="{{ $banner->id }}"
+                            data-order="{{ $key }}">
                             <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $banner->title ?? ''}}
                         </li>
                     @endforeach
                     {{ Form::hidden('single_col_banner_order', $settings['single_col_banner_order'] ?? '') }}
                 </ul>
+            </fieldset>
+        </div>
+        <div class="col s12 m6">
+            <fieldset class="mt-2">
+                <legend>Market Survey Data Mapping</legend>
+                @foreach($market_report_settings['fields-mapping'] as $key => $field)
+                    {{ $key }}
+                    {{ Form::text("market_report_fields_mapping[$key]", $settings['market_report_fields_mapping'][$key] ?? $field, [
+                            'class' => 'form-control'
+                        ])
+                    }}
+                @endforeach
             </fieldset>
         </div>
     </div>
