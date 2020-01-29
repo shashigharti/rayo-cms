@@ -4,7 +4,8 @@
     FRW.DynamicElem = {
         init: function () {
             $(document.body).on('click', '.dynamic-elem__add', function () {
-                let container = $(this).parent().parent(), parent = container.parent(), newElem = container.clone();
+                let container = $(this).parent().parent(), parent = container.parent(),
+                    newElem = container.clone();
                 let elems = [];
                 container.find(':input').each(function (index, elem) {
                     let name = $(elem).attr('name'),
@@ -12,10 +13,13 @@
                     $(elem).attr('name', name.replace(`${count}`, count + 1));
                 });
                 newElem.appendTo(parent);
-                container.find('.dynamic-elem__btn').toggleClass('hide');
+                container.find('.dynamic-elem__add').toggleClass('hide');
             });
             $(document.body).on('click', '.dynamic-elem__delete', function () {
+                let prev_elem = $(this).parent().parent().prev();
                 $(this).parent().parent().remove();
+                console.log(prev_elem);
+                prev_elem.find('.dynamic-elem__add').toggleClass('hide');
             });
         }
     };

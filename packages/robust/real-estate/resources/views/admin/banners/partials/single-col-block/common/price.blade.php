@@ -54,8 +54,10 @@
             @else
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))
             @endif
+            @set('price_count', count($prices))
+
             @foreach($prices as $pkey => $price)
-                <div class="row dynamic-elem">
+                <div class="row dynamic-elem" data-count="{{ $key }}">
                     <div class="input-field col s4 inline__input-field">
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][min]", 'Min') }}
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][min]", $tabs[$tab]['prices'][$pkey]['min'] ?? $prices[$pkey]['min'] ?? '') }}
@@ -65,14 +67,11 @@
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
                     </div>
                     {{ Form::hidden("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
-                    @if( $prices[$pkey]['max'] == "" )
-                        <a href="#">
-                            <i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i>
-                        </a>
+                    @if( $pkey < ($price_count - 1))
+                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
                     @else
-                        <a href="#">
-                            <i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i>
-                        </a>
+                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
+                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
                     @endif
                 </div>
             @endforeach

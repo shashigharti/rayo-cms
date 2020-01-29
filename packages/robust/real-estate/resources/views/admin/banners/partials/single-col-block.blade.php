@@ -73,29 +73,34 @@
 <div class="row">
     <fieldset class="mt-1">
         <legend>Price Settings</legend>
-        @set('prices', $properties->prices ?? [])
-        @if(count($prices) <= 0)
-            @set('prices', json_decode(json_encode(config('real-estate.frw.default_pricing_ranges'))))
+        @if(!isset($properties->prices))
+            @set('prices', config('real-estate.frw.default_pricing_ranges'))
+        @else
+            @set('prices', json_decode(json_encode($properties->prices), true) ?? [])
+            @set('price_sort', ksort($prices))
         @endif
         @set('price_count', count($prices))
-
         @foreach($prices as $key => $price)
             <div class="row dynamic-elem" data-count="{{ $key }}">
                 <div class="input-field col s4">
                     {{ Form::label("properties[prices][$key][min]", 'Min') }}
-                    {{ Form::text("properties[prices][$key][min]", $price->min ?? '')}}
+                    {{ Form::text("properties[prices][$key][min]", $price['min'] ?? '') }}
                 </div>
                 <div class="input-field col s4">
                     {{ Form::label("properties[prices][$key][max]", 'Max') }}
-                    {{ Form::text("properties[prices][$key][max]", $price->max ?? '')}}
+                    {{ Form::text("properties[prices][$key][max]", $price['max'] ?? '') }}
                 </div>
-                {{ Form::hidden("properties[prices][$key][count]", $price->count ?? '' )}}
-                @if( $key < ($price_count - 1) )
-                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                @else
-                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                    <a href="#"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
-                @endif
+                <div class="input-field col s4">
+                    {{ Form::hidden("properties[prices][$key][count]", $price['count'] ?? '' ) }}
+                </div>
+                <a href="javascript:void(0)">
+                    <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $key > ($price_count - 1) ) hide @endif">
+                        delete
+                    </i>
+                </a>
+                <a href="javascript:void(0)">
+                    <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $key < ($price_count - 1) ) hide @endif"> add </i>
+                </a>
             </div>
         @endforeach
     </fieldset>

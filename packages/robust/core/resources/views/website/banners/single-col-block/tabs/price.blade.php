@@ -20,7 +20,5 @@
                 </li>
             @endif
         @endforeach
-    @else
-
     @endif
 </ul>
