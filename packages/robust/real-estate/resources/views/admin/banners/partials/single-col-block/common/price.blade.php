@@ -67,12 +67,15 @@
                         {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
                     </div>
                     {{ Form::hidden("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
-                    @if( $pkey < ($price_count - 1))
-                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                    @else
-                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__delete"> delete </i></a>
-                        <a href="javascript:void(0)"><i class="material-icons dynamic-elem__btn dynamic-elem__add"> add </i></a>
-                    @endif
+
+                    <a href="javascript:void(0)">
+                        <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $pkey > ($price_count - 1) ) hide @endif">
+                            delete
+                        </i>
+                    </a>
+                    <a href="javascript:void(0)">
+                        <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $pkey < ($price_count - 1) ) hide @endif"> add </i>
+                    </a>
                 </div>
             @endforeach
         </fieldset>
