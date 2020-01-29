@@ -44,7 +44,7 @@
     </div>
     <div class="row">
         <fieldset class="mt-2">
-            <legend>Hide zips of counties</legend>
+            <legend>Hide Zips (By Counties)</legend>
             @set('counties', $location_helper->getLocations(['type' => 'counties']))
             @foreach($counties['counties'] as $key => $county)
                 <div class="col s3">
