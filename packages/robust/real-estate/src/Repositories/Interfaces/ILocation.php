@@ -4,10 +4,7 @@ namespace Robust\RealEstate\Repositories\Interfaces;
 
 Interface ILocation
 {
-    /**
-     * @var const FIELDS_QUERY_MAP
-     */
-    public const FIELDS_QUERY_MAP = [
+    protected const FIELDS_QUERY_MAP = [
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'slug' => ['name' => 'slug', 'condition' => 'LIKE'],
         'id' => ['name' => 'id', 'condition' => '='],
