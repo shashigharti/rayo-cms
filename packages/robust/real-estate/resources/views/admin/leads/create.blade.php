@@ -1,6 +1,6 @@
 @extends('core::admin.layouts.sub-layouts.create')
 @inject('properties_helper','Robust\RealEstate\Helpers\LeadPropertiesHelper')
-@inject('group_helper','Robust\RealEstate\Helpers\LeadGroupHelper')
+@inject('lead_helper','Robust\RealEstate\Helpers\LeadHelper')
 @inject('activity_helper','Robust\Admin\Helpers\UserActivityHelper')
 @section('form')
     @set('ui', new $ui)

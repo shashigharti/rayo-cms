@@ -12,46 +12,47 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 
 
 /**
- * Class SendEmailToLead
+ * Class LeadCommunicationsEvent
  * @package Robust\RealEstate\Events
  */
-class SendEmailToLead
+class LeadCommunicationsEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
     /**
      * @var
      */
-    public $lead;
-    /**
-     * @var
-     */
-    public $to;
+    public $agent;
 
     /**
      * @var
      */
-    public $message;
+    public $lead;
 
     /**
      * @var
      */
     public $subject;
 
+    /**
+     * @var
+     */
+    public $email;
+
 
     /**
-     * SendEmailToLead constructor.
-     * @param $to
-     * @param $subject
-     * @param $message
+     * LeadCommunicationsEvent constructor.
+     * @param $agent
      * @param $lead
+     * @param $subject
+     * @param $email
      */
-    public function __construct($to, $subject, $message, $lead)
+    public function __construct($agent, $lead, $subject, $email)
     {
-        $this->to = $to;
-        $this->subject = $subject;
-        $this->message = $message;
+        $this->agent = $agent;
         $this->lead = $lead;
+        $this->subject = $subject;
+        $this->email = $email;
     }
 
     /**

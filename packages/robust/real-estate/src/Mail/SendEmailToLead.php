@@ -28,23 +28,41 @@ class SendEmailToLead extends Mailable
     public $subject;
 
     /**
+     * @var
+     */
+    public $lead;
+    /**
      * SendEmailToLead constructor.
      * @param $subject
      * @param $message
+     * @param $lead
      */
-    public function __construct($subject, $message)
+    public function __construct($subject, $message,$lead)
     {
         $this->body = $message;
         $this->subject = $subject;
+        $this->lead = $lead;
     }
 
+
     /**
-     * Build the message.
-     *
-     * @return $this
+     * @return SendEmailToLead
+     * @throws \Throwable
      */
     public function build()
     {
-        return $this->subject($this->subject)->view('core::website.email.lead.sendEmailToLead');
+        $data = [
+            'subject' => $this->subject,
+            'logo' => '',
+        ];
+        $subject = replace_variables($this->subject, $this->lead, $data);
+        $from = settings('email-setting','email') ?? config('rws.client.email.support');
+        $view = view('real-estate::admin.email-templates.partials.index',
+                ['template'=>'send-email-to-lead','body'=>$this->body])
+                ->render();
+        $message = replace_variables($view,$this->lead,$data);
+        return $this->subject($subject)
+            ->from($from)
+            ->html($message);
     }
 }

@@ -33,7 +33,7 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@updateFollowup'
     ]);
 
-    Route::post('leads/send/emails', [
+    Route::post('leads/send/emails/{id}', [
         'name' =>'Leads Send Email',
         'as' => 'leads.send.email',
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@sendEmail'

@@ -38,7 +38,7 @@
                             <label>Address:</label> {{ $views->listing->address_street }} {{ $views->listing->state }}
                          </div>
                          <div class="col s6">
-                            <label>Seen:</label>5 days ago
+                            <label>Last Seen:</label>{{$views->updated_at->diffForHumans()}}
                          </div>
                          <div class="col s6">
                             <label>Bedrooms:</label>{{ $views->listing->bedrooms }}

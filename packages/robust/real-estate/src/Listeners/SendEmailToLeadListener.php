@@ -25,14 +25,11 @@ class SendEmailToLeadListener
         //
     }
 
-
     /**
      * @param Event $event
      */
     public function handle(Event $event)
     {
-        Mail::to($event->to)->send(
-            new SendEmailToLead($event->subject,$event->message)
-        );
+        Mail::to($event->to)->send(new SendEmailToLead($event->subject,$event->message,$event->lead));
     }
 }

@@ -1,6 +1,6 @@
 @set('user',$model->user()->first())
 @set('properties',$properties_helper->getProperties($model))
-@set('groups',$group_helper->getActiveGroups())
+@set('groups',$lead_helper->getActiveGroups())
 @set('selectedGroups',$model->groups()->get())
 <div class="col s3 card panel">
     <div class="fixed--bar lead-overview_info">

@@ -166,7 +166,7 @@ if (!function_exists('replace_variables')) {
                 '*|LEAD_MAIL|*' => $member->user->email,
                 '*|LEAD_PHONE|*' => $member->phone_number,
                 '*|SITE_NAME|*' => config('rws.client.email.name'),
-                '*|VERIFICATION_LINK|*' => $data['verification_url'],
+                '*|VERIFICATION_LINK|*' => $data['verification_url'] ?? '',
                 '*|UNSUBSCRIBE_LINK|*' => ''//'<a href="' . route('lead.unsubscribe', ['lead' => $this->lead->id]) . '">Unsubscribe</a>'
             ],
             'agent' => [
@@ -217,9 +217,12 @@ if (!function_exists('replace_global_variables')) {
             '*|SUBJECT_WEBSITE|*' => preg_replace('#^https?://#', '', \URL::to('/')),
             '*|FOOTER_TEXT|*' => '',
             '*|LOGO|*' => '<img style="max-width: 180px" src="" alt="">',
-            '*|LOCATION|*' => settings('real-esate', 'client_name'),
-            '*|CLIENT_NAME|*' => settings('real-esate', 'client_name'),
-            '*|STATE|*' => settings('real-esate', 'state')
+            '*|LOCATION|*' => settings('real-estate', 'client_name'),
+            '*|CLIENT_NAME|*' => settings('real-estate', 'client_name'),
+            '*|STATE|*' => settings('real-estate', 'state'),
+            '*|COMPANY_NAME|*' => settings('general-setting', 'company_name'),
+            '*|CONTACT_EMAIL|*' => settings('general-setting', 'contact_email'),
+            '*|PHONE_NUMBER|*' => settings('general-setting', 'phone_number'),
         ];
 
         foreach ($replacements as $search => $replace) {

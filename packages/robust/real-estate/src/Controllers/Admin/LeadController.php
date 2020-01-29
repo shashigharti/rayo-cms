@@ -4,12 +4,11 @@ namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Robust\Core\Helpers\MenuHelper;
 use Robust\RealEstate\Events\SendEmailToLead;
-use Robust\RealEstate\Helpers\LeadGroupHelper;
 use Robust\RealEstate\Helpers\LeadHelper;
-use Robust\RealEstate\Models\LeadFollowup;
+use Robust\RealEstate\Repositories\Admin\GroupLeadRepository;
 use Robust\RealEstate\Repositories\Admin\LeadFollowUpRepository;
+use Robust\RealEstate\Repositories\Admin\LeadGroupRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
@@ -108,29 +107,34 @@ class LeadController extends Controller
         return  redirect()->back()->with(['message' => 'Successfully added Followup']);
     }
 
+
     /**
      * @param $id
      * @param Request $request
-     * @param LeadGroupHelper $groupHelper
+     * @param LeadGroupRepository $leadGroup
      * @return \Illuminate\Http\JsonResponse
      */
-    public function updateGroup($id, Request $request, LeadGroupHelper $groupHelper)
+    public function updateGroup($id, Request $request, GroupLeadRepository $leadGroup)
     {
-        $data = $request->all();
-        $groupHelper->update($data['id'],$id);
+        $data = [
+          'group_id' => $request->id,
+          'lead_id' => $id
+        ];
+        $leadGroup->update($data);
         $groups = $this->model->where('id',$id)->first()->groups()->get();
         return response()->json($groups);
     }
 
+
     /**
      * @param $id
      * @param $group
-     * @param LeadGroupHelper $groupHelper
+     * @param LeadGroupRepository $leadGroup
      * @return \Illuminate\Http\JsonResponse
      */
-    public function deleteGroup($id, $group, LeadGroupHelper $groupHelper)
+    public function deleteGroup($id, $group, GroupLeadRepository $leadGroup)
     {
-        $groupHelper->delete($id,$group);
+        $leadGroup->delete($id,$group);
         return response()->json('Successfully deleted',200);
     }
 
@@ -138,13 +142,14 @@ class LeadController extends Controller
      * @param Request $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function sendEmail(Request $request)
+    public function sendEmail(Request $request,$id)
     {
+        $lead = $this->model->find($id);
         $data = $request->all();
         //filter message before sending
         foreach ($data['to'] as $to)
         {
-            event(new SendEmailToLead($to,$data['subject'],$data['body']));
+            event(new SendEmailToLead($to,$data['subject'],$data['body'],$lead));
         }
         return redirect()->back();
     }

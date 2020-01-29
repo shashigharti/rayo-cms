@@ -4,7 +4,7 @@
 </a>
 <div id="send-email" class="modal">
     <div class="modal-content">
-        <form action="{{route('admin.leads.send.email')}}" method="POST">
+        <form action="{{route('admin.leads.send.email',['id'=>$model->id])}}" method="POST">
             @csrf
             <div class="modal-header">
                 <span>Send Email</span>
@@ -33,7 +33,7 @@
                                ])
                            }}
                         {{ Form::label('body_content', 'Message', ['class' => 'control-label' ]) }}
-                        <p>Use *|FNAME|* for the leads full name, *|FFNAME|* for the firstname and *|FLNAME|* for the lastname *|SIGNATURE|* for the signature.
+                        <p>*|LEAD_FIRSTNAME|* | *|LOGO|* | *|WEBSITE|* | *|VERIFICATION_LINK|*
                         </p>
                     </div>
                 </div>

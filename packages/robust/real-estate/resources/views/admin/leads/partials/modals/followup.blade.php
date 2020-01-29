@@ -1,7 +1,7 @@
 @set('agents',$lead_helper->getAgents())
 @set('followup',null)
 @if($value)
-    @set('followup',$lead_helper->getFollowup($value))
+    @set('followup',$lead->followups->where('id',$value)->first())
 @endif
 <div id="{{$id}}" class="modal">
     <div class="modal-content">

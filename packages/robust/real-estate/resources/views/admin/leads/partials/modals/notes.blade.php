@@ -1,6 +1,6 @@
 @set('notes',null)
 @if($value)
-    @set('notes',$lead_helper->getNotes($value))
+    @set('notes',$lead->notes->where('id',$value)->first())
 @endif
 <div id="{{$id}}" class="modal">
     <div class="modal-content">
@@ -13,8 +13,8 @@
                 </a>
             </div>
             <div class="modal-body">
-                {{ Form::hidden('lead_id',$lead['id']) }}
-                {{ Form::hidden('agent_id',$lead['agent_id']) }}
+                {{ Form::hidden('lead_id',$lead->id) }}
+                {{ Form::hidden('agent_id',$lead->agent_id ?? \Auth::user()->memberable->id) }}
                 <div class="row">
                     <div class="input-field col s12">
                         {{ Form::text('title',$notes? $notes->title : null,['class'=>'form-control','placeholder'=>'title']) }}

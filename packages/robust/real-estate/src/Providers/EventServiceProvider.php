@@ -25,6 +25,9 @@ class EventServiceProvider extends ServiceProvider
         \Robust\RealEstate\Events\SingleListingPageEvent::class => [
             \Robust\RealEstate\Listeners\SingleListingPageEventListener::class
         ],
+        \Robust\RealEstate\Events\LeadCommunicationsEvent::class => [
+            \Robust\RealEstate\Listeners\LeadCommunicationsListener::class
+        ],
     ];
 
     /**
