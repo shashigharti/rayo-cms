@@ -46,11 +46,19 @@ trait LocationTrait
      * @param $slug
      * @return mixed
      */
-    public function getLocation($type, $slug)
+//    public function getLocation($type, $slug)
+//    {
+//        return $this->model
+//            ->where('locationable_type', LocationRepository::RELATION_MAP[$type]['class'])
+//            ->where('slug', $slug)
+//            ->first();
+//    }
+
+    public function getLocation($id)
     {
         return $this->model
-            ->where('locationable_type', LocationRepository::RELATION_MAP[$type]['class'])
-            ->where('slug', $slug)
+            ->where('id', $id)
+            ->orWhere('slug', $id)
             ->first();
     }
 

@@ -73,8 +73,7 @@
                 <ul class="collection sort-container__list" data-update-item="single_col_banner_order">
                     @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
                     @if(isset($settings['single_col_banner_order']) && ($settings['single_col_banner_order'] !== ''))
-                        @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",",
-                        $settings['single_col_banner_order'] ?? "")))
+                        @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $settings['single_col_banner_order'] ?? "")))
                     @endif
                     @foreach($singleColBlocks as $key => $banner)
                         @set('properties', json_decode($banner->properties))
