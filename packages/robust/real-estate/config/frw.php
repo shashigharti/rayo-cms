@@ -134,6 +134,13 @@ return [
         'neighborhoods' => [
             'display_name' => 'Neighborhoods',
             'type' => 'neighborhoods'
+        ],
+        'acerage' => [
+            'display_name' => 'Lots & Acerage',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'acres', 'condition' => 'LIKE', 'values' => []]
+            ]
         ]
     ]
 ];

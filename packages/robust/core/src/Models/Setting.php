@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\Core\Models;
 
 
@@ -17,7 +18,7 @@ class Setting extends BaseModel
      * @var array
      */
     protected $fillable = [
-       'slug',
+        'slug',
         'display_name',
         'values',
         'package_name'

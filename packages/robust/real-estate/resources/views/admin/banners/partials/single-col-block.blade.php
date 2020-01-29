@@ -8,15 +8,6 @@
         }}
     </div>
 </div>
-{{--<div class="row">--}}
-{{--    <div class="input-field col s12">--}}
-{{--        {{ Form::label('properties[url]', 'Url') }}--}}
-{{--        {{ Form::text('properties[url]', $properties->url ?? '', [--}}
-{{--                'placeholder' => 'Url'--}}
-{{--           ])--}}
-{{--        }}--}}
-{{--    </div>--}}
-{{--</div>--}}
 <div class="row">
     <fieldset class="mt-1">
         <legend>Filters</legend>
@@ -119,6 +110,7 @@
                     $properties->tabs_to_display ?? [],
                     [
                         'class'=>'browser-default multi-select',
+                        'data-tags' => false,
                         'multiple'
                     ])
                 }}
@@ -134,7 +126,7 @@
                     <ul class="tabs">
                         @foreach($properties->tabs_to_display as $key => $tab)
                             <li class="tab" @if($key == 0) selected @endif>
-                                <a href="#{{ $tab }}">{{ $tabs_config[$tab]['display_name'] }}</a>
+                                <a href="#{{ $tab }}">{{ $tabs_config[$tab]['display_name'] ?? '' }}</a>
                             </li>
                         @endforeach
                     </ul>
