@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateRealEstateAttributesTable extends Migration {
+class CreateRealEstateGroupLeadsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,13 +12,11 @@ class CreateRealEstateAttributesTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('real_estate_attributes', function(Blueprint $table)
+		Schema::create('real_estate_group_leads', function(Blueprint $table)
 		{
 			$table->bigInteger('id', true)->unsigned();
-			$table->string('property_name', 30);
-			$table->string('name', 100);
-			$table->text('values');
-			$table->boolean('status');
+			$table->integer('lead_id');
+			$table->integer('group_id');
 			$table->timestamps();
 		});
 	}
@@ -31,7 +29,7 @@ class CreateRealEstateAttributesTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('real_estate_attributes');
+		Schema::drop('real_estate_group_leads');
 	}
 
 }

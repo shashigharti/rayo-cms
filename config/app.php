@@ -173,13 +173,11 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
         Laravel\Socialite\SocialiteServiceProvider::class,
-        //Webwizo\Shortcodes\ShortcodesServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Laravolt\Avatar\ServiceProvider::class,
         \Robust\Core\Providers\RobustMailServiceProvider::class,
         Maatwebsite\Excel\ExcelServiceProvider::class,
         Biscolab\ReCaptcha\ReCaptchaServiceProvider::class
-
     ], Robust\Core\Helpers\CoreHelper::service_providers()),
         [
             \App\Providers\AppServiceProvider::class,

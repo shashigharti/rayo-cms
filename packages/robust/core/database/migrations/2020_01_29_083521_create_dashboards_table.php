@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateBannersTable extends Migration {
+class CreateDashboardsTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,16 +12,16 @@ class CreateBannersTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('banners', function(Blueprint $table)
+		Schema::create('dashboards', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('title');
+			$table->string('user_id');
+			$table->string('name');
 			$table->string('slug');
-			$table->string('template', 20)->nullable();
-			$table->text('properties', 65535)->nullable();
-			$table->integer('order')->nullable();
-			$table->boolean('status')->nullable();
+			$table->text('description', 65535);
+			$table->boolean('is_default')->default(0);
 			$table->timestamps();
+			$table->softDeletes();
 		});
 	}
 
@@ -33,7 +33,7 @@ class CreateBannersTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('banners');
+		Schema::drop('dashboards');
 	}
 
 }

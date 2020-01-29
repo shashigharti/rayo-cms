@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreatePagesTable extends Migration {
+class CreateRealEstatePagesTable extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -14,9 +14,9 @@ class CreatePagesTable extends Migration {
 	{
 		Schema::create('real_estate_pages', function(Blueprint $table)
 		{
-			$table->integer('id')->unsigned()->primary();
+			$table->increments('id');
 			$table->string('title');
-			$table->string('url');
+			$table->string('url')->nullable();
 			$table->string('area', 191)->nullable();
 			$table->string('slug');
 			$table->integer('parent')->nullable();
