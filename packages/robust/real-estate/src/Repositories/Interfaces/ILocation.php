@@ -7,7 +7,7 @@ Interface ILocation
     /**
      * @var const FIELDS_QUERY_MAP
      */
-    protected const FIELDS_QUERY_MAP = [
+    public const FIELDS_QUERY_MAP = [
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'slug' => ['name' => 'slug', 'condition' => 'LIKE'],
         'id' => ['name' => 'id', 'condition' => '='],
@@ -18,7 +18,7 @@ Interface ILocation
     /**
      * @var const RELATION_MAP
      */
-    protected const RELATION_MAP = [
+    public const RELATION_MAP = [
         'cities' => ['class' => 'Robust\RealEstate\Models\City'],
         'zips' => ['class' => 'Robust\RealEstate\Models\Zip'],
         'counties' => ['class' => 'Robust\RealEstate\Models\County'],
