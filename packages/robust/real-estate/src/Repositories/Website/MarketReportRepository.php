@@ -8,10 +8,7 @@ use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 use Robust\RealEstate\Repositories\Common\Traits\MarketReportTrait;
 use Robust\RealEstate\Models\Location;
 
-/**
- * Class MarketReportRepository
- * @package Robust\RealEstate\Repositories\Website
- */
+
 class MarketReportRepository implements IMarketReport
 {
      use CommonRepositoryTrait, MarketReportTrait;
