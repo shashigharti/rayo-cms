@@ -330,7 +330,10 @@ if (!function_exists('seo')) {
                 }
             }
         }
-
+        if(!$page && count($segments_temp) == 0){
+            //home page
+            $page = (new \Robust\RealEstate\Models\Page)->where('url', '/')->first();
+        }
         if ($page) {
             $page->meta_description = replace_seo_variables($page->meta_description, $segments);
             $page->meta_title = replace_seo_variables($page->meta_title, $segments);
