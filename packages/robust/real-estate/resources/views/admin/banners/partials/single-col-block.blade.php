@@ -125,7 +125,7 @@
             </div>
             <div class="input-field col s6">
                 {{ Form::label('properties[tabs_order]', 'Tabs Order', ['class'=>'control-label']) }}
-                {{ Form::text('properties[tabs_order]', $properties->tabs_order ?? implode(',', $properties->tabs_to_display)) }}
+                {{ Form::text('properties[tabs_order]', $properties && $properties->tabs_order ?? implode(',', $properties->tabs_to_display)) }}
             </div>
         </div>
         @if(isset($properties->tabs_to_display))

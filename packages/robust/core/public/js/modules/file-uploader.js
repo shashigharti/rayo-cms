@@ -47,14 +47,14 @@
                     _token = $("input[name='_token']").val(),
                     parent = $(this).parent().parent();
                 $.ajax({
-                    url: delete_url, 
+                    url: delete_url,
                     data: {id: id, _token: _token, _method: "DELETE"},
                     method: "POST"
                 }).done(function (response) {
                     if (response.data.status == "success"){
-                        parent.remove();
+                        parent.html('');
                         FRW.FileUploader.updateField();
-                    }                   
+                    }
                 });
             });
             $('.file-uploader .file-uploader__input').prop('jFiler').reset();
