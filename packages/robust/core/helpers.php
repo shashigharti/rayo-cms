@@ -41,6 +41,9 @@ if (!function_exists('settings')) {
      */
     function settings($slug, $name = null)
     {
+        if(!Schema::hasTable('settings')){
+            return;
+        }
         $setting = \Robust\Core\Models\Setting::where('slug', $slug)->first();
         if (isset($setting->values)) {
             $values = json_decode($setting->values, true);
