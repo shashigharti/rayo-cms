@@ -17,15 +17,13 @@ use Robust\RealEstate\Console\Kernel;
 class RealEstateServiceProvider extends ServiceProvider
 {
     protected $commands = [
-        'Robust\RealEstate\Console\Commands\DataPull',
-        'Robust\RealEstate\Console\Commands\FieldsPull',
-        'Robust\RealEstate\Console\Commands\PropertiesPull',
-        'Robust\RealEstate\Console\Commands\LocationsPull',
-        'Robust\RealEstate\Console\Commands\ImagesPull',
-        'Robust\RealEstate\Console\Commands\RetsPullAll',
+        'Robust\RealEstate\Console\Commands\ListingData\DataPull',
+        'Robust\RealEstate\Console\Commands\ListingData\PropertiesPull',
+        'Robust\RealEstate\Console\Commands\ListingData\LocationsPull',
+        'Robust\RealEstate\Console\Commands\ListingData\ImagesPull',
+        'Robust\RealEstate\Console\Commands\ListingData\RetsPullAll',
+
         'Robust\RealEstate\Console\Commands\BannerPropertyCount',
-
-
         'Robust\RealEstate\Console\Commands\UpdateListingNames',
         'Robust\RealEstate\Console\Commands\CreateAttributes',
         'Robust\RealEstate\Console\Commands\CreateLocations',

@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Robust\RealEstate\Console\Commands;
+namespace Robust\RealEstate\Console\Commands\ListingData;
 
 
 use Illuminate\Console\Command;

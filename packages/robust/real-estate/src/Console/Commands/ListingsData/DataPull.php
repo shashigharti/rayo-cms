@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Robust\RealEstate\Console\Commands;
+namespace Robust\RealEstate\Console\Commands\ListingData;
 use Carbon\Carbon;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Schema;
