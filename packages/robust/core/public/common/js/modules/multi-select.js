@@ -80,8 +80,9 @@
     };
 
     $(document).ready(function ($) {
-        $(".multi-select").select2({
-            tags: true
+        let $elem = $(".multi-select");
+        $elem.select2({
+            tags: $elem.data('tags')
         });
         FRW.Select.init();
     });

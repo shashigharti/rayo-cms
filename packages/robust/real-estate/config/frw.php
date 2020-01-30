@@ -88,13 +88,14 @@ return [
         ['min' => '91000', 'max' => '', 'count' => '0']
     ],
     'market-report' => [
-        'price-range' => [
-            'min' => 0,
-            'max' => 44500000,
-            'increment' => 1500000,
-            'field-to-compare' => 'median_price_active'
+        'fields-mapping' => [
+            'square_footage' => 'square_footage',
+            'year_built' => 'year_built',
+            'lot_size' => 'lot_size',
+            'acres' => 'acres',
+            'stories' => 'stories'
         ],
-        'fields_to_compare_list' =>[
+        'fields_to_compare_list' => [
             'median_price_active' => 'Median Price Active',
             'average_price_active' => 'Average Price Active',
             'total_listings_active' => 'Total Listings Active'
@@ -133,6 +134,13 @@ return [
         'neighborhoods' => [
             'display_name' => 'Neighborhoods',
             'type' => 'neighborhoods'
+        ],
+        'acerage' => [
+            'display_name' => 'Lots & Acerage',
+            'type' => 'price',
+            'conditions' => [
+                ['property_type' => 'acres', 'condition' => 'LIKE', 'values' => []]
+            ]
         ]
     ]
 ];

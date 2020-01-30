@@ -31,7 +31,8 @@ class MarketReportHelper
                 ->where('real_estate_locations.locationable_type', 'Robust\\RealEstate\\Models\\Subdivision')
                 ->join('real_estate_subdivisions', 'real_estate_subdivisions.id', 'real_estate_locations.locationable_id')
                 ->get();
-        })->where('location_type', 'Robust\\RealEstate\\Models\\Subdivision')->min($settings['price_range_comparision_field'] ?? 'median_price_active');
+        })->where('location_type', 'Robust\\RealEstate\\Models\\Subdivision')
+            ->min($settings['price_range_comparision_field'] ?? 'median_price_active');
         return $min ?? 0;
     }
 }

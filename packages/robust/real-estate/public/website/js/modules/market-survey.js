@@ -9,7 +9,7 @@
         '_address': {display: 'Address'},
         '_days_on_market': {display: 'Days on market'},
         '_bedrooms': {display: 'Bedrooms'},
-        '_bath': {display: 'Baths'},
+        '_baths': {display: 'Baths'},
         '_square_footage': {display: 'Square Footage'},
         '_year_built': {display: 'Year Built'},
         '_lot_size': {display: 'Lot Size'},
@@ -53,7 +53,7 @@
                 this._markerClusters.addLayers(markers);
                 if (geocode != null) {
                     this._map.fitBounds([geocode.split(',').map(parseFloat)]);
-                    this._map.setZoom(10);
+                    this._map.setZoom(9);
                 } else {
                     this._map.fitBounds(this._markerClusters.getBounds());
                 }
@@ -134,17 +134,17 @@
                     <thead>
                         <tr>
                             <th>Properties</th>
-                            ${Object.keys(selectedProperties).map(function (propertyIndex) {
+            ${Object.keys(selectedProperties).map(function (propertyIndex) {
                 return "<th>" + selectedProperties[propertyIndex]._slug + "</th>";
             }).join(" ")}
                         </tr>
                     </thead>
                     <tbody>
-                        ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
+            ${Object.keys(comparePropertiesRows).map(function (attrIndex) {
                 return `
                                 <tr>
                                     <td>${comparePropertiesRows[attrIndex].display}</td>
-                                    ${Object.keys(selectedProperties).map(function (propertyIndex) {
+                ${Object.keys(selectedProperties).map(function (propertyIndex) {
                     return "<td>" + selectedProperties[propertyIndex][attrIndex] + "</td>";
                 }).join(" ")}
                                 </tr>`;
@@ -190,12 +190,15 @@
             method: "GET",
             url: url
         }).done(function (response) {
-            response.forEach((property) => {
+            let records = response.records;
+            records.forEach((property) => {
                 if (property.latitude !== null || property.longitude !== null) {
                     let imageUrl = 'https://via.placeholder.com/150';
+
                     if (property.images.length > 0) {
                         imageUrl = property.images[0].url;
                     }
+                    //getPropertyValues(property.property, Object.keys(comparePropertiesRows), response.fields);
                     properties.push(new Property(
                         property.id,
                         property.name,
@@ -266,6 +269,25 @@
                 loadProperties('address');
             });
         });
+    }
+
+    function getPropertyValues(properties, property_types_to_read, fields_to_map) {
+        let property_types_values = [];
+        Object.keys(fields_to_map).forEach(function(index, field){
+            console.log('_' + field);
+            console.log(index);
+           // property_types_values.push(('_' + field));
+        });
+
+        // properties.forEach(function (property) {
+        //     property_types_to_read.forEach(function (property_type) {
+        //         let field = property_type.substring(1);
+        //         if (property.type === field) {
+        //             console.log(fields_to_map[field]);
+        //         }
+        //     });
+        //
+        // });
     }
 
 

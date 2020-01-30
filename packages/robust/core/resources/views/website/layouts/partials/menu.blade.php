@@ -1,4 +1,4 @@
-@set('menus', settings('real-estate', 'menus') != ""? settings('real-estate', 'menus') : [])
+@set('menus', settings('real-estate', 'menus') != "" ? settings('real-estate', 'menus') : [])
 @inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
 
 <nav class="navbar navbar-expand-lg navbar-light">
@@ -16,7 +16,7 @@
                             @foreach($menus as $menu)
                                 <li class="tab">
                                     <a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                        ({{$locations[$menu] ? count($locations[$menu]): '0'}})
+                                        ({{ $locations[$menu] ? count($locations[$menu]): '0'}})
                                     </a>
                                 </li>
                             @endforeach
@@ -88,12 +88,16 @@
                 @endif
             </a>
         </li>
-        <li><a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
-                Stats</a></li>
+        <li>
+            <a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
+                Stats
+            </a>
+        </li>
         <li class="nav-btn">
             @if(Auth::check())
                 <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.user.profile')}}">My
-                    Review</a>
+                    Review
+                </a>
             @else
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__login">Login</a>
             @endif

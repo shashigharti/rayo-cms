@@ -35,7 +35,7 @@ trait MarketReportTrait
     {
         $settings = settings('real-estate', 'market_report');
         if (count($params) > 0) {
-            $this->model = $this->model->whereBetween($settings['price_range_comparision_field'], $params);
+            $this->model = $this->model->whereBetween($settings['price_range_comparision_field'] ?? 'median_price_active', $params);
         }
         return $this;
     }

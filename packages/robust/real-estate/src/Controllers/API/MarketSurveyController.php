@@ -55,7 +55,10 @@ class MarketSurveyController extends Controller
             ->whereDateBetween([$prev_date, date("Y-m-d H:i:s")])
             ->get();
 
-        return response()->json($records);
+        return response()->json([
+            'records' => $records,
+            'fields' => settings('front-page', 'market_report_fields_mapping')
+        ]);
     }
 
 

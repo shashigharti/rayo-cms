@@ -21,6 +21,10 @@ class ComposerServiceProvider extends ServiceProvider
             '*::website.home'
         ], 'Robust\Core\Composers\FrontendComposer');
 
+        View::composer([
+            '*::admin.*'
+        ], 'Robust\Core\Composers\AdminComposer');
+
     }
 
     /**

@@ -1,13 +1,14 @@
 @inject('banner_helper', 'Robust\RealEstate\Helpers\BannerHelper')
+@set('market_report_settings', config('real-estate.frw.market-report'))
 
 <div class="system-settings__menu">
     {{ Form::open(['route' => ['admin.settings.store'], 'method' => $ui->getMethod()]) }}
     {{ Form::hidden('slug', $slug, [ 'class' => 'form-control' ]) }}
     @set('menus', settings('real-estate', 'menus'))
     @foreach($menus as $menu)
-        <fieldset>
-            <legend>{{ucwords($menu)}} (Ordering)</legend>
-            <div class="form-group form-material row">
+        <div class="form-group form-material row">
+            <fieldset>
+                <legend>{{ucwords($menu)}} (Ordering)</legend>
                 <div class="col s2 input-field">
                     {{ Form::checkbox("{$menu}_sort_order_desc", true, $settings["{$menu}_sort_order_desc"] ?? '', [
                             'class' => 'form-control'
@@ -23,12 +24,12 @@
                         ])
                     }}
                 </div>
-            </div>
-        </fieldset>
+            </fieldset>
+        </div>
     @endforeach
-    <fieldset class="mt-2">
-        <legend>Hide Locations From Dropdown Menu</legend>
-        <div class="form-group form-material row">
+    <div class="form-group form-material row">
+        <fieldset class="mt-2">
+            <legend>Hide Locations From Dropdown Menu</legend>
             @foreach($menus as $menu)
                 <div class="col s6 input-field">
                     {{ Form::label("hide_{$menu}", ucwords($menu)) }}
@@ -39,9 +40,33 @@
                     }}
                 </div>
             @endforeach
-        </div>
-    </fieldset>
+        </fieldset>
+    </div>
     <div class="row">
+        <fieldset class="mt-2">
+            <legend>Hide Zips (By Counties)</legend>
+            @set('counties', $location_helper->getLocations(['type' => 'counties']))
+            @foreach($counties['counties'] as $key => $county)
+                <div class="col s3">
+                    {{ Form::checkbox("zips_hide[counties][$key][slug]", $county->slug, $settings['zips_hide']['counties'][$key]['slug'] ?? false) }}
+                    {{ Form::label('Hide', $county->slug) }}
+                </div>
+            @endforeach
+        </fieldset>
+    </div>
+    <div class="row">
+        <div class="col s12 m6">
+            <fieldset class="mt-2">
+                <legend>Market Survey Data Mapping</legend>
+                @foreach($market_report_settings['fields-mapping'] as $key => $field)
+                    {{ $key }}
+                    {{ Form::text("market_report_fields_mapping[$key]", $settings['market_report_fields_mapping'][$key] ?? $field, [
+                            'class' => 'form-control'
+                        ])
+                    }}
+                @endforeach
+            </fieldset>
+        </div>
         <div class="col s12 m6 sort-container__root">
             <fieldset class="mt-2">
                 <legend>Sort Banners</legend>
@@ -51,8 +76,9 @@
                         @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $settings['single_col_banner_order'] ?? "")))
                     @endif
                     @foreach($singleColBlocks as $key => $banner)
-                        @set('properties',json_decode($banner->properties))
-                        <li class="sort-container__item collection-item" data-id="{{$banner->id}}" data-order="{{$key}}">
+                        @set('properties', json_decode($banner->properties))
+                        <li class="sort-container__item collection-item" data-id="{{ $banner->id }}"
+                            data-order="{{ $key }}">
                             <i class="sort-container__handle material-icons">zoom_out_map</i> {{ $banner->title ?? ''}}
                         </li>
                     @endforeach

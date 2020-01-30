@@ -3,6 +3,9 @@
 
 namespace Robust\RealEstate\Helpers;
 
+use Illuminate\Support\Facades\DB;
+use Robust\RealEstate\Models\Listing;
+use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Repositories\Website\LocationRepository;
 
 /**
@@ -26,15 +29,45 @@ class LocationHelper
     }
 
     /**
-     * @param String $type
+     * @param String $types
      * @return array
      */
     public function getLocations($types)
     {
         $locations = [];
-        foreach($types as $type){
+        foreach ($types as $type) {
             $locations[$type] = $this->location->getLocations(['type' => $type]);
+            $locations[$type] = $this->hide($locations[$type], $type);
         }
+
+        return $locations;
+    }
+
+
+    /**
+     * @param $locations
+     * @param $type
+     * @return mixed
+     */
+    public function hide($locations, $type)
+    {
+        // This code will be changed later
+
+        $settings = settings('front-page', 'zips_hide');
+        if ($type == 'zips') {
+            if (is_array($settings) && (key($settings) == 'counties')) {
+                $counties_slugs = collect($settings['counties'])->pluck('slug');
+                $counties_ids = Location::select('real_estate_locations.id')
+                    ->whereNotIn('slug', $counties_slugs)
+                    ->pluck('id');
+                $zip_ids = Listing::whereIn('county_id', $counties_ids)
+                    ->distinct('real_estate_listings.zip_id')
+                    ->pluck('zip_id');
+                return Location::whereIn('id', $zip_ids)->get();
+            }
+
+        }
+
         return $locations;
     }
 

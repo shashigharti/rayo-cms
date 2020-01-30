@@ -18,7 +18,7 @@ class CreateReportsTable extends Migration {
 			$table->string('name', 100)->unique();
 			$table->string('slug', 100);
 			$table->string('file_name', 100);
-			$table->text('description');
+			$table->text('description', 65535);
 			$table->string('package_name', 50);
 			$table->timestamps();
 			$table->softDeletes();
