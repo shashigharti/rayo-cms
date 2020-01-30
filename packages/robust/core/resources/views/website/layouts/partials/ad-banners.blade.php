@@ -19,3 +19,4 @@
 </section>
 @include(Site::templateResolver("core::website.banners.two-col-ad"))
 @include(Site::templateResolver("core::website.banners.slider"))
+@include(Site::templateResolver("core::website.banners.full-screen-ad"))
