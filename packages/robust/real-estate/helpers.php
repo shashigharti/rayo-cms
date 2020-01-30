@@ -279,16 +279,17 @@ if (!function_exists('generate_price_ranges')) {
         for (; $i <= $max; $i = $i + $increment) {
             $priceArr[] = $i;
         }
+
         if (array_search($max, $priceArr) < 0) {
             $priceArr[] = $max;
         }
         $max_array_count = count($priceArr);
         for ($j = 0; $j <= $max_array_count; $j += 2) {
-            if ($j + 1 <= $max_array_count) {
+            if ($j + 1 <= $max_array_count && isset($priceArr[$j + 1])) {
                 $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
             }
-
-            if (!isset($priceArr[$j]))
+            //for odd increments like 9500 etc
+            if (!isset($priceArr[$j]) || !isset($priceArr[$j+1]))
                 $ranges[] = $priceArr[$max_array_count - 1] . ">";
         }
 
