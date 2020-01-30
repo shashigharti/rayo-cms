@@ -62,7 +62,8 @@ class SendEmailToLead extends Mailable
                 ['template'=>'send-email-to-lead','body'=>$this->body])
                 ->render();
         $message = replace_variables($view,$this->lead,$data);
-        event(new LeadCommunicationsEvent())
+        $agent =  $this->lead->agent_id ?? \Auth::user()->memberable()->first()->id;
+        event(new LeadCommunicationsEvent($agent,$this->lead->id,$subject,$message));
         return $this->subject($subject)
             ->from($from)
             ->html($message);

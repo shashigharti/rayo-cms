@@ -36,7 +36,7 @@ class LeadCommunicationsListener
     {
         $data = [
             'agent_id' => $event->agent,
-            'lead_id' => $event->lead->id,
+            'lead_id' => $event->lead,
             'subject' => $event->subject,
             'email' => $event->email
         ];
