@@ -245,7 +245,10 @@ if (!function_exists('replace_seo_variables')) {
     {
         $replacements = [
             '*|PRICE_RANGE|*' => $segments[5] ?? '',
-            '*|NAME|*' => isset($segments[3]) ? ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1])))
+            '*|NAME|*' => isset($segments[3]) ? ucwords(str_replace('-', ' ', isset($segments[3]))) : ucwords(str_replace('-', ' ', isset($segments[1]))),
+            '*|CLIENT_NAME|*' => settings('real-estate', 'client') ? settings('real-estate', 'client')['name'] : '',
+            '*|STATE|*' => settings('real-estate', 'client') ? settings('real-estate', 'client')['state'] : '',
+            '*|COMPANY_NAME|*' => settings('general-setting', 'company_name'),
         ];
 
         foreach ($replacements as $search => $replace) {
