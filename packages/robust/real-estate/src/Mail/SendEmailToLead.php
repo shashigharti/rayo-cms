@@ -4,8 +4,10 @@ namespace Robust\RealEstate\Mail;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
+use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\HtmlString;
 use Robust\RealEstate\Events\LeadCommunicationsEvent;
 
 
@@ -46,10 +48,7 @@ class SendEmailToLead extends Mailable
     }
 
 
-    /**
-     * @return SendEmailToLead
-     * @throws \Throwable
-     */
+
     public function build()
     {
         $data = [
