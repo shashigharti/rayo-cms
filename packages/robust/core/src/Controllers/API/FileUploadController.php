@@ -34,9 +34,9 @@ class FileUploadController extends Controller
 
 
     /**
-     * @param MediaRepository $model
      * @param Request $request
-     * @return JsonResponse
+     * @param MediaRepository $model
+     * @return \Illuminate\Http\JsonResponse
      */
     public function store(Request $request, MediaRepository $model)
     {
@@ -79,15 +79,18 @@ class FileUploadController extends Controller
         ]]);
     }
 
+
     /**
-     * @param MediaRepository $model
      * @param Request $request
-     * @return JsonResponse
+     * @param MediaRepository $model
+     * @return \Illuminate\Http\JsonResponse
+     * @throws \Exception
      */
     public function delete(Request $request, MediaRepository $model)
     {
         $id = $request->get('id');
         $model->find($id)->delete();
+        \File::deleteDirectory(storage_path('app/medias/' . $id . '/'));
         return response()->json(['data' => [
                 'status' => 'success',
                 'message' => 'Successfully Deleted',
