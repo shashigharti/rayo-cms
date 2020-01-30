@@ -6,6 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Robust\RealEstate\Events\LeadCommunicationsEvent;
 
 
 /**
@@ -61,6 +62,7 @@ class SendEmailToLead extends Mailable
                 ['template'=>'send-email-to-lead','body'=>$this->body])
                 ->render();
         $message = replace_variables($view,$this->lead,$data);
+        event(new LeadCommunicationsEvent())
         return $this->subject($subject)
             ->from($from)
             ->html($message);

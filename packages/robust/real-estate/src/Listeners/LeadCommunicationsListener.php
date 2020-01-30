@@ -4,7 +4,7 @@ namespace Robust\RealEstate\Listeners;
 
 
 use Robust\RealEstate\Events\LeadCommunicationsEvent as Event;
-use Robust\RealEstate\Models\SentEmails;
+use Robust\RealEstate\Repositories\Admin\SentEmailRepository;
 
 
 /**
@@ -13,16 +13,18 @@ use Robust\RealEstate\Models\SentEmails;
  */
 class LeadCommunicationsListener
 {
+
     /**
-     * @var SentEmails
+     * @var SentEmailRepository
      */
     protected $model;
 
+
     /**
      * LeadCommunicationsListener constructor.
-     * @param SentEmails $model
+     * @param SentEmailRepository $model
      */
-    public function __construct(SentEmails $model)
+    public function __construct(SentEmailRepository $model)
     {
         $this->model = $model;
     }
@@ -38,6 +40,6 @@ class LeadCommunicationsListener
             'subject' => $event->subject,
             'email' => $event->email
         ];
-        $this->model->create($data);
+        $this->model->store($data);
     }
 }
