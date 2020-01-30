@@ -412,7 +412,6 @@ return [
                     //Heating & cooling
                     'cooling_type' => 'GF20030226223930163349000000',
                     'heating_type' => 'GF20030226223929852543000000',
-                    'dwelling_type' => 'GF20030226223922292850000000',
                     'fireplaces' => 'GF20030226223929026171000000',
 
                     //view information

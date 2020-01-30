@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingImages;
+use Robust\RealEstate\Models\ListingLocation;
 use Robust\RealEstate\Models\ListingProperty;
 use Robust\RealEstate\Models\Location;
 use Robust\RealEstate\Models\Subdivision;
@@ -119,6 +120,7 @@ class DataPull extends RetsCommands
                             $listing_data['school_district'] = 'Test';
                             // add id
                             $subdivision = null;
+                            $locations = [];
                             foreach ($listing_data as $key => $data) {
                                 if (isset($this->mapping[$key])) {
                                     if (!in_array($data, ['', 'none', 'None', 'Undefined'])) {
@@ -134,6 +136,7 @@ class DataPull extends RetsCommands
                                             'locationable_id' => $map_id,
                                             'locationable_type' => $this->mapping[$key]
                                         ])->id;
+                                        array_push($locations,$listing_data[$this->maps[$key]]);
                                         if ($key === 'subdivision') {
                                             $subdivision = $map_id;
                                         }
@@ -174,6 +177,12 @@ class DataPull extends RetsCommands
                             }
                             if ($listing->wasRecentlyCreated) {
                                 $created += 1;
+                                foreach ($locations as $location){
+                                    ListingLocation::create([
+                                        'listing_id' => $listing->id,
+                                        'location_id' => $location
+                                    ]);
+                                }
                             }
                             $processed += 1;
                             $info = 'Processed : ' . $processed . ' || Total count : ' . $total . ' || ' .
