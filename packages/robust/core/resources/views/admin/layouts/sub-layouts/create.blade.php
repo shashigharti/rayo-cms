@@ -18,6 +18,7 @@
                         </div>
                         <div class="col s12">
                             <div class="panel card tab--content">
+                                @include("core::admin.partials.messages.info")
                                 @yield('form')
                             </div>
                         </div>
