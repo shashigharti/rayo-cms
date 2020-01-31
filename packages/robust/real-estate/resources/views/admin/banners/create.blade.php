@@ -31,7 +31,7 @@
                     @csrf
                     {{ Form::label('properties[image]', 'Banner Image') }}
                     @set('files', (isset($properties->image) && $properties->image != '') ?  explode(',', $properties->image): [])
-                   
+
                     <div class="file-uploader__preview">
                         @foreach($files as $file)
                             <div data-id="{{ $file }}" class="file-uploader__file">
@@ -48,9 +48,9 @@
                     <div>
                         <small>(Image Size: 200 x 200)</small>
                     </div>
-                    <div>
+                    <div class="col s6">
                         {{ Form::file('files[]', [
-                                'class' =>'col s6 file-uploader__input',
+                                'class' =>'file-uploader__input',
                                 'multiple' => 'multiple'
                             ])
                         }}
@@ -60,6 +60,13 @@
                             Upload Image
                         </button>
                     </div>
+{{--                    <div class="col s6 hide file_uploader_progress">--}}
+{{--                        Uploading--}}
+{{--                        <div class="progress">--}}
+{{--                            <div class="indeterminate"></div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+
 
                     {{ Form::hidden('properties[image]', $properties->image ?? null, [
                             'class' => 'file-uploader_files'

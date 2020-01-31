@@ -15,7 +15,7 @@
                 $.each($('.file-uploader .file-uploader__input')[0].files, function (i, file) {
                     data.append('file-' + i, file);
                 });
-
+                $('.file_uploader_progress').removeClass('hide');
                 $.ajax({
                     data: data,
                     url: store_url,
@@ -38,7 +38,7 @@
                         $('.file-uploader .file-uploader__preview').append(template);
                     });
                     FRW.FileUploader.updateField();
-
+                    $('.file_uploader_progress').addClass('hide');
                 });
 
             });
