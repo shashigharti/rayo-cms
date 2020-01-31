@@ -32,7 +32,7 @@ Interface IListings {
         'zip_id' => ['name' => 'real_estate_listings.zip_id', 'condition' => '='],
         'county_id' => ['name' => 'real_estate_listings.county_id', 'condition' => '='],
         'area_id' => ['name' => 'real_estate_listings.area_id', 'condition' => '='],
-        'subdivision_id' => ['name' => 'real_estate_listings.subdivisions_id', 'condition' => '='],
+        'subdivision_id' => ['name' => 'real_estate_listings.subdivision_id', 'condition' => '='],
         'elementary_school_id' => ['name' => 'real_estate_listings.elementary_school_id', 'condition' => '='],
         'high_school_id' => ['name' => 'real_estate_listings.high_school_id', 'condition' => '='],
         'middle_school_id' => ['name' => 'real_estate_listings.middle_school_id', 'condition' => '='],
