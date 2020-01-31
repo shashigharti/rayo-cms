@@ -71,7 +71,7 @@
     }
 
     class Property {
-        constructor(id, name, slug, location, image, url, asking = null, sold = null) {
+        constructor(id, name, slug, location, image, url, asking, sold, days_on_market, bedrooms, baths, address, ...properties) {
             this._id = id;
             this._name = name;
             this._slug = slug;
@@ -80,14 +80,15 @@
             this._url = url;
             this._asking = asking;
             this._sold = sold;
-            this._days_on_market = 33;
-            this._bedrooms = 3;
-            this._bath = 4;
-            this._square_footage = 10;
-            this._year_built = 10;
-            this._lot_size = 20;
-            this._acres = 40;
-            this._stories = 20;
+            this._days_on_market = days_on_market;
+            this._bedrooms = bedrooms;
+            this._baths = baths;
+            this._address = address;
+            this._square_footage = properties[0]._square_footage || '-';
+            this._year_built = properties[0]._year_built || '-';
+            this._lot_size = properties[0]._lot_size || '-';
+            this._acres = properties[0]._acres || '-';
+            this._stories = properties[0]._stories || '-';
         }
 
         render() {
@@ -193,12 +194,12 @@
             let records = response.records;
             records.forEach((property) => {
                 if (property.latitude !== null || property.longitude !== null) {
-                    let imageUrl = 'https://via.placeholder.com/150';
+                    let imageUrl = 'https://via.placeholder.com/150', listing_properties;
 
                     if (property.images.length > 0) {
                         imageUrl = property.images[0].url;
                     }
-                    //getPropertyValues(property.property, Object.keys(comparePropertiesRows), response.fields);
+                    listing_properties = getPropertyValues(property.property, response.fields);
                     properties.push(new Property(
                         property.id,
                         property.name,
@@ -206,8 +207,13 @@
                         new Location(property.latitude, property.longitude),
                         imageUrl,
                         property_url.replace('slug', property.slug),
-                        property.system_price,
-                        property.system_price
+                        property.system_price || '',
+                        property.sold_price || '',
+                        property.days_on_mls || '',
+                        property.bedrooms || '',
+                        property.baths_full || '',
+                        property.name || '',
+                        listing_properties
                     ));
                 }
             });
@@ -271,23 +277,18 @@
         });
     }
 
-    function getPropertyValues(properties, property_types_to_read, fields_to_map) {
-        let property_types_values = [];
-        Object.keys(fields_to_map).forEach(function(index, field){
-            console.log('_' + field);
-            console.log(index);
-           // property_types_values.push(('_' + field));
-        });
+    function getPropertyValues(properties, fields_to_map) {
+        let temp = {}, count = properties.length - 1;
 
-        // properties.forEach(function (property) {
-        //     property_types_to_read.forEach(function (property_type) {
-        //         let field = property_type.substring(1);
-        //         if (property.type === field) {
-        //             console.log(fields_to_map[field]);
-        //         }
-        //     });
-        //
-        // });
+        properties.forEach(function (property) {
+            Object.keys(fields_to_map).forEach(function (field, index) {
+                if (property.type == fields_to_map[field]) {
+                    let field_name = '_' + field;
+                    temp[field_name] = property.value;
+                }
+            });
+        });
+        return temp;
     }
 
 

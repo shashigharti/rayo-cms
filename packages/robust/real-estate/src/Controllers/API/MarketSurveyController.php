@@ -47,7 +47,17 @@ class MarketSurveyController extends Controller
         $data = [
             get_ids_by_location_type($data['location_type']) => $location->id
         ];
-        $additional_fields = ["real_estate_listings.latitude", "real_estate_listings.longitude"];
+        $additional_fields = [
+            'real_estate_listings.latitude',
+            'real_estate_listings.longitude',
+            'real_estate_listings.sold_price',
+            'real_estate_listings.days_on_mls',
+            'real_estate_listings.bedrooms',
+            'real_estate_listings.baths_full',
+            'real_estate_listings.address_number',
+            'real_estate_listings.address_street'
+
+        ];
         $records = $this->model->getListings($data, $additional_fields)
             ->with('images')
             ->with('property')
