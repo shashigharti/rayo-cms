@@ -22,6 +22,6 @@ class LeadBookMark extends BaseModel
      * @var array
      */
     protected $fillable = [
-        'lead_id', 'title', 'active_count', 'sold_count', 'url',
+        'lead_id', 'title', 'url',
     ];
 }
