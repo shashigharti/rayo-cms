@@ -15,8 +15,8 @@ class CreateMediasTable extends Migration {
 		Schema::create('medias', function(Blueprint $table)
 		{
 			$table->increments('id');
-			$table->string('name', 50);
-			$table->string('slug', 50);
+			$table->longText('name');
+			$table->longText('slug');
 			$table->string('extension', 50);
 			$table->string('type', 50);
 			$table->string('description')->nullable();

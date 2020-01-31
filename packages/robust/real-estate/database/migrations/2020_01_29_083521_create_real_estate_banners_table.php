@@ -14,7 +14,7 @@ class CreateRealEstateBannersTable extends Migration {
 	{
 		Schema::create('real_estate_banners', function(Blueprint $table)
 		{
-			$table->integer('id')->unsigned()->primary();
+            $table->increments('id');
 			$table->string('title');
 			$table->string('slug');
 			$table->string('template', 20)->nullable();
