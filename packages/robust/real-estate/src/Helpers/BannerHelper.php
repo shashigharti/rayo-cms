@@ -80,6 +80,13 @@ class BannerHelper
                     $banners_new[$id] = $banner;
                 }
             }
+            
+            //push new banners at the end
+            foreach ($banners as $banner) {
+                if (!in_array($banner->id, $sort_by_array)) {
+                    array_push($banners_new,$banner);
+                }
+            }
             ksort($banners_new);
             $banners_new = collect($banners_new);
         }
