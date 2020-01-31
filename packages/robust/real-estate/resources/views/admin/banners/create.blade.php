@@ -60,12 +60,12 @@
                             Upload Image
                         </button>
                     </div>
-{{--                    <div class="col s6 hide file_uploader_progress">--}}
-{{--                        Uploading--}}
-{{--                        <div class="progress">--}}
-{{--                            <div class="indeterminate"></div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
+                    <div class="col s6 hide file_uploader_progress">
+                        Uploading
+                        <div class="progress">
+                            <div class="indeterminate"></div>
+                        </div>
+                    </div>
 
 
                     {{ Form::hidden('properties[image]', $properties->image ?? null, [
