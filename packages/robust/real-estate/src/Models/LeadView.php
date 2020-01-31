@@ -24,11 +24,12 @@ class LeadView extends BaseModel
         'lead_id', 'listing_id','count','agent_notified'
     ];
 
+
     /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function listing()
     {
-        return $this->belongsTo(Listing::class,'id');
+        return $this->hasOne(Listing::class,'id','listing_id');
     }
 }
