@@ -40,11 +40,14 @@ class AttributeController extends Controller
 
     /**
      * @param $property_name
-     * @return \Illuminate\Http\JsonResponse
+     * @return array|\Illuminate\Http\JsonResponse
      */
     public function getAttributesListByPropertyName($property_name)
     {
         $record = $this->model->getAttributes(['property_name' => $property_name])->first();
-        return response()->json(['data' => json_decode($record->values, true)]);
+        if($record){
+            return response()->json(['data' => json_decode($record->values, true)]);
+        }
+        return [];
     }
 }
