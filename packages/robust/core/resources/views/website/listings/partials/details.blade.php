@@ -164,7 +164,7 @@
             <div class="col m5 s12">
                 <div class="top more-inner">
                     @if($lead)
-                        @set('bookmarked',$lead->bookmarks->where('title',$result->name)->first())
+                        @set('bookmarked',$lead->bookmarks ? $lead->bookmarks()->where('title',$result->name)->first() : null)
                         <a href="{{$bookmarked ? route('website.realestate.leads.bookmarks.delete',['id'=>$bookmarked->id]) : route('website.realestate.leads.bookmarks',['title'=>$result->name])}}"
                            class="single--listing--button_back left btn btn-list-back mr-4" role="button">
                             <i class="material-icons">bookmark</i>
@@ -276,7 +276,7 @@
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
                                 @set('href',$lead ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
-                                @set('favourite',$lead->favourites->where('id',$result->id)->first())
+                                @set('favourite',$lead->favourites ? $lead->favourites->where('id',$result->id)->first() : null)
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">star</i></span> {{$favourite ? 'Favourite' : 'Save to Favorites'}}
