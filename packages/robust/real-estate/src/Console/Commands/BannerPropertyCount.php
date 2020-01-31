@@ -146,6 +146,10 @@ class BannerPropertyCount extends Command
                             }
                         }
                     }
+                    if($psql != ''){
+                        $psql .= " and listing_id in ($psql)";
+                    }
+
                     $tabSql = '';
                     if (isset($tab['prices'])) {
                         $i = 0;
@@ -173,21 +177,21 @@ class BannerPropertyCount extends Command
                             $properties['tabs'][$tab_index]['prices'][$key]['count'] = $tab_ranges[0]->$field;
                         }
                     }
-//                    elseif (isset($tab['subdivisions'])) {
-//                        $tabSql .= " real_estate_locations.slug, real_estate_listings.subdivision_id, count(*) as count FROM real_estate_listings";
-//                        $joinSql .= " left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id";
-//                        $tabSql .= $joinSql . " where " . $propertySql;
-//                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql) group by real_estate_listings.subdivision_id";
-//                        $tab_ranges = \DB::select($tabSql);
-//                        $subdivisions = [];
-//                        foreach ($tab_ranges as $range) {
-//                            $subdivisions[$range->slug] = $range->count;
-//                        }
-//                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
-//                            $slug = $subdivision['slug'];
-//                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
-//                        }
-//                    }
+                    elseif (isset($tab['subdivisions'])) {
+                        $tabSql .= " real_estate_locations.slug, real_estate_listings.subdivision_id, count(*) as count FROM real_estate_listings";
+                        $joinSql .= " left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id";
+                        $tabSql .= $joinSql . " where " . $propertySql;
+                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql) group by real_estate_listings.subdivision_id";
+                        $tab_ranges = \DB::select($tabSql);
+                        $subdivisions = [];
+                        foreach ($tab_ranges as $range) {
+                            $subdivisions[$range->slug] = $range->count;
+                        }
+                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
+                            $slug = $subdivision['slug'];
+                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
+                        }
+                    }
                 }
             }
 
