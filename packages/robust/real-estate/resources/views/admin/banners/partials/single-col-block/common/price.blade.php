@@ -49,7 +49,7 @@
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>
-            @if(isset($properties->tabs->{$tab}))
+            @if(isset($properties->tabs->{$tab}) && isset($properties->tabs->{$tab}->prices))
                 @set('prices', json_decode(json_encode($properties->tabs->{$tab}->prices),true))
             @else
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))

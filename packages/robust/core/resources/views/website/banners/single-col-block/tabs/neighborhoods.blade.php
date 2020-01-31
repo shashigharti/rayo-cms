@@ -1,4 +1,5 @@
 <span class="right"><i class="material-icons close">clear</i></span>
+
 @if(isset($tab['subdivisions']))
     <p><label>{{ strtoupper(str_replace('_', ' ', $key)) }} ({{count($tab['subdivisions'])}})</label></p>
     <ul>

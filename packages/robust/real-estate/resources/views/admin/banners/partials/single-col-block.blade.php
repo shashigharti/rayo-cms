@@ -101,7 +101,9 @@
                     </i>
                 </a>
                 <a href="javascript:void(0)">
-                    <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $i < $price_count ) hide @endif"> add </i>
+                    <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $i < $price_count ) hide @endif">
+                        add
+                    </i>
                 </a>
             </div>
         @endforeach
@@ -126,7 +128,7 @@
             </div>
             <div class="input-field col s6">
                 {{ Form::label('properties[tabs_order]', 'Tabs Order', ['class'=>'control-label']) }}
-                {{ Form::text('properties[tabs_order]', $properties ? $properties->tabs_order : '') }}
+                {{ Form::text('properties[tabs_order]', isset($properties->tabs_order) ? $properties->tabs_order : '') }}
             </div>
         </div>
         @if(isset($properties->tabs_to_display))

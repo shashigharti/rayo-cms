@@ -79,13 +79,14 @@ return [
         'Robust\RealEstate\Models\SchoolDistrict' => 'school_districts',
     ],
     'default_pricing_ranges' => [
-        ['min' => '10000', 'max' => '11000', 'count' => '0'],
-        ['min' => '21000', 'max' => '31000', 'count' => '0'],
-        ['min' => '41000', 'max' => '51000', 'count' => '0'],
-        ['min' => '61000', 'max' => '71000', 'count' => '0'],
-        ['min' => '71000', 'max' => '81000', 'count' => '0'],
-        ['min' => '81000', 'max' => '91000', 'count' => '0'],
-        ['min' => '91000', 'max' => '', 'count' => '0']
+        ['min' => '150000', 'max' => '200000', 'count' => '0'],
+        ['min' => '200000', 'max' => '400000', 'count' => '0'],
+        ['min' => '400000', 'max' => '600000', 'count' => '0'],
+        ['min' => '600000', 'max' => '800000', 'count' => '0'],
+        ['min' => '750000', 'max' => '1000000', 'count' => '0'],
+        ['min' => '800000', 'max' => '1000000', 'count' => '0'],
+        ['min' => '1000000', 'max' => '2000000', 'count' => '0'],
+        ['min' => '2000000', 'max' => '', 'count' => '0'],
     ],
     'market-report' => [
         'fields-mapping' => [
