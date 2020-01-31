@@ -15,6 +15,11 @@ class AgentRepository
 {
     use CrudRepositoryTrait, SearchRepositoryTrait, CommonRepositoryTrait;
 
+    /**
+     * @var Agent
+     */
+    protected $model;
+
 
     /**
      * AgentRepository constructor.

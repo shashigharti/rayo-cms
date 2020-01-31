@@ -28,6 +28,9 @@ class EventServiceProvider extends ServiceProvider
         \Robust\RealEstate\Events\LeadCommunicationsEvent::class => [
             \Robust\RealEstate\Listeners\LeadCommunicationsListener::class
         ],
+        \Robust\RealEstate\Events\AgentCreatingEvent::class => [
+            \Robust\RealEstate\Listeners\AgentCreatingListener::class
+        ],
     ];
 
     /**

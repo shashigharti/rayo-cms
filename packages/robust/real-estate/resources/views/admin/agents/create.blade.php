@@ -23,6 +23,22 @@
             </div>
             <div class="row">
                 <div class="input-field col s6">
+                    {{ Form::label('email', 'Email', ['class' => 'required control-label' ]) }}
+                    {{ Form::email('email', null, [
+                            'required'  => 'required'
+                        ])
+                    }}
+                </div>
+                <div class="input-field col s6">
+                    {{ Form::label('password', 'Password', ['class' => 'required control-label' ]) }}
+                    {{ Form::password('password', null, [
+                            'required'  => 'required'
+                        ])
+                    }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
                     {{ Form::label('contact', 'Contact', ['class' => 'required control-label' ]) }}
                     {{ Form::number('contact', null, [
                             'placeholder' => '+977-9876'
@@ -39,7 +55,7 @@
             </div>
             <div class="row mt-1">
                 <div class="col s12">
-                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}           
+                   {{ Form::submit($ui->getSubmitText(), ['class' => 'waves-light theme-btn btn']) }}
                 </div>
             </div>
         </div>

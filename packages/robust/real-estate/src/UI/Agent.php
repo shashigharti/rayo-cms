@@ -37,7 +37,7 @@ class Agent extends BaseUI
      * @var array
      */
     public $left_menu = [
-        
+
     ];
 
     /**
@@ -53,7 +53,9 @@ class Agent extends BaseUI
      */
     public $addrules = [
         'first_name' => 'required',
-        'last_name' => 'required'
+        'last_name' => 'required',
+        'email' => 'required|unique:users',
+        'password' => 'required',
     ];
     /**
      * @var array
