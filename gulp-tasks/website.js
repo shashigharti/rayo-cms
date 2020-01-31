@@ -56,7 +56,7 @@ module.exports = function () {
         .pipe(gulp.dest('public/assets/website/images'))
         .pipe(notify({ message: 'Website Images task complete' }));
 
-    gulp.src(['resources/assets/website/css/landing.css'])
+    gulp.src(['packages/robust/real-estate/public/website/css/landing.css'])
         .pipe(cssimport().on('error', util.log))
         .pipe(autoprefixer('last 2 version'))
         .pipe(concat('landing.min.css'))
