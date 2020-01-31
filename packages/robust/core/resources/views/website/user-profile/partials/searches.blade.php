@@ -2,7 +2,8 @@
     <div class="col-md-12">
         <h3 class="title-more-detail" id="my-saved-searches">My Saved Searches (0) </h3>
         <div class="pull-right">
-            <a class="btn btn-xs btn-theme" href="{{url()->to(settings('real-estate','url_active'))}}">New search</a>
+            <a href="#" class="theme-btn advance-search">New search</a>
+            @include('core::website.advance-search.index')
         </div>
         <table class="table table-striped table-saved-searches">
             <thead>
