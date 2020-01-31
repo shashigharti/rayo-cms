@@ -2,6 +2,7 @@
 @set('city',$location_helper->getLocation($result->city_id))
 @set('subdivision',$location_helper->getLocation($result->subdivision_id))
 @set('image',$result->images ? $result->images->first() : null)
+@set('lead',Auth::check() ? Auth::user()->memberable->first() : null)
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -162,10 +163,15 @@
             </div>
             <div class="col m5 s12">
                 <div class="top more-inner">
-                    @if(Auth::check())
-                        <a href="{{route('website.realestate.leads.bookmarks',['title'=>$result->name])}}" class="single--listing--button_back left btn btn-list-back mr-4" role="button">
+                    @if($lead)
+                        @set('bookmarked',$lead->bookmarks->where('title',$result->name)->first())
+                        <a href="{{$bookmarked ? route('website.realestate.leads.bookmarks.delete',['id'=>$bookmarked->id]) : route('website.realestate.leads.bookmarks',['title'=>$result->name])}}"
+                           class="single--listing--button_back left btn btn-list-back mr-4" role="button">
                             <i class="material-icons">bookmark</i>
-                            </span>Bookmark this page</a>
+                            <span>
+                               {{$bookmarked ? 'Remove Bookmark' : 'Bookmark this page'}}
+                            </span>
+                        </a>
                     @endif
                     <a href="{{url()->previous()}}" class="single--listing--button_back left btn btn-list-back" role="button">
                         <i class="material-icons">keyboard_backspace</i>
@@ -269,32 +275,33 @@
                         </div>
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
-                                @set('href',Auth::check() ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
+                                @set('favourite',$lead->favourites->where('id',$result->id)->first())
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
-                                        <i class="material-icons">star</i></span> Save to Favorites
+                                        <i class="material-icons">star</i></span> {{$favourite ? 'Favourite' : 'Save to Favorites'}}
                                     </a>
                                 </div>
-                                @set('href',Auth::check() ? '#emailModal' : '#registermodal')
+                                @set('href',$lead ? '#emailModal' : '#registermodal')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
                                         <i class="material-icons">email</i></span> Email a friend
                                     </a>
                                 </div>
-                                @set('href',Auth::check() ? route('website.realestate.leads.requests',['id' => $result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.leads.requests',['id' => $result->id]) : '#registermodal')
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="schedule--viewing btn btn-success left-button not_authenticated modal-trigger"> Schedule a Viewing </a>
                                 </div>
-                                @set('href',Auth::check() ? '#noteModal' : '#registermodal')
+                                @set('href',$lead ? '#noteModal' : '#registermodal')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Rate Property/My Notes </a>
                                 </div>
-                                @set('href',Auth::check() ? '#infoModal' : '#registermodal')
+                                @set('href',$lead ? '#infoModal' : '#registermodal')
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger"> Get more Property Info </a>
                                 </div>
 
-                                @set('href',Auth::check() ? '#' : '#registermodal')
+                                @set('href',$lead ? '#' : '#registermodal')
                                 @set('printer_class',Auth::check() ? 'printer-trigger' : 'modal-trigger')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{route('website.realestate.print',['slug' => $result->slug])}}' target="_blank" class="btn btn-success left-button not_authenticated"> Print this listing </a>
@@ -305,11 +312,11 @@
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email Price Changes </a>
                                 </div>
-                                @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'zip_id','value' => $result->zip_id,'id'=>$result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.listings.similar',['type' => 'zip_id','value' => $result->zip_id,'id'=>$result->id]) : '#registermodal')
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show Similar Priced Props in this zip </a>
                                 </div>
-                                @set('href',Auth::check() ? route('website.realestate.listings.similar',['type' => 'subdivision_id','value' => $result->subdivision_id,'id'=>$result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.listings.similar',['type' => 'subdivision_id','value' => $result->subdivision_id,'id'=>$result->id]) : '#registermodal')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show other props in subdivision</a>
                                 </div>
