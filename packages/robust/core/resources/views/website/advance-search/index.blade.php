@@ -23,6 +23,9 @@
                 </div>
                 <div class="row">
                     <div class="col s3 mb-20 right">
+                        @if(auth()->check())
+                            <button href="#" data-search-save-url="" class="theme-btn advance-search__save">Save</button>
+                        @endif
                         <button href="#" class="theme-btn" type="submit">search</button>
                     </div>
                 </div>
