@@ -3,7 +3,7 @@
     "use strict"
     $(function () {
         $('.favourite__table').on('click', function(){
-            console.log('teseting');
+
         });
 
     });
