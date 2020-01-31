@@ -86,7 +86,7 @@ return [
         ['min' => '750000', 'max' => '1000000', 'count' => '0'],
         ['min' => '800000', 'max' => '1000000', 'count' => '0'],
         ['min' => '1000000', 'max' => '2000000', 'count' => '0'],
-        ['min' => '2000000', 'max' => '', 'count' => '0'],
+        ['min' => '2000000', 'max' => '', 'count' => '0']
     ],
     'market-report' => [
         'fields-mapping' => [
@@ -113,6 +113,7 @@ return [
         '55_plus' => [
             'display_name' => '55+',
             'type' => 'price',
+            'data_tags' => 'true',
             'input_type' => 'search_text',
             'conditions' => [
                 ['property_type' => 'public_remarks', 'condition' => 'LIKE', 'values' => []],

@@ -18,9 +18,10 @@
             @if(isset($tabs_config[$tab]['input_type']) && ($tabs_config[$tab]['input_type'] === 'search_text'))
                 @foreach($tabs_config[$tab]['conditions'] as $ckey => $condition)
                     <div class="col s12">
-                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values][]", "Add search text for " . $condition['property_type'], ['class'=>'control-label']) }}
+                        {{ Form::label("properties[tabs][$tab][conditions][$ckey][values][]", $condition['property_type'], ['class'=>'control-label']) }}
                         {{ Form::select("properties[tabs][$tab][conditions][$ckey][values][]", [], null, [
                                 'class'=>'browser-default multi-select',
+                                'data-tags' => $tabs_config[$tab]['data_tags'] ?? 'false',
                                 'data-selected' => implode(',', $tabs[$tab]['conditions'][$ckey]['values'] ?? []),
                                 'multiple'
                             ])
@@ -35,6 +36,7 @@
                         {{ Form::label("properties[tabs][$tab][conditions][$ckey][values][]", $condition['property_type'], ['class'=>'control-label']) }}
                         {{ Form::select("properties[tabs][$tab][conditions][$ckey][values][]", [], null, [
                                 'class'=>'browser-default multi-select',
+                                'data-tags' => $tabs_config[$tab]['data_tags'] ?? 'false',
                                 'data-url' => route('api.listings.attributes.property_name', $condition['property_type']),
                                 'data-selected' => implode(',', $tabs[$tab]['conditions'][$ckey]['values'] ?? []),
                                 'multiple'
