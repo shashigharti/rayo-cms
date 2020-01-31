@@ -63,6 +63,9 @@ class BannerPropertyCount extends Command
      */
     public function handle()
     {
+        $settings = settings('real-estate');
+        $start_date = date('Y-m-d', strtotime($settings['data_age']));
+        $end_date = date('Y-m-d');
         $banners = \DB::select("select * from real_estate_banners where template = 'single-col-block'");
         foreach ($banners as $index => $banner) {
             $properties = json_decode($banner->properties, true);
@@ -108,7 +111,7 @@ class BannerPropertyCount extends Command
                 } else {
                     $priceSql .= " SUM(CASE WHEN system_price >= {$price['min']} THEN 1 ELSE 0 END) AS '{$price['min']}-'
                                    FROM real_estate_listings
-                                   where city_id in ($locations_ids) and input_date between '" . date('Y-m-d', strtotime("- 365 day")) . "' and '" . date('Y-m-d') . "'";
+                                   where city_id in ($locations_ids) and input_date between '$start_date' and '$end_date'";
                 }
                 $i++;
             }
@@ -124,6 +127,70 @@ class BannerPropertyCount extends Command
                 $field = "$min-$max";
                 $properties['prices'][$key]['count'] = $banner_price_ranges[0]->$field;
             }
+
+
+            if (isset($properties['tabs'])) {
+                // process tabs
+                foreach ($properties['tabs'] as $tab_index => $tab) {
+                    $tabPSql = '';
+                    if (isset($tab['conditions'])) {
+                        $tabPSql = "select listing_id from real_estate_listing_properties where";
+                        $attribute_count = 0;
+                        foreach ($tab['conditions'] as $condition) {
+                            $attribute = $condition['property_type'];
+                            $values = implode("|", $condition['values']);
+                            if ($attribute_count < (count($tab['conditions']) - 1)) {
+                                $tabPSql .= " and (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
+                            } else {
+                                $tabPSql .= " (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
+                            }
+                        }
+                    }
+                    $tabSql = '';
+                    if (isset($tab['prices'])) {
+                        $i = 0;
+                        $count = count($tab['prices']) - 1;
+                        $tabSql = "SELECT ";
+                        foreach ($tab['prices'] as $price) {
+                            if ($i < $count) {
+                                $tabSql .= " SUM(CASE WHEN system_price between {$price['min']} and {$price['max']} THEN 1 ELSE 0 END) AS '{$price['min']}-{$price['max']}',";
+                            } else {
+                                $tabSql .= " SUM(CASE WHEN system_price >= {$price['min']} THEN 1 ELSE 0 END) AS '{$price['min']}-'
+                                   FROM real_estate_listings
+                                   where city_id in ($locations_ids) and input_date between '$start_date' and '$end_date'";
+                            }
+                            $i++;
+                        }
+
+                        if( $tabPSql != ''){
+                            $tabSql .= " and id in ($tabPSql)";
+                        }
+                        $tab_ranges = \DB::select($tabSql);
+                        foreach ($properties['tabs'][$tab_index]['prices'] as $key => $price) {
+                            $min = $price['min'];
+                            $max = $price['max'];
+                            $field = "$min-$max";
+                            $properties['tabs'][$tab_index]['prices'][$key]['count'] = $tab_ranges[0]->$field;
+                        }
+                    }
+//                    elseif (isset($tab['subdivisions'])) {
+//                        $tabSql .= " real_estate_locations.slug, real_estate_listings.subdivision_id, count(*) as count FROM real_estate_listings";
+//                        $joinSql .= " left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id";
+//                        $tabSql .= $joinSql . " where " . $propertySql;
+//                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql) group by real_estate_listings.subdivision_id";
+//                        $tab_ranges = \DB::select($tabSql);
+//                        $subdivisions = [];
+//                        foreach ($tab_ranges as $range) {
+//                            $subdivisions[$range->slug] = $range->count;
+//                        }
+//                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
+//                            $slug = $subdivision['slug'];
+//                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
+//                        }
+//                    }
+                }
+            }
+
             // save banner properties field
             Banner::where('id', $banner->id)->update(['properties' => json_encode($properties)]);
             $this->info("completed for Banner {$banner->title}");
