@@ -1,4 +1,4 @@
-@if(isset($properties->locations))
+@if(isset($properties->locations) && isset($properties->location->cities))
     @set('subdivisions', $banner_helper->neighborhoods('cities', $properties->locations->cities))
     <div class="row">
         <div id="{{ $tab }}" class="col s12">
