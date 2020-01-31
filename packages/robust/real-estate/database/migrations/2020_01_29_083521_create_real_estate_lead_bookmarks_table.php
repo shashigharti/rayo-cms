@@ -17,8 +17,7 @@ class CreateRealEstateLeadBookmarksTable extends Migration {
 			$table->bigInteger('id', true)->unsigned();
 			$table->integer('lead_id');
 			$table->string('title');
-			$table->string('active_count')->nullable();
-			$table->string('sold_count')->nullable();
+			$table->text('url');
 			$table->timestamps();
 		});
 	}
