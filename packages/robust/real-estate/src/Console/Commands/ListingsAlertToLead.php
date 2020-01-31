@@ -17,7 +17,6 @@ class ListingsAlertToLead extends Command
     protected $description = 'Send listings alerts to lead';
 
 
-
     public function handle()
     {
         // Get all leads who don't have saved searches AND viewed some listing
@@ -25,28 +24,28 @@ class ListingsAlertToLead extends Command
             ->where('user_type', '<>', Lead::DISCARDED)
             ->whereHas('viewedListings')
             ->doesntHave('searches')->get();
-            
+
         //$automationAlert = get_settings('automation_alerts');
-        if (! $leads || ! ($automationAlert && $automationAlert != null) ) {
+        if (!$leads || !($automationAlert && $automationAlert != null)) {
             return false;
         }
 
-         // Loop on leads
+        // Loop on leads
         foreach ($leads as $lead) {
             // Get viewed listings
             $viewedListings = $lead->viewedListings;
 
             // Listing prices array
             $listing_prices = [];
-            $zip_codes      = [];
-            $cities         = [];
+            $zip_codes = [];
+            $cities = [];
             foreach ($viewedListings as $viewedListing) {
-                $cities[]         = $viewedListing['city'];
+                $cities[] = $viewedListing['city'];
                 $listing_prices[] = $viewedListing['system_price'];
-                $zip_codes[]      = $viewedListing['zip'];
+                $zip_codes[] = $viewedListing['zip'];
             }
 
-            $priceRanges  = [];//$this->getAppropriatePricesRange($listing_prices);
+            $priceRanges = [];//$this->getAppropriatePricesRange($listing_prices);
             $zip_code = [];//$this->getCities($zip_codes);
             $minRange = $priceRanges['range_min'];
             $maxRange = $priceRanges['range_max'];
@@ -57,7 +56,7 @@ class ListingsAlertToLead extends Command
             }
         }
 
-        
+
     }
 
 }

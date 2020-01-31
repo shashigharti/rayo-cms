@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Robust\RealEstate\Console\Commands\ListingData;
+namespace Robust\RealEstate\Console\Commands\DataPull;
 use Illuminate\Support\Str;
 use Robust\RealEstate\Models\Listing;
 use Robust\RealEstate\Models\ListingImages;

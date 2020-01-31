@@ -7,12 +7,16 @@
                 let container = $(this).parent().parent(), parent = container.parent(),
                     newElem = container.clone();
                 let elems = [];
-                container.find(':input').each(function (index, elem) {
-                    let name = $(elem).attr('name'),
-                        count = container.data('count');
-                    $(elem).attr('name', name.replace(`${count}`, count + 1));
-                });
+                // newElem.find(':input').each(function (index, elem) {
+                //     let name = $(elem).attr('name'),
+                //         count = container.data('count');
+                //     $(elem).attr('name', name.replace(count, count + 1));
+                //     console.log($(elem).attr('name'), count, count + 1,  name.replace(count, count + 1));
+                // });
                 newElem.appendTo(parent);
+                // let name = newElem.attr('name'),
+                //     count = container.data('count');
+                // //newElem.attr('name', name.replace(count, count + 1));
                 container.find('.dynamic-elem__add').toggleClass('hide');
             });
             $(document.body).on('click', '.dynamic-elem__delete', function () {

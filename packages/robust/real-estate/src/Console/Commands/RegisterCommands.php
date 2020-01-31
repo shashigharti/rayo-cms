@@ -20,14 +20,13 @@ class RegisterCommands extends Command
     protected $description = 'Register all commands';
 
 
-
     public function handle()
     {
         $commands = config('real-estate.frw.commands');
 
         CCommand::query()->truncate();
-        foreach($commands as $command){
-           CCommand::create($command);
+        foreach ($commands as $command) {
+            CCommand::create($command);
         }
     }
 

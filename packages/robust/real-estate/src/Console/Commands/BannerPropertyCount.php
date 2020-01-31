@@ -80,8 +80,6 @@ class BannerPropertyCount extends Command
                 }
                 $i++;
             }
-            // dd($lsql);
-            // dd(\DB::select($lsql));
 
             $priceSql = "SELECT ";
             $i = 0;
@@ -96,7 +94,6 @@ class BannerPropertyCount extends Command
                 }
                 $i++;
             }
-            // dd($priceSql);
             $banner_price_ranges = \DB::select($priceSql);
             foreach ($banner_price_ranges as $key => $range) {
                 $min = $properties['prices'][$key]['min'];
@@ -119,18 +116,17 @@ class BannerPropertyCount extends Command
                         $joinSql .= " LEFT JOIN real_estate_listing_properties ON real_estate_listing_properties.listing_id = real_estate_listings.id";
                         $condition_index = 0;
                         foreach ($tab['conditions'] as $condition) {
+                            if(!isset($condition['values'])){
+                                continue;
+                            }
                             $property_type = $condition['property_type'];
-                            //$property_values = "'" . implode("','", $condition['values']) . "'";
                             $property_values = implode("|", $condition['values']);
 
                             if ($condition_index == 0) {
-                                //$propertySql .= " (real_estate_listing_properties.type = '{$property_type}' and real_estate_listing_properties.value in ({$property_values}) )";
                                 $propertySql .= " (real_estate_listing_properties.type LIKE '%{$property_type}%' and real_estate_listing_properties.value REGEXP '{$property_values}' )";
                             } else {
-                                //$propertySql .= " and (real_estate_listing_properties.type = '{$property_type}' and real_estate_listing_properties.value in ({$property_values}) )";
                                 $propertySql .= " and (real_estate_listing_properties.type LIKE '%{$property_type}%' and real_estate_listing_properties.value REGEXP '{$property_values}' )";
                             }
-
                             $condition_index++;
                         }
                     }
@@ -146,9 +142,12 @@ class BannerPropertyCount extends Command
                             }
                             $i++;
                         }
+                        if($propertySql != ''){
+                            $propertySql = ' and';
+                        }
                         $tabSql .= $joinSql . " where " . $propertySql;
-                        $tabSql .= " and input_date between '" . $start_date . "' and '" . $end_date . "' and city_id in ($lsql)";
-                        // dd($tabSql);
+                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql)";
+
                         $tab_ranges = \DB::select($tabSql);
                         foreach ($tab_ranges as $key => $range) {
                             $min = $properties['tabs'][$tab_index]['prices'][$key]['min'];

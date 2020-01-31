@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
@@ -32,7 +33,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Cities');
         $cities = \DB::table('real_estate_cities')->get();
-        foreach($cities as $city){
+        foreach ($cities as $city) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('city_id', $city->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('city_id', $city->id)->count();
 
@@ -51,7 +52,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Counties');
         $counties = \DB::table('real_estate_counties')->get();
-        foreach($counties as $county){
+        foreach ($counties as $county) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('county_id', $county->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('county_id', $county->id)->count();
 
@@ -72,7 +73,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Areas');
         $areas = \DB::table('real_estate_areas')->get();
-        foreach($areas as $area){
+        foreach ($areas as $area) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('area_id', $area->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('area_id', $area->id)->count();
 
@@ -93,7 +94,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Zip');
         $zips = \DB::table('real_estate_zips')->get();
-        foreach($zips as $zip){
+        foreach ($zips as $zip) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('zip_id', $zip->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('zip_id', $zip->id)->count();
 
@@ -113,7 +114,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Elementary School');
         $real_estate_elementary_schools = \DB::table('real_estate_elementary_schools')->get();
-        foreach($real_estate_elementary_schools as $element_school){
+        foreach ($real_estate_elementary_schools as $element_school) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('elementary_school_id', $element_school->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('elementary_school_id', $element_school->id)->count();
 
@@ -134,7 +135,7 @@ class CreateLocations extends Command
 
         $this->info('Adding High School');
         $real_estate_high_schools = \DB::table('real_estate_high_schools')->get();
-        foreach($real_estate_high_schools as $high_school){
+        foreach ($real_estate_high_schools as $high_school) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('high_school_id', $high_school->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('high_school_id', $high_school->id)->count();
 
@@ -153,7 +154,7 @@ class CreateLocations extends Command
 
         $this->info('Adding Middle School');
         $real_estate_middle_schools = \DB::table('real_estate_middle_schools')->get();
-        foreach($real_estate_middle_schools as $middle_school){
+        foreach ($real_estate_middle_schools as $middle_school) {
             $active_count = \DB::table('real_estate_listings')->where('status', 'Active')->where('middle_school_id', $middle_school->id)->count();
             $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')->where('middle_school_id', $middle_school->id)->count();
 

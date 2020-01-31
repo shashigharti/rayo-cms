@@ -55,42 +55,26 @@ if (!function_exists('price_range_format')) {
         if (count($prices) < 1) {
             $prices = explode('>', $prices[0]);
         }
-        $count = count_chars($prices[0]);
-        if ($count > 6 && is_numeric($prices[1])) {
-            $prices[0] = number_format($prices[0]);
-            $prices[1] = number_format($prices[1]);
+        $price_start = strlen($prices[0]);
+        $price_end = strlen($prices[1]);
+        if ($prices[1] != '' && is_numeric($prices[1])) {
+            if(($price_start > 5 && $price_start < 7)){
+                $prices[0] = number_format($prices[0]);
+            }elseif($price_start >= 7){
+                $prices[0] = price_format($prices[0]);
+            }
+
+            if(($price_end > 5 && $price_end < 7)){
+                $prices[1] = number_format($prices[1]);
+            }elseif($price_end >= 7){
+                $prices[1] = price_format($prices[1]);
+            }
+
             return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
         } elseif ($prices[1] == '') {
             if (isset($prices[0]) && is_numeric($prices[0])) {
                 return "Above " . price_format($prices[0]);
             }
-        }
-        return $price_range;
-    }
-}
-
-
-if (!function_exists('market_report_price_range_format')) {
-
-    /**
-     * @param $price_range
-     * @return string
-     */
-    function market_report_price_range_format($price_range)
-    {
-        $prices = explode('-', $price_range);
-        if (count($prices) <= 1) {
-            $prices = explode('>', $prices[0]);
-        }
-        $count = count_chars($prices[0]);
-        if ($prices[1] == '') {
-            if (isset($prices[0]) && is_numeric($prices[0])) {
-                return "Above " . price_format($prices[0]);
-            }
-        } elseif ($count > 6 && is_numeric($prices[1])) {
-            $prices[0] = price_format($prices[0]);
-            $prices[1] = price_format($prices[1]);
-            return "$" . "{$prices[0]}-" . "$" . "{$prices[1]}";
         }
         return $price_range;
     }
@@ -292,7 +276,7 @@ if (!function_exists('generate_price_ranges')) {
                 $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
             }
             //for odd increments like 9500 etc
-            if (!isset($priceArr[$j]) || !isset($priceArr[$j+1]))
+            if (!isset($priceArr[$j]) || !isset($priceArr[$j + 1]))
                 $ranges[] = $priceArr[$max_array_count - 1] . ">";
         }
 
@@ -333,7 +317,7 @@ if (!function_exists('seo')) {
                 }
             }
         }
-        if(!$page && count($segments_temp) == 0){
+        if (!$page && count($segments_temp) == 0) {
             //home page
             $page = (new \Robust\RealEstate\Models\Page)->where('url', '/')->first();
         }

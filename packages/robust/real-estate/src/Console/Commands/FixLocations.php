@@ -30,18 +30,18 @@ class FixLocations extends Command
      */
     public function handle()
     {
-        $this->info('Fixing Subdivisions');  
-        $listings = \DB::table('real_estate_listings')->get(); 
-        foreach($listings as $listing){
+        $this->info('Fixing Subdivisions');
+        $listings = \DB::table('real_estate_listings')->get();
+        foreach ($listings as $listing) {
             $subdivision = \DB::table('real_estate_subdivisions')
-            ->where('id', $listing->subdivision_id)
-            ->update([
-                'city_id' => $listing->city_id,
-                'zip_id' => $listing->zip_id,
-                'county_id' => $listing->county_id,
-                'area_id' => $listing->area_id
-            ]);
+                ->where('id', $listing->subdivision_id)
+                ->update([
+                    'city_id' => $listing->city_id,
+                    'zip_id' => $listing->zip_id,
+                    'county_id' => $listing->county_id,
+                    'area_id' => $listing->area_id
+                ]);
         }
-       
+
     }
 }

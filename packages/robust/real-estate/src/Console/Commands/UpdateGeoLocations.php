@@ -1,4 +1,5 @@
 <?php
+
 namespace Robust\RealEstate\Console\Commands;
 
 use Robust\RealEstate\Models\Listing;
@@ -31,14 +32,14 @@ class UpdateGeoLocations extends Command
             ->get();
 
         $count = 0;
-        foreach($listings as $listing){
+        foreach ($listings as $listing) {
             $address = geocode($listing->name . "FL");
 
-            if($count > 10){
+            if ($count > 10) {
                 sleep(5);
             }
             // geocode not found
-            if($address['geometry']['location']){
+            if ($address['geometry']['location']) {
                 $listing->update(
                     [
                         'latitude' => $address['geometry']['location']['lat'],

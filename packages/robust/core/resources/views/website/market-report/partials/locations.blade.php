@@ -17,7 +17,7 @@
                                             ])
                                 }}"
                         >
-                            {{ market_report_price_range_format($range) }}
+                            {{ price_range_format($range) }}
                         </a>
                     </div>
                 @endforeach
