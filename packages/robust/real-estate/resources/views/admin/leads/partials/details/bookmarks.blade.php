@@ -16,12 +16,12 @@
                         <div class="mt-2 mb-2">
                             <div class="mb-2 fs09">
                                  <strong>{{ $model->first_name.' '.$model->last_name }}</strong> bookmarked
-                                 <a href="#" target="_blank">{{ $bookmark->title }}
+                                 <a href="{{$bookmark->url}}" target="_blank">{{ $bookmark->title }}
                                      <i data-v-13ad319a="" aria-hidden="true" class="fa fa-external-link"></i>
                                  </a>.
                             </div>
                             <div class="time-info">
-                                <time data-v-13ad319a="" datetime="Mon Jan 13 2020 19:36:22 GMT+0545 (Nepal Time)" title="1/13/2020, 7:36:22 PM">1 week ago</time>
+                                <time data-v-13ad319a="" title="{{$bookmark->created_at}}">{{$bookmark->created_at->diffForHumans()}}</time>
                             </div>
                         </div>
                     </div>

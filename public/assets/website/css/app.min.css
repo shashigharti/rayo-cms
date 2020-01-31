@@ -977,7 +977,7 @@ section.main-content{padding-top:100px}.inner--main--title h1{font-size:28px;col
 .listing--search .range-bar .slider-container .back-bar .pointer-label{color:#555}
 .listing--search .range-bar .theme-green .scale ins{color:#555}.listing--btn--block label{font-weight:bold;color:#555}
 .listing--btn--block select{padding:5px 10px;font-size:14px;color:#555}.listing--btn--block a.btn,.listing--btn--block a.btn-large,.listing--btn--block a.btn-small{font-size:11px;display:inline-block;vertical-align:middle;height:26px;line-height:26px;padding:0 10px;width:auto;font-weight:600}
-a.single--listing--button_back{font-size:12px;vertical-align:middle;display:inline-block;padding:0 10px;background-color:#002349;text-transform:initial}
+a.single--listing--button_back{font-size:12px;vertical-align:middle;display:inline-block;padding:0 10px;background-color:#002349;margin-right:5px;text-transform:initial}
 a.single--listing--button_back i.material-icons{vertical-align:middle;margin-right:5px}
 a.single--listing--button_back:hover{background-color:#002349;color:#fff}.total--records{font-size:12px;display:inline-block;font-weight:500;color:#555}
 .total--records span{color:#09407b}.listing--pagination{display:inline-block;margin-left:10px}

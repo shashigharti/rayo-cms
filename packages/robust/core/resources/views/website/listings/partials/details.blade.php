@@ -162,6 +162,11 @@
             </div>
             <div class="col m5 s12">
                 <div class="top more-inner">
+                    @if(Auth::check())
+                        <a href="{{route('website.realestate.leads.bookmarks',['title'=>$result->name])}}" class="single--listing--button_back left btn btn-list-back mr-4" role="button">
+                            <i class="material-icons">bookmark</i>
+                            </span>Bookmark this page</a>
+                    @endif
                     <a href="{{url()->previous()}}" class="single--listing--button_back left btn btn-list-back" role="button">
                         <i class="material-icons">keyboard_backspace</i>
                         </span>Return To All Listings </a>
