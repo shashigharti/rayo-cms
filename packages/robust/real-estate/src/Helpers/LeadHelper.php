@@ -2,11 +2,10 @@
 namespace Robust\RealEstate\Helpers;
 
 use Robust\RealEstate\Repositories\Admin\AgentRepository;
-use Robust\RealEstate\Repositories\Admin\GroupLeadRepository;
+use Robust\RealEstate\Repositories\Admin\GroupRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 use Robust\RealEstate\Repositories\Admin\LeadStatusRepository;
-use Robust\RealEstate\Repositories\API\LeadFollowUpRepository;
-use Robust\RealEstate\Repositories\API\LeadNoteRepository;
+
 
 /**
  * Class LeadHelper
@@ -40,9 +39,9 @@ class LeadHelper
      * @param LeadRepository $lead
      * @param AgentRepository $agent
      * @param LeadStatusRepository $status
-     * @param GroupLeadRepository $groups
+     * @param GroupRepository $groups
      */
-    public function __construct(LeadRepository $lead, AgentRepository $agent, LeadStatusRepository $status, GroupLeadRepository $groups)
+    public function __construct(LeadRepository $lead, AgentRepository $agent, LeadStatusRepository $status, GroupRepository $groups)
     {
         $this->leads = $lead->get();
         $this->agents = $agent->get();
@@ -71,6 +70,6 @@ class LeadHelper
      */
     public function getActiveGroups()
     {
-        return $this->groups->where('status',1)->all();
+        return $this->groups->where('status','1')->all();
     }
 }
