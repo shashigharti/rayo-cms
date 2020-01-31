@@ -3,37 +3,37 @@
     font-style: normal;
     font-weight: 400;
     /* For IE6-8 */
-    src: local("Material Icons"), local("MaterialIcons-Regular"), url("../fonts/MaterialIcons-Regular.woff2") format("woff2"), url("../fonts/MaterialIcons-Regular.woff") format("woff"), url("../fonts/MaterialIcons-Regular.ttf") format("truetype");
+    src: local("Material Icons"), local("MaterialIcons-Regular"), url("../../../../packages/robust/real-estate/public/website/fonts/MaterialIcons-Regular.woff2") format("woff2"), url("../../../../packages/robust/real-estate/public/website/fonts/MaterialIcons-Regular.woff") format("woff"), url("../../../../packages/robust/real-estate/public/website/fonts/MaterialIcons-Regular.ttf") format("truetype");
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('../fonts/Poppins-Medium.woff2') format('woff2'),
-        url('../fonts/Poppins-Medium.woff') format('woff');
+    src: url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Medium.woff2') format('woff2'),
+        url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Medium.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('../fonts/Poppins-Regular.woff2') format('woff2'),
-        url('../fonts/Poppins-Regular.woff') format('woff');
+    src: url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Regular.woff2') format('woff2'),
+        url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('../fonts/Poppins-Bold.woff2') format('woff2'),
-        url('../fonts/Poppins-Bold.woff') format('woff');
+    src: url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Bold.woff2') format('woff2'),
+        url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'Poppins';
-    src: url('../fonts/Poppins-SemiBold.woff2') format('woff2'),
-        url('../fonts/Poppins-SemiBold.woff') format('woff');
+    src: url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-SemiBold.woff2') format('woff2'),
+        url('../../../../packages/robust/real-estate/public/website/fonts/Poppins-SemiBold.woff') format('woff');
     font-weight: 600;
     font-style: normal;
 }
@@ -1331,7 +1331,7 @@ button{
     color: #ab2012;
 }
 .msg-info,.msg-error {
-    background: $white;    
+    background: $white;
     padding: 9px 20px;
     height: auto;
     line-height: 20px;
