@@ -80,7 +80,9 @@
             @set('price_sort', ksort($prices))
         @endif
         @set('price_count', count($prices))
+        @set('i', 0)
         @foreach($prices as $key => $price)
+            @set('i', $i + 1)
             <div class="row dynamic-elem" data-count="{{ $key }}">
                 <div class="input-field col s4">
                     {{ Form::label("properties[prices][$key][min]", 'Min') }}
@@ -94,12 +96,12 @@
                     {{ Form::hidden("properties[prices][$key][count]", $price['count'] ?? '' ) }}
                 </div>
                 <a href="javascript:void(0)">
-                    <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $key > ($price_count - 1) ) hide @endif">
+                    <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $i > $price_count ) hide @endif">
                         delete
                     </i>
                 </a>
                 <a href="javascript:void(0)">
-                    <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $key < ($price_count - 1) ) hide @endif"> add </i>
+                    <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $i < $price_count ) hide @endif"> add </i>
                 </a>
             </div>
         @endforeach
