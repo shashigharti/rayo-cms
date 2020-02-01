@@ -5,6 +5,10 @@
                 {{ Form::label("properties[tabs][$tab][display_name]", 'Display Name', ['class' => 'control-label' ]) }}
                 {{ Form::text("properties[tabs][$tab][display_name]", $tabs[$tab]['display_name'] ?? $tabs_config[$tab]['display_name']) }}
             </div>
+            <div class="col s6">
+                {{ Form::checkbox("properties[tabs][$tab][no_default_price]", true, $tabs[$tab]['no_default_price'] ?? false) }}
+                {{ Form::label("properties[tabs][$tab][no_default_price]", 'Use Own Price Range') }}
+            </div>
             {{ Form::hidden("properties[tabs][$tab][type]", $tabs[$tab]['type'] ?? $tabs_config[$tab]['type']) }}
         </div>
         <div class="form-group form-material row">
@@ -47,29 +51,30 @@
                     {{ Form::hidden("properties[tabs][$tab][conditions][$ckey][condition]",$tabs_config[$tab]['conditions'][$ckey]['condition']) }}
                 @endforeach
             @endif
-
         </fieldset>
         <fieldset class="mt-1">
             <legend>Price Settings</legend>
-            @if(isset($properties->tabs->{$tab}) && isset($properties->tabs->{$tab}->prices))
-                @set('prices', json_decode(json_encode($properties->tabs->{$tab}->prices),true))
+            @if(isset($properties->tabs->{$tab}->prices) && (isset($tabs[$tab]['no_default_price']) && $tabs[$tab]['no_default_price']))
+                @set('prices', json_decode(json_encode($properties->tabs->{$tab}->prices), true))
+                @set('price_sort', ksort($prices))
             @else
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))
             @endif
             @set('price_count', count($prices))
             @set('i', 0)
-            @foreach($prices as $pkey => $price)
+
+            @foreach($prices as $price)
                 @set('i', $i + 1)
-                <div class="row dynamic-elem" data-count="{{ $key }}">
+                <div class="row dynamic-elem" data-key="{{ $i }}">
                     <div class="input-field col s4 inline__input-field">
-                        {{ Form::label("properties[tabs][$tab][prices][$pkey][min]", 'Min') }}
-                        {{ Form::text("properties[tabs][$tab][prices][$pkey][min]", $tabs[$tab]['prices'][$pkey]['min'] ?? $prices[$pkey]['min'] ?? '') }}
+                        {{ Form::label("properties[tabs][$tab][prices][$i][min]", 'Min') }}
+                        {{ Form::text("properties[tabs][$tab][prices][$i][min]", $price['min'] ?? '') }}
                     </div>
                     <div class="input-field col s4 inline__input-field">
-                        {{ Form::label("properties[tabs][$tab][prices][$pkey][max]", 'Max') }}
-                        {{ Form::text("properties[tabs][$tab][prices][$pkey][max]", $tabs[$tab]['prices'][$pkey]['max'] ?? $prices[$pkey]['max'] ?? '') }}
+                        {{ Form::label("properties[tabs][$tab][prices][$i][max]", 'Max') }}
+                        {{ Form::text("properties[tabs][$tab][prices][$i][max]", $price['max'] ?? '') }}
                     </div>
-                    {{ Form::hidden("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
+                    {{ Form::hidden("properties[tabs][$tab][prices][$i][count]", $price['count'] ?? '') }}
 
                     <a href="javascript:void(0)">
                         <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $i > $price_count ) hide @endif">

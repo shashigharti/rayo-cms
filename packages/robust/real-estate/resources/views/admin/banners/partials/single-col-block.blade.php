@@ -1,11 +1,15 @@
 @inject('advancesearch_helper', '\Robust\RealEstate\Helpers\AdvanceSearchHelper')
 <div class="row">
-    <div class="input-field col s12">
+    <div class="input-field col s6">
         {{ Form::label('properties[header]', 'Header') }}
         {{ Form::text('properties[header]', $properties->header ?? '', [
                 'placeholder' => 'Banner Content'
            ])
         }}
+    </div>
+    <div class="col s6">
+        {{ Form::checkbox("properties[no_default_price]", true, $properties->no_default_price ?? false) }}
+        {{ Form::label("properties[no_default_price]", 'Use Own Price Range') }}
     </div>
 </div>
 <div class="row">
@@ -73,27 +77,27 @@
 <div class="row">
     <fieldset class="mt-1">
         <legend>Price Settings</legend>
-        @if(!isset($properties->prices))
-            @set('prices', config('real-estate.frw.default_pricing_ranges'))
-        @else
+        @if(isset($properties->prices)  && (isset($properties->no_default_price) && $properties->no_default_price))
             @set('prices', json_decode(json_encode($properties->prices), true) ?? [])
             @set('price_sort', ksort($prices))
+        @else
+            @set('prices', config('real-estate.frw.default_pricing_ranges'))
         @endif
         @set('price_count', count($prices))
         @set('i', 0)
-        @foreach($prices as $key => $price)
+        @foreach($prices as $price)
             @set('i', $i + 1)
-            <div class="row dynamic-elem" data-count="{{ $key }}">
+            <div class="row dynamic-elem" data-key="{{ $i }}">
                 <div class="input-field col s4">
-                    {{ Form::label("properties[prices][$key][min]", 'Min') }}
-                    {{ Form::text("properties[prices][$key][min]", $price['min'] ?? '') }}
+                    {{ Form::label("properties[prices][$i][min]", 'Min') }}
+                    {{ Form::text("properties[prices][$i][min]", $price['min'] ?? '') }}
                 </div>
                 <div class="input-field col s4">
-                    {{ Form::label("properties[prices][$key][max]", 'Max') }}
-                    {{ Form::text("properties[prices][$key][max]", $price['max'] ?? '') }}
+                    {{ Form::label("properties[prices][$i][max]", 'Max') }}
+                    {{ Form::text("properties[prices][$i][max]", $price['max'] ?? '') }}
                 </div>
                 <div class="input-field col s4">
-                    {{ Form::hidden("properties[prices][$key][count]", $price['count'] ?? '' ) }}
+                    {{ Form::hidden("properties[prices][$i][count]", $price['count'] ?? '' ) }}
                 </div>
                 <a href="javascript:void(0)">
                     <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $i > $price_count ) hide @endif">
