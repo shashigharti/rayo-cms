@@ -57,8 +57,9 @@
                 @set('prices', config('real-estate.frw.default_pricing_ranges'))
             @endif
             @set('price_count', count($prices))
-
+            @set('i', 0)
             @foreach($prices as $pkey => $price)
+                @set('i', $i + 1)
                 <div class="row dynamic-elem" data-count="{{ $key }}">
                     <div class="input-field col s4 inline__input-field">
                         {{ Form::label("properties[tabs][$tab][prices][$pkey][min]", 'Min') }}
@@ -71,12 +72,14 @@
                     {{ Form::hidden("properties[tabs][$tab][prices][$pkey][count]", $tabs[$tab]['prices'][$pkey]['count'] ?? $prices[$pkey]['count'] ?? '') }}
 
                     <a href="javascript:void(0)">
-                        <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $pkey > ($price_count - 1) ) hide @endif">
+                        <i class="material-icons dynamic-elem__btn dynamic-elem__delete  @if( $i > $price_count ) hide @endif">
                             delete
                         </i>
                     </a>
                     <a href="javascript:void(0)">
-                        <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $pkey < ($price_count - 1) ) hide @endif"> add </i>
+                        <i class="material-icons dynamic-elem__btn dynamic-elem__add @if( $i < $price_count ) hide @endif">
+                            add
+                        </i>
                     </a>
                 </div>
             @endforeach
