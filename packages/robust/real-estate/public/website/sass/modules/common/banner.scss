@@ -124,6 +124,25 @@
     }
 }
 
+
+.mb-20 {
+    margin-bottom: 20px;
+}
+
+.banner-caption a.theme-btn {
+  &:hover, &:focus {
+    color: $white;
+    text-decoration: none;
+  }
+}
+@media screen and (min-width:1400px){
+    .banner {
+        height: 610px;
+    }
+}
+
+/*============================================= advance search ==============================================*/
+
 #adv-search-dropdown {
     position: absolute;
     top: 365px;
@@ -201,10 +220,6 @@
     }
 }
 
-.mb-20 {
-  margin-bottom: 20px;
-}
-
 #adv-search-dropdown {
     a.advance-search_close {
         position: absolute;
@@ -212,52 +227,50 @@
         top: 10px;
         color: $white;
     }
-  input.select-dropdown.dropdown-trigger {
-    font-weight: bold;
-    font-size: 10px;
-    height: 1rem;
-  }
-
-  p {
-    margin-bottom: 2px;
-  }
-
-  .select-wrapper {
-    margin-top: 21px;
-    width:100%;
-
-    + label {
-      top: 0px;
+    input.select-dropdown.dropdown-trigger {
+        font-weight: bold;
+        font-size: 10px;
+        height: 1rem;
     }
-  }
 
-  .dropdown-content li {
-    clear: both;
-    color: rgba(0, 0, 0, 0.87);
-    cursor: pointer;
-    min-height: 29px;
-    line-height: 1.5rem;
-    width: 100%;
-    text-align: left;
-
-    > {
-      a, span {
-        font-size: 12px;
-        line-height: 13px;
-        padding: 6px 16px;
-      }
+    p {
+        margin-bottom: 2px;
     }
-  }
+
+    .select-wrapper {
+        margin-top: 21px;
+        width:100%;
+
+        + label {
+            top: 0px;
+        }
+    }
+
+    .dropdown-content li {
+        clear: both;
+        color: rgba(0, 0, 0, 0.87);
+        cursor: pointer;
+        min-height: 29px;
+        line-height: 1.5rem;
+        width: 100%;
+        text-align: left;
+
+        > {
+            a, span {
+                font-size: 12px;
+                line-height: 13px;
+                padding: 6px 16px;
+            }
+        }
+    }
 }
 
-.banner-caption a.theme-btn {
-  &:hover, &:focus {
-    color: $white;
-    text-decoration: none;
-  }
-}
-@media screen and (min-width:1400px){
-    .banner {
-        height: 610px;
+.listing--advance_search {
+    #adv-search-dropdown{
+        top:247px;
+        z-index:9;
+        .inner{
+            padding:10px 0px 10px 10px;
+        }
     }
 }

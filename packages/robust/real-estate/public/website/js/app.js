@@ -21,6 +21,6 @@
 //import("modules/market-report.js")
 //import("modules/market-survey.js")
 //import("modules/map-view.js")
-//import("modules/advance-search.js")
+//import("../../common/js/modules/advance-search.js")
 //import("modules/tab-menu.js")
 //import("modules/user-profile.js")

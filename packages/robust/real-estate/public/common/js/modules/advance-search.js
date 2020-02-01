@@ -10,12 +10,9 @@
     }
 
     function getParams() {
-
         let response = {}, queries = [], url;
-
         url = window.location.search.substring(1);
-
-        if(url != ''){
+        if (url != '') {
             // Split into key/value pairs
             queries = url.split("&");
         }
@@ -60,10 +57,10 @@
             }
         });
 
-        if(template.length > 0){
+        if (template.length > 0) {
             tagContainer.html(template);
             $('.search-section__tags-action').show();
-        }else{
+        } else {
             $('.search-section__tags-action').hide();
         }
 

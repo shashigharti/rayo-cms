@@ -2,8 +2,9 @@
 @set('search_settings',settings('real-estate'))
 @set('default_values',$blocks['default_values'] ?? [])
 @if(!empty($blocks))
-    <form id="frm-search" method="get" action="{{$advancesearch_helper->getSearchURL()}}">
-        <div id='adv-search-dropdown'>
+    <div id='adv-search-dropdown'>
+        <form id="frm-search" method="get" action="{{ $advancesearch_helper->getSearchURL() }}" data-search-save-url="">
+
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
@@ -24,13 +25,14 @@
                 <div class="row">
                     <div class="col s3 mb-20 right">
                         @if(auth()->check())
-                            <button href="#" data-search-save-url="" class="theme-btn advance-search__save">Save</button>
+                            <button href="#" data-search-save-url="" class="theme-btn advance-search__save">Save
+                            </button>
                         @endif
                         <button href="#" class="theme-btn" type="submit">search</button>
                     </div>
                 </div>
             </div>
-        </div>
-    <input type="hidden" name="sort_by" value="{{ $query_params['sort_by'] ?? ''}}">
-    </form>
+            <input type="hidden" name="sort_by" value="{{ $query_params['sort_by'] ?? ''}}">
+        </form>
+    </div>
 @endif
