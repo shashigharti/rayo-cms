@@ -16,6 +16,12 @@
     }
 
     $(function () {
+        let isUserFavourite = $('.user-favourite').length > 0;
+
+        if (!isUserFavourite) {
+            return false;
+        }
+
         let mapElem = $('.user-favourite .show-on-map');
         $(".user-favourite__table :input[name='listings[]']").on('click', function (e) {
             resetCompareTable();
