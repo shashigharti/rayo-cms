@@ -84,7 +84,7 @@ class MarketReportController extends Controller
     public function compareLocations(Request $request)
     {
         $data = $request->all();
-        $response = $this->model->compareLocations($data);
+        $response = $this->model->getListingsByType($data);
         return view('core::website.market-report.compare', [
             'records' => $response,
             'page_type' => $data['by']
@@ -98,7 +98,7 @@ class MarketReportController extends Controller
     public function showInMap(Request $request)
     {
         $data = $request->all();
-        $response = $this->model->compareLocations($data);
+        $response = $this->model->getListingsByType($data);
         return view('core::website.market-report.map', [
             'records' => $response,
             'page_type' => $data['by']

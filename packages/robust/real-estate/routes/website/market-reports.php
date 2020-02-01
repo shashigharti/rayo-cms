@@ -24,5 +24,4 @@ function () {
         'as' => 'reports.in',
         'uses' => '\Robust\RealEstate\Controllers\Website\MarketReportController@getInsights'
     ]);
-    
 });

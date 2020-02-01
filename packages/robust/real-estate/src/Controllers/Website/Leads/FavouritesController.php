@@ -4,8 +4,11 @@
 namespace Robust\RealEstate\Controllers\Website\Leads;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Robust\RealEstate\Repositories\Interfaces\IMarketReport;
 use Robust\RealEstate\Repositories\Website\FavouriteRepository;
+use Robust\RealEstate\Repositories\Website\ListingRepository;
 
 /**
  * Class FavouritesController
@@ -40,4 +43,31 @@ class FavouritesController extends Controller
         $this->model->store($data);
         return redirect()->back();
     }
+
+    /**
+     * @param Request $request
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function showListingsOnMap(ListingRepository $listing, Request $request)
+    {
+        $data = $request->all();
+        $ids = collect(explode(',', $data['ids']));
+        $listing_ids = $ids->map(function ($id) {
+            return strstr($id, '-', true);
+        });
+        $response = $listing
+            ->whereIn('id', $listing_ids)
+            ->get();
+
+        return view('core::website.user-profile.map', [
+            'records' => $response
+        ]);
+
+        return view('core::website.market-report.map', [
+            'records' => $response,
+            'page_type' => ''
+        ]);
+    }
 }
+
+

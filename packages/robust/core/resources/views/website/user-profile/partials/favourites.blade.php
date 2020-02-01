@@ -4,7 +4,6 @@
         <div class="left-align col s8">
             <a
                 class="user-favourite__btns compare-favourite btn btn-theme modal-trigger"
-                data-base-url="{{ route('website.realestate.market.reports.compare') }}"
                 href="#compare-favourite"
             >
                 Compare Checkmarked Properties
@@ -26,12 +25,12 @@
                         <tbody>
                         @if(isset($lead->favourites) && !empty($lead->favourites))
                             @foreach($lead->favourites as $key => $listing)
-                                <tr data-id="{{ $listing->id }}" class="hide">
+                                <tr data-id="{{ $listing->id . "-" .$listing->slug }}" class="hide">
                                     <td>
                                         {{ $listing->name }}
                                     </td>
                                     <td>
-                                       {{ $listing->system_price }}
+                                        {{ $listing->system_price }}
                                     </td>
                                     <td>
                                         {{ $listing->asking_price }}
@@ -58,9 +57,9 @@
                     <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cancel</a>
                 </div>
             </div>
-            <a id="compare-map"
-               class="user-favourite__btns compare-map btn btn-green"
-               data-base-url="{{ route('website.realestate.market.reports.map') }}"
+            <a
+                class="user-favourite__btns show-on-map btn btn-green"
+                data-base-url="{{ route('website.realestate.leads.map') }}"
             >
                 Show On Map
             </a>
@@ -89,7 +88,7 @@
                     <tr>
                         <td>
                             <label>
-                                {{ Form::checkbox("listings[]", $listing->id ) }}
+                                {{ Form::checkbox("listings[]", $listing->id . "-" .$listing->slug) }}
                                 <span>{{ $listing->name }}</span>
                             </label>
                         </td>

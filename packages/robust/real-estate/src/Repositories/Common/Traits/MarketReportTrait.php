@@ -110,7 +110,7 @@ trait MarketReportTrait
      * @param $data
      * @return mixed
      */
-    public function compareLocations($data)
+    public function getListingsByType($data)
     {
         $location_type = $data['by'];
         $response = $this->listing

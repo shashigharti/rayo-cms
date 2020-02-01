@@ -17,14 +17,14 @@
     }
 
     $(function () {
-        let marketReportMapViewContainer = document.getElementsByClassName('market-map-view'),
-            isMarketReportMapView = (marketReportMapViewContainer.length > 0);
+        let MapViewContainer = document.getElementsByClassName('map-view'),
+            isMapView = (MapViewContainer.length > 0);
 
-        if (!isMarketReportMapView) {
+        if (!isMapView) {
             return;
         }
 
-        console.log('Market Report Map View');
+        console.log('Map View');
 
         const items = document.querySelectorAll('#leaflet__map-container .leaflet__map-items');
         items.forEach(function (property) {
