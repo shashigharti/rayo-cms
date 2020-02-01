@@ -73,22 +73,24 @@ class BannerPropertyCount extends Command
             $psql = "";
             $lsql = "select id from real_estate_locations where";
             $count = count($properties['locations']) - 1;
-            foreach ($properties['locations'] as $key => $location) {
-                $slugs = "'" . implode("','", $location) . "'";
-                $type = str_replace('\\', "\\\\", get_class_by_location_type($key));
-                if ($i < $count) {
-                    $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs})) and ";
-                } else {
-                    $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs}))";
-                }
-                $i++;
-            }
-            $locations = collect(DB::select($lsql));
             $locations_ids = '';
-            if ($locations) {
-                $locations_ids = $locations->implode('id', ',');
+            if (isset($properties['locations'])) {
+                foreach ($properties['locations'] as $key => $location) {
+                    $slugs = "'" . implode("','", $location) . "'";
+                    $type = str_replace('\\', "\\\\", get_class_by_location_type($key));
+                    if ($i < $count) {
+                        $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs})) and ";
+                    } else {
+                        $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs}))";
+                    }
+                    $i++;
+                }
+                $locations = collect(DB::select($lsql));
+                if ($locations) {
+                    $locations_ids = $locations->implode('id', ',');
+                }
             }
-
+            $listing_ids = '';
             if (isset($properties['attributes'])) {
                 $psql = "select listing_id from real_estate_listing_properties where";
                 $attribute_count = 0;
@@ -100,8 +102,12 @@ class BannerPropertyCount extends Command
                         $psql .= " (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
                     }
                 }
-            }
 
+                $listings = collect(DB::select($psql));
+                if ($listings) {
+                    $listing_ids = $listings->implode('listing_id', ',');
+                }
+            }
             $priceSql = "SELECT ";
             $i = 0;
             $count = count($properties['prices']) - 1;
@@ -111,15 +117,17 @@ class BannerPropertyCount extends Command
                 } else {
                     $priceSql .= " SUM(CASE WHEN system_price >= {$price['min']} THEN 1 ELSE 0 END) AS '{$price['min']}-'
                                    FROM real_estate_listings
-                                   where city_id in ($locations_ids) and input_date between '$start_date' and '$end_date'";
+                                   where (input_date between '$start_date' and '$end_date')";
                 }
                 $i++;
             }
-
-            if( $psql != ''){
-                $priceSql .= " and id in ($psql)";
+            if ($locations_ids != '') {
+                $priceSql .= " and city_id in ($locations_ids)";
             }
 
+            if ($listing_ids != '') {
+                $priceSql .= " and id in ($listing_ids)";
+            }
             $banner_price_ranges = \DB::select($priceSql);
             foreach ($properties['prices'] as $key => $price) {
                 $min = $price['min'];
@@ -132,7 +140,7 @@ class BannerPropertyCount extends Command
             if (isset($properties['tabs'])) {
                 // process tabs
                 foreach ($properties['tabs'] as $tab_index => $tab) {
-                    $tabPSql = '';
+                    $tlisting_ids = '';
                     if (isset($tab['conditions'])) {
                         $tabPSql = "select listing_id from real_estate_listing_properties where";
                         $attribute_count = 0;
@@ -145,12 +153,17 @@ class BannerPropertyCount extends Command
                                 $tabPSql .= " (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
                             }
                         }
-                    }
-                    if($psql != ''){
-                        $psql .= " and listing_id in ($psql)";
+
+                        if ($listing_ids != '') {
+                            $tabPSql .= " and listing_id in ($listing_ids)";
+                        }
+                        $tlistings = collect(DB::select($tabPSql));
+                        if ($tlistings) {
+                            $tlisting_ids = $tlistings->implode('listing_id', ',');
+                        }
                     }
 
-                    $tabSql = '';
+
                     if (isset($tab['prices'])) {
                         $i = 0;
                         $count = count($tab['prices']) - 1;
@@ -165,9 +178,8 @@ class BannerPropertyCount extends Command
                             }
                             $i++;
                         }
-
-                        if( $tabPSql != ''){
-                            $tabSql .= " and id in ($tabPSql)";
+                        if ($tlisting_ids != '') {
+                            $tabSql .= " and id in ($tlisting_ids)";
                         }
                         $tab_ranges = \DB::select($tabSql);
                         foreach ($properties['tabs'][$tab_index]['prices'] as $key => $price) {
@@ -176,16 +188,25 @@ class BannerPropertyCount extends Command
                             $field = "$min-$max";
                             $properties['tabs'][$tab_index]['prices'][$key]['count'] = $tab_ranges[0]->$field;
                         }
-                    }
-                    elseif (isset($tab['subdivisions'])) {
-                        $tabSql .= " real_estate_locations.slug, real_estate_listings.subdivision_id, count(*) as count FROM real_estate_listings";
-                        $joinSql .= " left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id";
-                        $tabSql .= $joinSql . " where " . $propertySql;
-                        $tabSql .= " (input_date between '" . $start_date . "' and '" . $end_date . "') and city_id in ($lsql) group by real_estate_listings.subdivision_id";
-                        $tab_ranges = \DB::select($tabSql);
+                    } elseif (isset($tab['subdivisions'])) {
+                        $sdSql = "select subdivision_id from real_estate_listings where (input_date between '" . $start_date . "' and '" . $end_date . "')";
+                        if( $lsql != ''){
+                            $sdSql .= " and city_id in ($locations_ids)";
+                        }
+                        if( $psql != ''){
+                            $sdSql .= " and id in ($listing_ids)";
+                        }
+                        $subdivisions = \DB::select($sdSql);
+                        $subdivisions_ids = '';
+                        if ($subdivisions) {
+                            $subdivisions_ids = $locations->implode('subdivision_id', ',');
+                        }
+
+                        $tabSql = "select real_estate_locations.slug, count(*) as count FROM real_estate_locations where id in ($subdivisions_ids)";
+                        $tab_subdivisions = \DB::select($tabSql);
                         $subdivisions = [];
-                        foreach ($tab_ranges as $range) {
-                            $subdivisions[$range->slug] = $range->count;
+                        foreach ($tab_subdivisions as $subdivision) {
+                            $subdivisions[$subdivision->slug] = $subdivision->count;
                         }
                         foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
                             $slug = $subdivision['slug'];
@@ -194,7 +215,7 @@ class BannerPropertyCount extends Command
                     }
                 }
             }
-
+            print_r($banner->title);
             // save banner properties field
             Banner::where('id', $banner->id)->update(['properties' => json_encode($properties)]);
             $this->info("completed for Banner {$banner->title}");
