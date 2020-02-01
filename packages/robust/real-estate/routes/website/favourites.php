@@ -10,7 +10,7 @@ Route::group([
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\FavouritesController@store'
         ]);
         Route::get('/leads/map', [
-            'name' =>'Listings on Map',
+            'name' => 'Listings on Map',
             'as' => 'map',
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\FavouritesController@showListingsOnMap'
         ]);

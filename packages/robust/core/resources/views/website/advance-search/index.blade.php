@@ -3,8 +3,7 @@
 @set('default_values',$blocks['default_values'] ?? [])
 @if(!empty($blocks))
     <div id='adv-search-dropdown'>
-        <form id="frm-search" method="get" action="{{ $advancesearch_helper->getSearchURL() }}" data-search-save-url="">
-
+        <form id="frm-search" method="get" action="{{ $advancesearch_helper->getSearchURL() }}" >
             <div class="inner">
                 <a href="" class="advance-search advance-search_close"><i class="material-icons">clear</i></a>
                 <div class="row">
