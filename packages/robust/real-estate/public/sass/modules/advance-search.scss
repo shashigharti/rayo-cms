@@ -19,14 +19,6 @@
         margin-bottom: 16px;
     }
 
-    button.theme-btn {
-        border: 0;
-        margin-right: 10px;
-        width: 93%;
-        margin-left: 10px;
-        margin-top: 16px;
-    }
-
     .input-field > label {
         -webkit-transform: none;
         transform: none;
@@ -92,10 +84,15 @@
 
     button.theme-btn {
         border: 0;
-        margin-right: 10px;
-        width: 93%;
+        margin-right: 0px;
+        width: 40%;
         margin-left: 10px;
         margin-top: 16px;
+        display: inline-block;
+        color: #fff;
+        padding: 10px;
+        text-transform: uppercase;
+        font-weight: 600;
 
         &:focus, &:hover {
             background-color: #1a428e !important;
@@ -129,6 +126,8 @@
     .multi-select-container {
         label {
             margin-top: 15px;
+            display:block;
+            margin-bottom:8px;
         }
 
         .select2-container {
@@ -162,6 +161,7 @@
 
         + label {
             top: 0px;
+            width:200px;
         }
     }
 
@@ -191,5 +191,46 @@
         .inner{
             padding:10px 0px 10px 10px;
         }
+    }
+}
+.multi-select-container{
+  label{
+    margin-top:12px;
+  }
+  .select2-container {
+    width:100% !important;
+  }
+  .select2-container--default{
+    &.select2-container--focus .select2-selection--multiple {
+      border: solid #aaa 1px;
+    }
+    .select2-search--inline .select2-search__field {
+      height: auto;
+      padding-top: 3px;
+      margin-bottom: 5px;
+    }
+    .select2-selection--multiple{
+      background-color: transparent;
+      border: 1px solid #aaa;
+      border-radius: 0px;
+      .select2-selection__choice {
+        background-color: $dark_theme_color;
+        border: 1px solid #f6f7f9;
+        color:$white;
+        padding:1px 5px;
+      }
+      .select2-selection__choice__remove {
+        color:$white;
+      }
+    }
+  }
+  input[type=search]:not(.browser-default):focus:not([readonly]){
+    border-bottom:0;
+    box-shadow:none;
+  }
+}
+.Leads{
+    #adv-search-dropdown {
+        top: 106px;
     }
 }
