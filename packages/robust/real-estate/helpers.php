@@ -1,5 +1,19 @@
 <?php
 
+if (!function_exists('isLead')) {
+    /**
+     * @param $user
+     * @return boolean
+     */
+    function isLead($user = null)
+    {
+        if($user == null){
+            $user = \Auth::user();
+        }
+        return $user && (get_class($user->memberable) == 'Robust\RealEstate\Models\Lead')? $user->memberable : null;
+    }
+}
+
 if (!function_exists('price_format')) {
 
     /**

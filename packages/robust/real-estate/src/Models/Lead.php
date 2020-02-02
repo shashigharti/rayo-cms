@@ -143,8 +143,19 @@ class Lead extends Authenticatable
         return $this->hasMany(LeadFollowup::class,'lead_id');
     }
 
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
     public function views()
     {
         return $this->hasMany(LeadView::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function searches()
+    {
+        return $this->hasMany(LeadSearch::class);
     }
 }

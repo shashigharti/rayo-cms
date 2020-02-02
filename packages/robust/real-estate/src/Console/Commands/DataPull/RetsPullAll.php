@@ -54,10 +54,6 @@ class RetsPullAll extends Command
         $this->info('Updating Locations');
         Artisan::call('rws:update-locations-count');
         $this->info('Updating Locations Finished');
-
-        $this->info('Creating Attributes');
-        Artisan::call('rws:create-attributes');
-        $this->info('Creating Attributes Finished');
     }
 
 }

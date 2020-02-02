@@ -5,6 +5,7 @@ namespace Robust\RealEstate\Controllers\Website;
 use App\Http\Controllers\Controller;
 use Barryvdh\DomPDF\Facade as PDF;
 use Robust\Core\Helpage\Site;
+use Robust\RealEstate\Events\LeadSearchEvent;
 use Robust\RealEstate\Repositories\Website\BannerRepository;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
 use Robust\RealEstate\Helpers\LocationHelper;
@@ -64,7 +65,12 @@ class ListingController extends Controller
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
+        $params = request()->all();
+        $lead = isLead();
+        if($lead && !empty($params)){
 
+            event(new LeadSearchEvent($lead,json_encode($params)));
+        }
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
             'location' => ($location) ? $locationHelper->getLocation($location) : null

@@ -174,5 +174,10 @@ class LeadController extends Controller
                 'lead_helper' => $helper
             ]);
     }
+
+    public function storeSearch(Request $request)
+    {
+        dd($request);
+    }
 }
 
