@@ -312,9 +312,6 @@ if (!function_exists('generate_price_ranges')) {
             if ($j + 1 <= $max_array_count && isset($priceArr[$j + 1])) {
                 $ranges[] = $priceArr[$j] . "-" . $priceArr[$j + 1];
             }
-            //for odd increments like 9500 etc
-            if (!isset($priceArr[$j]) || !isset($priceArr[$j + 1]))
-                $ranges[] = $priceArr[$max_array_count - 1] . ">";
         }
 
         return $ranges;
