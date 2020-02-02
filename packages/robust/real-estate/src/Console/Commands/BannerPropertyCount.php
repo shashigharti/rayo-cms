@@ -95,7 +95,7 @@ class BannerPropertyCount extends Command
                 $psql = '';
                 $attribute_count = 0;
                 foreach ($properties['attributes'] as $attribute => $arr_value) {
-                    if((count($arr_value) > 0)) {
+                    if ((count($arr_value) > 0)) {
                         $values = implode("|", $arr_value);
                         if ($attribute_count < (count($properties['attributes']) - 1)) {
                             $psql .= " and (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
@@ -106,7 +106,7 @@ class BannerPropertyCount extends Command
                     }
                 }
 
-                if($psql != ''){
+                if ($psql != '') {
                     $listings = collect(DB::select($psql));
                     if ($listings) {
                         $listing_ids = $listings->implode('listing_id', ',');
@@ -147,29 +147,31 @@ class BannerPropertyCount extends Command
                 foreach ($properties['tabs'] as $tab_index => $tab) {
                     $tlisting_ids = '';
                     if (isset($tab['conditions'])) {
-                        $tabPSql = "select listing_id from real_estate_listing_properties where";
+                        $tabPSql = '';
                         $attribute_count = 0;
                         foreach ($tab['conditions'] as $condition) {
-                            if(isset($condition['values']) && (count($condition['values']) > 0)) {
+                            if (isset($condition['values']) && (count($condition['values']) > 0)) {
                                 $attribute = $condition['property_type'];
                                 $values = implode("|", $condition['values']);
                                 if ($attribute_count < (count($tab['conditions']) - 1)) {
                                     $tabPSql .= " and (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
                                 } else {
                                     $tabPSql .= " (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
+                                    $tabPSql = "select listing_id from real_estate_listing_properties where" . $tabPSql;
                                 }
                             }
                         }
 
-                        if ($listing_ids != '') {
-                            $tabPSql .= " and listing_id in ($listing_ids)";
-                        }
-                        $tlistings = collect(DB::select($tabPSql));
-                        if ($tlistings) {
-                            $tlisting_ids = $tlistings->implode('listing_id', ',');
+                        if ($tabPSql == '') {
+                            if ($listing_ids != '') {
+                                $tabPSql .= " and listing_id in ($listing_ids)";
+                            }
+                            $tlistings = collect(DB::select($tabPSql));
+                            if ($tlistings) {
+                                $tlisting_ids = $tlistings->implode('listing_id', ',');
+                            }
                         }
                     }
-
 
                     if (isset($tab['prices'])) {
                         $i = 0;
