@@ -54,7 +54,6 @@ class RealEstateServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(__DIR__ . '/../../config/frw.php', 'real-estate.frw');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'real-estate.settings');
         $this->mergeConfigFrom(__DIR__ . '/../../config/single-page-detail.php', 'real-estate.single-page-detail');
-        $this->mergeConfigFrom(__DIR__ . '/../../config/augustine.php', 'real-estate.augustine');
         $this->commands($this->commands);
     }
 }
