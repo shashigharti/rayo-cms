@@ -68,7 +68,6 @@ class ListingController extends Controller
         $params = request()->all();
         $lead = isLead();
         if($lead && !empty($params)){
-
             event(new LeadSearchEvent($lead,json_encode($params)));
         }
         return view(Site::templateResolver('core::website.listings.index'), [

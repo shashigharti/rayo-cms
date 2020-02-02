@@ -57,10 +57,10 @@ Route::group(['prefix' => config('core.frw.admin'), 'as' => 'admin.', 'group' =>
         'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@getModal'
     ]);
 
-    Route::get('/leads/searches/{lead-id}', [
+    Route::get('leads/searches/store/{id}', [
         'name' => 'Lead Searches',
         'as' => 'search.store',
-        'uses' => 'Robust\RealEstate\Controllers\Admin\LeadController@storeSearch'
+        'uses' => '\Robust\RealEstate\Controllers\Admin\LeadController@storeSearch'
     ]);
 });
 

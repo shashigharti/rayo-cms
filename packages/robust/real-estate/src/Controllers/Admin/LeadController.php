@@ -4,8 +4,10 @@ namespace Robust\RealEstate\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Robust\RealEstate\Events\LeadSearchEvent;
 use Robust\RealEstate\Events\SendEmailToLead;
 use Robust\RealEstate\Helpers\LeadHelper;
+use Robust\RealEstate\Models\LeadSearch;
 use Robust\RealEstate\Repositories\Admin\GroupLeadRepository;
 use Robust\RealEstate\Repositories\Admin\LeadFollowUpRepository;
 use Robust\RealEstate\Repositories\Admin\LeadGroupRepository;
@@ -175,9 +177,12 @@ class LeadController extends Controller
             ]);
     }
 
-    public function storeSearch(Request $request)
+    public function storeSearch($id)
     {
-        dd($request);
+        $lead = $this->model->find($id);
+        $params = request()->all();
+        event(new LeadSearchEvent($lead,json_encode($params)));
+        return redirect()->back();
     }
 }
 
