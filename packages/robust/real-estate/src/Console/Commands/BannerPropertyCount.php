@@ -228,7 +228,6 @@ class BannerPropertyCount extends Command
                     }
                 }
             }
-            print_r($banner->title);
             // save banner properties field
             Banner::where('id', $banner->id)->update(['properties' => json_encode($properties)]);
             $this->info("completed for Banner {$banner->title}");
