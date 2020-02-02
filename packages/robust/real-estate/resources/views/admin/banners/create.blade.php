@@ -76,7 +76,7 @@
                     }}
                 </div>
             </div>
-            <div class="form-group form-material row mt-2">
+            <div class="form-group form-material row mt-2 template--wrapper">
                 <div class="input-field col s6">
                     {{ Form::select('template', [
                             'Choose template' => 'Choose template',
