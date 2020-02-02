@@ -27,7 +27,7 @@
          <div class="col s3 center-align">
             <div class="left">
                <p>FEATURES</p>
-               <a href="#" class="theme-btn advance-search">Advanced search</a>
+               <a href="#" class="theme-btn advance-search" data-search-save-url="{{route('website.realestate.leads.search.store')}}">Advanced search</a>
             </div>
             <div class="right">
                <p>19723 HOMES FOR SALE</p>

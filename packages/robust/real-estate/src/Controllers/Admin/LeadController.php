@@ -14,6 +14,7 @@ use Robust\RealEstate\Repositories\Admin\LeadGroupRepository;
 use Robust\RealEstate\Repositories\Admin\LeadRepository;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
+use Robust\RealEstate\Repositories\Website\LeadSearchRepositories;
 
 /**
  * Class LeadController
@@ -176,6 +177,7 @@ class LeadController extends Controller
                 'lead_helper' => $helper
             ]);
     }
+
 
     /**
      * @param $id

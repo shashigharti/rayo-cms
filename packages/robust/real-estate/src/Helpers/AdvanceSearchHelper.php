@@ -29,11 +29,6 @@ class AdvanceSearchHelper
         //for route with params
         $params = request()->route()->parameters();
         $route_name = request()->route()->getName();
-        if(isAdmin()){
-            $params = request()->route()->parameters();
-            $lead = $params['lead'] ?? $params['id'];
-            return route('admin.search.store',['id' => $lead]);
-        }
         return $route_name === 'website.home' ? route('website.realestate.homes-for-sale') : route($route_name, $params);
     }
 

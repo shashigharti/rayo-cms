@@ -2,8 +2,10 @@
 (function ($, FRW, window, document, undefined) {
     "use strict"
 
-    function submit() {
-        let url = $('#frm-search').attr('action');
+    function submit(url=null) {
+        if(!url){
+            url = $('#frm-search').attr('action');
+        }
         let qParams = $('#frm-search').serialize();
         qParams = (qParams == '') ? '' : '?' + qParams;
         window.location.replace(url + qParams);
@@ -74,8 +76,10 @@
         if (advSearchElem.length > 0) {
             let inputElements = [];
             advSearchElem.click(function (e) {
+
                 e.preventDefault();
                 $('#adv-search-dropdown').toggleClass('show');
+                $('#adv-search-dropdown .advance-search__save').data('search-save-url',$(this).data('search-save-url'));
             });
 
             inputElements = $('[data-selected]:not(.multi-select)');
@@ -180,6 +184,9 @@
                 params[prop] = $(this).val();
             });
         }
-
+        $('.advance-search__save').on('click',function (e) {
+            e.preventDefault();
+            submit($(this).data('search-save-url'));
+        });
     });
 }(jQuery, FRW, window, document));
