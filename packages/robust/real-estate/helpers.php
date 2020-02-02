@@ -273,16 +273,7 @@ if (!function_exists('replace_listings')) {
         $text .= '<h2>Active : ' . $listings->where('status',settings('real-estate','active'))->count();
         $text .= '<h2>Sold : ' . $listings->where('status',settings('real-estate','sold'))->count();
         foreach ($listings as $listing){
-            $image = $listing->images->first();
-            $text .= '<br>';
-            $text .= '<br>';
-            if($image){
-                $text .= '<img src="'. $image->url .'" style="width:150px;height:200px">';
-            }
-            $text .= '<h5>Name : ' . $listing->name . '</h5>';
-            $text .= '<p>Address : ' . $listing->address_number .',' . $listing->address_street . '</p>';
-            $text .= '<p>Bedrooms : ' . $listing->bedrooms . '</p>';
-            $text .= '<p>Bathrooms : ' . $listing->baths_full . '</p>';
+            $text .= view('real-estate::admin.email-templates.listings',['listing'=>$listing])->render();
         }
         $content = str_replace('*|LISTINGS|*',$text,$content);
         $content = replace_global_variables($content);
