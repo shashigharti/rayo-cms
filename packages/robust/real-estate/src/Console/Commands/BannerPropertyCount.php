@@ -95,7 +95,7 @@ class BannerPropertyCount extends Command
                 $psql = "select listing_id from real_estate_listing_properties where";
                 $attribute_count = 0;
                 foreach ($properties['attributes'] as $attribute => $arr_value) {
-                    if(is_array($arr_value) && (count($arr_value) > 0)) {
+                    if((count($arr_value) > 0)) {
                         $values = implode("|", $arr_value);
                         if ($attribute_count < (count($properties['attributes']) - 1)) {
                             $psql .= " and (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
@@ -147,7 +147,7 @@ class BannerPropertyCount extends Command
                         $tabPSql = "select listing_id from real_estate_listing_properties where";
                         $attribute_count = 0;
                         foreach ($tab['conditions'] as $condition) {
-                            if(is_array($condition['values']) && (count($condition['values']) > 0)) {
+                            if(isset($condition['values']) && (count($condition['values']) > 0)) {
                                 $attribute = $condition['property_type'];
                                 $values = implode("|", $condition['values']);
                                 if ($attribute_count < (count($tab['conditions']) - 1)) {
