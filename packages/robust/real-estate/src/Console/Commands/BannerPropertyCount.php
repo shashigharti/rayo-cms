@@ -162,7 +162,7 @@ class BannerPropertyCount extends Command
                             }
                         }
 
-                        if ($tabPSql == '') {
+                        if ($tabPSql != '') {
                             if ($listing_ids != '') {
                                 $tabPSql .= " and listing_id in ($listing_ids)";
                             }
