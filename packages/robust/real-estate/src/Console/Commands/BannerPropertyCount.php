@@ -71,10 +71,10 @@ class BannerPropertyCount extends Command
             $properties = json_decode($banner->properties, true);
             $i = 0;
             $psql = "";
-            $lsql = "select id from real_estate_locations where";
-            $count = count($properties['locations']) - 1;
+            $lsql = '';
             $locations_ids = '';
             if (isset($properties['locations'])) {
+                $count = count($properties['locations']) - 1;
                 foreach ($properties['locations'] as $key => $location) {
                     $slugs = "'" . implode("','", $location) . "'";
                     $type = str_replace('\\', "\\\\", get_class_by_location_type($key));
@@ -82,6 +82,7 @@ class BannerPropertyCount extends Command
                         $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs})) and ";
                     } else {
                         $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs}))";
+                        $lsql = 'select id from real_estate_locations where' . $lsql;
                     }
                     $i++;
                 }
@@ -198,33 +199,33 @@ class BannerPropertyCount extends Command
                             $properties['tabs'][$tab_index]['prices'][$key]['count'] = $tab_ranges[0]->$field;
                         }
                     } elseif (isset($tab['subdivisions'])) {
-                        $sdSql = "select subdivision_id from real_estate_listings where (input_date between '" . $start_date . "' and '" . $end_date . "')";
+                        $tabSql = "select real_estate_locations.slug, count(*) as count from real_estate_listings
+                                left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id
+                                where (real_estate_listings.input_date between '" . $start_date . "' and '" . $end_date . "')
+                                and real_estate_locations.locationable_type = 'Robust\\\\RealEstate\\\\Models\\\\Subdivision'";
                         if ($lsql != '') {
-                            $sdSql .= " and city_id in ($locations_ids)";
+                            $tabSql .= " and real_estate_listings.city_id in ($locations_ids)";
                         }
                         if ($psql != '') {
-                            $sdSql .= " and id in ($listing_ids)";
+                            $tabSql .= " and real_estate_listings.id in ($listing_ids)";
                         }
-                        $subdivisions = \DB::select($sdSql);
-                        $subdivisions_ids = '';
-                        if ($subdivisions) {
-                            $subdivisions_ids = $locations->implode('subdivision_id', ',');
-                        }
-
-                        $tabSql = "select real_estate_locations.slug, count(*) as count FROM real_estate_locations where id in ($subdivisions_ids)";
+                        $tabSql .= " group by real_estate_locations.slug";
                         $tab_subdivisions = \DB::select($tabSql);
                         $subdivisions = [];
                         foreach ($tab_subdivisions as $subdivision) {
+                            if(!isset($subdivisions[$subdivision->slug])){
+                                $subdivisions[$subdivision->slug] = 0;
+                            }
                             $subdivisions[$subdivision->slug] = $subdivision->count;
                         }
                         foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
                             $slug = $subdivision['slug'];
                             $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
                         }
+
                     }
                 }
             }
-            print_r($banner->title);
             // save banner properties field
             Banner::where('id', $banner->id)->update(['properties' => json_encode($properties)]);
             $this->info("completed for Banner {$banner->title}");

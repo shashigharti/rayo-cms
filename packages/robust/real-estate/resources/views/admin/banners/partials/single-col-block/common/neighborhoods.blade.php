@@ -1,4 +1,4 @@
-@set('subdivisions', $banner_helper->neighborhoods('cities', $properties->locations->cities))
+
 <div class="row">
     <div id="{{ $tab }}" class="col s12">
         <div class="form-group form-material row">
@@ -17,7 +17,8 @@
         <div class="row">
             <fieldset>
                 <legend>Select to hide subdivisions</legend>
-                @if(isset($properties->locations) && isset($properties->location->cities))
+                @if(isset($properties->locations) && isset($properties->locations->cities))
+                    @set('subdivisions', $banner_helper->neighborhoods('cities', $properties->locations->cities))
                     @foreach ($subdivisions as $pkey => $subdivision)
                         <div class="col s3">
                             @set('c_title', ($tabs[$tab]['subdivisions'][$pkey]['slug'] ?? $subdivision->slug))

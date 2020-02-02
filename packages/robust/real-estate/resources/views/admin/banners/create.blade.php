@@ -48,22 +48,24 @@
                     <div>
                         <small>(Image Size: 200 x 200)</small>
                     </div>
-                    <div class="col s6">
+                    <div class="row">
+                        <div class="col s6">
                         {{ Form::file('files[]', [
                                 'class' =>'file-uploader__input',
                                 'multiple' => 'multiple'
                             ])
                         }}
                         <button type="button"
-                                class="btn cyan btn-small file-uploader__upload-btn"
+                                class="btn cyan btn-small file-uploader__upload-btn mt-3"
                         >
                             Upload Image
                         </button>
-                    </div>
-                    <div class="col s6 hide file_uploader_progress">
-                        Uploading
-                        <div class="progress">
-                            <div class="indeterminate"></div>
+                        </div>
+                        <div class="col s6 hide file_uploader_progress">
+                            Uploading
+                            <div class="progress">
+                                <div class="indeterminate"></div>
+                            </div>
                         </div>
                     </div>
 
