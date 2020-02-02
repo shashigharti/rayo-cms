@@ -198,31 +198,28 @@ class BannerPropertyCount extends Command
                             $properties['tabs'][$tab_index]['prices'][$key]['count'] = $tab_ranges[0]->$field;
                         }
                     } elseif (isset($tab['subdivisions'])) {
-                        $sdSql = "select subdivision_id from real_estate_listings where (input_date between '" . $start_date . "' and '" . $end_date . "')";
+                        $tabSql = "select real_estate_locations.slug, count(*) as count from real_estate_listings
+                                left join real_estate_locations on real_estate_locations.id = real_estate_listings.subdivision_id
+                                where (real_estate_listings.input_date between '" . $start_date . "' and '" . $end_date . "')
+                                and real_estate_locations.locationable_type = 'Robust\\\\RealEstate\\\\Models\\\\Subdivision'";
                         if ($lsql != '') {
-                            $sdSql .= " and city_id in ($locations_ids)";
+                            $tabSql .= " and real_estate_listings.city_id in ($locations_ids)";
                         }
                         if ($psql != '') {
-                            $sdSql .= " and id in ($listing_ids)";
+                            $tabSql .= " and real_estate_listings.id in ($listing_ids)";
                         }
-
-                        $subdivisions = collect(\DB::select($sdSql));
-                        $subdivisions_ids = '';
-                        if ($subdivisions) {
-                            $subdivisions_ids = $subdivisions->implode('subdivision_id', ',');
+                        $tabSql .= " group by real_estate_locations.slug";
+                        $tab_subdivisions = \DB::select($tabSql);
+                        $subdivisions = [];
+                        foreach ($tab_subdivisions as $subdivision) {
+                            if(!isset($subdivisions[$subdivision->slug])){
+                                $subdivisions[$subdivision->slug] = 0;
+                            }
+                            $subdivisions[$subdivision->slug] = $subdivision->count;
                         }
-
-                        if ($subdivisions_ids == '') {
-                            $tabSql = "select real_estate_locations.slug, count(*) as count FROM real_estate_locations where id in ($subdivisions_ids)";
-                            $tab_subdivisions = \DB::select($tabSql);
-                            $subdivisions = [];
-                            foreach ($tab_subdivisions as $subdivision) {
-                                $subdivisions[$subdivision->slug] = $subdivision->count;
-                            }
-                            foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
-                                $slug = $subdivision['slug'];
-                                $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
-                            }
+                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
+                            $slug = $subdivision['slug'];
+                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
                         }
 
                     }
