@@ -3,6 +3,9 @@
 namespace Robust\RealEstate\Console\Commands;
 
 use Illuminate\Console\Command;
+use Robust\RealEstate\Events\ListingAlertEvent;
+use Robust\RealEstate\Models\Lead;
+use Robust\RealEstate\Models\Listing;
 
 class ListingsAlertToLead extends Command
 {
@@ -19,44 +22,37 @@ class ListingsAlertToLead extends Command
 
     public function handle()
     {
-        // Get all leads who don't have saved searches AND viewed some listing
-        $leads = Lead::with('viewedListings')
-            ->where('user_type', '<>', Lead::DISCARDED)
-            ->whereHas('viewedListings')
-            ->doesntHave('searches')->get();
-
-        //$automationAlert = get_settings('automation_alerts');
-        if (!$leads || !($automationAlert && $automationAlert != null)) {
-            return false;
-        }
-
-        // Loop on leads
-        foreach ($leads as $lead) {
-            // Get viewed listings
-            $viewedListings = $lead->viewedListings;
-
-            // Listing prices array
-            $listing_prices = [];
-            $zip_codes = [];
-            $cities = [];
-            foreach ($viewedListings as $viewedListing) {
-                $cities[] = $viewedListing['city'];
-                $listing_prices[] = $viewedListing['system_price'];
-                $zip_codes[] = $viewedListing['zip'];
+        Lead::chunk(5,function ($leads){
+            foreach ($leads as $lead){
+                $searches = $lead->searches;
+                $views = $lead->views;
+                if($searches->count() == 0 && $views->count() > 0){
+                    $prices = [];
+                    $cities = [];
+                    $zips = [];
+                    foreach ($views as $view){
+                        $listing = $view->listing;
+                        $cities[] = $listing->city_id;
+                        $zips[] = $listing->zip_id;
+                        $prices[] = $listing->system_price;
+                    }
+                    $priceRange = [min($prices),max($prices)];
+                    $listings = $this->getListings($priceRange,$cities,$zips);
+                    if($listings->count() > 0){
+                        event(new ListingAlertEvent($lead,$listings));
+                    }
+                }
             }
+        });
+    }
 
-            $priceRanges = [];//$this->getAppropriatePricesRange($listing_prices);
-            $zip_code = [];//$this->getCities($zip_codes);
-            $minRange = $priceRanges['range_min'];
-            $maxRange = $priceRanges['range_max'];
-            $listings = [];//$this->getListingsToBeSent($zip_code, $minRange, $maxRange, $lead->id);
-
-            if ($listings) {
-                $this->sendEmail($lead->id, $listings);
-            }
-        }
-
-
+    public function getListings($priceRange,$cities,$zips)
+    {
+        return Listing::whereBetween('system_price',$priceRange)
+                ->whereIn('city_id',$cities)
+                ->whereIn('zip_id',$zips)
+                ->limit(6)
+                ->get();
     }
 
 }

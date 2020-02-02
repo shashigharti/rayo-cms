@@ -32,7 +32,8 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\UpdateLocationsCount',
         'Robust\RealEstate\Console\Commands\RegisterCommands',
 
-        'Robust\RealEstate\Console\Commands\Installation\ResetSinglePageDetail'
+        'Robust\RealEstate\Console\Commands\Installation\ResetSinglePageDetail',
+        'Robust\RealEstate\Console\Commands\ListingsAlertToLead'
     ];
 
 
