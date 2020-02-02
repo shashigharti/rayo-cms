@@ -12,7 +12,7 @@ if (!function_exists('isAdmin')) {
         if($user == null){
             $user = \Auth::user();
         }
-        return (get_class($user->memberable) == 'Robust\Admin\Models\Admin')? true: false;
+        return $user && (get_class($user->memberable) == 'Robust\Admin\Models\Admin')? true: false;
     }
 }
 
