@@ -205,22 +205,26 @@ class BannerPropertyCount extends Command
                         if ($psql != '') {
                             $sdSql .= " and id in ($listing_ids)";
                         }
-                        $subdivisions = \DB::select($sdSql);
+
+                        $subdivisions = collect(\DB::select($sdSql));
                         $subdivisions_ids = '';
                         if ($subdivisions) {
-                            $subdivisions_ids = $locations->implode('subdivision_id', ',');
+                            $subdivisions_ids = $subdivisions->implode('subdivision_id', ',');
                         }
 
-                        $tabSql = "select real_estate_locations.slug, count(*) as count FROM real_estate_locations where id in ($subdivisions_ids)";
-                        $tab_subdivisions = \DB::select($tabSql);
-                        $subdivisions = [];
-                        foreach ($tab_subdivisions as $subdivision) {
-                            $subdivisions[$subdivision->slug] = $subdivision->count;
+                        if ($subdivisions_ids == '') {
+                            $tabSql = "select real_estate_locations.slug, count(*) as count FROM real_estate_locations where id in ($subdivisions_ids)";
+                            $tab_subdivisions = \DB::select($tabSql);
+                            $subdivisions = [];
+                            foreach ($tab_subdivisions as $subdivision) {
+                                $subdivisions[$subdivision->slug] = $subdivision->count;
+                            }
+                            foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
+                                $slug = $subdivision['slug'];
+                                $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
+                            }
                         }
-                        foreach ($properties['tabs'][$tab_index]['subdivisions'] as $s_key => $subdivision) {
-                            $slug = $subdivision['slug'];
-                            $properties['tabs'][$tab_index]['subdivisions'][$s_key]['count'] = $subdivisions[$slug];
-                        }
+
                     }
                 }
             }
