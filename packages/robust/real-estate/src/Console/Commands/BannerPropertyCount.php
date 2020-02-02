@@ -92,7 +92,7 @@ class BannerPropertyCount extends Command
             }
             $listing_ids = '';
             if (isset($properties['attributes'])) {
-                $psql = "select listing_id from real_estate_listing_properties where";
+                $psql = '';
                 $attribute_count = 0;
                 foreach ($properties['attributes'] as $attribute => $arr_value) {
                     if((count($arr_value) > 0)) {
@@ -101,13 +101,16 @@ class BannerPropertyCount extends Command
                             $psql .= " and (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
                         } else {
                             $psql .= " (type LIKE '%{$attribute}%' and value REGEXP '{$values}' )";
+                            $psql = "select listing_id from real_estate_listing_properties where" . $psql;
                         }
                     }
                 }
 
-                $listings = collect(DB::select($psql));
-                if ($listings) {
-                    $listing_ids = $listings->implode('listing_id', ',');
+                if($psql != ''){
+                    $listings = collect(DB::select($psql));
+                    if ($listings) {
+                        $listing_ids = $listings->implode('listing_id', ',');
+                    }
                 }
             }
             $priceSql = "SELECT ";
