@@ -177,6 +177,10 @@ class LeadController extends Controller
             ]);
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function storeSearch($id)
     {
         $lead = $this->model->find($id);
