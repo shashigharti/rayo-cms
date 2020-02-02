@@ -71,10 +71,10 @@ class BannerPropertyCount extends Command
             $properties = json_decode($banner->properties, true);
             $i = 0;
             $psql = "";
-            $lsql = "select id from real_estate_locations where";
-            $count = count($properties['locations']) - 1;
+            $lsql = '';
             $locations_ids = '';
             if (isset($properties['locations'])) {
+                $count = count($properties['locations']) - 1;
                 foreach ($properties['locations'] as $key => $location) {
                     $slugs = "'" . implode("','", $location) . "'";
                     $type = str_replace('\\', "\\\\", get_class_by_location_type($key));
@@ -82,6 +82,7 @@ class BannerPropertyCount extends Command
                         $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs})) and ";
                     } else {
                         $lsql .= " (locationable_type = '{$type}' and slug in ({$slugs}))";
+                        $lsql = 'select id from real_estate_locations where' . $lsql;
                     }
                     $i++;
                 }
