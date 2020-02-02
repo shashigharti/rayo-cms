@@ -2,7 +2,7 @@
 @set('city',$location_helper->getLocation($result->city_id))
 @set('subdivision',$location_helper->getLocation($result->subdivision_id))
 @set('image',$result->images ? $result->images->first() : null)
-@set('lead',Auth::check() ? Auth::user()->memberable->first() : null)
+@set('lead',isLead())
 <section class="main-content">
     <div class="container-fluid">
         <div class="row">
@@ -276,12 +276,14 @@
                         <div class="clearfix btn-social-detail">
                             <div class="row print-hide">
                                 @set('href',$lead ? route('website.realestate.leads.favourites',['id' => $result->id]) : '#registermodal')
-                                @set('favourite',$lead->favourites ? $lead->favourites->where('id',$result->id)->first() : null)
-                                <div class="col m6 s12 right-align padding-left-0 padding-right-0">
-                                    <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
-                                        <i class="material-icons">star</i></span> {{$favourite ? 'Favourite' : 'Save to Favorites'}}
-                                    </a>
-                                </div>
+                                @if($lead)
+                                    @set('favourite',$lead->favourites ? $lead->favourites->where('id',$result->id)->first() : null)
+                                    <div class="col m6 s12 right-align padding-left-0 padding-right-0">
+                                        <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
+                                            <i class="material-icons">star</i></span> {{$favourite ? 'Favourite' : 'Save to Favorites'}}
+                                        </a>
+                                    </div>
+                                @endif
                                 @set('href',$lead ? '#emailModal' : '#registermodal')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">
