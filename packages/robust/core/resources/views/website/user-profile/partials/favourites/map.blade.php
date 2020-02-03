@@ -1,3 +1,5 @@
 <div class="row">
-    @include('core::website.partials.map')
+    <div class="mr-t-20">
+        @include('core::website.partials.map')
+    </div>
 </div>

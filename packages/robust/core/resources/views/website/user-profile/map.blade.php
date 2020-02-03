@@ -13,12 +13,12 @@
 @endsection
 @section('body_section')
     <section class="main-content">
-        <div class="row user-favourite-map map-view">
+        <div class="row user-favourite-map map-view container-fluid">
             <a
                 class="user-favourite-map__btns btn btn-theme"
                 href="{{ route('website.user.profile') }}"
             >
-                << Back to user profile
+                << Back
             </a>
             @include('core::website.user-profile.partials.favourites.map')
         </div>
