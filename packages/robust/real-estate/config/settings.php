@@ -20,10 +20,49 @@ return [
         'display_name' => 'Advance Search',
         'slug' => 'advance-search',
         'property' => json_encode([
-            "first_block" => ["search","property_type","status","pictures"],
-            "second_block" => ["cities","counties","price","beds","bathrooms"],
-            "third_block" => ["square_feet","year_built","stories","lot_description","exterior"],
-            "fourth_block" => ["interior","elementary_schools","middle_schools","high_schools","pool","waterfront_details","design"]
+            'first_block' => ['property_type','status','pictures'],
+
+            'second_block' => ['price','beds','bathrooms','cities','zips','subdivisions','waterfront','waterfront_details','pool'],
+            'third_block' => [
+                'lot_description',
+                'design',
+                'interior',
+                'garage',
+                'exterior',
+                'year_built',
+                'stories',
+                'square_feet',
+            ],
+            'fourth_block' => [
+                'elementary_schools',
+                'middle_schools',
+                'high_schools',
+                'cities',
+            ],
+            'first_block_order' => 'property_type,status,pictures',
+            'second_block_order' => 'price,beds,bathrooms,cities,zips,subdivisions,waterfront,waterfront_details,pool',
+            'third_block_order' => 'lot_description,design,interior,garage,exterior,year_built,stories,square_feet',
+            'fourth_block_order' => 'elementary_schools,middle_schools,high_schools,cities',
+            'property_types' => [
+                'Condominium',
+                'Single Family Detached',
+                'Townhomes',
+                'Land and Lots',
+                'Gated',
+                '55+',
+            ],
+            'property_statuses' => [
+                'Homes For sale',
+                'Sold homes',
+                'Contingent',
+            ],
+            'default_values' => [
+                'property_type' => [
+                    'Single Family Detached'
+                ]
+            ],
+            'property_types_order' => 'Condominium,Single Family Detached,Townhomes,Land and Lots,Gated,55+',
+            'property_statuses_order' => 'Homes For sale,Sold homes,Contingent',
         ])
     ],
     [

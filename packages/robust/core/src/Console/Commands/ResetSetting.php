@@ -57,7 +57,7 @@ class ResetSetting extends Command
                             $old_setting = Setting::create([
                                 'display_name' => $setting['display_name'],
                                 'slug' => $setting['slug'],
-                                'values' => '{}',
+                                'values' => $setting['property'] ?? '{}',
                                 'package_name' => $key
                             ]);
                         }
