@@ -1,5 +1,13 @@
 <?php
 
+use App\Area;
+use App\City;
+use App\County;
+use App\HighSchool;
+use App\SchoolDistrict;
+use App\Subdivision;
+use App\Zip;
+
 return [
 
     /*

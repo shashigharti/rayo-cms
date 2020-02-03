@@ -7,9 +7,7 @@
                     @if(isset($title) && ($title !== ''))
                         <h1> {{ $title }} </h1>
                     @elseif(isset($page) && ($page->title != '') && isset($location))
-                        <h1> {{ ucwords(strtolower($location->name)) . " " . $page->title }} </h1>
-                    @elseif(isset($page) && ($page->title != '') )
-                        <h1> {{  settings('real-estate', 'client')['name'] . " " . $page->title }} </h1>
+                        <h1> {{ ucwords(strtolower($location->name)) }} Homes For Sale </h1>
                     @else
                         <h1> {{ settings('real-estate', 'client')['name'] }} Homes For Sale </h1>
                     @endif

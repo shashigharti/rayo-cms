@@ -31,6 +31,7 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\UpdateGeoLocations',
         'Robust\RealEstate\Console\Commands\UpdateLocationsCount',
         'Robust\RealEstate\Console\Commands\RegisterCommands',
+        'Robust\RealEstate\Console\Commands\CreatePages',
 
         'Robust\RealEstate\Console\Commands\Installation\ResetSinglePageDetail',
         'Robust\RealEstate\Console\Commands\ListingsAlertToLead',
@@ -53,6 +54,7 @@ class RealEstateServiceProvider extends ServiceProvider
     public function register_includes()
     {
         $this->mergeConfigFrom(__DIR__ . '/../../config/permissions.php', 'real-estate.permissions');
+        $this->mergeConfigFrom(__DIR__ . '/../../config/pages.php', 'real-estate.pages');
         $this->mergeConfigFrom(__DIR__ . '/../../config/frw.php', 'real-estate.frw');
         $this->mergeConfigFrom(__DIR__ . '/../../config/settings.php', 'real-estate.settings');
         $this->mergeConfigFrom(__DIR__ . '/../../config/single-page-detail.php', 'real-estate.single-page-detail');

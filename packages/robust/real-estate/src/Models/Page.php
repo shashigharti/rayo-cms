@@ -36,6 +36,7 @@ class Page extends BaseModel
         'content',
         'status',
         'page_type',
+        'route_type',
         'meta_title',
         'meta_description',
         'meta_keywords',

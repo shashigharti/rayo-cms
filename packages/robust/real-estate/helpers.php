@@ -7,10 +7,10 @@ if (!function_exists('isLead')) {
      */
     function isLead($user = null)
     {
-        if($user == null){
+        if ($user == null) {
             $user = \Auth::user();
         }
-        return $user && (get_class($user->memberable) == 'Robust\RealEstate\Models\Lead')? $user->memberable : null;
+        return $user && (get_class($user->memberable) == 'Robust\RealEstate\Models\Lead') ? $user->memberable : null;
     }
 }
 
@@ -72,15 +72,15 @@ if (!function_exists('price_range_format')) {
         $price_start = strlen($prices[0]);
         $price_end = strlen($prices[1]);
         if ($prices[1] != '' && is_numeric($prices[1])) {
-            if(($price_start > 5 && $price_start < 7)){
+            if (($price_start > 5 && $price_start < 7)) {
                 $prices[0] = number_format($prices[0]);
-            }elseif($price_start >= 7){
+            } elseif ($price_start >= 7) {
                 $prices[0] = price_format($prices[0]);
             }
 
-            if(($price_end > 5 && $price_end < 7)){
+            if (($price_end > 5 && $price_end < 7)) {
                 $prices[1] = number_format($prices[1]);
-            }elseif($price_end >= 7){
+            } elseif ($price_end >= 7) {
                 $prices[1] = price_format($prices[1]);
             }
 
@@ -272,12 +272,13 @@ if (!function_exists('replace_listings')) {
     function replace_listings($content, $listings)
     {
         $text = '.';
-        $text .= '<p style="padding-left:20px">Active : ' . $listings->where('status',settings('real-estate','active'))->count() . '</p>';
-        $text .= '<p style="padding-left:20px">Sold : ' . $listings->where('status',settings('real-estate','sold'))->count() . '</p>';
-        foreach ($listings as $listing){
-            $text .= view('real-estate::admin.email-templates.listings',['listing'=>$listing])->render();
+        $text .= '<p style="padding-left:20px">Active : ' . $listings->where('status', settings('real-estate', 'active'))->count() . '</p>';
+        $text .= '<p style="padding-left:20px">Sold : ' . $listings->where('status', settings('real-estate', 'sold'))->count() . '</p>';
+
+        foreach ($listings as $listing) {
+            $text .= view('real-estate::admin.email-templates.listings', ['listing' => $listing])->render();
         }
-        $content = str_replace('*|LISTINGS|*',$text,$content);
+        $content = str_replace('*|LISTINGS|*', $text, $content);
         $content = replace_global_variables($content);
 
         return $content;
@@ -330,9 +331,6 @@ if (!function_exists('seo')) {
     function seo($segments)
     {
         $page = null;
-        $additional_route_params = [
-            'price' => 'price',
-        ];
         $segments_temp = $segments;
 
         for ($i = count($segments_temp) - 1; $i >= 0; $i--) {
@@ -344,25 +342,12 @@ if (!function_exists('seo')) {
             unset($segments_temp[$i]);
         }
 
-        if (!$page) {
-            foreach ($additional_route_params as $param) {
-                if (in_array($param, $segments)) {
-                    $partial_url_str = $param;
-                    $page = (new \Robust\RealEstate\Models\Page)->where('url', $partial_url_str)->first();
-                    break;
-                }
-            }
-        }
-        if (!$page && count($segments_temp) == 0) {
-            //home page
-            $page = (new \Robust\RealEstate\Models\Page)->where('url', '/')->first();
-        }
         if ($page) {
             $page->meta_description = replace_seo_variables($page->meta_description, $segments);
             $page->meta_title = replace_seo_variables($page->meta_title, $segments);
             $page->meta_keywords = replace_seo_variables($page->meta_keywords, $segments);
         }
-        return $page;
+        return ($page == null) ? [] : $page;
     }
 }
 
