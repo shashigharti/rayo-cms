@@ -33,7 +33,8 @@ class RealEstateServiceProvider extends ServiceProvider
         'Robust\RealEstate\Console\Commands\RegisterCommands',
 
         'Robust\RealEstate\Console\Commands\Installation\ResetSinglePageDetail',
-        'Robust\RealEstate\Console\Commands\ListingsAlertToLead'
+        'Robust\RealEstate\Console\Commands\ListingsAlertToLead',
+        'Robust\RealEstate\Console\Commands\MultiplePropertyViewAlert',
     ];
 
 

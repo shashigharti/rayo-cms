@@ -12,10 +12,10 @@ use Robust\RealEstate\Events\LeadCommunicationsEvent;
 
 
 /**
- * Class SendListingAlertEmail
+ * Class SendMultiplePropertyViewMail
  * @package Robust\RealEstate\Mail
  */
-class SendListingAlertEmail extends Mailable
+class SendMultiplePropertyViewMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -35,10 +35,10 @@ class SendListingAlertEmail extends Mailable
      */
     public $subject;
 
+
     /**
-     * SendListingAlertEmail constructor.
+     * SendMultiplePropertyViewMail constructor.
      * @param $subject
-     * @param $from
      * @param $message
      */
     public function __construct($subject, $message)
@@ -49,7 +49,7 @@ class SendListingAlertEmail extends Mailable
 
 
     /**
-     * @return SendListingAlertEmail
+     * @return SendMultiplePropertyViewMail
      */
     public function build()
     {

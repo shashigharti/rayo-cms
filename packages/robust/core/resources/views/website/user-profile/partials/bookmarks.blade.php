@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3 class="title-more-detail" id="my-saved-bookmarks">My Saved Bookmarks ({{$lead->bookmarks->count()}})</h3>
+        <h3 class="title-more-detail" id="my-saved-bookmarks">My Saved Bookmarks ({{$lead->bookmarks ? $lead->bookmarks->count(): 0}})</h3>
         <table class="table table-striped table-saved-alerts">
             <thead>
             <tr>

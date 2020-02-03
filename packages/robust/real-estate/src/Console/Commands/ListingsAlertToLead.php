@@ -43,7 +43,7 @@ class ListingsAlertToLead extends Command
                         $zips[] = $listing->zip_id;
                         $prices[] = $listing->system_price;
                     }
-                    $priceRange = [min($prices),max($prices)];
+                    $priceRange = $this->generatePrice($prices);
                     $listings = $this->getListings($priceRange,array_unique($cities),array_unique($zips));
                     if($listings->count() > 0){
                         event(new ListingAlertEvent($lead,$listings));
@@ -53,6 +53,34 @@ class ListingsAlertToLead extends Command
         });
     }
 
+    /**
+     * @param $prices
+     * @return array
+     */
+    public function generatePrice($prices)
+    {
+        $listing_prices = $prices;
+
+        $count = count($prices);
+        sort($prices);
+
+        $mid = floor($count-1)/2;
+
+        $avg = ($prices) ? array_sum($prices)/$count : 0;
+
+        $median = ($prices) ? ($prices[$mid] + $prices[$mid + 1 -$count%2])/2: 0;
+        $normal = ($avg + $median) /2;
+        $listing_prices = array_filter($listing_prices,function($item) use ($normal){
+           return $item <= 2 * $normal;
+        });
+        $newNormal =($avg + $median)/ 2;
+
+        return [
+            'min' => $newNormal +  min($listing_prices) / 2,
+            'max' => $newNormal +  max($listing_prices) /2
+        ];
+
+    }
     /**
      * @param $priceRange
      * @param $cities
@@ -70,11 +98,14 @@ class ListingsAlertToLead extends Command
             $limit = $total;
         }
         do{
-            $count = $query->whereBetween('system_price',$priceRange)->limit($limit)->count();
-            $priceRange[0] = $priceRange[0] - 10000;
-            $priceRange[1] = $priceRange[1] + 10000;
+            $query = Listing::whereIn('city_id',$cities)
+                ->whereIn('zip_id',$zips);
+            $count = $query->whereBetween('system_price',[$priceRange['min'], $priceRange['max'] ])->limit($limit)->count();
+            $this->info('-------------------');
+            $priceRange['min'] = $priceRange['min'] - 10000;
+            $priceRange['max'] = $priceRange['max'] + 10000;
             $this->info($count);
-            $this->info($priceRange[0] . ' || ' . $priceRange[1]);
+            $this->info($priceRange['min'] . ' || ' . $priceRange['max']);
         }while($count != $limit);
         return $query->get();
     }

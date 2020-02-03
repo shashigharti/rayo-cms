@@ -37,6 +37,9 @@ class EventServiceProvider extends ServiceProvider
         \Robust\RealEstate\Events\ListingAlertEvent::class => [
             \Robust\RealEstate\Listeners\ListingAlertEventListener::class
         ],
+        \Robust\RealEstate\Events\MultiplePropertyViewEvent::class => [
+            \Robust\RealEstate\Listeners\MultiplePropertyEventListener::class
+        ],
     ];
 
     /**

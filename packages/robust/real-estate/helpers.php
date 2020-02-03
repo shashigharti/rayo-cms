@@ -174,16 +174,16 @@ if (!function_exists('replace_variables')) {
                 '*|AGENT_MAIL|*' => $member->user->email,
                 '*|AGENT_PHONE|*' => $member->phone,
 
-                '*|LISTING_STREET|*' => '',
-                '*|LISTING_NUMBER|*' => '',
-                '*|LISTING_SYSTEM_PRICE|*' => '',
-                '*|LISTING_NAME|*' => '',
+                '*|LISTING_STREET|*' => $data['listing'] ? $data['listing']->address_street : '',
+                '*|LISTING_NUMBER|*' => $data['listing'] ? $data['listing']->address_number : '',
+                '*|LISTING_SYSTEM_PRICE|*' => $data['listing'] ? $data['listing']->system_price : '',
+                '*|LISTING_NAME|*' => $data['listing'] ? $data['listing']->name : '',
                 '*|URL|*' => '',
                 '*|SUBJECT_THIS_EMAIL|*' => $data['subject'],
                 '*|LOGO|*' => $data['logo'],
 
-                '*|FIRST_VIEW|*' => '',
-                '*|VIEW_COUNT|*' => '',
+                '*|FIRST_VIEW|*' => $data['view'] ? $data['view']->created_at : '',
+                '*|VIEW_COUNT|*' => $data['view'] ? $data['view']->count : '',
                 '*|LISTING_VIEWER|*' => '',
                 '*|CONTENT|*' => '',
                 '*|SELLING_AGENT|*' => '',
@@ -262,12 +262,14 @@ if (!function_exists('replace_seo_variables')) {
 
 if (!function_exists('replace_listings')) {
 
+
     /**
-     * @param string $content
-     * @param array $segments
-     * @return string
+     * @param $content
+     * @param $listings
+     * @return string|string[]
+     * @throws Throwable
      */
-    function replace_listings($content,$listings)
+    function replace_listings($content, $listings)
     {
         $text = '.';
         $text .= '<h2>Active : ' . $listings->where('status',settings('real-estate','active'))->count();
