@@ -3,12 +3,11 @@
      class="col s12 leaflet__map-container"
 >
     @foreach($records as $record)
-        @set('address', geocode($record->name . "FL"))
         <p
             class="leaflet__map-items hidden"
             data-name="{{$record->name}}"
-            data-latitude="{{$address['geometry']['location']['lat']}}"
-            data-longitude="{{$address['geometry']['location']['lng']}}">
+            data-latitude="{{$record->latitude}}"
+            data-longitude="{{$record->longitude}}">
         </p>
     @endforeach
 </div>

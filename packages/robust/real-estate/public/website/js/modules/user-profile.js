@@ -4,6 +4,7 @@
     let selectedIds = [];
 
     function resetCompareTable() {
+        selectedIds = [];
         let elems = $(".user-favourite__table :input[name='listings[]']");
         $.each(elems, function (index, elem) {
             if ($(elem).prop("checked") == true) {

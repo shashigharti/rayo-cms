@@ -52,13 +52,14 @@ class FavouritesController extends Controller
     {
         $data = $request->all();
         $ids = collect(explode(',', $data['ids']));
+
         $listing_ids = $ids->map(function ($id) {
             return strstr($id, '-', true);
         });
+
         $response = $listing
             ->whereIn('id', $listing_ids)
             ->get();
-
         return view('core::website.user-profile.map', [
             'records' => $response
         ]);
