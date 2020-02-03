@@ -341,12 +341,18 @@ if (!function_exists('seo')) {
             }
             unset($segments_temp[$i]);
         }
+        //home page not loading if nothing matches 
+        if(!$page){
+            $page = (new \Robust\RealEstate\Models\Page)->where('url', '/')->first();
+        }
 
         if ($page) {
             $page->meta_description = replace_seo_variables($page->meta_description, $segments);
             $page->meta_title = replace_seo_variables($page->meta_title, $segments);
             $page->meta_keywords = replace_seo_variables($page->meta_keywords, $segments);
         }
+
+
         return ($page == null) ? null : $page;
     }
 }
