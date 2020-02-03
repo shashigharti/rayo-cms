@@ -78,7 +78,9 @@ return [
             ],
            'market-report' => [
                'report-type' => ['cities', 'zips','school_districts']
-           ]
+           ],
+           'url_active' => 'homes-for-sale',
+           'url_sold' => 'sold'
         ])
     ],
     [
