@@ -272,8 +272,8 @@ if (!function_exists('replace_listings')) {
     function replace_listings($content, $listings)
     {
         $text = '.';
-        $text .= '<h2>Active : ' . $listings->where('status',settings('real-estate','active'))->count();
-        $text .= '<h2>Sold : ' . $listings->where('status',settings('real-estate','sold'))->count();
+        $text .= '<p style="padding-left:20px">Active : ' . $listings->where('status',settings('real-estate','active'))->count() . '</p>';
+        $text .= '<p style="padding-left:20px">Sold : ' . $listings->where('status',settings('real-estate','sold'))->count() . '</p>';
         foreach ($listings as $listing){
             $text .= view('real-estate::admin.email-templates.listings',['listing'=>$listing])->render();
         }

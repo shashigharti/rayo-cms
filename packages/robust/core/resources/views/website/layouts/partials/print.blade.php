@@ -50,14 +50,14 @@
 <body>
 @inject('setting_helper','Robust\Core\Helpers\SettingsHelper')
 @set('image',$result->images ? $result->images->first() : null)
-{{-- @set('details',$setting_helper->getValuesBySlug('listing-details')) --}}
+@set('details',settings('data-mapping'))
 @set('properties',$result->property->pluck('value','type'))
 <div class="header">
     <h1>${{$result->system_price}} - {{$result->name}}</h1>
     <p>MLS#RX-{{$result->mls_number}}</p>
 </div>
 <div class="main-content">
-    <img src="{{$image ? $image->url : ''}}" alt="">
+    <img src="{{$image ? $image->url : ''}}" alt="" style="width: 100%">
     <div class="description">
         <div><label>${{$result->system_price}}</label></div>
         <div class="s4">

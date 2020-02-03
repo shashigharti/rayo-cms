@@ -114,20 +114,20 @@ class Lead extends BaseUI
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
-            'Reports' => [
-                'url' => route('admin.leads.details.edit', [
-                    'id' => $model->id,
-                    'type' => 'reports'
-                ]),
-                'permission' => 'real-estate.leads.edit'
-            ],
-            'Alerts' => [
-                'url' => route('admin.leads.details.edit', [
-                    'id' => $model->id,
-                    'type' => 'alerts'
-                ]),
-                'permission' => 'real-estate.leads.edit'
-            ]
+//            'Reports' => [
+//                'url' => route('admin.leads.details.edit', [
+//                    'id' => $model->id,
+//                    'type' => 'reports'
+//                ]),
+//                'permission' => 'real-estate.leads.edit'
+//            ],
+//            'Alerts' => [
+//                'url' => route('admin.leads.details.edit', [
+//                    'id' => $model->id,
+//                    'type' => 'alerts'
+//                ]),
+//                'permission' => 'real-estate.leads.edit'
+//            ]
 
         ];
 
