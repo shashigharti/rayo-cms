@@ -472,7 +472,7 @@
                 <img src="{{$image ? $image->url :  ''}}" alt="">
             </div>
             <div class="form-group row">
-                <textarea  name="message" class="form-control" placeholder="Comments or Questions" required=""></textarea>
+                <textarea  name="message" row="10" class="form-control" placeholder="Comments or Questions" required=""></textarea>
             </div>
         </div>
         <div class="modal-footer">

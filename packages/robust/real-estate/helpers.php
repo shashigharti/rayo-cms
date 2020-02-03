@@ -341,7 +341,7 @@ if (!function_exists('seo')) {
             }
             unset($segments_temp[$i]);
         }
-        //home page not loading if nothing matches 
+        //home page not loading if nothing matches
         if(!$page){
             $page = (new \Robust\RealEstate\Models\Page)->where('url', '/')->first();
         }
