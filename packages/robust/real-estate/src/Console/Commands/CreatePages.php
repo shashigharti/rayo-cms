@@ -91,13 +91,13 @@ class CreatePages extends Command
 
                     }
                 }else{
-//                     foreach ($tmp_metadatas as $key => $metas) {
-//                         foreach($metas as $field => $meta){
-//                             $locations_types[$location_type][$key][$field] = $this->replace_variables($replacements, $meta);
-//                         }
-//                         $locations_types[$location_type][$key]['route_type'] = $location_type;
-//                         Page::create($locations_types[$location_type][$key]);
-//                     }
+                    foreach ($tmp_metadatas as $key => $metas) {
+                        foreach($metas as $field => $meta){
+                            $locations_types[$location_type][$key][$field] = $this->replace_variables($replacements, $meta);
+                        }
+                        $locations_types[$location_type][$key]['route_type'] = $location_type;
+                        Page::create($locations_types[$location_type][$key]);
+                    }
                 }
             }
         }
