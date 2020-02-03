@@ -47,6 +47,7 @@ class FrontendComposer {
         $query_params = request()->all();
         $page = seo(request()->segments());
 
+
         $view->with('banner_helper', $this->banner_helper);
         $view->with('listing_helper', $this->listing_helper);
         $view->with('setting_helper', $this->setting_helper);
