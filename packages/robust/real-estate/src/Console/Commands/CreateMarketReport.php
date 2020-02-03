@@ -73,7 +73,6 @@ class CreateMarketReport extends Command
         $location_types = $this->option('type', []);
         \DB::beginTransaction();
         try {
-
             $all_report_types = collect([
                 'city' => ['city_id' => 'Robust\RealEstate\Models\City'],
                 'county' => ['county_id' => 'Robust\RealEstate\Models\County'],
@@ -111,7 +110,6 @@ class CreateMarketReport extends Command
         $active = $this->status['active'];
         $sold = $this->status['sold'];
         $this->info("Inside Populate Reports");
-
         foreach ($report_types as $location => $model_type) {
             $this->fields = [
                 "COUNT(*) as count",
@@ -151,7 +149,7 @@ class CreateMarketReport extends Command
             }
 
             // Delete records for given location type
-            DB::table('real_estate_market_reports')->where('location_type', get_class($collection->first()))->delete();
+            DB::table('real_estate_market_reports')->where('locationable_type', get_class($collection->first()))->delete();
 
             if (get_class($collection->first()) == 'Robust\RealEstate\Models\Subdivision') {
                 $this->subdivisionReport($collection, $location, $model_type);
@@ -205,7 +203,7 @@ class CreateMarketReport extends Command
                 'location_id' => $model->id,
                 'slug' => $model->slug,
                 'name' => $model->name,
-                'location_type' => $model_type,
+                'locationable_type' => $model_type,
                 'total_listings' => $totalListings,
                 'total_listings_active' => $totalListingsActive,
                 'total_listings_sold' => $totalListingsSold,
@@ -283,7 +281,7 @@ class CreateMarketReport extends Command
                     'location_id' => $model->id,
                     'slug' => $model->slug,
                     'name' => $model->name,
-                    'location_type' => $model_type,
+                    'locationable_type' => $model_type,
                     'total_listings' => $totalListings,
                     'total_listings_active' => $totalListingsActive,
                     'total_listings_sold' => $totalListingsSold,

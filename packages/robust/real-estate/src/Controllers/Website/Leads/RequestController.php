@@ -40,7 +40,7 @@ class RequestController extends Controller
     {
         $data['agent_id'] = 1;
         $data['listing_id'] = $id;
-        $data['lead_id'] = Auth::user()->member->id;
+        $data['lead_id'] = Auth::user()->memberable->id;
         $data['type'] = 'schedule_viewing';
         $data['status'] = 'pending';
         $this->model->store($data);

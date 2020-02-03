@@ -6,6 +6,7 @@ namespace Robust\RealEstate\Controllers\Website\Leads;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Robust\Admin\Models\User;
 use Robust\RealEstate\Events\SendEmailToAgent;
 use Robust\RealEstate\Events\SendEmailToFriend;
 use Robust\RealEstate\Repositories\Website\ListingRepository;
@@ -39,7 +40,7 @@ class EmailController
     {
         $data = $request->all();
         $listing = $this->listing->getSingle($slug);
-        $member = Auth::user()->member;
+        $member = Auth::user()->memberable;
         event(new SendEmailToFriend($data['email_to'],$listing,$member,$data['message']));
     }
 
@@ -51,6 +52,8 @@ class EmailController
     {
         //agents assigned mail
         $data = $request->all();
-        event(new SendEmailToAgent('dummy@gmail.com',$this->listing->find($id),Auth::user()->member,$data['message']));
+        $lead = Auth::user()->memberable;
+        $agent = $lead->agent ?? User::where('id',1)->first();
+        event(new SendEmailToAgent($agent->email,$this->listing->find($id),Auth::user()->memberable,$data['message']));
     }
 }

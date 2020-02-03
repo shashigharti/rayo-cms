@@ -21,7 +21,7 @@ trait MarketReportTrait
     public function getReports($location_type, $data = [])
     {
         $qBuilder = $this->model
-            ->where('location_type', IMarketReport::LOCATION_TYPE_MAP[$location_type]);
+            ->where('locationable_type', IMarketReport::LOCATION_TYPE_MAP[$location_type]);
 
         $this->model = $qBuilder;
         return $this;

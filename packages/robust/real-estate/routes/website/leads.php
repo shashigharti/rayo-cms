@@ -9,4 +9,16 @@ Route::group([
             'as' => 'search.store',
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\LeadController@storeSearch'
         ]);
+
+        Route::post('/leads/email/friend/{slug}', [
+            'name' => 'Lead Friend Email',
+            'as' => 'email.friend',
+            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\EmailController@sendEmailToFriend'
+        ]);
+
+        Route::post('/leads/email/agent/{slug}', [
+            'name' => 'Lead Agent Email',
+            'as' => 'email.agent',
+            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\EmailController@sendEmailtoAgent'
+        ]);
     });

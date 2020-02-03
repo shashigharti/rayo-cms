@@ -19,7 +19,11 @@
                     <tr>
                         <td>{{$search->id}}</td>
                         <td>{{$search->name}}</td>
-                        <td>{{$search->frequency}}</td>
+                        <td>
+                            @foreach(json_decode($search->content,true) as $key => $value)
+                                <p>{{config('rws.advance-search.' . $key .'.display_name') ?? $key}} : {{is_array($value) ?  implode(',',$value) : $value}}</p>
+                            @endforeach
+                        </td>
                     </tr>
                 @endforeach
             @endif

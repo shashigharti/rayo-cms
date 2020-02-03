@@ -50,7 +50,6 @@ class MarketReportController extends Controller
         if (isset($data['ids'])) {
             $response_data['title'] = ucwords(str_replace('-', ' ', $data['ids']));
         }
-
         return view('core::website.market-report.index', $response_data);
     }
 

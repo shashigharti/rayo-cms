@@ -40,7 +40,7 @@ class NoteController extends Controller
     {
         $data = $request->all();
         $data['agent_id'] = 1 ; //should be from leads table
-        $data['lead_id'] = Auth::user()->member->id;
+        $data['lead_id'] = Auth::user()->memberable->id;
         $data['title'] = 'Note for listing';
         $this->model->store($data);
         return response()->json(['message' => 'Success'],200);
