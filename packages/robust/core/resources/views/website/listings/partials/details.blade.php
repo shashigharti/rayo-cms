@@ -45,31 +45,31 @@
                         @endif
                     </ul>
                 </div>
-                <div class="distance--block">
-                    <p class="tab">Distance/Drive Time</p>
-                    <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>
-                    <div class="get-distance-container">
-                        <div class="input-group mb-3">
-                            <input type="text" class="form-control"  placeholder="destination address ... ">
-                            <div class="input-group-prepend">
-                                <button class="btn btn-default get-distance" type="button">Get distance</button>
-                            </div>
-                        </div>
-                        <div class="single--map_container">
-                            <div id="listingMap" data-zoom="10">
-                                <p
-                                    class="listing-map_data hidden"
-                                    data-image="{{$image ? $image->url :  ''}}"
-                                    data-name="{{$result->name}}"
-                                    data-slug="{{$result->slug}}"
-                                    data-price="{{$result->system_price}}"
-                                    data-lat="{{$properties['latitude'] ?? ''}}"
-                                    data-lng="{{$properties['longitude'] ?? ''}}">
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+{{--                <div class="distance--block">--}}
+{{--                    <p class="tab">Distance/Drive Time</p>--}}
+{{--                    <p> <b class="font-size16">Calculate distance and drive time from your location to:</b> <br> <b class="font-size16">5817 Pinetree   ,  Panama City Beach   FL  </b> </p>--}}
+{{--                    <div class="get-distance-container">--}}
+{{--                        <div class="input-group mb-3">--}}
+{{--                            <input type="text" class="form-control"  placeholder="destination address ... ">--}}
+{{--                            <div class="input-group-prepend">--}}
+{{--                                <button class="btn btn-default get-distance" type="button">Get distance</button>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                        <div class="single--map_container">--}}
+{{--                            <div id="listingMap" data-zoom="10">--}}
+{{--                                <p--}}
+{{--                                    class="listing-map_data hidden"--}}
+{{--                                    data-image="{{$image ? $image->url :  ''}}"--}}
+{{--                                    data-name="{{$result->name}}"--}}
+{{--                                    data-slug="{{$result->slug}}"--}}
+{{--                                    data-price="{{$result->system_price}}"--}}
+{{--                                    data-lat="{{$properties['latitude'] ?? ''}}"--}}
+{{--                                    data-lng="{{$properties['longitude'] ?? ''}}">--}}
+{{--                                </p>--}}
+{{--                            </div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
                 <div class="inner-list-tab">
                     <div class="row">
                         <div class="col s12">
