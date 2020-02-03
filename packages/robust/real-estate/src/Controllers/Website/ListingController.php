@@ -175,11 +175,11 @@ class ListingController extends Controller
         }
 
         $results = $qBuilder
-            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            //will fix later
+//            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
-
         return view(Site::templateResolver('core::website.listings.index'), [
             'results' => $results,
             'location' => ($location != null) ? $locationHelper->getLocation($location) : null
