@@ -9,18 +9,33 @@ use Illuminate\Support\Facades\Auth;
 use Robust\RealEstate\Repositories\Website\NoteRepository;
 
 
+/**
+ * Class NoteController
+ * @package Robust\RealEstate\Controllers\Website\Leads
+ */
 class NoteController extends Controller
 {
 
+    /**
+     * @var NoteRepository
+     */
     protected $model;
 
 
+    /**
+     * NoteController constructor.
+     * @param NoteRepository $model
+     */
     public function __construct(NoteRepository $model)
     {
         $this->model = $model;
     }
 
 
+    /**
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
+     */
     public function store(Request $request)
     {
         $data = $request->all();
