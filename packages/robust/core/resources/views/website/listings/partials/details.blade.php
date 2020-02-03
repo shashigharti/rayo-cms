@@ -1,5 +1,6 @@
 @set('properties',$result->property->pluck('value','type'))
 @set('city',$location_helper->getLocation($result->city_id))
+@set('zip',$location_helper->getLocation($result->zip_id))
 @set('subdivision',$location_helper->getLocation($result->subdivision_id))
 @set('image',$result->images ? $result->images->first() : null)
 @set('lead',isLead())
@@ -311,11 +312,11 @@
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='#' class="btn btn-success left-button not_authenticated modal-trigger"> Email Price Changes </a>
                                 </div>
-                                @set('href',$lead ? route('website.realestate.listings.similar',['type' => 'zip_id','value' => $result->zip_id,'id'=>$result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.homes-for-sale',['location_type'=>'zips','location'=>$zip->name]) : '#registermodal')
                                 <div class="col m6 s12 right-align padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show Similar Priced Props in this zip </a>
                                 </div>
-                                @set('href',$lead ? route('website.realestate.listings.similar',['type' => 'subdivision_id','value' => $result->subdivision_id,'id'=>$result->id]) : '#registermodal')
+                                @set('href',$lead ? route('website.realestate.homes-for-sale',['location_type'=>'subdivisions','location'=>$subdivision->name]) : '#registermodal')
                                 <div class="col m6 s12 padding-left-0 padding-right-0">
                                     <a href='{{$href}}' class="btn btn-success left-button not_authenticated modal-trigger">Show other props in subdivision</a>
                                 </div>
