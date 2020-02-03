@@ -103,7 +103,7 @@ class ListingController extends Controller
         }
 
         $results = $qBuilder
-            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+//            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
             ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
@@ -144,7 +144,7 @@ class ListingController extends Controller
         $qBuilder = $qBuilder->getTabsQuery($tab_type, $location_slug);
 
         $results = $qBuilder
-            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+//            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
