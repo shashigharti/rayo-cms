@@ -48,9 +48,9 @@ class UpdateLocationsCount extends Command
         $locations = Location::get();
         foreach ($locations as $location) {
             if (isset($this->mapping[$location->locationable_type])) {
-                $active_count = \DB::table('real_estate_listings')->where('status', 'Active')
+                $active_count = \DB::table('real_estate_listings')->where('status', settings('real-estate','active') ?? 'Active')
                     ->where($this->mapping[$location->locationable_type], $location->id)->count();
-                $sold_count = \DB::table('real_estate_listings')->where('status', 'Closed')
+                $sold_count = \DB::table('real_estate_listings')->where('status',settings('real-estate','sold') ?? 'Closed')
                     ->where($this->mapping[$location->locationable_type], $location->id)->count();
 
                 $location->update([
