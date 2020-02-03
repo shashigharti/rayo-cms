@@ -38,8 +38,13 @@ class AdvanceSearchHelper
      */
     public function getAttributesListByPropertyName($property_name)
     {
+        $values = [];
         $record = $this->attribute->getAttributes(['property_name' => $property_name])->first();
-        return json_decode($record->values, true);
+
+        if($record){
+            $values = json_decode($record->values, true);
+        }
+        return  $values;
     }
 
     /**
