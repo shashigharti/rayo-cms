@@ -56,7 +56,7 @@ class SendEmailToLead extends Mailable
             'logo' => '',
         ];
         $subject = replace_variables($this->subject, $this->lead, $data);
-        $from = settings('email-setting','email') ?? config('rws.client.email.support');
+        $from = settings('email-setting','email') ?? config('client.email.support');
         $view = view('real-estate::admin.email-templates.partials.index',
                 ['template'=>'send-email-to-lead','body'=>$this->body])
                 ->render();

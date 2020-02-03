@@ -53,7 +53,7 @@ class SendListingAlertEmail extends Mailable
      */
     public function build()
     {
-        $from = settings('email-setting','email') ?? config('rws.client.email.support');
+        $from = settings('email-setting','email') ?? config('client.email.support');
         return $this->subject($this->subject)
             ->from($from)
             ->html($this->message);
