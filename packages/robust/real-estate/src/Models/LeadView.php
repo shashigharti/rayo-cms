@@ -32,4 +32,12 @@ class LeadView extends BaseModel
     {
         return $this->hasOne(Listing::class,'id','listing_id');
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function lead()
+    {
+        return $this->belongsTo(Lead::class);
+    }
 }
