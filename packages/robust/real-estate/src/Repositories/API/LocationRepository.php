@@ -15,6 +15,9 @@ class LocationRepository
      */
     protected $model;
 
+    /**
+     *
+     */
     protected const FIELDS_QUERY_MAP = [
         'name' => ['name' => 'name', 'condition' => 'LIKE'],
         'id' => ['name' => 'id', 'condition' => '='],
@@ -22,6 +25,9 @@ class LocationRepository
         'type' => ['name' => 'locationable_type', 'condition' => '=']
     ];
 
+    /**
+     *
+     */
     protected const RELATION_MAP = [
         'cities' => ['class' => 'Robust\RealEstate\Models\City'],
         'zips' => ['class' => 'Robust\RealEstate\Models\Zip'],
