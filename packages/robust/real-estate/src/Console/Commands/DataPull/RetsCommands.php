@@ -24,9 +24,9 @@ class RetsCommands extends Command
                     ->setUsername($username)
                     ->setPassword($password)
                     ->setRetsVersion('1.7.2');
-//
-//                $this->rets = new \PHRETS\Session($config);
-//                $connect = $this->rets->Login();
+
+                $this->rets = new \PHRETS\Session($config);
+                $connect = $this->rets->Login();
             }
         }
     }
