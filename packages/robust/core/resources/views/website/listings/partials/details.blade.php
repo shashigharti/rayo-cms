@@ -79,14 +79,11 @@
                                 <li class="tab"><a href="#calculator">Mortage Calculator</a></li>
                             </ul>
                         </div>
-                        <div id="overview" class="col s12 overview-slider ">
-                            <div class="slider-for owl-carousel owl-theme">
-{{--                                @forelse($result->images as $image)--}}
+                        <div id="overview" class="col s8 overview-slider ">
+                            <div class="slider-for owl-carousel owl-theme" id="banner--slider">
                                    <div class="item">
-                                       <img src="http://cdn.photos.sparkplatform.com/fl/20191108213025969877000000.jpg" alt="">
+                                       <img src="{{$image ? $image->url : ''}}" alt="{{$result->name}}">
                                    </div>
-{{--                                @empty--}}
-{{--                                @endforelse--}}
                             </div>
                         </div>
 
@@ -180,10 +177,10 @@
                 </div>
                 <div class="more-inner">
                     <div class="detail-block">
-                        <p class="title-detail"> Description </p>
+                        <p class="title-detail"> Remarks </p>
                         <div class="clearfix txt-descript">
                             <div class="content-descript">
-                                <p> Perfect location only 3 blocks from the beach and 2 blocks from the boat ramp. Welcome to The Great Escape! This 2 bedroom 2 bath w/ bunk room has everything you need for the perfect vacation rental or the home away from home. Open concept floor plan as you walk through the front door.<a href="#">show more</a></p>
+                                <p>{{$properties['public_remarks'] ?? ''}}</p>
                             </div>
                         </div>
                     </div>
