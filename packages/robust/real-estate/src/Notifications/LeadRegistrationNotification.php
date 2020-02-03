@@ -56,7 +56,7 @@ class LeadRegistrationNotification extends Notification
         $config = config('client.email');
         $template = email_template('Lead Registration');
         $data = [
-            'subject' => $config['Lead Registration'],
+            'subject' => $template ? $template->subject : $config['subjects']['lead-registration'],
             'logo' => '',
             'verification_url' => $this->verificationUrl($notifiable)
         ];

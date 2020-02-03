@@ -37,7 +37,7 @@ class EmailTemplate extends BaseUI
      * @var array
      */
     public $left_menu = [
-        
+
     ];
 
     /**
@@ -52,7 +52,8 @@ class EmailTemplate extends BaseUI
      * @var array
      */
     public $addrules = [
-        'name' => 'required'
+        'name' => 'required',
+        'type' => 'required'
     ];
     /**
      * @var array

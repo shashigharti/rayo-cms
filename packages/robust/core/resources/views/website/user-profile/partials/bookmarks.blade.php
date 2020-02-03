@@ -6,6 +6,8 @@
             <tr>
                 <th>#</th>
                 <th>Title</th>
+                <th>Url</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody>

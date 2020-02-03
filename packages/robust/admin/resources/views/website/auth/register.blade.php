@@ -36,18 +36,10 @@
                 }}
             </div>
             <div class="form-group row">
-                {{ Form::password('password', null, [
-                    'class'       => 'form-control',
-                    'required'    => 'required',
-                    'placeholder' => 'Password'])
-                }}
+                <input type="password" name="password" class="form-control" required placeholder="Password">
             </div>
             <div class="form-group row">
-                {{ Form::password('password_confirmation', null, [
-                    'class'       => 'form-control',
-                    'required'    => 'required',
-                    'placeholder' => 'Password Confirmation'])
-                }}
+                <input type="password" name="password_confirmation" class="form-control" required placeholder="Confirm Password">
             </div>
             <p class="agree-to-terms">
                 By registering on our site you agree to the website terms.We protect your personal privacy and email security. View our <a href="">privacy policy</a>

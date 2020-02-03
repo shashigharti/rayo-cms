@@ -6,6 +6,7 @@
         <section class="adv--single">
             <img src="{{isset($properties->image) ? getMedia($properties->image) : ''}}" alt="{{$properties->header ?? ''}}">
             <div class="adv-single-text">
+                <h6>{{$properties->header ?? ''}}</h6>
                 <p>{{$properties->content ?? ''}}</p>
                 <a href="{{$properties->button_url ?? '#'}}" class="buy-now-btn">{{$proerties->button_text ?? 'Buy Now'}}</a>
             </div>
