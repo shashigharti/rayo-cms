@@ -21,6 +21,7 @@ class CreateRealEstatePagesTable extends Migration {
 			$table->string('slug');
 			$table->integer('parent')->nullable();
 			$table->string('page_type')->nullable();
+            $table->text('route_type')->nullable();
 			$table->string('default_filters')->nullable();
 			$table->string('meta_title')->nullable();
 			$table->string('meta_description', 500)->nullable();
