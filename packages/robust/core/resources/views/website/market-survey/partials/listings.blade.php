@@ -13,7 +13,7 @@
     </div>
     <div class="filter--bar">
         <div class="row">
-            <div class="col s6">
+            <div class="col m6 s12">
                 <label>Price</label>
                 <select class="search-filter search-filter__price-min"
                         name="price_min"

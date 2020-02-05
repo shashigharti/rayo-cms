@@ -114,4 +114,5 @@
     </ul>
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>
     <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    @include(Site::templateResolver('core::website.layouts.partials.mobile-menu'))
 </nav>

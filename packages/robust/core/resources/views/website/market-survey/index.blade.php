@@ -12,7 +12,7 @@
             <div class="col s12 market-survey__heading">
                 <h1>{{ ucwords(str_replace('-', ' ', $location['slug'])) }}</h1>
             </div>
-            <div class="col s6">
+            <div class="col s12 m6">
                 <div class="market-survey__left-container">
                     <div class="col s12 market-survey__right-container--tabs">
                         <ul class="tabs">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col s6">
+            <div class="col s12 m6">
                 <div class="market-survey__right-container">
                     <div class="market-survey__right-container--tabs">
                         <div class="market-survey__right-container--header">

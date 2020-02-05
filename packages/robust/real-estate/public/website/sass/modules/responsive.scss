@@ -68,11 +68,12 @@
 	          ul{
 	            li{
 	              padding: 0;
-	              width: 49%;
-	              display: block;
-	              line-height: 20px;
-	              height: 24px;
-	              float: left;
+				  width: 49%;
+				  display: block;
+				  line-height: 22px;
+				  height: auto;
+				  float: left;
+				  margin-bottom: 4px;
 	              a{
 	                height:auto;
 	              }
@@ -136,7 +137,8 @@
 		margin-bottom: 30px;
 	}
 	h4.sub-title {
-	    font-size: 18px;
+	    font-size: 14px;
+    	line-height: 20px;
 	}
 	.advertisement {
 	    margin-bottom: 30px;
@@ -177,12 +179,22 @@
 		    font-size:10px;
 		}
 	}
-	.listing--btn--block a.btn{
-		font-size: 9px;
-	    height: 29px;
-	    line-height: 29px;
-	    padding: 0;
-	    width: 48px;
+	.listing--btn--block{
+		a.btn{
+			font-size: 9px;
+		    height: 29px;
+		    line-height: 29px;
+		    padding: 0px 8px;
+		    width: auto;
+		    display: inline-block;
+		    margin: 10px 10px 10px 0px;
+		}
+	    .modal-body{
+	    	label{
+	    		width: 89%;
+    			vertical-align: top;	
+	    	}
+	    }
 	}
 	.total--records {
 	    font-size: 10px;
@@ -221,8 +233,14 @@
 	    height: 30px;
 	    line-height: 31px;
 	}
-	.head-list-info ul li {
-    	width: 30.6%;
+	.head-list-info ul{
+		li {
+	    	width: 22.6%;
+	    	font-size: 12px;
+	    	.txt-num {
+    			font-size: 14px;
+			}
+		} 
 	}
 	.market__btns--container {
 		a{
@@ -233,5 +251,32 @@
 	}
 	.market__search--lists--side-nav{
 		min-height:auto;
+	}
+	.search-lists .row .col.m4 {
+    	width: 100%;
+	}
+	.more-property-detail-content{
+		.col.s4 {
+    		width: 100% !important;
+		}
+	}
+	.table-striped.table>tbody>tr>td, .table-striped.table>tbody>tr>th {
+		word-break:break-word;
+	}
+	.single--report--block {
+    	width: 46%
+	}
+	.comment--section .theme-btn {
+	    margin-top: 40px;
+	}
+	.area--list--block{
+		.row .col.s3 {
+    		width: 50% !important;
+		}
+	}
+	.market-survey__listings--details-block{
+		.row .col.s6 {
+    		width: 100% !important;
+		}
 	}
 }
