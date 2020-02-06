@@ -200,11 +200,17 @@ class ListingController extends Controller
     public function single($slug)
     {
         $result = $this->model->getSingle($slug);
+        $similars = $this->model->where('city_id',$result->city_id)
+               ->where('status',settings('real-estate','active'))
+               ->wherePriceBetween([$result->system_price-30000,$result->system_price + 30000])
+               ->where('id',$result->id,'!=')
+               ->limit(4)
+               ->get();
         if(\Auth::check()){
            event(new $this->events['user_activity'](\Auth::user(),'Listing Viewed',url()->current(),''));
            event(new $this->events['single_listing_viewed'](\Auth::user(),$result));
         }
-        return view(Site::templateResolver('core::website.listings.single'), ['result' => $result]);
+        return view(Site::templateResolver('core::website.listings.single'), ['result' => $result,'similars' => $similars]);
     }
 
     /**

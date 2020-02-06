@@ -320,7 +320,92 @@
         </div>
     </div>
 </section>
+<section class="similar_properties">
+   <div class="container-fluid single_similar-properties">
+       <div class="col s12" >
+           <h3 class="title-more-detail">Similar Properties</h3>
+       </div>
+       <div class="listing--houses">
+           <div class="row">
+               @forelse($similars as $result)
+                   @set('properties',$result->property->pluck('value','type'))
+                   @set('image',$result->images ? $result->images->first() : null)
+                   <a href="{{route('website.realestate.single',['slug' => $result->slug])}}">
+                       <div class="col m3 s12">
+                           <div class="single--list--block">
+                               <img
+                                   src={{$image ? $image->url :  ''}} alt="{{$result->address_street}} {{$location_helper->getLocation($result->city_id)->name}}">
+                               <div class="list--overlay">
+        									<span class="tag active">
+        										@if(isset($result->status) && !in_array($result->status,['none','None','0']))
+                                                    {{$result->status}}
+                                                @endif
+        									</span>
+                                   <span class="fav">
+        										<i class="fa fa-heart"></i>
+        									</span>
+                                   <div class="bottom--detail">
+                                       <h3 class="price">
+                                           @if(isset($result->system_price) && !in_array($result->system_price,['none','None']))
+                                               ${{$result->system_price}}
+                                           @endif
+                                       </h3>
+                                       <p class="info">
+                                           @if(isset($result->address_street) && !in_array($result->address_street,['none','None','0']))
+                                               {{$result->address_street}}
+                                           @endif
+                                           @if(isset($result->city_id))
+                                               {{$location_helper->getLocation($result->city_id)->name}}
+                                           @endif
+                                           @if(isset($result->state) && !in_array($result->state,['none','None','0']))
+                                               {{ ' | '.$result->state}}
+                                           @endif
+                                           @if(isset($result->county_id))
+                                               {{ ' | '. $location_helper->getLocation($result->county_id)->name}}
+                                           @endif
+                                       </p>
+                                       <span>
+                                                    @if(isset($properties['year_built']))
+                                               {{ 'Built in '.$properties['year_built']}}
+                                           @endif
+                                                </span>
 
+                                       <span>
+                                                @if(isset($properties['total_square_feet']))
+                                               {{' | '. $properties['total_square_feet'] .' sq.ft'}}
+                                           @endif
+                                            </span>
+                                       <div class="details">
+                                                <span>
+                                                    @if(isset($result->bedrooms) && !in_array($result->bedrooms,['none','None','0']))
+                                                        <img src="/assets/website/images/bed.png" alt="Bed">
+                                                        {{ $result->bedrooms}}
+                                                    @endif
+                                                </span>
+                                           <span class="center-align">
+                                                    @if(isset($result->baths_full) && !in_array($result->baths_full,['none','None','0']))
+                                                   <img src="/assets/website/images/bathtub.png"
+                                                        alt="Bathtub">{{ $result->baths_full}}
+                                               @endif
+                                                </span>
+                                           <span class="right-align">
+                                                    @if(isset($result->picture_count) && !in_array($result->picture_count,['none','None','0']))
+                                                   <img src="/assets/website/images/camera.png" alt="Picture">
+                                                   {{ $result->picture_count}}
+                                               @endif
+                                                </span>
+                                       </div>
+                                   </div>
+                               </div>
+                           </div>
+                       </div>
+                   </a>
+               @empty
+               @endforelse
+           </div>
+       </div>
+   </div>
+</section>
 @if(Auth::check())
     @include('core::website.listings.partials.modals.email')
     @include('core::website.listings.partials.modals.info')

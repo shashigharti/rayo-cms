@@ -112,4 +112,5 @@ class ListingRepository implements IListings
 
         return $qBuilder;
     }
+
 }

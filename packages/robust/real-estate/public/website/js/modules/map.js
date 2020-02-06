@@ -77,7 +77,6 @@
                 const destination = $('#autocomplete_address').val();
                 const listing = $('.listing-map_data').first();
                 const from = `${listing.data('lat')},${listing.data('lng')}`;
-                console.log(from);
                 const geocoder = new google.maps.Geocoder();
                 geocoder.geocode({'address' : destination},function (results,status) {
                     const to = `${results[0].geometry.location.lat()},${results[0].geometry.location.lng()}`;
@@ -96,8 +95,6 @@
                                 scrollwheel: false,
                             });
                             const legs = response.routes[0].legs[0];
-                            console.log(response);
-                            console.log(legs.distance.text);
                             $('.listing_location').html(legs.start_address);
                             $('.destination_location').html(legs.end_address);
                             $('.calculated_distance').parent().removeClass('hide');
