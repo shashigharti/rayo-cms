@@ -27,7 +27,15 @@ class ListingController extends Controller
      */
     protected $pagination;
 
+    /**
+     * @var array
+     */
     protected $events;
+    /**
+     * @var false|int
+     */
+    private $data_age;
+
     /**
      * ListingController constructor.
      * @param ListingRepository $model
@@ -40,6 +48,7 @@ class ListingController extends Controller
             'single_listing_viewed' => 'Robust\RealEstate\Events\SingleListingPageEvent',
             'user_activity' => 'Robust\Admin\Events\UserActivityEvent'
         ];
+        $this->data_age = date('Y-m-d',strtotime(date('Y-m-d') . ' -'. settings('real-estate','data_age') . ' days'));
     }
 
 
@@ -59,10 +68,8 @@ class ListingController extends Controller
         if ($location_type != null) {
             $qBuilder = $qBuilder->whereLocation([$location_type => $location]);
         }
-
         $results = $qBuilder
-            //comment for now will fix later
-//            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            ->whereDateBetween([$this->data_age, date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
@@ -103,8 +110,8 @@ class ListingController extends Controller
         }
 
         $results = $qBuilder
-//            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
-            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            ->wherePriceBetween($price_range != null ? explode('-', $price_range) : $price_range)
+            ->whereDateBetween([$this->data_age, date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
@@ -142,9 +149,8 @@ class ListingController extends Controller
 
         // Process conditions for tabs
         $qBuilder = $qBuilder->getTabsQuery($tab_type, $location_slug);
-
         $results = $qBuilder
-//            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            ->whereDateBetween([$this->data_age, date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
@@ -176,8 +182,7 @@ class ListingController extends Controller
         }
 
         $results = $qBuilder
-            //will fix later
-//            ->whereDateBetween([date('Y-m-d', strtotime($settings['data_age'])), date('Y-m-d')])
+            ->whereDateBetween([$this->data_age, date('Y-m-d')])
             ->with('property')
             ->with('images')
             ->paginate($this->pagination);
