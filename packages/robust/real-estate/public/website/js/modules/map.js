@@ -2,9 +2,8 @@
 (function ($, FRW, window, document, undefined) {
     'use strict';
     FRW.Map = {
-        init: function () {
-            this.map = null;
-            this.markerClusters = L.markerClusterGroup({
+        init: function (id) {
+            const _markerClusters = L.markerClusterGroup({
                 iconCreateFunction: function (cluster) {
                     let childCount = cluster.getChildCount();
                     let c = ' marker-cluster-';
@@ -21,12 +20,10 @@
                     });
                 }
             });
-            const map = document.getElementById('listingMap');
+            const map = document.getElementById(id);
             const zoom = map.dataset.zoom;
-
-
-            this.map = new L.Map(document.getElementById('listingMap'));
-            L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(this.map);
+            const _map = new L.Map(document.getElementById(id));
+            L.gridLayer.googleMutant({ type: 'roadmap' }).addTo(_map);
             const items = document.querySelectorAll('.listing-map_data');
             let markers = [];
             const icon = new L.DivIcon({
@@ -64,10 +61,10 @@
                 markers.push(marker);
             });
             if (markers.length > 0) {
-                this.markerClusters.addLayers(markers);
-                this.map.fitBounds(this.markerClusters.getBounds());
-                this.map.addLayer(this.markerClusters);
-                this.map.setZoom(zoom);
+                _markerClusters.addLayers(markers);
+                _map.fitBounds(_markerClusters.getBounds());
+                _map.addLayer(_markerClusters);
+                _map.setZoom(zoom);
             }
         },
         distance:function () {
@@ -112,11 +109,14 @@
         }
     };
     $(function () {
-        const map = document.getElementById('listingMap');
+        let map = document.getElementById('listingMap');
         if (map) {
-            FRW.Map.init();
+            new FRW.Map.init('listingMap');
+        }
+        map = document.getElementById('distanceMap');
+        if(map){
+            new FRW.Map.init('distanceMap');
             FRW.Map.distance();
         }
-
     });
 }(jQuery, FRW, window, document));

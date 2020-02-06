@@ -406,6 +406,19 @@
        </div>
    </div>
 </section>
+<section>
+    <div class="container-fluid">
+        <div class="col s12" >
+            <h3 class="title-more-detail">Listing on Map</h3>
+        </div>
+        <div class="single--map_container">
+            <div id="listingMap" data-zoom="10">
+
+            </div>
+        </div>
+    </div>
+</section>
+
 @if(Auth::check())
     @include('core::website.listings.partials.modals.email')
     @include('core::website.listings.partials.modals.info')

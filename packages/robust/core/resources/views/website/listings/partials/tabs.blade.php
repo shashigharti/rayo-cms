@@ -44,7 +44,7 @@
                         data-lat="{{$result->latitude}}"
                         data-lng="{{$result->longitude}}">
                     </p>
-                    <div id="listingMap" data-zoom="10">
+                    <div id="distanceMap" data-zoom="10" style="width: 100%;height: 350px">
 
                     </div>
                 </div>
