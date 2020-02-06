@@ -93,17 +93,17 @@
                                 <form id="homenote" role="form" class="well">
                                     <div class="form-group">
                                         <label for="purchasePrice">Purchase Price ($)</label>
-                                        <input type="text" class="form-control" id="purchasePrice" value=" 249,000 ">
+                                        <input type="text" class="form-control" id="purchasePrice" value="{{$result->system_price}}">
                                     </div>
                                     <div class="form-group">
                                         <label for="downPayment">Down Payment</label>
-                                        <input type="text" class="form-control" id="dpamount" value="20%">
+                                        <input type="text" class="form-control" id="downPayment" value="20">
                                     </div>
                                     <label class="radio-inline">
-                                        <input type="radio" name="dptype" id="downpercentage" value="percentage" checked="">Percent (%)
+                                        <input type="radio" name="dptype"  value="percentage" checked="">Percent (%)
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="dptype" id="downlump" value="downlump">Dollars ($)</label>
+                                        <input type="radio" name="dptype"  value="dollars">Dollars ($)</label>
 
                                     <div class="form-group">
                                         <label for="rate">Rate (%)</label>
@@ -114,11 +114,12 @@
                                         <input type="text" class="form-control" id="term" value="30">
                                     </div>
                                     <label class="radio-inline">
-                                        <input type="radio" name="termtype" id="years" value="years" checked="">Years
+                                        <input type="radio" name="period"  checked="" value="monthly">Months
                                     </label>
                                     <label class="radio-inline">
-                                        <input type="radio" name="termtype" id="months" value="months">Months
+                                        <input type="radio" name="period"  value="yearly">Years
                                     </label>
+                                    <div id="results" class="alert alert-success hide"></div>
                                     <button type="submit" class="btn btn-primary btn-block" id="calchomenote">Calculate</button>
                                 </form>
                             </div>
