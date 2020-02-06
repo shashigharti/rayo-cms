@@ -115,7 +115,7 @@
         }
         map = document.getElementById('distanceMap');
         if(map){
-            new FRW.Map.init('distanceMap');
+            FRW.Map.init('distanceMap');
             FRW.Map.distance();
         }
     });
