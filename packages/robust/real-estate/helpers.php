@@ -412,7 +412,6 @@ if (!function_exists('sort_array_by_array')) {
     function sort_array_by_array($arr_to_sort, $sort_by_arr)
     {
         $arr_new = $arr_to_sort;
-
         if (count($sort_by_arr) > 0) {
             $arr_new = [];
             foreach ($arr_to_sort as $index => $elem) {
@@ -423,7 +422,8 @@ if (!function_exists('sort_array_by_array')) {
                 }
             }
         }
-        $arr_new = array_merge($arr_new, $arr_to_sort);
+        ksort($arr_new);
+        $arr_new = array_merge($arr_to_sort, $arr_new);
         ksort($arr_new);
         return $arr_new;
     }
