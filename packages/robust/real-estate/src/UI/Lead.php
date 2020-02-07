@@ -114,6 +114,13 @@ class Lead extends BaseUI
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
+            'Distance/Drive' => [
+                'url' => route('admin.leads.details.edit', [
+                    'id' => $model->id,
+                    'type' => 'distance-drive'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
 //            'Reports' => [
 //                'url' => route('admin.leads.details.edit', [
 //                    'id' => $model->id,

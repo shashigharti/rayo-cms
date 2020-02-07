@@ -21,4 +21,10 @@ Route::group([
             'as' => 'email.agent',
             'uses' => 'Robust\RealEstate\Controllers\Website\Leads\EmailController@sendEmailtoAgent'
         ]);
+
+        Route::post('/leads/distance/{listing_id}', [
+            'name' => 'Lead Distance Store',
+            'as' => 'distance.store',
+            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\LeadController@storeDistance'
+        ]);
     });

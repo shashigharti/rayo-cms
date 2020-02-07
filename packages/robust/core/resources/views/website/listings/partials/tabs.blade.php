@@ -9,9 +9,20 @@
             </ul>
         </div>
         <div id="overview" class="col s8 overview-slider ">
-            <div class="slider-for owl-carousel owl-theme" id="banner--slider">
-                <div class="item">
-                    <img src="{{$image ? $image->url : ''}}" alt="{{$result->name}}">
+            <div class="outer">
+                <div id="big" class="owl-carousel owl-theme">
+                   @foreach($result->images as $image)
+                       <div class="item">
+                           <img src="{{$image->url}}" alt="">
+                       </div>
+                   @endforeach
+                </div>
+                <div id="thumbs" class="owl-carousel owl-theme">
+                    @foreach($result->images as $image)
+                        <div class="item">
+                            <img src="{{$image->url}}" alt="">
+                        </div>
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -31,7 +42,7 @@
                 <div class="input-group mb-3">
                     <input type="text" id="autocomplete_address" class="form-control"  placeholder="destination address ... ">
                     <div class="input-group-prepend">
-                        <button class="btn btn-default get-distance" type="button">Get distance</button>
+                        <button class="btn btn-default get-distance" type="button" data-url="{{route('website.realestate.leads.distance.store',['listing_id'=> $result->id])}}">Get distance</button>
                     </div>
                 </div>
                 <div class="single--map_container">

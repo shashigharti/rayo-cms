@@ -13,7 +13,7 @@ class LeadDistance extends BaseModel
     /**
      * @var string
      */
-    protected $table = 'real_estate_lead_drive_distances';
+    protected $table = 'real_estate_lead_distance_drive';
 
 
     /**
@@ -27,7 +27,8 @@ class LeadDistance extends BaseModel
     protected $fillable = [
         'id',
         'lead_id',
-        'data'
+        'listing_id',
+        'from'
     ];
 
 
@@ -37,6 +38,14 @@ class LeadDistance extends BaseModel
     public function leads()
     {
         return $this->belongsTo(Lead::class);
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function listing()
+    {
+        return $this->belongsTo(Listing::class);
     }
 
 }

@@ -40,6 +40,9 @@ class EventServiceProvider extends ServiceProvider
         \Robust\RealEstate\Events\MultiplePropertyViewEvent::class => [
             \Robust\RealEstate\Listeners\MultiplePropertyEventListener::class
         ],
+        \Robust\RealEstate\Events\LeadDistanceEvent::class => [
+            \Robust\RealEstate\Listeners\LeadDistanceEventListener::class
+        ],
     ];
 
     /**

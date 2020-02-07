@@ -158,4 +158,12 @@ class Lead extends Authenticatable
     {
         return $this->hasMany(LeadSearch::class);
     }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function drives()
+    {
+        return $this->hasMany(LeadDistance::class);
+    }
 }

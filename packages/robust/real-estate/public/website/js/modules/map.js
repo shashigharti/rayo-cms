@@ -99,6 +99,18 @@
                             $('.calculated_duration').html(legs.duration.text);
                             directionsDisplay.setDirections(response);
                             directionsDisplay.setMap(map);
+                            //save distance search
+                            const url = $('.get-distance').data('url');
+                            const data = new FormData();
+                            data.append('from',legs.end_address);
+                            $.ajax(url,{
+                                processData:false,
+                                contentType:false,
+                                data:data,
+                                method:'POST'
+                            }).then(response => {
+                                console.log(response);
+                            })
                         }else{
                             $('.destination_location').html('No results');
                             $('.calculated_distance').parent().addClass('hide');

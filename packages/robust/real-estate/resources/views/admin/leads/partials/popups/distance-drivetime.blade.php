@@ -13,31 +13,30 @@
             </div>
             <div class="box-content">
                 <div class="row viewed-lead">
-                    <a href="//scottingraham.com/real-estate/692712/6903-lagoon-panama-city-beach-32408" target="_blank">
+                    @foreach($lead->drives as $drive)
+                        @set('image',$drive->listing->images()->first())
+                        <a href="{{route('website.realestate.single',['slug'=>$drive->listing->slug])}}" target="_blank">
                         <div class="col s4">
-                            <img src="http://cdn.photos.sparkplatform.com/bc/20200111182524426985000000-o.jpg" alt="6903 Lagoon, Panama City Beach 32408" class="img-responsive">
+                            <img src="{{$image ? $image->url : ''}}" alt="6903 Lagoon, Panama City Beach 32408" class="img-responsive">
                         </div>
                         <div class="col s8">
                             <div class="vw-lead-name">
-                                6903 Lagoon, Panama City Beach 32408
+                                {{$lead->first_name}} calculated the distance
                             </div>
                             <div class="vw-lead-price">
-                                Price:$250k
-                                <br>
-                                Baths Full: 2
-                                <br>
-                                Beds
+                                For: {{$drive->listing->name}}
                             </div>
                             <div class="vw-lead-address">
-                                Address: 6903 Lagoon
+                                From: {{$drive->from}}
                             </div>
                         </div>
                     </a>
+                    @endforeach
                 </div>
                 <div class="row vw-view-more">
                     <a href="#" class="">
                         <div class="col s12">
-                            View more
+                            <a href="{{ route('admin.leads.details.edit', ['id' => $lead->id,'type'=>'distance-drive'])}}">View more
                         </div>
                     </a>
                 </div>

@@ -13,10 +13,11 @@
             </div>
             <div class="box-content">
                 @foreach($lead->favourites as $listing)
+                    @set('image',$listing->images()->first())
                     <div class="row viewed-lead">
                         <a href="" target="_blank">
                             <div class="col s4">
-                                <img src="{{$listing->images()->first()}}" alt="{{$listing->name}}" class="img-responsive">
+                                <img src="{{$image ? $image->url : ''}}" alt="{{$listing->name}}" class="img-responsive">
                             </div>
                             <div class="col s8">
                                 <div class="vw-lead-name">
