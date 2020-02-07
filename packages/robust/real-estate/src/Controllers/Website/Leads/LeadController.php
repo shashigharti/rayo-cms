@@ -5,6 +5,8 @@ namespace Robust\RealEstate\Controllers\Website\Leads;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use Robust\RealEstate\Events\LeadDistanceEvent;
 use Robust\RealEstate\Events\LeadSearchEvent;
 use Robust\RealEstate\Repositories\Website\LeadRepository;
@@ -34,6 +36,17 @@ class LeadController extends Controller
     }
 
     /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update($id, Request $request)
+    {
+        $data = $request->except('_token');
+        $this->model->update($id,$data);
+        return redirect()->back()->with('message', 'Profile Updated');
+    }
+    /**
      * @return \Illuminate\Http\RedirectResponse
      */
     public function storeSearch()
@@ -59,5 +72,35 @@ class LeadController extends Controller
             return response()->json(['success']);
         }
         return response()->json(['Not Logged In']);
+    }
+
+    /**
+     * @param $id
+     * @param Request $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function changePassword($id, Request $request)
+    {
+        $data = $request->all();
+        $validator = Validator::make($data, [
+            'old_password' => 'required',
+            'password' => 'required|confirmed',
+        ]);
+        $lead = isLead($this->model->find($id)->user);
+        if($lead){
+            if($validator->fails()){
+                return redirect()->back()->withErrors($validator);
+            }
+            //check old pw
+            if(Hash::check($data['old_password'],$lead->user->password)){
+                $lead->user->update([
+                    'password' => Hash::make($data['password'])
+                ]);
+                return redirect()->back()->with('message', 'Password Updated');
+            };
+
+            return redirect()->back()->withErrors(['old_password' => 'Old password did not match our system']);
+        }
+        return redirect()->back()->withErrors(['lead' => 'User is not a lead']);
     }
 }

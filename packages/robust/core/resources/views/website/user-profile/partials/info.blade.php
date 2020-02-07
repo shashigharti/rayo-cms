@@ -3,7 +3,7 @@
    <div class="col-md-6">
       <div class="profile-inner">
          <h3 class="title-detail info-form"> Personal info</h3>
-         <form action="" method="POST">
+         <form action="{{route('website.realestate.leads.update',['id'=>$lead->id])}}" method="POST">
              @csrf
             <div class="form-group col s12">
                <label for="txtuser" class=" control-label">Firstname</label>
@@ -33,21 +33,22 @@
    <div class="col-md-6">
       <div class="profile-inner">
          <h3 class="title-detail info-form">Change password</h3>
-         <form class="form-horizontal" action="" method="POST">
-            <div class="form-group col s12">
+          @foreach($errors->all() as $error)
+              <div class="alert-danger">{{$error}}</div>
+          @endforeach
+         <form class="form-horizontal" action="{{route('website.realestate.leads.update.password',['id'=>$lead->id])}}" method="POST">
+            @csrf
+             <div class="form-group col s12">
                <label for="inputPassword" class="control-label">Old Password</label>
-               <input type="password" class="form-control" name="old_password"
-                     placeholder="" value="">
+               <input type="password" class="form-control" name="old_password" placeholder="" value="">
             </div>
             <div class="form-group col s12">
                <label for="inputPassword2" class="col-sm-3 control-label">New Password</label>
-               <input type="password" class="form-control" name="new_password"
-                     placeholder="">
+               <input type="password" class="form-control" name="password" placeholder="">
             </div>
             <div class="form-group col s12">
                <label for="inputPassword3" class="col-sm-3 control-label">Confirm New Password</label>
-               <input type="password" class="form-control" name="confirm_password"
-                     placeholder="">
+               <input type="password" class="form-control" name="password_confirmation" placeholder="">
             </div>
             <div class="form-group col s12">
                <label></label>

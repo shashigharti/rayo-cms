@@ -4,6 +4,19 @@ Route::group([
     'as' => 'website.realestate.leads.',
     'group' => 'Leads'],
     function () {
+
+        Route::post('/leads/profile/update/{id}',[
+            'name' => 'Lead Profile Update',
+            'as' => 'update',
+            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\LeadController@update'
+        ]);
+
+        Route::post('/leads/profile/password/update/{id}',[
+            'name' => 'Lead Update password',
+            'as' => 'update.password',
+            'uses' => 'Robust\RealEstate\Controllers\Website\Leads\LeadController@changePassword'
+        ]);
+
         Route::get('/leads/searches', [
             'name' => 'Lead Searches',
             'as' => 'search.store',
