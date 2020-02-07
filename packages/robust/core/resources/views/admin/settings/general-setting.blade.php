@@ -87,6 +87,43 @@
              {{ Form::label('address', 'Address', ['class' => 'control-label' ]) }}
         </div>
     </div>
+    <div class="row">
+        <div class="col s12">
+            <fieldset>
+                <legend>FavIcons</legend>
+                @set('count',isset($settings['icons']) ? count($settings['icons']) : 1)
+                @for($i=0;$i < $count; $i++)
+                    <div class="row dynamic-elem" data-key="{{ $i }}">
+                        <div class="input-field col s3">
+                            {{ Form::label("icons[$i][rel]", 'Rel') }}
+                            {{ Form::text("icons[$i][rel]",$settings['icons'][$i]['rel']  ?? '' )}}
+                        </div>
+                        <div class="input-field col s3">
+                            {{ Form::label("icons[$i][size]", 'Size') }}
+                            {{ Form::text("icons[$i][size]",$settings['icons'][$i]['size']  ?? '') }}
+                        </div>
+                        {{ Form::hidden("icons[$i][href]",$settings['icons'][$i]['href']  ?? '', [
+                                'class' => 'form-control icon_media-id'
+                            ])
+                        }}
+                        <div class="input-field col s3">
+                            <input type="file" name="files"  class="icon_file-uploader" data-url="{{route('api.file-uploader.image.upload')}}">
+                        </div>
+                        <a href="javascript:void(0)">
+                            <i class="material-icons dynamic-elem__btn dynamic-elem__delete @if($i == 0) hide @endif">
+                                delete
+                            </i>
+                        </a>
+                        <a href="javascript:void(0)">
+                            <i class="material-icons dynamic-elem__btn dynamic-elem__add">
+                                add
+                            </i>
+                        </a>
+                    </div>
+                @endfor
+            </fieldset>
+        </div>
+    </div>
 
     <div class="form-group form-material mt-1 row">
         <div class="col s12">

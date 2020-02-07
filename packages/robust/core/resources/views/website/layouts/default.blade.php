@@ -13,7 +13,10 @@
         <meta name="keywords" content=" {{ $page->meta_keywords ?? '' }} ">
 
         {{--FAVICONS--}}
-        <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('/apple-touch-icon-57x57.png') }}">
+        @foreach($favicons as $icon)
+            <link rel="{{$icon['rel'] ?? ''}}" sizes="{{$icon['size'] ?? ''}}" href="{{$icon['href'] ? getMedia($icon['href']) : ''}}">
+        @endforeach
+        //remove below code after confirmation
         <link rel="apple-touch-icon" sizes="114x114" href="{{ asset('/apple-touch-icon-114x114.png') }}">
         <link rel="apple-touch-icon" sizes="72x72" href="{{ asset('/apple-touch-icon-72x72.png') }}">
         <link rel="apple-touch-icon" sizes="144x144" href="{{ asset('/apple-touch-icon-144x144.png') }}">

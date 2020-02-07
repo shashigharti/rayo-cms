@@ -46,7 +46,7 @@ class FrontendComposer {
     {
         $query_params = request()->all();
         $page = seo(request()->segments());
-
+        $favicons = settings('general-setting','icons') != '' ? settings('general-setting','icons') : [];
 
         $view->with('banner_helper', $this->banner_helper);
         $view->with('listing_helper', $this->listing_helper);
@@ -55,6 +55,7 @@ class FrontendComposer {
         $view->with('advancesearch_helper', $this->advancesearch_helper);
         $view->with('query_params', $query_params);
         $view->with('page', $page);
+        $view->with('favicons', $favicons);
     }
 
 }
