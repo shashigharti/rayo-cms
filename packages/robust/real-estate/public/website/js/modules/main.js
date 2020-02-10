@@ -36,4 +36,9 @@ $(window).load(function () {
     $('.modal').modal();
     $('.sidenav').sidenav();
     $('.tabs').tabs();
+    $('.inner-list-tabs li.tab').on('click',function () {
+        console.log('E');
+        $(this).siblings('li').removeClass('active');
+        $(this).addClass('active');
+    })
 });

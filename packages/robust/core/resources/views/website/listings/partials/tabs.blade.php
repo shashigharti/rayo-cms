@@ -3,28 +3,29 @@
         <div class="col s12">
             <ul class="inner-list-tabs">
                 <li class="tab active"><a  href="#overview">Overview</a></li>
-
                 <li class="tab"><a href="#calculator">Mortage Calculator</a></li>
                 <li class="tab"><a href="#distance">Distance/Drive Time</a></li>
             </ul>
         </div>
-        <div id="overview" class="col s8 overview-slider ">
-            <div class="outer">
-                <div id="big" class="owl-carousel owl-theme">
-                   @foreach($result->images as $image)
-                       <div class="item">
-                           <img src="{{$image->url}}" alt="">
-                       </div>
-                   @endforeach
-                </div>
-                <div id="thumbs" class="owl-carousel owl-theme">
-                    @foreach($result->images as $image)
-                        <div class="item">
-                            <img src="{{$image->url}}" alt="">
-                        </div>
-                    @endforeach
-                </div>
-            </div>
+        <div id="overview" class="col s8">
+           <div class="overview-slider">
+               <div class="outer">
+                   <div id="big" class="owl-carousel owl-theme">
+                       @foreach($result->images as $image)
+                           <div class="item">
+                               <img src="{{$image->url}}" alt="">
+                           </div>
+                       @endforeach
+                   </div>
+                   <div id="thumbs" class="owl-carousel owl-theme">
+                       @foreach($result->images as $image)
+                           <div class="item">
+                               <img src="{{$image->url}}" alt="">
+                           </div>
+                       @endforeach
+                   </div>
+               </div>
+           </div>
         </div>
         <div id="distance" class="distance--block">
             <p> <b class="font-size16 ">Calculate distance and drive time from your location to:</b>
