@@ -36,6 +36,7 @@ class LeadDistanceEventListener
      */
     public function handle(LeadDistanceEvent $event)
     {
+
         $this->model->store([
             'lead_id' => $event->lead,
             'listing_id' => $event->listing,

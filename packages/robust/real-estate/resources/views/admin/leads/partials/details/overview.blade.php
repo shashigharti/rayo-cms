@@ -1,6 +1,6 @@
 @set('login_count',$activity_helper->getLastLoginByDate($model->user->id))
 @set('logins',$activity_helper->bySlug($model->user->id,'logged-in'))
-@set('activities',$activity_helper->getAll($model->user->id))
+@set('activities',$activity_helper->getAll($model->user->id)->take(10))
 <div class="row">
     @include("real-estate::admin.leads.partials.details.overview-info")
     <div class="col s9">
@@ -54,8 +54,10 @@
                     </div>
                     <div class="details">
                         <div class="col s6">
-                            <label>Total Activities:</label>
-                            <span>-</span>
+                            <label>Recent Activities:</label>
+                        </div>
+                        <div class="col s6">
+                            <label> <a href="{{ route('admin.leads.details.edit', ['id' => $model->id,'type'=>'activities'])}}">View all</label>
                         </div>
                     </div>
                     <div class="col s12">

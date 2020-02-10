@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Robust\Admin\Events\UserActivityEvent;
 use Robust\RealEstate\Events\LeadDistanceEvent;
 use Robust\RealEstate\Events\LeadSearchEvent;
 use Robust\RealEstate\Repositories\Website\LeadRepository;
@@ -68,6 +69,7 @@ class LeadController extends Controller
     {
         $lead = isLead();
         if($lead){
+            event(new UserActivityEvent($lead->user,'Calculated Distance',url()->previous(),'from ' .$request->from));
             event(new LeadDistanceEvent($lead->id,$listing_id,$request->from));
             return response()->json(['success']);
         }

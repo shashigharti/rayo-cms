@@ -121,6 +121,13 @@ class Lead extends BaseUI
                 ]),
                 'permission' => 'real-estate.leads.edit'
             ],
+            'Activities' => [
+                'url' => route('admin.leads.details.edit', [
+                    'id' => $model->id,
+                    'type' => 'activities'
+                ]),
+                'permission' => 'real-estate.leads.edit'
+            ],
 //            'Reports' => [
 //                'url' => route('admin.leads.details.edit', [
 //                    'id' => $model->id,

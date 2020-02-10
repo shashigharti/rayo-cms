@@ -33,7 +33,7 @@ class UserActivityHelper
      */
     public function getAll($user)
     {
-        return $this->model->where('user_id',$user)->get();
+        return $this->model->where('user_id',$user)->orderBy('created_at','desc')->get();
     }
 
     /**
