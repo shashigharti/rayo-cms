@@ -129,19 +129,19 @@
         if (Object.keys(selectedProperties).length > 0) {
             $('.market-survey__left-container .tabs a').removeClass('active');
             $('.tabs').tabs('select', 'leaflet__compare-container');
-            template = `<div class="row">
-                                <div class="col-auto compare-table-buttons">
-                                    <button class="btn btn-active">Print This Summary</button>
+            template = `<div class="row mr-t-20">
+                                <div class="col compare-table-buttons">
+                                    <button class="btn btn-xs btn-theme">Print This Summary</button>
                                 </div>
-                                <div class="col-auto compare-table-buttons">
-                                    <button class="btn btn-active">Save Comparison to My Review</button>
+                                <div class="col compare-table-buttons">
+                                    <button class="btn btn-xs btn-theme">Save Comparison to My Review</button>
                                 </div>
-                                <div class="col-auto compare-table-buttons">
-                                    <button class="btn btn-active">Email Agent to Discuss</button>
+                                <div class="col compare-table-buttons">
+                                    <button class="btn btn-xs btn-theme">Email Agent to Discuss</button>
                                 </div>
                             </div>`;
             template += `
-                <table>
+                <table class="mr-t-10">
                     <thead>
                         <tr>
                             <th>Properties</th>

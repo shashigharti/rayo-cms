@@ -485,3 +485,41 @@ button.get-distance {
     display: inline-block;
     width: auto;
 }
+.overview-slider{
+  .owl-theme{
+    .owl-nav{
+      position: absolute;
+      text-align: inherit;
+      -webkit-tap-highlight-color: transparent;
+      bottom: 50px;
+      width: 100%;
+      button.owl-prev{
+        background: #111;
+        color: #fff;
+        border: 0;
+        padding: 0 !important;
+        font: inherit;
+        opacity: 1;
+        height: 42px;
+        width: 27px;
+        line-height: 30px;
+        font-size: 13px;
+        margin:0px;
+      }
+      button.owl-next{
+        background: #111;
+        color: #fff;
+        border: 0;
+        padding: 0 !important;
+        font: inherit;
+        opacity: 1;
+        height: 42px;
+        width: 27px;
+        line-height: 30px;
+        font-size: 13px;
+        float:right;
+        margin:0px;
+      }
+    }
+  }
+}

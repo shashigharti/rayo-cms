@@ -7,7 +7,7 @@
                 <li class="tab"><a href="#distance">Distance/Drive Time</a></li>
             </ul>
         </div>
-        <div id="overview" class="col s8">
+        <div id="overview" class="col s12">
            <div class="overview-slider">
                <div class="outer">
                    <div id="big" class="owl-carousel owl-theme">
