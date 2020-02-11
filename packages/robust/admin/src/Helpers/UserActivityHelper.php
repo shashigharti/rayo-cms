@@ -97,4 +97,39 @@ class UserActivityHelper
     {
         return $this->model->where('user_id',$user)->where('slug',$slug);
     }
+
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function getRecentByslug($slug)
+    {
+        return $this->model
+            ->where('slug',$slug)
+            ->orderBy('created_at','desc')
+            ->limit(5)->get();
+    }
+
+    /**
+     * @param $slug
+     * @return array
+     */
+    public function getActiveUsersByDate($slug)
+    {
+        return [
+            'today' => $this->model->where('slug',$slug)->whereDate('created_at',Carbon::today())->count(),
+            'week' => $this->model->where('slug',$slug)->whereDate('created_at','>',Carbon::today()->subWeek())->count(),
+            'month' => $this->model->where('slug',$slug)->whereDate('created_at','>',Carbon::today()->subMonth())->count()
+        ];
+    }
+
+    /**
+     * @param $slug
+     * @return mixed
+     */
+    public function getCountBySlug($slug)
+    {
+        return $this->model->where('slug',$slug)->count();
+    }
 }

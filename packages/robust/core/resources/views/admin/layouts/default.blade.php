@@ -47,5 +47,10 @@
         </aside>
         @yield('content')
         @include('core::admin.partials.modals.delete')
+        <script src="">
+            $(document).ready(function () {
+                $('.modal').modal();
+            })
+        </script>
     </body>
 </html>

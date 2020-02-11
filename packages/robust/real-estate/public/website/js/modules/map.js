@@ -86,7 +86,7 @@
                     };
                     directionsService.route(request, function (response, status) {
                         if(status === 'OK'){
-                            const map = new google.maps.Map(document.getElementById("listingMap"),{
+                            const map = new google.maps.Map(document.getElementById("distanceMap"),{
                                 zoom: 4,
                                 gestureHandling: 'greedy',
                                 scrollwheel: false,
