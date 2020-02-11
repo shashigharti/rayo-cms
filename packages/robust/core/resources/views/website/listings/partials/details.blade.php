@@ -408,9 +408,11 @@
 </section>
 <section>
     <div class="container-fluid">
-        <div class="col s12" >
-            <h3 class="title-more-detail">Listing on Map</h3>
-        </div>
+        <div class="row">
+            <div class="col s12" >
+                <h3 class="title-more-detail">Listing on Map</h3>
+            </div>
+         </div>
         <div class="single--map_container">
             <div id="listingMap" data-zoom="10">
 

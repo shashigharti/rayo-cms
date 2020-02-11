@@ -46,11 +46,17 @@ class DashboardHelper
         return $this->lead->count();
     }
 
+    /**
+     * @return mixed
+     */
     public function totalListing()
     {
         return $this->listing->count();
     }
 
+    /**
+     * @return mixed
+     */
     public function newListing()
     {
         return $this->listing->where('input_date','>',Carbon::now()->subWeek())->count();
