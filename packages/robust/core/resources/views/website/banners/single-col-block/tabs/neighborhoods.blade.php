@@ -7,11 +7,9 @@
             @if(!(isset($subdivision['hide']) && $subdivision['hide']))
                 <li>
                     <a href="{{
-                                route('website.realestate.ct.listings.tabs.without-price',
+                                route('website.realestate.ct.listings.tabs.neighborhoods',
                                     [
                                         'slug' => $singleColBlock->slug,
-                                        'tab' => 'sd',
-                                        'tab_slug' => str_replace('_', '-', $key),
                                         'location_slug' => $subdivision['slug']
                                     ])
                             }}"

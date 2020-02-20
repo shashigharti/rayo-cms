@@ -125,18 +125,17 @@ class ListingController extends Controller
 
 
     /**
-     * @param BannerHelper $banner
+     * @param BannerRepository $banner
      * @param LocationHelper $locationHelper
      * @param $banner_slug
-     * @param null $tab_type
-     * @param null $tab_slug
+     * @param $location_slug
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function getCustomListingsForTabsWithoutPrice(BannerRepository $banner, LocationHelper $locationHelper,
-                                                         $banner_slug, $tab_type, $tab_slug, $location_slug)
+    public function getCustomListingsForSubdivisions(BannerRepository $banner, LocationHelper $locationHelper, $banner_slug, $location_slug)
     {
-        $settings = settings('real-estate');
         $banner = $banner->where('slug', $banner_slug)->first();
+        $tab_type = 'sd';
+        $tab_slug = 'neighborhoods';
         $qBuilder = $this->model->processBannerParams($banner);
         $location = null;
         $title = null;

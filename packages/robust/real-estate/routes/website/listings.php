@@ -9,15 +9,15 @@ Route::group([
             'as' => 'single',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@single'
         ]);
-        Route::get('/ct/{banner_slug}/price/{price}/{tab?}/{tab_slug?}', [
+        Route::get('/{banner_slug}/price/{price}/{tab?}/{tab_slug?}', [
             'name' => 'Banner Custom Listings',
             'as' => 'ct.listings.banner',
             'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForBanner'
         ]);
-        Route::get('/ct/{banner_slug}/{tab?}/{tab_slug?}/{location_slug?}', [
+        Route::get('/{banner_slug}/' . settings('real-estate', 'url_active') . '/{location_slug?}', [
             'name' => 'Banner Custom Listings Without Price',
-            'as' => 'ct.listings.tabs.without-price',
-            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForTabsWithoutPrice'
+            'as' => 'ct.listings.tabs.neighborhoods',
+            'uses' => '\Robust\RealEstate\Controllers\Website\ListingController@getCustomListingsForSubdivisions'
         ]);
         Route::get('/' . settings('real-estate', 'url_active') . '/{location_type?}/{location?}', [
             'name' => 'Homes for sale',
