@@ -5,8 +5,15 @@ namespace Robust\Core\Helpers;
 
 use Robust\Core\Models\EmailSetting;
 
+/**
+ * Class EmailSettingHelper
+ * @package Robust\Core\Helpers
+ */
 class EmailSettingHelper
 {
+    /**
+     * @return array
+     */
     public function getEventList()
     {
         $email_settings = [];

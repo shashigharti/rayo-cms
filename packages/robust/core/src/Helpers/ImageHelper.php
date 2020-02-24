@@ -1,6 +1,10 @@
 <?php
 namespace Robust\Core\Helpers;
 
+/**
+ * Class ImageHelper
+ * @package Robust\Core\Helpers
+ */
 class ImageHelper
 {
     /**
