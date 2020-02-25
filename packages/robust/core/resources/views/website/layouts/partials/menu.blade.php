@@ -2,35 +2,6 @@
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <ul class="right hide-on-med-and-down">
-        <li><a class="nav-link" href="{{route('website.home')}}">Home</a></li>
-        <li class="nav-item mega--dropdown">
-            <a id="mega-dropdown" class="nav-link mega--dropdown__parent" href="#">Areas <i class="material-icons">arrow_drop_down</i></a>
-            <div id="mega-dropdown_content" class="mega--dropdown__child hidden">
-                    <span id="mega-dropdown_close" class="close--filters--dropdown right">
-                        <i class="material-icons">clear</i>
-                    </span>
-                <div class="row">
-                    <div class="col s12">
-                        <ul class="tabs">
-                            @foreach($menus as $menu)
-                                <li class="tab">
-                                    <a class="active" href="#{{$menu}}">{{ucwords($menu)}}
-                                        ({{ $locations[$menu] ? count($locations[$menu]): '0'}})
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    @foreach($menus as $menu)
-                        <div id="{{ $menu }}" class="tab-filter tab--content col s12">
-                            <ul>
-                                <li>Parent Menu</li>
-                            </ul>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </li>
         @set('parent_menus', $banner_helper->getBannersBySlug('main-menu'))
         @if($parent_menus)
             @set('properties', json_decode($parent_menus->properties))
