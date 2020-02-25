@@ -41,8 +41,8 @@ class UserTableSeeder extends Seeder
         $admins = [
             [
                 'id' => 1,
-                'email' => 'john@realwebsystems.com',
-                'password' => Hash::make('reel-reel'),
+                'email' => 'info@robustitconcepts.com',
+                'password' => Hash::make('12345678'),
                 'first_name' => 'Super',
                 'last_name' => ' User',
                 'user_name' => 'super_user',
@@ -57,8 +57,10 @@ class UserTableSeeder extends Seeder
                 'last_name' => $admin['last_name'],
             ]);
             $user = User::updateOrCreate(['id' =>1],[
+                'first_name' => $admin['first_name'],
+                'last_name' => $admin['last_name'],
                 'memberable_id' => $created->id,
-                'memberable_type' => 'Robust\Admin\Models\Admin',
+                'memberable_type' => 'Robust\Core\Models\Admin',
                 'email' => $admin['email'],
                 'password' => $admin['password'],
             ]);
