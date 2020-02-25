@@ -4,8 +4,8 @@ namespace Robust\Core\Console\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
-use Robust\Admin\Models\Permission;
-use Robust\Admin\Models\Role;
+use Robust\Core\Models\Permission;
+use Robust\Core\Models\Role;
 use Robust\Core\Helpers\PermissionHelper;
 
 class ResetPermission extends Command

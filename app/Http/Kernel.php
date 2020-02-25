@@ -3,7 +3,7 @@
 namespace App\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
-use Robust\Admin\Middleware\IsAdmin;
+use Robust\Core\Middleware\IsAdmin;
 
 class Kernel extends HttpKernel
 {

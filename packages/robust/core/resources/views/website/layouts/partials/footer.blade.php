@@ -1,5 +1,4 @@
 @set('menus', settings('real-estate', 'menus') != ""? settings('real-estate', 'menus') : [])
-@inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
 <div class="container-fluid">
     <div class="row">
         <div class="col m4 s12">

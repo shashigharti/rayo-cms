@@ -1,7 +1,7 @@
 <?php namespace Robust\Core\Composers;
 
 use Illuminate\Contracts\View\View;
-use Robust\Admin\Repositories\Admin\UserRepository;
+use Robust\Core\Repositories\Admin\UserRepository;
 
 /**
  * Class ProfileComposer
@@ -32,7 +32,7 @@ class ProfileComposer {
     public function compose(View $view)
     {
         $user = $this->user->find(\Auth::user()->id);
-        
+
         $view->with('user', $user);
         $view->with('notifications', $user->unreadNotifications()->take(5)->get());
 

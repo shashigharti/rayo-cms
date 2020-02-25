@@ -59,7 +59,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => \Robust\Admin\Models\User::class,
+            'model' => \Robust\Core\Models\User::class,
         ]
     ],
     /*

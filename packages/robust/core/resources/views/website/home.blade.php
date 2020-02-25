@@ -1,5 +1,4 @@
 @extends(Site::templateResolver('core::website.layouts.default'))
-@set('locations', $location_helper->getLocations(['cities','counties','zips']))
 @section('header')
     <div class="banner">
         <div class="slider">

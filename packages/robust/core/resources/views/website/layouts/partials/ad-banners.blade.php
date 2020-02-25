@@ -1,6 +1,5 @@
 @set('singleColBlocks', $banner_helper->getBannersByType(['single-col-block']))
 @set('bannerSortOrderArr', settings('front-page', 'single_col_banner_order'))
-@inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
 
 @if($bannerSortOrderArr !== '')
     @set('singleColBlocks', $banner_helper->sortBannersByArray($singleColBlocks, explode(",", $bannerSortOrderArr)))
@@ -18,5 +17,4 @@
     </div>
 </section>
 @include(Site::templateResolver("core::website.banners.two-col-ad"))
-@include(Site::templateResolver("core::website.banners.slider"))
 @include(Site::templateResolver("core::website.banners.full-screen-ad"))

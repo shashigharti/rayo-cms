@@ -5,7 +5,7 @@ use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvid
 use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Support\Facades\Auth;
 use Robust\Core\Helpers\PermissionHelper;
-use Robust\Admin\Helpers\PermissionHelper as CheckPermission;
+use Robust\Core\Helpers\PermissionHelper as CheckPermission;
 
 /**
  * Class AuthServiceProvider

@@ -2,10 +2,10 @@
 
 namespace Robust\Core\Helpers;
 
-use Doctrine\DBAL\Schema\Schema;
-use Illuminate\Support\Facades\DB;
-use Robust\Admin\Models\Permission;
-use Robust\Admin\Models\Role;
+
+use Robust\Core\Models\Permission;
+use Robust\Core\Models\Role;
+use Robust\Core\Models\User;
 
 /**
  * Class PermissionHelper
@@ -53,5 +53,16 @@ class PermissionHelper
 
       return isset($permissions[$permission_name]) ? true : false;
   }
+
+    public function check_permission($user, $action)
+    {
+        $user = User::find($user->id);
+        $roles = $user->roles;
+        $permissions = [];
+        foreach ($roles as $role) {
+            $permissions = $permissions + array_column($role->permissions->toArray(), 'name');
+        }
+        return in_array($action, $permissions);
+    }
 
 }

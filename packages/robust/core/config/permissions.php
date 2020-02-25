@@ -22,7 +22,6 @@ return [
         'core.medias.edit' => "Image Edit",
         'core.medias.delete' => "Image Delete",
 
-        'core.dashboards.manage' => "Dashboard",
         'core.dashboards.add' => "Add Dashboard",
         'core.dashboards.edit' => "Dashboard Edit",
         'core.dashboards.delete' => "Dashboard Delete",
@@ -40,7 +39,18 @@ return [
         'core.widgets.delete' => "Widget Delete",
 
         'core.schedules.manage' => 'Manage Schedules',
-        'core.email-settings.manage' => 'Manage Email Settings'
+        'core.email-settings.manage' => 'Manage Email Settings',
+
+        //admin permissions
+        'admin.view' => 'View Admin Panel',
+        'admin.user.manage' => "Manage Users",
+        'admin.user.add' => "Add User",
+        'admin.user.edit' => "User Edit",
+        'admin.user.delete' => "User Delete",
+        'admin.role.manage' => "Manage Roles",
+        'admin.role.add' => "Add Role",
+        'admin.role.edit' => "Role Edit",
+        'admin.role.delete' => "Role Delete"
 
     ]
 ];

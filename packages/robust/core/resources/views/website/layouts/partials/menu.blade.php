@@ -1,5 +1,4 @@
-@set('menus', settings('real-estate', 'menus') != "" ? settings('real-estate', 'menus') : [])
-@inject('menu_helper', 'Robust\RealEstate\Helpers\FrontendMenuHelper')
+@set('menus', settings('general-setting', 'menus') != "" ? settings('general-setting', 'menus') : [])
 
 <nav class="navbar navbar-expand-lg navbar-light">
     <ul class="right hide-on-med-and-down">
@@ -20,34 +19,12 @@
                                     </a>
                                 </li>
                             @endforeach
-                            <span><input type="radio" name="status_filter" value='active' checked>Homes for Sale</span>
-                            <span><input type="radio" name="status_filter" value='sold'>Sold Homes</span>
-                            <span><input type="radio" name="status_filter" value='all'>All</span>
                         </ul>
                     </div>
                     @foreach($menus as $menu)
                         <div id="{{ $menu }}" class="tab-filter tab--content col s12">
                             <ul>
-                                @if(isset($locations[$menu]))
-                                    @set('items', $menu_helper->filterMenu($menu, $locations[$menu]))
-                                    @foreach($items as $location)
-                                        <li data-active="{{ $location->active_count }}"
-                                            data-active-url="{{ settings('real-estate', 'url_active') }}"
-                                            data-sold-url="{{ settings('real-estate', 'url_sold') }}"
-                                            data-all-url="{{ settings('real-estate', 'url_active') }}"
-                                            data-sold="{{ $location->sold_count }}"
-                                            data-all="{{ $location->sold_count + $location->active_count }}">
-                                            <a class="tab__location" href="{{route('website.realestate.homes-for-sale',[
-                                                    'location_type' => $menu,
-                                                    'location' => $location->slug
-                                                    ])}}"
-                                            >
-                                                {{ $location->name }}
-                                                <span class="tab__location-count">({{ $location->active ?? $location->active_count }})</span>
-                                            </a>
-                                        </li>
-                                    @endforeach
-                                @endif
+                                <li>Parent Menu</li>
                             </ul>
                         </div>
                     @endforeach
@@ -89,8 +66,7 @@
             </a>
         </li>
         <li>
-            <a class="nav-link" href="{{route('website.realestate.market.reports', ['type' => 'cities'])}}">Market
-                Stats
+            <a class="nav-link" href="">Services
             </a>
         </li>
         <li class="nav-btn">
@@ -101,7 +77,7 @@
             @else
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__login">Login</a>
             @endif
-            @include(Site::templateResolver('admin::website.auth.login'))
+            @include(Site::templateResolver('core::website.auth.login'))
         </li>
         <li class="nav-btn">
             @if(Auth::check())
@@ -109,7 +85,7 @@
             @else
                 <a class="nav-link waves-effect waves-light modal-trigger" href="#modal__register">Register</a>
             @endif
-            @include(Site::templateResolver('admin::website.auth.register'))
+            @include(Site::templateResolver('core::website.auth.register'))
         </li>
     </ul>
     <a href="#"><img src="{{asset('assets/website/images/Logo.jpg')}}" alt="logo"></a>

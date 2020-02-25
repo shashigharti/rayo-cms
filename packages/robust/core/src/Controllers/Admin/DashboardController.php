@@ -3,8 +3,8 @@
 namespace Robust\Core\Controllers\Admin;
 
 use Illuminate\Http\Request;
-use Robust\Admin\Models\User;
-use Robust\Admin\Repositories\Admin\UserRepository;
+use Robust\Core\Models\User;
+use Robust\Core\Repositories\Admin\UserRepository;
 use Robust\Core\Controllers\Common\Traits\CrudTrait;
 use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\DashboardRepository;
@@ -63,10 +63,11 @@ class DashboardController extends Controller
         return redirect($this->previous_url)->with('message', 'Widgets successfully added!');
     }
 
+
     /**
      * @param UserRepository $user
      * @param null $slug
-     * @return $this
+     * @return \Robust\Core\Controllers\Common\Traits\view
      */
     public function show(UserRepository $user, $slug = null)
     {

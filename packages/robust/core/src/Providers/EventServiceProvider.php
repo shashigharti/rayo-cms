@@ -18,7 +18,10 @@ class EventServiceProvider extends ServiceProvider
     protected $listen = [
         \Robust\Core\Events\ExceptionEvent::class => [
             \Robust\Core\Listeners\ExceptionEventListener::class
-        ]
+        ],
+        \Robust\Core\Events\UserCreatedEvent::class => [
+            \Robust\Core\Listeners\UserCreatedEventListener::class
+        ],
     ];
 
     /**
