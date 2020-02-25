@@ -50,7 +50,20 @@ return [
         'admin.role.manage' => "Manage Roles",
         'admin.role.add' => "Add Role",
         'admin.role.edit' => "Role Edit",
-        'admin.role.delete' => "Role Delete"
+        'admin.role.delete' => "Role Delete",
+
+        //banners
+        'core.banners.manage' => "Manage Banners",
+        'core.banners.add' => "Add Banner",
+        'core.banners.edit' => "Banner Edit",
+        'core.banners.delete' => "Banner Delete",
+
+        //pages
+
+        'core.pages.manage' => "Manage Pages",
+        'core.pages.add' => "Add Page",
+        'core.pages.edit' => "Page Edit",
+        'core.pages.delete' => "Page Delete",
 
     ]
 ];

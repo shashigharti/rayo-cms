@@ -42,7 +42,7 @@ class ResetMenu extends Command
         $this->info("============= Reset Menu Table ================");
         $this->info("===============================================");
         $execute = $this->confirm("Would you like to execute menu table  seeder? [y|N]", false);
-        $packages = CoreHelper::names();       
+        $packages = CoreHelper::names();
         if ($execute) {
             DB::table('menus')->truncate();
             foreach ($packages as $key => $package) {

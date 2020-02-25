@@ -14,7 +14,6 @@ class CoreDatabaseSeeder extends Seeder
         DB::table('menus')->truncate();
         $this->call(CoreMenuTableSeeder::class);
         $this->call(SettingTableSeeder::class);
-        $this->call(AdminMenuTableSeeder::class);
         $this->call(UserTableSeeder::class);
         $this->call(DashboardTableSeeder::class);
     }
