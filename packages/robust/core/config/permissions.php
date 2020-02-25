@@ -65,5 +65,11 @@ return [
         'core.pages.edit' => "Page Edit",
         'core.pages.delete' => "Page Delete",
 
+        //email templates
+
+        'core.email-templates.manage' => "Manage Email Templates",
+        'core.email-templates.add' => "Add Email Template",
+        'core.email-templates.edit' => "Email Template Edit",
+        'core.email-templates.delete' => "Email Template Delete",
     ]
 ];

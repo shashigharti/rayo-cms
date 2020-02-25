@@ -42,6 +42,16 @@ class CoreMenuTableSeeder extends Seeder
                 'parent_id' => 0,
                 'type' => 'primary',
                 'icon' => 'art_track'
+            ],
+            [
+                'display_name' => 'Email Templates',
+                'name' => 'core.email-templates',
+                'url' => route('admin.email-templates.index'),
+                'permission' => 'core.email-templates.manage',
+                'package_name' => 'core',
+                'parent_id' => 0,
+                'type' => 'primary',
+                'icon' => 'email'
             ]
             // [
             //     'display_name' => 'Media Manager',

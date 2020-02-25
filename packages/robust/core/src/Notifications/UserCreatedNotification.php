@@ -39,23 +39,19 @@ class UserCreatedNotification extends Notification
         return ['mail'];
     }
 
-    /**
-     * Get the mail representation of the notification.
-     *
-     * @param  mixed  $notifiable
-     * @return \Illuminate\Notifications\Messages\MailMessage
-     */
+
     public function toMail($notifiable)
     {
+       $template = email_template('new-user-registration');
        $config = config('client.email');
        $data = [
-           'subject' => $config['subjects']['user-registered'] ?? 'Welcome to ' . env('APP_URL'),
+           'subject' => isset($template) ? $template->subject :  'Welcome to ' . env('APP_URL'),
            'logo' => '',
            'verification_url' => $this->verificationUrl($notifiable)
        ];
        $from = $config['support'] ?? 'info@robustitconcepts.com';
-       $view = $config['views']['user-registered'] ? view($config['views']['user-registered']) : view('core::website.auth.email-templates.user-registration');
-       $body =  replace_variables($view->render(),$this->user,$data);
+       $view = isset($template) ? $template->body : view('core::website.auth.email-templates.user-registration')->render();
+       $body =  replace_variables($view,$this->user,$data);
        $subject =  replace_variables($data['subject'],$this->user,$data);
        return (new MailMessage)->from($from)->subject($subject)->line(new HtmlString($body));
 

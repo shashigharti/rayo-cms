@@ -243,3 +243,14 @@ if (!function_exists('replace_variables')) {
         return $content;
     }
 }
+
+if (!function_exists('email_template')) {
+    /**
+     * @param string $name
+     * @return string
+     */
+    function email_template($name)
+    {
+        return \Robust\Core\Models\EmailTemplate::where('template', $name)->first();
+    }
+}
