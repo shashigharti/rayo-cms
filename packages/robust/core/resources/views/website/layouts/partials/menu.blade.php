@@ -17,11 +17,11 @@
                             @set('titles', $properties->titles)
                             @set('urls', $properties->urls)
                             <i class="material-icons">arrow_drop_down</i>
-                            @foreach($titles as $key => $title)
-                                <div class="child-menu">
-                                    <a href="">{{$title}}</a>
-                                </div>
-                            @endforeach
+                            <div class="child-menu">
+                                @foreach($titles as $key => $title)
+                                     <a href="{{$urls[$key]}}">{{$title}}</a>
+                                @endforeach
+                            </div>
                         @endif
                     </a>
                 </li>
