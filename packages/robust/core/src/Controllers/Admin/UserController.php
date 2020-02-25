@@ -28,9 +28,7 @@ class UserController extends Controller
         $this->title = 'Users';
         $this->events = [
             'store' => 'Robust\Core\Events\UserCreatedEvent',
-            'update' => 'Robust\Core\Events\UserUpdatedEvent'
         ];
-
     }
 
 }

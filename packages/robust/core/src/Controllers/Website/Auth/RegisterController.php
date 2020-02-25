@@ -117,7 +117,7 @@ class RegisterController extends Controller
             }
             $this->guard()->login($new_user);
             // Raise user created event
-            event(new $event($new_user, $data));
+            event(new $event($new_user));
         }
 
         return $new_user;

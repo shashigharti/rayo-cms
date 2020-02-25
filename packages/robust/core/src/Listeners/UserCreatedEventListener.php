@@ -22,6 +22,11 @@ class UserCreatedEventListener
             'memberable_id' => $event->user->id,
             'memberable_type' => 'Robust\Core\Models\User'
         ]);
-        $event->user->notify(new UserCreatedNotification($event->user));
+        try {
+            $event->user->notify(new UserCreatedNotification($event->user));
+        }
+        catch (\Exception $e){
+            \Log::error($e->getMessage());
+        }
     }
 }

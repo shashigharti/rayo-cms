@@ -56,7 +56,6 @@ class UserCreatedNotification extends Notification
        $from = $config['support'] ?? 'info@robustitconcepts.com';
        $view = $config['views']['user-registered'] ? view($config['views']['user-registered']) : view('core::website.auth.email-templates.user-registration');
        $body =  replace_variables($view->render(),$this->user,$data);
-       dd($body);
        $subject =  replace_variables($data['subject'],$this->user,$data);
        return (new MailMessage)->from($from)->subject($subject)->line(new HtmlString($body));
 

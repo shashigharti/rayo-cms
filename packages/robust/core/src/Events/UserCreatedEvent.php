@@ -19,12 +19,10 @@ class UserCreatedEvent
      * UserCreatedEvent constructor. Create a new event instance.
      *
      * @param  Robust\Core\Models\User  $user
-     * @param  array  $data
      * @return void
      */
-    public function __construct(User $user, array $data)
+    public function __construct(User $user)
     {
         $this->user = $user;
-        $this->data = $data;
     }
 }

@@ -25,7 +25,8 @@ trait CrudTrait
             $keyword = $request->get('keyword');
             $query = $query->where($type, "%" . $keyword . "%", 'LIKE');
         }
-        $records = $query->paginate();
+        $pagination = settings('app-setting','pagination');
+        $records = $query->paginate($pagination != '' ? $pagination : 10);
         return $this->display($this->table,
             [
                 'records' => $records,
