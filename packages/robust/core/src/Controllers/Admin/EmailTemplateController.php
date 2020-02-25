@@ -9,14 +9,25 @@ use Robust\Core\Controllers\Common\Traits\ViewTrait;
 use Robust\Core\Repositories\Admin\EmailTemplateRepository;
 
 
+/**
+ * Class EmailTemplateController
+ * @package Robust\Core\Controllers\Admin
+ */
 class EmailTemplateController extends Controller
 {
     use CrudTrait,ViewTrait;
 
 
+    /**
+     * @var EmailTemplateRepository
+     */
     protected $model;
 
 
+    /**
+     * EmailTemplateController constructor.
+     * @param EmailTemplateRepository $model
+     */
     public function __construct(EmailTemplateRepository $model)
     {
 
@@ -28,6 +39,10 @@ class EmailTemplateController extends Controller
         $this->title = 'Email Templates';
     }
 
+    /**
+     * @param $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
     public function previewTemplate($id)
     {
         $model = $this->model->findOrFail($id);
@@ -35,7 +50,7 @@ class EmailTemplateController extends Controller
             [
                 'model'=>$model,
                 'title'=>'Preview',
-                'ui' => new \Robust\RealEstate\UI\EmailTemplate
+                'ui' => new \Robust\Core\UI\EmailTemplate
             ]
         );
     }
