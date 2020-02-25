@@ -23,6 +23,26 @@ class CoreMenuTableSeeder extends Seeder
                 'type' => 'primary',
                 'icon' => 'settings_input_svideo'
             ],
+            [
+                'display_name' => 'Pages',
+                'name' => 'core.pages',
+                'url' => route('admin.pages.index'),
+                'permission' => 'core.pages.manage',
+                'package_name' => 'core',
+                'parent_id' => 0,
+                'type' => 'primary',
+                'icon' => 'pages'
+            ],
+            [
+                'display_name' => 'Banners',
+                'name' => 'core.banners',
+                'url' => route('admin.banners.index'),
+                'permission' => 'core.banners.manage',
+                'package_name' => 'core',
+                'parent_id' => 0,
+                'type' => 'primary',
+                'icon' => 'art_track'
+            ]
             // [
             //     'display_name' => 'Media Manager',
             //     'name' => 'core.medias',
@@ -34,19 +54,6 @@ class CoreMenuTableSeeder extends Seeder
             //     'icon' => 'image'
             // ]
 
-        ]);
-
-        DB::table('menus')->insert([
-            [
-                'display_name' => 'Banners',
-                'name' => 'core.banners',
-                'url' => route('admin.banners.index'),
-                'permission' => 'core.banners.manage',
-                'package_name' => 'core',
-                'parent_id' => 0,
-                'type' => 'primary',
-                'icon' => 'art_track'
-            ]
         ]);
 
         DB::table('menus')->insert([
