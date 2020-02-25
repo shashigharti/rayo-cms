@@ -31,44 +31,31 @@
                 </div>
             </div>
         </li>
-        <li class="parent-menu">
-            <a class="nav-link" href="#">
-                Homes For Sale
-                <i class="material-icons">arrow_drop_down</i>
-                @set('menus', $banner_helper->getBannersBySlug('homes-for-sale'))
-                @if($menus)
-                    @set('properties', json_decode($menus->properties))
-                    @set('titles', $properties->titles)
-                    @set('urls', $properties->urls)
-                    <div class="child-menu">
-                        @foreach($titles as $key => $title)
-                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
-                        @endforeach
-                    </div>
-                @endif
-            </a>
-        </li>
-        <li class="parent-menu">
-            <a class="nav-link" href="#">
-                Sold Homes
-                <i class="material-icons">arrow_drop_down</i>
-                @set('menus', $banner_helper->getBannersBySlug('sold-homes'))
-                @if($menus)
-                    @set('properties', json_decode($menus->properties))
-                    @set('titles', $properties->titles)
-                    @set('urls', $properties->urls)
-                    <div class="child-menu">
-                        @foreach($titles as $key => $title)
-                            <a class="dropdown-item" href="{{ $urls[$key] }}">{{ $title }}</a>
-                        @endforeach
-                    </div>
-                @endif
-            </a>
-        </li>
-        <li>
-            <a class="nav-link" href="">Services
-            </a>
-        </li>
+        @set('parent_menus', $banner_helper->getBannersBySlug('main-menu'))
+        @if($parent_menus)
+            @set('properties', json_decode($parent_menus->properties))
+            @set('titles', $properties->titles)
+            @set('parent_urls', $properties->urls)
+            @foreach($titles as $pkey => $parent_title)
+                @set('child_menu',$banner_helper->getBannersBySlug(str_slug($parent_title)))
+                <li class="parent-menu">
+                    <a class="dropdown-item" href="{{$child_menu ? '#' : $parent_urls[$pkey]}}">
+                        {{$parent_title}}
+                        @if($child_menu)
+                            @set('properties', json_decode($child_menu->properties))
+                            @set('titles', $properties->titles)
+                            @set('urls', $properties->urls)
+                            <i class="material-icons">arrow_drop_down</i>
+                            @foreach($titles as $key => $title)
+                                <div class="child-menu">
+                                    <a href="">{{$title}}</a>
+                                </div>
+                            @endforeach
+                        @endif
+                    </a>
+                </li>
+            @endforeach
+        @endif
         <li class="nav-btn">
             @if(Auth::check())
                 <a class="nav-link waves-effect waves-light modal-trigger" href="{{route('website.user.profile')}}">My

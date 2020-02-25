@@ -84,7 +84,6 @@
                             'main-banner' => 'Main Banner',
                             'full-screen-ad' => 'Full Screen Ad',
                             'single-col-block' => 'Single Column Block',
-                            'slider' => 'Slider',
                             'menu' => 'Dropdown Menu'
                         ],
                         request()->query('template') ?? $model->template ?? 'Choose template',
