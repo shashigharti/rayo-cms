@@ -1,8 +1,8 @@
 <?php
-use Robust\Admin\Models\Role;
-use Robust\Admin\Models\User;
-use Robust\Admin\Models\Admin;
-use Robust\Admin\Models\Permission;
+use Robust\Core\Models\Role;
+use Robust\Core\Models\User;
+use Robust\Core\Models\Admin;
+use Robust\Core\Models\Permission;
 use Robust\Core\Helpers\PermissionHelper;
 
 use Illuminate\Database\Seeder;

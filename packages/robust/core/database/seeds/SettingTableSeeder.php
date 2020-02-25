@@ -11,7 +11,7 @@ class SettingTableSeeder extends Seeder
      */
     public function run()
     {
-        $users = \Robust\Admin\Models\User::all();
+        $users = \Robust\core\Models\User::all();
         foreach($users as $user){
             \Robust\Core\Models\Dashboard::create([
                 'name' => "{$user->name}-dashboard",
