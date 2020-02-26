@@ -36,7 +36,7 @@
         "gulp-uglifycss": "^1.1.0",
         "gulp-uglifyjs": "^0.6.2",
         "gulp-util": "^3.0.8",
-        "jquery": "^2.2.4",
+        "jquery": "^3.4.0",
         "laravel-mix": "^4.0.7",
         "leaflet.gridlayer.googlemutant": "^0.8.0",
         "lodash": "^4.17.5",
